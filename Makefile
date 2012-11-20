@@ -7,7 +7,7 @@
 
 
 CPPFLAGS=
-CXXFLAGS=-g -pedantic -W{all,extra} -O3
+CXXFLAGS=-g --std=c++11 -pedantic -W{all,extra} -O3
 LDFLAGS=
 
 
@@ -47,7 +47,7 @@ GAMEDIR=/bin
 
 all:
 	[ -d bin ] || mkdir bin
-	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/program.cc
+	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
 
 
 

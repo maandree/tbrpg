@@ -18,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <iostream>
+#include <stdlib.h>
 
 
 /**
@@ -42,12 +43,16 @@ namespace tbrpg
     (void) argc;
     (void) argv;
     
-    std::cout << "hello world" << std::endl;
+    unsigned a, d;
+    asm("cpuid");
+    asm volatile("rdtsc" : "=a" (a), "=d" (d));
+    srand(((long long)a) | (((long long)d) << 32LL));
+    
+    std::cout << random() << std::endl;
     
     return 0;
   }
 }
-
 
 
 
@@ -58,3 +63,4 @@ int main(int argc, char** argv)
 {
   return tbrpg::main(argc, argv);
 }
+
