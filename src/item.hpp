@@ -36,62 +36,64 @@
 namespace tbrpg
 {
   /**
-   * Dice with an arbirary side count 
+   * Item base class
    */
-  class Dice
+  class Item
   {
   protected:
     /**
-     * The number of sides on the dice
+     * The item's weight in grams
      */
-    int sides;
+    int weight;
+    
+    /**
+     * Is the item stuck in its current position
+     */
+    bool stuck;
     
     
   public:
     /**
      * Constructor
-     * 
-     * @param  sideCount  The number of sides on the dice
      */
-    Dice(int sideCount = 0);
+    Item();
     
     /**
      * Copy constructor
      *
      * @param  original  The object to clone
      */
-    Dice(const Dice& original);
+    Item(const Item& original);
     
     /**
      * Copy constructor
      *
      * @param  original  The object to clone
      */
-    Dice(Dice& original);
+    Item(Item& original);
     
     /**
      * Move constructor
      *
      * @param  original  The object to clone
      */
-    Dice(Dice&& original);
+    Item(Item&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~Dice();
+    virtual ~Item();
     
     
     
     /**
      * Reconstruction operator
      * 
-     * @param   sideCount  The number of sides on the dice 
-     * @return             The invoked object
+     * @return  The invoked object
      */
-    virtual Dice& operator =(int sideCount);
+    virtual Item& operator =();
     
     /**
      * Assignment operator
@@ -99,7 +101,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Dice& operator =(const Dice& original);
+    virtual Item& operator =(const Item& original);
     
     /**
      * Assignment operator
@@ -107,7 +109,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Dice& operator =(Dice& original);
+    virtual Item& operator =(Item& original);
     
     /**
      * Move operator
@@ -115,23 +117,23 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual Dice& operator =(Dice&& original);
+    virtual Item& operator =(Item&& original);
     
     
     
     /**
-     * Gets the number of sides on the dice
+     * Get the weight of the item
      * 
-     * @return  The number of sides on the dice
+     * @return  The weight of the item
      */
-    virtual int getSides() const;
+    virtual int getWeight() const;
     
     /**
-     * Throw the dice
+     * Is the item stuck in its position
      * 
-     * @return  The number of eyes on the dice's value side
+     * @return  Whether the item is stuck in its position
      */
-    virtual int getThrow() const;
+    virtual bool isStuck() const;
     
   };
 }

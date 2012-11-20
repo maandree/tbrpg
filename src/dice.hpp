@@ -36,7 +36,7 @@
 namespace tbrpg
 {
   /**
-   * Dice with an arbirary side count 
+   * Dice with an arbirary side count
    */
   class Dice
   {
@@ -138,3 +138,4 @@ namespace tbrpg
 
 
 #endif//__DICE__
+
