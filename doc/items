@@ -1,0 +1,53 @@
+Item
+	Quiver
+		Bolt
+		Arrow
+		Bullet
+	Weapon
+		TwoHanded::	OneHanded::	Trowing::
+		Sword1H		Sword2H		ThrowingAxe
+		Axe		Halberd		ThrowingDagger
+		Flail		Quarterstaff	Dart
+		Mace		Bow		ThrowingSpear
+		Club		Crossbow
+		Dagger		Warhammer
+		Sling		Spear
+		Torch
+	Armour
+		Robe
+		LeatherArmour
+		StuddedLeatherArmour
+		ChainMail
+		SprintMail
+		PlateMail
+		FullPlateMail
+	Useable
+		Potion
+		MagicScroll
+		MagicBook
+		Wand
+	Headgear
+		Hood
+		Helmet
+	Shield
+		Buckler
+		SmallShield
+		MediumShield
+		LargeShield
+	Container
+		MagicBag
+		Keyring
+		GemBag
+		QuiverBelt
+		ScrollBook
+	Ring
+	Amulett
+	Belt
+	Boots
+	Gauntlets
+	Cloak
+	TextScroll
+	TextBook
+	Gold
+	Gem
+	Key
