@@ -66,6 +66,11 @@ namespace tbrpg
      */
     int identifyLore;
     
+    /**
+     * Is the item cursed?
+     */
+    boolean cursed;
+    
     
   public:
     /**
@@ -168,6 +173,13 @@ namespace tbrpg
      * Set the item as identified
      */
     virtual void identify();
+    
+    /**
+     * Is the item cursed?
+     * 
+     * @return  Whether the item is cursed
+     */
+    virtual bool isCursed() const;
     
   };
 }
