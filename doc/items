@@ -1,44 +1,36 @@
 Item
 	Quiver
-		Bolt
-		Arrow
-		Bullet
+		Bolt		Arrow		Bullet
 	Weapon
 		TwoHanded::	OneHanded::	Trowing::
 		Sword1H		Sword2H		ThrowingAxe
-		Axe		Halberd		ThrowingDagger
-		Flail		Quarterstaff	Dart
-		Mace		Bow		ThrowingSpear
+		  LongSword	Halberd		ThrowingDagger
+		  BastardSword	Quarterstaff	Dart
+		  ShortSword	Bow		ThrowingSpear
+		BattleAxe	  ShortBow
+		Flail		  LongBow
+		Mace		  CompositeBow
 		Club		Crossbow
-		Dagger		Warhammer
-		Sling		Spear
-		Torch
+		Dagger		  LightCrossbow
+		Sling		  HeavyCrossbow
+		MorningStar	Warhammer
+		Torch		Spear
 	Armour
 		Robe
-		LeatherArmour
-		StuddedLeatherArmour
-		ChainMail
-		SprintMail
-		PlateMail
-		FullPlateMail
+		LeatherArmour	StuddedLeatherArmour
+		ChainMail	SplintMail
+		PlateMail	FullPlateMail
 	Useable
-		Potion
-		MagicScroll
-		MagicBook
-		Wand
+		Potion		MagicScroll
+		MagicBook	Wand
 	Headgear
-		Hood
-		Helmet
+		Hood		Helmet
 	Shield
-		Buckler
-		SmallShield
-		MediumShield
-		LargeShield
+		Buckler		SmallShield
+		MediumShield	LargeShield
 	Container
-		MagicBag
-		Keyring
-		GemBag
-		QuiverBelt
+		MagicBag	Keyring
+		GemBag		QuiverBelt
 		ScrollBook
 	Ring
 	Amulett
