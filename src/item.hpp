@@ -47,9 +47,24 @@ namespace tbrpg
     int weight;
     
     /**
-     * Is the item stuck in its current position
+     * Is the item stuck in its current position?
      */
     bool stuck;
+    
+    /**
+     * The item's monetary value
+     */
+    int value;
+    
+    /**
+     * Is the item identified?
+     */
+    bool identified;
+    
+    /**
+     * The lore needed to be able to identify the item without magic
+     */
+    int identifyLore;
     
     
   public:
@@ -87,13 +102,6 @@ namespace tbrpg
     virtual ~Item();
     
     
-    
-    /**
-     * Reconstruction operator
-     * 
-     * @return  The invoked object
-     */
-    virtual Item& operator =();
     
     /**
      * Assignment operator
@@ -134,6 +142,32 @@ namespace tbrpg
      * @return  Whether the item is stuck in its position
      */
     virtual bool isStuck() const;
+    
+    /**
+     * Get the item's monetary value
+     * 
+     * @return  The item's monetary value
+     */
+    virtual int getValue() const;
+    
+    /**
+     * Is the item identified?
+     * 
+     * @return  Wether the item identified
+     */
+    virtual bool isIdentified() const;
+    
+    /**
+     * Get the lore needed to be able to identify the item without magic
+     * 
+     * @return  The lore needed to be able to identify the item without magic
+     */
+    virtual int getIdentifyLore() const;
+    
+    /**
+     * Set the item as identified
+     */
+    virtual void identify();
     
   };
 }
