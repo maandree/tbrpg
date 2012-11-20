@@ -16,7 +16,12 @@ GAMEDIR=/bin
 
 
 all:
-	@echo Nothing to build
+	[ -d bin ] || mkdir bin
+	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/program.cc
+
+
+run: all
+	bin/tbrpg
 
 
 
