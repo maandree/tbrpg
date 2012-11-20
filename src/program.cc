@@ -20,6 +20,8 @@
 #include <iostream>
 #include <stdlib.h>
 
+#include "dice.hpp"
+
 
 /**
  * Text based roll playing game
@@ -48,7 +50,8 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    std::cout << random() << std::endl;
+    Dice dice = 20;
+    std::cout << dice.getThrow() << std::endl;
     
     return 0;
   }

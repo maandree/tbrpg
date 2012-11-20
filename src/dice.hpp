@@ -22,6 +22,7 @@
 
 
 #include <stdlib.h>
+#include <algorithm>
 
 
 /**
@@ -123,16 +124,16 @@ namespace tbrpg
      * 
      * @return  The number of sides on the dice
      */
-    virtual int getSides();
+    virtual int getSides() const;
     
     /**
      * Throw the dice
      * 
      * @return  The number of eyes on the dice's value side
      */
-    virtual int getThrow();
+    virtual int getThrow() const;
     
-  }
+  };
 }
 
 

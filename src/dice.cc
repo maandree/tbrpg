@@ -35,9 +35,9 @@ namespace tbrpg
    * 
    * @param  sideCount  The number of sides on the dice
    */
-  Dice::Dice(int sideCount = 0)
+  Dice::Dice(int sideCount)
   {
-    this->sices = sideCount;
+    this->sides = sideCount;
   }
   
   /**
@@ -47,7 +47,7 @@ namespace tbrpg
    */
   Dice::Dice(const Dice& original)
   {
-    this->sices = original.sides;
+    this->sides = original.sides;
   }
   
   /**
@@ -57,7 +57,7 @@ namespace tbrpg
    */
   Dice::Dice(Dice& original)
   {
-    this->sices = original.sides;
+    this->sides = original.sides;
   }
   
   /**
@@ -67,7 +67,7 @@ namespace tbrpg
    */
   Dice::Dice(Dice&& original)
   {
-    this->sices = original.sides;
+    this->sides = original.sides;
   }
   
   
@@ -91,6 +91,7 @@ namespace tbrpg
   Dice& Dice::operator =(int sideCount)
   {
     this->sides = sideCount;
+    return *this;
   }
   
   /**
@@ -102,6 +103,7 @@ namespace tbrpg
   Dice& Dice::operator =(const Dice& original)
   {
     this->sides = original.sides;
+    return *this;
   }
   
   /**
@@ -113,6 +115,7 @@ namespace tbrpg
   Dice& Dice::operator =(Dice& original)
   {
     this->sides = original.sides;
+    return *this;
   }
   
   /**
@@ -124,6 +127,7 @@ namespace tbrpg
   Dice& Dice::operator =(Dice&& original)
   {
     std::swap(this->sides, original.sides);
+    return *this;
   }
   
   
@@ -133,7 +137,7 @@ namespace tbrpg
    * 
    * @return  The number of sides on the dice
    */
-  int Dice::getSides()
+  int Dice::getSides() const
   {
     return this->sides;
   }
@@ -143,7 +147,7 @@ namespace tbrpg
    * 
    * @return  The number of eyes on the dice's value side
    */
-  int Dice::getThrow()
+  int Dice::getThrow() const
   {
     return (random() % this->sides) + 1;
   }
