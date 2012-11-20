@@ -1,0 +1,53 @@
+character
+	gender
+		MALE
+		FEMALE
+	race			class:
+		human		fighter ranger paladin cleric durid bard mage sorcerer
+				fighter/{thief,cleric,durid,mage,mage/cleric}
+				[fighter/]mage/{cleric/thief} cleric/{ranger,thief}
+		dwarf		fighter cleric mage sorcerer
+		elf		fighter ranger cleric mage sorcerer
+		gnome		fighter cleric mage sorcerer
+		halfling	fighter cleric mage sorcerer
+		half-elf	fighter ranger cleric durid bard mage sorcerer
+		half-orc	fighter cleric mage sorcerer
+	name
+		:string
+	colour
+		RED=1
+		GREEN=2
+		YELLOW=3
+		BLUE=4
+		MAGENTA=5
+		CYAN=6
+	ability (3D6 each)
+		strength
+		constitution
+		dexterity
+		intelligence
+		wisdom
+		charisma
+	alignment		reputation
+		lawful good	12
+		neutral good	11
+		chaotic good	11
+		lawful neutral	10
+		neutral		10
+		chaotic neutral	10
+		lawful evil	9
+		neutral evil	9
+		chaotic evil	8
+	proficiency
+		bow
+		spiked weapons
+		small sword
+		large sword
+		Axe
+		Blunt Weapons
+		Missile Weapons
+		Spear
+	thief abilities
+	spells
+	racial enemy
+
