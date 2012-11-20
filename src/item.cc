@@ -114,6 +114,7 @@ namespace tbrpg
     this->identified = original.identified;
     this->identifyLore = original.identifyLore;
     this->cursed = original.cursed;
+    return *this;
   }
   
   /**
@@ -130,6 +131,7 @@ namespace tbrpg
     this->identified = original.identified;
     this->identifyLore = original.identifyLore;
     this->cursed = original.cursed;
+    return *this;
   }
   
   /**
@@ -146,6 +148,7 @@ namespace tbrpg
     std::swap(this->identified, original.identified);
     std::swap(this->identifyLore, original.identifyLore);
     std::swap(this->cursed, original.cursed);
+    return *this;
   }
   
   
@@ -213,7 +216,7 @@ namespace tbrpg
    * 
    * @return  Whether the item is cursed
    */
-  boolean isCursed() const
+  bool Item::isCursed() const
   {
     return this->cursed;
   }

@@ -69,7 +69,7 @@ namespace tbrpg
     /**
      * Is the item cursed?
      */
-    boolean cursed;
+    bool cursed;
     
     
   public:
