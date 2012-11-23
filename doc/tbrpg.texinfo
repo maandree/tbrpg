@@ -138,7 +138,7 @@ must choose yout character's race.
 
 @table @bullet{}
 @item  Human
-There really is nothing speciall about humans.
+There really is nothing special about humans.
 @item  Half-Orc
 Half-Orcs recieve a bonus point to their strength and
 constitution, but a penality point to intelligence and
@@ -216,7 +216,7 @@ Have very high lore. Must be have partially neutral
 alignment, that is not lawful/chaotic good/evil.
 @item  Cleric (C)
 Special abilties: Turn Undead.
-@item  Durid (D)
+@item  Druid (D)
 Special abilties: Shape Change.
 @item  Mage (M)
 Can learn and memorise wizard spells.
@@ -235,7 +235,7 @@ able to wear robes.
 
 Fighter, ranger and paladin is collectively known as
 warrior. Thief and bard is collectively known as rogue.
-Cleric and durid is collectively known as priest. And mage
+Cleric and druid is collectively known as priest. And mage
 and sorcerer is collectively known as wizard.
 
 Bards, mages and sorcerers cannot perform magic will wearing
@@ -246,7 +246,7 @@ Humans can be of any class and are alone be able to be
 paladins, and any race can be of the classes fighter, thief
 (with the exception for half-orc), cleric, mage and
 sorcerer. Additionally elf and half-elf can be rangers, and
-for half-elf, also durid and bard. However gnomes cannot be
+for half-elf, also druid and bard. However gnomes cannot be
 general mages, but only illusionists (I).
 
 The following multiclasses can be used.
@@ -280,7 +280,7 @@ There are six ability scores.
 @item  Dexterity (Thief)
 @item  Intelligence (Wizard)
 @item  Wisdom (Priest)
-@item  Charisma (Durid, bard, paladin)
+@item  Charisma (Druid, bard, paladin@footnote{Charisma lower limit +14 instead of +3 for paladins})
 @end itemize
 
 By default the lower bounds are 3 and the upper bounds are 18,
@@ -451,7 +451,7 @@ The scores are also modified by the character's dexterity.
 
 If your character is a mage you will be able to choose two
 1st-level wizard spells, sorcerers will choose 3 spells.
-Durids and clerics do not choose spells, but have priest
+Druids and clerics do not choose spells, but have priest
 spells. Rangers and paladins will be able to learn priest
 spells at level 8 and 9 respectively, and bards will be able
 to learn wizard spells at level 2.
@@ -877,6 +877,8 @@ Added to the character lore, cumulative with the
 lore bonus from the wisdom.
 @end itemize
 
+@c  TODO  new sorcerer spells
+
 
 @node Wisdom scores
 @section Wisdom scores
@@ -1048,7 +1050,7 @@ As characters gain levels they gain lore.
 @section Luck
 @cindex luck
 
-By default character do not hav e any luck. Luck is a bonus
+By default character do not have any luck. Luck is a bonus
 adjustment to attack rolls.
 
 
@@ -1719,7 +1721,7 @@ neutral protection.
 @multitable @columnfractions 0.10 0.30 0.30 0.30
 @item @b{Level}
 @tab  @b{Cleric}
-@tab  @b{Durid}
+@tab  @b{Druid}
 @tab  @b{Hit dice (D10)}
 @item  1  @tab         0  @tab         0  @tab 1
 @item  2  @tab     1'500  @tab     2'000  @tab 2
@@ -1764,7 +1766,7 @@ neutral protection.
 @cindex ranger spell progression
 @cindex spell progression, ranger
 
-@multitable @columnfractions 0.10 0.10 0.10 0.10 0.60
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10
 @item @b{Ranger level}
 @tab  @b{Casting level}
 @tab  @b{Spell level 1}
@@ -1787,7 +1789,7 @@ neutral protection.
 @cindex paladin spell progression
 @cindex spell progression, paladin
 
-@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.50
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10
 @item @b{Paladin level}
 @tab  @b{Casting level}
 @tab  @b{Spell level 1}
@@ -1814,7 +1816,7 @@ neutral protection.
 @cindex bard spell progression
 @cindex spell progression, bard
 
-@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.30
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.12
 @item @b{Bard level}
 @tab  @b{Casting level}
 @tab  @b{Spell level 1}
@@ -1855,7 +1857,7 @@ neutral protection.
 @cindex druid spell progression
 @cindex spell progression, priest
 
-@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.30
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.12 0.12
 @item @b{Priest level}@footnote{The casting level is the same as the priest level}
 @tab  @b{Spell level 1}
 @tab  @b{Spell level 2}
@@ -1968,7 +1970,7 @@ adjustments.
 @item Mage      @tab  4  @tab 25  @tab 15  @tab 14  @tab 13  @tab 11  @tab 12
 @item Sorcerer  @tab  4  @tab 25  @tab 15  @tab 14  @tab 13  @tab 11  @tab 12
 @item Cleric    @tab  8  @tab 20  @tab 16  @tab 10  @tab 13  @tab 14  @tab 15
-@item Durid     @tab  8  @tab 23  @tab 16  @tab 10  @tab 13  @tab 14  @tab 15
+@item Druid     @tab  8  @tab 23  @tab 16  @tab 10  @tab 13  @tab 14  @tab 15
 @end multitable
 
 
