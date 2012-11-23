@@ -2008,8 +2008,8 @@ held in the character's hands.
 It is not possible to dual class outside the definition if
 this sheet.
 
-Thieving refers to, depending on usage, disarm trap or pick
-pocket.
+Thieving refers to, depending on usage, disarm trap, open
+lock or pick pocket.
 
 
 
@@ -2195,12 +2195,10 @@ takes one round.
 @cindex rules, time
 
 @menu
-* Speed factor::               Speed factor.
-* Casting time::               Casting time.
+* Speed factor::               What is speed factor?
+* Casting time::               What is casting time?
+* Turns and rounds::           What is turns and rounds?
 @end menu
-
-@c  TODO  what is a round
-@c  TODO  what is a turn
 
 
 @node Speed factor
@@ -2217,6 +2215,14 @@ tenths of a round an attack takes.
 
 Casting times for spellcaster is exactly analogous to speed
 factors of weapons.
+
+
+@node Turns and rounds
+@section Turns and rounds
+@cindex turn
+@cindex round
+
+A turn consists of ten rounds. @c TODO  further describe
 
 
 
@@ -2262,3 +2268,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 @bye
 
+
+Quick item slots
+Personal inventory
+Cursed items
+Game play
+Spell list
+Item list
