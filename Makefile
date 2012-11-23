@@ -47,9 +47,14 @@ GAMEDIR=/bin
 
 
 
-all:
+all: code info pdf
+
+
+
+code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
+
 
 
 info:
@@ -117,8 +122,9 @@ valgrind-lackey:
 	valgrind --tool=lackey $(X_LACKEY) bin/tbrpg; fi
 
 
-run: all
+run: code
 	bin/tbrpg
+
 
 
 install:
@@ -142,6 +148,7 @@ clean:
 
 clean-gch:
 	find ./ | grep \\.gch\$$ | while read file; do  rm "$$file";  done
+
 
 
 view:
@@ -174,5 +181,5 @@ jfbview:
 
 .PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
 	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey view atril evince xpdf okular gs jfbview
+	valgrind-lackey view atril evince xpdf okular gs jfbview all
 
