@@ -1,0 +1,2264 @@
+\input texinfo   @c -*-texinfo-*-
+
+@c %**start of header
+@setfilename tbrpg.info
+@settitle tbrpg
+@afourpaper
+@documentencoding UTF-8
+@documentlanguage en
+@finalout
+@c %**end of header
+
+
+@defindex op
+@synindex op vr
+@synindex cp pg
+
+
+@copying
+This manual is for tbrpg.
+
+Copyright @copyright{} 2012 Mattias Andrée
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying
+
+
+@ifnottex
+@node Top
+@top Text based roll playing game
+@insertcopying
+@end ifnottex
+
+@titlepage
+@title tbrpg: Text based roll playing game
+@subtitle A high fantasy roll playing game engine and game collection, and best of all…
+@subtitle it runs on the most powerful graphics processor… the mind.
+@author Mattias Andrée, maandree@@kth.se
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@page
+@*@*
+@center{`This is going to be so @emph{awesome!}'}
+@end titlepage
+
+@contents
+
+
+
+@menu
+* Character attibutes::               Character attibutes.
+* Magic and specialist mages::        Magic and specialist mages.
+* Ability score effects::             Effects by ability scores.
+* Miscellaneous attibutes::           Miscellaneous character attibutes.
+* Special abilities::                 Special character abilities.
+* Character actions::                 Character actions.
+* Armour::                            Something about armour.
+* Weapons::                           About weapons.
+* Experience charts::                 Experience charts.
+* Spell progression::                 Spell progression charts.
+* Miscellaneous sheets::              Miscellaneous sheets.
+* Combat rules::                      Combat rules.
+* Time rules::                        Time rules.
+* License of tbrpg::                  tbrpg's License.
+* GNU General Public License::        GNU General Public License
+* GNU Free Documentation License::    GNU Free Documentation License
+* Concept and program index::         Concept and program index
+* Variable and option index::         Variable and option index
+@end menu
+
+
+@node Character attibutes
+@chapter Character attibutes
+@cindex character attibutes
+@cindex attibutes, character
+
+@menu
+* Gender::                     Character gender.
+* Portrait::                   Character portrait.
+* Race::                       Character race.
+* Classes::                    Character classes.
+* Ability scores::             Character ability scores.
+* Alignment::                  Character alignment.
+* Weapon proficiencies::       Weapon proficiencies.
+* Thief abilities::            Thief abilities.
+* Spell book::                 Character spell book.
+* Racial enemy::               Racial enemy.
+* Colour::                     Character colour.
+* Name::                       Character name.
+@end menu
+
+
+@node Gender
+@section Gender
+@cindex character gender
+@cindex gender, character
+
+When you create your character you need to decide gender.
+You can select either male or female.
+
+@itemize @bullet
+@item  @b{Females}
+strength upper limit and lower limit is decreased by 1.
+@item  @b{Males}
+dexterity upper limit and lower limit is decreased by 1.
+@end itemize
+
+
+@node Portrait
+@section Portrait
+@cindex character portrait
+@cindex portrait, character
+
+@pindex @command{util-say}
+@pindex @command{img2xterm}
+You can choose a portrait for your character if you want.
+It should not be bigger in any dimension than 80 columns
+(80 pixels) and 40 lines (80 pixels). You can use
+@command{util-say} or @command{img2xterm} you create a
+usable raster image. Characters with a portrait are
+rewarded +1 in morale.
+
+
+@node Race
+@section Race
+@cindex character race
+@cindex race, character
+
+There are seven available character races, from which you
+must choose yout character's race.
+
+@table @bullet{}
+@item  Human
+There really is nothing speciall about humans.
+@item  Half-Orc
+Half-Orcs recieve a bonus point to their strength and
+constitution, but a penality point to intelligence and
+charisma.
+@item  Half-Elf
+Half-elves have infravisiton and limited resistance to
+charm and sleep spells.
+@item  Elf
+Elves have infravistion and full resistance to charm and
+sleep spells. They have a −2 bonus point THAC0 when using
+bows and long swords. Finally, they have a recieve a bonus
+point to their dexterity, but a penalty point to their
+constitution.
+@item  Dwarf
+Dwarves have infravision and full resistance to magic and
+poison. They have a recieve a bonus point to their
+constituion, but a penalty point to their charisma and
+dexterity.
+@item  Halfling
+Halflings have high resistance to poison and magic, and have
+a −4 bonues when using slings. They have a recieve a bonus
+point to their dexterity, but a penalty point to their
+strength.
+@item  Gnome
+Gnomes have infravision and full resistance to magic, both
+protective and distructive magic, but only wizard spells.
+They recieve a bonus to their intelligence, but a penalty
+point to their wisdom.
+@end table
+
+
+@node Classes
+@section Classes
+@cindex character classes
+@cindex classes, character
+
+The character's class is the most significant attribute
+that decides how the character is player. The classes
+you can select depends on the character's race.
+
+Non-humans can be multiclassed, this is, have the
+characteristics of two or three classes as the same time,
+the earned experience is distributed evenly among the
+classes.
+
+Humans can dual class, that is, to forfeit leveling the
+current class and instead start on the second class.
+A character can only dual class once, and level 4 or
+higher is required.
+
+There are nine available classes.
+
+@table @bullet{}
+@item  Fighter (F)
+Can wield any weapon and any armour except robes.
+Can have advanced weapon speciailisation.
+Can receive multiple hit bonus.
+@item  Ranger (R)
+Can wield any weapon and any armour except robes.
+Special abilities: Charm person/mammal, Stealth.
+Must be of good alignment.
+@item  Paladin (P)
+Can wield any weapon and any armour except robes.
+Special abilities: Lay on Hands, Turn Undead,
+Protection from Evil, detect Evil.
+Recieve +2 bonus to all Saving throws,
+Must maintain lawful good alignment.
+@item  Thief (T)
+Cannot be of lawful good alignment.
+Very restricted with what armour they can wear and
+with weapones they can wield.
+@item  Bard (B)
+Special abilties: Pick Pockets, Bard Songs, Spell Casting.
+Have very high lore. Must be have partially neutral
+alignment, that is not lawful/chaotic good/evil.
+@item  Cleric (C)
+Special abilties: Turn Undead.
+@item  Durid (D)
+Special abilties: Shape Change.
+@item  Mage (M)
+Can learn and memorise wizard spells.
+Very restricted with what armour they can wear and with
+weapones they can wield, however alone with sorcerers to
+be able to wear robes.
+@item  Sorcerer (S)
+Cannot learn spells from scrolls, but learns new wizard
+spells at level up, and do not need to memorise spells, but
+have a limited amouts of spells that can be used per
+spell-level until rested.
+Very restricted with what armour they can wear and with
+weapones they can wield, however alone with mages to be
+able to wear robes.
+@end table
+
+Fighter, ranger and paladin is collectively known as
+warrior. Thief and bard is collectively known as rogue.
+Cleric and durid is collectively known as priest. And mage
+and sorcerer is collectively known as wizard.
+
+Bards, mages and sorcerers cannot perform magic will wearing
+non-leather armour. This applies even to multiclassed and
+dualclasses characters.
+
+Humans can be of any class and are alone be able to be
+paladins, and any race can be of the classes fighter, thief
+(with the exception for half-orc), cleric, mage and
+sorcerer. Additionally elf and half-elf can be rangers, and
+for half-elf, also durid and bard. However gnomes cannot be
+general mages, but only illusionists (I).
+
+The following multiclasses can be used.
+
+@table @bullet{}
+@item  Half-Orc
+F/C
+@item  Half-Elf
+F/T, F/C, F/D, F/M, T/M, C/M, F/M/T, F/M/C
+@item  Elf
+F/T, F/M, T/M, F/M/T
+@item  Dwarf
+F/T, F/C
+@item  Halfling
+F/T
+@item  Gnome
+F/T, F/C, F/I, T/I, C/I, F/D, C/R, F/I/T, F/I/C
+@end table
+
+
+@node Ability scores
+@section Ability scores
+@cindex charcter ability scores
+@cindex ability scores, charcter
+
+There are six ability scores.
+
+@itemize @bullet
+@item  Strength (Warrior)
+@item  Constitution
+@item  Dexterity (Thief)
+@item  Intelligence (Wizard)
+@item  Wisdom (Priest)
+@item  Charisma (Durid, bard, paladin)
+@end itemize
+
+By default the lower bounds are 3 and the upper bounds are 18,
+one of the factors that change this is the class. In the list
+above, the classes inside brackets have +6 (9 instead of 3) on
+their lower bound on the indicated ability.
+
+The score of an each ability is determined by rolling three
+six-sided dices and sum the values up. If the lower bound
+is not satisified the value will be set to the lower bound.
+Additionally fighters, rangers and paladins throw two
+(ordered) ten-sided dice that determines that extra value on
+the strenght if it is set to 18. The extra strength value is
+0 for non-fighters and for fighters ten times the first roll
+plus the seconds roll subtacted by ten. The strength 18 with
+100 as the extra is displayed as 18/00. During the character
+creation you can rearrange the values and reroll the dices
+until you are satisfied.
+
+
+@node Alignment
+@section Alignment
+@cindex charcter alignment
+@cindex alignment, charcter
+
+The character's alignment determines how he interacts with
+his environment. If your character stray severely from his
+alignment, there will be consequences, he may even loss
+some abilities.
+
+You character's alignment determines your parties starting
+reputation.
+
+@multitable @columnfractions .20 .80
+@item  @bullet{}  Lawful good
+@tab   12
+@item  @bullet{}  Neutral good
+@tab   11
+@item  @bullet{}  Chaotic good
+@tab   11
+@item  @bullet{}  Lawful neutral
+@tab   10
+@item  @bullet{}  Neutral
+@tab   10
+@item  @bullet{}  Chaotic neutral
+@tab   10
+@item  @bullet{}  Lawful evil
+@tab   9
+@item  @bullet{}  Neutral evil
+@tab   9
+@item  @bullet{}  Chaotic evil
+@tab   8
+@end multitable
+
+
+@node Weapon proficiencies
+@section Weapon proficiencies
+@cindex weapon proficiencies
+@cindex proficiencies, weapon
+
+Charaters receive weapon proficiencies, when wielding a
+weapon the character recieve a +1 damage bonus for each
+proficiencies level on the wielded weapon. Additionally,
+when wielding a weapon without for which the charater lack
+a proficiency he recieves a −1 damage penalty.
+
+Level 1 fighters, rangers and paladins can assign four
+proficiency points, at most two per weapon, other classes
+can only assign two points, at most one per weapon. At level
+ up a character can sometimes add another proficiency level.
+Fighters can at most have 5 in proficiency levels on a
+weapon, rangers and paladins can have at most 3, other
+classes can atmost have 2 in proficiency levels.
+
+The weapons you can become proficient in depends on which
+class you have selected. But there are a total of eight
+available proficiency.
+
+@itemize @bullet
+@item  Bow
+@item  Spiked weapons
+@item  Small swords
+@item  Large swords
+@item  Axe
+@item  Blunt weapons
+@item  Missile weapons
+@item  Spear
+@end itemize
+
+
+@node Thief abilities
+@section Thief abilities
+@cindex thief abilities
+
+Thieves, both singleclasses and multiclassed, have four
+special abilities.
+
+@itemize @bullet
+@item  Find traps (5)
+(and move disarm them)
+@item  Open locks (10)
+@item  Pick pockets (15)
+@item  Stealth (10)
+(move silently/hide in shadows)
+@end itemize
+
+Theives have 30 points to allocate at first level,
+indicated by the brackets in the list aboce, and will
+receive 20 additional points to allocate for each level.
+Rangers also have stealth, and bards have pick pocket, 5
+points per level, starting at 10 and limited to 99.
+
+During stealth mode a character by be successful in
+performing a backstab when attacking with melée weapons.
+At level 1 to 4 backstab doubles the damaeg taked by the
+target, 3 times at level 5 to 8, 4 times at level 9 to
+12, and 5 times at level 13 and higher.
+
+The scores can be modified by the character's race.
+
+@multitable @columnfractions 0.10 0.17 0.17 0.17 0.39
+@item @b{Race}
+@tab  @b{Find traps}
+@tab  @b{Open locks}
+@tab  @b{Pick pockets}
+@tab  @b{Stealth}
+@item Dwarf     @tab +15  @tab +10  @tab 0    @tab 0
+@item Elf       @tab 0    @tab −5   @tab +5   @tab +10
+@item Gnome     @tab +10  @tab +5   @tab 0    @tab +5
+@item Half-Elf  @tab 0    @tab 0    @tab +10  @tab +5
+@item Halfling  @tab +5   @tab +5   @tab +5   @tab +15
+@end multitable
+
+The scores are also modified by the character's dexterity.
+
+@multitable @columnfractions 0.10 0.17 0.17 0.17 0.39
+@item @b{Dexterity}
+@tab  @b{Find traps}
+@tab  @b{Open locks}
+@tab  @b{Pick pockets}
+@tab  @b{Stealth}
+@item 1      @tab −30  @tab −30  @tab −35  @tab −40
+@item 2–3    @tab −25  @tab −25  @tab −30  @tab −35
+@item 4–5    @tab −20  @tab −20  @tab −25  @tab −30
+@item 6–7    @tab −15  @tab −15  @tab −20  @tab −25
+@item 8–9    @tab −10  @tab −10  @tab −15  @tab −20
+@item 10     @tab −10  @tab −5   @tab −10  @tab −15
+@item 11     @tab −5   @tab 0    @tab −5   @tab −10
+@item 12     @tab 0    @tab 0    @tab 0    @tab −5
+@item 13–15  @tab 0    @tab 0    @tab 0    @tab 0
+@item 16     @tab 0    @tab +5   @tab 0    @tab 0
+@item 17     @tab 0    @tab +10  @tab +5   @tab +5
+@item 18     @tab +5   @tab +15  @tab +10  @tab +10
+@item 19     @tab +10  @tab +20  @tab +15  @tab +15
+@item 20     @tab +15  @tab +25  @tab +20  @tab +18
+@item 21     @tab +20  @tab +30  @tab +25  @tab +20
+@item 22     @tab +25  @tab +35  @tab +30  @tab +23
+@item 23     @tab +30  @tab +40  @tab +35  @tab +25
+@item 24     @tab +35  @tab +45  @tab +40  @tab +30
+@item 25     @tab +40  @tab +50  @tab +45  @tab +35
+@end multitable
+
+
+@node Spell book
+@section Spell book
+@cindex character spell book
+@cindex spell book, character
+
+If your character is a mage you will be able to choose two
+1st-level wizard spells, sorcerers will choose 3 spells.
+Durids and clerics do not choose spells, but have priest
+spells. Rangers and paladins will be able to learn priest
+spells at level 8 and 9 respectively, and bards will be able
+to learn wizard spells at level 2.
+
+
+@node Racial enemy
+@section Racial enemy
+@cindex racial enemy
+
+Rangers choose a racial enemy. A ranger will receive a +4
+bonus to his attack rolls when fighting creatures of the
+selected type, but a −4 penalty when fighting other
+creatures.
+
+
+@node Colour
+@section Colour
+@cindex character colour
+@cindex colour, character
+
+When creating your chracter you will need to choose colour
+used to on the players name. You can choose between red,
+green, yellow, blue, magenta and cyan, the actual colour
+depends on your terminal's palette on the colours 9 to 14.
+
+
+@node Name
+@section Name
+@cindex character name
+@cindex name, character
+
+When creating your character you will need to name him.
+
+
+
+@node Magic and specialist mages
+@chapter Magic and specialist mages
+
+@menu
+* Specialist mages::           Specialist mages.
+* Schools of magic::           Schools of magic.
+* Spell properties::           Spell properties.
+@end menu
+
+
+@node Specialist mages
+@section Specialist mages
+@cindex schools of magic
+@cindex magic, schools
+@cindex specialist mages
+@cindex mage, specialists
+
+The specialist mage classes are alternative to regular mage
+class, they can memorise one extra spell per spell level
+that they can normally use. They can however not learn, but
+they can use directly from scroll, spells in their
+opposition schools. With the exception for gnomes,
+specialist mages cannot be multiclassed, but they can be
+dualclassed from, but not towards.
+
+@itemize @bullet
+@item @b{Abjurer:} Specialises in protective magic.
+@item @b{Conjurer:} Specialises in creating creatures and objects.
+@item @b{Diviner:} Specialises in detection and divining magic.
+@item @b{Enchanter:} Specialises in mind manipulation.
+@item @b{Illusionist:} Specialises in creating illusions.
+@item @b{Invoker:} Specialises in invocation magic.
+@item @b{Necromancer:} Specialises in magic dealing with life and death.
+@item @b{Transmuter:} Specialises in physical reality alteration.
+@end itemize
+
+Sorcerers, priests, rangers, paladins and bards cannot be
+specialists.
+
+
+@node Schools of magic
+@section Schools of magic
+@cindex schools of magic
+@cindex magic, schools
+@cindex specialist mages
+@cindex mage, specialists
+
+Magic spells falls into nine different schools of magic.
+
+@itemize @bullet
+@item @b{Abjurtion:}
+Spells specialised in protection.
+@item @b{Conjuration:}
+Spells that creates creatures and objects.
+@item @b{Divination:}
+Spells that enables mages to learn secrets, predict the
+future and detect hidden artifacts.
+@item @b{Enchantment:}
+Spells that is used for mind manipulation.
+@item @b{Illusion:}
+Spells that deceive the senses or minds of others.
+@item @b{Invocation:}
+Spells channeling energy to create specific effects and
+materials.
+@item @b{Necromancy:}
+Necromancy is a restrictive school, it deals with dead
+things and restoring life.
+@item @b{Alteration:}
+Spells that alters the physical reality.
+@end itemize
+
+@multitable @columnfractions 0.17 0.18 0.23 0.42
+@item @b{Specialist}
+@tab  @b{School}
+@tab  @b{Effect colouration}
+@tab  @b{Opposition school}
+@item Abjurer
+@tab  abjuration
+@tab  green
+@tab  alteration
+@item Transmuter
+@tab  alteration
+@tab  blue
+@tab  abjuration, necromancy
+@item Conjurer
+@tab  conjuration
+@tab  orange
+@tab  divination
+@item Diviner
+@tab  divination
+@tab  white/pearl
+@tab  conjuration
+@item Enchanter
+@tab  enchantment
+@tab  magenta
+@tab  invocation
+@item Illusionist
+@tab  illusion
+@tab  multicolored
+@tab  necromancy
+@item Invoker
+@tab  invocation
+@tab  red
+@tab  enchantment, conjuration
+@item Necromancer
+@tab  necromancy
+@tab  ice/blue
+@tab  illusion
+@end multitable
+
+Offensive spell are printed in red, defensive spell are
+printed blue, and information spell are printed in white.
+
+
+@node Spell properties
+@section Spell properties
+@cindex spell properties
+
+@table @b
+@item Range
+@cindex range
+The distance from the caster at which the spell effect
+occurs or begins, in metres. If the range is zero, it can
+only be used ont the caster himself; ‘Touch’ can use the
+spell on others if he can physically touch them, which
+requires a sucessful hit roll. These two special ranges
+can be combinded, meaning that either can be utilied,
+this is denoted ‘0/Touch’.
+
+@item Duration
+@cindex duration
+How long the spell's effect lasts, ‘0’ indicates that the
+effect has no time span. Spells with duraction can be
+negated sometimes by potions or other spells, usally Dispel
+magic will do the trick. Some spells have a variable
+duration indicated by a dice roll notation; for example
+‘2D4+1 rounds’ means that two four-sided dices are thrown
+and that the sum of the eyes, added by 1, is the number of
+round that the spell's effect will last.
+
+@item Casting time
+@cindex casting time
+The number of tenths of a round that is needed for the
+spellcaster to cast the spell.
+
+@item Area of effect
+@cindex area of effect
+Specifies which targets are affect by the spell, this can
+incluce groups of creatures, hostality and radius.
+
+@item Saving throw
+@cindex saving throw
+Specifies whether the target is allowed a saving throw, and
+what the effect of a successful save whould be. The effect
+can either be ‘negate’ which nullifies the magic, or ‘half’
+which divided the damage by 2. ‘None’ denotes that no save
+is allowed.
+@end table
+
+
+
+@node Ability score effects
+@chapter Ability score effects
+@cindex ability score, effects
+@cindex effects of ability score
+
+@menu
+* Strength scores::            Strength scores.
+* Dexterity scores::           Dexterity scores.
+* Constitution scores::        Constitution scores.
+* Intelligence scores::        Intelligence scores.
+* Wisdom scores::              Wisdom scores.
+* Charisma scores::            Charisma scores.
+@end menu
+
+
+@node Strength scores
+@section Strength scores
+@cindex strength
+@cindex hit adjustment
+@cindex damage adjustment
+@cindex weight carry limit
+@cindex bashing
+
+@multitable @columnfractions 0.10 0.15 0.18 0.15 0.42
+@item @b{Score}
+@tab  @b{Hit bonus}
+@tab  @b{Damage bonus}
+@tab  @b{Carry limit}
+@tab  @b{Bashing %}
+@item  1        @tab −5  @tab −2   @tab 1,75   @tab 0
+@item  2        @tab −5  @tab −2   @tab 1      @tab 1
+@item  3        @tab −3  @tab −1   @tab 2,25   @tab 3
+@item  4        @tab −2  @tab −1   @tab 6,75   @tab 4
+@item  5        @tab −2  @tab −1   @tab 6,75   @tab 4
+@item  6        @tab −1  @tab 0    @tab 13,5   @tab 6
+@item  7        @tab −1  @tab 0    @tab 13,5   @tab 6
+@item  8        @tab 0   @tab 0    @tab 22,5   @tab 8
+@item  9        @tab 0   @tab 0    @tab 22,5   @tab 8
+@item 10        @tab 0   @tab 0    @tab 31,5   @tab 10
+@item 11        @tab 0   @tab 0    @tab 31,5   @tab 10
+@item 12        @tab 0   @tab 0    @tab 40,5   @tab 12
+@item 13        @tab 0   @tab 0    @tab 40,5   @tab 12
+@item 14        @tab 0   @tab 0    @tab 45     @tab 14
+@item 15        @tab 0   @tab 0    @tab 54     @tab 14
+@item 16        @tab 0   @tab +1   @tab 67,5   @tab 16
+@item 17        @tab +1  @tab +1   @tab 76,5   @tab 18
+@item 18        @tab +1  @tab +2   @tab 90     @tab 20
+@item 18/01–50  @tab +1  @tab +3   @tab 99     @tab 25
+@item 18/51–75  @tab +2  @tab +3   @tab 112,5  @tab 30
+@item 18/76–90  @tab +2  @tab +4   @tab 126    @tab 35
+@item 18/91–99  @tab +2  @tab +5   @tab 144    @tab 40
+@item 18/00     @tab +3  @tab +6   @tab 180    @tab 45
+@item 19        @tab +3  @tab +7   @tab 225    @tab 50
+@item 20        @tab +3  @tab +8   @tab 270    @tab 55
+@item 21        @tab +4  @tab +9   @tab 315    @tab 60
+@item 22        @tab +4  @tab +10  @tab 360    @tab 65
+@item 23        @tab +5  @tab +11  @tab 450    @tab 70
+@item 24        @tab +6  @tab +12  @tab 540    @tab 75
+@item 25        @tab +7  @tab +14  @tab 720    @tab 80
+@end multitable
+
+@itemize @bullet
+@item  @b{Hit bonus}
+Added to the attack roll durign combat, higher value
+makes it easier to hit the target.
+@item  @b{Damage bonus}
+Added to the damage inflicted by a sucessful melée attack.
+@item  @b{Carry limit}
+How much weight a character can carry before being
+encumbered. When you wear items other then weapons and
+sheild, that is items not in your hands, their weight
+effect is divided by two; but items in your hands'
+weight effect is doubled.
+@item  @b{Bashing}
+The chance of a character being able to open a long using
+brute force.
+@end itemize
+
+
+
+@node Dexterity scores
+@section Dexterity scores
+@cindex dexterity
+@cindex missile attack adjustment
+@cindex armour class adjustment
+
+@multitable @columnfractions 0.10 0.30 0.60
+@item @b{Score}
+@tab  @b{Missile attack bonus}
+@tab  @b{Armour class bonus}
+@item  1  @tab −3  @tab +6
+@item  2  @tab −2  @tab +5
+@item  3  @tab −1  @tab +4
+@item  4  @tab 0   @tab +3
+@item  5  @tab 0   @tab +2
+@item  6  @tab 0   @tab +1
+@item  7  @tab 0   @tab 0
+@item  8  @tab 0   @tab 0
+@item  9  @tab 0   @tab 0
+@item 10  @tab 0   @tab 0
+@item 11  @tab 0   @tab 0
+@item 12  @tab 0   @tab 0
+@item 13  @tab 0   @tab 0
+@item 14  @tab 0   @tab 0
+@item 15  @tab 0   @tab −1
+@item 16  @tab +1  @tab −2
+@item 17  @tab +2  @tab −3
+@item 18  @tab +2  @tab −4
+@item 19  @tab +3  @tab −4
+@item 20  @tab +3  @tab −4
+@item 21  @tab +4  @tab −5
+@item 22  @tab +4  @tab −5
+@item 23  @tab +4  @tab −5
+@item 24  @tab +5  @tab −6
+@item 25  @tab +5  @tab −6
+@end multitable
+
+@itemize @bullet
+@item  @b{Missile attack bonus}
+Added to the hit roll when using a ranged weapon. This is the
+same as attack bonus (@ref{Strength scores}), except it only
+applies when using ranged weapons.
+@item  @b{Armour class bonus}
+Added to the characters amour class, the lower the better.
+@end itemize
+
+
+@node Constitution scores
+@section Constitution scores
+@cindex constitution
+@cindex hit point adjustment
+@cindex resurrect and raise
+@cindex raise and resurrect
+
+@multitable @columnfractions 0.10 0.20 0.70
+@item @b{Score}
+@tab  @b{Hit point bonus}@footnote{Above +2 does only apply to warriors}
+@tab  @b{Resurrectable %}
+@item  1  @tab −2  @tab 40
+@item  2  @tab −1  @tab 45
+@item  3  @tab −1  @tab 50
+@item  4  @tab −1  @tab 55
+@item  5  @tab 0   @tab 60
+@item  6  @tab 0   @tab 65
+@item  7  @tab 0   @tab 70
+@item  8  @tab 0   @tab 75
+@item  9  @tab 0   @tab 80
+@item 10  @tab 0   @tab 85
+@item 11  @tab 0   @tab 90
+@item 12  @tab 0   @tab 92
+@item 13  @tab 0   @tab 94
+@item 14  @tab 0   @tab 96
+@item 15  @tab +1  @tab 98
+@item 16  @tab +2  @tab 100
+@item 17  @tab +3  @tab 100
+@item 18  @tab +4  @tab 100
+@item 19  @tab +5  @tab 100
+@item 20  @tab +5  @tab 100
+@item 21  @tab +6  @tab 100
+@item 22  @tab +6  @tab 100
+@item 23  @tab +6  @tab 100
+@item 24  @tab +7  @tab 100
+@item 25  @tab +7  @tab 100
+@end multitable
+
+@itemize @bullet
+@item @b{Hit point bonus}
+Added to the hit point roll a character makes when leveling
+up or when the character is created.
+@item @b{Resurrectable}
+The chance that a character will be successfully ressurected
+or raised from the dead by magic. Priests at temples will
+always be successful.
+@end itemize
+
+
+@node Intelligence scores
+@section Intelligence scores
+@cindex intelligence
+@cindex spells
+@cindex lore
+
+@multitable @columnfractions 0.10 0.19 0.17 0.20 0.34
+@item @b{Score}
+@tab  @b{Spell level limit}
+@tab  @b{Spell learn %}
+@tab  @b{@w{Maximum spell} count per level}
+@tab  @b{Lore bonus}
+@item  1  @tab none  @tab 0    @tab 0          @tab −30
+@item  2  @tab 1st   @tab 1    @tab 0          @tab −30
+@item  3  @tab 1st   @tab 5    @tab 1          @tab −20
+@item  4  @tab 2nd   @tab 10   @tab 1          @tab −20
+@item  5  @tab 2nd   @tab 15   @tab 2          @tab −20
+@item  6  @tab 3rd   @tab 20   @tab 2          @tab −20
+@item  7  @tab 3rd   @tab 25   @tab 4          @tab −10
+@item  8  @tab 4th   @tab 30   @tab 4          @tab −10
+@item  9  @tab 4th   @tab 35   @tab 6          @tab −10
+@item 10  @tab 5th   @tab 40   @tab 7          @tab 0
+@item 11  @tab 5th   @tab 45   @tab 7          @tab 0
+@item 12  @tab 6th   @tab 50   @tab 7          @tab 0
+@item 13  @tab 6th   @tab 55   @tab 9          @tab 0
+@item 14  @tab 7th   @tab 60   @tab 9          @tab 0
+@item 15  @tab 7th   @tab 65   @tab 11         @tab +3
+@item 16  @tab 8th   @tab 70   @tab 11         @tab +5
+@item 17  @tab 8th   @tab 75   @tab 14         @tab +7
+@item 18  @tab 9th   @tab 85   @tab 18         @tab +10
+@item 19  @tab 9th   @tab 95   @tab unlimited  @tab +12
+@item 20  @tab 9th   @tab 96   @tab unlimited  @tab +15
+@item 21  @tab 9th   @tab 97   @tab unlimited  @tab +20
+@item 22  @tab 9th   @tab 98   @tab unlimited  @tab +25
+@item 23  @tab 9th   @tab 99   @tab unlimited  @tab +30
+@item 24  @tab 9th   @tab 100  @tab unlimited  @tab +35
+@item 25  @tab 9th   @tab 100  @tab unlimited  @tab +40
+@end multitable
+
+@itemize @bullet
+@item  @b{Spell level limit}
+The highest level of spells a wizard can learn and use.
+@item  @b{Spell learn}
+The chance that a wizard can learn a spell and add it to
+his spell book or cast from a scroll.
+@item  @b{Maximum spell count per level}
+The maximum number of spells a wizard can have in his spell
+book for each spell level.
+@item  @b{Lore bonus}
+Added to the character lore, cumulative with the
+lore bonus from the wisdom.
+@end itemize
+
+
+@node Wisdom scores
+@section Wisdom scores
+@cindex wisdom
+@cindex magic defence
+@cindex saving throws, magic
+@cindex spells
+@cindex lore
+
+@multitable @columnfractions 0.10 0.18 0.17 0.20 0.35
+@item @b{Score}
+@tab  @b{@w{Magic defence} bonus}
+@tab  @b{Bonus spells}
+@tab  @b{Spell Failure %}
+@tab  @b{Lore bonus}
+@item  1  @tab −5  @tab none      @tab 50  @tab −30
+@item  2  @tab −4  @tab none      @tab 55  @tab −30
+@item  3  @tab −3  @tab none      @tab 50  @tab −20
+@item  4  @tab −2  @tab none      @tab 45  @tab −20
+@item  5  @tab −1  @tab none      @tab 40  @tab −20
+@item  6  @tab −1  @tab none      @tab 35  @tab −20
+@item  7  @tab −1  @tab none      @tab 30  @tab −10
+@item  8  @tab 0   @tab none      @tab 25  @tab −10
+@item  9  @tab 0   @tab none      @tab 20  @tab −10
+@item 10  @tab 0   @tab none      @tab 15  @tab 0
+@item 11  @tab 0   @tab none      @tab 10  @tab 0
+@item 12  @tab 0   @tab none      @tab 5   @tab 0
+@item 13  @tab 0   @tab 1st       @tab 0   @tab 0
+@item 14  @tab 0   @tab 1st       @tab 0   @tab 0
+@item 15  @tab +1  @tab 2nd       @tab 0   @tab +3
+@item 16  @tab +2  @tab 2nd       @tab 0   @tab +5
+@item 17  @tab +3  @tab 3rd       @tab 0   @tab +7
+@item 18  @tab +4  @tab 4th       @tab 0   @tab +10
+@item 19  @tab +4  @tab 1st, 4th  @tab 0   @tab +12
+@item 20  @tab +4  @tab 2nd, 4th  @tab 0   @tab +15
+@item 21  @tab +4  @tab 3rd, 5th  @tab 0   @tab +20
+@item 22  @tab +4  @tab 4th, 5th  @tab 0   @tab +25
+@item 23  @tab +4  @tab 5th, 5th  @tab 0   @tab +30
+@item 24  @tab +4  @tab 6th, 6th  @tab 0   @tab +35
+@item 25  @tab +4  @tab 6th, 7th  @tab 0   @tab +40
+@end multitable
+
+@itemize @bullet
+@item  @b{Magic defence bonus}
+Added to the spell saving throw.
+@item  @b{Bonus spells}
+Additional spells a priest receives when the level is
+normally accessable. If the characters wisdom is decreased
+the slots is removed. The bonus spells are cumulative as
+you move down the table.
+@item  @b{Spell Failure}
+The risk that a priest fails the cast a spell.
+@item  @b{Lore bonus}
+Added to the character lore, cumulative with the
+lore bonus from the intelligence.
+@end itemize
+
+
+@node Charisma scores
+@section Charisma scores
+@cindex charisma
+@cindex reaction adjustment
+
+@multitable @columnfractions 0.10 0.90
+@item @b{Score}
+@tab  @b{Reaction adjustment}
+@item  1  @tab −7
+@item  2  @tab −6
+@item  3  @tab −5
+@item  4  @tab −4
+@item  5  @tab −3
+@item  6  @tab −2
+@item  7  @tab −1
+@item  8  @tab 0
+@item  9  @tab 0
+@item 10  @tab 0
+@item 11  @tab 0
+@item 12  @tab 0
+@item 13  @tab +1
+@item 14  @tab +2
+@item 15  @tab +3
+@item 16  @tab +4
+@item 17  @tab +4
+@item 18  @tab +5
+@item 19  @tab +8
+@item 20  @tab +9
+@item 21  @tab +10
+@item 22  @tab +11
+@item 23  @tab +12
+@item 24  @tab +13
+@item 25  @tab +14
+@end multitable
+
+@itemize @bullet
+@item  @b{Reaction adjustment}
+Added to the reaction from non-player characters
+and intelligent creatures.
+@end itemize
+
+For encounter reactions, the game master throws 1D4+8
+and than applies modifiers. The results indicate the
+reaction of the encounter to your party:
+
+@itemize @bullet
+@item  @b{7–:}   Hostile reaction
+@item  @b{8–14:} Neutral reaction
+@item  @b{20+:}  Friendly reaction
+@end itemize
+
+Reactions from encountered non-player characters are
+decidied by a 2D10 roll with modifiers based on the
+leaders charisma and the party's reputation as well as
+an internal modifier held by the non-player character,
+primarily based on that characters alignment.
+
+
+
+@node Miscellaneous attibutes
+@chapter Miscellaneous attibutes
+@cindex miscellaneous attibutes
+@cindex attibutes, miscellaneous
+
+@menu
+* Detecting secret doors::     Detecting secret doors.
+* Lore::                       Identifing items.
+* Luck::                       Effects of luck.
+* Specialisation::             Specialisation.
+* Morale::                     Morale.
+* Saving throws::              Saving throws.
+@end menu
+
+
+@node Detecting secret doors
+@section Detecting secret doors
+@cindex detecting secret doors
+@cindex secret doors, detecting
+
+At any time a character has a chance to detect sectret doors
+depending on his class and race. Wizards have an 5 % chance,
+15 % for thieves and 10 % for clerics and fighters, 0 % for
+others. Elf get an additional 20 % chance, dwarfs get 10 %
+and halflings get 5 %.
+
+Thieves' chance increase by as much as their change to find
+traps when their find traps ability is on.
+
+
+@node Lore
+@section Lore
+@cindex lore
+
+Item can be either identified or unidentified. Unidentified
+item can be identified by priests at temples at monetary
+cost, by using a identify spell or by examining the item
+if it has a lore value equal to or lower than the examining
+character's lore.
+
+As characters gain levels they gain lore.
+
+@itemize @bullet
+@item  @b{Bards} gain 10 lore rating per level.
+@item  @b{Thieves} gain 3 lore rating per level.
+@item  @b{Wizards} gain 3 lore rating per level.
+@item  @b{Others} gain 1 lore rating per level.
+@end itemize
+
+
+@node Luck
+@section Luck
+@cindex luck
+
+By default character do not hav e any luck. Luck is a bonus
+adjustment to attack rolls.
+
+
+@node Specialisation
+@section Specialisation
+@cindex specialisation
+@cindex weapon proficiency
+
+Weapon proficiency bonues:
+
+@multitable @columnfractions 0.08 0.15 0.19 0.58
+@item @b{Level}
+@tab  @b{Hit bonus}
+@tab  @b{Damage bonus}
+@tab  @b{Attack per round}@footnote{A half attack means
+that the inflicated damage is divided by 2 and rounded down.}
+@item 1  @tab 0   @tab 0   @tab 1
+@item 2  @tab +1  @tab +2  @tab 3/2
+@item 3  @tab +3  @tab +3  @tab 3/2
+@item 4  @tab +3  @tab +4  @tab 3/2
+@item 5  @tab +3  @tab +5  @tab 2
+@end multitable
+
+Warriors also gain an extra attack at level 7.
+
+
+@node Morale
+@section Morale
+@cindex morale
+
+Morale affects whether a creature fights or flees during a
+battle. Creatures react differently to morale breaks and
+have different breaking levels, some creatures use melée
+attacks at high morale and ranged attacks at low morale.
+
+Morale is positively influenced by having a charismatic
+leader, the leader himself however is not influensed by
+this. Morale is negatively influenced by having seeing
+morale break in the party, especially from the leader,
+and by seeing a party member killed or knocked unconscious.
+In some cases morale is negatively influenced by spotting
+a difficult foe.
+
+
+@node Saving throws
+@section Saving throws
+@cindex saving throws
+
+Saving throws measures a character's resistance to different
+types of attacks. The chance of making a successful saving
+throw improves as the character increases in level; it can
+also be improved by protection spells. A saving throw may
+reduce damage or prevent the effect of an attack entirely.
+
+@itemize @bullet
+@item  @b{Save versus breath weapon:}
+Used when facing monsters with breath weapons,
+particularly the powerful blast of a dragon.
+@item  @b{Save versus death magic, paralyzation, or poison:}
+Used when a character is affected by a paralyzing attack,
+poison or magic that otherwise kill the character outright.
+@item  @b{Save versus petrification or polymorph:}
+Used when a character is petrified or polymorphed.
+@item  @b{Save versus rod, staff, or wand:}
+Provided that another save of higher priority is not used,
+this is used when affected by magical rods, staffs or wands.
+@item  @b{Save versus spell:}
+Provided that no other saving throw is specified, this is
+used when a character attempts to resist the effects of
+magic or attacks that cannot be classified in any other way.
+@end itemize
+
+
+
+@node Special abilities
+@chapter Special abilities
+@cindex special abilities
+@cindex abilities, special
+
+@menu
+* Bard song::                  Bard song.
+* Druidic shape change::       Druidic shape change.
+* Infravision::                Infravision.
+* Lay on hands::               Lay on hands.
+* Protection from evil::       Protection from evil.
+* Turning undead::             Turning undead.
+@end menu
+
+
+@node Bard song
+@section Bard song
+@cindex bard song
+
+Bards can play songs which do do nothing except moving.
+Bard's songs increases the parties luck and morale.
+
+
+@node Druidic shape change
+@section Druidic shape change
+@cindex druidic shape change
+@cindex shape change, druidic
+
+Level 8 and higher druids can transform into three different
+animals, each once per day. Druids can transform into brown
+bear, black bear, or wolf, perhaps with increased hit point,
+movement rate and damage.
+
+
+@node Infravision
+@section Infravision
+@cindex infravision
+
+Infravision allows you to see heat and hence warm blooded
+creatures in the dark more clearly. Undead or cold blooded
+creatures are not affected by infravision.
+
+
+@node Lay on hands
+@section Lay on hands
+@cindex lay on hands
+
+Paladins can heal themself and others by laying their hands
+upon the target to heal. The target is healed by 2 hit
+points per experience level of the healer. Paladins can
+use this ability once per sleep.
+
+
+@node Protection from evil
+@section Protection from evil
+@cindex Protection from evil
+
+This spell create a 0,3 m radius magical barrier around the
+recipient, that moves with the recipient.
+
+All attackes made by evil and evilly enchanted creatures
+agains the protected character receive a penalty of −2 to
+each attack roll. Additionally any saving throws made by
+the protected character caused by such attacks receive a
++2 bonus.
+
+
+@node Turning undead
+@section Turning undead
+@cindex turning undead
+@cindex undead, turning
+
+Clerics and paladins have the ability to turn undead. This
+ability lets the deity manifest a portion of its power
+through a mortal vessel that does not assure sucess.
+Evil undead creatures can lose morale and run away. If the
+deity's power is channeled through a good aligned clerics,
+the undead can be destroyed outright. Evil clerics can
+somtimes gain control over the undead.
+
+
+
+@node Character actions
+@chapter Character actions
+@cindex character actions
+@cindex actions
+
+@menu
+* Effects of fatigue::         Effects of fatigue
+* Effects of encumbrance::     Effects of encumbrance
+* Effects of intoxication::    Effects of intoxication
+* Effects of poison::          Effects of poison
+* Effects of reputation::      Effects of reputation
+* Effects of alignment::       Effects of alignment
+@end menu
+
+
+@node Effects of fatigue
+@section Effects of fatigue
+@cindex effects of fatigue
+@cindex fatigue
+
+A character can continue to operate at peak efficiency for
+24 hours game time, after which the character receieves a
+−1 luck penalty evety fourth hour. −1 luck means that every
+roll (dice) value is decrease by one, the value can however
+not go below 1. If a character do not spell for five days
+he may at any time fall unconscious.
+
+As soon as the character has rested for 8 hours all
+penalties will be removed, spells will be rememorised.
+During spell the character will heal, the heal rate can be
+increased by renting a room at an in, the higher quality
+the grater the rate will be.
+
+
+@node Effects of encumbrance
+@section Effects of encumbrance
+@cindex effects of encumbrance
+@cindex encumbrance
+
+How much a character can carry depends on the characters
+strength. If this limit is exceeded the character will move
+at half rate, positive speed effects from magic and items
+will be not have any effect while a character is encumbered.
+If the limit is exceeded too much the character will not
+be able to move at all.
+
+
+@node Effects of intoxication
+@section Effects of intoxication
+@cindex effects of intoxication
+@cindex intoxication
+
+Inns serve a variety of intoxicants; drinking to excess will
+impair yout combat skill but improve your morale. The effects
+of intoxicants wear off by time. Your morale is increased as
+much as your luck is decreased when drinking.
+
+The about you can drink before becoming intoxicated depends
+on your constitution. Characters with 3 or less in constitution
+will find them self drunk after one pony.
+
+
+@node Effects of reputation
+@section Effects of reputation
+@cindex effects of reputation
+@cindex reputation, effects
+
+The party has a reputation, between 1 and 20. Your
+reputation influences how you are preceived by non-player
+characters, based on that non-player character's alignment.
+Warning,  evil-doers may be come targets for guards and
+bounty hunters.
+
+@multitable @columnfractions 0.14 0.23 0.21 0.21 0.21
+@item  @b{Reputation}
+@tab   @b{Percentage cost of item from base cost}
+@tab   @b{@w{Reaction from} good aligned}
+@tab   @b{@w{Reaction from} neutral aligned}
+@tab   @b{@w{Reaction from} evil aligned}
+@item 20  @tab  50 %  @tab Happy    @tab Unhappy  @tab Break
+@item 19  @tab  60 %  @tab Happy    @tab Unhappy  @tab Break
+@item 18  @tab  70 %  @tab Happy    @tab Neutral  @tab Angry
+@item 17  @tab  80 %  @tab Happy    @tab Neutral  @tab Angry
+@item 16  @tab  90 %  @tab Happy    @tab Neutral  @tab Angry
+@item 15  @tab  90 %  @tab Happy    @tab Neutral  @tab Unhappy
+@item 14  @tab 100 %  @tab Happy    @tab Neutral  @tab Unhappy
+@item 13  @tab 100 %  @tab Happy    @tab Neutral  @tab Unhappy
+@item 12  @tab 100 %  @tab Neutral  @tab Neutral  @tab Neutral
+@item 11  @tab 100 %  @tab Neutral  @tab Neutral  @tab Neutral
+@item 10  @tab 100 %  @tab Neutral  @tab Neutral  @tab Neutral
+@item  9  @tab 110 %  @tab Neutral  @tab Neutral  @tab Neutral
+@item  8  @tab 120 %  @tab Unhappy  @tab Neutral  @tab Neutral
+@item  7  @tab 120 %  @tab Unhappy  @tab Neutral  @tab Neutral
+@item  6  @tab 130 %  @tab Unhappy  @tab Neutral  @tab Happy
+@item  5  @tab 140 %  @tab Angry    @tab Unhappy  @tab Happy
+@item  4  @tab 150 %  @tab Angry    @tab Unhappy  @tab Happy
+@item  3  @tab 200 %  @tab Angry    @tab Angry    @tab Happy
+@item 2
+@tab  Stores will not sell.
+@tab  Break
+@tab  Angry
+@tab  Happy
+@item 1
+@tab  Stores will not sell.
+@tab  Break
+@tab  Break
+@tab  Happy
+@end multitable
+
+
+@multitable @columnfractions 0.14 0.17 0.17 0.15 0.17 0.20
+@item  @b{Reputation}
+@tab   @b{@w{Killing an} innocent}
+@tab   @b{@w{Injuring an} innocent}
+@tab   @b{Stealing}
+@tab   @b{@w{Killing a} guard}
+@tab   @b{Donation needed}
+@item 20  @tab −10  @tab -2  @tab −1  @tab −10  @tab ---
+@item 19  @tab −10  @tab -2  @tab −1  @tab −10  @tab ---
+@item 18  @tab −9   @tab -2  @tab −1  @tab −9   @tab ---
+@item 17  @tab −8   @tab -1  @tab −1  @tab −9   @tab 5000
+@item 16  @tab −7   @tab -1  @tab −1  @tab −9   @tab 2500
+@item 15  @tab −6   @tab -1  @tab −1  @tab −8   @tab 2000
+@item 14  @tab −5   @tab -1  @tab −1  @tab −8   @tab 1500
+@item 13  @tab −5   @tab -1  @tab −1  @tab −7   @tab 1200
+@item 12  @tab −5   @tab -1  @tab −1  @tab −7   @tab 900
+@item 11  @tab −4   @tab -1  @tab −1  @tab −6   @tab 700
+@item 10  @tab −4   @tab -1  @tab −1  @tab −6   @tab 500
+@item 9   @tab −3   @tab -1  @tab −1  @tab −5   @tab 400
+@item 8   @tab −2   @tab -1  @tab 0   @tab −5   @tab 300
+@item 7   @tab −2   @tab -1  @tab 0   @tab −4   @tab 200
+@item 6   @tab −2   @tab -1  @tab 0   @tab −3   @tab 400
+@item 5   @tab −2   @tab -1  @tab 0   @tab −2   @tab 500
+@item 4   @tab −1   @tab 0   @tab 0   @tab −2   @tab 1000
+@item 3   @tab −1   @tab 0   @tab 0   @tab −1   @tab 1000
+@item 2   @tab −1   @tab 0   @tab 0   @tab −1   @tab 1200
+@item 1   @tab 0    @tab 0   @tab 0   @tab 0    @tab 1500
+@end multitable
+
+
+@node Effects of alignment
+@section Effects of alignment
+@cindex effects of alignment
+@cindex alignment, effects
+
+If you reputation of your party falls below 6, the paladins
+your your party loses their status as paladins. At
+reputation level 4, rangers loss the there abilities.
+Paladins and rangers that fall below their acceptable
+reputation level become fighters cannot regain their status.
+
+
+@node Reaction adjustments
+@section Reaction adjustments
+@cindex reaction adjustments
+
+@multitable @columnfractions 0.14 0.20 0.66
+@item  @b{Reputation}
+@tab   @b{Adjustment}
+@tab   @b{Effect}
+@item  20     @tab   +4     @tab   ---
+@item  18–19  @tab   +3     @tab   ---
+@item  16–17  @tab   +2     @tab   ---
+@item  14–15  @tab   +1     @tab   ---
+@item  8–13   @tab   None   @tab   ---
+@item  7      @tab   −1     @tab   ---
+@item  6      @tab   −2     @tab   ---
+@item  5      @tab   −3
+@tab   Whenever the party enters a new area guards
+       attacking the party will be spawned
+@item  4      @tab   −4
+@tab   Whenever the party enters a new area guards
+       attacking the party will be spawned
+@item  3      @tab   −5
+@tab   Whenever the party enters a new area guards
+       attacking the party will be spawned
+@item  2      @tab   −6
+@tab   Whenever the party enters a new area guards
+       attacking the party will be spawned
+@item  1      @tab   −7
+@tab   Whenever the party enters a new area guards
+       attacking the party will be spawned
+@end multitable
+
+
+
+@node Armour
+@chapter Armour
+@cindex armour
+
+@menu
+* Armour vs weapon types::     Armour versus weapon types.
+* Armour types::               Armour types.
+* Headgear::                   About headgear.
+@end menu
+
+
+@node Armour vs weapon types
+@section Armour vs weapon types
+@cindex armour versus weapon types
+@cindex weapon types
+
+@multitable @columnfractions 0.20 0.15 0.15 0.50
+@item @b{Armour}    @tab @b{Slashing}
+@tab  @b{Piercing}  @tab @b{Bludgeoning}
+@item Robe              @tab 0   @tab 0   @tab 0
+@item Leather armour    @tab 0   @tab +2  @tab 0
+@item Studded leather   @tab −2  @tab −1  @tab 0
+@item Chain mail        @tab −2  @tab 0   @tab +2
+@item Splint mail       @tab 0   @tab −1  @tab −2
+@item Plate mail        @tab −3  @tab 0   @tab 0
+@item Full plate mail   @tab −4  @tab −3  @tab 0
+@end multitable
+
+
+@node Armour type
+@section Armour types
+@cindex armour types
+@cindex shields
+
+@multitable @columnfractions 0.20 0.20 0.60
+@item @b{Armour}
+@tab @b{Armour Class}
+@tab @b{Usable by}
+@item Buckler           @tab −1 modifier  @tab not wizard
+@item Small shield      @tab −1 modifier  @tab not wizard
+@item Medium shield     @tab −1 modifier  @tab F,R,P,C
+@item Large shield      @tab −1 modifier  @tab F,R,P,C
+@item Robe              @tab none         @tab M,S
+@item Leather armour    @tab 8            @tab not wizard
+@item Studded leather   @tab 7            @tab not wizard
+@item Chain mail        @tab 5            @tab F,R,P,B,C
+@item Splint mail       @tab 4            @tab F,R,P,C
+@item Plate mail        @tab 3            @tab F,R,P,C
+@item Full plate mail   @tab 1            @tab F,R,P,C
+@end multitable
+
+However bucklers does not protect against missile and
+piercing weapons, small shield does not protect against
+missile weapons, and large shield add an additional −2
+agains missile weapons.
+
+
+@node Headgear
+@section Headgear
+@cindex headgear
+@cindex hoods
+@cindex helmets
+@cindex hats
+
+There are three different types of head gear.
+
+@itemize @bullet
+@item  @b{Helmets}
+are not wearable by rogues and wizards,
+they protect against critical hits.
+@item  @b{Hoods}
+are not wearable by wizards, but have no
+neutral protection.
+@item  @b{Hats}
+are only wearable by wizards, but have no
+neutral protection.
+@end itemize
+
+
+
+@node Weapons
+@chapter Weapons
+
+@menu
+* Melée weapons::              About melée weapons.
+* Ranged weapons::             About ranged weapons.
+@end menu
+
+
+@node Melée weapons
+@section Melée weapons
+@cindex melée weapons
+@cindex weapons, melée
+
+@multitable @columnfractions 0.20 0.10 0.10 0.17 0.15 0.28
+@item  @b{Weapon}@footnote{Includes ammonition and throwing weapons}
+@tab   @b{Hands}
+@tab   @b{Type}@footnote{b = bludgeoning, p = piercing, s = slashing}
+@tab   @b{Speed factor}
+@tab   @b{Damage}
+@tab   @b{Usable by}
+@item Arrow             @tab ---  @tab p    @tab ---
+                        @tab 1D6       @tab F,R,P,T,B
+@item Bastard sword     @tab 1    @tab s    @tab 8
+                        @tab 2D4       @tab F,R,P,B
+@item Battle axe        @tab 1    @tab s    @tab 7
+                        @tab 1D8       @tab F,R,P,B
+@item Bolt              @tab ---  @tab p    @tab ---
+                        @tab 1D10      @tab F,R,P,B
+@item Bullet            @tab ---  @tab b    @tab ---
+                        @tab 1D4+1     @tab all
+@item Dagger            @tab 1    @tab p    @tab 2
+                        @tab 1D4       @tab not cleric
+@item Dart              @tab 1    @tab p    @tab 2
+                        @tab 1D3       @tab not cleric
+@item Club              @tab 1    @tab b    @tab 4
+                        @tab 1D6       @tab not wizard
+@item Flail             @tab 1    @tab b    @tab 7
+                        @tab 1D6+1     @tab F,R,P,B,C
+@item Halberd           @tab 2    @tab p/s  @tab 9
+                        @tab 1D10      @tab F,R,P,B
+@item Hand-to-hand      @tab 1    @tab b    @tab 4
+                        @tab 1D2       @tab any
+@item Hand-to-hand      @tab 2    @tab b    @tab 2
+                        @tab 2D2       @tab any
+@item Long sword        @tab 1    @tab s    @tab 5
+                        @tab 1D8       @tab F,R,P,T,B
+@item Mace              @tab 1    @tab b    @tab 7
+                        @tab 1D6+1     @tab F,R,P,B,C
+@item Morning star      @tab 1    @tab b    @tab 7
+                        @tab 2D4       @tab F,R,P,B,C
+@item Short sword       @tab 1    @tab s    @tab 3
+                        @tab 1D6       @tab F,R,P,T,B
+@item Spear             @tab 2    @tab p    @tab 6
+                        @tab 1D4       @tab F,R,P,B,D
+@item Throwing axe      @tab 1    @tab s    @tab 4
+                        @tab 1D6       @tab F,R,P,B
+@item Throwing dagger   @tab 1    @tab p    @tab 2
+                        @tab 1D4       @tab not cleric
+@item Two-handed sword  @tab 2    @tab s    @tab 10
+                        @tab 1D10      @tab F,R,P,B
+@item War hammer        @tab 1    @tab b    @tab 4
+                        @tab 1D4+1     @tab F,R,P,B
+@item Quarterstaff      @tab 2    @tab b    @tab 4
+                        @tab 1D6       @tab all
+@end multitable
+
+
+@node Ranged weapons
+@section Ranged weapons
+@cindex ranged weapons
+@cindex weapons, ranged
+
+@multitable @columnfractions 0.22 0.10 0.12 0.10 0.10 0.13 0.23
+@item  @b{Weapon}@footnote{Throwing weapons are also included in melée weapons}
+@tab   @b{Hands}
+@tab   @b{@w{Rate of} fire}@footnote{This is the number of
+       times per combat round that the weapon can be used.}
+@tab   @b{Speed factor}
+@tab   @b{Hit bonus}
+@tab   @b{Damage bonus}
+@tab   @b{Usable by}
+@item Composite long bow  @tab 2   @tab 2  @tab 7   @tab +1
+                          @tab +2  @tab F,B,P
+@item Dart                @tab 1   @tab 3  @tab 2   @tab 0
+                          @tab 0   @tab not cleric
+@item Heavy crossbow      @tab 2   @tab 1  @tab 10  @tab 0
+                          @tab +2  @tab F,B,P,B
+@item Light crossbow      @tab 2   @tab 1  @tab 7   @tab 0
+                          @tab 0   @tab F,B,P,B
+@item Long bow            @tab 2   @tab 2  @tab 8   @tab +1
+                          @tab 0   @tab F,B,P,B
+@item Short bow           @tab 2   @tab 2  @tab 6   @tab 0
+                          @tab 0   @tab F,B,P,T,B
+@item Sling               @tab 1   @tab 1  @tab 6   @tab 0
+                          @tab 0   @tab all
+@item Throwing axe        @tab 1   @tab 1  @tab 4   @tab 0
+                          @tab 0   @tab F,B,P
+@item Throwing dagger     @tab 1   @tab 2  @tab 2   @tab 0
+                          @tab 0   @tab not priest
+@end multitable
+
+
+
+@node Experience charts
+@chapter Experience charts
+
+@menu
+* Warrior levels::             Warrior levels.
+* Rogue levels::               Rogue levels.
+* Wizard levels::              Wizard levels.
+* Priest levels::              Priest levels.
+@end menu
+
+
+@node Warrior levels
+@section Warrior levels
+@cindex warrior experience chart
+@cindex warrior level chart
+@cindex fighter experience chart
+@cindex fighter level chart
+@cindex ranger experience chart
+@cindex ranger level chart
+@cindex paladin experience chart
+@cindex paladin level chart
+@cindex experience chart, warrior
+@cindex level chart, warrior
+
+@multitable @columnfractions 0.10 0.30 0.30 0.30
+@item @b{Level}
+@tab  @b{Fighter}
+@tab  @b{Ranger/Paladin}
+@tab  @b{Hit dice (D10)}
+@item  1  @tab         0  @tab         0  @tab 1
+@item  2  @tab     2'000  @tab     2'250  @tab 2
+@item  3  @tab     4'000  @tab     4'500  @tab 3
+@item  4  @tab     8'000  @tab     9'000  @tab 4
+@item  5  @tab    16'000  @tab    18'000  @tab 5
+@item  6  @tab    32'000  @tab    36'000  @tab 6
+@item  7  @tab    64'000  @tab    75'000  @tab 7
+@item  8  @tab   125'000  @tab   150'000  @tab 8
+@item  9  @tab   250'000  @tab   300'000  @tab 9
+@item 10  @tab   500'000  @tab   600'000  @tab 9+3
+@item 11  @tab   750'000  @tab   900'000  @tab 9+6
+@item 12  @tab 1'000'000  @tab 1'200'000  @tab 9+9
+@item 13  @tab 1'250'000  @tab 1'500'000  @tab 9+12
+@item 14  @tab 1'500'000  @tab 1'800'000  @tab 9+15
+@item 15  @tab 1'750'000  @tab 2'100'000  @tab 9+18
+@item 16  @tab 2'000'000  @tab 2'400'000  @tab 9+21
+@item 17  @tab 2'250'000  @tab 2'700'000  @tab 9+24
+@item 18  @tab 2'500'000  @tab 3'000'000  @tab 9+27
+@item 19  @tab 2'750'000  @tab 3'300'000  @tab 9+30
+@item 20  @tab 3'000'000  @tab 3'600'000  @tab 9+33
+@end multitable
+
+
+@node Rogue levels
+@section Rogue levels
+@cindex rogue experience chart
+@cindex rogue level chart
+@cindex thief experience chart
+@cindex thief level chart
+@cindex bard experience chart
+@cindex bard level chart
+@cindex experience chart, rogue
+@cindex level chart, rogue
+
+@multitable @columnfractions 0.10 0.30 0.60
+@item @b{Level}
+@tab  @b{Thief/Bard}
+@tab  @b{Hit dice (D6)}
+@item  1  @tab         0  @tab 1
+@item  2  @tab     1'250  @tab 2
+@item  3  @tab     2'500  @tab 3
+@item  4  @tab     5'000  @tab 4
+@item  5  @tab    10'000  @tab 5
+@item  6  @tab    20'000  @tab 6
+@item  7  @tab    40'000  @tab 7
+@item  8  @tab    70'000  @tab 8
+@item  9  @tab   110'000  @tab 9
+@item 10  @tab   160'000  @tab 10
+@item 11  @tab   220'000  @tab 10+2
+@item 12  @tab   440'000  @tab 10+4
+@item 13  @tab   660'000  @tab 10+6
+@item 14  @tab   880'000  @tab 10+8
+@item 15  @tab 1'100'000  @tab 10+10
+@item 16  @tab 1'320'000  @tab 10+12
+@item 17  @tab 1'540'000  @tab 10+14
+@item 18  @tab 1'760'000  @tab 10+16
+@item 19  @tab 1'980'000  @tab 10+18
+@item 20  @tab 2'200'000  @tab 10+20
+@item 21  @tab 2'420'000  @tab 10+22
+@item 22  @tab 2'640'000  @tab 10+25
+@end multitable
+
+
+@node Wizard levels
+@section Wizard levels
+@cindex wizard experience chart
+@cindex wizard level chart
+@cindex mage experience chart
+@cindex mage level chart
+@cindex sorcerer experience chart
+@cindex sorcerer level chart
+@cindex experience chart, wizard
+@cindex level chart, wizard
+
+@multitable @columnfractions 0.10 0.30 0.60
+@item @b{Level}
+@tab  @b{Mage/Sorcerer}
+@tab  @b{Hit dice (D4)}
+@item  1  @tab         0  @tab 1
+@item  2  @tab     2'500  @tab 2
+@item  3  @tab     5'000  @tab 3
+@item  4  @tab    10'000  @tab 4
+@item  5  @tab    20'000  @tab 5
+@item  6  @tab    40'000  @tab 6
+@item  7  @tab    60'000  @tab 7
+@item  8  @tab    90'000  @tab 8
+@item  9  @tab   135'000  @tab 9
+@item 10  @tab   250'000  @tab 10
+@item 11  @tab   375'000  @tab 10+1
+@item 12  @tab   750'000  @tab 10+2
+@item 13  @tab 1'125'000  @tab 10+3
+@item 14  @tab 1'500'000  @tab 10+4
+@item 15  @tab 1'875'000  @tab 10+5
+@item 16  @tab 2'250'000  @tab 10+6
+@item 17  @tab 2'625'000  @tab 10+7
+@item 18  @tab 3'000'000  @tab 10+8
+@item 19  @tab 3'375'000  @tab 10+9
+@item 20  @tab 3'750'000  @tab 10+10
+@end multitable
+
+
+@node Priest levels
+@section Priest levels
+@cindex priest experience chart
+@cindex priest level chart
+@cindex cleric experience chart
+@cindex cleric level chart
+@cindex druid experience chart
+@cindex druid level chart
+@cindex experience chart, priest
+@cindex level chart, priest
+
+@multitable @columnfractions 0.10 0.30 0.30 0.30
+@item @b{Level}
+@tab  @b{Cleric}
+@tab  @b{Durid}
+@tab  @b{Hit dice (D10)}
+@item  1  @tab         0  @tab         0  @tab 1
+@item  2  @tab     1'500  @tab     2'000  @tab 2
+@item  3  @tab     3'000  @tab     4'000  @tab 3
+@item  4  @tab     6'000  @tab     7'500  @tab 4
+@item  5  @tab    13'000  @tab    12'500  @tab 5
+@item  6  @tab    27'500  @tab    20'000  @tab 6
+@item  7  @tab    55'000  @tab    35'000  @tab 7
+@item  8  @tab   110'000  @tab    60'000  @tab 8
+@item  9  @tab   225'000  @tab    90'000  @tab 9
+@item 10  @tab   450'000  @tab   125'000  @tab 9+2
+@item 11  @tab   675'000  @tab   200'000  @tab 9+4
+@item 12  @tab   900'000  @tab   300'000  @tab 9+6
+@item 13  @tab 1'125'000  @tab   750'000  @tab 9+8
+@item 14  @tab 1'350'000  @tab 1'000'000  @tab 9+10
+@item 15  @tab 1'575'000  @tab 1'250'000  @tab 9+12
+@item 16  @tab 1'800'000  @tab 1'500'000  @tab 9+14
+@item 17  @tab 2'025'000  @tab 1'750'000  @tab 9+16
+@item 18  @tab 2'250'000  @tab 2'000'000  @tab 9+18
+@item 19  @tab 2'475'000  @tab 2'250'000  @tab 9+20
+@item 20  @tab 2'700'000  @tab 2'500'000  @tab 9+22
+@item 21  @tab 2'925'000  @tab 2'750'000  @tab 9+24
+@end multitable
+
+
+
+@node Spell progression
+@chapter Spell progression
+@cindex spell progression
+
+@menu
+* Ranger spell progression::   Ranger spell progression.
+* Paladin spell progression::  Paladin spell progression.
+* Bard spell progression::     Bard spell progression.
+* Priest spell progression::   Priest spell progression.
+* Wizard spell progression::   Wizard spell progression.
+@end menu
+
+
+@node Ranger spell progression
+@section Ranger spell progression
+@cindex ranger spell progression
+@cindex spell progression, ranger
+
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.60
+@item @b{Ranger level}
+@tab  @b{Casting level}
+@tab  @b{Spell level 1}
+@tab  @b{Spell level 2}
+@tab  @b{Spell level 3}
+@item  8  @tab 1  @tab 1  @tab 0  @tab 0
+@item  9  @tab 2  @tab 2  @tab 0  @tab 0
+@item 10  @tab 3  @tab 2  @tab 1  @tab 0
+@item 11  @tab 4  @tab 2  @tab 2  @tab 0
+@item 12  @tab 5  @tab 2  @tab 2  @tab 1
+@item 13  @tab 6  @tab 3  @tab 2  @tab 1
+@item 14  @tab 7  @tab 3  @tab 2  @tab 2
+@item 15  @tab 8  @tab 3  @tab 3  @tab 2
+@item 16  @tab 9  @tab 3  @tab 3  @tab 3
+@end multitable
+
+
+@node Paladin spell progression
+@section Paladin spell progression
+@cindex paladin spell progression
+@cindex spell progression, paladin
+
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.50
+@item @b{Paladin level}
+@tab  @b{Casting level}
+@tab  @b{Spell level 1}
+@tab  @b{Spell level 2}
+@tab  @b{Spell level 3}
+@tab  @b{Spell level 4}
+@item  9  @tab 1  @tab 1  @tab 0  @tab 0  @tab 0
+@item 10  @tab 2  @tab 2  @tab 0  @tab 0  @tab 0
+@item 11  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0
+@item 12  @tab 4  @tab 2  @tab 2  @tab 0  @tab 0
+@item 13  @tab 5  @tab 2  @tab 2  @tab 1  @tab 0
+@item 14  @tab 6  @tab 3  @tab 2  @tab 1  @tab 0
+@item 15  @tab 7  @tab 3  @tab 2  @tab 1  @tab 1
+@item 16  @tab 8  @tab 3  @tab 3  @tab 2  @tab 1
+@item 17  @tab 9  @tab 3  @tab 3  @tab 3  @tab 1
+@item 18  @tab 9  @tab 3  @tab 3  @tab 3  @tab 1
+@item 19  @tab 9  @tab 3  @tab 3  @tab 3  @tab 2
+@item 20  @tab 9  @tab 3  @tab 3  @tab 3  @tab 3
+@end multitable
+
+
+@node Bard spell progression
+@section Bard spell progression
+@cindex bard spell progression
+@cindex spell progression, bard
+
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.30
+@item @b{Bard level}
+@tab  @b{Casting level}
+@tab  @b{Spell level 1}
+@tab  @b{Spell level 2}
+@tab  @b{Spell level 3}
+@tab  @b{Spell level 4}
+@tab  @b{Spell level 5}
+@tab  @b{Spell level 6}
+@item  2  @tab 1  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  3  @tab 1  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  4  @tab 1  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0
+@item  5  @tab 2  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
+@item  6  @tab 2  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
+@item  7  @tab 2  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0
+@item  8  @tab 3  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0
+@item  9  @tab 3  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0
+@item 10  @tab 3  @tab 3  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0
+@item 11  @tab 4  @tab 3  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0
+@item 12  @tab 4  @tab 3  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0
+@item 13  @tab 4  @tab 3  @tab 3  @tab 3  @tab 2  @tab 1  @tab 0
+@item 14  @tab 5  @tab 3  @tab 3  @tab 3  @tab 3  @tab 1  @tab 0
+@item 15  @tab 5  @tab 3  @tab 3  @tab 3  @tab 3  @tab 2  @tab 0
+@item 16  @tab 5  @tab 4  @tab 3  @tab 3  @tab 3  @tab 2  @tab 1
+@item 17  @tab 6  @tab 4  @tab 4  @tab 3  @tab 3  @tab 3  @tab 1
+@item 18  @tab 6  @tab 4  @tab 4  @tab 4  @tab 3  @tab 3  @tab 2
+@item 19  @tab 6  @tab 4  @tab 4  @tab 4  @tab 4  @tab 3  @tab 2
+@item 20  @tab 7  @tab 4  @tab 4  @tab 4  @tab 4  @tab 4  @tab 3
+@item 21  @tab 7  @tab 5  @tab 4  @tab 4  @tab 4  @tab 4  @tab 3
+@item 22  @tab 7  @tab 5  @tab 5  @tab 4  @tab 4  @tab 4  @tab 3
+@item 23  @tab 8  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 4
+@end multitable
+
+
+@node Priest spell progression
+@section Priest spell progression
+@cindex priest spell progression
+@cindex cleric spell progression
+@cindex druid spell progression
+@cindex spell progression, priest
+
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.30
+@item @b{Priest level}@footnote{The casting level is the same as the priest level}
+@tab  @b{Spell level 1}
+@tab  @b{Spell level 2}
+@tab  @b{Spell level 3}
+@tab  @b{Spell level 4}
+@tab  @b{Spell level 5}
+@tab  @b{Spell level 6}@footnote{Requires 17 or higher wisdom}
+@tab  @b{Spell level 7}@footnote{Requires 18 or higher wisdom}
+@item  1  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  2  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  4  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  5  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0
+@item  6  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0
+@item  7  @tab 3  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0
+@item  8  @tab 3  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0
+@item  9  @tab 4  @tab 4  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0
+@item 10  @tab 4  @tab 4  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0
+@item 11  @tab 5  @tab 4  @tab 4  @tab 3  @tab 2  @tab 1  @tab 0
+@item 12  @tab 6  @tab 5  @tab 5  @tab 3  @tab 2  @tab 2  @tab 0
+@item 13  @tab 6  @tab 6  @tab 6  @tab 4  @tab 2  @tab 2  @tab 0
+@item 14  @tab 6  @tab 6  @tab 6  @tab 5  @tab 3  @tab 2  @tab 1
+@item 15  @tab 6  @tab 6  @tab 6  @tab 6  @tab 4  @tab 2  @tab 1
+@item 16  @tab 7  @tab 7  @tab 7  @tab 6  @tab 4  @tab 3  @tab 1
+@item 17  @tab 7  @tab 7  @tab 7  @tab 7  @tab 5  @tab 3  @tab 2
+@item 18  @tab 8  @tab 8  @tab 8  @tab 8  @tab 6  @tab 4  @tab 2
+@item 19  @tab 9  @tab 9  @tab 8  @tab 8  @tab 6  @tab 4  @tab 2
+@item 20  @tab 9  @tab 9  @tab 9  @tab 8  @tab 7  @tab 5  @tab 2
+@item 21  @tab 9  @tab 9  @tab 9  @tab 9  @tab 8  @tab 6  @tab 2
+@end multitable
+
+
+@node Wizard spell progression
+@section Wizard spell progression
+@cindex wizard spell progression
+@cindex mage spell progression
+@cindex sorcerer spell progression
+@cindex spell progression, wizard
+
+@multitable @columnfractions 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.10 0.10
+@item @b{Wizard level}@footnote{The casting level is the same as the wizard level}
+@tab  @b{Spell level 1}
+@tab  @b{Spell level 2}
+@tab  @b{Spell level 3}
+@tab  @b{Spell level 4}
+@tab  @b{Spell level 5}
+@tab  @b{Spell level 6}
+@tab  @b{Spell level 7}
+@tab  @b{Spell level 8}
+@tab  @b{Spell level 9}
+@item  1  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  2  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  4  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  5  @tab 4  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  6  @tab 4  @tab 2  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  7  @tab 4  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  8  @tab 4  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
+@item  9  @tab 4  @tab 3  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0
+@item 10  @tab 4  @tab 4  @tab 3  @tab 2  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0
+@item 11  @tab 4  @tab 4  @tab 4  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
+@item 12  @tab 4  @tab 4  @tab 4  @tab 4  @tab 4  @tab 1  @tab 0  @tab 0  @tab 0
+@item 13  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 2  @tab 0  @tab 0  @tab 0
+@item 14  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 2  @tab 1  @tab 0  @tab 0
+@item 15  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 2  @tab 1  @tab 0  @tab 0
+@item 16  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 2  @tab 1  @tab 0
+@item 17  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 0
+@item 18  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 1
+@item 19  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 3  @tab 1
+@item 20  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 3  @tab 3  @tab 2
+@end multitable
+
+
+
+@node Miscellaneous sheets
+@chapter Miscellaneous sheets
+@cindex miscellaneous sheets
+
+@menu
+* Level 1 sheet::              Level 1 sheet.
+* Actions slots::              Actions slots.
+@end menu
+
+
+@node Level 1 sheet
+@section Level 1 sheet
+@cindex level 1 sheet
+@cindex saving throws
+@cindex to attack armour class 0
+@cindex THAC0
+@cindex hit point
+
+The following sheet refers to level 1 characters without any
+adjustments.
+
+@multitable @columnfractions 0.10 0.14 0.10 0.12 0.16 0.12 0.15 0.11
+@item @b{Class}
+@tab  @b{Hit points}
+@tab  @b{THAC0}
+@tab  @b{Bw save}@footnote{Save versus breath weapon}
+@tab  @b{PPDm save}@footnote{Save versus death magic, paralyzation, or poison}
+@tab  @b{PP save}@footnote{Save versus petrification or polymorph}
+@tab  @b{RSW save}@footnote{Save versus rod, staff, or wand}
+@tab  @b{S save}@footnote{Save versus spell}
+@item Fighter   @tab 10  @tab 22  @tab 17  @tab 14  @tab 15  @tab 16  @tab 17
+@item Ranger    @tab 10  @tab 22  @tab 17  @tab 14  @tab 15  @tab 16  @tab 17
+@item Paladin   @tab 10  @tab 22  @tab 17  @tab 14  @tab 15  @tab 16  @tab 17
+@item Thief     @tab  6  @tab 23  @tab 16  @tab 13  @tab 12  @tab 14  @tab 15
+@item Bard      @tab  6  @tab 20  @tab 16  @tab 13  @tab 12  @tab 14  @tab 15
+@item Mage      @tab  4  @tab 25  @tab 15  @tab 14  @tab 13  @tab 11  @tab 12
+@item Sorcerer  @tab  4  @tab 25  @tab 15  @tab 14  @tab 13  @tab 11  @tab 12
+@item Cleric    @tab  8  @tab 20  @tab 16  @tab 10  @tab 13  @tab 14  @tab 15
+@item Durid     @tab  8  @tab 23  @tab 16  @tab 10  @tab 13  @tab 14  @tab 15
+@end multitable
+
+
+@node Actions slots
+@section Actions slots
+@cindex actions slots
+
+Characters have several actions they can perform, however
+there are five slots that depends on the class. Actions That
+are not reachable in the these slots that one extra round,
+and weapons are not usable if they are not placed in a quick
+weapon slot. Items in quick weapon slot are considered to be
+held in the character's hands.
+
+@multitable @columnfractions 0.09 0.18 0.18 0.18 0.18 0.19
+@item @b{Class}  @tab @b{Slot 1}    @tab @b{Slot 2}    @tab @b{Slot 3}    @tab @b{Slot 4}    @tab @b{Slot 5}
+@item Fighter    @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab ---
+@item Ranger     @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab Stealth       @tab Cast spell
+@item Mage       @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item Sorcerer   @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item Cleric     @tab Quick weapon  @tab Turn undead   @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item Druid      @tab Quick weapon  @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item Bard       @tab Quick weapon  @tab Bard song     @tab Thieving      @tab Quick spell   @tab Cast spell
+@item Thief      @tab Quick weapon  @tab Quick weapon  @tab Find traps    @tab Thieving      @tab Stealth
+@item F/T        @tab Quick weapon  @tab Quick weapon  @tab Find traps    @tab Thieving      @tab Stealth
+@item F/M        @tab Quick weapon  @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item F/C        @tab Quick weapon  @tab Quick weapon  @tab Turn undead   @tab Quick spell   @tab Cast spell
+@item F/D        @tab Quick weapon  @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item R/C        @tab Quick weapon  @tab Turn undead   @tab Stealth       @tab Quick spell   @tab Cast spell
+@item T/C        @tab Quick weapon  @tab Find traps    @tab Thieving      @tab Stealth       @tab Cast spell
+@item M/T        @tab Quick weapon  @tab Find traps    @tab Thieving      @tab Stealth       @tab Cast spell
+@item M/C        @tab Quick weapon  @tab Turn undead   @tab Quick spell   @tab Quick spell   @tab Cast spell
+@item F/M/T      @tab Quick weapon  @tab Find traps    @tab Thieving      @tab Stealth       @tab Cast spell
+@item F/M/C      @tab Quick weapon  @tab Quick weapon  @tab Turn undead   @tab Quick spell   @tab Cast spell
+@end multitable
+
+It is not possible to dual class outside the definition if
+this sheet.
+
+Thieving refers to, depending on usage, disarm trap or pick
+pocket.
+
+
+
+@node Combat rules
+@chapter Combat rules
+@cindex combat rules
+@cindex rules, combat
+
+@menu
+* Attack roll::                The attack roll, armour class and THAC0.
+* Critical hits and misses::   Critical hits and misses.
+* Casting spells::             Casting spells.
+* Spell disruption::           Spell disruption.
+* Hit points::                 About hit points.
+* Natural healing::            Natural healing.
+* Magical healing::            Magical healing.
+* Raising the dead::           Raising the dead.
+* Effects of poison::          Effects of poison.
+* Effects of paralysis::       Effects of paralysis.
+* Magic resistance::           Magic resistance.
+* Changing armour::            Changing armour.
+* Speed factor::               Speed factor.
+* Casting time::               Casting time.
+@end menu
+
+
+@node Attack roll
+@section Attack roll
+@cindex attack roll
+@cindex armour class
+@cindex AC
+@cindex THAC0
+@cindex to hit armour class 0
+
+Three factors decide whether an attack is successful,
+neither effects the damage made: armour class (AC),
+‘to hit armor class 0’ (THAC0) and attack roll. To
+successfully hit a target the attack roll be at least
+THAC0 − AC. The attack roll consists of 1D20 roll.
+
+Without any adjustment (including armour) a character's
+armour class is 10. The THAC0 depends on the character's
+class and level, for each level up the characters receives
+a −1 THAC0 bonus.
+
+
+@node Critical hits and misses
+@section Critical hits and misses
+@cindex critical hits
+@cindex critical misses
+@cindex hits, critical
+@cindex misses, critical
+
+If a character rolls 20, before modifiers, on his attack
+roll, a critical hit occurs and the damage for the attack is
+doubled. If the value roll is 1 it is a critical miss, which
+is a miss with a time penalty of one round. A critical hit
+is always an hit, regardless of armour class and THAC0.
+
+
+@node Casting spells
+@section Casting spells
+@cindex casting spells
+@cindex spell casting
+
+Spellcasters must memorise spells to be able to use them,
+or use them directly from a scroll. Additionally a
+spellcaster must be able to speak and may be paralised
+or petrified to cast a spell, and the target must be in
+sight.
+
+
+@node Spell disruption
+@section Spell disruption
+@cindex spell disruption
+@cindex disrupting spells
+
+If a spellcaster is damage during a spell casting the spell
+will disrupted and the spell memorisation will be lost as it
+would be if it was not disrupted. Spells are also disrupted
+if the spellcaster performs another action.
+
+
+@node Hit points
+@section Hit points
+@cindex hit points
+
+Creatures have a maximum hit point beyond which the creature
+cannot be healed. Some necromantic spell increase or
+decrease a creatures maximum hit point. It is also increase
+when a characters levels up.
+
+
+@node Natural healing
+@section Natural healing
+@cindex natural healing
+
+Characters that are not in combat can heal naturally, call
+regeneration. This is utilised more effectively during
+sleep, specially in comfortable room in an inn.
+
+Sleep cannot always be done indoors, and cannot be done
+while there are emenies nearby. Sleeping, except for at
+Inns, you run a risk of being attacked.
+
+
+@node Magical healing
+@section Magical healing
+@cindex magical healing
+
+Characters, including foes, can use spells, potions and
+magical devices to considerably heal themself or other
+characters. Healing can other be instant or continuous.
+
+
+@node Raising the dead
+@section Raising the dead
+@cindex raising the dead
+@cindex resurrection
+
+Dead characters are uneffected by spells other then Raise
+Dead and Resurrection. Newly raised characters will have
+only on hit point and require addition healing.
+
+A character dies when his hit points reaches zero. If the
+character'shit points reached −10 at point of death, the
+character is beyond resurrection.
+
+Dead characters, that are resurrectable, will leave a body
+item that the other characters must carry to a temple to
+resurrect, or to any other place, if they do not wise to
+resurrect the character right there.
+
+
+@node Effects of poison
+@section Effects of poison
+@cindex effects of poison
+@cindex poison
+
+Charaters can be poisoned, their are many sources, poisoned
+weapons and ammonition, venomous creatures, potions, bad
+food and drugges wines. Poisoned characters will be hurt a
+hit point or two every so often; healing spells and potions
+will not negate the progress, rather a poison specialised
+potion or spell must be used.
+
+
+@node Effects of paralysis
+@section Effects of paralysis
+@cindex effects of paralysis
+@cindex paralysis
+
+A creature affected by paralysis cannot speak, move, attack,
+defend or cast spell during the effect of the spell.
+
+
+@node Magic resistance
+@section Magic resistance
+@cindex magic resistance
+@cindex resistance against magic
+
+Magic resistance gives a creature a change to ignore the
+effect of magic, both protective and destructive magic, but
+not priest spells. If the creature fails to utilise magic
+resistance, saving throw against that spell can be used.
+
+
+@node Changing armour
+@section Changing armour
+@cindex changing armour
+@cindex changing body armour
+
+Changing body armour takes two rounds and cannot be done
+during combat. Just adding or just removing the armour
+takes one round.
+
+
+
+
+@node Time rules
+@chapter Time rules
+@cindex time rules
+@cindex rules, time
+
+@menu
+* Speed factor::               Speed factor.
+* Casting time::               Casting time.
+@end menu
+
+@c  TODO  what is a round
+@c  TODO  what is a turn
+
+
+@node Speed factor
+@section Speed factor
+@cindex speed factor
+
+Speed factors are numbers between 1 and 10, the number of
+tenths of a round an attack takes.
+
+
+@node Casting time
+@section Casting time
+@cindex casting time
+
+Casting times for spellcaster is exactly analogous to speed
+factors of weapons.
+
+
+
+
+@node License of tbrpg
+@appendix License of tbrpg
+
+@flushleft
+tbrpg – Text based roll playing game
+
+Copyright © 2012  Mattias Andrée (maandree@@kth.se)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+@end flushleft
+
+@node GNU General Public License
+@appendix GNU General Public License
+@include doc/gpl.texinfo
+
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
+@include doc/fdl.texinfo
+
+@node Concept and program index
+@appendix Concept and program index
+@printindex pg
+
+@node Variable and option index
+@appendix Variable and option index
+@printindex vr
+
+
+@bye
+

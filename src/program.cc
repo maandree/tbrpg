@@ -51,7 +51,7 @@ namespace tbrpg
     srand(((long long)a) | (((long long)d) << 32LL));
     
     Dice dice = 20;
-    std::cout << dice.getThrow() << std::endl;
+    std::cout << dice.roll() << std::endl;
     
     return 0;
   }

@@ -24,13 +24,13 @@ Item
 		Potion		MagicScroll
 		MagicBook	Wand
 	Headgear
-		Hood		Helmet
+		Hood		Helmet		Hat
 	Shield
 		Buckler		SmallShield
 		MediumShield	LargeShield
 	Container
 		MagicBag	Keyring
-		GemBag		QuiverBelt
+		GemBag		AmmonitionBelt
 		ScrollCase
 	Ring
 	Amulett

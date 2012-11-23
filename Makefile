@@ -5,11 +5,13 @@
 # 
 # [GNU All Permissive License]
 
-
 CPPFLAGS=
 CXXFLAGS=-g --std=c++11 -pedantic -W{all,extra} -O3
 LDFLAGS=
 
+BOOK=tbrpg
+BOOKDIR=doc/
+LANG=en_GB-ise-w_accents-only
 
 LEAKS=full
 LOST=yes
@@ -46,48 +48,73 @@ GAMEDIR=/bin
 
 
 all:
-	[ -d bin ] || mkdir bin
+	if [ ! -d bin ]; then  mkdir bin;  fi
 	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
 
 
+info:
+	makeinfo "$(BOOKDIR)$(BOOK).texinfo"
+	gzip -9 "$(BOOK).info"
 
-valgrind: valgrind-memcheck valgrind-cachegrind valgrind-callgrind valgrind-helgrind valgrind-drd \
+pdf:
+	texi2pdf "$(BOOKDIR)$(BOOK).texinfo"
+	for ext in `echo aux cp cps fn ky log pg toc tp vr op ops pgs vrs`; do  \
+		if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi        \
+	done
+	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
+
+soft:
+	pdfjam --pagecolor 249,249,249 -o "$(BOOK).pdf" "$(BOOK).pdf"
+
+softer:
+	pdfjam --pagecolor 249,246,240 -o "$(BOOK).pdf" "$(BOOK).pdf"
+
+spell:
+	aspell --lang="$(LANG)" check "$(BOOK).texinfo"
+
+grammar:
+	link-parser < "$(BOOK)".texinfo 2>&1 | sed -e  \
+		s/'No complete linkages found'/'\x1b[1;31mNo complete linkage found\x1b[m'/g | less -r
+
+
+
+valgrind: valgrind-memcheck valgrind-cachegrind valgrind-callgrind valgrind-helgrind valgrind-drd  \
 	  valgrind-massif valgrind-sgcheck valgrind-lackey
 
 valgrind-memcheck:
-	[ $(USE_MEMCHECK) = 1 ] && \
-	valgrind --tool=memcheck --leak-check=$(LEAKS) --show-possibly-lost=$(LOST) \
-	         --leak-resolution=$(RESOLUTION) --show-reachable=$(REACHABLE)      \
-	         --undef-value-errors=$(UNDEF) --track-origins=$(ORIGINS)           \
-	         --partial-loads-ok=$(PARTIAL_OK) $(X_MEMCHECK) bin/tbrpg
+	if [ $(USE_MEMCHECK) = 1 ]; then  \
+	valgrind --tool=memcheck --leak-check=$(LEAKS) --show-possibly-lost=$(LOST)  \
+	         --leak-resolution=$(RESOLUTION) --show-reachable=$(REACHABLE)       \
+	         --undef-value-errors=$(UNDEF) --track-origins=$(ORIGINS)            \
+	         --partial-loads-ok=$(PARTIAL_OK) $(X_MEMCHECK) bin/tbrpg; fi
 
 valgrind-cachegrind:
-	[ $(USE_CACHEGRIND) = 1 ] && \
-	valgrind --tool=cachegrind --cache-sim=$(CACHE) --branch-sim=$(BRANCH) $(X_CACHEGRIND) bin/tbrpg
+	if [ $(USE_CACHEGRIND) = 1 ]; then  \
+	valgrind --tool=cachegrind --cache-sim=$(CACHE) --branch-sim=$(BRANCH) $(X_CACHEGRIND) bin/tbrpg; fi
 
 valgrind-callgrind:
-	[ $(USE_CALLGRIND) = 1 ] && \
-	valgrind --tool=callgrind $(X_CALLGRIND) bin/tbrpg
+	if [ $(USE_CALLGRIND) = 1 ]; then  \
+	valgrind --tool=callgrind $(X_CALLGRIND) bin/tbrpg; fi
 
 valgrind-helgrind:
-	[ $(USE_HELGRIND) = 1 ] && \
-	valgrind --tool=helgrind $(X_HELGRIND) bin/tbrpg
+	if [ $(USE_HELGRIND) = 1 ]; then  \
+	valgrind --tool=helgrind $(X_HELGRIND) bin/tbrpg; fi
 
 valgrind-drd:
-	[ $(USE_DRD) = 1 ] && \
-	valgrind --tool=drd $(X_DRD) bin/tbrpg
+	if [ $(USE_DRD) = 1 ]; then  \
+	valgrind --tool=drd $(X_DRD) bin/tbrpg; fi
 
 valgrind-massif:
-	[ $(USE_MASSIF) = 1 ] && \
-	valgrind --tool=massif $(X_MASSIF) bin/tbrpg
+	if [ $(USE_MASSIF) = 1 ]; then  \
+	valgrind --tool=massif $(X_MASSIF) bin/tbrpg; fi
 
 valgrind-sgcheck:
-	[ $(USE_SGCHECK) = 1 ] && \
-	valgrind --tool=sgcheck $(X_SGCHECK) bin/tbrpg
+	if [ $(USE_SGCHECK) = 1 ]; then  \
+	valgrind --tool=sgcheck $(X_SGCHECK) bin/tbrpg; fi
 
 valgrind-lackey:
-	[ $(USE_LACKEY) = 1 ] && \
-	valgrind --tool=lackey $(X_LACKEY) bin/tbrpg
+	if [ $(USE_LACKEY) = 1 ]; then  \
+	valgrind --tool=lackey $(X_LACKEY) bin/tbrpg; fi
 
 
 run: all
@@ -102,16 +129,50 @@ uninstall:
 
 
 clean:
-	find ./ | grep \\.a\$$ | xargs rm
-	find ./ | grep \\.o\$$ | xargs rm
-	find ./ | grep \\.out\$$ | xargs rm
+	find ./ | grep \\.a\$$    | while read file; do  rm "$$file";  done
+	find ./ | grep \\.o\$$    | while read file; do  rm "$$file";  done
+	find ./ | grep \\.out\$$  | while read file; do  rm "$$file";  done
+	find ./ | grep \\.info\$$ | while read file; do  rm "$$file";  done
+	find ./ | grep \\.gz\$$   | while read file; do  rm "$$file";  done
+	for ext in `echo aux cp cps fn ky log pg toc tp vr bak op ops pgs vrs`; do  \
+		if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi            \
+	done
+	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
+	if [ -f "$(BOOK).texinfo.bak" ]; then  rm "$(BOOK).texinfo.bak";  fi
 
 clean-gch:
-	find ./ | grep \\.gch\$$ | xargs rm
+	find ./ | grep \\.gch\$$ | while read file; do  rm "$$file";  done
+
+
+view:
+	if [ ! $$PDF_VIEWER = '' ]; then     \
+		$$PDF_VIEWER "$(BOOK).pdf";  \
+	else                                 \
+		xpdf "$(BOOK).pdf";          \
+	fi
+
+atril:
+	atril "$(BOOK).pdf"
+
+evince:
+	evince "$(BOOK).pdf"
+
+xpdf:
+	xpdf "$(BOOK).pdf"
+
+okular:
+	okular "$(BOOK).pdf"
+
+gs:
+	gs "$(BOOK).pdf"
+
+jfbview:
+	jfbview "$(BOOK).pdf"
+	echo -en '\e[H\e[2J'
 
 
 
 .PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
 	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey
+	valgrind-lackey view atril evince xpdf okular gs jfbview
 

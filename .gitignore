@@ -1,6 +1,7 @@
 /_/
 
 /bin/
+tbrpg.pdf
 
 *~
 \#*\#
@@ -15,3 +16,4 @@
 
 *-cache
 cachegrind.out.*
+

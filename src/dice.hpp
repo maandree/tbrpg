@@ -127,11 +127,11 @@ namespace tbrpg
     virtual int getSides() const;
     
     /**
-     * Throw the dice
+     * Roll the dice
      * 
      * @return  The number of eyes on the dice's value side
      */
-    virtual int getThrow() const;
+    virtual int roll() const;
     
   };
 }

@@ -143,11 +143,11 @@ namespace tbrpg
   }
   
   /**
-   * Throw the dice
+   * Roll the dice
    * 
    * @return  The number of eyes on the dice's value side
    */
-  int Dice::getThrow() const
+  int Dice::roll() const
   {
     return (random() % this->sides) + 1;
   }
