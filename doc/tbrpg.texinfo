@@ -68,6 +68,7 @@ Texts. A copy of the license is included in the section entitled
 * Miscellaneous sheets::              Miscellaneous sheets.
 * Combat rules::                      Combat rules.
 * Time rules::                        Time rules.
+* Inventory and equipment::           The inventory and equipment.
 * License of tbrpg::                  tbrpg's License.
 * GNU General Public License::        GNU General Public License
 * GNU Free Documentation License::    GNU Free Documentation License
@@ -1532,6 +1533,9 @@ neutral protection.
                         @tab 1D6       @tab F,R,P,B
 @item Throwing dagger   @tab 1    @tab p    @tab 2
                         @tab 1D4       @tab not cleric
+@item Torch             @tab 1    @tab b    @tab 4
+                        @tab 1D2@footnote{Torches also have +1 fire.}
+                        @tab all
 @item Two-handed sword  @tab 2    @tab s    @tab 10
                         @tab 1D10      @tab F,R,P,B
 @item War hammer        @tab 1    @tab b    @tab 4
@@ -2228,6 +2232,165 @@ A turn consists of ten rounds. @c TODO  further describe
 
 
 
+@node Inventory and equipment
+@chapter Inventory and equipment
+@cindex inventory
+@cindex equipment
+
+@menu
+* Personal inventory::         Personal inventory.
+* Quick items::                Quick items.
+* The left hand::              The left hand.
+* The right hand::             The right hand.
+* The quiver::                 The quiver.
+* Body armour slot::           Body armour slot.
+* Gauntlets and bracers slot:: Gauntlets and bracers slot.
+* Headgear slot::              Headgear slot.
+* Amulett and necklace slot::  Amulett and necklace slot.
+* Ring slots::                 Ring slots.
+* Belt and grindle slot::      Belt and grindle slot.
+* Miscellaneous items::        Miscellaneous items.
+@end menu
+
+
+@node Personal inventory
+@section Personal inventory
+@cindex personal inventory
+
+Every character have an inventory where you have your items;
+your parties gold are items, classified as gems, that you
+character must hold in their inventory. Items can often be
+places in specialist solts; all items, regardless of whether
+they can be put it such slots, can be places in the personal
+inventory where items you pickup automatically are placed.
+The personal inventory is your packback and consists of 16
+item slots, all items takes up one slot. Before you move
+your items from the personal inventory to a specialisted
+slot you should check whether it is cursed. Cursed items
+cannot be removed from a specialisted slot, the only way to
+remove it is to cast the spell Remove curse, which puts it
+in the personal inventory, or if full, drops it on the
+ground.
+
+
+@node Quick items
+@section Quick items
+@cindex quick items
+@cindex spell scroll
+@cindex wand
+@cindex rod
+@cindex staff
+@cindex usable item
+@cindex potion
+
+Every character have three quick item slots, you should but
+you important potions, wands and spell scrolls here, it
+allows to use items without digging in your backpack.
+
+
+@node The left hand
+@section The left hand
+@cindex left hand
+@cindex hand
+@cindex weapon
+
+Every character have quick weapon slots, one to five,
+depending on the class. The quick weapons is in the left
+hand. Torches are considered weapons because they are,
+inferior, clubs on fire.
+
+
+@node The right hand
+@section The right hand
+@cindex hand
+@cindex weapon
+@cindex shield
+
+Every character have one right hand slot which can either
+be used for a weapon or a sheild.
+
+
+@node The quiver
+@section The quiver
+@cindex quiver
+@cindex ammonition
+
+Every character have three quiver slots where you put your
+ammonition you want to used.
+
+
+@node Body armour slot
+@section Body armour slot
+@cindex body armour
+@cindex armour
+
+Characters have one slot for body armour.
+
+
+@node Gauntlets and bracers slot
+@section Gauntlets and bracers slot
+@cindex gauntlets
+@cindex bracers
+
+Characters have one slot for gauntlets and braces, they
+must used in full pairs.
+
+
+@node Headgear slot
+@section Headgear slot
+@cindex headgear
+
+Characters have one slot for headgear.
+
+
+@node Amulett and necklace slot
+@section Amulett and necklace slot
+@cindex amulett
+@cindex necklace
+
+Characters have one slot for amuletts and necklaces.
+
+
+@node Ring slots
+@section Ring slots
+@cindex ring
+
+Characters have two slots for rings.
+
+
+@node Belt and grindle slot
+@section Belt and grindle slot
+@cindex belt
+@cindex grindle
+
+Characters have one slot for belts and grindles.
+
+
+@node Boots slot
+@section Boots slot
+@cindex boots
+@cindex shoes
+
+Characters have one slot for boots and other types of shoes,
+they must used in full pairs.
+
+
+@node Cloak slot
+@section Cloak slot
+@cindex cloak
+
+Charactes have one cloak for slots.
+
+
+@node Miscellaneous items
+@section Miscellaneous items
+@cindex miscellaneous items
+
+Miscellaneous items are items that do not fit in any
+specialisted slot and can only be put in the personal
+inventory.
+
+  
 
 @node License of tbrpg
 @appendix License of tbrpg
@@ -2271,9 +2434,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 @bye
 
 
-Quick item slots
-Personal inventory
-Cursed items
 Game play
 Spell list
-Item list
