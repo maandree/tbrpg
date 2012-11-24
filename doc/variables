@@ -160,6 +160,8 @@ Class
 	Spell[] special_abilties
 	Item[] can_use
 	std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart
+	Weapon default_one_hand
+	Weapon default_two_hand
 
 Race
 	Class[][] allowed_classes
