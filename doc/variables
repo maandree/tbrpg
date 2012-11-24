@@ -43,6 +43,16 @@ Bonuses
 	int luck
 	float detect_doors
 
+Defence
+	int melee
+	int missile
+	float fire
+	float cold
+	float lightning
+	float acid
+	float poison
+	float physical
+
 ThiefAbilities
 	int find_traps
 	int open_locks
@@ -84,6 +94,8 @@ Ammunition
 	char damage_dice
 	char damage_dices
 	int damage_bonus
+	DamageType[] damage_type
+	RangedWeapon usable_with
 
 Weapon: RightHandItem
 	char hands
@@ -93,7 +105,8 @@ Weapon: RightHandItem
 	char damage_dice
 	char damage_dices
 	int damage_bonus
-	DamageType damage_type
+	bool melee
+	DamageType[] damage_type
 	WeaponGroup weapon_group
 
 Headgear: Item
@@ -115,6 +128,7 @@ QuestItem: Item
 
 Item
 	std::string name
+	std::string description
 	int armour_class
 	int weight
 	bool identified
@@ -153,6 +167,7 @@ Race
 
 CharacterSheet
 	std::string name
+	std::string biography
 	char colour
 	char alignment
 	std::string portrait
@@ -187,6 +202,7 @@ MagicSchool
 
 Spell
 	std::string name
+	std::string description
 	bool wizard
 	bool priest
 	char level

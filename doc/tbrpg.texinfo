@@ -63,6 +63,7 @@ Texts. A copy of the license is included in the section entitled
 * Character actions::                 Character actions.
 * Armour::                            Something about armour.
 * Weapons::                           About weapons.
+* Elements::                          Elemental attacks and defences.
 * Experience charts::                 Experience charts.
 * Spell progression::                 Spell progression charts.
 * Miscellaneous sheets::              Miscellaneous sheets.
@@ -1544,6 +1545,9 @@ neutral protection.
                         @tab 1D6       @tab all
 @end multitable
 
+Melée weapons other than dagger, flail nad hand-to-hand have
+have a +1 armour class against melée bonus.
+
 
 @node Ranged weapons
 @section Ranged weapons
@@ -1578,6 +1582,33 @@ neutral protection.
 @item Throwing dagger     @tab 1   @tab 2  @tab 2   @tab 0
                           @tab 0   @tab not priest
 @end multitable
+
+
+
+@node Elements
+@chapter Elements
+@node elements
+
+Attacks have elementals attributes, not just physical.
+
+@table @b
+@item fire
+Some fire spells and effects have a change of putting a
+creature in panic mode, and may keep burning for a short
+time.
+@item cold
+Some cold spells and effects may slow down a creature.
+@item lightning
+Lightning is not very special, although acid and poison is
+more common, it is less common than fire and cold, and it
+usally inflicts grater damage.
+@item acid
+Similar to poison, but it cannot be neutralised or slowed
+with poison neutralisation and slowing magic. It usally
+last for a much shorter peroid.
+@item poison
+See @ref{Effects of poison}.
+@end table
 
 
 
@@ -2583,6 +2614,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game play
 Spell list
-Element attack/defence
-vs missile/melee
-
