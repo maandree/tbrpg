@@ -1423,7 +1423,7 @@ reputation level become fighters cannot regain their status.
 @end multitable
 
 
-@node Armour type
+@node Armour types
 @section Armour types
 @cindex armour types
 @cindex shields
@@ -2287,6 +2287,14 @@ Every character have three quick item slots, you should but
 you important potions, wands and spell scrolls here, it
 allows to use items without digging in your backpack.
 
+Item you can put in your quick item slots include:
+
+@itemize @bullet
+@item  Potions
+@item  Magic scrolls/books
+@item  Magic wands/rods/staffs
+@end itemize
+
 
 @node The left hand
 @section The left hand
@@ -2299,6 +2307,9 @@ depending on the class. The quick weapons is in the left
 hand. Torches are considered weapons because they are,
 inferior, clubs on fire.
 
+See @ref{Weapons} for details, hand-to-hand refers to
+the abstense of equipment.
+
 
 @node The right hand
 @section The right hand
@@ -2307,8 +2318,17 @@ inferior, clubs on fire.
 @cindex shield
 
 Every character have one right hand slot which can either
-be used for a weapon or a sheild.
+be used for a weapon or a shield.
 
+Shields in order of size, see @ref{Armour types} for
+details:
+
+@itemize
+@item  Buckler
+@item  Small shield
+@item  Medium shield
+@item  Large shield
+@end itemize
 
 @node The quiver
 @section The quiver
@@ -2318,6 +2338,15 @@ be used for a weapon or a sheild.
 Every character have three quiver slots where you put your
 ammonition you want to used.
 
+@table @b
+@item Arrow
+Ammonition for bows.
+@item Bolt
+Ammonition for crossbows.
+@item Bullet
+Ammonition (stones) for slings.
+@end table
+
 
 @node Body armour slot
 @section Body armour slot
@@ -2325,6 +2354,19 @@ ammonition you want to used.
 @cindex armour
 
 Characters have one slot for body armour.
+
+There are seven types of body armour, see @ref{Armour} for
+details.
+
+@itemize @bullet
+@item  Robe
+@item  Leather armour
+@item  Studded leather armour
+@item  Chain mail
+@item  Splint mail
+@item  Plate mail
+@item  Full plate mail
+@end itemize
 
 
 @node Gauntlets and bracers slot
@@ -2335,12 +2377,17 @@ Characters have one slot for body armour.
 Characters have one slot for gauntlets and braces, they
 must used in full pairs.
 
+There is no categorisation of gauntlets and braces, and they
+have no natural effect.
+
 
 @node Headgear slot
 @section Headgear slot
 @cindex headgear
 
 Characters have one slot for headgear.
+
+See @ref{Headgear} for details.
 
 
 @node Amulett and necklace slot
@@ -2350,12 +2397,18 @@ Characters have one slot for headgear.
 
 Characters have one slot for amuletts and necklaces.
 
+There is no categorisation of amuletts and necklaces, and
+they have no natural effect.
+
 
 @node Ring slots
 @section Ring slots
 @cindex ring
 
 Characters have two slots for rings.
+
+There is no categorisation of rings, and they have no
+natural effect.
 
 
 @node Belt and grindle slot
@@ -2365,14 +2418,20 @@ Characters have two slots for rings.
 
 Characters have one slot for belts and grindles.
 
+There is no categorisation of belts and grindles, and they
+have no natural effect.
+
 
 @node Boots slot
 @section Boots slot
 @cindex boots
 @cindex shoes
 
-Characters have one slot for boots and other types of shoes,
-they must used in full pairs.
+Characters have one slot for boots and other types of
+shoes, they must used in full pairs.
+
+There is no categorisation of boots, and they have no
+natural effect.
 
 
 @node Cloak slot
@@ -2380,6 +2439,9 @@ they must used in full pairs.
 @cindex cloak
 
 Charactes have one cloak for slots.
+
+There is no categorisation of cloaks, and they have no
+natural effect.
 
 
 @node Miscellaneous items
@@ -2389,6 +2451,20 @@ Charactes have one cloak for slots.
 Miscellaneous items are items that do not fit in any
 specialisted slot and can only be put in the personal
 inventory.
+
+@table @b
+@item Text scrolls/books
+Item contain text that may help you in your quest.
+@item Gems and gold
+Items with nothing else then monetary value.
+@item Keys
+Quest specific keys.
+@item Bodies
+Bodies of dead characters.
+@item Containers
+Item contains, usually they decrease the effect weight
+of the items they contain.
+@end table
 
   
 
@@ -2436,3 +2512,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game play
 Spell list
+Element attack/defence
