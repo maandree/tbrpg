@@ -1977,24 +1977,24 @@ Bards cannot be progress spells beyond level 23.
 @item 10  @tab 4  @tab 4  @tab 3  @tab 2  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0
 @item 11  @tab 4  @tab 4  @tab 4  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
 @item 12  @tab 4  @tab 4  @tab 4  @tab 4  @tab 4  @tab 1  @tab 0  @tab 0  @tab 0
-@item 13  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 2  @tab 0  @tab 0  @tab 0
+@item 13  @tab 5  @tab 4  @tab 5  @tab 4  @tab 4  @tab 2  @tab 0  @tab 0  @tab 0
 @item 14  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 2  @tab 1  @tab 0  @tab 0
 @item 15  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 2  @tab 1  @tab 0  @tab 0
 @item 16  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 2  @tab 1  @tab 0
 @item 17  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 0
 @item 18  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 1
-@item 19  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 3  @tab 1
-@item 20  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 3  @tab 3  @tab 1
-@item 21  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
-@item 22  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
-@item 23  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 2
-@item 24  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 2
-@item 25  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 2
-@item 26  @tab 6  @tab 6  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3
-@item 27  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 5  @tab 5  @tab 3
-@item 28  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 3
-@item 29  @tab 7  @tab 7  @tab 7  @tab 7  @tab 6  @tab 6  @tab 6  @tab 6  @tab 4
-@item 30  @tab 7  @tab 7  @tab 7  @tab 7  @tab 7  @tab 7  @tab 6  @tab 6  @tab 4
+@item 19  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 3  @tab 1
+@item 20  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 3  @tab 3  @tab 1
+@item 21  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
+@item 22  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
+@item 23  @tab 7  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 2
+@item 24  @tab 7  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 2
+@item 25  @tab 7  @tab 7  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 2
+@item 26  @tab 8  @tab 7  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3
+@item 27  @tab 8  @tab 7  @tab 6  @tab 6  @tab 6  @tab 6  @tab 5  @tab 5  @tab 3
+@item 28  @tab 8  @tab 8  @tab 7  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 3
+@item 29  @tab 9  @tab 8  @tab 7  @tab 7  @tab 6  @tab 6  @tab 6  @tab 6  @tab 4
+@item 30  @tab 9  @tab 8  @tab 8  @tab 7  @tab 7  @tab 7  @tab 6  @tab 6  @tab 4
 @end multitable
 
 Wizards starts with 2 cantrips (level 0 spells) and gain 1 every other level up.
