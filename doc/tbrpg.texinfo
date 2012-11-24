@@ -1489,7 +1489,7 @@ neutral protection.
 @cindex weapons, melée
 
 @multitable @columnfractions 0.20 0.10 0.10 0.17 0.15 0.28
-@item  @b{Weapon}@footnote{Includes ammonition and throwing weapons}
+@item  @b{Weapon}@footnote{Includes ammunition and throwing weapons}
 @tab   @b{Hands}
 @tab   @b{Type}@footnote{b = bludgeoning, p = piercing, s = slashing}
 @tab   @b{Speed factor}
@@ -2221,7 +2221,7 @@ resurrect the character right there.
 @cindex poison
 
 Charaters can be poisoned, their are many sources, poisoned
-weapons and ammonition, venomous creatures, potions, bad
+weapons and ammunition, venomous creatures, potions, bad
 food and drugges wines. Poisoned characters will be hurt a
 hit point or two every so often; healing spells and potions
 will not negate the progress, rather a poison specialised
@@ -2398,18 +2398,19 @@ details:
 @node The quiver
 @section The quiver
 @cindex quiver
-@cindex ammonition
+@cindex ammunition
 
 Every character have three quiver slots where you put your
-ammonition you want to used.
+ammunition you want to used.
 
 @table @b
 @item Arrow
-Ammonition for bows.
+Ammunition for bows.
 @item Bolt
-Ammonition for crossbows.
+Ammunition for crossbows.
+Also called quarrel.
 @item Bullet
-Ammonition (stones) for slings.
+Ammunition (stones) for slings.
 @end table
 
 
