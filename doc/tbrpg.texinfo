@@ -2351,6 +2351,8 @@ ground.
 Every character have three quick item slots, you should but
 you important potions, wands and spell scrolls here, it
 allows to use items without digging in your backpack.
+Quick items can often be bundled into a limited bundle of
+identical items, taking up just one slot.
 
 Item you can put in your quick item slots include:
 
@@ -2402,6 +2404,9 @@ details:
 
 Every character have three quiver slots where you put your
 ammunition you want to used.
+
+Ammunition items can often be bundled into a limited bundle
+of identical items, taking up just one slot.
 
 @table @b
 @item Arrow
@@ -2579,3 +2584,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Game play
 Spell list
 Element attack/defence
+vs missile/melee
+

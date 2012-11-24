@@ -3,6 +3,10 @@ RuleSet
 	char attack_roll_dices
 	char critical_hit
 	char critical_miss
+	ReputationChart reputation_chart
+	AbilityChart ability_chart
+	Inventory inventory_prototype
+	Spell[] spells
 
 ReputationChart
 	int[] reaction_adjustment
@@ -63,6 +67,7 @@ Ablities
 
 Party
 	int reputation
+	Character[] characters
 
 ExperienceChart
 	int[] experience
@@ -71,7 +76,8 @@ ExperienceChart
 	int[] hit_bonus
 
 SpellProgression
-	int[][] slots
+	int[][] wizard_slots
+	int[][] priest_slots
 
 Ammunition
 	int hit_bonus
@@ -79,7 +85,7 @@ Ammunition
 	char damage_dices
 	int damage_bonus
 
-Weapon
+Weapon: RightHandItem
 	char hands
 	char speed_factor
 	char rate_of_fire
@@ -87,8 +93,10 @@ Weapon
 	char damage_dice
 	char damage_dices
 	int damage_bonus
+	DamageType damage_type
+	WeaponGroup weapon_group
 
-Headgear
+Headgear: Item
 	bool critical_hit_protection
 
 DamageType
@@ -102,10 +110,11 @@ Proficiency
 	int damage bonus
 	char half_attacks
 
-QuestItem
+QuestItem: Item
 	int id
 
 Item
+	std::string name
 	int armour_class
 	int weight
 	bool identified
@@ -115,6 +124,12 @@ Item
 	int quantity
 	int quantity_limit
 	int unit_value
+	AbilityBonus bonuses
+	std::unorderd_map<DamageType, int> armour_class_modifiers
+
+ActionSlotChart	
+	std::unorderd_map<Class, long long> index_map
+	std::unorderd_map<long long, ActionSlots[]> slot_map
 
 Class
 	int hit_points
@@ -124,9 +139,17 @@ Class
 	bool learn_from_scroll
 	char proficiencies_each
 	char proficiencies_total
+	ExperienceChart experience_chart
+	SpellProgression spell_progression
+	AbilityBonus abilities
+	Abilites lower_limits
+	Spell[] special_abilties
+	Item[] can_use
+	std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart
 
 Race
 	Class[][] allowed_classes
+	AbilityBonus bonuses
 
 CharacterSheet
 	std::string name
@@ -138,6 +161,15 @@ CharacterSheet
 	char[] level
 	bool[] class_abondoned
 	std::unorderd_map<WeaponGroup, int> proficiencies
+	std::vector<Spell> affected_by
+	Inventory inventory
+	AbiltyBonus abilities
+	SpellBook spells
+	Race race
+	Race racial_enemy
+	Class[] prestige
+	MagicSchool specialisation
+	std::vector<Spell> special_abilities
 
 Character
 	int hit_points
@@ -145,11 +177,13 @@ Character
 	int morale
 	int intoxication
 	int fatigue
+	CharacterSheet record
 
 MagicSchool
 	std::string name
 	std::string coluration
 	std::string practicer
+	MagicSchool[] opposite
 
 Spell
 	std::string name
@@ -164,6 +198,7 @@ Spell
 	char duration_dice
 	char duration_dices
 	std::string effect_area
+	MagicSchool school
 
 AbilityChart
 	AbilityBonus[] strength
@@ -189,6 +224,31 @@ Inventory
 	Cloak cloak
 	Item[] personal
 
+Body: Item
+	Character character
+
+Ammunition: Item
+	Ammunition usable_with
+	DamageType damage_type
+
+AbilityBonus
+	Bonuses bonuses
+	ThiefAbilities thief_abilities
+	SavingThrows saving_throws
+	Abilities abilities
+	SpellBook spells
+	Spell[] effects
+
+SpellBook
+	std::vector<Spell> learned
+	std::vector<Spell> memorised
+
+Container: Item
+	std::vector<Item> contains
+	int contain_limit
+	float weight_modifier
+	Item[] can_contain
+
 Mace: BluntWeapon
 Fist: BluntWeapon
 Club: BluntWeapon
@@ -204,7 +264,7 @@ LargeSword: OneHandedMelee
 LongSword: LargeSword
 BastardSword: LargeSword
 OneHandedMelee: MeleeWeapon
-TwoHandedMelee:	MeleeWeapon
+TwoHandedMelee: MeleeWeapon
 MeleeWeapon: Weapon
 TwoHandedSword: TwoHandedMelee
 Halberd: TwoHandedMelee
@@ -224,7 +284,6 @@ LightCrossbow: Crossbow
 CompositeLongBow: Bow
 LongBow: Bow
 ShortBow: Bow
-Weapon: RightHandItem
 Shield: RightHandItem
 Buckler: Shield
 SmallShield: Shield
@@ -233,13 +292,10 @@ LargeShield: Shield
 Arrow: Ammunition
 Bullet: Ammunition
 Bolt: Ammunition
-Ammunition: Weapon
-Container: Item
 QuickItem: Item
 Potion: QuickItem
 Scroll: QuickItem
 Wand: QuickItem
-Headgear: Item
 Hat: Headgear
 Hood: Headgear
 Helmet: Headgear
@@ -255,8 +311,6 @@ RightHandItem: Item
 Gold: Gem
 Gem: Item
 Key: QuestItem
-QuestItem: Item
-Body: Item
 TextScroll: Item
 Ring: Item
 Amulett: Item
@@ -284,6 +338,4 @@ HalfElf: Race
 Dwarf: Race
 Halfling: Race
 Gnome: Race
-SpellBook
-AbilityBonus
 ActionSlot
