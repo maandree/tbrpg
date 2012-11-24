@@ -357,3 +357,59 @@ Dwarf: Race
 Halfling: Race
 Gnome: Race
 ActionSlot
+
+Lockable
+	bool locked
+	int pick_level
+	int bash_level
+	bool pickable
+	bool bashable
+
+Entrance
+	bool usable
+	std::string description
+	std::string direction
+	MapMinor leads_to
+
+MapMinor
+	std::string description
+	bool may_rest
+	Entrance[] connections
+	std::vector<Item> items
+	MapMajor is_in
+	RestInterruption[] interruptions
+
+RestInterruption
+	Creature[] creatures
+
+Creature: Character
+	bool hostile
+
+Map
+	MapMinor start
+	MapMajor[] majors
+
+MapMajor
+	std::string name
+	bool visible
+	bool visited
+	bool visitable
+	bool detectable
+	MapMinor[] minors
+	Road[] connetions
+
+Road
+	int first_distance
+	int last_distance
+	char waylay_dice
+	char waylay_dices
+	char waylay_rist
+	MapMinor waylay_map
+	MapMinor leads_to
+
+EnvironmentContainer: Container, Lockable
+Door: Entrance, Lockable
+Wilderness: MapMinor
+Town: MapMinor
+House: MapMinor
+
