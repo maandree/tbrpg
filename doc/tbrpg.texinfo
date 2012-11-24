@@ -1630,6 +1630,16 @@ neutral protection.
 @item 18  @tab 2'500'000  @tab 3'000'000  @tab 9+27
 @item 19  @tab 2'750'000  @tab 3'300'000  @tab 9+30
 @item 20  @tab 3'000'000  @tab 3'600'000  @tab 9+33
+@item 21  @tab 3'250'000  @tab 3'900'000  @tab 9+36
+@item 22  @tab 3'500'000  @tab 4'200'000  @tab 9+39
+@item 23  @tab 3'750'000  @tab 4'500'000  @tab 9+42
+@item 24  @tab 4'000'000  @tab 4'800'000  @tab 9+45
+@item 25  @tab 4'250'000  @tab 5'100'000  @tab 9+48
+@item 26  @tab 4'500'000  @tab 5'400'000  @tab 9+51
+@item 27  @tab 4'750'000  @tab 5'700'000  @tab 9+54
+@item 28  @tab 5'000'000  @tab 6'000'000  @tab 9+57
+@item 29  @tab 5'250'000  @tab 6'300'000  @tab 9+60
+@item 30  @tab 5'500'000  @tab 6'600'000  @tab 9+63
 @end multitable
 
 
@@ -1669,7 +1679,15 @@ neutral protection.
 @item 19  @tab 1'980'000  @tab 10+18
 @item 20  @tab 2'200'000  @tab 10+20
 @item 21  @tab 2'420'000  @tab 10+22
-@item 22  @tab 2'640'000  @tab 10+25
+@item 22  @tab 2'640'000  @tab 10+24
+@item 23  @tab 2'860'000  @tab 10+26
+@item 24  @tab 3'080'000  @tab 10+27
+@item 25  @tab 3'300'000  @tab 10+39
+@item 26  @tab 3'520'000  @tab 10+32
+@item 27  @tab 3'740'000  @tab 10+34
+@item 28  @tab 3'960'000  @tab 10+36
+@item 29  @tab 4'180'000  @tab 10+38
+@item 30  @tab 4'400'000  @tab 10+40
 @end multitable
 
 
@@ -1708,6 +1726,16 @@ neutral protection.
 @item 18  @tab 3'000'000  @tab 10+8
 @item 19  @tab 3'375'000  @tab 10+9
 @item 20  @tab 3'750'000  @tab 10+10
+@item 21  @tab 4'125'000  @tab 10+11
+@item 22  @tab 4'500'000  @tab 10+12
+@item 23  @tab 4'875'000  @tab 10+13
+@item 24  @tab 5'250'000  @tab 10+14
+@item 25  @tab 5'625'000  @tab 10+15
+@item 26  @tab 6'000'000  @tab 10+16
+@item 27  @tab 6'375'000  @tab 10+17
+@item 28  @tab 6'750'000  @tab 10+18
+@item 29  @tab 7'125'000  @tab 10+19
+@item 30  @tab 7'500'000  @tab 10+20
 @end multitable
 
 
@@ -1740,14 +1768,23 @@ neutral protection.
 @item 11  @tab   675'000  @tab   200'000  @tab 9+4
 @item 12  @tab   900'000  @tab   300'000  @tab 9+6
 @item 13  @tab 1'125'000  @tab   750'000  @tab 9+8
-@item 14  @tab 1'350'000  @tab 1'000'000  @tab 9+10
-@item 15  @tab 1'575'000  @tab 1'250'000  @tab 9+12
-@item 16  @tab 1'800'000  @tab 1'500'000  @tab 9+14
-@item 17  @tab 2'025'000  @tab 1'750'000  @tab 9+16
-@item 18  @tab 2'250'000  @tab 2'000'000  @tab 9+18
-@item 19  @tab 2'475'000  @tab 2'250'000  @tab 9+20
-@item 20  @tab 2'700'000  @tab 2'500'000  @tab 9+22
-@item 21  @tab 2'925'000  @tab 2'750'000  @tab 9+24
+@item 14  @tab 1'350'000  @tab 1'500'000  @tab 9+10
+@item 15  @tab 1'575'000  @tab 1'800'000  @tab 9+12
+@item 16  @tab 1'800'000  @tab 2'025'000  @tab 9+14
+@item 17  @tab 2'025'000  @tab 2'250'000  @tab 9+16
+@item 18  @tab 2'250'000  @tab 2'475'000  @tab 9+18
+@item 19  @tab 2'475'000  @tab 2'700'000  @tab 9+20
+@item 20  @tab 2'700'000  @tab 2'925'000  @tab 9+22
+@item 21  @tab 2'925'000  @tab 3'150'000  @tab 9+24
+@item 22  @tab 3'150'000  @tab 3'375'000  @tab 9+26
+@item 23  @tab 3'375'000  @tab 3'600'000  @tab 9+28
+@item 24  @tab 3'600'000  @tab 3'825'000  @tab 9+30
+@item 25  @tab 3'825'000  @tab 4'050'000  @tab 9+32
+@item 26  @tab 4'050'000  @tab 4'275'000  @tab 9+34
+@item 27  @tab 4'275'000  @tab 4'500'000  @tab 9+36
+@item 28  @tab 4'500'000  @tab 4'725'000  @tab 9+38
+@item 29  @tab 4'725'000  @tab 4'950'000  @tab 9+40
+@item 30  @tab 4'950'000  @tab 5'175'000  @tab 9+42
 @end multitable
 
 
@@ -1787,6 +1824,8 @@ neutral protection.
 @item 16  @tab 9  @tab 3  @tab 3  @tab 3
 @end multitable
 
+Rangers cannot be progress spells beyond level 16.
+
 
 @node Paladin spell progression
 @section Paladin spell progression
@@ -1814,6 +1853,8 @@ neutral protection.
 @item 20  @tab 9  @tab 3  @tab 3  @tab 3  @tab 3
 @end multitable
 
+Paladin cannot be progress spells beyond level 20.
+
 
 @node Bard spell progression
 @section Bard spell progression
@@ -1832,9 +1873,9 @@ neutral protection.
 @item  2  @tab 1  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
 @item  3  @tab 1  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0  @tab 0
 @item  4  @tab 1  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0
-@item  5  @tab 2  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
-@item  6  @tab 2  @tab 3  @tab 3  @tab 0  @tab 0  @tab 0  @tab 0
-@item  7  @tab 2  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0
+@item  5  @tab 2  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0  @tab 0
+@item  6  @tab 2  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0  @tab 0
+@item  7  @tab 2  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0  @tab 0
 @item  8  @tab 3  @tab 3  @tab 3  @tab 1  @tab 0  @tab 0  @tab 0
 @item  9  @tab 3  @tab 3  @tab 3  @tab 2  @tab 0  @tab 0  @tab 0
 @item 10  @tab 3  @tab 3  @tab 3  @tab 2  @tab 1  @tab 0  @tab 0
@@ -1852,6 +1893,8 @@ neutral protection.
 @item 22  @tab 7  @tab 5  @tab 5  @tab 4  @tab 4  @tab 4  @tab 3
 @item 23  @tab 8  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 4
 @end multitable
+
+Bards cannot be progress spells beyond level 23.
 
 
 @node Priest spell progression
@@ -1888,9 +1931,19 @@ neutral protection.
 @item 16  @tab 7  @tab 7  @tab 7  @tab 6  @tab 4  @tab 3  @tab 1
 @item 17  @tab 7  @tab 7  @tab 7  @tab 7  @tab 5  @tab 3  @tab 2
 @item 18  @tab 8  @tab 8  @tab 8  @tab 8  @tab 6  @tab 4  @tab 2
-@item 19  @tab 9  @tab 9  @tab 8  @tab 8  @tab 6  @tab 4  @tab 2
+@item 19  @tab 9  @tab 9  @tab 9  @tab 8  @tab 6  @tab 4  @tab 2
 @item 20  @tab 9  @tab 9  @tab 9  @tab 8  @tab 7  @tab 5  @tab 2
 @item 21  @tab 9  @tab 9  @tab 9  @tab 9  @tab 8  @tab 6  @tab 2
+@item 22  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 6  @tab 3
+@item 23  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 7  @tab 3
+@item 24  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 8  @tab 3
+@item 25  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 8  @tab 4
+@item 26  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 4
+@item 27  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 5
+@item 28  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 6
+@item 29  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 7
+@item 30  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 9  @tab 8
+
 @end multitable
 
 
@@ -1931,8 +1984,20 @@ neutral protection.
 @item 17  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 0
 @item 18  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 2  @tab 1
 @item 19  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 3  @tab 3  @tab 1
-@item 20  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 3  @tab 3  @tab 2
+@item 20  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 3  @tab 3  @tab 1
+@item 21  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
+@item 22  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 4  @tab 3  @tab 1
+@item 23  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3  @tab 2
+@item 24  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 4  @tab 2
+@item 25  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 5  @tab 2
+@item 26  @tab 6  @tab 6  @tab 6  @tab 6  @tab 5  @tab 5  @tab 5  @tab 5  @tab 3
+@item 27  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 5  @tab 5  @tab 3
+@item 28  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 6  @tab 3
+@item 29  @tab 7  @tab 7  @tab 7  @tab 7  @tab 6  @tab 6  @tab 6  @tab 6  @tab 4
+@item 30  @tab 7  @tab 7  @tab 7  @tab 7  @tab 7  @tab 7  @tab 6  @tab 6  @tab 4
 @end multitable
+
+Wizards starts with 2 cantrips (level 0 spells) and gain 1 every other level up.
 
 
 
