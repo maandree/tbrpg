@@ -1,0 +1,289 @@
+RuleSet
+	char attack_roll_dice
+	char attack_roll_dices
+	char critical_hit
+	char critical_miss
+
+ReputationChart
+	int[] reaction_adjustment
+	bool[] wanted
+	int[] killing_innocent
+	int[] injuring_innocent
+	int[] stealing
+	int[] killing_guard
+	int[] donation_needed
+	float[] price_adjustment
+	int[] good_reaction
+	int[] neutral_reaction
+	int[] evil_reaction
+	char[] alignment_reputation
+
+Bonuses
+	int hit_bonus
+	int damage_bonus
+	int carry_limit
+	float bashing
+	int missile_attack_bonus
+	int armour_class_bonus
+	int hit_point_bonus
+	float resurrectability
+	int reaction_bonus
+	char spell_level_limit
+	float spell_learn
+	char max_spells_level
+	int lore_bonus
+	int magic_defence_bonus
+	float spell_failure
+	int[] bonus_spells
+	int morale
+	int luck
+	float detect_doors
+
+ThiefAbilities
+	int find_traps
+	int open_locks
+	int pick_pockets
+	int stealth
+
+SavingThrows
+	int breath
+	int paralyze_poison_death
+	int petrification_ponymorph
+	int rod_staff_wand
+	int spell
+
+Ablities
+	char strength
+	char strength18
+	char constitution
+	char dexterity
+	char intelligence
+	char wisdom
+	char charisma
+
+Party
+	int reputation
+
+ExperienceChart
+	int[] experience
+	char[] hit_dices
+	char[] hit_dice
+	int[] hit_bonus
+
+SpellProgression
+	int[][] slots
+
+Ammunition
+	int hit_bonus
+	char damage_dice
+	char damage_dices
+	int damage_bonus
+
+Weapon
+	char hands
+	char speed_factor
+	char rate_of_fire
+	int hit_bonus
+	char damage_dice
+	char damage_dices
+	int damage_bonus
+
+Headgear
+	bool critical_hit_protection
+
+DamageType
+	std::string name
+
+WeaponGroup
+	std::string name
+
+Proficiency
+	int hit_bonus
+	int damage bonus
+	char half_attacks
+
+QuestItem
+	int id
+
+Item
+	int armour_class
+	int weight
+	bool identified
+	int lore_value
+	bool stuck
+	bool cursed
+	int quantity
+	int quantity_limit
+	int unit_value
+
+Class
+	int hit_points
+	int thac0
+	int lore_bonus
+	bool[] alignments
+	bool learn_from_scroll
+	char proficiencies_each
+	char proficiencies_total
+
+Race
+	Class[][] allowed_classes
+
+CharacterSheet
+	std::string name
+	char colour
+	char alignment
+	std::string portrait
+	bool female
+	int[] experience
+	char[] level
+	bool[] class_abondoned
+	std::unorderd_map<WeaponGroup, int> proficiencies
+
+Character
+	int hit_points
+	char alive
+	int morale
+	int intoxication
+	int fatigue
+
+MagicSchool
+	std::string name
+	std::string coluration
+	std::string practicer
+
+Spell
+	std::string name
+	bool wizard
+	bool priest
+	char level
+	char saving
+	bool touch
+	float range
+	char casting_time
+	char duration
+	char duration_dice
+	char duration_dices
+	std::string effect_area
+
+AbilityChart
+	AbilityBonus[] strength
+	AbilityBonus[] strength18
+	AbilityBonus[] dexterity
+	AbilityBonus[] constitution
+	AbilityBonus[] intelligence
+	AbilityBonus[] wisdom
+	AbilityBonus[] charisma
+
+Inventory
+	Weapon[] left_hand
+	RightHandItem right_hand
+	Ammunition[] quiver
+	QuickItem[] quick_items
+	Headgear headgear
+	Amulett amulett
+	Ring[] rings
+	BodyArmour body
+	Gauntlets gauntlets
+	Grindle grindle
+	Boots boots
+	Cloak cloak
+	Item[] personal
+
+Mace: BluntWeapon
+Fist: BluntWeapon
+Club: BluntWeapon
+Flail: BluntWeapon
+Torch: BluntWeapon
+MorningStar: BluntWeapon
+BluntWeapon: OneHandedMelee
+WarHammer: OneHandedMelee
+Dagger: OneHandedMelee
+BattleAxe: OneHandedMelee
+ShortSword: OneHandedMelee
+LargeSword: OneHandedMelee
+LongSword: LargeSword
+BastardSword: LargeSword
+OneHandedMelee: MeleeWeapon
+TwoHandedMelee:	MeleeWeapon
+MeleeWeapon: Weapon
+TwoHandedSword: TwoHandedMelee
+Halberd: TwoHandedMelee
+Fists: TwoHandedMelee
+Spear: TwoHandedMelee
+Quarterstaff: TwoHandedMelee
+ThrowingAxe: Throwing
+ThrowingDagger: Throwing
+Dart: Throwing
+Throwing: RangedWeapon
+RangedWeapon: Weapon
+Bow: RangedWeapon
+Sling: RangedWeapon
+Crossbow: RangedWeapon
+HeavyCrossbow: Crossbow
+LightCrossbow: Crossbow
+CompositeLongBow: Bow
+LongBow: Bow
+ShortBow: Bow
+Weapon: RightHandItem
+Shield: RightHandItem
+Buckler: Shield
+SmallShield: Shield
+MediumShield: Shield
+LargeShield: Shield
+Arrow: Ammunition
+Bullet: Ammunition
+Bolt: Ammunition
+Ammunition: Weapon
+Container: Item
+QuickItem: Item
+Potion: QuickItem
+Scroll: QuickItem
+Wand: QuickItem
+Headgear: Item
+Hat: Headgear
+Hood: Headgear
+Helmet: Headgear
+BodyArmour: Item
+Robe: BodyArmour
+LeatherArmour: BodyArmour
+StuddedLeatherArmour: BodyArmour
+ChainMail: BodyArmour
+SplintMail: BodyArmour
+PlateMail: BodyArmour
+FullPlateMail: BodyArmour
+RightHandItem: Item
+Gold: Gem
+Gem: Item
+Key: QuestItem
+QuestItem: Item
+Body: Item
+TextScroll: Item
+Ring: Item
+Amulett: Item
+Grindle: Item
+Boots: Item
+Gauntlets: Item
+Cloak: Item
+Mage: Wizard
+Sorcerer: Wizard
+Cleric: Priest
+Druid: Priest
+Bard: Rogue
+Thief: Rogue
+Fighter: Warrior
+Ranger: Warrior
+Paladin: Warrior
+Wizard: Class
+Priest: Class
+Rogue: Class
+Warrior: Class
+Elf: Race
+Human: Race
+HalfOrc: Race
+HalfElf: Race
+Dwarf: Race
+Halfling: Race
+Gnome: Race
+SpellBook
+AbilityBonus
+ActionSlot
