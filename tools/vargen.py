@@ -88,7 +88,7 @@ for line in lines:
             file.flush()
         
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long']
-        numericals = ['signed ' + t for t in numbericals] + ['unsigned ' + t for t in numbericals]
+        numericals = ['signed ' + t for t in numericals] + ['unsigned ' + t for t in numericals]
         (varInit, varCopy, varMove, varFree) = ([], [], [], [])
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
