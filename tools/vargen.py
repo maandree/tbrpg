@@ -41,167 +41,86 @@ for line in lines:
     if line[0] == '\t':
         varLines.append(line[1:])
     else:
-        DO-STUFF
+        classComment classLine[classLine.find(';') + 1:].strip()
+        classLine = classLine[:classLine.find(';')].strip()
+        className = classLine
+        if ':' in className:
+            className = className[:className.find(':')]
+        
+        output = copyNotice + '\n'
+        output += '#ifndef __%s__\n' % className.upper()
+        output += '#define __%s__\n' % className.upper()
+        output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n/**\n'
+        output += ' * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
+        output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
+        output += 'namespace tbrpg\n{\n'
+        output += '  /**\n   * %s\n   */\n  class %s\n  {\n  public:\n' % (classComment, classLine)
+        for varLine in varLines:
+            varComment varLine[varLine.find(';') + 1:].strip()
+            varLine = varLine[:varLine.find(';')].strip()
+            output += '    /**\n     * %s\n     */\n    %s\n\n' % (varComment, varLine)
+        output += '\n\n    /**\n     * Construction\n     */\n    %s();\n\n' % className
+        output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
+        output += '     */\n    %s(const %s& original);\n\n' % (className, className)
+        output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
+        output += '     */\n    %s(%s& original);\n\n' % (className, className)
+        output += '    /**\n     * Move constructor\n     * \n     * @param  original  The object to clone\n'
+        output += '     */\n    %s(%s&& original);\n\n\n\n' % (className, className)
+        output += '    /**\n     * Destructor\n     */\n    virtual ~%s();\n\n\n\n' % className
+        output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
+        output += '     * @return            The invoked object\n'
+        output += '     */    virtual %s& operator =(const %s& original);\n\n' % (className, className)
+        output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
+        output += '     * @return            The invoked object\n'
+        output += '     */    virtual %s& operator =(%s& original);\n\n' % (className, className)
+        output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
+        output += 'its resourced will be moved\n     * @return            The invoked object\n'
+        output += '     */    virtual %s& operator =(%s&& original);\n\n' % (className, className)
+        output += '  };\n'
+        output += '}\n\n\n'
+        output += '#endif//__%s__\n' % className.upper()
+        with open(className + '.hpp') as file:
+            file.write(output.encode('utf-8'))
+            file.flush()
+        
+        ### TODO varInit
+        ### TODO varCopy
+        ### TODO varMove
+        ### TODO varFree
+        varInit = '\n'.join(['    //' + item for item in (['TODO implement constructor'] + varInit)])
+        varCopy = '\n'.join(['    ' + item for item in varCopy])
+        varMove = '\n'.join(['    ' + item for item in varMove])
+        varFree = '\n'.join(['    //' + item for item in (['TODO implement destructor'] + varFree)])
+        output = '%s\n#include "%s.hpp"\n' % (copyNotice, className)
+        output += '\n\n/**\n * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
+        output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
+        output += 'namespace tbrpg\n{\n'
+        output += '  /**\n   * Constructor\n   */\n  %s::%s()\n  {\n%s\n  }\n\n' % (className, className, varInit)
+        output += '  /**\n   * Copy constructor\n   * \n   * @param  original  The object to clone\n   */\n'
+        output += '  %s::%s(const %s& original)\n  {\n%s\n  }\n\n' % (className, className, className, varCopy)
+        output += '  /**\n   * Copy constructor\n   * \n   * @param  original  The object to clone\n   */\n'
+        output += '  %s::%s(%s& original)\n  {\n%s\n  }\n\n' % (className, className, className, varCopy)
+        output += '  /**\n   * Move constructor\n   * \n   * @param  original  The object to clone\n   */\n'
+        output += '  %s::%s(%s&& original)\n  {\n%s\n  }\n\n\n\n' % (className, className, className, varMove)
+        output += '  /**\n   * Destructor\n   */\n'
+        output += '  %s::~%s()\n  {\n%s\n  }\n\n\n\n' % (className, className, className, varFree)
+        output += '    /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
+        output += '   * @return            The invoked object\n   */'
+        output += '\n  %s& %s::operator =(const %s& original)\n  {\n' % (className, className, className)
+        output += '%s\n    return *this;\n  }\n\n' % varCopy
+        output += '    /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
+        output += '   * @return            The invoked object\n   */'
+        output += '\n  %s& %s::operator =(%s& original)\n  {\n' % (className, className, className)
+        output += '%s\n    return *this;\n  }\n\n' % varCopy
+        output += '    /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
+        output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
+        output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
+        output += '%s\n    return *this;\n  }\n\n' % varMove
+        output += '}\n\n'
+        with open(className + '.cc') as file:
+            file.write(output.encode('utf-8'))
+            file.flush()
+        
         classLine = line
         varLines = []
 
-
-
-
-
-"""
-namespace tbrpg
-{
-  /**
-   * Item base class
-   */
-  class Item
-  {
-  protected:
-    /**
-     * The item's weight in grams
-     */
-    int weight;
-    
-    /**
-     * Is the item stuck in its current position?
-     */
-    bool stuck;
-    
-    /**
-     * The item's monetary value
-     */
-    int value;
-    
-    /**
-     * Is the item identified?
-     */
-    bool identified;
-    
-    /**
-     * The lore needed to be able to identify the item without magic
-     */
-    int identifyLore;
-    
-    /**
-     * Is the item cursed?
-     */
-    bool cursed;
-    
-    
-  public:
-    /**
-     * Constructor
-     */
-    Item();
-    
-    /**
-     * Copy constructor
-     *
-     * @param  original  The object to clone
-     */
-    Item(const Item& original);
-    
-    /**
-     * Copy constructor
-     *
-     * @param  original  The object to clone
-     */
-    Item(Item& original);
-    
-    /**
-     * Move constructor
-     *
-     * @param  original  The object to clone
-     */
-    Item(Item&& original);
-    
-    
-    
-    /**
-     * Destructor
-     */
-    virtual ~Item();
-    
-    
-    
-    /**
-     * Assignment operator
-     * 
-     * @param   original  The reference object
-     * @return            The invoked object
-     */
-    virtual Item& operator =(const Item& original);
-    
-    /**
-     * Assignment operator
-     * 
-     * @param   original  The reference object
-     * @return            The invoked object
-     */
-    virtual Item& operator =(Item& original);
-    
-    /**
-     * Move operator
-     * 
-     * @param   original  The moved object, its resourced will be moved
-     * @return            The invoked object
-     */
-    virtual Item& operator =(Item&& original);
-    
-    
-    
-    /**
-     * Get the weight of the item
-     * 
-     * @return  The weight of the item
-     */
-    virtual int getWeight() const;
-    
-    /**
-     * Is the item stuck in its position
-     * 
-     * @return  Whether the item is stuck in its position
-     */
-    virtual bool isStuck() const;
-    
-    /**
-     * Get the item's monetary value
-     * 
-     * @return  The item's monetary value
-     */
-    virtual int getValue() const;
-    
-    /**
-     * Is the item identified?
-     * 
-     * @return  Wether the item identified
-     */
-    virtual bool isIdentified() const;
-    
-    /**
-     * Get the lore needed to be able to identify the item without magic
-     * 
-     * @return  The lore needed to be able to identify the item without magic
-     */
-    virtual int getIdentifyLore() const;
-    
-    /**
-     * Set the item as identified
-     */
-    virtual void identify();
-    
-    /**
-     * Is the item cursed?
-     * 
-     * @return  Whether the item is cursed
-     */
-    virtual bool isCursed() const;
-    
-  };
-}
-
-
-#endif//__ITEM__
-
-"""
