@@ -40,6 +40,9 @@ for line in lines:
         continue
     if line[0] == '\t':
         varLines.append(line[1:])
+    elif classLine is None:
+        classLine = line
+        varLines = []
     else:
         classLine = line
         classComment = classLine[classLine.index(';') + 1:].strip()
@@ -48,7 +51,7 @@ for line in lines:
         if ':' in className:
             className = className[:className.index(':')]
         
-        output = copyNotice + '\n'
+        output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
         output += '#define __%s__\n' % className.upper()
         output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n/**\n'
@@ -80,7 +83,7 @@ for line in lines:
         output += '  };\n'
         output += '}\n\n\n'
         output += '#endif//__%s__\n' % className.upper()
-        with open(className + '.hpp') as file:
+        with open(className + '.hpp', 'wb') as file:
             file.write(output.encode('utf-8'))
             file.flush()
         
@@ -112,7 +115,7 @@ for line in lines:
         varCopy = '\n'.join(['    ' + item for item in varCopy])
         varMove = '\n'.join(['    ' + item for item in varMove])
         varFree = '\n'.join(['    //' + item for item in (['TODO implement destructor'] + varFree)])
-        output = '%s\n#include "%s.hpp"\n' % (copyNotice, className)
+        output = '// -*- mode: c++, coding: utf-8 -*-\n%s\n#include "%s.hpp"\n' % (copyNotice, className)
         output += '\n\n/**\n * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
         output += 'namespace tbrpg\n{\n'
@@ -138,7 +141,7 @@ for line in lines:
         output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
         output += '%s\n    return *this;\n  }\n\n' % varMove
         output += '}\n\n'
-        with open(className + '.cc') as file:
+        with open(className + '.cc', 'wb') as file:
             file.write(output.encode('utf-8'))
             file.flush()
         
