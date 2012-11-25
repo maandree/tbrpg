@@ -292,15 +292,15 @@ above, the classes inside brackets have +6 (9 instead of 3) on
 their lower bound on the indicated ability.
 
 The score of an each ability is determined by rolling three
-six-sided dices and sum the values up. If the lower bound
+six-sided dies and sum the values up. If the lower bound
 is not satisified the value will be set to the lower bound.
 Additionally fighters, rangers and paladins throw two
-(ordered) ten-sided dice that determines that extra value on
+(ordered) ten-sided die that determines that extra value on
 the strenght if it is set to 18. The extra strength value is
 0 for non-fighters and for fighters ten times the first roll
 plus the seconds roll subtacted by ten. The strength 18 with
 100 as the extra is displayed as 18/00. During the character
-creation you can rearrange the values and reroll the dices
+creation you can rearrange the values and reroll the dice
 until you are satisfied.
 
 
@@ -627,8 +627,8 @@ How long the spell's effect lasts, ‘0’ indicates that the
 effect has no time span. Spells with duraction can be
 negated sometimes by potions or other spells, usally Dispel
 magic will do the trick. Some spells have a variable
-duration indicated by a dice roll notation; for example
-‘2D4+1 rounds’ means that two four-sided dices are thrown
+duration indicated by a die roll notation; for example
+‘2D4+1 rounds’ means that two four-sided dice are thrown
 and that the sum of the eyes, added by 1, is the number of
 round that the spell's effect will last.
 
@@ -1235,7 +1235,7 @@ somtimes gain control over the undead.
 A character can continue to operate at peak efficiency for
 24 hours game time, after which the character receieves a
 −1 luck penalty evety fourth hour. −1 luck means that every
-roll (dice) value is decrease by one, the value can however
+roll (die) value is decrease by one, the value can however
 not go below 1. If a character do not spell for five days
 he may at any time fall unconscious.
 
@@ -2329,6 +2329,7 @@ factors of weapons.
 @cindex round
 
 A turn consists of ten rounds. @c TODO  further describe
+@c TODO  relatation between round/turns and time
 
 
 
@@ -2613,7 +2614,7 @@ go to it at any time you reach any major area edge.
 Major areas have distances between them which effects how
 long it takes for your party to reach the target area.
 While traviling there is risk of running into enemies,
-which is decided by a dice roll depending on the road.
+which is decided by a die roll depending on the road.
 The risk of running into enemies is doubled during the
 dark hours.
 
@@ -2687,5 +2688,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game play
 Spell list
-Relatation between round/turns and time
 Getting more proficiencies
+Priests getting spells
