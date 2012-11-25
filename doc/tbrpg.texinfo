@@ -71,6 +71,7 @@ Texts. A copy of the license is included in the section entitled
 * Time rules::                        Time rules.
 * Inventory and equipment::           The inventory and equipment.
 * Map and environment::               The map and environments.
+* Dice and modifiers::                Dice and modifiers.
 * License of tbrpg::                  tbrpg's License.
 * GNU General Public License::        GNU General Public License
 * GNU Free Documentation License::    GNU Free Documentation License
@@ -296,10 +297,11 @@ six-sided dies and sum the values up. If the lower bound
 is not satisified the value will be set to the lower bound.
 Additionally fighters, rangers and paladins throw two
 (ordered) ten-sided die that determines that extra value on
-the strenght if it is set to 18. The extra strength value is
-0 for non-fighters and for fighters ten times the first roll
-plus the seconds roll subtacted by ten. The strength 18 with
-100 as the extra is displayed as 18/00. During the character
+the strength if it is set to 18. The extra strength value is
+0 for non-fighters and for fighters the first roll modulo 10
+times 10 plus the second roll modulo 10, if this adds up to
+0, than the value is instead 100. The strength 18 with 100 as
+the extra is displayed as 18/00. During the character
 creation you can rearrange the values and reroll the dice
 until you are satisfied.
 
@@ -2641,6 +2643,33 @@ inside them for other items, the latter may be locked in the
 same way as doors. Creatures have positions and may be
 hostile. Hostile creatures may be resurrected when you leave
 the area.
+
+
+
+@node Dice and modifiers
+@chapter Dice and modifiers
+@cindex dice
+@cindex modifiers
+
+There are two types of modifiers, units and procents. A unit
+modifier is added to the outcome of a die roll and procents
+are multiplied to the agumented die roll, it usually is less
+than 100 %, but can be higher than 100 %.
+
+A die roll is written as the number of dice followed by the
+die type, that is the number of sides on the dice prepending
+by a `D'. D6 is a regular six-sided die, and 2D6 is two such
+dice whose value are added.
+
+This game uses ten different dice. First off, there three
+simulated dice, D2, D3 and D100. D2 is simulated by a
+dividing a D4's values and round up, D3 works the same way
+but uses a D6. D100 is simulated by rolling two separate D10
+dice, the first roll times 10 plus the second roll, which
+roll with a modulo 10 agument determines the outcome of a
+D100 roll. Then there are five plutonic solids, D4, D6, D8,
+D12 and D20. Finally there are two non-plutonic solids with
+uniform stocastic distribution: D10 and D24.
 
 
 
