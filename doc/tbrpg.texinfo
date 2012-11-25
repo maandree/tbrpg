@@ -70,6 +70,7 @@ Texts. A copy of the license is included in the section entitled
 * Combat rules::                      Combat rules.
 * Time rules::                        Time rules.
 * Inventory and equipment::           The inventory and equipment.
+* Map and environment::               The map and environments.
 * License of tbrpg::                  tbrpg's License.
 * GNU General Public License::        GNU General Public License
 * GNU Free Documentation License::    GNU Free Documentation License
@@ -2568,7 +2569,76 @@ Item contains, usually they decrease the effect weight
 of the items they contain.
 @end table
 
-  
+
+
+@node Map and environment
+@chapter Map and environment
+
+@menu
+* The map::                    The map.
+@end menu
+
+
+@node The map
+@section The map
+@cindex map
+
+@cindex locked doors
+@cindex doors
+@cindex world map
+@cindex area map
+@cindex major area
+The game consists of a world map and and area maps. The
+world map is a network of area maps, area maps can contain
+other area maps. In an area map there are connections to
+other area maps, they may be of another area map in the
+world map (a major area), or they may or may not be blocked
+by a locked doored. Locked doors can often be opened by
+picking or bashing, but sometimes they are opened by quest
+events.
+
+When reaching the edge of a major area it is possible that
+you can detect new major areas, but sometimes they are only
+added to your map by quest events. When going to the edge of
+a major area all neighbouring major areas that are in your
+map, or detected, become visitable which means that you can
+go to it at any time you reach any major area edge.
+
+@cindex area distance
+@cindex map area distance
+@cindex waylay
+Major areas have distances between them which effects how
+long it takes for your party to reach the target area.
+While traviling there is risk of running into enemies,
+which is decided by a dice roll depending on the road.
+The risk of running into enemies is doubled during the
+dark hours.
+
+
+@node The environment
+@section The environment
+@cindex environment
+
+@cindex rest
+@cindex sleep
+Whether you can rest or not depends on the environment,
+generally you will be able to rest outdoors but not indoors
+(except for rented room). When you rest there is a risk
+that your sleep will be interrupted, it can either be by
+hostiles or by guards telling you that you man not spell
+there and should find an inn.
+
+@cindex items
+@cindex hostiles
+@cindex creatures
+An environment consists of items an creatures. Some items
+you can take with you, others are stuck and you can look
+inside them for other items, the latter may be locked in the
+same way as doors. Creatures have positions and may be
+hostile. Hostile creatures may be resurrected when you leave
+the area.
+
+
 
 @node License of tbrpg
 @appendix License of tbrpg

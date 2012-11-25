@@ -374,8 +374,11 @@ Entrance
 MapMinor
 	std::string description
 	bool may_rest
+	float area
+	Road[] roads
 	Entrance[] connections
 	std::vector<Item> items
+	std::vector<Creature> creatures
 	MapMajor is_in
 	RestInterruption[] interruptions
 
@@ -384,6 +387,10 @@ RestInterruption
 
 Creature: Character
 	bool hostile
+	float x
+	float y
+	boolean alive
+	boolean resurrect
 
 Map
 	MapMinor start
@@ -396,7 +403,6 @@ MapMajor
 	bool visitable
 	bool detectable
 	MapMinor[] minors
-	Road[] connetions
 
 Road
 	int first_distance
@@ -404,6 +410,7 @@ Road
 	char waylay_dice
 	char waylay_dices
 	char waylay_rist
+	std::string direction
 	MapMinor waylay_map
 	MapMinor leads_to
 
