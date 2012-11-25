@@ -1,193 +1,192 @@
-RuleSet
-	char attack_roll_dice
-	char attack_roll_dices
-	char critical_hit
-	char critical_miss
-	ReputationChart reputation_chart
-	AbilityChart ability_chart
-	Inventory inventory_prototype
-	Spell[] spells
-	Race[] allowed_races
+RuleSet                                  ; Game rolues
+	char attack_roll_dice            ; The number of sides on the dices to roll at the attack roll
+	char attack_roll_dices           ; The number of dices to roll at the attack roll
+	char critical_hit                ; The minimum attack roll needed for a critical hit
+	char critical_miss               ; The maximum attack roll needed for a critical miss
+	ReputationChart reputation_chart ; The reputation chart
+	AbilityChart ability_chart       ; The ability chart
+	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
+	Spell[] spells                   ; All spells, very useful for when new characters selects spells, or to restrict imported characters
+	Race[] races                     ; Races in the game that new charactes can chooses
 
-ReputationChart
-	int[] reaction_adjustment
-	bool[] wanted
-	int[] killing_innocent
-	int[] injuring_innocent
-	int[] stealing
-	int[] killing_guard
-	int[] donation_needed
-	float[] price_adjustment
-	int[] good_reaction
-	int[] neutral_reaction
-	int[] evil_reaction
-	char[] alignment_reputation
+ReputationChart                          ; 
+	int[] reaction_adjustment        ; 
+	bool[] wanted                    ; 
+	int[] killing_innocent           ; 
+	int[] injuring_innocent          ; 
+	int[] stealing                   ; 
+	int[] killing_guard              ; 
+	int[] donation_needed            ; 
+	float[] price_adjustment         ; 
+	int[] good_reaction              ; 
+	int[] neutral_reaction           ; 
+	int[] evil_reaction              ; 
+	char[] alignment_reputation      ; 
 
-Bonuses
-	int hit_bonus
-	int damage_bonus
-	int carry_limit
-	float bashing
-	int missile_attack_bonus
-	int armour_class_bonus
-	int hit_point_bonus
-	float resurrectability
-	int reaction_bonus
-	char spell_level_limit
-	float spell_learn
-	char max_spells_level
-	int lore_bonus
-	int magic_defence_bonus
-	float spell_failure
-	int[] bonus_spells
-	int morale
-	int luck
-	float detect_doors
+Bonuses                                  ; Bonuses
+	int hit_bonus                    ; Hit bonus
+	int damage_bonus                 ; Damage bonus
+	int carry_limit                  ; Weight carry limit
+	float bashing                    ; Bashing chance
+	int missile_attack_bonus         ; Missile attack bonus
+	int armour_class_bonus           ; Armour class bonus
+	int hit_point_bonus              ; Hit point bonus
+	float resurrectability           ; Resurrectability
+	int reaction_bonus               ; Reaction bonus
+	char spell_level_limit           ; Spell level limit
+	float spell_learn                ; Chance to learn spell
+	char max_spells_level            ; Maximum learned spells per limit
+	int lore_bonus                   ; Lore bonus
+	float magic_defence_bonus        ; Resistance against magic bonus
+	float spell_failure              ; Chance to fail spell casting
+	int[] bonus_spells               ; Extra spell slots per spell level
+	int morale                       ; Morale bonus
+	int luck                         ; Luck bonus
+	float detect_doors               ; Detect secret door bonus
 
-Defence
-	int melee
-	int missile
-	float fire
-	float cold
-	float lightning
-	float acid
-	float poison
-	float physical
+Defence                                  ; Defence class
+	int melee                        ; Armour class versus melée bonus
+	int missile                      ; Armour class versus missile bonus
+	float fire                       ; Resistance against fire bonus
+	float cold                       ; Resistance against cold bonus
+	float lightning                  ; Resistance against lightning bonus
+	float acid                       ; Resistance against acid bonus
+	float poison                     ; Resistance against poison bonus
+	float physical                   ; Resistance against physical damage bonus
 
-ThiefAbilities
-	int find_traps
-	int open_locks
-	int pick_pockets
-	int stealth
+ThiefAbilities                           ; Thief abilities
+	int find_traps                   ; Find traps scores
+	int open_locks                   ; Open locks scores
+	int pick_pockets                 ; Pick pockets scores
+	int stealth                      ; Stealth scores
 
-SavingThrows
-	int breath
-	int paralyze_poison_death
-	int petrification_ponymorph
-	int rod_staff_wand
-	int spell
+SavingThrows                             ; Saving throws
+	int breath                       ; Save versus breath weapons
+	int paralyze_poison_death        ; Save versus paralyzation/poison/death magic
+	int petrification_polymorph      ; Save versus petrification/polymorph
+	int rod_staff_wand               ; Save versus rods/staffs/wands
+	int spell                        ; Save versus spells
 
-Ablities
-	char strength
-	char strength18
-	char constitution
-	char dexterity
-	char intelligence
-	char wisdom
-	char charisma
+Ablities                                 ; Ability scores
+	short strength                   ; The strength, excluding extra for 18
+	short strength18                 ; Extra strength for strength 18
+	short constitution               ; The constitution
+	short dexterity                  ; The dexterity
+	short intelligence               ; The intelligence
+	short wisdom                     ; The wisdom
+	short charisma                   ; The charisma
 
-Party
-	int reputation
-	Character[] characters
+Party                                    ; The players' party
+	int reputation                   ; The party's reputation
+	Character[] characters           ; The characters in the party
 
-ExperienceChart
-	int[] experience
-	char[] hit_dices
-	char[] hit_dice
-	int[] hit_bonus
+ExperienceChart                          ; Experience chart
+	int[] experience                 ; Required experience for each level
+	char[] hit_point_dice            ; The number of sides of the dices to roll that determines the hit points gained when a level is reached
+	char[] hit_point_dices           ; The number of dices to roll that determines the hit points gained when a level is reached
+	int[] hit_point_bonus            ; Hit points gained when a level is reached
 
-SpellProgression
-	int[][] wizard_slots
-	int[][] priest_slots
+SpellProgression                         ; Spell progression chart
+	int[][] wizard_slots             ; The number of wizard spell slots per character level and spell level
+	int[][] priest_slots             ; The number of priest spell slots per character level and spell level
 
-Ammunition
-	int hit_bonus
-	char damage_dice
-	char damage_dices
-	int damage_bonus
-	DamageType[] damage_type
-	RangedWeapon usable_with
+Ammunition: Item                         ; Ammunition item class
+	int hit_bonus                    ; The hit bonus the ammunition brings
+	char damage_dice                 ; The number of sides on the dices rolled to determine the inflicted damage
+	char damage_dices                ; The number dices rolled to determine the inflicted damage
+	int damage_bonus                 ; Damage modifier
+	RangedWeapon usable_with         ; Weapon that the ammunition can be used with
+	DamageType damage_type           ; The damage type inflicted by the ammunition
 
-Weapon: RightHandItem
-	char hands
-	char speed_factor
-	char rate_of_fire
-	int hit_bonus
-	char damage_dice
-	char damage_dices
-	int damage_bonus
-	bool melee
-	DamageType[] damage_type
-	WeaponGroup weapon_group
+Weapon: RightHandItem                    ; Weapon item class
+	char hands                       ; The number of hands required for the weapon
+	char speed_factor                ; The weapon's speed factor
+	int hit_bonus                    ; The hit bonus the weapon brings
+	char damage_dice                 ; The number of sides on the dices rolled to determine the inflicted damage
+	char damage_dices                ; The number dices rolled to determine the inflicted damage
+	int damage_bonus                 ; Damage modifier
+	bool melee                       ; Whether the weapon is a melée weapon
+	DamageType[] damage_type         ; The damage type, if multiple, one fill be selected at uniform random for each attack
+	WeaponGroup weapon_group         ; The weapon group
 
-Headgear: Item
-	bool critical_hit_protection
+Headgear: Item                           ; Headgear item class
+	bool critical_hit_protection     ; Whether the item protects agains critical hits
 
-DamageType
-	std::string name
+DamageType                               ; Damage type
+	std::string name                 ; The name of the damage type
 
-WeaponGroup
-	std::string name
+WeaponGroup                              ; Weapon group
+	std::string name                 ; The name of the weapon group
 
-Proficiency
-	int hit_bonus
-	int damage bonus
-	char half_attacks
+Proficiency                              ; Weapon proficiency level
+	int hit_bonus                    ; The hit bonus
+	int damage bonus                 ; The damage bonus
+	char half_attacks                ; the number of half attacks
 
-QuestItem: Item
-	int id
+QuestItem: Item                          ; Quest item class
+	int id                           ; A unique number for the item that the game senario can use for identifying quest items
 
-Item
-	std::string name
-	std::string description
-	int armour_class
-	int weight
-	bool identified
-	int lore_value
-	bool stuck
-	bool cursed
-	int quantity
-	int quantity_limit
-	int unit_value
-	AbilityBonus bonuses
-	std::unorderd_map<DamageType, int> armour_class_modifiers
+Item                                                                      ; 
+	std::string name                                                  ; 
+	std::string description                                           ; 
+	int armour_class                                                  ; 
+	int weight                                                        ; 
+	bool identified                                                   ; 
+	int lore_value                                                    ; 
+	bool stuck                                                        ; 
+	bool cursed                                                       ; 
+	int quantity                                                      ; 
+	int quantity_limit                                                ; 
+	int unit_value                                                    ; 
+	AbilityBonus bonuses                                              ; 
+	std::unorderd_map<DamageType, int> armour_class_modifiers         ; 
 
-ActionSlotChart	
-	std::unorderd_map<Class, long long> index_map
-	std::unorderd_map<long long, ActionSlots[]> slot_map
+ActionSlotChart	                                                          ; 
+	std::unorderd_map<Class, long long> index_map                     ; 
+	std::unorderd_map<long long, ActionSlots[]> slot_map              ; 
 
 Class
-	int hit_points
-	int thac0
-	int lore_bonus
-	bool[] alignments
-	bool learn_from_scroll
-	char proficiencies_each
-	char proficiencies_total
-	ExperienceChart experience_chart
-	SpellProgression spell_progression
-	AbilityBonus abilities
-	Abilites lower_limits
-	Spell[] special_abilties
-	Item[] can_use
-	std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart
-	Weapon default_one_hand
-	Weapon default_two_hand
+	int hit_points                                                    ; 
+	int thac0                                                         ; 
+	int lore_bonus                                                    ; 
+	bool[] alignments                                                 ; 
+	bool learn_from_scroll                                            ; 
+	char proficiencies_each                                           ; 
+	char proficiencies_total                                          ; 
+	ExperienceChart experience_chart                                  ; 
+	SpellProgression spell_progression                                ; 
+	AbilityBonus abilities                                            ; 
+	Abilites lower_limits                                             ; 
+	Spell[] special_abilties                                          ; 
+	Item[] can_use                                                    ; 
+	std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart ; 
+	Weapon default_one_hand                                           ; 
+	Weapon default_two_hand                                           ; 
 
-Race
-	Class[][] allowed_classes
-	AbilityBonus bonuses
+Race                                                                      ; 
+	Class[][] allowed_classes                                         ; 
+	AbilityBonus bonuses                                              ; 
 
-CharacterSheet
-	std::string name
-	std::string biography
-	char colour
-	char alignment
-	std::string portrait
-	bool female
-	int[] experience
-	char[] level
-	bool[] class_abondoned
-	std::unorderd_map<WeaponGroup, int> proficiencies
-	std::vector<Spell> affected_by
-	Inventory inventory
-	AbiltyBonus abilities
-	SpellBook spells
-	Race race
-	Race racial_enemy
-	Class[] prestige
-	MagicSchool specialisation
-	std::vector<Spell> special_abilities
+CharacterSheet                                                            ; 
+	std::string name                                                  ; 
+	std::string biography                                             ; 
+	char colour                                                       ; 
+	char alignment                                                    ; 
+	std::string portrait                                              ; 
+	bool female                                                       ; 
+	int[] experience                                                  ; 
+	char[] level                                                      ; 
+	bool[] class_abondoned                                            ; 
+	std::unorderd_map<WeaponGroup, int> proficiencies                 ; 
+	std::vector<Spell> affected_by                                    ; 
+	Inventory inventory                                               ; 
+	AbiltyBonus abilities                                             ; 
+	SpellBook spells                                                  ; 
+	Race race                                                         ; 
+	Race racial_enemy                                                 ; 
+	Class[] prestige                                                  ; 
+	MagicSchool specialisation                                        ; 
+	std::vector<Spell> special_abilities                              ; 
 
 Character                                 ; Character
 	int hit_points                    ; Current hit points
@@ -246,10 +245,6 @@ Inventory                                 ; Character inventory class
 Body: Item                                ; Character body item class
 	Character character               ; The dead character
 
-Ammunition: Item                          ; Ammunition item class
-	RangedWeapon usable_with          ; Weapon that the ammunition can be used with
-	DamageType damage_type            ; The damage type inflicted by the ammunition
-
 AbilityBonus                              ; Abilities bonus class
 	Bonuses bonuses                   ; Bonuses
 	ThiefAbilities thief_abilities    ; Thief abilities
@@ -267,6 +262,9 @@ Container: Item                           ; Item container item class
 	int contain_limit                 ; Number of items that can be put in the container
 	float weight_modifier             ; Weight multiplier
 	Item[] can_contain                ; Items that can be put inside the container
+
+RangedWeapon: Weapon                      ; Ranged weapon item class
+	char rate_of_fire                 ; The weapon's rate of fire
 
 Mace: BluntWeapon                         ; Mace item class
 Fist: BluntWeapon                         ; One-handed hand-to-hand class
@@ -294,7 +292,6 @@ ThrowingAxe: Throwing                     ; Throwing axe item class
 ThrowingDagger: Throwing                  ; Throwing dagger item class
 Dart: Throwing                            ; Dart item cals
 Throwing: RangedWeapon                    ; Throwing weapon item class
-RangedWeapon: Weapon                      ; Ranged weapon item class
 Bow: RangedWeapon                         ; Bow item class
 Sling: RangedWeapon                       ; Sling item class
 Crossbow: RangedWeapon                    ; Crossbow item class
