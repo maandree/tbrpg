@@ -26,7 +26,7 @@ lineptr = 0
 lines = [line.replace('\n', '') for line in sys.stdin.readlines()]
 
 while (len(lines[lineptr]) > 1) and (lines[lineptr][1] == '*'):
-    lineptr++
+    lineptr += 1
 
 copyNotice = '\n'.join(line[:lineptr])
 lines = lines[lineptr:] + ['EOF']
