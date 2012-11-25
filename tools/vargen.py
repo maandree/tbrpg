@@ -29,13 +29,14 @@ while (len(lines[lineptr]) > 1) and (lines[lineptr][1] == '*'):
     lineptr += 1
 
 copyNotice = '\n'.join(lines[:lineptr])
-lines = lines[lineptr:] + ['EOF']
-lineptr = 0
+lines = lines[lineptr:] + ['EOF;']
 
 classLine = None
 varLines = None
 
 for line in lines:
+    lineptr += 1
+    print('\033[1m%i:\033[21m\t%s' % (lineptr, line))
     if len(line) == 0:
         continue
     if line[0] == '\t':
@@ -127,7 +128,7 @@ for line in lines:
         output += '  /**\n   * Move constructor\n   * \n   * @param  original  The object to clone\n   */\n'
         output += '  %s::%s(%s&& original)\n  {\n%s\n  }\n\n\n\n' % (className, className, className, varMove)
         output += '  /**\n   * Destructor\n   */\n'
-        output += '  %s::~%s()\n  {\n%s\n  }\n\n\n\n' % (className, className, className, varFree)
+        output += '  %s::~%s()\n  {\n%s\n  }\n\n\n\n' % (className, className, varFree)
         output += '    /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
         output += '   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(const %s& original)\n  {\n' % (className, className, className)
