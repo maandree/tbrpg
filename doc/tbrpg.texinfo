@@ -2054,7 +2054,8 @@ Wizards starts with 2 cantrips (level 0 spells) and gain 1 every other level up.
 @cindex hit point
 
 The following sheet refers to level 1 characters without any
-adjustments.
+adjustments. The sheet is extended with multiclasses by
+using arithmetic mean values.
 
 @multitable @columnfractions 0.10 0.14 0.10 0.12 0.16 0.12 0.15 0.11
 @item @b{Class}
@@ -2687,3 +2688,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Game play
 Spell list
 Relatation between round/turns and time
+Getting more proficiencies
