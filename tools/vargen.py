@@ -56,7 +56,7 @@ for line in lines:
         output += 'namespace tbrpg\n{\n'
         output += '  /**\n   * %s\n   */\n  class %s\n  {\n  public:\n' % (classComment, classLine)
         for varLine in varLines:
-            varComment varLine[varLine.indexOf(';') + 1:].strip()
+            varComment = varLine[varLine.indexOf(';') + 1:].strip()
             varLine = varLine[:varLine.indexOf(';')].strip()
             output += '    /**\n     * %s\n     */\n    %s\n\n' % (varComment, varLine)
         output += '\n\n    /**\n     * Construction\n     */\n    %s();\n\n' % className
