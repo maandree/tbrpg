@@ -66,7 +66,8 @@ Texts. A copy of the license is included in the section entitled
 * Elements::                          Elemental attacks and defences.
 * Experience charts::                 Experience charts.
 * Spell progression::                 Spell progression charts.
-* Miscellaneous sheets::              Miscellaneous sheets.
+* New spell charts::                  Charts with new spell learned at level up.
+* Miscellaneous charts::              Miscellaneous charts.
 * Combat rules::                      Combat rules.
 * Time rules::                        Time rules.
 * Inventory and equipment::           The inventory and equipment.
@@ -883,8 +884,6 @@ book for each spell level.
 Added to the character lore, cumulative with the
 lore bonus from the wisdom.
 @end itemize
-
-@c  TODO  new sorcerer spells
 
 
 @node Wisdom scores
@@ -2037,26 +2036,409 @@ Wizards starts with 2 cantrips (level 0 spells) and gain 1 every other level up.
 
 
 
-@node Miscellaneous sheets
-@chapter Miscellaneous sheets
-@cindex miscellaneous sheets
+@node New spell charts
+@chapter New spell charts
+@cindex spell book
+
+Here follows charts with the spells and number of selectable
+spells for characters when they level up. Fighter, thief and
+mage does not learn spells at level up and is thus excluded.
 
 @menu
-* Level 1 sheet::              Level 1 sheet.
-* Actions slots::              Actions slots.
+* Sorcerer spell chart::       Sorcerer spell chart.
+* Ranger spell chart::         Ranger spell chart.
+* Paladin spell chart::        Paladin spell chart.
+* Bard spell chart::           Bard spell chart.
+* Cleric spell chart::         Cleric spell chart.
+* Druid spell chart::          Druid spell chart.
 @end menu
 
 
-@node Level 1 sheet
-@section Level 1 sheet
-@cindex level 1 sheet
+@node Sorcerer spell chart
+@section Sorcerer spell chart
+@cindex sorcerer spell book
+@cindex spell book, sorcerer
+
+Number of selectable wizard spells for sorcerer at level up
+at each spell level.
+
+@c TODO fill table
+@multitable @columnfractions 0.08 0.06 0.06 0.06 0.06 0.06 0.06 0.06 0.06 0.06
+@item @b{Level} @tab @b{1} @tab @b{2} @tab @b{3} @tab @b{4}
+@tab @b{5} @tab @b{6} @tab @b{7} @tab @b{8} @tab @b{9}
+@item  1
+@item  2
+@item  3
+@item  4
+@item  5
+@item  6
+@item  7
+@item  8
+@item  9
+@item 10
+@item 11
+@item 12
+@item 13
+@item 14
+@item 15
+@item 16
+@item 17
+@item 18
+@item 19
+@item 20
+@item 21
+@item 22
+@item 23
+@item 24
+@item 25
+@item 26
+@item 27
+@item 28
+@item 29
+@item 30
+@end multitable
+
+
+@node Ranger spell chart
+@section Ranger spell chart
+@cindex ranger spell book
+@cindex spell book, ranger
+
+@c TODO fill table
+@table @b
+@item Level  8
+-
+@item Level  9
+-
+@item Level 10
+-
+@item Level 11
+-
+@item Level 12
+-
+@item Level 13
+-
+@item Level 14
+-
+@item Level 15
+-
+@item Level 16
+-
+@item Level 17
+-
+@item Level 18
+-
+@item Level 19
+-
+@item Level 20
+-
+@item Level 21
+-
+@item Level 22
+-
+@item Level 23
+-
+@item Level 24
+-
+@item Level 25
+-
+@item Level 26
+-
+@item Level 27
+-
+@item Level 28
+-
+@item Level 29
+-
+@item Level 30
+-
+@end table
+
+
+@node Paladin spell chart
+@section Paladin spell chart
+@cindex paladin spell book
+@cindex spell book, paladin
+
+@c TODO fill table
+@table @b
+@item Level  9
+-
+@item Level 10
+-
+@item Level 11
+-
+@item Level 12
+-
+@item Level 13
+-
+@item Level 14
+-
+@item Level 15
+-
+@item Level 16
+-
+@item Level 17
+-
+@item Level 18
+-
+@item Level 19
+-
+@item Level 20
+-
+@item Level 21
+-
+@item Level 22
+-
+@item Level 23
+-
+@item Level 24
+-
+@item Level 25
+-
+@item Level 26
+-
+@item Level 27
+-
+@item Level 28
+-
+@item Level 29
+-
+@item Level 30
+-
+@end table
+
+
+@node Bard spell chart
+@section Bard spell chart
+@cindex bard spell book
+@cindex spell book, bard
+
+@c TODO fill table
+@table @b
+@item Level  2
+-
+@item Level  3
+-
+@item Level  4
+-
+@item Level  5
+-
+@item Level  6
+-
+@item Level  7
+-
+@item Level  8
+-
+@item Level  9
+-
+@item Level 10
+-
+@item Level 11
+-
+@item Level 12
+-
+@item Level 13
+-
+@item Level 14
+-
+@item Level 15
+-
+@item Level 16
+-
+@item Level 17
+-
+@item Level 18
+-
+@item Level 19
+-
+@item Level 20
+-
+@item Level 21
+-
+@item Level 22
+-
+@item Level 23
+-
+@item Level 24
+-
+@item Level 25
+-
+@item Level 26
+-
+@item Level 27
+-
+@item Level 28
+-
+@item Level 29
+-
+@item Level 30
+-
+@end table
+
+
+@node Cleric spell chart
+@section Cleric spell chart
+@cindex cleric spell book
+@cindex spell book, cleric
+
+@c TODO fill table
+@table @b
+@item Level  1
+-
+@item Level  2
+-
+@item Level  3
+-
+@item Level  4
+-
+@item Level  5
+-
+@item Level  6
+-
+@item Level  7
+-
+@item Level  8
+-
+@item Level  9
+-
+@item Level 10
+-
+@item Level 11
+-
+@item Level 12
+-
+@item Level 13
+-
+@item Level 14
+-
+@item Level 15
+-
+@item Level 16
+-
+@item Level 17
+-
+@item Level 18
+-
+@item Level 19
+-
+@item Level 20
+-
+@item Level 21
+-
+@item Level 22
+-
+@item Level 23
+-
+@item Level 24
+-
+@item Level 25
+-
+@item Level 26
+-
+@item Level 27
+-
+@item Level 28
+-
+@item Level 29
+-
+@item Level 30
+-
+@end table
+
+
+@node Druid spell chart
+@section Druid spell chart
+@cindex druid spell book
+@cindex spell book, druid
+
+@c TODO fill table
+@table @b
+@item Level  1
+-
+@item Level  2
+-
+@item Level  3
+-
+@item Level  4
+-
+@item Level  5
+-
+@item Level  6
+-
+@item Level  7
+-
+@item Level  8
+-
+@item Level  9
+-
+@item Level 10
+-
+@item Level 11
+-
+@item Level 12
+-
+@item Level 13
+-
+@item Level 14
+-
+@item Level 15
+-
+@item Level 16
+-
+@item Level 17
+-
+@item Level 18
+-
+@item Level 19
+-
+@item Level 20
+-
+@item Level 21
+-
+@item Level 22
+-
+@item Level 23
+-
+@item Level 24
+-
+@item Level 25
+-
+@item Level 26
+-
+@item Level 27
+-
+@item Level 28
+-
+@item Level 29
+-
+@item Level 30
+-
+@end table
+
+
+
+@node Miscellaneous charts
+@chapter Miscellaneous charts
+@cindex miscellaneous charts
+
+@menu
+* Level 1 chart::              Level 1 chart.
+* Actions slots::              Actions slots.
+* Proficienies point chart::   Proficienies point depending on class and level.
+@end menu
+
+
+@node Level 1 chart
+@section Level 1 chart
+@cindex level 1 chart
 @cindex saving throws
 @cindex to attack armour class 0
 @cindex THAC0
 @cindex hit point
 
-The following sheet refers to level 1 characters without any
-adjustments. The sheet is extended with multiclasses by
+The following chart refers to level 1 characters without any
+adjustments. The chart is extended with multiclasses by
 using arithmetic mean values.
 
 @multitable @columnfractions 0.10 0.14 0.10 0.12 0.16 0.12 0.15 0.11
@@ -2114,10 +2496,54 @@ held in the character's hands.
 @end multitable
 
 It is not possible to dual class outside the definition if
-this sheet.
+this chart.
 
 Thieving refers to, depending on usage, disarm trap, open
 lock or pick pocket.
+
+
+@node Proficienies point chart
+@section Proficienies point chart
+@cindex proficienies
+@cindex weapon proficienies
+
+Weapon proficiences depending on class and level,
+non-cumulative.
+
+@multitable @columnfractions 0.08 0.05 0.05 0.08 0.05 0.08 0.05 0.08 0.05 0.08
+@item @b{Level} @tab @b{F} @tab @b{R} @tab @b{P} @tab @b{T}
+@tab @b{B} @tab @b{C} @tab @b{D} @tab @b{M} @tab @b{S}
+@item  1  @tab  4  @tab  4  @tab  4  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2
+@item  2  @tab  4  @tab  4  @tab  4  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2
+@item  3  @tab  5  @tab  5  @tab  5  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2  @tab  2
+@item  4  @tab  5  @tab  5  @tab  5  @tab  3  @tab  3  @tab  3  @tab  3  @tab  2  @tab  2
+@item  5  @tab  5  @tab  5  @tab  5  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3
+@item  6  @tab  6  @tab  6  @tab  6  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3
+@item  7  @tab  6  @tab  6  @tab  6  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3  @tab  3
+@item  8  @tab  6  @tab  6  @tab  6  @tab  4  @tab  4  @tab  4  @tab  4  @tab  3  @tab  3
+@item  9  @tab  7  @tab  7  @tab  7  @tab  4  @tab  4  @tab  4  @tab  4  @tab  3  @tab  3
+@item 10  @tab  7  @tab  7  @tab  7  @tab  4  @tab  4  @tab  4  @tab  4  @tab  4  @tab  4
+@item 11  @tab  7  @tab  7  @tab  7  @tab  4  @tab  4  @tab  4  @tab  4  @tab  4  @tab  4
+@item 12  @tab  8  @tab  8  @tab  8  @tab  5  @tab  5  @tab  5  @tab  5  @tab  4  @tab  4
+@item 13  @tab  8  @tab  8  @tab  8  @tab  5  @tab  5  @tab  5  @tab  5  @tab  4  @tab  4
+@item 14  @tab  8  @tab  8  @tab  8  @tab  5  @tab  5  @tab  5  @tab  5  @tab  4  @tab  4
+@item 15  @tab  9  @tab  9  @tab  9  @tab  5  @tab  5  @tab  5  @tab  5  @tab  5  @tab  5
+@item 16  @tab  9  @tab  9  @tab  9  @tab  6  @tab  6  @tab  6  @tab  6  @tab  5  @tab  5
+@item 17  @tab  9  @tab  9  @tab  9  @tab  6  @tab  6  @tab  6  @tab  6  @tab  5  @tab  5
+@item 18  @tab 10  @tab 10  @tab 10  @tab  6  @tab  6  @tab  6  @tab  6  @tab  5  @tab  5
+@item 19  @tab 10  @tab 10  @tab 10  @tab  6  @tab  6  @tab  6  @tab  6  @tab  5  @tab  5
+@item 20  @tab 10  @tab 10  @tab 10  @tab  7  @tab  7  @tab  7  @tab  7  @tab  6  @tab  6
+@item 21  @tab 11  @tab 11  @tab 11  @tab  7  @tab  7  @tab  7  @tab  7  @tab  6  @tab  6
+@item 22  @tab 11  @tab 11  @tab 11  @tab  7  @tab  7  @tab  7  @tab  7  @tab  6  @tab  6
+@item 23  @tab 11  @tab 11  @tab 11  @tab  7  @tab  7  @tab  7  @tab  7  @tab  6  @tab  6
+@item 24  @tab 12  @tab 12  @tab 12  @tab  8  @tab  8  @tab  8  @tab  8  @tab  6  @tab  6
+@item 25  @tab 12  @tab 12  @tab 12  @tab  8  @tab  8  @tab  8  @tab  8  @tab  7  @tab  7
+@item 26  @tab 12  @tab 12  @tab 12  @tab  8  @tab  8  @tab  8  @tab  8  @tab  7  @tab  7
+@item 27  @tab 13  @tab 13  @tab 13  @tab  8  @tab  8  @tab  8  @tab  8  @tab  7  @tab  7
+@item 28  @tab 13  @tab 13  @tab 13  @tab  9  @tab  9  @tab  9  @tab  9  @tab  7  @tab  7
+@item 29  @tab 13  @tab 13  @tab 13  @tab  9  @tab  9  @tab  9  @tab  9  @tab  7  @tab  7
+@item 30  @tab 14  @tab 14  @tab 14  @tab  9  @tab  9  @tab  9  @tab  9  @tab  8  @tab  8
+@end multitable
 
 
 
@@ -2717,5 +3143,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game play
 Spell list
-Getting more proficiencies
-Priests getting spells
+Item list
+Bestiary
