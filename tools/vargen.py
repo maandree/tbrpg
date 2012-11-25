@@ -41,7 +41,7 @@ for line in lines:
     if line[0] == '\t':
         varLines.append(line[1:])
     else:
-        classComment classLine[classLine.indexOf(';') + 1:].strip()
+        classComment = classLine[classLine.indexOf(';') + 1:].strip()
         classLine = classLine[:classLine.indexOf(';')].strip()
         className = classLine
         if ':' in className:
