@@ -2345,7 +2345,7 @@ A turn consists of ten rounds. @c TODO  further describe
 * Headgear slot::              Headgear slot.
 * Amulett and necklace slot::  Amulett and necklace slot.
 * Ring slots::                 Ring slots.
-* Belt and grindle slot::      Belt and grindle slot.
+* Belt and girdle slot::       Belt and girdle slot.
 * Miscellaneous items::        Miscellaneous items.
 @end menu
 
@@ -2514,14 +2514,14 @@ There is no categorisation of rings, and they have no
 natural effect.
 
 
-@node Belt and grindle slot
-@section Belt and grindle slot
+@node Belt and girdle slot
+@section Belt and girdle slot
 @cindex belt
-@cindex grindle
+@cindex girdle
 
-Characters have one slot for belts and grindles.
+Characters have one slot for belts and girdles.
 
-There is no categorisation of belts and grindles, and they
+There is no categorisation of belts and girdles, and they
 have no natural effect.
 
 
@@ -2684,3 +2684,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Game play
 Spell list
+Relatation between round/turns and time

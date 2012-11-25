@@ -7,6 +7,7 @@ RuleSet
 	AbilityChart ability_chart
 	Inventory inventory_prototype
 	Spell[] spells
+	Race[] allowed_races
 
 ReputationChart
 	int[] reaction_adjustment
@@ -188,235 +189,237 @@ CharacterSheet
 	MagicSchool specialisation
 	std::vector<Spell> special_abilities
 
-Character
-	int hit_points
-	char alive
-	int morale
-	int intoxication
-	int fatigue
-	CharacterSheet record
+Character                                 ; Character
+	int hit_points                    ; Current hit points
+	char alive                        ; Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
+	int morale                        ; Current morale
+	int intoxication                  ; Current intoxication level
+	int fatigue                       ; Number of turns since the character last slept with consideration for long travels
+	CharacterSheet record             ; The character sheet
 
-MagicSchool
-	std::string name
-	std::string coluration
-	std::string practicer
-	MagicSchool[] opposite
+MagicSchool                               ; Magic school class
+	std::string name                  ; The name of the school
+	std::string coluration            ; The colouration of the magic in the school
+	std::string practicer             ; The name of the practicers of the school
+	MagicSchool[] opposite            ; The opposite schools
 
-Spell
-	std::string name
-	std::string description
-	bool wizard
-	bool priest
-	char level
-	char saving
-	bool touch
-	float range
-	char casting_time
-	char duration
-	char duration_dice
-	char duration_dices
-	std::string effect_area
-	MagicSchool school
+Spell                                     ; Spell class
+	std::string name                  ; Spell name
+	std::string description           ; Spell description
+	bool wizard                       ; Whether the spell is a wizard spell
+	bool priest                       ; Whether the spell is a priest spell
+	char level                        ; Spell level
+	char saving                       ; Saving, 0 for none, 1 for half and 2 for negation
+	bool touch                        ; Whether the spell's range is touching
+	float range                       ; Whether the spell's range, negative for touch without zero
+	char casting_time                 ; Casting time
+	char duration                     ; Duration modifier
+	char duration_dice                ; Duration dice side count
+	char duration_dices               ; Duration dice count
+	std::string effect_area           ; Area of effect
+	MagicSchool school                ; Magic shool
 
-AbilityChart
-	AbilityBonus[] strength
-	AbilityBonus[] strength18
-	AbilityBonus[] dexterity
-	AbilityBonus[] constitution
-	AbilityBonus[] intelligence
-	AbilityBonus[] wisdom
-	AbilityBonus[] charisma
+AbilityChart                              ; Ability chart
+	AbilityBonus[] strength           ; Strength chart
+	AbilityBonus[] strength18         ; Strength 18/* chart
+	AbilityBonus[] dexterity          ; Dexterity chart
+	AbilityBonus[] constitution       ; Constitution chart
+	AbilityBonus[] intelligence       ; Intelligence chart
+	AbilityBonus[] wisdom             ; Wisdom chart
+	AbilityBonus[] charisma           ; Charisma chart
 
-Inventory
-	Weapon[] left_hand
-	RightHandItem right_hand
-	Ammunition[] quiver
-	QuickItem[] quick_items
-	Headgear headgear
-	Amulett amulett
-	Ring[] rings
-	BodyArmour body
-	Gauntlets gauntlets
-	Grindle grindle
-	Boots boots
-	Cloak cloak
-	Item[] personal
+Inventory                                 ; Character inventory class
+	Weapon[] left_hand                ; Left hand item slots
+	RightHandItem right_hand          ; Right hand item slot
+	Ammunition[] quiver               ; Quiver slots
+	QuickItem[] quick_items           ; Quick item slots
+	Headgear headgear                 ; Headgear slots
+	Amulett amulett                   ; Amulette and necklace slot
+	Ring[] rings                      ; Ring slots
+	BodyArmour body                   ; Body armour slot
+	Gauntlets gauntlets               ; Gauntlet and bracer slots
+	Girdle girdle                     ; Girdle and belt slot
+	Boots boots                       ; Boot slot
+	Cloak cloak                       ; Cloak slot
+	Item[] personal                   ; Personal inventory slots
 
-Body: Item
-	Character character
+Body: Item                                ; Character body item class
+	Character character               ; The dead character
 
-Ammunition: Item
-	Ammunition usable_with
-	DamageType damage_type
+Ammunition: Item                          ; Ammunition item class
+	RangedWeapon usable_with          ; Weapon that the ammunition can be used with
+	DamageType damage_type            ; The damage type inflicted by the ammunition
 
-AbilityBonus
-	Bonuses bonuses
-	ThiefAbilities thief_abilities
-	SavingThrows saving_throws
-	Abilities abilities
-	SpellBook spells
-	Spell[] effects
+AbilityBonus                              ; Abilities bonus class
+	Bonuses bonuses                   ; Bonuses
+	ThiefAbilities thief_abilities    ; Thief abilities
+	SavingThrows saving_throws        ; Saving throws
+	Abilities abilities               ; Abilities
+	SpellBook spells                  ; Spells
+	Spell[] effects                   ; Effects
 
-SpellBook
-	std::vector<Spell> learned
-	std::vector<Spell> memorised
+SpellBook                                 ; Character spell book
+	std::vector<Spell> learned        ; Learned spells
+	std::vector<Spell> memorised      ; Memorisations
 
-Container: Item
-	std::vector<Item> contains
-	int contain_limit
-	float weight_modifier
-	Item[] can_contain
+Container: Item                           ; Item container item class
+	std::vector<Item> contains        ; Items contained by the container
+	int contain_limit                 ; Number of items that can be put in the container
+	float weight_modifier             ; Weight multiplier
+	Item[] can_contain                ; Items that can be put inside the container
 
-Mace: BluntWeapon
-Fist: BluntWeapon
-Club: BluntWeapon
-Flail: BluntWeapon
-Torch: BluntWeapon
-MorningStar: BluntWeapon
-BluntWeapon: OneHandedMelee
-WarHammer: OneHandedMelee
-Dagger: OneHandedMelee
-BattleAxe: OneHandedMelee
-ShortSword: OneHandedMelee
-LargeSword: OneHandedMelee
-LongSword: LargeSword
-BastardSword: LargeSword
-OneHandedMelee: MeleeWeapon
-TwoHandedMelee: MeleeWeapon
-MeleeWeapon: Weapon
-TwoHandedSword: TwoHandedMelee
-Halberd: TwoHandedMelee
-Fists: TwoHandedMelee
-Spear: TwoHandedMelee
-Quarterstaff: TwoHandedMelee
-ThrowingAxe: Throwing
-ThrowingDagger: Throwing
-Dart: Throwing
-Throwing: RangedWeapon
-RangedWeapon: Weapon
-Bow: RangedWeapon
-Sling: RangedWeapon
-Crossbow: RangedWeapon
-HeavyCrossbow: Crossbow
-LightCrossbow: Crossbow
-CompositeLongBow: Bow
-LongBow: Bow
-ShortBow: Bow
-Shield: RightHandItem
-Buckler: Shield
-SmallShield: Shield
-MediumShield: Shield
-LargeShield: Shield
-Arrow: Ammunition
-Bullet: Ammunition
-Bolt: Ammunition
-QuickItem: Item
-Potion: QuickItem
-Scroll: QuickItem
-Wand: QuickItem
-Hat: Headgear
-Hood: Headgear
-Helmet: Headgear
-BodyArmour: Item
-Robe: BodyArmour
-LeatherArmour: BodyArmour
-StuddedLeatherArmour: BodyArmour
-ChainMail: BodyArmour
-SplintMail: BodyArmour
-PlateMail: BodyArmour
-FullPlateMail: BodyArmour
-RightHandItem: Item
-Gold: Gem
-Gem: Item
-Key: QuestItem
-TextScroll: Item
-Ring: Item
-Amulett: Item
-Grindle: Item
-Boots: Item
-Gauntlets: Item
-Cloak: Item
-Mage: Wizard
-Sorcerer: Wizard
-Cleric: Priest
-Druid: Priest
-Bard: Rogue
-Thief: Rogue
-Fighter: Warrior
-Ranger: Warrior
-Paladin: Warrior
-Wizard: Class
-Priest: Class
-Rogue: Class
-Warrior: Class
-Elf: Race
-Human: Race
-HalfOrc: Race
-HalfElf: Race
-Dwarf: Race
-Halfling: Race
-Gnome: Race
-ActionSlot
+Mace: BluntWeapon                         ; Mace item class
+Fist: BluntWeapon                         ; One-handed hand-to-hand class
+Club: BluntWeapon                         ; Club item class
+Flail: BluntWeapon                        ; Flail item class
+Torch: BluntWeapon                        ; Torch item class
+MorningStar: BluntWeapon                  ; Morning star item class
+BluntWeapon: OneHandedMelee               ; Blunt weapon item class
+WarHammer: OneHandedMelee                 ; War hammer item class
+Dagger: OneHandedMelee                    ; Dagger item class
+BattleAxe: OneHandedMelee                 ; Battle axe item class
+ShortSword: OneHandedMelee                ; Short sword item class
+LargeSword: OneHandedMelee                ; Large sword item class
+LongSword: LargeSword                     ; Long sword item class
+BastardSword: LargeSword                  ; Bastard sword item class
+OneHandedMelee: MeleeWeapon               ; One-handed melée weapon item class
+TwoHandedMelee: MeleeWeapon               ; Two-handed melée weapon item class
+MeleeWeapon: Weapon                       ; Melée weapon item class
+TwoHandedSword: TwoHandedMelee            ; Two-handed weapon item class
+Halberd: TwoHandedMelee                   ; Halberd item class
+Fists: TwoHandedMelee                     ; Two-handed hand-to-hand class
+Spear: TwoHandedMelee                     ; Spear item class
+Quarterstaff: TwoHandedMelee              ; Quarterstaff item class
+ThrowingAxe: Throwing                     ; Throwing axe item class
+ThrowingDagger: Throwing                  ; Throwing dagger item class
+Dart: Throwing                            ; Dart item cals
+Throwing: RangedWeapon                    ; Throwing weapon item class
+RangedWeapon: Weapon                      ; Ranged weapon item class
+Bow: RangedWeapon                         ; Bow item class
+Sling: RangedWeapon                       ; Sling item class
+Crossbow: RangedWeapon                    ; Crossbow item class
+HeavyCrossbow: Crossbow                   ; Heavy crossbow item class
+LightCrossbow: Crossbow                   ; Light crossbow item class
+CompositeLongBow: Bow                     ; Composite long bow item class
+LongBow: Bow                              ; Long bow item class
+ShortBow: Bow                             ; Short bow item class
+Shield: RightHandItem                     ; Shield item class
+Buckler: Shield                           ; Buckler item class
+SmallShield: Shield                       ; Small shield item class
+MediumShield: Shield                      ; Medium shield item class
+LargeShield: Shield                       ; Large shield item class
+Arrow: Ammunition                         ; Arrow item class
+Bullet: Ammunition                        ; Sling stone item class
+Bolt: Ammunition                          ; Bolt item class
+QuickItem: Item                           ; Quick item item class
+Potion: QuickItem                         ; Potion item class
+Scroll: QuickItem                         ; Magic scroll item class
+Wand: QuickItem                           ; Wand, rod and magic staff item class
+Hat: Headgear                             ; Hat item class
+Hood: Headgear                            ; Hood item class
+Helmet: Headgear                          ; Helmet item class
+BodyArmour: Item                          ; Body armour item class
+Robe: BodyArmour                          ; Robe item class
+LeatherArmour: BodyArmour                 ; Leather armour item class
+StuddedLeatherArmour: BodyArmour          ; Studded leather armour item class
+ChainMail: BodyArmour                     ; Chain mail item clss
+SplintMail: BodyArmour                    ; Splint mail item clss
+PlateMail: BodyArmour                     ; Plate mail item clss
+FullPlateMail: BodyArmour                 ; Full plate mail item clss
+RightHandItem: Item                       ; Item that can be placed in the right hand
+Gold: Gem                                 ; Gold item class
+Gem: Item                                 ; Gem item class
+Key: QuestItem                            ; Key item class
+TextScroll: Item                          ; Text scroll item class
+Ring: Item                                ; Ring item class
+Amulett: Item                             ; Amulett and necklace item class
+Girdle: Item                              ; Girdle and belt item class
+Boots: Item                               ; Boot item class
+Gauntlets: Item                           ; Gauntlet and bracer item class
+Cloak: Item                               ; Cloak item class
+Mage: Wizard                              ; The mage class
+Sorcerer: Wizard                          ; The sorcerer class
+Cleric: Priest                            ; The cleric class
+Druid: Priest                             ; The druid cass
+Bard: Rogue                               ; The bard class
+Thief: Rogue                              ; The thief class
+Fighter: Warrior                          ; The fighter class
+Ranger: Warrior                           ; The ranger class
+Paladin: Warrior                          ; The paladin class
+Wizard: Class                             ; The wizard superclass
+Priest: Class                             ; The priest superclass
+Rogue: Class                              ; The rogue superclass
+Warrior: Class                            ; The warrior superclass
+Elf: Race                                 ; The elf race
+Human: Race                               ; The human race
+HalfOrc: Race                             ; The half-orc race
+HalfElf: Race                             ; The half-elf race
+Dwarf: Race                               ; The dwarf race
+Halfling: Race                            ; The halfling race
+Gnome: Race                               ; The gnome race
+ActionSlot                                ; Action slot class
 
-Lockable
-	bool locked
-	int pick_level
-	int bash_level
-	bool pickable
-	bool bashable
+Lockable                                  ; Lockable object
+	bool locked                       ; Whether the object is locked
+	int pick_level                    ; The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
+	int bash_level                    ; The lowest value needed from 1D20 roll, with modifiers, to be able to bash the lock
+	bool pickable                     ; Whether the lock is pickable
+	bool bashable                     ; Whether the lock is bashable
 
-Entrance
-	bool usable
-	std::string description
-	std::string direction
-	MapMinor leads_to
+Entrance                                  ; Connection between map areas
+	bool usable                       ; Whether the entrance can be used
+	std::string description           ; A description of what you see
+	std::string direction             ; The direction to the entrace
+	MapMinor leads_to                 ; The area to which the entrance leads
 
-MapMinor
-	std::string description
-	bool may_rest
-	float area
-	Road[] roads
-	Entrance[] connections
-	std::vector<Item> items
-	std::vector<Creature> creatures
-	MapMajor is_in
-	RestInterruption[] interruptions
+MapMinor                                  ; Map area
+	std::string description           ; Descrion of the area
+	bool may_rest                     ; Whether you may rest in the area without renting a room
+	float area                        ; The radius of the area, in metres, the party starts at origo
+	Road[] roads                      ; Roads to other major areas in the area
+	Entrance[] connections            ; Entrance to other areas in the area
+	std::vector<Item> items           ; Items in the area
+	std::vector<Creature> creatures   ; Creatures in the area
+	MapMajor is_in                    ; Which major area to which  the area belongs
+	RestInterruption[] interruptions  ; Possible rest interruptions
 
-RestInterruption
-	Creature[] creatures
+RestInterruption                          ; A possible rest interruption
+	char interrupt_dice               ; The number of sides on the dices to roll to determine whether your sleeps is being interrupted
+	char interrupt_dices              ; The number dices to roll to determine whether your sleeps is being interrupted
+	unsigned char interrupt_risk      ; The highest value for at which your gets interrupted, use 0 for never, and 255 for always
+	Creature[] creatures              ; Creatures that will be summoned
 
-Creature: Character
-	bool hostile
-	float x
-	float y
-	boolean alive
-	boolean resurrect
+Creature: Character                       ; A creature in the area
+	bool hostile                      ; Whether the creature is hostile
+	float x                           ; The creatures horizontal position in metres, the parties starts at 0
+	float y                           ; The creatures vertical position in metres, the parties starts at 0
+	boolean alive                     ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
+	boolean resurrect                 ; Whether the creature is resurrected when the party leaves the area
 
-Map
-	MapMinor start
-	MapMajor[] majors
+Map                                       ; The world map
+	MapMinor start                    ; The start area of the game senario
+	MapMajor[] majors                 ; All major areas in the world map
 
-MapMajor
-	std::string name
-	bool visible
-	bool visited
-	bool visitable
-	bool detectable
-	MapMinor[] minors
+MapMajor                                  ; Areas on the world map
+	std::string name                  ; The name of the area
+	bool visible                      ; Whether the area is on the parties map
+	bool visited                      ; Whether the area has been visited
+	bool visitable                    ; Whether the area is visitable
+	bool detectable                   ; Whether the area is detectable
 
-Road
-	int first_distance
-	int last_distance
-	char waylay_dice
-	char waylay_dices
-	char waylay_rist
-	std::string direction
-	MapMinor waylay_map
-	MapMinor leads_to
+Road                                      ; A road between major map area
+	int first_distance                ; Distance to the waylay point in metres
+	int last_distance                 ; Distance from the waylay point in metres
+	char waylay_dice                  ; The number of sides on the dices to roll to determine whether you are being waylaid
+	char waylay_dices                 ; The number dices to roll to determine whether you are being waylaid
+	unsigned char waylay_risk         ; The highest value for at which you get waylaid, use 0 for never, and 255 for always
+	std::string direction             ; At which direction the road is located and leads
+	MapMinor waylay_map               ; The area entered if you get waylaid
+	MapMinor leads_to                 ; The area to which the the road leads
 
-EnvironmentContainer: Container, Lockable
-Door: Entrance, Lockable
-Wilderness: MapMinor
-Town: MapMinor
-House: MapMinor
+EnvironmentContainer: Container, Lockable ; Item container that are in the environments
+Door: Entrance, Lockable                  ; Door separating environments
+Wilderness: MapMinor                      ; Wilderness outdoors environment
+Town: MapMinor                            ; Town outdoors environment
+House: MapMinor                           ; Indoors environment
 
