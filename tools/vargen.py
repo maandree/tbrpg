@@ -41,11 +41,11 @@ for line in lines:
     if line[0] == '\t':
         varLines.append(line[1:])
     else:
-        classComment classLine[classLine.find(';') + 1:].strip()
-        classLine = classLine[:classLine.find(';')].strip()
+        classComment classLine[classLine.indexOf(';') + 1:].strip()
+        classLine = classLine[:classLine.indexOf(';')].strip()
         className = classLine
         if ':' in className:
-            className = className[:className.find(':')]
+            className = className[:className.indexOf(':')]
         
         output = copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
@@ -56,8 +56,8 @@ for line in lines:
         output += 'namespace tbrpg\n{\n'
         output += '  /**\n   * %s\n   */\n  class %s\n  {\n  public:\n' % (classComment, classLine)
         for varLine in varLines:
-            varComment varLine[varLine.find(';') + 1:].strip()
-            varLine = varLine[:varLine.find(';')].strip()
+            varComment varLine[varLine.indexOf(';') + 1:].strip()
+            varLine = varLine[:varLine.indexOf(';')].strip()
             output += '    /**\n     * %s\n     */\n    %s\n\n' % (varComment, varLine)
         output += '\n\n    /**\n     * Construction\n     */\n    %s();\n\n' % className
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
@@ -83,10 +83,30 @@ for line in lines:
             file.write(output.encode('utf-8'))
             file.flush()
         
-        ### TODO varInit
-        ### TODO varCopy
-        ### TODO varMove
-        ### TODO varFree
+        numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long']
+        numericals = ['signed ' + t for t in numbericals] + ['unsigned ' + t for t in numbericals]
+        (varInit, varCopy, varMove, varFree) = ([], [], [], [])
+        for varLine in varLines:
+            varLine = varLine[:varLine.indexOf(';')].strip()
+            space = 0
+            for s in range(0, len(varLine)):
+                if varLine[s] == ' ':
+                    space = s
+            varType = varLine[:s]
+            varName = varLine[s + 1:]
+            if varType == 'bool':
+                varInit.append(varName + ' = false;')
+            elif varType in numericals:
+                varInit.append(varName + ' = 0;')
+            else:
+                varInit.append(varName + ' = nullptr;')
+            varCopy.append('this->%s = original.%s;' % (varName, varName))
+            if (varType == 'bool') or (varType in numbericals):
+                varMove.append('std::swap(this->%s, original.%s);' % (varName, varName))
+            else:
+                varMove.append('std::move(this->%s, original.%s);' % (varName, varName))
+            if (varType != 'bool') and (varType not in numbericals):
+                varFree.append('delete %s;' % varName)
         varInit = '\n'.join(['    //' + item for item in (['TODO implement constructor'] + varInit)])
         varCopy = '\n'.join(['    ' + item for item in varCopy])
         varMove = '\n'.join(['    ' + item for item in varMove])
