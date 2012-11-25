@@ -42,11 +42,11 @@ for line in lines:
         varLines.append(line[1:])
     else:
         classLine = line
-        classComment = classLine[classLine.indexOf(';') + 1:].strip()
-        classLine = classLine[:classLine.indexOf(';')].strip()
+        classComment = classLine[classLine.index(';') + 1:].strip()
+        classLine = classLine[:classLine.index(';')].strip()
         className = classLine
         if ':' in className:
-            className = className[:className.indexOf(':')]
+            className = className[:className.index(':')]
         
         output = copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
@@ -57,8 +57,8 @@ for line in lines:
         output += 'namespace tbrpg\n{\n'
         output += '  /**\n   * %s\n   */\n  class %s\n  {\n  public:\n' % (classComment, classLine)
         for varLine in varLines:
-            varComment = varLine[varLine.indexOf(';') + 1:].strip()
-            varLine = varLine[:varLine.indexOf(';')].strip()
+            varComment = varLine[varLine.index(';') + 1:].strip()
+            varLine = varLine[:varLine.index(';')].strip()
             output += '    /**\n     * %s\n     */\n    %s\n\n' % (varComment, varLine)
         output += '\n\n    /**\n     * Construction\n     */\n    %s();\n\n' % className
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
@@ -88,7 +88,7 @@ for line in lines:
         numericals = ['signed ' + t for t in numbericals] + ['unsigned ' + t for t in numbericals]
         (varInit, varCopy, varMove, varFree) = ([], [], [], [])
         for varLine in varLines:
-            varLine = varLine[:varLine.indexOf(';')].strip()
+            varLine = varLine[:varLine.index(';')].strip()
             space = 0
             for s in range(0, len(varLine)):
                 if varLine[s] == ' ':
