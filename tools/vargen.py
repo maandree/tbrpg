@@ -105,11 +105,11 @@ for line in lines:
             else:
                 varInit.append(varName + ' = nullptr;')
             varCopy.append('this->%s = original.%s;' % (varName, varName))
-            if (varType == 'bool') or (varType in numbericals):
+            if (varType == 'bool') or (varType in numericals):
                 varMove.append('std::swap(this->%s, original.%s);' % (varName, varName))
             else:
                 varMove.append('std::move(this->%s, original.%s);' % (varName, varName))
-            if (varType != 'bool') and (varType not in numbericals):
+            if (varType != 'bool') and (varType not in numericals):
                 varFree.append('delete %s;' % varName)
         varInit = '\n'.join(['    //' + item for item in (['TODO implement constructor'] + varInit)])
         varCopy = '\n'.join(['    ' + item for item in varCopy])
