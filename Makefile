@@ -174,6 +174,8 @@ clean: clean-gch
 	done
 	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
 	if [ -f "$(BOOK).texinfo.bak" ]; then  rm "$(BOOK).texinfo.bak";  fi
+	if [ -f "$(BOOK).info" ]; then  rm "$(BOOK).info";  fi
+	if [ -f "$(BOOK).info.gz" ]; then  rm "$(BOOK).info.gz";  fi
 
 clean-gch:
 	find ./ | grep \\.gch\$$ | while read file; do  rm "$$file";  done
