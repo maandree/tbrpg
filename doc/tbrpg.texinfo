@@ -141,7 +141,7 @@ rewarded +1 in morale.
 There are seven available character races, from which you
 must choose yout character's race.
 
-@table @bullet{}
+@table @bullet
 @item  Human
 There really is nothing special about humans.
 @item  Half-Orc
@@ -196,7 +196,7 @@ higher is required.
 
 There are nine available classes.
 
-@table @bullet{}
+@table @bullet
 @item  Fighter (F)
 Can wield any weapon and any armour except robes.
 Can have advanced weapon speciailisation.
@@ -256,7 +256,7 @@ general mages, but only illusionists (I).
 
 The following multiclasses can be used.
 
-@table @bullet{}
+@table @bullet
 @item  Half-Orc
 F/C
 @item  Half-Elf
@@ -1219,12 +1219,12 @@ somtimes gain control over the undead.
 @cindex actions
 
 @menu
-* Effects of fatigue::         Effects of fatigue
-* Effects of encumbrance::     Effects of encumbrance
-* Effects of intoxication::    Effects of intoxication
-* Effects of poison::          Effects of poison
-* Effects of reputation::      Effects of reputation
-* Effects of alignment::       Effects of alignment
+* Effects of fatigue::         Effects of fatigue.
+* Effects of encumbrance::     Effects of encumbrance.
+* Effects of intoxication::    Effects of intoxication.
+* Effects of reputation::      Effects of reputation.
+* Effects of alignment::       Effects of alignment.
+* Reaction adjustments::       Reaction adjustments.
 @end menu
 
 
@@ -1591,7 +1591,7 @@ have a +1 armour class against melée bonus.
 
 @node Elements
 @chapter Elements
-@node elements
+@cindex elements
 
 Attacks have elementals attributes, not just physical.
 
@@ -2565,8 +2565,6 @@ non-cumulative.
 * Effects of paralysis::       Effects of paralysis.
 * Magic resistance::           Magic resistance.
 * Changing armour::            Changing armour.
-* Speed factor::               Speed factor.
-* Casting time::               Casting time.
 @end menu
 
 
@@ -2778,6 +2776,8 @@ A turn consists of ten rounds. @c TODO  further describe
 * Amulett and necklace slot::  Amulett and necklace slot.
 * Ring slots::                 Ring slots.
 * Belt and girdle slot::       Belt and girdle slot.
+* Boots slot::                 Boots slot.
+* Cloak slot::                 Cloak slot.
 * Miscellaneous items::        Miscellaneous items.
 @end menu
 
@@ -3008,6 +3008,7 @@ of the items they contain.
 
 @menu
 * The map::                    The map.
+* The environment::            The environment.
 @end menu
 
 
