@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 import os
 
+
 copyNotice = ''
 lineptr = 0
 lines = [line.replace('\n', '') for line in sys.stdin.readlines()]
