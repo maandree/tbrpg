@@ -7,6 +7,7 @@
 
 SHELL=bash
 
+NODES=3
 OPTIMISE=-O0
 #OPTIMISE=-O3
 CPPFLAGS=
@@ -51,7 +52,7 @@ GAMEDIR=/bin
 
 
 
-all: best info pdf
+all: parallel info pdf
 
 
 
@@ -63,7 +64,10 @@ code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
-best:
+parallel:
+	time ((echo $(NODES) ; cat __order) | tools/paramake.py)
+
+sequecial:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	sort < __order | uniq | tsort | tac > .tmp1
 	ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
@@ -212,5 +216,5 @@ jfbview:
 
 .PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
 	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey view atril evince xpdf okular gs jfbview all regen
+	valgrind-lackey view atril evince xpdf okular gs jfbview all regen parallel
 
