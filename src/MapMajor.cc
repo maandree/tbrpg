@@ -51,11 +51,11 @@ namespace tbrpg
   MapMajor::MapMajor(const MapMajor& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->visible = original.visible;
-    //this->visited = original.visited;
-    //this->visitable = original.visitable;
-    //this->detectable = original.detectable;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
   }
   
   /**
@@ -66,11 +66,11 @@ namespace tbrpg
   MapMajor::MapMajor(MapMajor& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->visible = original.visible;
-    //this->visited = original.visited;
-    //this->visitable = original.visitable;
-    //this->detectable = original.detectable;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
   }
   
   /**
@@ -81,11 +81,11 @@ namespace tbrpg
   MapMajor::MapMajor(MapMajor&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::swap(this->visible, original.visible);
-    ////std::swap(this->visited, original.visited);
-    ////std::swap(this->visitable, original.visitable);
-    ////std::swap(this->detectable, original.detectable);
+    //std::move(this->name, original.name);
+    //std::swap(this->visible, original.visible);
+    //std::swap(this->visited, original.visited);
+    //std::swap(this->visitable, original.visitable);
+    //std::swap(this->detectable, original.detectable);
   }
   
   
@@ -110,11 +110,11 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->visible = original.visible;
-    //this->visited = original.visited;
-    //this->visitable = original.visitable;
-    //this->detectable = original.detectable;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
     return *this;
   }
   
@@ -127,11 +127,11 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->visible = original.visible;
-    //this->visited = original.visited;
-    //this->visitable = original.visitable;
-    //this->detectable = original.detectable;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
     return *this;
   }
   
@@ -144,11 +144,11 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::swap(this->visible, original.visible);
-    ////std::swap(this->visited, original.visited);
-    ////std::swap(this->visitable, original.visitable);
-    ////std::swap(this->detectable, original.detectable);
+    //std::move(this->name, original.name);
+    //std::swap(this->visible, original.visible);
+    //std::swap(this->visited, original.visited);
+    //std::swap(this->visitable, original.visitable);
+    //std::swap(this->detectable, original.detectable);
     return *this;
   }
   

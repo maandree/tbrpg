@@ -50,10 +50,10 @@ namespace tbrpg
   MagicSchool::MagicSchool(const MagicSchool& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->coluration = original.coluration;
-    //this->practicer = original.practicer;
-    //this->opposite = original.opposite;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
   }
   
   /**
@@ -64,10 +64,10 @@ namespace tbrpg
   MagicSchool::MagicSchool(MagicSchool& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->coluration = original.coluration;
-    //this->practicer = original.practicer;
-    //this->opposite = original.opposite;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
   }
   
   /**
@@ -78,10 +78,10 @@ namespace tbrpg
   MagicSchool::MagicSchool(MagicSchool&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::move(this->coluration, original.coluration);
-    ////std::move(this->practicer, original.practicer);
-    ////std::move(this->opposite, original.opposite);
+    //std::move(this->name, original.name);
+    //std::move(this->coluration, original.coluration);
+    //std::move(this->practicer, original.practicer);
+    //std::move(this->opposite, original.opposite);
   }
   
   
@@ -109,10 +109,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->coluration = original.coluration;
-    //this->practicer = original.practicer;
-    //this->opposite = original.opposite;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
     return *this;
   }
   
@@ -125,10 +125,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->coluration = original.coluration;
-    //this->practicer = original.practicer;
-    //this->opposite = original.opposite;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
     return *this;
   }
   
@@ -141,10 +141,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::move(this->coluration, original.coluration);
-    ////std::move(this->practicer, original.practicer);
-    ////std::move(this->opposite, original.opposite);
+    //std::move(this->name, original.name);
+    //std::move(this->coluration, original.coluration);
+    //std::move(this->practicer, original.practicer);
+    //std::move(this->opposite, original.opposite);
     return *this;
   }
   

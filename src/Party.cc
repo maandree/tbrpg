@@ -48,8 +48,8 @@ namespace tbrpg
   Party::Party(const Party& original)
   {
     (void) original;
-    //this->reputation = original.reputation;
-    //this->characters = original.characters;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
   }
   
   /**
@@ -60,8 +60,8 @@ namespace tbrpg
   Party::Party(Party& original)
   {
     (void) original;
-    //this->reputation = original.reputation;
-    //this->characters = original.characters;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
   }
   
   /**
@@ -72,8 +72,8 @@ namespace tbrpg
   Party::Party(Party&& original)
   {
     (void) original;
-    ////std::swap(this->reputation, original.reputation);
-    ////std::move(this->characters, original.characters);
+    //std::swap(this->reputation, original.reputation);
+    //std::move(this->characters, original.characters);
   }
   
   
@@ -98,8 +98,8 @@ namespace tbrpg
   Party& Party::operator =(const Party& original)
   {
     (void) original;
-    //this->reputation = original.reputation;
-    //this->characters = original.characters;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
     return *this;
   }
   
@@ -112,8 +112,8 @@ namespace tbrpg
   Party& Party::operator =(Party& original)
   {
     (void) original;
-    //this->reputation = original.reputation;
-    //this->characters = original.characters;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
     return *this;
   }
   
@@ -126,8 +126,8 @@ namespace tbrpg
   Party& Party::operator =(Party&& original)
   {
     (void) original;
-    ////std::swap(this->reputation, original.reputation);
-    ////std::move(this->characters, original.characters);
+    //std::swap(this->reputation, original.reputation);
+    //std::move(this->characters, original.characters);
     return *this;
   }
   

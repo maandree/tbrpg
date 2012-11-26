@@ -50,10 +50,10 @@ namespace tbrpg
   Container::Container(const Container& original) : Item(original)
   {
     (void) original;
-    //this->contains = original.contains;
-    //this->contain_limit = original.contain_limit;
-    //this->weight_modifier = original.weight_modifier;
-    //this->can_contain = original.can_contain;
+    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
   }
   
   /**
@@ -64,10 +64,10 @@ namespace tbrpg
   Container::Container(Container& original) : Item(original)
   {
     (void) original;
-    //this->contains = original.contains;
-    //this->contain_limit = original.contain_limit;
-    //this->weight_modifier = original.weight_modifier;
-    //this->can_contain = original.can_contain;
+    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
   }
   
   /**
@@ -78,10 +78,10 @@ namespace tbrpg
   Container::Container(Container&& original) : Item(original)
   {
     (void) original;
-    ////std::move(this->contains, original.contains);
-    ////std::swap(this->contain_limit, original.contain_limit);
-    ////std::swap(this->weight_modifier, original.weight_modifier);
-    ////std::move(this->can_contain, original.can_contain);
+    //std::move(this->contains, original.contains);
+    //std::swap(this->contain_limit, original.contain_limit);
+    //std::swap(this->weight_modifier, original.weight_modifier);
+    //std::move(this->can_contain, original.can_contain);
   }
   
   
@@ -107,13 +107,13 @@ namespace tbrpg
   Container& Container::operator =(const Container& original)
   {
     (void) original;
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);    //this->contains = original.contains;
-    //this->contain_limit = original.contain_limit;
-    //this->weight_modifier = original.weight_modifier;
-    //this->can_contain = original.can_contain;
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -126,13 +126,13 @@ namespace tbrpg
   Container& Container::operator =(Container& original)
   {
     (void) original;
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);
-    //Item::__copy__((Item&)*this, (Item&)original);    //this->contains = original.contains;
-    //this->contain_limit = original.contain_limit;
-    //this->weight_modifier = original.weight_modifier;
-    //this->can_contain = original.can_contain;
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
+    Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -145,13 +145,13 @@ namespace tbrpg
   Container& Container::operator =(Container&& original)
   {
     (void) original;
-    ////std::move((Item&)*this, (Item&)original);
-    ////std::move((Item&)*this, (Item&)original);
-    ////std::move((Item&)*this, (Item&)original);
-    ////std::move((Item&)*this, (Item&)original);    ////std::move(this->contains, original.contains);
-    ////std::swap(this->contain_limit, original.contain_limit);
-    ////std::swap(this->weight_modifier, original.weight_modifier);
-    ////std::move(this->can_contain, original.can_contain);
+    //std::move((Item&)*this, (Item&)original);
+    //std::move((Item&)*this, (Item&)original);
+    //std::move((Item&)*this, (Item&)original);
+    //std::move((Item&)*this, (Item&)original);    //std::move(this->contains, original.contains);
+    //std::swap(this->contain_limit, original.contain_limit);
+    //std::swap(this->weight_modifier, original.weight_modifier);
+    //std::move(this->can_contain, original.can_contain);
     return *this;
   }
   

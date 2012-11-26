@@ -59,19 +59,19 @@ namespace tbrpg
   Inventory::Inventory(const Inventory& original)
   {
     (void) original;
-    //this->left_hand = original.left_hand;
-    //this->right_hand = original.right_hand;
-    //this->quiver = original.quiver;
-    //this->quick_items = original.quick_items;
-    //this->headgear = original.headgear;
-    //this->amulett = original.amulett;
-    //this->rings = original.rings;
-    //this->body = original.body;
-    //this->gauntlets = original.gauntlets;
-    //this->girdle = original.girdle;
-    //this->boots = original.boots;
-    //this->cloak = original.cloak;
-    //this->personal = original.personal;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
   }
   
   /**
@@ -82,19 +82,19 @@ namespace tbrpg
   Inventory::Inventory(Inventory& original)
   {
     (void) original;
-    //this->left_hand = original.left_hand;
-    //this->right_hand = original.right_hand;
-    //this->quiver = original.quiver;
-    //this->quick_items = original.quick_items;
-    //this->headgear = original.headgear;
-    //this->amulett = original.amulett;
-    //this->rings = original.rings;
-    //this->body = original.body;
-    //this->gauntlets = original.gauntlets;
-    //this->girdle = original.girdle;
-    //this->boots = original.boots;
-    //this->cloak = original.cloak;
-    //this->personal = original.personal;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
   }
   
   /**
@@ -105,19 +105,19 @@ namespace tbrpg
   Inventory::Inventory(Inventory&& original)
   {
     (void) original;
-    ////std::move(this->left_hand, original.left_hand);
-    ////std::move(this->right_hand, original.right_hand);
-    ////std::move(this->quiver, original.quiver);
-    ////std::move(this->quick_items, original.quick_items);
-    ////std::move(this->headgear, original.headgear);
-    ////std::move(this->amulett, original.amulett);
-    ////std::move(this->rings, original.rings);
-    ////std::move(this->body, original.body);
-    ////std::move(this->gauntlets, original.gauntlets);
-    ////std::move(this->girdle, original.girdle);
-    ////std::move(this->boots, original.boots);
-    ////std::move(this->cloak, original.cloak);
-    ////std::move(this->personal, original.personal);
+    //std::move(this->left_hand, original.left_hand);
+    //std::move(this->right_hand, original.right_hand);
+    //std::move(this->quiver, original.quiver);
+    //std::move(this->quick_items, original.quick_items);
+    //std::move(this->headgear, original.headgear);
+    //std::move(this->amulett, original.amulett);
+    //std::move(this->rings, original.rings);
+    //std::move(this->body, original.body);
+    //std::move(this->gauntlets, original.gauntlets);
+    //std::move(this->girdle, original.girdle);
+    //std::move(this->boots, original.boots);
+    //std::move(this->cloak, original.cloak);
+    //std::move(this->personal, original.personal);
   }
   
   
@@ -154,19 +154,19 @@ namespace tbrpg
   Inventory& Inventory::operator =(const Inventory& original)
   {
     (void) original;
-    //this->left_hand = original.left_hand;
-    //this->right_hand = original.right_hand;
-    //this->quiver = original.quiver;
-    //this->quick_items = original.quick_items;
-    //this->headgear = original.headgear;
-    //this->amulett = original.amulett;
-    //this->rings = original.rings;
-    //this->body = original.body;
-    //this->gauntlets = original.gauntlets;
-    //this->girdle = original.girdle;
-    //this->boots = original.boots;
-    //this->cloak = original.cloak;
-    //this->personal = original.personal;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
     return *this;
   }
   
@@ -179,19 +179,19 @@ namespace tbrpg
   Inventory& Inventory::operator =(Inventory& original)
   {
     (void) original;
-    //this->left_hand = original.left_hand;
-    //this->right_hand = original.right_hand;
-    //this->quiver = original.quiver;
-    //this->quick_items = original.quick_items;
-    //this->headgear = original.headgear;
-    //this->amulett = original.amulett;
-    //this->rings = original.rings;
-    //this->body = original.body;
-    //this->gauntlets = original.gauntlets;
-    //this->girdle = original.girdle;
-    //this->boots = original.boots;
-    //this->cloak = original.cloak;
-    //this->personal = original.personal;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
     return *this;
   }
   
@@ -204,19 +204,19 @@ namespace tbrpg
   Inventory& Inventory::operator =(Inventory&& original)
   {
     (void) original;
-    ////std::move(this->left_hand, original.left_hand);
-    ////std::move(this->right_hand, original.right_hand);
-    ////std::move(this->quiver, original.quiver);
-    ////std::move(this->quick_items, original.quick_items);
-    ////std::move(this->headgear, original.headgear);
-    ////std::move(this->amulett, original.amulett);
-    ////std::move(this->rings, original.rings);
-    ////std::move(this->body, original.body);
-    ////std::move(this->gauntlets, original.gauntlets);
-    ////std::move(this->girdle, original.girdle);
-    ////std::move(this->boots, original.boots);
-    ////std::move(this->cloak, original.cloak);
-    ////std::move(this->personal, original.personal);
+    //std::move(this->left_hand, original.left_hand);
+    //std::move(this->right_hand, original.right_hand);
+    //std::move(this->quiver, original.quiver);
+    //std::move(this->quick_items, original.quick_items);
+    //std::move(this->headgear, original.headgear);
+    //std::move(this->amulett, original.amulett);
+    //std::move(this->rings, original.rings);
+    //std::move(this->body, original.body);
+    //std::move(this->gauntlets, original.gauntlets);
+    //std::move(this->girdle, original.girdle);
+    //std::move(this->boots, original.boots);
+    //std::move(this->cloak, original.cloak);
+    //std::move(this->personal, original.personal);
     return *this;
   }
   

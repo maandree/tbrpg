@@ -49,9 +49,9 @@ namespace tbrpg
   Proficiency::Proficiency(const Proficiency& original)
   {
     (void) original;
-    //this->hit_bonus = original.hit_bonus;
-    //this->damage_bonus = original.damage_bonus;
-    //this->half_attacks = original.half_attacks;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_bonus = original.damage_bonus;
+    this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -62,9 +62,9 @@ namespace tbrpg
   Proficiency::Proficiency(Proficiency& original)
   {
     (void) original;
-    //this->hit_bonus = original.hit_bonus;
-    //this->damage_bonus = original.damage_bonus;
-    //this->half_attacks = original.half_attacks;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_bonus = original.damage_bonus;
+    this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -75,9 +75,9 @@ namespace tbrpg
   Proficiency::Proficiency(Proficiency&& original)
   {
     (void) original;
-    ////std::swap(this->hit_bonus, original.hit_bonus);
-    ////std::swap(this->damage_bonus, original.damage_bonus);
-    ////std::swap(this->half_attacks, original.half_attacks);
+    //std::swap(this->hit_bonus, original.hit_bonus);
+    //std::swap(this->damage_bonus, original.damage_bonus);
+    //std::swap(this->half_attacks, original.half_attacks);
   }
   
   
@@ -101,9 +101,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(const Proficiency& original)
   {
     (void) original;
-    //this->hit_bonus = original.hit_bonus;
-    //this->damage_bonus = original.damage_bonus;
-    //this->half_attacks = original.half_attacks;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_bonus = original.damage_bonus;
+    this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -116,9 +116,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency& original)
   {
     (void) original;
-    //this->hit_bonus = original.hit_bonus;
-    //this->damage_bonus = original.damage_bonus;
-    //this->half_attacks = original.half_attacks;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_bonus = original.damage_bonus;
+    this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -131,9 +131,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency&& original)
   {
     (void) original;
-    ////std::swap(this->hit_bonus, original.hit_bonus);
-    ////std::swap(this->damage_bonus, original.damage_bonus);
-    ////std::swap(this->half_attacks, original.half_attacks);
+    //std::swap(this->hit_bonus, original.hit_bonus);
+    //std::swap(this->damage_bonus, original.damage_bonus);
+    //std::swap(this->half_attacks, original.half_attacks);
     return *this;
   }
   

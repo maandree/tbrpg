@@ -47,7 +47,7 @@ namespace tbrpg
   Body::Body(const Body& original) : Item(original)
   {
     (void) original;
-    //this->character = original.character;
+    this->character = original.character;
   }
   
   /**
@@ -58,7 +58,7 @@ namespace tbrpg
   Body::Body(Body& original) : Item(original)
   {
     (void) original;
-    //this->character = original.character;
+    this->character = original.character;
   }
   
   /**
@@ -69,7 +69,7 @@ namespace tbrpg
   Body::Body(Body&& original) : Item(original)
   {
     (void) original;
-    ////std::move(this->character, original.character);
+    //std::move(this->character, original.character);
   }
   
   
@@ -94,7 +94,7 @@ namespace tbrpg
   Body& Body::operator =(const Body& original)
   {
     (void) original;
-    //Item::__copy__((Item&)*this, (Item&)original);    //this->character = original.character;
+    Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   Body& Body::operator =(Body& original)
   {
     (void) original;
-    //Item::__copy__((Item&)*this, (Item&)original);    //this->character = original.character;
+    Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   Body& Body::operator =(Body&& original)
   {
     (void) original;
-    ////std::move((Item&)*this, (Item&)original);    ////std::move(this->character, original.character);
+    //std::move((Item&)*this, (Item&)original);    //std::move(this->character, original.character);
     return *this;
   }
   

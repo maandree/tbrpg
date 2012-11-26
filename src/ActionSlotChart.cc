@@ -48,8 +48,8 @@ namespace tbrpg
   ActionSlotChart::ActionSlotChart(const ActionSlotChart& original)
   {
     (void) original;
-    //this->index_map = original.index_map;
-    //this->slot_map = original.slot_map;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
   }
   
   /**
@@ -60,8 +60,8 @@ namespace tbrpg
   ActionSlotChart::ActionSlotChart(ActionSlotChart& original)
   {
     (void) original;
-    //this->index_map = original.index_map;
-    //this->slot_map = original.slot_map;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
   }
   
   /**
@@ -72,8 +72,8 @@ namespace tbrpg
   ActionSlotChart::ActionSlotChart(ActionSlotChart&& original)
   {
     (void) original;
-    ////std::move(this->index_map, original.index_map);
-    ////std::move(this->slot_map, original.slot_map);
+    //std::move(this->index_map, original.index_map);
+    //std::move(this->slot_map, original.slot_map);
   }
   
   
@@ -99,8 +99,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(const ActionSlotChart& original)
   {
     (void) original;
-    //this->index_map = original.index_map;
-    //this->slot_map = original.slot_map;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
     return *this;
   }
   
@@ -113,8 +113,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart& original)
   {
     (void) original;
-    //this->index_map = original.index_map;
-    //this->slot_map = original.slot_map;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
     return *this;
   }
   
@@ -127,8 +127,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart&& original)
   {
     (void) original;
-    ////std::move(this->index_map, original.index_map);
-    ////std::move(this->slot_map, original.slot_map);
+    //std::move(this->index_map, original.index_map);
+    //std::move(this->slot_map, original.slot_map);
     return *this;
   }
   

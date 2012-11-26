@@ -48,8 +48,8 @@ namespace tbrpg
   SpellBook::SpellBook(const SpellBook& original)
   {
     (void) original;
-    //this->learned = original.learned;
-    //this->memorised = original.memorised;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
   }
   
   /**
@@ -60,8 +60,8 @@ namespace tbrpg
   SpellBook::SpellBook(SpellBook& original)
   {
     (void) original;
-    //this->learned = original.learned;
-    //this->memorised = original.memorised;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
   }
   
   /**
@@ -72,8 +72,8 @@ namespace tbrpg
   SpellBook::SpellBook(SpellBook&& original)
   {
     (void) original;
-    ////std::move(this->learned, original.learned);
-    ////std::move(this->memorised, original.memorised);
+    //std::move(this->learned, original.learned);
+    //std::move(this->memorised, original.memorised);
   }
   
   
@@ -99,8 +99,8 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
     (void) original;
-    //this->learned = original.learned;
-    //this->memorised = original.memorised;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
     return *this;
   }
   
@@ -113,8 +113,8 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
     (void) original;
-    //this->learned = original.learned;
-    //this->memorised = original.memorised;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
     return *this;
   }
   
@@ -127,8 +127,8 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
     (void) original;
-    ////std::move(this->learned, original.learned);
-    ////std::move(this->memorised, original.memorised);
+    //std::move(this->learned, original.learned);
+    //std::move(this->memorised, original.memorised);
     return *this;
   }
   

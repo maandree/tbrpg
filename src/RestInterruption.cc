@@ -50,10 +50,10 @@ namespace tbrpg
   RestInterruption::RestInterruption(const RestInterruption& original)
   {
     (void) original;
-    //this->interrupt_die = original.interrupt_die;
-    //this->interrupt_dice = original.interrupt_dice;
-    //this->interrupt_risk = original.interrupt_risk;
-    //this->creatures = original.creatures;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
   }
   
   /**
@@ -64,10 +64,10 @@ namespace tbrpg
   RestInterruption::RestInterruption(RestInterruption& original)
   {
     (void) original;
-    //this->interrupt_die = original.interrupt_die;
-    //this->interrupt_dice = original.interrupt_dice;
-    //this->interrupt_risk = original.interrupt_risk;
-    //this->creatures = original.creatures;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
   }
   
   /**
@@ -78,10 +78,10 @@ namespace tbrpg
   RestInterruption::RestInterruption(RestInterruption&& original)
   {
     (void) original;
-    ////std::swap(this->interrupt_die, original.interrupt_die);
-    ////std::swap(this->interrupt_dice, original.interrupt_dice);
-    ////std::swap(this->interrupt_risk, original.interrupt_risk);
-    ////std::move(this->creatures, original.creatures);
+    //std::swap(this->interrupt_die, original.interrupt_die);
+    //std::swap(this->interrupt_dice, original.interrupt_dice);
+    //std::swap(this->interrupt_risk, original.interrupt_risk);
+    //std::move(this->creatures, original.creatures);
   }
   
   
@@ -106,10 +106,10 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(const RestInterruption& original)
   {
     (void) original;
-    //this->interrupt_die = original.interrupt_die;
-    //this->interrupt_dice = original.interrupt_dice;
-    //this->interrupt_risk = original.interrupt_risk;
-    //this->creatures = original.creatures;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
     return *this;
   }
   
@@ -122,10 +122,10 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption& original)
   {
     (void) original;
-    //this->interrupt_die = original.interrupt_die;
-    //this->interrupt_dice = original.interrupt_dice;
-    //this->interrupt_risk = original.interrupt_risk;
-    //this->creatures = original.creatures;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
     return *this;
   }
   
@@ -138,10 +138,10 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption&& original)
   {
     (void) original;
-    ////std::swap(this->interrupt_die, original.interrupt_die);
-    ////std::swap(this->interrupt_dice, original.interrupt_dice);
-    ////std::swap(this->interrupt_risk, original.interrupt_risk);
-    ////std::move(this->creatures, original.creatures);
+    //std::swap(this->interrupt_die, original.interrupt_die);
+    //std::swap(this->interrupt_dice, original.interrupt_dice);
+    //std::swap(this->interrupt_risk, original.interrupt_risk);
+    //std::move(this->creatures, original.creatures);
     return *this;
   }
   

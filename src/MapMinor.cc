@@ -55,15 +55,15 @@ namespace tbrpg
   MapMinor::MapMinor(const MapMinor& original)
   {
     (void) original;
-    //this->description = original.description;
-    //this->may_rest = original.may_rest;
-    //this->area = original.area;
-    //this->roads = original.roads;
-    //this->connections = original.connections;
-    //this->items = original.items;
-    //this->creatures = original.creatures;
-    //this->is_in = original.is_in;
-    //this->interruptions = original.interruptions;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
   }
   
   /**
@@ -74,15 +74,15 @@ namespace tbrpg
   MapMinor::MapMinor(MapMinor& original)
   {
     (void) original;
-    //this->description = original.description;
-    //this->may_rest = original.may_rest;
-    //this->area = original.area;
-    //this->roads = original.roads;
-    //this->connections = original.connections;
-    //this->items = original.items;
-    //this->creatures = original.creatures;
-    //this->is_in = original.is_in;
-    //this->interruptions = original.interruptions;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
   }
   
   /**
@@ -93,15 +93,15 @@ namespace tbrpg
   MapMinor::MapMinor(MapMinor&& original)
   {
     (void) original;
-    ////std::move(this->description, original.description);
-    ////std::swap(this->may_rest, original.may_rest);
-    ////std::swap(this->area, original.area);
-    ////std::move(this->roads, original.roads);
-    ////std::move(this->connections, original.connections);
-    ////std::move(this->items, original.items);
-    ////std::move(this->creatures, original.creatures);
-    ////std::move(this->is_in, original.is_in);
-    ////std::move(this->interruptions, original.interruptions);
+    //std::move(this->description, original.description);
+    //std::swap(this->may_rest, original.may_rest);
+    //std::swap(this->area, original.area);
+    //std::move(this->roads, original.roads);
+    //std::move(this->connections, original.connections);
+    //std::move(this->items, original.items);
+    //std::move(this->creatures, original.creatures);
+    //std::move(this->is_in, original.is_in);
+    //std::move(this->interruptions, original.interruptions);
   }
   
   
@@ -132,15 +132,15 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(const MapMinor& original)
   {
     (void) original;
-    //this->description = original.description;
-    //this->may_rest = original.may_rest;
-    //this->area = original.area;
-    //this->roads = original.roads;
-    //this->connections = original.connections;
-    //this->items = original.items;
-    //this->creatures = original.creatures;
-    //this->is_in = original.is_in;
-    //this->interruptions = original.interruptions;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
     return *this;
   }
   
@@ -153,15 +153,15 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor& original)
   {
     (void) original;
-    //this->description = original.description;
-    //this->may_rest = original.may_rest;
-    //this->area = original.area;
-    //this->roads = original.roads;
-    //this->connections = original.connections;
-    //this->items = original.items;
-    //this->creatures = original.creatures;
-    //this->is_in = original.is_in;
-    //this->interruptions = original.interruptions;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
     return *this;
   }
   
@@ -174,15 +174,15 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
     (void) original;
-    ////std::move(this->description, original.description);
-    ////std::swap(this->may_rest, original.may_rest);
-    ////std::swap(this->area, original.area);
-    ////std::move(this->roads, original.roads);
-    ////std::move(this->connections, original.connections);
-    ////std::move(this->items, original.items);
-    ////std::move(this->creatures, original.creatures);
-    ////std::move(this->is_in, original.is_in);
-    ////std::move(this->interruptions, original.interruptions);
+    //std::move(this->description, original.description);
+    //std::swap(this->may_rest, original.may_rest);
+    //std::swap(this->area, original.area);
+    //std::move(this->roads, original.roads);
+    //std::move(this->connections, original.connections);
+    //std::move(this->items, original.items);
+    //std::move(this->creatures, original.creatures);
+    //std::move(this->is_in, original.is_in);
+    //std::move(this->interruptions, original.interruptions);
     return *this;
   }
   

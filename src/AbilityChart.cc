@@ -53,13 +53,13 @@ namespace tbrpg
   AbilityChart::AbilityChart(const AbilityChart& original)
   {
     (void) original;
-    //this->strength = original.strength;
-    //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
-    //this->constitution = original.constitution;
-    //this->intelligence = original.intelligence;
-    //this->wisdom = original.wisdom;
-    //this->charisma = original.charisma;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
   }
   
   /**
@@ -70,13 +70,13 @@ namespace tbrpg
   AbilityChart::AbilityChart(AbilityChart& original)
   {
     (void) original;
-    //this->strength = original.strength;
-    //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
-    //this->constitution = original.constitution;
-    //this->intelligence = original.intelligence;
-    //this->wisdom = original.wisdom;
-    //this->charisma = original.charisma;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
   }
   
   /**
@@ -87,13 +87,13 @@ namespace tbrpg
   AbilityChart::AbilityChart(AbilityChart&& original)
   {
     (void) original;
-    ////std::move(this->strength, original.strength);
-    ////std::move(this->strength18, original.strength18);
-    ////std::move(this->dexterity, original.dexterity);
-    ////std::move(this->constitution, original.constitution);
-    ////std::move(this->intelligence, original.intelligence);
-    ////std::move(this->wisdom, original.wisdom);
-    ////std::move(this->charisma, original.charisma);
+    //std::move(this->strength, original.strength);
+    //std::move(this->strength18, original.strength18);
+    //std::move(this->dexterity, original.dexterity);
+    //std::move(this->constitution, original.constitution);
+    //std::move(this->intelligence, original.intelligence);
+    //std::move(this->wisdom, original.wisdom);
+    //std::move(this->charisma, original.charisma);
   }
   
   
@@ -124,13 +124,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(const AbilityChart& original)
   {
     (void) original;
-    //this->strength = original.strength;
-    //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
-    //this->constitution = original.constitution;
-    //this->intelligence = original.intelligence;
-    //this->wisdom = original.wisdom;
-    //this->charisma = original.charisma;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
     return *this;
   }
   
@@ -143,13 +143,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(AbilityChart& original)
   {
     (void) original;
-    //this->strength = original.strength;
-    //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
-    //this->constitution = original.constitution;
-    //this->intelligence = original.intelligence;
-    //this->wisdom = original.wisdom;
-    //this->charisma = original.charisma;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
     return *this;
   }
   
@@ -162,13 +162,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(AbilityChart&& original)
   {
     (void) original;
-    ////std::move(this->strength, original.strength);
-    ////std::move(this->strength18, original.strength18);
-    ////std::move(this->dexterity, original.dexterity);
-    ////std::move(this->constitution, original.constitution);
-    ////std::move(this->intelligence, original.intelligence);
-    ////std::move(this->wisdom, original.wisdom);
-    ////std::move(this->charisma, original.charisma);
+    //std::move(this->strength, original.strength);
+    //std::move(this->strength18, original.strength18);
+    //std::move(this->dexterity, original.dexterity);
+    //std::move(this->constitution, original.constitution);
+    //std::move(this->intelligence, original.intelligence);
+    //std::move(this->wisdom, original.wisdom);
+    //std::move(this->charisma, original.charisma);
     return *this;
   }
   

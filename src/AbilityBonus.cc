@@ -52,12 +52,12 @@ namespace tbrpg
   AbilityBonus::AbilityBonus(const AbilityBonus& original)
   {
     (void) original;
-    //this->bonuses = original.bonuses;
-    //this->thief_abilities = original.thief_abilities;
-    //this->saving_throws = original.saving_throws;
-    //this->abilities = original.abilities;
-    //this->spells = original.spells;
-    //this->effects = original.effects;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
   }
   
   /**
@@ -68,12 +68,12 @@ namespace tbrpg
   AbilityBonus::AbilityBonus(AbilityBonus& original)
   {
     (void) original;
-    //this->bonuses = original.bonuses;
-    //this->thief_abilities = original.thief_abilities;
-    //this->saving_throws = original.saving_throws;
-    //this->abilities = original.abilities;
-    //this->spells = original.spells;
-    //this->effects = original.effects;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
   }
   
   /**
@@ -84,12 +84,12 @@ namespace tbrpg
   AbilityBonus::AbilityBonus(AbilityBonus&& original)
   {
     (void) original;
-    ////std::move(this->bonuses, original.bonuses);
-    ////std::move(this->thief_abilities, original.thief_abilities);
-    ////std::move(this->saving_throws, original.saving_throws);
-    ////std::move(this->abilities, original.abilities);
-    ////std::move(this->spells, original.spells);
-    ////std::move(this->effects, original.effects);
+    //std::move(this->bonuses, original.bonuses);
+    //std::move(this->thief_abilities, original.thief_abilities);
+    //std::move(this->saving_throws, original.saving_throws);
+    //std::move(this->abilities, original.abilities);
+    //std::move(this->spells, original.spells);
+    //std::move(this->effects, original.effects);
   }
   
   
@@ -119,12 +119,12 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(const AbilityBonus& original)
   {
     (void) original;
-    //this->bonuses = original.bonuses;
-    //this->thief_abilities = original.thief_abilities;
-    //this->saving_throws = original.saving_throws;
-    //this->abilities = original.abilities;
-    //this->spells = original.spells;
-    //this->effects = original.effects;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
     return *this;
   }
   
@@ -137,12 +137,12 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(AbilityBonus& original)
   {
     (void) original;
-    //this->bonuses = original.bonuses;
-    //this->thief_abilities = original.thief_abilities;
-    //this->saving_throws = original.saving_throws;
-    //this->abilities = original.abilities;
-    //this->spells = original.spells;
-    //this->effects = original.effects;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
     return *this;
   }
   
@@ -155,12 +155,12 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(AbilityBonus&& original)
   {
     (void) original;
-    ////std::move(this->bonuses, original.bonuses);
-    ////std::move(this->thief_abilities, original.thief_abilities);
-    ////std::move(this->saving_throws, original.saving_throws);
-    ////std::move(this->abilities, original.abilities);
-    ////std::move(this->spells, original.spells);
-    ////std::move(this->effects, original.effects);
+    //std::move(this->bonuses, original.bonuses);
+    //std::move(this->thief_abilities, original.thief_abilities);
+    //std::move(this->saving_throws, original.saving_throws);
+    //std::move(this->abilities, original.abilities);
+    //std::move(this->spells, original.spells);
+    //std::move(this->effects, original.effects);
     return *this;
   }
   

@@ -48,8 +48,8 @@ namespace tbrpg
   SpellProgression::SpellProgression(const SpellProgression& original)
   {
     (void) original;
-    //this->wizard_slots = original.wizard_slots;
-    //this->priest_slots = original.priest_slots;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -60,8 +60,8 @@ namespace tbrpg
   SpellProgression::SpellProgression(SpellProgression& original)
   {
     (void) original;
-    //this->wizard_slots = original.wizard_slots;
-    //this->priest_slots = original.priest_slots;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -72,8 +72,8 @@ namespace tbrpg
   SpellProgression::SpellProgression(SpellProgression&& original)
   {
     (void) original;
-    ////std::move(this->wizard_slots, original.wizard_slots);
-    ////std::move(this->priest_slots, original.priest_slots);
+    //std::move(this->wizard_slots, original.wizard_slots);
+    //std::move(this->priest_slots, original.priest_slots);
   }
   
   
@@ -99,8 +99,8 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(const SpellProgression& original)
   {
     (void) original;
-    //this->wizard_slots = original.wizard_slots;
-    //this->priest_slots = original.priest_slots;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -113,8 +113,8 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression& original)
   {
     (void) original;
-    //this->wizard_slots = original.wizard_slots;
-    //this->priest_slots = original.priest_slots;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -127,8 +127,8 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression&& original)
   {
     (void) original;
-    ////std::move(this->wizard_slots, original.wizard_slots);
-    ////std::move(this->priest_slots, original.priest_slots);
+    //std::move(this->wizard_slots, original.wizard_slots);
+    //std::move(this->priest_slots, original.priest_slots);
     return *this;
   }
   

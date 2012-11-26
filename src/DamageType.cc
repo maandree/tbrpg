@@ -47,7 +47,7 @@ namespace tbrpg
   DamageType::DamageType(const DamageType& original)
   {
     (void) original;
-    //this->name = original.name;
+    this->name = original.name;
   }
   
   /**
@@ -58,7 +58,7 @@ namespace tbrpg
   DamageType::DamageType(DamageType& original)
   {
     (void) original;
-    //this->name = original.name;
+    this->name = original.name;
   }
   
   /**
@@ -69,7 +69,7 @@ namespace tbrpg
   DamageType::DamageType(DamageType&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
+    //std::move(this->name, original.name);
   }
   
   
@@ -94,7 +94,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(const DamageType& original)
   {
     (void) original;
-    //this->name = original.name;
+    this->name = original.name;
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType& original)
   {
     (void) original;
-    //this->name = original.name;
+    this->name = original.name;
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
+    //std::move(this->name, original.name);
     return *this;
   }
   

@@ -51,11 +51,11 @@ namespace tbrpg
   Creature::Creature(const Creature& original) : Character(original)
   {
     (void) original;
-    //this->hostile = original.hostile;
-    //this->x = original.x;
-    //this->y = original.y;
-    //this->alive = original.alive;
-    //this->resurrect = original.resurrect;
+    this->hostile = original.hostile;
+    this->x = original.x;
+    this->y = original.y;
+    this->alive = original.alive;
+    this->resurrect = original.resurrect;
   }
   
   /**
@@ -66,11 +66,11 @@ namespace tbrpg
   Creature::Creature(Creature& original) : Character(original)
   {
     (void) original;
-    //this->hostile = original.hostile;
-    //this->x = original.x;
-    //this->y = original.y;
-    //this->alive = original.alive;
-    //this->resurrect = original.resurrect;
+    this->hostile = original.hostile;
+    this->x = original.x;
+    this->y = original.y;
+    this->alive = original.alive;
+    this->resurrect = original.resurrect;
   }
   
   /**
@@ -81,11 +81,11 @@ namespace tbrpg
   Creature::Creature(Creature&& original) : Character(original)
   {
     (void) original;
-    ////std::swap(this->hostile, original.hostile);
-    ////std::swap(this->x, original.x);
-    ////std::swap(this->y, original.y);
-    ////std::swap(this->alive, original.alive);
-    ////std::swap(this->resurrect, original.resurrect);
+    //std::swap(this->hostile, original.hostile);
+    //std::swap(this->x, original.x);
+    //std::swap(this->y, original.y);
+    //std::swap(this->alive, original.alive);
+    //std::swap(this->resurrect, original.resurrect);
   }
   
   
@@ -109,15 +109,15 @@ namespace tbrpg
   Creature& Creature::operator =(const Creature& original)
   {
     (void) original;
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);    //this->hostile = original.hostile;
-    //this->x = original.x;
-    //this->y = original.y;
-    //this->alive = original.alive;
-    //this->resurrect = original.resurrect;
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);    this->hostile = original.hostile;
+    this->x = original.x;
+    this->y = original.y;
+    this->alive = original.alive;
+    this->resurrect = original.resurrect;
     return *this;
   }
   
@@ -130,15 +130,15 @@ namespace tbrpg
   Creature& Creature::operator =(Creature& original)
   {
     (void) original;
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);
-    //Character::__copy__((Character&)*this, (Character&)original);    //this->hostile = original.hostile;
-    //this->x = original.x;
-    //this->y = original.y;
-    //this->alive = original.alive;
-    //this->resurrect = original.resurrect;
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);
+    Character::__copy__((Character&)*this, (Character&)original);    this->hostile = original.hostile;
+    this->x = original.x;
+    this->y = original.y;
+    this->alive = original.alive;
+    this->resurrect = original.resurrect;
     return *this;
   }
   
@@ -151,15 +151,15 @@ namespace tbrpg
   Creature& Creature::operator =(Creature&& original)
   {
     (void) original;
-    ////std::move((Character&)*this, (Character&)original);
-    ////std::move((Character&)*this, (Character&)original);
-    ////std::move((Character&)*this, (Character&)original);
-    ////std::move((Character&)*this, (Character&)original);
-    ////std::move((Character&)*this, (Character&)original);    ////std::swap(this->hostile, original.hostile);
-    ////std::swap(this->x, original.x);
-    ////std::swap(this->y, original.y);
-    ////std::swap(this->alive, original.alive);
-    ////std::swap(this->resurrect, original.resurrect);
+    //std::move((Character&)*this, (Character&)original);
+    //std::move((Character&)*this, (Character&)original);
+    //std::move((Character&)*this, (Character&)original);
+    //std::move((Character&)*this, (Character&)original);
+    //std::move((Character&)*this, (Character&)original);    //std::swap(this->hostile, original.hostile);
+    //std::swap(this->x, original.x);
+    //std::swap(this->y, original.y);
+    //std::swap(this->alive, original.alive);
+    //std::swap(this->resurrect, original.resurrect);
     return *this;
   }
   

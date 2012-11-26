@@ -54,14 +54,14 @@ namespace tbrpg
   ExperienceChart::ExperienceChart(const ExperienceChart& original)
   {
     (void) original;
-    //this->experience = original.experience;
-    //this->hit_point_die = original.hit_point_die;
-    //this->hit_point_dice = original.hit_point_dice;
-    //this->hit_point_bonus = original.hit_point_bonus;
-    //this->selectable_wizard = original.selectable_wizard;
-    //this->selectable_priest = original.selectable_priest;
-    //this->new_spells = original.new_spells;
-    //this->proficiencies = original.proficiencies;
+    this->experience = original.experience;
+    this->hit_point_die = original.hit_point_die;
+    this->hit_point_dice = original.hit_point_dice;
+    this->hit_point_bonus = original.hit_point_bonus;
+    this->selectable_wizard = original.selectable_wizard;
+    this->selectable_priest = original.selectable_priest;
+    this->new_spells = original.new_spells;
+    this->proficiencies = original.proficiencies;
   }
   
   /**
@@ -72,14 +72,14 @@ namespace tbrpg
   ExperienceChart::ExperienceChart(ExperienceChart& original)
   {
     (void) original;
-    //this->experience = original.experience;
-    //this->hit_point_die = original.hit_point_die;
-    //this->hit_point_dice = original.hit_point_dice;
-    //this->hit_point_bonus = original.hit_point_bonus;
-    //this->selectable_wizard = original.selectable_wizard;
-    //this->selectable_priest = original.selectable_priest;
-    //this->new_spells = original.new_spells;
-    //this->proficiencies = original.proficiencies;
+    this->experience = original.experience;
+    this->hit_point_die = original.hit_point_die;
+    this->hit_point_dice = original.hit_point_dice;
+    this->hit_point_bonus = original.hit_point_bonus;
+    this->selectable_wizard = original.selectable_wizard;
+    this->selectable_priest = original.selectable_priest;
+    this->new_spells = original.new_spells;
+    this->proficiencies = original.proficiencies;
   }
   
   /**
@@ -90,14 +90,14 @@ namespace tbrpg
   ExperienceChart::ExperienceChart(ExperienceChart&& original)
   {
     (void) original;
-    ////std::move(this->experience, original.experience);
-    ////std::move(this->hit_point_die, original.hit_point_die);
-    ////std::move(this->hit_point_dice, original.hit_point_dice);
-    ////std::move(this->hit_point_bonus, original.hit_point_bonus);
-    ////std::move(this->selectable_wizard, original.selectable_wizard);
-    ////std::move(this->selectable_priest, original.selectable_priest);
-    ////std::move(this->new_spells, original.new_spells);
-    ////std::move(this->proficiencies, original.proficiencies);
+    //std::move(this->experience, original.experience);
+    //std::move(this->hit_point_die, original.hit_point_die);
+    //std::move(this->hit_point_dice, original.hit_point_dice);
+    //std::move(this->hit_point_bonus, original.hit_point_bonus);
+    //std::move(this->selectable_wizard, original.selectable_wizard);
+    //std::move(this->selectable_priest, original.selectable_priest);
+    //std::move(this->new_spells, original.new_spells);
+    //std::move(this->proficiencies, original.proficiencies);
   }
   
   
@@ -129,14 +129,14 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(const ExperienceChart& original)
   {
     (void) original;
-    //this->experience = original.experience;
-    //this->hit_point_die = original.hit_point_die;
-    //this->hit_point_dice = original.hit_point_dice;
-    //this->hit_point_bonus = original.hit_point_bonus;
-    //this->selectable_wizard = original.selectable_wizard;
-    //this->selectable_priest = original.selectable_priest;
-    //this->new_spells = original.new_spells;
-    //this->proficiencies = original.proficiencies;
+    this->experience = original.experience;
+    this->hit_point_die = original.hit_point_die;
+    this->hit_point_dice = original.hit_point_dice;
+    this->hit_point_bonus = original.hit_point_bonus;
+    this->selectable_wizard = original.selectable_wizard;
+    this->selectable_priest = original.selectable_priest;
+    this->new_spells = original.new_spells;
+    this->proficiencies = original.proficiencies;
     return *this;
   }
   
@@ -149,14 +149,14 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(ExperienceChart& original)
   {
     (void) original;
-    //this->experience = original.experience;
-    //this->hit_point_die = original.hit_point_die;
-    //this->hit_point_dice = original.hit_point_dice;
-    //this->hit_point_bonus = original.hit_point_bonus;
-    //this->selectable_wizard = original.selectable_wizard;
-    //this->selectable_priest = original.selectable_priest;
-    //this->new_spells = original.new_spells;
-    //this->proficiencies = original.proficiencies;
+    this->experience = original.experience;
+    this->hit_point_die = original.hit_point_die;
+    this->hit_point_dice = original.hit_point_dice;
+    this->hit_point_bonus = original.hit_point_bonus;
+    this->selectable_wizard = original.selectable_wizard;
+    this->selectable_priest = original.selectable_priest;
+    this->new_spells = original.new_spells;
+    this->proficiencies = original.proficiencies;
     return *this;
   }
   
@@ -169,14 +169,14 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(ExperienceChart&& original)
   {
     (void) original;
-    ////std::move(this->experience, original.experience);
-    ////std::move(this->hit_point_die, original.hit_point_die);
-    ////std::move(this->hit_point_dice, original.hit_point_dice);
-    ////std::move(this->hit_point_bonus, original.hit_point_bonus);
-    ////std::move(this->selectable_wizard, original.selectable_wizard);
-    ////std::move(this->selectable_priest, original.selectable_priest);
-    ////std::move(this->new_spells, original.new_spells);
-    ////std::move(this->proficiencies, original.proficiencies);
+    //std::move(this->experience, original.experience);
+    //std::move(this->hit_point_die, original.hit_point_die);
+    //std::move(this->hit_point_dice, original.hit_point_dice);
+    //std::move(this->hit_point_bonus, original.hit_point_bonus);
+    //std::move(this->selectable_wizard, original.selectable_wizard);
+    //std::move(this->selectable_priest, original.selectable_priest);
+    //std::move(this->new_spells, original.new_spells);
+    //std::move(this->proficiencies, original.proficiencies);
     return *this;
   }
   

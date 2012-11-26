@@ -48,8 +48,8 @@ namespace tbrpg
   Map::Map(const Map& original)
   {
     (void) original;
-    //this->start = original.start;
-    //this->majors = original.majors;
+    this->start = original.start;
+    this->majors = original.majors;
   }
   
   /**
@@ -60,8 +60,8 @@ namespace tbrpg
   Map::Map(Map& original)
   {
     (void) original;
-    //this->start = original.start;
-    //this->majors = original.majors;
+    this->start = original.start;
+    this->majors = original.majors;
   }
   
   /**
@@ -72,8 +72,8 @@ namespace tbrpg
   Map::Map(Map&& original)
   {
     (void) original;
-    ////std::move(this->start, original.start);
-    ////std::move(this->majors, original.majors);
+    //std::move(this->start, original.start);
+    //std::move(this->majors, original.majors);
   }
   
   
@@ -99,8 +99,8 @@ namespace tbrpg
   Map& Map::operator =(const Map& original)
   {
     (void) original;
-    //this->start = original.start;
-    //this->majors = original.majors;
+    this->start = original.start;
+    this->majors = original.majors;
     return *this;
   }
   
@@ -113,8 +113,8 @@ namespace tbrpg
   Map& Map::operator =(Map& original)
   {
     (void) original;
-    //this->start = original.start;
-    //this->majors = original.majors;
+    this->start = original.start;
+    this->majors = original.majors;
     return *this;
   }
   
@@ -127,8 +127,8 @@ namespace tbrpg
   Map& Map::operator =(Map&& original)
   {
     (void) original;
-    ////std::move(this->start, original.start);
-    ////std::move(this->majors, original.majors);
+    //std::move(this->start, original.start);
+    //std::move(this->majors, original.majors);
     return *this;
   }
   

@@ -177,11 +177,11 @@ for line in lines:
             if (varType != 'bool') and (varType not in numericals):
                 varFree.append('delete %s;' % varName)
         varInit = '\n'.join(['    //' + item for item in (['//TO' + 'DO implement constructor'] + varInit)])
-        varCopy = '\n'.join(['    //' + item for item in varCopy])
-        varMove = '\n'.join(['    //' + item for item in varMove])
+        varCopy = '\n'.join(['    ' + item for item in varCopy])
+        varMove = '\n'.join(['    ' + item for item in varMove])
         varFree = '\n'.join(['    //' + item for item in (['//TO' + 'DO implement destructor'] + varFree)])
-        classCopy = '\n'.join(['    //' + item for item in classCopy])
-        classMove = '\n'.join(['    //' + item for item in classMove])
+        classCopy = '\n'.join(['    ' + item for item in classCopy])
+        classMove = '\n'.join(['    ' + item for item in classMove])
         output = '// -*- mode: c++, coding: utf-8 -*-\n%s\n#include "%s.hpp"\n' % (copyNotice, className)
         output += '\n\n/**\n * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'

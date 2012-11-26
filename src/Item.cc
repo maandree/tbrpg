@@ -59,19 +59,19 @@ namespace tbrpg
   Item::Item(const Item& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->description = original.description;
-    //this->armour_class = original.armour_class;
-    //this->weight = original.weight;
-    //this->identified = original.identified;
-    //this->lore_value = original.lore_value;
-    //this->stuck = original.stuck;
-    //this->cursed = original.cursed;
-    //this->quantity = original.quantity;
-    //this->quantity_limit = original.quantity_limit;
-    //this->unit_value = original.unit_value;
-    //this->bonuses = original.bonuses;
-    //this->armour_class_modifiers = original.armour_class_modifiers;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -82,19 +82,19 @@ namespace tbrpg
   Item::Item(Item& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->description = original.description;
-    //this->armour_class = original.armour_class;
-    //this->weight = original.weight;
-    //this->identified = original.identified;
-    //this->lore_value = original.lore_value;
-    //this->stuck = original.stuck;
-    //this->cursed = original.cursed;
-    //this->quantity = original.quantity;
-    //this->quantity_limit = original.quantity_limit;
-    //this->unit_value = original.unit_value;
-    //this->bonuses = original.bonuses;
-    //this->armour_class_modifiers = original.armour_class_modifiers;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -105,19 +105,19 @@ namespace tbrpg
   Item::Item(Item&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::move(this->description, original.description);
-    ////std::swap(this->armour_class, original.armour_class);
-    ////std::swap(this->weight, original.weight);
-    ////std::swap(this->identified, original.identified);
-    ////std::swap(this->lore_value, original.lore_value);
-    ////std::swap(this->stuck, original.stuck);
-    ////std::swap(this->cursed, original.cursed);
-    ////std::swap(this->quantity, original.quantity);
-    ////std::swap(this->quantity_limit, original.quantity_limit);
-    ////std::swap(this->unit_value, original.unit_value);
-    ////std::move(this->bonuses, original.bonuses);
-    ////std::move(this->armour_class_modifiers, original.armour_class_modifiers);
+    //std::move(this->name, original.name);
+    //std::move(this->description, original.description);
+    //std::swap(this->armour_class, original.armour_class);
+    //std::swap(this->weight, original.weight);
+    //std::swap(this->identified, original.identified);
+    //std::swap(this->lore_value, original.lore_value);
+    //std::swap(this->stuck, original.stuck);
+    //std::swap(this->cursed, original.cursed);
+    //std::swap(this->quantity, original.quantity);
+    //std::swap(this->quantity_limit, original.quantity_limit);
+    //std::swap(this->unit_value, original.unit_value);
+    //std::move(this->bonuses, original.bonuses);
+    //std::move(this->armour_class_modifiers, original.armour_class_modifiers);
   }
   
   
@@ -145,19 +145,19 @@ namespace tbrpg
   Item& Item::operator =(const Item& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->description = original.description;
-    //this->armour_class = original.armour_class;
-    //this->weight = original.weight;
-    //this->identified = original.identified;
-    //this->lore_value = original.lore_value;
-    //this->stuck = original.stuck;
-    //this->cursed = original.cursed;
-    //this->quantity = original.quantity;
-    //this->quantity_limit = original.quantity_limit;
-    //this->unit_value = original.unit_value;
-    //this->bonuses = original.bonuses;
-    //this->armour_class_modifiers = original.armour_class_modifiers;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -170,19 +170,19 @@ namespace tbrpg
   Item& Item::operator =(Item& original)
   {
     (void) original;
-    //this->name = original.name;
-    //this->description = original.description;
-    //this->armour_class = original.armour_class;
-    //this->weight = original.weight;
-    //this->identified = original.identified;
-    //this->lore_value = original.lore_value;
-    //this->stuck = original.stuck;
-    //this->cursed = original.cursed;
-    //this->quantity = original.quantity;
-    //this->quantity_limit = original.quantity_limit;
-    //this->unit_value = original.unit_value;
-    //this->bonuses = original.bonuses;
-    //this->armour_class_modifiers = original.armour_class_modifiers;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -195,19 +195,19 @@ namespace tbrpg
   Item& Item::operator =(Item&& original)
   {
     (void) original;
-    ////std::move(this->name, original.name);
-    ////std::move(this->description, original.description);
-    ////std::swap(this->armour_class, original.armour_class);
-    ////std::swap(this->weight, original.weight);
-    ////std::swap(this->identified, original.identified);
-    ////std::swap(this->lore_value, original.lore_value);
-    ////std::swap(this->stuck, original.stuck);
-    ////std::swap(this->cursed, original.cursed);
-    ////std::swap(this->quantity, original.quantity);
-    ////std::swap(this->quantity_limit, original.quantity_limit);
-    ////std::swap(this->unit_value, original.unit_value);
-    ////std::move(this->bonuses, original.bonuses);
-    ////std::move(this->armour_class_modifiers, original.armour_class_modifiers);
+    //std::move(this->name, original.name);
+    //std::move(this->description, original.description);
+    //std::swap(this->armour_class, original.armour_class);
+    //std::swap(this->weight, original.weight);
+    //std::swap(this->identified, original.identified);
+    //std::swap(this->lore_value, original.lore_value);
+    //std::swap(this->stuck, original.stuck);
+    //std::swap(this->cursed, original.cursed);
+    //std::swap(this->quantity, original.quantity);
+    //std::swap(this->quantity_limit, original.quantity_limit);
+    //std::swap(this->unit_value, original.unit_value);
+    //std::move(this->bonuses, original.bonuses);
+    //std::move(this->armour_class_modifiers, original.armour_class_modifiers);
     return *this;
   }
   
