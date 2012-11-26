@@ -68,7 +68,7 @@ namespace tbrpg
     /**
      * Items that can be put inside the container
      */
-    Item* can_contain;
+    std::vector<Item> can_contain;
     
     
     

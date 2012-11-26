@@ -68,7 +68,7 @@ namespace tbrpg
     /**
      * The opposite schools
      */
-    MagicSchool* opposite;
+    std::vector<MagicSchool> opposite;
     
     
     

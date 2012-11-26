@@ -121,7 +121,7 @@ namespace tbrpg
     /**
      * Proficiency chart
      */
-    std::unordered_map<WeaponGroup, Proficiency*> proficiency_chart;
+    std::unordered_map<WeaponGroup, std::vector<Proficiency>> proficiency_chart;
     
     /**
      * Weapon used when the character has his left hand free but is holding a shield

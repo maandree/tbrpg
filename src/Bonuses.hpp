@@ -126,7 +126,7 @@ namespace tbrpg
     /**
      * Extra spell slots per spell level
      */
-    int* bonus_spells;
+    std::vector<int> bonus_spells;
     
     /**
      * Morale bonus

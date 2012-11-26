@@ -83,7 +83,7 @@ namespace tbrpg
     /**
      * Spells that are learned to when a level is reached
      */
-    Spell** new_spells;
+    std::vector<Spell>* new_spells;
     
     /**
      * The number of proficiencies that that can be allocated when a level is reached

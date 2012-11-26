@@ -83,7 +83,7 @@ namespace tbrpg
     /**
      * Effects
      */
-    Spell* effects;
+    std::vector<Spell> effects;
     
     
     

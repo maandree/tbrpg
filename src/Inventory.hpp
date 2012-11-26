@@ -65,7 +65,7 @@ namespace tbrpg
     /**
      * Left hand item slots
      */
-    Weapon* left_hand;
+    std::vector<Weapon> left_hand;
     
     /**
      * Right hand item slot
@@ -75,12 +75,12 @@ namespace tbrpg
     /**
      * Quiver slots
      */
-    Ammunition* quiver;
+    std::vector<Ammunition> quiver;
     
     /**
      * Quick item slots
      */
-    QuickItem* quick_items;
+    std::vector<QuickItem> quick_items;
     
     /**
      * Headgear slots
@@ -125,7 +125,7 @@ namespace tbrpg
     /**
      * Personal inventory slots
      */
-    Item* personal;
+    std::vector<Item> personal;
     
     
     

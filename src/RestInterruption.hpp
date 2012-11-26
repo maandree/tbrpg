@@ -68,7 +68,7 @@ namespace tbrpg
     /**
      * Creatures that will be summoned
      */
-    Creature* creatures;
+    std::vector<Creature> creatures;
     
     
     

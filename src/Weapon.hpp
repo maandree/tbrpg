@@ -91,7 +91,7 @@ namespace tbrpg
     /**
      * The damage type, if multiple, one fill be selected at uniform random for each attack
      */
-    DamageType* damage_type;
+    std::vector<DamageType> damage_type;
     
     /**
      * The weapon group

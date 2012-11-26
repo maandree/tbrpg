@@ -92,12 +92,12 @@ namespace tbrpg
     /**
      * All spells, very useful for when new characters selects spells, or to restrict imported characters
      */
-    Spell* spells;
+    std::vector<Spell> spells;
     
     /**
      * Races in the game that new charactes can chooses
      */
-    Race* races;
+    std::vector<Race> races;
     
     
     

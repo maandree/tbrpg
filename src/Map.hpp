@@ -59,7 +59,7 @@ namespace tbrpg
     /**
      * All major areas in the world map
      */
-    MapMajor* majors;
+    std::vector<MapMajor> majors;
     
     
     

@@ -73,12 +73,12 @@ namespace tbrpg
     /**
      * Roads to other major areas in the area
      */
-    Road* roads;
+    std::vector<Road> roads;
     
     /**
      * Entrance to other areas in the area
      */
-    Entrance* connections;
+    std::vector<Entrance> connections;
     
     /**
      * Items in the area
@@ -98,7 +98,7 @@ namespace tbrpg
     /**
      * Possible rest interruptions
      */
-    RestInterruption* interruptions;
+    std::vector<RestInterruption> interruptions;
     
     
     

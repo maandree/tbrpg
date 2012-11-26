@@ -54,7 +54,7 @@ namespace tbrpg
     /**
      * Allowed classes for the race
      */
-    Class** allowed_classes;
+    std::vector<std::vector<Class>> allowed_classes;
     
     /**
      * Bonuses for the race

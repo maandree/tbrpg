@@ -90,17 +90,17 @@ namespace tbrpg
     /**
      * The character's experiences for its classes
      */
-    int* experience;
+    std::vector<int> experience;
     
     /**
      * The character's levels for its classes
      */
-    char* level;
+    std::vector<char> level;
     
     /**
      * For each of the character's classes, whether the class is abondoned by dual classing
      */
-    bool* class_abondoned;
+    std::vector<bool> class_abondoned;
     
     /**
      * The character's weapon proficiencies
@@ -140,7 +140,7 @@ namespace tbrpg
     /**
      * The character's prestige classes
      */
-    Class* prestige;
+    std::vector<Class> prestige;
     
     /**
      * The character's magic school specialisation

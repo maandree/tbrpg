@@ -59,7 +59,7 @@ namespace tbrpg
     /**
      * Index combination to action slots map
      */
-    std::unordered_map<long long, ActionSlot*> slot_map;
+    std::unordered_map<long long, std::vector<ActionSlot>> slot_map;
     
     
     
