@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Gem item class
    */
-  class Gem: Item
+  class Gem: public  Item
   {
   public:
     /**
      * Construction
      */
-    Gem();
+    Gem() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gem(const Gem& original);
+    Gem(const Gem& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gem(Gem& original);
+    Gem(Gem& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gem(Gem&& original);
+    Gem(Gem&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Gem& operator =(Gem&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Gem& self, const Gem& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Dagger item class
    */
-  class Dagger: OneHandedMelee
+  class Dagger: public  OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Dagger();
+    Dagger() : OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(const Dagger& original);
+    Dagger(const Dagger& original) : OneHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(Dagger& original);
+    Dagger(Dagger& original) : OneHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(Dagger&& original);
+    Dagger(Dagger&& original) : OneHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Dagger& operator =(Dagger&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Dagger& self, const Dagger& original);
+  
   };
 }
 

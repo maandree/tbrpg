@@ -130,7 +130,15 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(const Headgear& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -150,7 +158,15 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -170,7 +186,15 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear&& original)
   {
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
@@ -180,6 +204,17 @@ namespace tbrpg
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Headgear::__copy__(Headgear& self, const Headgear& original);
+  {
+    left = right;
   }
   
 }

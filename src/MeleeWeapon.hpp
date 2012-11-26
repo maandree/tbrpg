@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Melée weapon item class
    */
-  class MeleeWeapon: Weapon
+  class MeleeWeapon: public  Weapon
   {
   public:
     /**
      * Construction
      */
-    MeleeWeapon();
+    MeleeWeapon() : Weapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(const MeleeWeapon& original);
+    MeleeWeapon(const MeleeWeapon& original) : Weapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(MeleeWeapon& original);
+    MeleeWeapon(MeleeWeapon& original) : Weapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(MeleeWeapon&& original);
+    MeleeWeapon(MeleeWeapon&& original) : Weapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual MeleeWeapon& operator =(MeleeWeapon&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(MeleeWeapon& self, const MeleeWeapon& original);
+  
   };
 }
 

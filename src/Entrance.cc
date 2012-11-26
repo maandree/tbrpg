@@ -150,5 +150,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Entrance::__copy__(Entrance& self, const Entrance& original);
+  {
+    left = right;
+  }
+  
 }
 

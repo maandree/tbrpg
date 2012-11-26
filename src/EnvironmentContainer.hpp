@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Item container that are in the environments
    */
-  class EnvironmentContainer: Container, Lockable
+  class EnvironmentContainer: public  Container, public Lockable
   {
   public:
     /**
@@ -86,28 +86,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    EnvironmentContainer();
+    EnvironmentContainer() : Container(), Lockable();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(const EnvironmentContainer& original);
+    EnvironmentContainer(const EnvironmentContainer& original) : Container(original), Lockable(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(EnvironmentContainer& original);
+    EnvironmentContainer(EnvironmentContainer& original) : Container(original), Lockable(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(EnvironmentContainer&& original);
+    EnvironmentContainer(EnvironmentContainer&& original) : Container(original), Lockable(original);
     
     
     
@@ -142,6 +142,16 @@ namespace tbrpg
      */
     virtual EnvironmentContainer& operator =(EnvironmentContainer&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(EnvironmentContainer& self, const EnvironmentContainer& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Long sword item class
    */
-  class LongSword: LargeSword
+  class LongSword: public  LargeSword
   {
   public:
     /**
      * Construction
      */
-    LongSword();
+    LongSword() : LargeSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(const LongSword& original);
+    LongSword(const LongSword& original) : LargeSword(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(LongSword& original);
+    LongSword(LongSword& original) : LargeSword(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(LongSword&& original);
+    LongSword(LongSword&& original) : LargeSword(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual LongSword& operator =(LongSword&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(LongSword& self, const LongSword& original);
+  
   };
 }
 

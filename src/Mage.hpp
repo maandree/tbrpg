@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The mage class
    */
-  class Mage: Wizard
+  class Mage: public  Wizard
   {
   public:
     /**
      * Construction
      */
-    Mage();
+    Mage() : Wizard();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(const Mage& original);
+    Mage(const Mage& original) : Wizard(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(Mage& original);
+    Mage(Mage& original) : Wizard(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(Mage&& original);
+    Mage(Mage&& original) : Wizard(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Mage& operator =(Mage&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Mage& self, const Mage& original);
+  
   };
 }
 

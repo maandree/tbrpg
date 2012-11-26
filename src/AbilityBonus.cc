@@ -118,5 +118,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void AbilityBonus::__copy__(AbilityBonus& self, const AbilityBonus& original);
+  {
+    left = right;
+  }
+  
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Item that can be placed in the right hand
    */
-  class RightHandItem: Item
+  class RightHandItem: public  Item
   {
   public:
     /**
      * Construction
      */
-    RightHandItem();
+    RightHandItem() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(const RightHandItem& original);
+    RightHandItem(const RightHandItem& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(RightHandItem& original);
+    RightHandItem(RightHandItem& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(RightHandItem&& original);
+    RightHandItem(RightHandItem&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual RightHandItem& operator =(RightHandItem&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(RightHandItem& self, const RightHandItem& original);
+  
   };
 }
 

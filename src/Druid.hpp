@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The druid cass
    */
-  class Druid: Priest
+  class Druid: public  Priest
   {
   public:
     /**
      * Construction
      */
-    Druid();
+    Druid() : Priest();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(const Druid& original);
+    Druid(const Druid& original) : Priest(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(Druid& original);
+    Druid(Druid& original) : Priest(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(Druid&& original);
+    Druid(Druid&& original) : Priest(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Druid& operator =(Druid&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Druid& self, const Druid& original);
+  
   };
 }
 

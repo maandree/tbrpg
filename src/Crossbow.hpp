@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Crossbow item class
    */
-  class Crossbow: RangedWeapon
+  class Crossbow: public  RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Crossbow();
+    Crossbow() : RangedWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Crossbow(const Crossbow& original);
+    Crossbow(const Crossbow& original) : RangedWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Crossbow(Crossbow& original);
+    Crossbow(Crossbow& original) : RangedWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Crossbow(Crossbow&& original);
+    Crossbow(Crossbow&& original) : RangedWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Crossbow& operator =(Crossbow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Crossbow& self, const Crossbow& original);
+  
   };
 }
 

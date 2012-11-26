@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The wizard superclass
    */
-  class Wizard: Class
+  class Wizard: public  Class
   {
   public:
     /**
      * Construction
      */
-    Wizard();
+    Wizard() : Class();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(const Wizard& original);
+    Wizard(const Wizard& original) : Class(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(Wizard& original);
+    Wizard(Wizard& original) : Class(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(Wizard&& original);
+    Wizard(Wizard&& original) : Class(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Wizard& operator =(Wizard&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Wizard& self, const Wizard& original);
+  
   };
 }
 

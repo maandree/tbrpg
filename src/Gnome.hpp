@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The gnome race
    */
-  class Gnome: Race
+  class Gnome: public  Race
   {
   public:
     /**
      * Construction
      */
-    Gnome();
+    Gnome() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(const Gnome& original);
+    Gnome(const Gnome& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(Gnome& original);
+    Gnome(Gnome& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(Gnome&& original);
+    Gnome(Gnome&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Gnome& operator =(Gnome&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Gnome& self, const Gnome& original);
+  
   };
 }
 

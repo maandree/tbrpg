@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Door separating environments
    */
-  class Door: Entrance, Lockable
+  class Door: public  Entrance, public Lockable
   {
   public:
     /**
      * Construction
      */
-    Door();
+    Door() : Entrance(), Lockable();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Door(const Door& original);
+    Door(const Door& original) : Entrance(original), Lockable(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Door(Door& original);
+    Door(Door& original) : Entrance(original), Lockable(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Door(Door&& original);
+    Door(Door&& original) : Entrance(original), Lockable(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Door& operator =(Door&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Door& self, const Door& original);
+  
   };
 }
 

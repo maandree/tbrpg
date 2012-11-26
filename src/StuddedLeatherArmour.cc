@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void StuddedLeatherArmour::__copy__(StuddedLeatherArmour& self, const StuddedLeatherArmour& original);
+  {
+    left = right;
+  }
+  
 }
 

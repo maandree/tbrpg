@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Helmet::__copy__(Helmet& self, const Helmet& original);
+  {
+    left = right;
+  }
+  
 }
 

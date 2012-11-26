@@ -115,7 +115,12 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(const Weapon& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -132,7 +137,12 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(Weapon& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -149,13 +159,29 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(Weapon&& original)
   {
-    std::move(this->, original.);
+    std::move((RightHandItem)*this, (RightHandItem)original);
+    std::move((RightHandItem)*this, (RightHandItem)original);
+    std::move((RightHandItem)*this, (RightHandItem)original);
+    std::move((RightHandItem)*this, (RightHandItem)original);
+    std::move((RightHandItem)*this, (RightHandItem)original);
+    std::move((RightHandItem)*this, (RightHandItem)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Weapon::__copy__(Weapon& self, const Weapon& original);
+  {
+    left = right;
   }
   
 }

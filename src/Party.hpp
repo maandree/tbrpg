@@ -137,6 +137,16 @@ namespace tbrpg
      */
     virtual Party& operator =(Party&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Party& self, const Party& original);
+  
   };
 }
 

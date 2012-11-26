@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Ammunition item class
    */
-  class Ammunition: Item
+  class Ammunition: public  Item
   {
   public:
     /**
@@ -56,28 +56,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Ammunition();
+    Ammunition() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(const Ammunition& original);
+    Ammunition(const Ammunition& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(Ammunition& original);
+    Ammunition(Ammunition& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(Ammunition&& original);
+    Ammunition(Ammunition&& original) : Item(original);
     
     
     
@@ -112,6 +112,16 @@ namespace tbrpg
      */
     virtual Ammunition& operator =(Ammunition&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Ammunition& self, const Ammunition& original);
+  
   };
 }
 

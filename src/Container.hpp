@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Item container item class
    */
-  class Container: Item
+  class Container: public  Item
   {
   public:
     /**
@@ -56,28 +56,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Container();
+    Container() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Container(const Container& original);
+    Container(const Container& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Container(Container& original);
+    Container(Container& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Container(Container&& original);
+    Container(Container&& original) : Item(original);
     
     
     
@@ -112,6 +112,16 @@ namespace tbrpg
      */
     virtual Container& operator =(Container&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Container& self, const Container& original);
+  
   };
 }
 

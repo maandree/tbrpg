@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Weapon item class
    */
-  class Weapon: RightHandItem
+  class Weapon: public  RightHandItem
   {
   public:
     /**
@@ -76,28 +76,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Weapon();
+    Weapon() : RightHandItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(const Weapon& original);
+    Weapon(const Weapon& original) : RightHandItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(Weapon& original);
+    Weapon(Weapon& original) : RightHandItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(Weapon&& original);
+    Weapon(Weapon&& original) : RightHandItem(original);
     
     
     
@@ -132,6 +132,16 @@ namespace tbrpg
      */
     virtual Weapon& operator =(Weapon&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Weapon& self, const Weapon& original);
+  
   };
 }
 

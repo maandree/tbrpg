@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Plate mail item clss
    */
-  class PlateMail: BodyArmour
+  class PlateMail: public  BodyArmour
   {
   public:
     /**
      * Construction
      */
-    PlateMail();
+    PlateMail() : BodyArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    PlateMail(const PlateMail& original);
+    PlateMail(const PlateMail& original) : BodyArmour(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    PlateMail(PlateMail& original);
+    PlateMail(PlateMail& original) : BodyArmour(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    PlateMail(PlateMail&& original);
+    PlateMail(PlateMail&& original) : BodyArmour(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual PlateMail& operator =(PlateMail&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(PlateMail& self, const PlateMail& original);
+  
   };
 }
 

@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Flail::__copy__(Flail& self, const Flail& original);
+  {
+    left = right;
+  }
+  
 }
 

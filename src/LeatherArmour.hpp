@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Leather armour item class
    */
-  class LeatherArmour: BodyArmour
+  class LeatherArmour: public  BodyArmour
   {
   public:
     /**
      * Construction
      */
-    LeatherArmour();
+    LeatherArmour() : BodyArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(const LeatherArmour& original);
+    LeatherArmour(const LeatherArmour& original) : BodyArmour(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(LeatherArmour& original);
+    LeatherArmour(LeatherArmour& original) : BodyArmour(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(LeatherArmour&& original);
+    LeatherArmour(LeatherArmour&& original) : BodyArmour(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual LeatherArmour& operator =(LeatherArmour&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(LeatherArmour& self, const LeatherArmour& original);
+  
   };
 }
 

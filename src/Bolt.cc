@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Bolt::__copy__(Bolt& self, const Bolt& original);
+  {
+    left = right;
+  }
+  
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Throwing axe item class
    */
-  class ThrowingAxe: Throwing
+  class ThrowingAxe: public  Throwing
   {
   public:
     /**
      * Construction
      */
-    ThrowingAxe();
+    ThrowingAxe() : Throwing();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(const ThrowingAxe& original);
+    ThrowingAxe(const ThrowingAxe& original) : Throwing(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(ThrowingAxe& original);
+    ThrowingAxe(ThrowingAxe& original) : Throwing(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(ThrowingAxe&& original);
+    ThrowingAxe(ThrowingAxe&& original) : Throwing(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual ThrowingAxe& operator =(ThrowingAxe&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ThrowingAxe& self, const ThrowingAxe& original);
+  
   };
 }
 

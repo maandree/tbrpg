@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Hat item class
    */
-  class Hat: Headgear
+  class Hat: public  Headgear
   {
   public:
     /**
      * Construction
      */
-    Hat();
+    Hat() : Headgear();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hat(const Hat& original);
+    Hat(const Hat& original) : Headgear(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hat(Hat& original);
+    Hat(Hat& original) : Headgear(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Hat(Hat&& original);
+    Hat(Hat&& original) : Headgear(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Hat& operator =(Hat&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Hat& self, const Hat& original);
+  
   };
 }
 

@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void OneHandedMelee::__copy__(OneHandedMelee& self, const OneHandedMelee& original);
+  {
+    left = right;
+  }
+  
 }
 

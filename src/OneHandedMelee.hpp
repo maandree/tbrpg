@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * One-handed melée weapon item class
    */
-  class OneHandedMelee: MeleeWeapon
+  class OneHandedMelee: public  MeleeWeapon
   {
   public:
     /**
      * Construction
      */
-    OneHandedMelee();
+    OneHandedMelee() : MeleeWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(const OneHandedMelee& original);
+    OneHandedMelee(const OneHandedMelee& original) : MeleeWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(OneHandedMelee& original);
+    OneHandedMelee(OneHandedMelee& original) : MeleeWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(OneHandedMelee&& original);
+    OneHandedMelee(OneHandedMelee&& original) : MeleeWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual OneHandedMelee& operator =(OneHandedMelee&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(OneHandedMelee& self, const OneHandedMelee& original);
+  
   };
 }
 

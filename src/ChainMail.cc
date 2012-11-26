@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void ChainMail::__copy__(ChainMail& self, const ChainMail& original);
+  {
+    left = right;
+  }
+  
 }
 

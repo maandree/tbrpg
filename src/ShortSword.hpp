@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Short sword item class
    */
-  class ShortSword: OneHandedMelee
+  class ShortSword: public  OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    ShortSword();
+    ShortSword() : OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(const ShortSword& original);
+    ShortSword(const ShortSword& original) : OneHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(ShortSword& original);
+    ShortSword(ShortSword& original) : OneHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(ShortSword&& original);
+    ShortSword(ShortSword&& original) : OneHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual ShortSword& operator =(ShortSword&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ShortSword& self, const ShortSword& original);
+  
   };
 }
 

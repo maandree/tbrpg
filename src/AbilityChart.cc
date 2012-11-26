@@ -222,5 +222,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void AbilityChart::__copy__(AbilityChart& self, const AbilityChart& original);
+  {
+    left = right;
+  }
+  
 }
 

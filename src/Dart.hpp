@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Dart item cals
    */
-  class Dart: Throwing
+  class Dart: public  Throwing
   {
   public:
     /**
      * Construction
      */
-    Dart();
+    Dart() : Throwing();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(const Dart& original);
+    Dart(const Dart& original) : Throwing(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(Dart& original);
+    Dart(Dart& original) : Throwing(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(Dart&& original);
+    Dart(Dart&& original) : Throwing(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Dart& operator =(Dart&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Dart& self, const Dart& original);
+  
   };
 }
 

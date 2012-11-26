@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Sling item class
    */
-  class Sling: RangedWeapon
+  class Sling: public  RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Sling();
+    Sling() : RangedWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(const Sling& original);
+    Sling(const Sling& original) : RangedWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(Sling& original);
+    Sling(Sling& original) : RangedWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(Sling&& original);
+    Sling(Sling&& original) : RangedWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Sling& operator =(Sling&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Sling& self, const Sling& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Halberd item class
    */
-  class Halberd: TwoHandedMelee
+  class Halberd: public  TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Halberd();
+    Halberd() : TwoHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(const Halberd& original);
+    Halberd(const Halberd& original) : TwoHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(Halberd& original);
+    Halberd(Halberd& original) : TwoHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(Halberd&& original);
+    Halberd(Halberd&& original) : TwoHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Halberd& operator =(Halberd&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Halberd& self, const Halberd& original);
+  
   };
 }
 

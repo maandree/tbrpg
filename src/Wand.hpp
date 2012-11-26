@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Wand, rod and magic staff item class
    */
-  class Wand: QuickItem
+  class Wand: public  QuickItem
   {
   public:
     /**
      * Construction
      */
-    Wand();
+    Wand() : QuickItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(const Wand& original);
+    Wand(const Wand& original) : QuickItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(Wand& original);
+    Wand(Wand& original) : QuickItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(Wand&& original);
+    Wand(Wand&& original) : QuickItem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Wand& operator =(Wand&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Wand& self, const Wand& original);
+  
   };
 }
 

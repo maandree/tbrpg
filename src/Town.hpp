@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Town outdoors environment
    */
-  class Town: MapMinor
+  class Town: public  MapMinor
   {
   public:
     /**
      * Construction
      */
-    Town();
+    Town() : MapMinor();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Town(const Town& original);
+    Town(const Town& original) : MapMinor(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Town(Town& original);
+    Town(Town& original) : MapMinor(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Town(Town&& original);
+    Town(Town&& original) : MapMinor(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Town& operator =(Town&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Town& self, const Town& original);
+  
   };
 }
 

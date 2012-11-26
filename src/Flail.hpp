@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Flail item class
    */
-  class Flail: BluntWeapon
+  class Flail: public  BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Flail();
+    Flail() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(const Flail& original);
+    Flail(const Flail& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(Flail& original);
+    Flail(Flail& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(Flail&& original);
+    Flail(Flail&& original) : BluntWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Flail& operator =(Flail&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Flail& self, const Flail& original);
+  
   };
 }
 

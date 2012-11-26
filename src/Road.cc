@@ -150,5 +150,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Road::__copy__(Road& self, const Road& original);
+  {
+    left = right;
+  }
+  
 }
 

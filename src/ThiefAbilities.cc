@@ -174,5 +174,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void ThiefAbilities::__copy__(ThiefAbilities& self, const ThiefAbilities& original);
+  {
+    left = right;
+  }
+  
 }
 

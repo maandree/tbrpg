@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Helmet item class
    */
-  class Helmet: Headgear
+  class Helmet: public  Headgear
   {
   public:
     /**
      * Construction
      */
-    Helmet();
+    Helmet() : Headgear();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Helmet(const Helmet& original);
+    Helmet(const Helmet& original) : Headgear(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Helmet(Helmet& original);
+    Helmet(Helmet& original) : Headgear(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Helmet(Helmet&& original);
+    Helmet(Helmet&& original) : Headgear(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Helmet& operator =(Helmet&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Helmet& self, const Helmet& original);
+  
   };
 }
 

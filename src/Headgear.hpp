@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Headgear item class
    */
-  class Headgear: Item
+  class Headgear: public  Item
   {
   public:
     /**
@@ -91,28 +91,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Headgear();
+    Headgear() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(const Headgear& original);
+    Headgear(const Headgear& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(Headgear& original);
+    Headgear(Headgear& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(Headgear&& original);
+    Headgear(Headgear&& original) : Item(original);
     
     
     
@@ -147,6 +147,16 @@ namespace tbrpg
      */
     virtual Headgear& operator =(Headgear&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Headgear& self, const Headgear& original);
+  
   };
 }
 

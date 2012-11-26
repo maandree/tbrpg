@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Gold item class
    */
-  class Gold: Gem
+  class Gold: public  Gem
   {
   public:
     /**
      * Construction
      */
-    Gold();
+    Gold() : Gem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(const Gold& original);
+    Gold(const Gold& original) : Gem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(Gold& original);
+    Gold(Gold& original) : Gem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(Gold&& original);
+    Gold(Gold&& original) : Gem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Gold& operator =(Gold&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Gold& self, const Gold& original);
+  
   };
 }
 

@@ -150,7 +150,19 @@ namespace tbrpg
    */
   Body& Body::operator =(const Body& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -174,7 +186,19 @@ namespace tbrpg
    */
   Body& Body::operator =(Body& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -198,7 +222,19 @@ namespace tbrpg
    */
   Body& Body::operator =(Body&& original)
   {
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
@@ -212,6 +248,17 @@ namespace tbrpg
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Body::__copy__(Body& self, const Body& original);
+  {
+    left = right;
   }
   
 }

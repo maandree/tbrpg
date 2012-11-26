@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Indoors environment
    */
-  class House: MapMinor
+  class House: public  MapMinor
   {
   public:
     /**
      * Construction
      */
-    House();
+    House() : MapMinor();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    House(const House& original);
+    House(const House& original) : MapMinor(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    House(House& original);
+    House(House& original) : MapMinor(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    House(House&& original);
+    House(House&& original) : MapMinor(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual House& operator =(House&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(House& self, const House& original);
+  
   };
 }
 

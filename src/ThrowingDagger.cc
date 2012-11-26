@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void ThrowingDagger::__copy__(ThrowingDagger& self, const ThrowingDagger& original);
+  {
+    left = right;
+  }
+  
 }
 

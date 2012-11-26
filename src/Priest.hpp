@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The priest superclass
    */
-  class Priest: Class
+  class Priest: public  Class
   {
   public:
     /**
      * Construction
      */
-    Priest();
+    Priest() : Class();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(const Priest& original);
+    Priest(const Priest& original) : Class(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(Priest& original);
+    Priest(Priest& original) : Class(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(Priest&& original);
+    Priest(Priest&& original) : Class(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Priest& operator =(Priest&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Priest& self, const Priest& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Potion item class
    */
-  class Potion: QuickItem
+  class Potion: public  QuickItem
   {
   public:
     /**
      * Construction
      */
-    Potion();
+    Potion() : QuickItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(const Potion& original);
+    Potion(const Potion& original) : QuickItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(Potion& original);
+    Potion(Potion& original) : QuickItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(Potion&& original);
+    Potion(Potion&& original) : QuickItem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Potion& operator =(Potion&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Potion& self, const Potion& original);
+  
   };
 }
 

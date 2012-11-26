@@ -126,5 +126,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void CharacterSheet::__copy__(CharacterSheet& self, const CharacterSheet& original);
+  {
+    left = right;
+  }
+  
 }
 

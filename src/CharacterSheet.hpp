@@ -112,6 +112,16 @@ namespace tbrpg
      */
     virtual CharacterSheet& operator =(CharacterSheet&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(CharacterSheet& self, const CharacterSheet& original);
+  
   };
 }
 

@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void MeleeWeapon::__copy__(MeleeWeapon& self, const MeleeWeapon& original);
+  {
+    left = right;
+  }
+  
 }
 

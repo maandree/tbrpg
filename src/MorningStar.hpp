@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Morning star item class
    */
-  class MorningStar: BluntWeapon
+  class MorningStar: public  BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    MorningStar();
+    MorningStar() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(const MorningStar& original);
+    MorningStar(const MorningStar& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(MorningStar& original);
+    MorningStar(MorningStar& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(MorningStar&& original);
+    MorningStar(MorningStar&& original) : BluntWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual MorningStar& operator =(MorningStar&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(MorningStar& self, const MorningStar& original);
+  
   };
 }
 

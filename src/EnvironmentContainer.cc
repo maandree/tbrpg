@@ -125,7 +125,22 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(const EnvironmentContainer& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -144,7 +159,22 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -163,7 +193,22 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer&& original)
   {
-    std::move(this->, original.);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);
+    std::move((Container,)*this, (Container,)original);
+    std::move((Lockable)*this, (Lockable)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
@@ -172,6 +217,17 @@ namespace tbrpg
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void EnvironmentContainer::__copy__(EnvironmentContainer& self, const EnvironmentContainer& original);
+  {
+    left = right;
   }
   
 }

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The dwarf race
    */
-  class Dwarf: Race
+  class Dwarf: public  Race
   {
   public:
     /**
      * Construction
      */
-    Dwarf();
+    Dwarf() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(const Dwarf& original);
+    Dwarf(const Dwarf& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(Dwarf& original);
+    Dwarf(Dwarf& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(Dwarf&& original);
+    Dwarf(Dwarf&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Dwarf& operator =(Dwarf&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Dwarf& self, const Dwarf& original);
+  
   };
 }
 

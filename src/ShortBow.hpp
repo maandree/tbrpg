@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Short bow item class
    */
-  class ShortBow: Bow
+  class ShortBow: public  Bow
   {
   public:
     /**
      * Construction
      */
-    ShortBow();
+    ShortBow() : Bow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(const ShortBow& original);
+    ShortBow(const ShortBow& original) : Bow(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(ShortBow& original);
+    ShortBow(ShortBow& original) : Bow(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(ShortBow&& original);
+    ShortBow(ShortBow&& original) : Bow(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual ShortBow& operator =(ShortBow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ShortBow& self, const ShortBow& original);
+  
   };
 }
 

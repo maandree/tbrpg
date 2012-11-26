@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The thief class
    */
-  class Thief: Rogue
+  class Thief: public  Rogue
   {
   public:
     /**
      * Construction
      */
-    Thief();
+    Thief() : Rogue();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(const Thief& original);
+    Thief(const Thief& original) : Rogue(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(Thief& original);
+    Thief(Thief& original) : Rogue(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(Thief&& original);
+    Thief(Thief&& original) : Rogue(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Thief& operator =(Thief&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Thief& self, const Thief& original);
+  
   };
 }
 

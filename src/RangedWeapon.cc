@@ -105,7 +105,10 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(const RangedWeapon& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -120,7 +123,10 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -135,11 +141,25 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon&& original)
   {
-    std::move(this->, original.);
+    std::move((Weapon)*this, (Weapon)original);
+    std::move((Weapon)*this, (Weapon)original);
+    std::move((Weapon)*this, (Weapon)original);
+    std::move((Weapon)*this, (Weapon)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void RangedWeapon::__copy__(RangedWeapon& self, const RangedWeapon& original);
+  {
+    left = right;
   }
   
 }

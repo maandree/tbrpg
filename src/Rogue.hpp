@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The rogue superclass
    */
-  class Rogue: Class
+  class Rogue: public  Class
   {
   public:
     /**
      * Construction
      */
-    Rogue();
+    Rogue() : Class();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(const Rogue& original);
+    Rogue(const Rogue& original) : Class(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(Rogue& original);
+    Rogue(Rogue& original) : Class(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(Rogue&& original);
+    Rogue(Rogue&& original) : Class(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Rogue& operator =(Rogue&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Rogue& self, const Rogue& original);
+  
   };
 }
 

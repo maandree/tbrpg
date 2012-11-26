@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * War hammer item class
    */
-  class WarHammer: OneHandedMelee
+  class WarHammer: public  OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    WarHammer();
+    WarHammer() : OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(const WarHammer& original);
+    WarHammer(const WarHammer& original) : OneHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(WarHammer& original);
+    WarHammer(WarHammer& original) : OneHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(WarHammer&& original);
+    WarHammer(WarHammer&& original) : OneHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual WarHammer& operator =(WarHammer&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(WarHammer& self, const WarHammer& original);
+  
   };
 }
 

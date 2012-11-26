@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * One-handed hand-to-hand class
    */
-  class Fist: BluntWeapon
+  class Fist: public  BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Fist();
+    Fist() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(const Fist& original);
+    Fist(const Fist& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(Fist& original);
+    Fist(Fist& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(Fist&& original);
+    Fist(Fist&& original) : BluntWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Fist& operator =(Fist&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Fist& self, const Fist& original);
+  
   };
 }
 

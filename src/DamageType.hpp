@@ -107,6 +107,16 @@ namespace tbrpg
      */
     virtual DamageType& operator =(DamageType&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(DamageType& self, const DamageType& original);
+  
   };
 }
 

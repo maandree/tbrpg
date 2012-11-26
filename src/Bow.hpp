@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Bow item class
    */
-  class Bow: RangedWeapon
+  class Bow: public  RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Bow();
+    Bow() : RangedWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(const Bow& original);
+    Bow(const Bow& original) : RangedWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(Bow& original);
+    Bow(Bow& original) : RangedWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(Bow&& original);
+    Bow(Bow&& original) : RangedWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Bow& operator =(Bow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Bow& self, const Bow& original);
+  
   };
 }
 

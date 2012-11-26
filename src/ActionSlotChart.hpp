@@ -167,6 +167,16 @@ namespace tbrpg
      */
     virtual ActionSlotChart& operator =(ActionSlotChart&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ActionSlotChart& self, const ActionSlotChart& original);
+  
   };
 }
 

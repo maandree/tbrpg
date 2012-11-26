@@ -174,5 +174,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void SpellProgression::__copy__(SpellProgression& self, const SpellProgression& original);
+  {
+    left = right;
+  }
+  
 }
 

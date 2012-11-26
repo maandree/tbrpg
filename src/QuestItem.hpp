@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Quest item class
    */
-  class QuestItem: Item
+  class QuestItem: public  Item
   {
   public:
     /**
@@ -61,28 +61,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    QuestItem();
+    QuestItem() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(const QuestItem& original);
+    QuestItem(const QuestItem& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(QuestItem& original);
+    QuestItem(QuestItem& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(QuestItem&& original);
+    QuestItem(QuestItem&& original) : Item(original);
     
     
     
@@ -117,6 +117,16 @@ namespace tbrpg
      */
     virtual QuestItem& operator =(QuestItem&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(QuestItem& self, const QuestItem& original);
+  
   };
 }
 

@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void SmallShield::__copy__(SmallShield& self, const SmallShield& original);
+  {
+    left = right;
+  }
+  
 }
 

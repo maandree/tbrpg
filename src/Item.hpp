@@ -107,6 +107,16 @@ namespace tbrpg
      */
     virtual Item& operator =(Item&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Item& self, const Item& original);
+  
   };
 }
 

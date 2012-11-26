@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Wand::__copy__(Wand& self, const Wand& original);
+  {
+    left = right;
+  }
+  
 }
 

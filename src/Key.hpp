@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Key item class
    */
-  class Key: QuestItem
+  class Key: public  QuestItem
   {
   public:
     /**
      * Construction
      */
-    Key();
+    Key() : QuestItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Key(const Key& original);
+    Key(const Key& original) : QuestItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Key(Key& original);
+    Key(Key& original) : QuestItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Key(Key&& original);
+    Key(Key&& original) : QuestItem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Key& operator =(Key&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Key& self, const Key& original);
+  
   };
 }
 

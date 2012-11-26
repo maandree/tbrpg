@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Text scroll item class
    */
-  class TextScroll: Item
+  class TextScroll: public  Item
   {
   public:
     /**
      * Construction
      */
-    TextScroll();
+    TextScroll() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(const TextScroll& original);
+    TextScroll(const TextScroll& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(TextScroll& original);
+    TextScroll(TextScroll& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(TextScroll&& original);
+    TextScroll(TextScroll&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual TextScroll& operator =(TextScroll&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(TextScroll& self, const TextScroll& original);
+  
   };
 }
 

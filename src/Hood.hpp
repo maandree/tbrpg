@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Hood item class
    */
-  class Hood: Headgear
+  class Hood: public  Headgear
   {
   public:
     /**
      * Construction
      */
-    Hood();
+    Hood() : Headgear();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(const Hood& original);
+    Hood(const Hood& original) : Headgear(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(Hood& original);
+    Hood(Hood& original) : Headgear(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(Hood&& original);
+    Hood(Hood&& original) : Headgear(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Hood& operator =(Hood&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Hood& self, const Hood& original);
+  
   };
 }
 

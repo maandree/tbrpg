@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The sorcerer class
    */
-  class Sorcerer: Wizard
+  class Sorcerer: public  Wizard
   {
   public:
     /**
      * Construction
      */
-    Sorcerer();
+    Sorcerer() : Wizard();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(const Sorcerer& original);
+    Sorcerer(const Sorcerer& original) : Wizard(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(Sorcerer& original);
+    Sorcerer(Sorcerer& original) : Wizard(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(Sorcerer&& original);
+    Sorcerer(Sorcerer&& original) : Wizard(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Sorcerer& operator =(Sorcerer&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Sorcerer& self, const Sorcerer& original);
+  
   };
 }
 

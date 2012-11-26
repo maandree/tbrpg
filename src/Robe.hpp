@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Robe item class
    */
-  class Robe: BodyArmour
+  class Robe: public  BodyArmour
   {
   public:
     /**
      * Construction
      */
-    Robe();
+    Robe() : BodyArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(const Robe& original);
+    Robe(const Robe& original) : BodyArmour(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(Robe& original);
+    Robe(Robe& original) : BodyArmour(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(Robe&& original);
+    Robe(Robe&& original) : BodyArmour(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Robe& operator =(Robe&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Robe& self, const Robe& original);
+  
   };
 }
 

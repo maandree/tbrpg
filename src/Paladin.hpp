@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The paladin class
    */
-  class Paladin: Warrior
+  class Paladin: public  Warrior
   {
   public:
     /**
      * Construction
      */
-    Paladin();
+    Paladin() : Warrior();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(const Paladin& original);
+    Paladin(const Paladin& original) : Warrior(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(Paladin& original);
+    Paladin(Paladin& original) : Warrior(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(Paladin&& original);
+    Paladin(Paladin&& original) : Warrior(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Paladin& operator =(Paladin&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Paladin& self, const Paladin& original);
+  
   };
 }
 

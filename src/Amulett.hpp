@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Amulett and necklace item class
    */
-  class Amulett: Item
+  class Amulett: public  Item
   {
   public:
     /**
      * Construction
      */
-    Amulett();
+    Amulett() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(const Amulett& original);
+    Amulett(const Amulett& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett& original);
+    Amulett(Amulett& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett&& original);
+    Amulett(Amulett&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Amulett& operator =(Amulett&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Amulett& self, const Amulett& original);
+  
   };
 }
 

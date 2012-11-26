@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Ranged weapon item class
    */
-  class RangedWeapon: Weapon
+  class RangedWeapon: public  Weapon
   {
   public:
     /**
@@ -66,28 +66,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    RangedWeapon();
+    RangedWeapon() : Weapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(const RangedWeapon& original);
+    RangedWeapon(const RangedWeapon& original) : Weapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(RangedWeapon& original);
+    RangedWeapon(RangedWeapon& original) : Weapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(RangedWeapon&& original);
+    RangedWeapon(RangedWeapon&& original) : Weapon(original);
     
     
     
@@ -122,6 +122,16 @@ namespace tbrpg
      */
     virtual RangedWeapon& operator =(RangedWeapon&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(RangedWeapon& self, const RangedWeapon& original);
+  
   };
 }
 

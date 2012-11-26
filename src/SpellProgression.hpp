@@ -142,6 +142,16 @@ namespace tbrpg
      */
     virtual SpellProgression& operator =(SpellProgression&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(SpellProgression& self, const SpellProgression& original);
+  
   };
 }
 

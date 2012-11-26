@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Magic scroll item class
    */
-  class Scroll: QuickItem
+  class Scroll: public  QuickItem
   {
   public:
     /**
      * Construction
      */
-    Scroll();
+    Scroll() : QuickItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(const Scroll& original);
+    Scroll(const Scroll& original) : QuickItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(Scroll& original);
+    Scroll(Scroll& original) : QuickItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(Scroll&& original);
+    Scroll(Scroll&& original) : QuickItem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Scroll& operator =(Scroll&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Scroll& self, const Scroll& original);
+  
   };
 }
 

@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual EOF& operator =(EOF&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(EOF& self, const EOF& original);
+  
   };
 }
 

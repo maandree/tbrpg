@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Quarterstaff item class
    */
-  class Quarterstaff: TwoHandedMelee
+  class Quarterstaff: public  TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Quarterstaff();
+    Quarterstaff() : TwoHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Quarterstaff(const Quarterstaff& original);
+    Quarterstaff(const Quarterstaff& original) : TwoHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Quarterstaff(Quarterstaff& original);
+    Quarterstaff(Quarterstaff& original) : TwoHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Quarterstaff(Quarterstaff&& original);
+    Quarterstaff(Quarterstaff&& original) : TwoHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Quarterstaff& operator =(Quarterstaff&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Quarterstaff& self, const Quarterstaff& original);
+  
   };
 }
 

@@ -122,6 +122,16 @@ namespace tbrpg
      */
     virtual Spell& operator =(Spell&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Spell& self, const Spell& original);
+  
   };
 }
 

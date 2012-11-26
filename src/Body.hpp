@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Character body item class
    */
-  class Body: Item
+  class Body: public  Item
   {
   public:
     /**
@@ -111,28 +111,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Body();
+    Body() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Body(const Body& original);
+    Body(const Body& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Body(Body& original);
+    Body(Body& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Body(Body&& original);
+    Body(Body&& original) : Item(original);
     
     
     
@@ -167,6 +167,16 @@ namespace tbrpg
      */
     virtual Body& operator =(Body&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Body& self, const Body& original);
+  
   };
 }
 

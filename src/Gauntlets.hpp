@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Gauntlet and bracer item class
    */
-  class Gauntlets: Item
+  class Gauntlets: public  Item
   {
   public:
     /**
      * Construction
      */
-    Gauntlets();
+    Gauntlets() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(const Gauntlets& original);
+    Gauntlets(const Gauntlets& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(Gauntlets& original);
+    Gauntlets(Gauntlets& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(Gauntlets&& original);
+    Gauntlets(Gauntlets&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Gauntlets& operator =(Gauntlets&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Gauntlets& self, const Gauntlets& original);
+  
   };
 }
 

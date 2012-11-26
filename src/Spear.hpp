@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Spear item class
    */
-  class Spear: TwoHandedMelee
+  class Spear: public  TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Spear();
+    Spear() : TwoHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(const Spear& original);
+    Spear(const Spear& original) : TwoHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(Spear& original);
+    Spear(Spear& original) : TwoHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(Spear&& original);
+    Spear(Spear&& original) : TwoHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Spear& operator =(Spear&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Spear& self, const Spear& original);
+  
   };
 }
 

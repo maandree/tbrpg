@@ -142,5 +142,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void MapMinor::__copy__(MapMinor& self, const MapMinor& original);
+  {
+    left = right;
+  }
+  
 }
 

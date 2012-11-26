@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Boot item class
    */
-  class Boots: Item
+  class Boots: public  Item
   {
   public:
     /**
      * Construction
      */
-    Boots();
+    Boots() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(const Boots& original);
+    Boots(const Boots& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(Boots& original);
+    Boots(Boots& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(Boots&& original);
+    Boots(Boots&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Boots& operator =(Boots&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Boots& self, const Boots& original);
+  
   };
 }
 

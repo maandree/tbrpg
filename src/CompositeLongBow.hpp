@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Composite long bow item class
    */
-  class CompositeLongBow: Bow
+  class CompositeLongBow: public  Bow
   {
   public:
     /**
      * Construction
      */
-    CompositeLongBow();
+    CompositeLongBow() : Bow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(const CompositeLongBow& original);
+    CompositeLongBow(const CompositeLongBow& original) : Bow(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(CompositeLongBow& original);
+    CompositeLongBow(CompositeLongBow& original) : Bow(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(CompositeLongBow&& original);
+    CompositeLongBow(CompositeLongBow&& original) : Bow(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual CompositeLongBow& operator =(CompositeLongBow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(CompositeLongBow& self, const CompositeLongBow& original);
+  
   };
 }
 

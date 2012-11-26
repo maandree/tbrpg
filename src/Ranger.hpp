@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The ranger class
    */
-  class Ranger: Warrior
+  class Ranger: public  Warrior
   {
   public:
     /**
      * Construction
      */
-    Ranger();
+    Ranger() : Warrior();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ranger(const Ranger& original);
+    Ranger(const Ranger& original) : Warrior(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ranger(Ranger& original);
+    Ranger(Ranger& original) : Warrior(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ranger(Ranger&& original);
+    Ranger(Ranger&& original) : Warrior(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Ranger& operator =(Ranger&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Ranger& self, const Ranger& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Blunt weapon item class
    */
-  class BluntWeapon: OneHandedMelee
+  class BluntWeapon: public  OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    BluntWeapon();
+    BluntWeapon() : OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(const BluntWeapon& original);
+    BluntWeapon(const BluntWeapon& original) : OneHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(BluntWeapon& original);
+    BluntWeapon(BluntWeapon& original) : OneHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(BluntWeapon&& original);
+    BluntWeapon(BluntWeapon&& original) : OneHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual BluntWeapon& operator =(BluntWeapon&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(BluntWeapon& self, const BluntWeapon& original);
+  
   };
 }
 

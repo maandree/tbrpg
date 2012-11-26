@@ -126,5 +126,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void ExperienceChart::__copy__(ExperienceChart& self, const ExperienceChart& original);
+  {
+    left = right;
+  }
+  
 }
 

@@ -147,6 +147,16 @@ namespace tbrpg
      */
     virtual RestInterruption& operator =(RestInterruption&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(RestInterruption& self, const RestInterruption& original);
+  
   };
 }
 

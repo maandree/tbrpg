@@ -166,5 +166,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Party::__copy__(Party& self, const Party& original);
+  {
+    left = right;
+  }
+  
 }
 

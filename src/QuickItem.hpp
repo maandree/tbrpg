@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Quick item item class
    */
-  class QuickItem: Item
+  class QuickItem: public  Item
   {
   public:
     /**
      * Construction
      */
-    QuickItem();
+    QuickItem() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(const QuickItem& original);
+    QuickItem(const QuickItem& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(QuickItem& original);
+    QuickItem(QuickItem& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(QuickItem&& original);
+    QuickItem(QuickItem&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual QuickItem& operator =(QuickItem&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(QuickItem& self, const QuickItem& original);
+  
   };
 }
 

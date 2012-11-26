@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The bard class
    */
-  class Bard: Rogue
+  class Bard: public  Rogue
   {
   public:
     /**
      * Construction
      */
-    Bard();
+    Bard() : Rogue();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(const Bard& original);
+    Bard(const Bard& original) : Rogue(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(Bard& original);
+    Bard(Bard& original) : Rogue(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(Bard&& original);
+    Bard(Bard&& original) : Rogue(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Bard& operator =(Bard&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Bard& self, const Bard& original);
+  
   };
 }
 

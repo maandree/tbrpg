@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Club item class
    */
-  class Club: BluntWeapon
+  class Club: public  BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Club();
+    Club() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Club(const Club& original);
+    Club(const Club& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Club(Club& original);
+    Club(Club& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Club(Club&& original);
+    Club(Club&& original) : BluntWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Club& operator =(Club&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Club& self, const Club& original);
+  
   };
 }
 

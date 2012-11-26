@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The halfling race
    */
-  class Halfling: Race
+  class Halfling: public  Race
   {
   public:
     /**
      * Construction
      */
-    Halfling();
+    Halfling() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(const Halfling& original);
+    Halfling(const Halfling& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(Halfling& original);
+    Halfling(Halfling& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(Halfling&& original);
+    Halfling(Halfling&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Halfling& operator =(Halfling&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Halfling& self, const Halfling& original);
+  
   };
 }
 

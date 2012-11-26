@@ -142,5 +142,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void SavingThrows::__copy__(SavingThrows& self, const SavingThrows& original);
+  {
+    left = right;
+  }
+  
 }
 

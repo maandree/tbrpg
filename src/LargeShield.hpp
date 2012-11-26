@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Large shield item class
    */
-  class LargeShield: Shield
+  class LargeShield: public  Shield
   {
   public:
     /**
      * Construction
      */
-    LargeShield();
+    LargeShield() : Shield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(const LargeShield& original);
+    LargeShield(const LargeShield& original) : Shield(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(LargeShield& original);
+    LargeShield(LargeShield& original) : Shield(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(LargeShield&& original);
+    LargeShield(LargeShield&& original) : Shield(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual LargeShield& operator =(LargeShield&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(LargeShield& self, const LargeShield& original);
+  
   };
 }
 

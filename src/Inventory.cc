@@ -166,5 +166,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Inventory::__copy__(Inventory& self, const Inventory& original);
+  {
+    left = right;
+  }
+  
 }
 

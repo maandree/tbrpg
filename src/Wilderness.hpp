@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Wilderness outdoors environment
    */
-  class Wilderness: MapMinor
+  class Wilderness: public  MapMinor
   {
   public:
     /**
      * Construction
      */
-    Wilderness();
+    Wilderness() : MapMinor();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(const Wilderness& original);
+    Wilderness(const Wilderness& original) : MapMinor(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(Wilderness& original);
+    Wilderness(Wilderness& original) : MapMinor(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(Wilderness&& original);
+    Wilderness(Wilderness&& original) : MapMinor(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Wilderness& operator =(Wilderness&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Wilderness& self, const Wilderness& original);
+  
   };
 }
 

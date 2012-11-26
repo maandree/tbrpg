@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Large sword item class
    */
-  class LargeSword: OneHandedMelee
+  class LargeSword: public  OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    LargeSword();
+    LargeSword() : OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(const LargeSword& original);
+    LargeSword(const LargeSword& original) : OneHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(LargeSword& original);
+    LargeSword(LargeSword& original) : OneHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(LargeSword&& original);
+    LargeSword(LargeSword&& original) : OneHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual LargeSword& operator =(LargeSword&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(LargeSword& self, const LargeSword& original);
+  
   };
 }
 

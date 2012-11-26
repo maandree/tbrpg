@@ -116,5 +116,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Crossbow::__copy__(Crossbow& self, const Crossbow& original);
+  {
+    left = right;
+  }
+  
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Shield item class
    */
-  class Shield: RightHandItem
+  class Shield: public  RightHandItem
   {
   public:
     /**
      * Construction
      */
-    Shield();
+    Shield() : RightHandItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(const Shield& original);
+    Shield(const Shield& original) : RightHandItem(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(Shield& original);
+    Shield(Shield& original) : RightHandItem(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(Shield&& original);
+    Shield(Shield&& original) : RightHandItem(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Shield& operator =(Shield&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Shield& self, const Shield& original);
+  
   };
 }
 

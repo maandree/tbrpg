@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Chain mail item clss
    */
-  class ChainMail: BodyArmour
+  class ChainMail: public  BodyArmour
   {
   public:
     /**
      * Construction
      */
-    ChainMail();
+    ChainMail() : BodyArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(const ChainMail& original);
+    ChainMail(const ChainMail& original) : BodyArmour(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(ChainMail& original);
+    ChainMail(ChainMail& original) : BodyArmour(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(ChainMail&& original);
+    ChainMail(ChainMail&& original) : BodyArmour(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual ChainMail& operator =(ChainMail&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ChainMail& self, const ChainMail& original);
+  
   };
 }
 

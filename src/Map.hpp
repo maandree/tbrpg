@@ -127,6 +127,16 @@ namespace tbrpg
      */
     virtual Map& operator =(Map&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Map& self, const Map& original);
+  
   };
 }
 

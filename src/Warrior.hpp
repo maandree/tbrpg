@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The warrior superclass
    */
-  class Warrior: Class
+  class Warrior: public  Class
   {
   public:
     /**
      * Construction
      */
-    Warrior();
+    Warrior() : Class();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(const Warrior& original);
+    Warrior(const Warrior& original) : Class(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(Warrior& original);
+    Warrior(Warrior& original) : Class(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(Warrior&& original);
+    Warrior(Warrior&& original) : Class(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Warrior& operator =(Warrior&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Warrior& self, const Warrior& original);
+  
   };
 }
 

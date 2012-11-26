@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Torch item class
    */
-  class Torch: BluntWeapon
+  class Torch: public  BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Torch();
+    Torch() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(const Torch& original);
+    Torch(const Torch& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(Torch& original);
+    Torch(Torch& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(Torch&& original);
+    Torch(Torch&& original) : BluntWeapon(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Torch& operator =(Torch&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Torch& self, const Torch& original);
+  
   };
 }
 

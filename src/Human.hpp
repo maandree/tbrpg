@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The human race
    */
-  class Human: Race
+  class Human: public  Race
   {
   public:
     /**
      * Construction
      */
-    Human();
+    Human() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Human(const Human& original);
+    Human(const Human& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Human(Human& original);
+    Human(Human& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Human(Human&& original);
+    Human(Human&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Human& operator =(Human&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Human& self, const Human& original);
+  
   };
 }
 

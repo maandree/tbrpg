@@ -49,8 +49,15 @@ for line in lines:
         classComment = classLine[classLine.index(';') + 1:].strip()
         classLine = classLine[:classLine.index(';')].strip()
         className = classLine
+        supers = []
+        superDefault = ''
+        superCopy = ''
         if ':' in className:
             className = className[:className.index(':')]
+            superDefault = ' ' + classLine[classLine.index(':'):].replace(', ', '(), ') + '()'
+            superCopy = ' ' + classLine[classLine.index(':'):].replace(', ', '(original), ') + '(original)'
+            supers = classLine[classLine.index(':') + 2:].split(' ')
+            classLine = classLine.replace(',', ', public').replace(':', ': public ')
         
         output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
@@ -66,13 +73,13 @@ for line in lines:
             output += '    /**\n     * %s\n     */\n    %s;\n    \n' % (varComment, varLine)
         if len(varLines) > 0:
             output += '    \n    \n'
-        output += '    /**\n     * Construction\n     */\n    %s();\n    \n' % className
+        output += '    /**\n     * Construction\n     */\n    %s()%s;\n    \n' % (className, superDefault)
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(const %s& original);\n    \n' % (className, className)
+        output += '     */\n    %s(const %s& original)%s;\n    \n' % (className, className, superCopy)
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(%s& original);\n    \n' % (className, className)
+        output += '     */\n    %s(%s& original)%s;\n    \n' % (className, className, superCopy)
         output += '    /**\n     * Move constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(%s&& original);\n    \n    \n    \n' % (className, className)
+        output += '     */\n    %s(%s&& original)%s;\n    \n    \n    \n' % (className, className, superCopy)
         output += '    /**\n     * Destructor\n     */\n    virtual ~%s();\n    \n    \n    \n' % className
         output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
         output += '     * @return            The invoked object\n'
@@ -83,8 +90,10 @@ for line in lines:
         output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
         output += 'its resourced will be moved\n     * @return            The invoked object\n'
         output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
-        output += '  };\n'
-        output += '}\n\n\n'
+        output += '    \n  protected:\n    /**\n     * Copy method\n     * \n'
+        output += '     * @param  self      The object to modify\n     * @param  original  The reference object\n'
+        output += '     */\n    static void __copy__(%s& self, const %s& original);\n  \n' % (className, className)
+        output += '  };\n}\n\n\n'
         output += '#endif//__%s__\n' % className.upper()
         with open(className + '.hpp', 'wb') as file:
             file.write(output.encode('utf-8'))
@@ -92,10 +101,13 @@ for line in lines:
         
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long']
         numericals = ['signed ' + t for t in numericals] + ['unsigned ' + t for t in numericals]
-        (varInit, varCopy, varMove, varFree) = ([], [], [], [])
+        (varInit, varCopy, varMove, varFree, classCopy, classMove) = ([], [], [], [], [], [])
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             space = 0
+            for superClass in supers:
+                classCopy.append('%s::__copy__((%s&)*this, (%s&)original);')
+                classMove.append('std::move((%s)*this, (%s)original);' % (superClass, superClass))
             for s in range(0, len(varLine)):
                 if varLine[s] == ' ':
                     space = s
@@ -118,6 +130,8 @@ for line in lines:
         varCopy = '\n'.join(['    ' + item for item in varCopy])
         varMove = '\n'.join(['    ' + item for item in varMove])
         varFree = '\n'.join(['    //' + item for item in (['TODO implement destructor'] + varFree)])
+        classCopy = '\n'.join(['    ' + item for item in classCopy])
+        classMove = '\n'.join(['    ' + item for item in classMove])
         output = '// -*- mode: c++, coding: utf-8 -*-\n%s\n#include "%s.hpp"\n' % (copyNotice, className)
         output += '\n\n/**\n * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
@@ -134,16 +148,20 @@ for line in lines:
         output += '  /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
         output += '   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(const %s& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n  \n' % varCopy
+        output += '%s\n    return *this;\n  }\n  \n' % (classCopy + varCopy)
         output += '  /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
         output += '   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n  \n' % varCopy
+        output += '%s\n    return *this;\n  }\n  \n' % (classCopy + varCopy)
         output += '  /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
         output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n  \n' % varMove
-        output += '}\n\n'
+        output += '%s\n    return *this;\n  }\n  \n' % (classMove + varMove)
+        output += '  /**\n   * Copy method\n   * \n'
+        output += '   * @param  self      The object to modify\n   * @param  original  The reference object\n'
+        output += '   */\n  static void %s::__copy__(%s& self, const %s& original);\n' % (className, className, className)
+        output += '  {\n    left = right;\n  }\n'
+        output += '  \n}\n\n'
         with open(className + '.cc', 'wb') as file:
             file.write(output.encode('utf-8'))
             file.flush()

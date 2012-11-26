@@ -122,6 +122,16 @@ namespace tbrpg
      */
     virtual SavingThrows& operator =(SavingThrows&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(SavingThrows& self, const SavingThrows& original);
+  
   };
 }
 

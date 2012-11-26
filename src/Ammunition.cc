@@ -95,7 +95,8 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(const Ammunition& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     return *this;
   }
@@ -108,7 +109,8 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     return *this;
   }
@@ -121,9 +123,21 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);    std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Ammunition::__copy__(Ammunition& self, const Ammunition& original);
+  {
+    left = right;
   }
   
 }

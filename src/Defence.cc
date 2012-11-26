@@ -262,5 +262,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Defence::__copy__(Defence& self, const Defence& original);
+  {
+    left = right;
+  }
+  
 }
 

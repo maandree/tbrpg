@@ -105,7 +105,10 @@ namespace tbrpg
    */
   Creature& Creature::operator =(const Creature& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -120,7 +123,10 @@ namespace tbrpg
    */
   Creature& Creature::operator =(Creature& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     this-> = original.;
@@ -135,11 +141,25 @@ namespace tbrpg
    */
   Creature& Creature::operator =(Creature&& original)
   {
-    std::move(this->, original.);
+    std::move((Character)*this, (Character)original);
+    std::move((Character)*this, (Character)original);
+    std::move((Character)*this, (Character)original);
+    std::move((Character)*this, (Character)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Creature::__copy__(Creature& self, const Creature& original);
+  {
+    left = right;
   }
   
 }

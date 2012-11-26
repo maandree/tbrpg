@@ -112,6 +112,16 @@ namespace tbrpg
      */
     virtual ExperienceChart& operator =(ExperienceChart&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ExperienceChart& self, const ExperienceChart& original);
+  
   };
 }
 

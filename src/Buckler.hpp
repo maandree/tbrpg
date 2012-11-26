@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Buckler item class
    */
-  class Buckler: Shield
+  class Buckler: public  Shield
   {
   public:
     /**
      * Construction
      */
-    Buckler();
+    Buckler() : Shield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(const Buckler& original);
+    Buckler(const Buckler& original) : Shield(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(Buckler& original);
+    Buckler(Buckler& original) : Shield(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(Buckler&& original);
+    Buckler(Buckler&& original) : Shield(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Buckler& operator =(Buckler&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Buckler& self, const Buckler& original);
+  
   };
 }
 

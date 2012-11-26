@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Ring item class
    */
-  class Ring: Item
+  class Ring: public  Item
   {
   public:
     /**
      * Construction
      */
-    Ring();
+    Ring() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(const Ring& original);
+    Ring(const Ring& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(Ring& original);
+    Ring(Ring& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(Ring&& original);
+    Ring(Ring&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Ring& operator =(Ring&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Ring& self, const Ring& original);
+  
   };
 }
 

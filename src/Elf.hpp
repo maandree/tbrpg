@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The elf race
    */
-  class Elf: Race
+  class Elf: public  Race
   {
   public:
     /**
      * Construction
      */
-    Elf();
+    Elf() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Elf(const Elf& original);
+    Elf(const Elf& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Elf(Elf& original);
+    Elf(Elf& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Elf(Elf&& original);
+    Elf(Elf&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Elf& operator =(Elf&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Elf& self, const Elf& original);
+  
   };
 }
 

@@ -107,6 +107,16 @@ namespace tbrpg
      */
     virtual WeaponGroup& operator =(WeaponGroup&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(WeaponGroup& self, const WeaponGroup& original);
+  
   };
 }
 

@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Throwing dagger item class
    */
-  class ThrowingDagger: Throwing
+  class ThrowingDagger: public  Throwing
   {
   public:
     /**
      * Construction
      */
-    ThrowingDagger();
+    ThrowingDagger() : Throwing();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(const ThrowingDagger& original);
+    ThrowingDagger(const ThrowingDagger& original) : Throwing(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(ThrowingDagger& original);
+    ThrowingDagger(ThrowingDagger& original) : Throwing(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(ThrowingDagger&& original);
+    ThrowingDagger(ThrowingDagger&& original) : Throwing(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual ThrowingDagger& operator =(ThrowingDagger&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(ThrowingDagger& self, const ThrowingDagger& original);
+  
   };
 }
 

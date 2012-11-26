@@ -100,7 +100,9 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(const QuestItem& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     return *this;
@@ -114,7 +116,9 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     this-> = original.;
     this-> = original.;
     return *this;
@@ -128,10 +132,23 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);
+    std::move((Item)*this, (Item)original);    std::move(this->, original.);
     std::move(this->, original.);
     std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void QuestItem::__copy__(QuestItem& self, const QuestItem& original);
+  {
+    left = right;
   }
   
 }

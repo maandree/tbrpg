@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * Mace item class
    */
-  class Mace: BluntWeapon
+  class Mace: public  BluntWeapon
   {
   public:
     /**
@@ -51,28 +51,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Mace();
+    Mace() : BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(const Mace& original);
+    Mace(const Mace& original) : BluntWeapon(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(Mace& original);
+    Mace(Mace& original) : BluntWeapon(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(Mace&& original);
+    Mace(Mace&& original) : BluntWeapon(original);
     
     
     
@@ -107,6 +107,16 @@ namespace tbrpg
      */
     virtual Mace& operator =(Mace&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Mace& self, const Mace& original);
+  
   };
 }
 

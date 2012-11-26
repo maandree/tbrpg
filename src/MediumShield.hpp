@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Medium shield item class
    */
-  class MediumShield: Shield
+  class MediumShield: public  Shield
   {
   public:
     /**
      * Construction
      */
-    MediumShield();
+    MediumShield() : Shield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(const MediumShield& original);
+    MediumShield(const MediumShield& original) : Shield(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(MediumShield& original);
+    MediumShield(MediumShield& original) : Shield(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(MediumShield&& original);
+    MediumShield(MediumShield&& original) : Shield(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual MediumShield& operator =(MediumShield&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(MediumShield& self, const MediumShield& original);
+  
   };
 }
 

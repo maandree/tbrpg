@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Bolt item class
    */
-  class Bolt: Ammunition
+  class Bolt: public  Ammunition
   {
   public:
     /**
      * Construction
      */
-    Bolt();
+    Bolt() : Ammunition();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(const Bolt& original);
+    Bolt(const Bolt& original) : Ammunition(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(Bolt& original);
+    Bolt(Bolt& original) : Ammunition(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(Bolt&& original);
+    Bolt(Bolt&& original) : Ammunition(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Bolt& operator =(Bolt&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Bolt& self, const Bolt& original);
+  
   };
 }
 

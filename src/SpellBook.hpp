@@ -132,6 +132,16 @@ namespace tbrpg
      */
     virtual SpellBook& operator =(SpellBook&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(SpellBook& self, const SpellBook& original);
+  
   };
 }
 

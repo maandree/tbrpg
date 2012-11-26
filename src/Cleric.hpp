@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The cleric class
    */
-  class Cleric: Priest
+  class Cleric: public  Priest
   {
   public:
     /**
      * Construction
      */
-    Cleric();
+    Cleric() : Priest();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(const Cleric& original);
+    Cleric(const Cleric& original) : Priest(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(Cleric& original);
+    Cleric(Cleric& original) : Priest(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(Cleric&& original);
+    Cleric(Cleric&& original) : Priest(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Cleric& operator =(Cleric&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Cleric& self, const Cleric& original);
+  
   };
 }
 

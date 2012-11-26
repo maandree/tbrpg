@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Heavy crossbow item class
    */
-  class HeavyCrossbow: Crossbow
+  class HeavyCrossbow: public  Crossbow
   {
   public:
     /**
      * Construction
      */
-    HeavyCrossbow();
+    HeavyCrossbow() : Crossbow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(const HeavyCrossbow& original);
+    HeavyCrossbow(const HeavyCrossbow& original) : Crossbow(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(HeavyCrossbow& original);
+    HeavyCrossbow(HeavyCrossbow& original) : Crossbow(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(HeavyCrossbow&& original);
+    HeavyCrossbow(HeavyCrossbow&& original) : Crossbow(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual HeavyCrossbow& operator =(HeavyCrossbow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(HeavyCrossbow& self, const HeavyCrossbow& original);
+  
   };
 }
 

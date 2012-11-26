@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Sling stone item class
    */
-  class Bullet: Ammunition
+  class Bullet: public  Ammunition
   {
   public:
     /**
      * Construction
      */
-    Bullet();
+    Bullet() : Ammunition();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(const Bullet& original);
+    Bullet(const Bullet& original) : Ammunition(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(Bullet& original);
+    Bullet(Bullet& original) : Ammunition(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(Bullet&& original);
+    Bullet(Bullet&& original) : Ammunition(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Bullet& operator =(Bullet&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Bullet& self, const Bullet& original);
+  
   };
 }
 

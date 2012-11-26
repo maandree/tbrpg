@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Two-handed hand-to-hand class
    */
-  class Fists: TwoHandedMelee
+  class Fists: public  TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Fists();
+    Fists() : TwoHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(const Fists& original);
+    Fists(const Fists& original) : TwoHandedMelee(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(Fists& original);
+    Fists(Fists& original) : TwoHandedMelee(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(Fists&& original);
+    Fists(Fists&& original) : TwoHandedMelee(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Fists& operator =(Fists&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Fists& self, const Fists& original);
+  
   };
 }
 

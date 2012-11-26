@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Girdle and belt item class
    */
-  class Girdle: Item
+  class Girdle: public  Item
   {
   public:
     /**
      * Construction
      */
-    Girdle();
+    Girdle() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(const Girdle& original);
+    Girdle(const Girdle& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(Girdle& original);
+    Girdle(Girdle& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(Girdle&& original);
+    Girdle(Girdle&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Girdle& operator =(Girdle&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Girdle& self, const Girdle& original);
+  
   };
 }
 

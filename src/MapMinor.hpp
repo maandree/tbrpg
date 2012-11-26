@@ -122,6 +122,16 @@ namespace tbrpg
      */
     virtual MapMinor& operator =(MapMinor&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(MapMinor& self, const MapMinor& original);
+  
   };
 }
 

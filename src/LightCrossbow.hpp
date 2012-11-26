@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Light crossbow item class
    */
-  class LightCrossbow: Crossbow
+  class LightCrossbow: public  Crossbow
   {
   public:
     /**
      * Construction
      */
-    LightCrossbow();
+    LightCrossbow() : Crossbow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(const LightCrossbow& original);
+    LightCrossbow(const LightCrossbow& original) : Crossbow(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(LightCrossbow& original);
+    LightCrossbow(LightCrossbow& original) : Crossbow(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(LightCrossbow&& original);
+    LightCrossbow(LightCrossbow&& original) : Crossbow(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual LightCrossbow& operator =(LightCrossbow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(LightCrossbow& self, const LightCrossbow& original);
+  
   };
 }
 

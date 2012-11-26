@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * The half-orc race
    */
-  class HalfOrc: Race
+  class HalfOrc: public  Race
   {
   public:
     /**
      * Construction
      */
-    HalfOrc();
+    HalfOrc() : Race();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HalfOrc(const HalfOrc& original);
+    HalfOrc(const HalfOrc& original) : Race(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HalfOrc(HalfOrc& original);
+    HalfOrc(HalfOrc& original) : Race(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    HalfOrc(HalfOrc&& original);
+    HalfOrc(HalfOrc&& original) : Race(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual HalfOrc& operator =(HalfOrc&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(HalfOrc& self, const HalfOrc& original);
+  
   };
 }
 

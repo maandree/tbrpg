@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Arrow item class
    */
-  class Arrow: Ammunition
+  class Arrow: public  Ammunition
   {
   public:
     /**
      * Construction
      */
-    Arrow();
+    Arrow() : Ammunition();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(const Arrow& original);
+    Arrow(const Arrow& original) : Ammunition(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(Arrow& original);
+    Arrow(Arrow& original) : Ammunition(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(Arrow&& original);
+    Arrow(Arrow&& original) : Ammunition(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Arrow& operator =(Arrow&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Arrow& self, const Arrow& original);
+  
   };
 }
 

@@ -127,6 +127,16 @@ namespace tbrpg
      */
     virtual Entrance& operator =(Entrance&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Entrance& self, const Entrance& original);
+  
   };
 }
 

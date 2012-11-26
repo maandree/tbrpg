@@ -38,7 +38,7 @@ namespace tbrpg
   /**
    * A creature in the area
    */
-  class Creature: Character
+  class Creature: public  Character
   {
   public:
     /**
@@ -66,28 +66,28 @@ namespace tbrpg
     /**
      * Construction
      */
-    Creature();
+    Creature() : Character();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(const Creature& original);
+    Creature(const Creature& original) : Character(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(Creature& original);
+    Creature(Creature& original) : Character(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(Creature&& original);
+    Creature(Creature&& original) : Character(original);
     
     
     
@@ -122,6 +122,16 @@ namespace tbrpg
      */
     virtual Creature& operator =(Creature&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Creature& self, const Creature& original);
+  
   };
 }
 

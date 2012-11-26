@@ -90,7 +90,7 @@ namespace tbrpg
    */
   Mace& Mace::operator =(const Mace& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     return *this;
   }
   
@@ -102,7 +102,7 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace& original)
   {
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
     return *this;
   }
   
@@ -114,8 +114,19 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace&& original)
   {
-    std::move(this->, original.);
+    std::move((BluntWeapon)*this, (BluntWeapon)original);    std::move(this->, original.);
     return *this;
+  }
+  
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void Mace::__copy__(Mace& self, const Mace& original);
+  {
+    left = right;
   }
   
 }

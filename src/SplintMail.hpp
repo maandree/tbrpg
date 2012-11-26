@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Splint mail item clss
    */
-  class SplintMail: BodyArmour
+  class SplintMail: public  BodyArmour
   {
   public:
     /**
      * Construction
      */
-    SplintMail();
+    SplintMail() : BodyArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(const SplintMail& original);
+    SplintMail(const SplintMail& original) : BodyArmour(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(SplintMail& original);
+    SplintMail(SplintMail& original) : BodyArmour(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(SplintMail&& original);
+    SplintMail(SplintMail&& original) : BodyArmour(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual SplintMail& operator =(SplintMail&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(SplintMail& self, const SplintMail& original);
+  
   };
 }
 

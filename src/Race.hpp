@@ -177,6 +177,16 @@ namespace tbrpg
      */
     virtual Race& operator =(Race&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Race& self, const Race& original);
+  
   };
 }
 

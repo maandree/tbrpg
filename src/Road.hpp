@@ -127,6 +127,16 @@ namespace tbrpg
      */
     virtual Road& operator =(Road&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Road& self, const Road& original);
+  
   };
 }
 

@@ -182,5 +182,16 @@ namespace tbrpg
     return *this;
   }
   
+  /**
+   * Copy method
+   * 
+   * @param  self      The object to modify
+   * @param  original  The reference object
+   */
+  static void ReputationChart::__copy__(ReputationChart& self, const ReputationChart& original);
+  {
+    left = right;
+  }
+  
 }
 

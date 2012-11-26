@@ -38,34 +38,34 @@ namespace tbrpg
   /**
    * Cloak item class
    */
-  class Cloak: Item
+  class Cloak: public  Item
   {
   public:
     /**
      * Construction
      */
-    Cloak();
+    Cloak() : Item();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(const Cloak& original);
+    Cloak(const Cloak& original) : Item(original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(Cloak& original);
+    Cloak(Cloak& original) : Item(original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(Cloak&& original);
+    Cloak(Cloak&& original) : Item(original);
     
     
     
@@ -100,6 +100,16 @@ namespace tbrpg
      */
     virtual Cloak& operator =(Cloak&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Cloak& self, const Cloak& original);
+  
   };
 }
 
