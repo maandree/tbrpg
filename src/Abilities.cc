@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "AbilityChart.hpp"
+#include "Abilities.hpp"
 
 
 /**
@@ -33,16 +33,16 @@ namespace tbrpg
   /**
    * Constructor
    */
-  AbilityChart::AbilityChart()
+  Abilities::Abilities()
   {
     ////TODO implement constructor
-    //this->strength = nullptr;
-    //this->strength18 = nullptr;
-    //this->dexterity = nullptr;
-    //this->constitution = nullptr;
-    //this->intelligence = nullptr;
-    //this->wisdom = nullptr;
-    //this->charisma = nullptr;
+    //this->strength = 0;
+    //this->strength18 = 0;
+    //this->constitution = 0;
+    //this->dexterity = 0;
+    //this->intelligence = 0;
+    //this->wisdom = 0;
+    //this->charisma = 0;
   }
   
   /**
@@ -50,13 +50,13 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(const AbilityChart& original)
+  Abilities::Abilities(const Abilities& original)
   {
     (void) original;
     //this->strength = original.strength;
     //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
     //this->constitution = original.constitution;
+    //this->dexterity = original.dexterity;
     //this->intelligence = original.intelligence;
     //this->wisdom = original.wisdom;
     //this->charisma = original.charisma;
@@ -67,13 +67,13 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart& original)
+  Abilities::Abilities(Abilities& original)
   {
     (void) original;
     //this->strength = original.strength;
     //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
     //this->constitution = original.constitution;
+    //this->dexterity = original.dexterity;
     //this->intelligence = original.intelligence;
     //this->wisdom = original.wisdom;
     //this->charisma = original.charisma;
@@ -84,16 +84,16 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart&& original)
+  Abilities::Abilities(Abilities&& original)
   {
     (void) original;
-    ////std::move(this->strength, original.strength);
-    ////std::move(this->strength18, original.strength18);
-    ////std::move(this->dexterity, original.dexterity);
-    ////std::move(this->constitution, original.constitution);
-    ////std::move(this->intelligence, original.intelligence);
-    ////std::move(this->wisdom, original.wisdom);
-    ////std::move(this->charisma, original.charisma);
+    ////std::swap(this->strength, original.strength);
+    ////std::swap(this->strength18, original.strength18);
+    ////std::swap(this->constitution, original.constitution);
+    ////std::swap(this->dexterity, original.dexterity);
+    ////std::swap(this->intelligence, original.intelligence);
+    ////std::swap(this->wisdom, original.wisdom);
+    ////std::swap(this->charisma, original.charisma);
   }
   
   
@@ -101,16 +101,9 @@ namespace tbrpg
   /**
    * Destructor
    */
-  AbilityChart::~AbilityChart()
+  Abilities::~Abilities()
   {
     ////TODO implement destructor
-    //delete strength;
-    //delete strength18;
-    //delete dexterity;
-    //delete constitution;
-    //delete intelligence;
-    //delete wisdom;
-    //delete charisma;
   }
   
   
@@ -121,13 +114,13 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  AbilityChart& AbilityChart::operator =(const AbilityChart& original)
+  Abilities& Abilities::operator =(const Abilities& original)
   {
     (void) original;
     //this->strength = original.strength;
     //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
     //this->constitution = original.constitution;
+    //this->dexterity = original.dexterity;
     //this->intelligence = original.intelligence;
     //this->wisdom = original.wisdom;
     //this->charisma = original.charisma;
@@ -140,13 +133,13 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  AbilityChart& AbilityChart::operator =(AbilityChart& original)
+  Abilities& Abilities::operator =(Abilities& original)
   {
     (void) original;
     //this->strength = original.strength;
     //this->strength18 = original.strength18;
-    //this->dexterity = original.dexterity;
     //this->constitution = original.constitution;
+    //this->dexterity = original.dexterity;
     //this->intelligence = original.intelligence;
     //this->wisdom = original.wisdom;
     //this->charisma = original.charisma;
@@ -159,16 +152,16 @@ namespace tbrpg
    * @param   original  The moved object, its resourced will be moved
    * @return            The invoked object
    */
-  AbilityChart& AbilityChart::operator =(AbilityChart&& original)
+  Abilities& Abilities::operator =(Abilities&& original)
   {
     (void) original;
-    ////std::move(this->strength, original.strength);
-    ////std::move(this->strength18, original.strength18);
-    ////std::move(this->dexterity, original.dexterity);
-    ////std::move(this->constitution, original.constitution);
-    ////std::move(this->intelligence, original.intelligence);
-    ////std::move(this->wisdom, original.wisdom);
-    ////std::move(this->charisma, original.charisma);
+    ////std::swap(this->strength, original.strength);
+    ////std::swap(this->strength18, original.strength18);
+    ////std::swap(this->constitution, original.constitution);
+    ////std::swap(this->dexterity, original.dexterity);
+    ////std::swap(this->intelligence, original.intelligence);
+    ////std::swap(this->wisdom, original.wisdom);
+    ////std::swap(this->charisma, original.charisma);
     return *this;
   }
   
@@ -178,7 +171,7 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  void AbilityChart::__copy__(AbilityChart& self, const AbilityChart& original)
+  void Abilities::__copy__(Abilities& self, const Abilities& original)
   {
     self = original;
   }

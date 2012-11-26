@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Halberd::Halberd()
+  Halberd::Halberd() : TwoHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halberd::Halberd(const Halberd& original)
+  Halberd::Halberd(const Halberd& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halberd::Halberd(Halberd& original)
+  Halberd::Halberd(Halberd& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halberd::Halberd(Halberd&& original)
+  Halberd::Halberd(Halberd&& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Halberd::~Halberd()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(const Halberd& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(Halberd& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(Halberd&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Halberd::__copy__(Halberd& self, const Halberd& original);
+  void Halberd::__copy__(Halberd& self, const Halberd& original)
   {
-    left = right;
+    self = original;
   }
   
 }

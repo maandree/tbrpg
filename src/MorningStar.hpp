@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MORNINGSTAR__
-#define __MORNINGSTAR__
+#ifndef __GUARD_MORNINGSTAR_HPP__
+#define __GUARD_MORNINGSTAR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Morning star item class
    */
-  class MorningStar: public  BluntWeapon
+  class MorningStar: public BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    MorningStar() : BluntWeapon();
+    MorningStar();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(const MorningStar& original) : BluntWeapon(original);
+    MorningStar(const MorningStar& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(MorningStar& original) : BluntWeapon(original);
+    MorningStar(MorningStar& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MorningStar(MorningStar&& original) : BluntWeapon(original);
+    MorningStar(MorningStar&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MorningStar& self, const MorningStar& original);
-  
+    
   };
 }
 
 
-#endif//__MORNINGSTAR__
+#endif//__GUARD_MORNINGSTAR_HPP__

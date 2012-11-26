@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  TextScroll::TextScroll()
+  TextScroll::TextScroll() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  TextScroll::TextScroll(const TextScroll& original)
+  TextScroll::TextScroll(const TextScroll& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  TextScroll::TextScroll(TextScroll& original)
+  TextScroll::TextScroll(TextScroll& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  TextScroll::TextScroll(TextScroll&& original)
+  TextScroll::TextScroll(TextScroll&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   TextScroll::~TextScroll()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(const TextScroll& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(TextScroll& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(TextScroll&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void TextScroll::__copy__(TextScroll& self, const TextScroll& original);
+  void TextScroll::__copy__(TextScroll& self, const TextScroll& original)
   {
-    left = right;
+    self = original;
   }
   
 }

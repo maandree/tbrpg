@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GOLD__
-#define __GOLD__
+#ifndef __GUARD_GOLD_HPP__
+#define __GUARD_GOLD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Gem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Gold item class
    */
-  class Gold: public  Gem
+  class Gold: public Gem
   {
   public:
     /**
      * Construction
      */
-    Gold() : Gem();
+    Gold();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(const Gold& original) : Gem(original);
+    Gold(const Gold& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(Gold& original) : Gem(original);
+    Gold(Gold& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gold(Gold&& original) : Gem(original);
+    Gold(Gold&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Gold& self, const Gold& original);
-  
+    
   };
 }
 
 
-#endif//__GOLD__
+#endif//__GUARD_GOLD_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Druid::Druid()
+  Druid::Druid() : Priest()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Druid::Druid(const Druid& original)
+  Druid::Druid(const Druid& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Druid::Druid(Druid& original)
+  Druid::Druid(Druid& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Druid::Druid(Druid&& original)
+  Druid::Druid(Druid&& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Druid::~Druid()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Druid& Druid::operator =(const Druid& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Druid& Druid::operator =(Druid& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Druid& Druid::operator =(Druid&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Druid::__copy__(Druid& self, const Druid& original);
+  void Druid::__copy__(Druid& self, const Druid& original)
   {
-    left = right;
+    self = original;
   }
   
 }

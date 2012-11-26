@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __PALADIN__
-#define __PALADIN__
+#ifndef __GUARD_PALADIN_HPP__
+#define __GUARD_PALADIN_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Warrior.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The paladin class
    */
-  class Paladin: public  Warrior
+  class Paladin: public Warrior
   {
   public:
     /**
      * Construction
      */
-    Paladin() : Warrior();
+    Paladin();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(const Paladin& original) : Warrior(original);
+    Paladin(const Paladin& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(Paladin& original) : Warrior(original);
+    Paladin(Paladin& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Paladin(Paladin&& original) : Warrior(original);
+    Paladin(Paladin&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Paladin& self, const Paladin& original);
-  
+    
   };
 }
 
 
-#endif//__PALADIN__
+#endif//__GUARD_PALADIN_HPP__

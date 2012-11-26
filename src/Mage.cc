@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Mage::Mage()
+  Mage::Mage() : Wizard()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mage::Mage(const Mage& original)
+  Mage::Mage(const Mage& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mage::Mage(Mage& original)
+  Mage::Mage(Mage& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mage::Mage(Mage&& original)
+  Mage::Mage(Mage&& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Mage::~Mage()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Mage& Mage::operator =(const Mage& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Mage& Mage::operator =(Mage& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Mage& Mage::operator =(Mage&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Mage::__copy__(Mage& self, const Mage& original);
+  void Mage::__copy__(Mage& self, const Mage& original)
   {
-    left = right;
+    self = original;
   }
   
 }

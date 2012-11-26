@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ONEHANDEDMELEE__
-#define __ONEHANDEDMELEE__
+#ifndef __GUARD_ONEHANDEDMELEE_HPP__
+#define __GUARD_ONEHANDEDMELEE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "MeleeWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * One-handed melée weapon item class
    */
-  class OneHandedMelee: public  MeleeWeapon
+  class OneHandedMelee: public MeleeWeapon
   {
   public:
     /**
      * Construction
      */
-    OneHandedMelee() : MeleeWeapon();
+    OneHandedMelee();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(const OneHandedMelee& original) : MeleeWeapon(original);
+    OneHandedMelee(const OneHandedMelee& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(OneHandedMelee& original) : MeleeWeapon(original);
+    OneHandedMelee(OneHandedMelee& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    OneHandedMelee(OneHandedMelee&& original) : MeleeWeapon(original);
+    OneHandedMelee(OneHandedMelee&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(OneHandedMelee& self, const OneHandedMelee& original);
-  
+    
   };
 }
 
 
-#endif//__ONEHANDEDMELEE__
+#endif//__GUARD_ONEHANDEDMELEE_HPP__

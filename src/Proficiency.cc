@@ -35,8 +35,10 @@ namespace tbrpg
    */
   Proficiency::Proficiency()
   {
-    //TODO implement constructor
-    //name = nullptr;
+    ////TODO implement constructor
+    //this->hit_bonus = 0;
+    //this->bonus = nullptr;
+    //this->half_attacks = 0;
   }
   
   /**
@@ -46,7 +48,10 @@ namespace tbrpg
    */
   Proficiency::Proficiency(const Proficiency& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->bonus = original.bonus;
+    //this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -56,7 +61,10 @@ namespace tbrpg
    */
   Proficiency::Proficiency(Proficiency& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->bonus = original.bonus;
+    //this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -66,7 +74,10 @@ namespace tbrpg
    */
   Proficiency::Proficiency(Proficiency&& original)
   {
-    std::move(this->name, original.name);
+    (void) original;
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::move(this->bonus, original.bonus);
+    ////std::swap(this->half_attacks, original.half_attacks);
   }
   
   
@@ -76,8 +87,8 @@ namespace tbrpg
    */
   Proficiency::~Proficiency()
   {
-    //TODO implement destructor
-    //delete name;
+    ////TODO implement destructor
+    //delete bonus;
   }
   
   
@@ -90,7 +101,10 @@ namespace tbrpg
    */
   Proficiency& Proficiency::operator =(const Proficiency& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->bonus = original.bonus;
+    //this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -102,7 +116,10 @@ namespace tbrpg
    */
   Proficiency& Proficiency::operator =(Proficiency& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->bonus = original.bonus;
+    //this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -114,7 +131,10 @@ namespace tbrpg
    */
   Proficiency& Proficiency::operator =(Proficiency&& original)
   {
-    std::move(this->name, original.name);
+    (void) original;
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::move(this->bonus, original.bonus);
+    ////std::swap(this->half_attacks, original.half_attacks);
     return *this;
   }
   
@@ -124,9 +144,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Proficiency::__copy__(Proficiency& self, const Proficiency& original);
+  void Proficiency::__copy__(Proficiency& self, const Proficiency& original)
   {
-    left = right;
+    self = original;
   }
   
 }

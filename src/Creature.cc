@@ -33,13 +33,14 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Creature::Creature()
+  Creature::Creature() : Character()
   {
-    //TODO implement constructor
-    //interrupt_die = nullptr;
-    //interrupt_dice = nullptr;
-    //interrupt_risk = 0;
-    //creatures = nullptr;
+    ////TODO implement constructor
+    //this->hostile = false;
+    //this->x = 0;
+    //this->y = 0;
+    //this->alive = false;
+    //this->resurrect = false;
   }
   
   /**
@@ -47,12 +48,14 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Creature::Creature(const Creature& original)
+  Creature::Creature(const Creature& original) : Character(original)
   {
-    this->interrupt_die = original.interrupt_die;
-    this->interrupt_dice = original.interrupt_dice;
-    this->interrupt_risk = original.interrupt_risk;
-    this->creatures = original.creatures;
+    (void) original;
+    //this->hostile = original.hostile;
+    //this->x = original.x;
+    //this->y = original.y;
+    //this->alive = original.alive;
+    //this->resurrect = original.resurrect;
   }
   
   /**
@@ -60,12 +63,14 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Creature::Creature(Creature& original)
+  Creature::Creature(Creature& original) : Character(original)
   {
-    this->interrupt_die = original.interrupt_die;
-    this->interrupt_dice = original.interrupt_dice;
-    this->interrupt_risk = original.interrupt_risk;
-    this->creatures = original.creatures;
+    (void) original;
+    //this->hostile = original.hostile;
+    //this->x = original.x;
+    //this->y = original.y;
+    //this->alive = original.alive;
+    //this->resurrect = original.resurrect;
   }
   
   /**
@@ -73,12 +78,14 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Creature::Creature(Creature&& original)
+  Creature::Creature(Creature&& original) : Character(original)
   {
-    std::move(this->interrupt_die, original.interrupt_die);
-    std::move(this->interrupt_dice, original.interrupt_dice);
-    std::swap(this->interrupt_risk, original.interrupt_risk);
-    std::move(this->creatures, original.creatures);
+    (void) original;
+    ////std::swap(this->hostile, original.hostile);
+    ////std::swap(this->x, original.x);
+    ////std::swap(this->y, original.y);
+    ////std::swap(this->alive, original.alive);
+    ////std::swap(this->resurrect, original.resurrect);
   }
   
   
@@ -88,10 +95,7 @@ namespace tbrpg
    */
   Creature::~Creature()
   {
-    //TODO implement destructor
-    //delete interrupt_die;
-    //delete interrupt_dice;
-    //delete creatures;
+    ////TODO implement destructor
   }
   
   
@@ -104,13 +108,16 @@ namespace tbrpg
    */
   Creature& Creature::operator =(const Creature& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->interrupt_die = original.interrupt_die;
-    this->interrupt_dice = original.interrupt_dice;
-    this->interrupt_risk = original.interrupt_risk;
-    this->creatures = original.creatures;
+    (void) original;
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);    //this->hostile = original.hostile;
+    //this->x = original.x;
+    //this->y = original.y;
+    //this->alive = original.alive;
+    //this->resurrect = original.resurrect;
     return *this;
   }
   
@@ -122,13 +129,16 @@ namespace tbrpg
    */
   Creature& Creature::operator =(Creature& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->interrupt_die = original.interrupt_die;
-    this->interrupt_dice = original.interrupt_dice;
-    this->interrupt_risk = original.interrupt_risk;
-    this->creatures = original.creatures;
+    (void) original;
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);
+    //Character::__copy__((Character&)*this, (Character&)original);    //this->hostile = original.hostile;
+    //this->x = original.x;
+    //this->y = original.y;
+    //this->alive = original.alive;
+    //this->resurrect = original.resurrect;
     return *this;
   }
   
@@ -140,13 +150,16 @@ namespace tbrpg
    */
   Creature& Creature::operator =(Creature&& original)
   {
-    std::move((Character)*this, (Character)original);
-    std::move((Character)*this, (Character)original);
-    std::move((Character)*this, (Character)original);
-    std::move((Character)*this, (Character)original);    std::move(this->interrupt_die, original.interrupt_die);
-    std::move(this->interrupt_dice, original.interrupt_dice);
-    std::swap(this->interrupt_risk, original.interrupt_risk);
-    std::move(this->creatures, original.creatures);
+    (void) original;
+    ////std::move((Character&)*this, (Character&)original);
+    ////std::move((Character&)*this, (Character&)original);
+    ////std::move((Character&)*this, (Character&)original);
+    ////std::move((Character&)*this, (Character&)original);
+    ////std::move((Character&)*this, (Character&)original);    ////std::swap(this->hostile, original.hostile);
+    ////std::swap(this->x, original.x);
+    ////std::swap(this->y, original.y);
+    ////std::swap(this->alive, original.alive);
+    ////std::swap(this->resurrect, original.resurrect);
     return *this;
   }
   
@@ -156,9 +169,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Creature::__copy__(Creature& self, const Creature& original);
+  void Creature::__copy__(Creature& self, const Creature& original)
   {
-    left = right;
+    self = original;
   }
   
 }

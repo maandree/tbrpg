@@ -35,8 +35,8 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup()
   {
-    //TODO implement constructor
-    //name = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
   }
   
   /**
@@ -46,7 +46,8 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(const WeaponGroup& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->name = original.name;
   }
   
   /**
@@ -56,7 +57,8 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->name = original.name;
   }
   
   /**
@@ -66,7 +68,8 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup&& original)
   {
-    std::move(this->name, original.name);
+    (void) original;
+    ////std::move(this->name, original.name);
   }
   
   
@@ -76,7 +79,7 @@ namespace tbrpg
    */
   WeaponGroup::~WeaponGroup()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
     //delete name;
   }
   
@@ -90,7 +93,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->name = original.name;
     return *this;
   }
   
@@ -102,7 +106,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
   {
-    this->name = original.name;
+    (void) original;
+    //this->name = original.name;
     return *this;
   }
   
@@ -114,7 +119,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
-    std::move(this->name, original.name);
+    (void) original;
+    ////std::move(this->name, original.name);
     return *this;
   }
   
@@ -124,9 +130,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void WeaponGroup::__copy__(WeaponGroup& self, const WeaponGroup& original);
+  void WeaponGroup::__copy__(WeaponGroup& self, const WeaponGroup& original)
   {
-    left = right;
+    self = original;
   }
   
 }

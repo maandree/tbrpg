@@ -35,7 +35,12 @@ namespace tbrpg
    */
   Lockable::Lockable()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
+    //this->locked = false;
+    //this->pick_level = 0;
+    //this->bash_level = 0;
+    //this->pickable = false;
+    //this->bashable = false;
   }
   
   /**
@@ -45,7 +50,12 @@ namespace tbrpg
    */
   Lockable::Lockable(const Lockable& original)
   {
-
+    (void) original;
+    //this->locked = original.locked;
+    //this->pick_level = original.pick_level;
+    //this->bash_level = original.bash_level;
+    //this->pickable = original.pickable;
+    //this->bashable = original.bashable;
   }
   
   /**
@@ -55,7 +65,12 @@ namespace tbrpg
    */
   Lockable::Lockable(Lockable& original)
   {
-
+    (void) original;
+    //this->locked = original.locked;
+    //this->pick_level = original.pick_level;
+    //this->bash_level = original.bash_level;
+    //this->pickable = original.pickable;
+    //this->bashable = original.bashable;
   }
   
   /**
@@ -65,7 +80,12 @@ namespace tbrpg
    */
   Lockable::Lockable(Lockable&& original)
   {
-
+    (void) original;
+    ////std::swap(this->locked, original.locked);
+    ////std::swap(this->pick_level, original.pick_level);
+    ////std::swap(this->bash_level, original.bash_level);
+    ////std::swap(this->pickable, original.pickable);
+    ////std::swap(this->bashable, original.bashable);
   }
   
   
@@ -75,7 +95,7 @@ namespace tbrpg
    */
   Lockable::~Lockable()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,7 +108,12 @@ namespace tbrpg
    */
   Lockable& Lockable::operator =(const Lockable& original)
   {
-
+    (void) original;
+    //this->locked = original.locked;
+    //this->pick_level = original.pick_level;
+    //this->bash_level = original.bash_level;
+    //this->pickable = original.pickable;
+    //this->bashable = original.bashable;
     return *this;
   }
   
@@ -100,7 +125,12 @@ namespace tbrpg
    */
   Lockable& Lockable::operator =(Lockable& original)
   {
-
+    (void) original;
+    //this->locked = original.locked;
+    //this->pick_level = original.pick_level;
+    //this->bash_level = original.bash_level;
+    //this->pickable = original.pickable;
+    //this->bashable = original.bashable;
     return *this;
   }
   
@@ -112,7 +142,12 @@ namespace tbrpg
    */
   Lockable& Lockable::operator =(Lockable&& original)
   {
-
+    (void) original;
+    ////std::swap(this->locked, original.locked);
+    ////std::swap(this->pick_level, original.pick_level);
+    ////std::swap(this->bash_level, original.bash_level);
+    ////std::swap(this->pickable, original.pickable);
+    ////std::swap(this->bashable, original.bashable);
     return *this;
   }
   
@@ -122,9 +157,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Lockable::__copy__(Lockable& self, const Lockable& original);
+  void Lockable::__copy__(Lockable& self, const Lockable& original)
   {
-    left = right;
+    self = original;
   }
   
 }

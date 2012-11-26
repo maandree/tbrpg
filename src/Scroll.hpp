@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SCROLL__
-#define __SCROLL__
+#ifndef __GUARD_SCROLL_HPP__
+#define __GUARD_SCROLL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "QuickItem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Magic scroll item class
    */
-  class Scroll: public  QuickItem
+  class Scroll: public QuickItem
   {
   public:
     /**
      * Construction
      */
-    Scroll() : QuickItem();
+    Scroll();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(const Scroll& original) : QuickItem(original);
+    Scroll(const Scroll& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(Scroll& original) : QuickItem(original);
+    Scroll(Scroll& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Scroll(Scroll&& original) : QuickItem(original);
+    Scroll(Scroll&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Scroll& self, const Scroll& original);
-  
+    
   };
 }
 
 
-#endif//__SCROLL__
+#endif//__GUARD_SCROLL_HPP__

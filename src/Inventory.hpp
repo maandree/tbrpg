@@ -17,12 +17,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __INVENTORY__
-#define __INVENTORY__
+#ifndef __GUARD_INVENTORY_HPP__
+#define __GUARD_INVENTORY_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Weapon.hpp"
+#include "RightHandItem.hpp"
+#include "Ammunition.hpp"
+#include "QuickItem.hpp"
+#include "Headgear.hpp"
+#include "Amulett.hpp"
+#include "Ring.hpp"
+#include "BodyArmour.hpp"
+#include "Gauntlets.hpp"
+#include "Girdle.hpp"
+#include "Boots.hpp"
+#include "Cloak.hpp"
+#include "Item.hpp"
 
 
 /**
@@ -42,39 +60,69 @@ namespace tbrpg
   {
   public:
     /**
-     * Strength chart
+     * Left hand item slots
      */
-    AbilityBonus[] strength;
+    //Weapon* left_hand;
     
     /**
-     * Strength 18/* chart
+     * Right hand item slot
      */
-    AbilityBonus[] strength18;
+    //RightHandItem right_hand;
     
     /**
-     * Dexterity chart
+     * Quiver slots
      */
-    AbilityBonus[] dexterity;
+    //Ammunition* quiver;
     
     /**
-     * Constitution chart
+     * Quick item slots
      */
-    AbilityBonus[] constitution;
+    //QuickItem* quick_items;
     
     /**
-     * Intelligence chart
+     * Headgear slots
      */
-    AbilityBonus[] intelligence;
+    //Headgear headgear;
     
     /**
-     * Wisdom chart
+     * Amulette and necklace slot
      */
-    AbilityBonus[] wisdom;
+    //Amulett amulett;
     
     /**
-     * Charisma chart
+     * Ring slots
      */
-    AbilityBonus[] charisma;
+    //Ring* rings;
+    
+    /**
+     * Body armour slot
+     */
+    //BodyArmour body;
+    
+    /**
+     * Gauntlet and bracer slots
+     */
+    //Gauntlets gauntlets;
+    
+    /**
+     * Girdle and belt slot
+     */
+    //Girdle girdle;
+    
+    /**
+     * Boot slot
+     */
+    //Boots boots;
+    
+    /**
+     * Cloak slot
+     */
+    //Cloak cloak;
+    
+    /**
+     * Personal inventory slots
+     */
+    //Item* personal;
     
     
     
@@ -146,9 +194,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Inventory& self, const Inventory& original);
-  
+    
   };
 }
 
 
-#endif//__INVENTORY__
+#endif//__GUARD_INVENTORY_HPP__

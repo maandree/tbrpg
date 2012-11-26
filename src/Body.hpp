@@ -17,12 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BODY__
-#define __BODY__
+#ifndef __GUARD_BODY_HPP__
+#define __GUARD_BODY_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
+
+#include "Character.hpp"
 
 
 /**
@@ -38,101 +46,41 @@ namespace tbrpg
   /**
    * Character body item class
    */
-  class Body: public  Item
+  class Body: public Item
   {
   public:
     /**
-     * Left hand item slots
+     * The dead character
      */
-    Weapon[] left_hand;
-    
-    /**
-     * Right hand item slot
-     */
-    RightHandItem right_hand;
-    
-    /**
-     * Quiver slots
-     */
-    Ammunition[] quiver;
-    
-    /**
-     * Quick item slots
-     */
-    QuickItem[] quick_items;
-    
-    /**
-     * Headgear slots
-     */
-    Headgear headgear;
-    
-    /**
-     * Amulette and necklace slot
-     */
-    Amulett amulett;
-    
-    /**
-     * Ring slots
-     */
-    Ring[] rings;
-    
-    /**
-     * Body armour slot
-     */
-    BodyArmour body;
-    
-    /**
-     * Gauntlet and bracer slots
-     */
-    Gauntlets gauntlets;
-    
-    /**
-     * Girdle and belt slot
-     */
-    Girdle girdle;
-    
-    /**
-     * Boot slot
-     */
-    Boots boots;
-    
-    /**
-     * Cloak slot
-     */
-    Cloak cloak;
-    
-    /**
-     * Personal inventory slots
-     */
-    Item[] personal;
+    //Character character;
     
     
     
     /**
      * Construction
      */
-    Body() : Item();
+    Body();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Body(const Body& original) : Item(original);
+    Body(const Body& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Body(Body& original) : Item(original);
+    Body(Body& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Body(Body&& original) : Item(original);
+    Body(Body&& original);
     
     
     
@@ -176,9 +124,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Body& self, const Body& original);
-  
+    
   };
 }
 
 
-#endif//__BODY__
+#endif//__GUARD_BODY_HPP__

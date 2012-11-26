@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CREATURE__
-#define __CREATURE__
+#ifndef __GUARD_CREATURE_HPP__
+#define __GUARD_CREATURE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Character.hpp"
+
+
 
 
 /**
@@ -38,56 +44,61 @@ namespace tbrpg
   /**
    * A creature in the area
    */
-  class Creature: public  Character
+  class Creature: public Character
   {
   public:
     /**
-     * The number of sides on the dice to roll to determine whether your sleeps is being interrupted
+     * Whether the creature is hostile
      */
-    char interrupt_die;
+    //bool hostile;
     
     /**
-     * The number dice to roll to determine whether your sleeps is being interrupted
+     * The creatures horizontal position in metres, the parties starts at 0
      */
-    char interrupt_dice;
+    //float x;
     
     /**
-     * The highest value for at which your gets interrupted, use 0 for never, and 255 for always
+     * The creatures vertical position in metres, the parties starts at 0
      */
-    unsigned char interrupt_risk;
+    //float y;
     
     /**
-     * Creatures that will be summoned
+     * Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
      */
-    Creature[] creatures;
+    //bool alive;
+    
+    /**
+     * Whether the creature is resurrected when the party leaves the area
+     */
+    //bool resurrect;
     
     
     
     /**
      * Construction
      */
-    Creature() : Character();
+    Creature();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(const Creature& original) : Character(original);
+    Creature(const Creature& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(Creature& original) : Character(original);
+    Creature(Creature& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Creature(Creature&& original) : Character(original);
+    Creature(Creature&& original);
     
     
     
@@ -131,9 +142,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Creature& self, const Creature& original);
-  
+    
   };
 }
 
 
-#endif//__CREATURE__
+#endif//__GUARD_CREATURE_HPP__

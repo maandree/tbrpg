@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Priest::Priest()
+  Priest::Priest() : Class()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Priest::Priest(const Priest& original)
+  Priest::Priest(const Priest& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Priest::Priest(Priest& original)
+  Priest::Priest(Priest& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Priest::Priest(Priest&& original)
+  Priest::Priest(Priest&& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Priest::~Priest()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Priest& Priest::operator =(const Priest& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Priest& Priest::operator =(Priest& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Priest& Priest::operator =(Priest&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Priest::__copy__(Priest& self, const Priest& original);
+  void Priest::__copy__(Priest& self, const Priest& original)
   {
-    left = right;
+    self = original;
   }
   
 }

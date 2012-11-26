@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ARROW__
-#define __ARROW__
+#ifndef __GUARD_ARROW_HPP__
+#define __GUARD_ARROW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Ammunition.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Arrow item class
    */
-  class Arrow: public  Ammunition
+  class Arrow: public Ammunition
   {
   public:
     /**
      * Construction
      */
-    Arrow() : Ammunition();
+    Arrow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(const Arrow& original) : Ammunition(original);
+    Arrow(const Arrow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(Arrow& original) : Ammunition(original);
+    Arrow(Arrow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Arrow(Arrow&& original) : Ammunition(original);
+    Arrow(Arrow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Arrow& self, const Arrow& original);
-  
+    
   };
 }
 
 
-#endif//__ARROW__
+#endif//__GUARD_ARROW_HPP__

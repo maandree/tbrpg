@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Cloak::Cloak()
+  Cloak::Cloak() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cloak::Cloak(const Cloak& original)
+  Cloak::Cloak(const Cloak& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cloak::Cloak(Cloak& original)
+  Cloak::Cloak(Cloak& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cloak::Cloak(Cloak&& original)
+  Cloak::Cloak(Cloak&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Cloak::~Cloak()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Cloak& Cloak::operator =(const Cloak& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Cloak& Cloak::operator =(Cloak& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Cloak& Cloak::operator =(Cloak&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Cloak::__copy__(Cloak& self, const Cloak& original);
+  void Cloak::__copy__(Cloak& self, const Cloak& original)
   {
-    left = right;
+    self = original;
   }
   
 }

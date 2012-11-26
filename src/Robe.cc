@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Robe::Robe()
+  Robe::Robe() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Robe::Robe(const Robe& original)
+  Robe::Robe(const Robe& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Robe::Robe(Robe& original)
+  Robe::Robe(Robe& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Robe::Robe(Robe&& original)
+  Robe::Robe(Robe&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Robe::~Robe()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Robe& Robe::operator =(const Robe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Robe& Robe::operator =(Robe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Robe& Robe::operator =(Robe&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Robe::__copy__(Robe& self, const Robe& original);
+  void Robe::__copy__(Robe& self, const Robe& original)
   {
-    left = right;
+    self = original;
   }
   
 }

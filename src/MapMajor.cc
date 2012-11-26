@@ -35,9 +35,12 @@ namespace tbrpg
    */
   MapMajor::MapMajor()
   {
-    //TODO implement constructor
-    //start = nullptr;
-    //majors = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
+    //this->visible = false;
+    //this->visited = false;
+    //this->visitable = false;
+    //this->detectable = false;
   }
   
   /**
@@ -47,8 +50,12 @@ namespace tbrpg
    */
   MapMajor::MapMajor(const MapMajor& original)
   {
-    this->start = original.start;
-    this->majors = original.majors;
+    (void) original;
+    //this->name = original.name;
+    //this->visible = original.visible;
+    //this->visited = original.visited;
+    //this->visitable = original.visitable;
+    //this->detectable = original.detectable;
   }
   
   /**
@@ -58,8 +65,12 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor& original)
   {
-    this->start = original.start;
-    this->majors = original.majors;
+    (void) original;
+    //this->name = original.name;
+    //this->visible = original.visible;
+    //this->visited = original.visited;
+    //this->visitable = original.visitable;
+    //this->detectable = original.detectable;
   }
   
   /**
@@ -69,8 +80,12 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor&& original)
   {
-    std::move(this->start, original.start);
-    std::move(this->majors, original.majors);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::swap(this->visible, original.visible);
+    ////std::swap(this->visited, original.visited);
+    ////std::swap(this->visitable, original.visitable);
+    ////std::swap(this->detectable, original.detectable);
   }
   
   
@@ -80,9 +95,8 @@ namespace tbrpg
    */
   MapMajor::~MapMajor()
   {
-    //TODO implement destructor
-    //delete start;
-    //delete majors;
+    ////TODO implement destructor
+    //delete name;
   }
   
   
@@ -95,8 +109,12 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
-    this->start = original.start;
-    this->majors = original.majors;
+    (void) original;
+    //this->name = original.name;
+    //this->visible = original.visible;
+    //this->visited = original.visited;
+    //this->visitable = original.visitable;
+    //this->detectable = original.detectable;
     return *this;
   }
   
@@ -108,8 +126,12 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
-    this->start = original.start;
-    this->majors = original.majors;
+    (void) original;
+    //this->name = original.name;
+    //this->visible = original.visible;
+    //this->visited = original.visited;
+    //this->visitable = original.visitable;
+    //this->detectable = original.detectable;
     return *this;
   }
   
@@ -121,8 +143,12 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
-    std::move(this->start, original.start);
-    std::move(this->majors, original.majors);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::swap(this->visible, original.visible);
+    ////std::swap(this->visited, original.visited);
+    ////std::swap(this->visitable, original.visitable);
+    ////std::swap(this->detectable, original.detectable);
     return *this;
   }
   
@@ -132,9 +158,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void MapMajor::__copy__(MapMajor& self, const MapMajor& original);
+  void MapMajor::__copy__(MapMajor& self, const MapMajor& original)
   {
-    left = right;
+    self = original;
   }
   
 }

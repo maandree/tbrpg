@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Sling::Sling()
+  Sling::Sling() : RangedWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sling::Sling(const Sling& original)
+  Sling::Sling(const Sling& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sling::Sling(Sling& original)
+  Sling::Sling(Sling& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sling::Sling(Sling&& original)
+  Sling::Sling(Sling&& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Sling::~Sling()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Sling& Sling::operator =(const Sling& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Sling& Sling::operator =(Sling& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Sling& Sling::operator =(Sling&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Sling::__copy__(Sling& self, const Sling& original);
+  void Sling::__copy__(Sling& self, const Sling& original)
   {
-    left = right;
+    self = original;
   }
   
 }

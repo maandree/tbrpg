@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WEAPONGROUP__
-#define __WEAPONGROUP__
+#ifndef __GUARD_WEAPONGROUP_HPP__
+#define __GUARD_WEAPONGROUP_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,9 +46,9 @@ namespace tbrpg
   {
   public:
     /**
-     * The name of the damage type
+     * The name of the weapon group
      */
-    std::string name;
+    //std::string name;
     
     
     
@@ -116,9 +120,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(WeaponGroup& self, const WeaponGroup& original);
-  
+    
   };
 }
 
 
-#endif//__WEAPONGROUP__
+#endif//__GUARD_WEAPONGROUP_HPP__

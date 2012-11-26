@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Shield::Shield()
+  Shield::Shield() : RightHandItem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Shield::Shield(const Shield& original)
+  Shield::Shield(const Shield& original) : RightHandItem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Shield::Shield(Shield& original)
+  Shield::Shield(Shield& original) : RightHandItem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Shield::Shield(Shield&& original)
+  Shield::Shield(Shield&& original) : RightHandItem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Shield::~Shield()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Shield& Shield::operator =(const Shield& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Shield& Shield::operator =(Shield& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Shield& Shield::operator =(Shield&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Shield::__copy__(Shield& self, const Shield& original);
+  void Shield::__copy__(Shield& self, const Shield& original)
   {
-    left = right;
+    self = original;
   }
   
 }

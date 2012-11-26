@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Bolt::Bolt()
+  Bolt::Bolt() : Ammunition()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bolt::Bolt(const Bolt& original)
+  Bolt::Bolt(const Bolt& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bolt::Bolt(Bolt& original)
+  Bolt::Bolt(Bolt& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bolt::Bolt(Bolt&& original)
+  Bolt::Bolt(Bolt&& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Bolt::~Bolt()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Bolt& Bolt::operator =(const Bolt& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Bolt& Bolt::operator =(Bolt& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Bolt& Bolt::operator =(Bolt&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Bolt::__copy__(Bolt& self, const Bolt& original);
+  void Bolt::__copy__(Bolt& self, const Bolt& original)
   {
-    left = right;
+    self = original;
   }
   
 }

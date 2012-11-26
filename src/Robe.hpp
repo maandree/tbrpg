@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ROBE__
-#define __ROBE__
+#ifndef __GUARD_ROBE_HPP__
+#define __GUARD_ROBE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Robe item class
    */
-  class Robe: public  BodyArmour
+  class Robe: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    Robe() : BodyArmour();
+    Robe();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(const Robe& original) : BodyArmour(original);
+    Robe(const Robe& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(Robe& original) : BodyArmour(original);
+    Robe(Robe& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Robe(Robe&& original) : BodyArmour(original);
+    Robe(Robe&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Robe& self, const Robe& original);
-  
+    
   };
 }
 
 
-#endif//__ROBE__
+#endif//__GUARD_ROBE_HPP__

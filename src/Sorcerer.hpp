@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SORCERER__
-#define __SORCERER__
+#ifndef __GUARD_SORCERER_HPP__
+#define __GUARD_SORCERER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Wizard.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The sorcerer class
    */
-  class Sorcerer: public  Wizard
+  class Sorcerer: public Wizard
   {
   public:
     /**
      * Construction
      */
-    Sorcerer() : Wizard();
+    Sorcerer();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(const Sorcerer& original) : Wizard(original);
+    Sorcerer(const Sorcerer& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(Sorcerer& original) : Wizard(original);
+    Sorcerer(Sorcerer& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Sorcerer(Sorcerer&& original) : Wizard(original);
+    Sorcerer(Sorcerer&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Sorcerer& self, const Sorcerer& original);
-  
+    
   };
 }
 
 
-#endif//__SORCERER__
+#endif//__GUARD_SORCERER_HPP__

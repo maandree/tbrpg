@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BATTLEAXE__
-#define __BATTLEAXE__
+#ifndef __GUARD_BATTLEAXE_HPP__
+#define __GUARD_BATTLEAXE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Battle axe item class
    */
-  class BattleAxe: public  OneHandedMelee
+  class BattleAxe: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    BattleAxe() : OneHandedMelee();
+    BattleAxe();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BattleAxe(const BattleAxe& original) : OneHandedMelee(original);
+    BattleAxe(const BattleAxe& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BattleAxe(BattleAxe& original) : OneHandedMelee(original);
+    BattleAxe(BattleAxe& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    BattleAxe(BattleAxe&& original) : OneHandedMelee(original);
+    BattleAxe(BattleAxe&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(BattleAxe& self, const BattleAxe& original);
-  
+    
   };
 }
 
 
-#endif//__BATTLEAXE__
+#endif//__GUARD_BATTLEAXE_HPP__

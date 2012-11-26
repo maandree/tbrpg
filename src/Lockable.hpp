@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LOCKABLE__
-#define __LOCKABLE__
+#ifndef __GUARD_LOCKABLE_HPP__
+#define __GUARD_LOCKABLE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -41,6 +45,33 @@ namespace tbrpg
   class Lockable
   {
   public:
+    /**
+     * Whether the object is locked
+     */
+    //bool locked;
+    
+    /**
+     * The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
+     */
+    //int pick_level;
+    
+    /**
+     * The lowest value needed from 1D20 roll, with modifiers, to be able to bash the lock
+     */
+    //int bash_level;
+    
+    /**
+     * Whether the lock is pickable
+     */
+    //bool pickable;
+    
+    /**
+     * Whether the lock is bashable
+     */
+    //bool bashable;
+    
+    
+    
     /**
      * Construction
      */
@@ -109,9 +140,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Lockable& self, const Lockable& original);
-  
+    
   };
 }
 
 
-#endif//__LOCKABLE__
+#endif//__GUARD_LOCKABLE_HPP__

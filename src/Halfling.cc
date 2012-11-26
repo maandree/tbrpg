@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Halfling::Halfling()
+  Halfling::Halfling() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halfling::Halfling(const Halfling& original)
+  Halfling::Halfling(const Halfling& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halfling::Halfling(Halfling& original)
+  Halfling::Halfling(Halfling& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Halfling::Halfling(Halfling&& original)
+  Halfling::Halfling(Halfling&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Halfling::~Halfling()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(const Halfling& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(Halfling& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(Halfling&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Halfling::__copy__(Halfling& self, const Halfling& original);
+  void Halfling::__copy__(Halfling& self, const Halfling& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Hat::Hat()
+  Hat::Hat() : Headgear()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hat::Hat(const Hat& original)
+  Hat::Hat(const Hat& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hat::Hat(Hat& original)
+  Hat::Hat(Hat& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hat::Hat(Hat&& original)
+  Hat::Hat(Hat&& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Hat::~Hat()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Hat& Hat::operator =(const Hat& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Hat& Hat::operator =(Hat& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Hat& Hat::operator =(Hat&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Hat::__copy__(Hat& self, const Hat& original);
+  void Hat::__copy__(Hat& self, const Hat& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ChainMail::ChainMail()
+  ChainMail::ChainMail() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ChainMail::ChainMail(const ChainMail& original)
+  ChainMail::ChainMail(const ChainMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ChainMail::ChainMail(ChainMail& original)
+  ChainMail::ChainMail(ChainMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ChainMail::ChainMail(ChainMail&& original)
+  ChainMail::ChainMail(ChainMail&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   ChainMail::~ChainMail()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(const ChainMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(ChainMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(ChainMail&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ChainMail::__copy__(ChainMail& self, const ChainMail& original);
+  void ChainMail::__copy__(ChainMail& self, const ChainMail& original)
   {
-    left = right;
+    self = original;
   }
   
 }

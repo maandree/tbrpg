@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __EXPERIENCECHART__
-#define __EXPERIENCECHART__
+#ifndef __GUARD_EXPERIENCECHART_HPP__
+#define __GUARD_EXPERIENCECHART_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Spell.hpp"
 
 
 /**
@@ -42,14 +48,44 @@ namespace tbrpg
   {
   public:
     /**
-     * The party's reputation
+     * Required experience for each level
      */
-    int reputation;
+    //int* experience;
     
     /**
-     * The characters in the party
+     * The number of sides of the dice to roll that determines the hit points gained when a level is reached
      */
-    Character[] characters;
+    //char* hit_point_die;
+    
+    /**
+     * The number of dice to roll that determines the hit points gained when a level is reached
+     */
+    //char* hit_point_dice;
+    
+    /**
+     * Hit points gained when a level is reached
+     */
+    //int* hit_point_bonus;
+    
+    /**
+     * The number of wizard spells that can be selected for learning when a level is reached
+     */
+    //int* selectable_wizard;
+    
+    /**
+     * The number of priest spells that can be selected for learning when a level is reached
+     */
+    //int* selectable_priest;
+    
+    /**
+     * Spells that are learned to when a level is reached
+     */
+    //Spell** new_spells;
+    
+    /**
+     * The number of proficiencies that that can be allocated when a level is reached
+     */
+    //int* proficiencies;
     
     
     
@@ -121,9 +157,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ExperienceChart& self, const ExperienceChart& original);
-  
+    
   };
 }
 
 
-#endif//__EXPERIENCECHART__
+#endif//__GUARD_EXPERIENCECHART_HPP__

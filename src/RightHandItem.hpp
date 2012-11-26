@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __RIGHTHANDITEM__
-#define __RIGHTHANDITEM__
+#ifndef __GUARD_RIGHTHANDITEM_HPP__
+#define __GUARD_RIGHTHANDITEM_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Item that can be placed in the right hand
    */
-  class RightHandItem: public  Item
+  class RightHandItem: public Item
   {
   public:
     /**
      * Construction
      */
-    RightHandItem() : Item();
+    RightHandItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(const RightHandItem& original) : Item(original);
+    RightHandItem(const RightHandItem& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(RightHandItem& original) : Item(original);
+    RightHandItem(RightHandItem& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    RightHandItem(RightHandItem&& original) : Item(original);
+    RightHandItem(RightHandItem&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(RightHandItem& self, const RightHandItem& original);
-  
+    
   };
 }
 
 
-#endif//__RIGHTHANDITEM__
+#endif//__GUARD_RIGHTHANDITEM_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  LightCrossbow::LightCrossbow()
+  LightCrossbow::LightCrossbow() : Crossbow()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LightCrossbow::LightCrossbow(const LightCrossbow& original)
+  LightCrossbow::LightCrossbow(const LightCrossbow& original) : Crossbow(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LightCrossbow::LightCrossbow(LightCrossbow& original)
+  LightCrossbow::LightCrossbow(LightCrossbow& original) : Crossbow(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LightCrossbow::LightCrossbow(LightCrossbow&& original)
+  LightCrossbow::LightCrossbow(LightCrossbow&& original) : Crossbow(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   LightCrossbow::~LightCrossbow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(const LightCrossbow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(LightCrossbow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(LightCrossbow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void LightCrossbow::__copy__(LightCrossbow& self, const LightCrossbow& original);
+  void LightCrossbow::__copy__(LightCrossbow& self, const LightCrossbow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

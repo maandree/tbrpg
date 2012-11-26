@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GAUNTLETS__
-#define __GAUNTLETS__
+#ifndef __GUARD_GAUNTLETS_HPP__
+#define __GUARD_GAUNTLETS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Gauntlet and bracer item class
    */
-  class Gauntlets: public  Item
+  class Gauntlets: public Item
   {
   public:
     /**
      * Construction
      */
-    Gauntlets() : Item();
+    Gauntlets();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(const Gauntlets& original) : Item(original);
+    Gauntlets(const Gauntlets& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(Gauntlets& original) : Item(original);
+    Gauntlets(Gauntlets& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gauntlets(Gauntlets&& original) : Item(original);
+    Gauntlets(Gauntlets&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Gauntlets& self, const Gauntlets& original);
-  
+    
   };
 }
 
 
-#endif//__GAUNTLETS__
+#endif//__GUARD_GAUNTLETS_HPP__

@@ -17,12 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __AMMUNITION__
-#define __AMMUNITION__
+#ifndef __GUARD_AMMUNITION_HPP__
+#define __GUARD_AMMUNITION_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
+
+#include "RangedWeapon.hpp"
+#include "DamageType.hpp"
 
 
 /**
@@ -38,46 +47,66 @@ namespace tbrpg
   /**
    * Ammunition item class
    */
-  class Ammunition: public  Item
+  class Ammunition: public Item
   {
   public:
     /**
-     * The number of wizard spell slots per character level and spell level
+     * The hit bonus the ammunition brings
      */
-    int[][] wizard_slots;
+    //int hit_bonus;
     
     /**
-     * The number of priest spell slots per character level and spell level
+     * The number of sides on the dice rolled to determine the inflicted damage
      */
-    int[][] priest_slots;
+    //char damage_die;
+    
+    /**
+     * The number dice rolled to determine the inflicted damage
+     */
+    //char damage_dice;
+    
+    /**
+     * Damage modifier
+     */
+    //int damage_bonus;
+    
+    /**
+     * Weapon that the ammunition can be used with
+     */
+    //RangedWeapon usable_with;
+    
+    /**
+     * The damage type inflicted by the ammunition
+     */
+    //DamageType damage_type;
     
     
     
     /**
      * Construction
      */
-    Ammunition() : Item();
+    Ammunition();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(const Ammunition& original) : Item(original);
+    Ammunition(const Ammunition& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(Ammunition& original) : Item(original);
+    Ammunition(Ammunition& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ammunition(Ammunition&& original) : Item(original);
+    Ammunition(Ammunition&& original);
     
     
     
@@ -121,9 +150,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Ammunition& self, const Ammunition& original);
-  
+    
   };
 }
 
 
-#endif//__AMMUNITION__
+#endif//__GUARD_AMMUNITION_HPP__

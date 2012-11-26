@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __COMPOSITELONGBOW__
-#define __COMPOSITELONGBOW__
+#ifndef __GUARD_COMPOSITELONGBOW_HPP__
+#define __GUARD_COMPOSITELONGBOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Bow.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Composite long bow item class
    */
-  class CompositeLongBow: public  Bow
+  class CompositeLongBow: public Bow
   {
   public:
     /**
      * Construction
      */
-    CompositeLongBow() : Bow();
+    CompositeLongBow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(const CompositeLongBow& original) : Bow(original);
+    CompositeLongBow(const CompositeLongBow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(CompositeLongBow& original) : Bow(original);
+    CompositeLongBow(CompositeLongBow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    CompositeLongBow(CompositeLongBow&& original) : Bow(original);
+    CompositeLongBow(CompositeLongBow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(CompositeLongBow& self, const CompositeLongBow& original);
-  
+    
   };
 }
 
 
-#endif//__COMPOSITELONGBOW__
+#endif//__GUARD_COMPOSITELONGBOW_HPP__

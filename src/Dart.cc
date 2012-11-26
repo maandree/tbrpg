@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Dart::Dart()
+  Dart::Dart() : Throwing()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dart::Dart(const Dart& original)
+  Dart::Dart(const Dart& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dart::Dart(Dart& original)
+  Dart::Dart(Dart& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dart::Dart(Dart&& original)
+  Dart::Dart(Dart&& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Dart::~Dart()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Dart& Dart::operator =(const Dart& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Dart& Dart::operator =(Dart& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Dart& Dart::operator =(Dart&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Dart::__copy__(Dart& self, const Dart& original);
+  void Dart::__copy__(Dart& self, const Dart& original)
   {
-    left = right;
+    self = original;
   }
   
 }

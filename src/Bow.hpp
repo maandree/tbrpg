@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BOW__
-#define __BOW__
+#ifndef __GUARD_BOW_HPP__
+#define __GUARD_BOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "RangedWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Bow item class
    */
-  class Bow: public  RangedWeapon
+  class Bow: public RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Bow() : RangedWeapon();
+    Bow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(const Bow& original) : RangedWeapon(original);
+    Bow(const Bow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(Bow& original) : RangedWeapon(original);
+    Bow(Bow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bow(Bow&& original) : RangedWeapon(original);
+    Bow(Bow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Bow& self, const Bow& original);
-  
+    
   };
 }
 
 
-#endif//__BOW__
+#endif//__GUARD_BOW_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __PRIEST__
-#define __PRIEST__
+#ifndef __GUARD_PRIEST_HPP__
+#define __GUARD_PRIEST_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Class.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The priest superclass
    */
-  class Priest: public  Class
+  class Priest: public Class
   {
   public:
     /**
      * Construction
      */
-    Priest() : Class();
+    Priest();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(const Priest& original) : Class(original);
+    Priest(const Priest& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(Priest& original) : Class(original);
+    Priest(Priest& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Priest(Priest&& original) : Class(original);
+    Priest(Priest&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Priest& self, const Priest& original);
-  
+    
   };
 }
 
 
-#endif//__PRIEST__
+#endif//__GUARD_PRIEST_HPP__

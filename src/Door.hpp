@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DOOR__
-#define __DOOR__
+#ifndef __GUARD_DOOR_HPP__
+#define __GUARD_DOOR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Entrance.hpp"
+#include "Lockable.hpp"
+
+
 
 
 /**
@@ -38,34 +45,34 @@ namespace tbrpg
   /**
    * Door separating environments
    */
-  class Door: public  Entrance, public Lockable
+  class Door: public Entrance, public Lockable
   {
   public:
     /**
      * Construction
      */
-    Door() : Entrance(), Lockable();
+    Door();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Door(const Door& original) : Entrance(original), Lockable(original);
+    Door(const Door& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Door(Door& original) : Entrance(original), Lockable(original);
+    Door(Door& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Door(Door&& original) : Entrance(original), Lockable(original);
+    Door(Door&& original);
     
     
     
@@ -109,9 +116,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Door& self, const Door& original);
-  
+    
   };
 }
 
 
-#endif//__DOOR__
+#endif//__GUARD_DOOR_HPP__

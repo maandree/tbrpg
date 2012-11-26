@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Potion::Potion()
+  Potion::Potion() : QuickItem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(const Potion& original)
+  Potion::Potion(const Potion& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(Potion& original)
+  Potion::Potion(Potion& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(Potion&& original)
+  Potion::Potion(Potion&& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Potion::~Potion()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Potion& Potion::operator =(const Potion& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Potion& Potion::operator =(Potion& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Potion& Potion::operator =(Potion&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Potion::__copy__(Potion& self, const Potion& original);
+  void Potion::__copy__(Potion& self, const Potion& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  RightHandItem::RightHandItem()
+  RightHandItem::RightHandItem() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RightHandItem::RightHandItem(const RightHandItem& original)
+  RightHandItem::RightHandItem(const RightHandItem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RightHandItem::RightHandItem(RightHandItem& original)
+  RightHandItem::RightHandItem(RightHandItem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RightHandItem::RightHandItem(RightHandItem&& original)
+  RightHandItem::RightHandItem(RightHandItem&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   RightHandItem::~RightHandItem()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(const RightHandItem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(RightHandItem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(RightHandItem&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void RightHandItem::__copy__(RightHandItem& self, const RightHandItem& original);
+  void RightHandItem::__copy__(RightHandItem& self, const RightHandItem& original)
   {
-    left = right;
+    self = original;
   }
   
 }

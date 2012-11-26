@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WARRIOR__
-#define __WARRIOR__
+#ifndef __GUARD_WARRIOR_HPP__
+#define __GUARD_WARRIOR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Class.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The warrior superclass
    */
-  class Warrior: public  Class
+  class Warrior: public Class
   {
   public:
     /**
      * Construction
      */
-    Warrior() : Class();
+    Warrior();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(const Warrior& original) : Class(original);
+    Warrior(const Warrior& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(Warrior& original) : Class(original);
+    Warrior(Warrior& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Warrior(Warrior&& original) : Class(original);
+    Warrior(Warrior&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Warrior& self, const Warrior& original);
-  
+    
   };
 }
 
 
-#endif//__WARRIOR__
+#endif//__GUARD_WARRIOR_HPP__

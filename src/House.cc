@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  House::House()
+  House::House() : MapMinor()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  House::House(const House& original)
+  House::House(const House& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  House::House(House& original)
+  House::House(House& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  House::House(House&& original)
+  House::House(House&& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   House::~House()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   House& House::operator =(const House& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   House& House::operator =(House& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   House& House::operator =(House&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void House::__copy__(House& self, const House& original);
+  void House::__copy__(House& self, const House& original)
   {
-    left = right;
+    self = original;
   }
   
 }

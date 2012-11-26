@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HOUSE__
-#define __HOUSE__
+#ifndef __GUARD_HOUSE_HPP__
+#define __GUARD_HOUSE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "MapMinor.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Indoors environment
    */
-  class House: public  MapMinor
+  class House: public MapMinor
   {
   public:
     /**
      * Construction
      */
-    House() : MapMinor();
+    House();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    House(const House& original) : MapMinor(original);
+    House(const House& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    House(House& original) : MapMinor(original);
+    House(House& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    House(House&& original) : MapMinor(original);
+    House(House&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(House& self, const House& original);
-  
+    
   };
 }
 
 
-#endif//__HOUSE__
+#endif//__GUARD_HOUSE_HPP__

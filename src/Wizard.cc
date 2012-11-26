@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Wizard::Wizard()
+  Wizard::Wizard() : Class()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wizard::Wizard(const Wizard& original)
+  Wizard::Wizard(const Wizard& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wizard::Wizard(Wizard& original)
+  Wizard::Wizard(Wizard& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wizard::Wizard(Wizard&& original)
+  Wizard::Wizard(Wizard&& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Wizard::~Wizard()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(const Wizard& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(Wizard& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(Wizard&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Wizard::__copy__(Wizard& self, const Wizard& original);
+  void Wizard::__copy__(Wizard& self, const Wizard& original)
   {
-    left = right;
+    self = original;
   }
   
 }

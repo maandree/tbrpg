@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LONGBOW__
-#define __LONGBOW__
+#ifndef __GUARD_LONGBOW_HPP__
+#define __GUARD_LONGBOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Bow.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Long bow item class
    */
-  class LongBow: public  Bow
+  class LongBow: public Bow
   {
   public:
     /**
      * Construction
      */
-    LongBow() : Bow();
+    LongBow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongBow(const LongBow& original) : Bow(original);
+    LongBow(const LongBow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongBow(LongBow& original) : Bow(original);
+    LongBow(LongBow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LongBow(LongBow&& original) : Bow(original);
+    LongBow(LongBow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LongBow& self, const LongBow& original);
-  
+    
   };
 }
 
 
-#endif//__LONGBOW__
+#endif//__GUARD_LONGBOW_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Fists::Fists()
+  Fists::Fists() : TwoHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fists::Fists(const Fists& original)
+  Fists::Fists(const Fists& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fists::Fists(Fists& original)
+  Fists::Fists(Fists& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fists::Fists(Fists&& original)
+  Fists::Fists(Fists&& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Fists::~Fists()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Fists& Fists::operator =(const Fists& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Fists& Fists::operator =(Fists& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Fists& Fists::operator =(Fists&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Fists::__copy__(Fists& self, const Fists& original);
+  void Fists::__copy__(Fists& self, const Fists& original)
   {
-    left = right;
+    self = original;
   }
   
 }

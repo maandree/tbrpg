@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FULLPLATEMAIL__
-#define __FULLPLATEMAIL__
+#ifndef __GUARD_FULLPLATEMAIL_HPP__
+#define __GUARD_FULLPLATEMAIL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Full plate mail item clss
    */
-  class FullPlateMail: public  BodyArmour
+  class FullPlateMail: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    FullPlateMail() : BodyArmour();
+    FullPlateMail();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    FullPlateMail(const FullPlateMail& original) : BodyArmour(original);
+    FullPlateMail(const FullPlateMail& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    FullPlateMail(FullPlateMail& original) : BodyArmour(original);
+    FullPlateMail(FullPlateMail& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    FullPlateMail(FullPlateMail&& original) : BodyArmour(original);
+    FullPlateMail(FullPlateMail&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(FullPlateMail& self, const FullPlateMail& original);
-  
+    
   };
 }
 
 
-#endif//__FULLPLATEMAIL__
+#endif//__GUARD_FULLPLATEMAIL_HPP__

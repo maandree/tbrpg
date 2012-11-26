@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DICE__
-#define __DICE__
+#ifndef __GUARD_DICE_HPP__
+#define __GUARD_DICE_HPP__
 
 
 #include <stdlib.h>
@@ -137,5 +137,5 @@ namespace tbrpg
 }
 
 
-#endif//__DICE__
+#endif//__GUARD_DICE_HPP__
 

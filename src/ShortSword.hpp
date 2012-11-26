@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SHORTSWORD__
-#define __SHORTSWORD__
+#ifndef __GUARD_SHORTSWORD_HPP__
+#define __GUARD_SHORTSWORD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Short sword item class
    */
-  class ShortSword: public  OneHandedMelee
+  class ShortSword: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    ShortSword() : OneHandedMelee();
+    ShortSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(const ShortSword& original) : OneHandedMelee(original);
+    ShortSword(const ShortSword& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(ShortSword& original) : OneHandedMelee(original);
+    ShortSword(ShortSword& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ShortSword(ShortSword&& original) : OneHandedMelee(original);
+    ShortSword(ShortSword&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ShortSword& self, const ShortSword& original);
-  
+    
   };
 }
 
 
-#endif//__SHORTSWORD__
+#endif//__GUARD_SHORTSWORD_HPP__

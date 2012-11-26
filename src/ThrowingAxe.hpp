@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __THROWINGAXE__
-#define __THROWINGAXE__
+#ifndef __GUARD_THROWINGAXE_HPP__
+#define __GUARD_THROWINGAXE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Throwing.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Throwing axe item class
    */
-  class ThrowingAxe: public  Throwing
+  class ThrowingAxe: public Throwing
   {
   public:
     /**
      * Construction
      */
-    ThrowingAxe() : Throwing();
+    ThrowingAxe();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(const ThrowingAxe& original) : Throwing(original);
+    ThrowingAxe(const ThrowingAxe& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(ThrowingAxe& original) : Throwing(original);
+    ThrowingAxe(ThrowingAxe& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingAxe(ThrowingAxe&& original) : Throwing(original);
+    ThrowingAxe(ThrowingAxe&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ThrowingAxe& self, const ThrowingAxe& original);
-  
+    
   };
 }
 
 
-#endif//__THROWINGAXE__
+#endif//__GUARD_THROWINGAXE_HPP__

@@ -33,18 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Headgear::Headgear()
+  Headgear::Headgear() : Item()
   {
-    //TODO implement constructor
-    //hands = nullptr;
-    //speed_factor = nullptr;
-    //hit_bonus = nullptr;
-    //damage_die = nullptr;
-    //damage_dice = nullptr;
-    //damage_bonus = nullptr;
-    //melee = false;
-    //damage_type = nullptr;
-    //weapon_group = nullptr;
+    ////TODO implement constructor
+    //this->critical_hit_protection = false;
   }
   
   /**
@@ -52,17 +44,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Headgear::Headgear(const Headgear& original)
+  Headgear::Headgear(const Headgear& original) : Item(original)
   {
-    this->hands = original.hands;
-    this->speed_factor = original.speed_factor;
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->melee = original.melee;
-    this->damage_type = original.damage_type;
-    this->weapon_group = original.weapon_group;
+    (void) original;
+    //this->critical_hit_protection = original.critical_hit_protection;
   }
   
   /**
@@ -70,17 +55,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Headgear::Headgear(Headgear& original)
+  Headgear::Headgear(Headgear& original) : Item(original)
   {
-    this->hands = original.hands;
-    this->speed_factor = original.speed_factor;
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->melee = original.melee;
-    this->damage_type = original.damage_type;
-    this->weapon_group = original.weapon_group;
+    (void) original;
+    //this->critical_hit_protection = original.critical_hit_protection;
   }
   
   /**
@@ -88,17 +66,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Headgear::Headgear(Headgear&& original)
+  Headgear::Headgear(Headgear&& original) : Item(original)
   {
-    std::move(this->hands, original.hands);
-    std::move(this->speed_factor, original.speed_factor);
-    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->damage_die, original.damage_die);
-    std::move(this->damage_dice, original.damage_dice);
-    std::move(this->damage_bonus, original.damage_bonus);
-    std::swap(this->melee, original.melee);
-    std::move(this->damage_type, original.damage_type);
-    std::move(this->weapon_group, original.weapon_group);
+    (void) original;
+    ////std::swap(this->critical_hit_protection, original.critical_hit_protection);
   }
   
   
@@ -108,15 +79,7 @@ namespace tbrpg
    */
   Headgear::~Headgear()
   {
-    //TODO implement destructor
-    //delete hands;
-    //delete speed_factor;
-    //delete hit_bonus;
-    //delete damage_die;
-    //delete damage_dice;
-    //delete damage_bonus;
-    //delete damage_type;
-    //delete weapon_group;
+    ////TODO implement destructor
   }
   
   
@@ -129,23 +92,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(const Headgear& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hands = original.hands;
-    this->speed_factor = original.speed_factor;
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->melee = original.melee;
-    this->damage_type = original.damage_type;
-    this->weapon_group = original.weapon_group;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -157,23 +105,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hands = original.hands;
-    this->speed_factor = original.speed_factor;
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->melee = original.melee;
-    this->damage_type = original.damage_type;
-    this->weapon_group = original.weapon_group;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -185,23 +118,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear&& original)
   {
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->hands, original.hands);
-    std::move(this->speed_factor, original.speed_factor);
-    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->damage_die, original.damage_die);
-    std::move(this->damage_dice, original.damage_dice);
-    std::move(this->damage_bonus, original.damage_bonus);
-    std::swap(this->melee, original.melee);
-    std::move(this->damage_type, original.damage_type);
-    std::move(this->weapon_group, original.weapon_group);
+    (void) original;
+    ////std::move((Item&)*this, (Item&)original);    ////std::swap(this->critical_hit_protection, original.critical_hit_protection);
     return *this;
   }
   
@@ -211,9 +129,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Headgear::__copy__(Headgear& self, const Headgear& original);
+  void Headgear::__copy__(Headgear& self, const Headgear& original)
   {
-    left = right;
+    self = original;
   }
   
 }

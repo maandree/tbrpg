@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Thief::Thief()
+  Thief::Thief() : Rogue()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Thief::Thief(const Thief& original)
+  Thief::Thief(const Thief& original) : Rogue(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Thief::Thief(Thief& original)
+  Thief::Thief(Thief& original) : Rogue(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Thief::Thief(Thief&& original)
+  Thief::Thief(Thief&& original) : Rogue(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Thief::~Thief()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Thief& Thief::operator =(const Thief& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Thief& Thief::operator =(Thief& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Thief& Thief::operator =(Thief&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Thief::__copy__(Thief& self, const Thief& original);
+  void Thief::__copy__(Thief& self, const Thief& original)
   {
-    left = right;
+    self = original;
   }
   
 }

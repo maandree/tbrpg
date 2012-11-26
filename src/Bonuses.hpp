@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BONUSES__
-#define __BONUSES__
+#ifndef __GUARD_BONUSES_HPP__
+#define __GUARD_BONUSES_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,64 +46,99 @@ namespace tbrpg
   {
   public:
     /**
-     * Reaction adjustment for each reputation
+     * Hit bonus
      */
-    int[] reaction_adjustment;
+    //int hit_bonus;
     
     /**
-     * Whether the party is wanted for each reputation
+     * Damage bonus
      */
-    bool[] wanted;
+    //int damage_bonus;
     
     /**
-     * Penalty for killing a innocent for each reputation
+     * Weight carry limit in grams
      */
-    int[] killing_innocent;
+    //int carry_limit;
     
     /**
-     * Penalty for injuring a innocent for each reputation
+     * Bashing chance
      */
-    int[] injuring_innocent;
+    //float bashing;
     
     /**
-     * Penalty for stealing for each reputation
+     * Missile attack bonus
      */
-    int[] stealing;
+    //int missile_attack_bonus;
     
     /**
-     * Penalty for killing a guard for each reputation
+     * Armour class bonus
      */
-    int[] killing_guard;
+    //int armour_class_bonus;
     
     /**
-     * Donation needed to increase reputation for each reputation, zero for not possible
+     * Hit point bonus
      */
-    int[] donation_needed;
+    //int hit_point_bonus;
     
     /**
-     * Price multiplier for each reputation
+     * Resurrectability
      */
-    float[] price_adjustment;
+    //float resurrectability;
     
     /**
-     * Reaction form good aligned for each reputation
+     * Reaction bonus
      */
-    int[] good_reaction;
+    //int reaction_bonus;
     
     /**
-     * Reaction form neutral aligned for each reputation
+     * Spell level limit
      */
-    int[] neutral_reaction;
+    //char spell_level_limit;
     
     /**
-     * Reaction form evil aligned for each reputation
+     * Chance to learn spell
      */
-    int[] evil_reaction;
+    //float spell_learn;
     
     /**
-     * Reputation for each alignment of the protagonist
+     * Maximum learned spells per limit
      */
-    char[] alignment_reputation;
+    //char max_spells_level;
+    
+    /**
+     * Lore bonus
+     */
+    //int lore_bonus;
+    
+    /**
+     * Resistance against magic bonus
+     */
+    //float magic_defence_bonus;
+    
+    /**
+     * Chance to fail spell casting
+     */
+    //float spell_failure;
+    
+    /**
+     * Extra spell slots per spell level
+     */
+    //int* bonus_spells;
+    
+    /**
+     * Morale bonus
+     */
+    //int morale;
+    
+    /**
+     * Luck bonus
+     */
+    //int luck;
+    
+    /**
+     * Detect secret door bonus
+     */
+    //float detect_doors;
     
     
     
@@ -171,9 +210,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Bonuses& self, const Bonuses& original);
-  
+    
   };
 }
 
 
-#endif//__BONUSES__
+#endif//__GUARD_BONUSES_HPP__

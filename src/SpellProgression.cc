@@ -35,15 +35,9 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression()
   {
-    //TODO implement constructor
-    //experience = nullptr;
-    //hit_point_die = nullptr;
-    //hit_point_dice = nullptr;
-    //hit_point_bonus = nullptr;
-    //selectable_wizard = nullptr;
-    //selectable_priest = nullptr;
-    //new_spells = nullptr;
-    //proficiencies = nullptr;
+    ////TODO implement constructor
+    //this->wizard_slots = nullptr;
+    //this->priest_slots = nullptr;
   }
   
   /**
@@ -53,14 +47,9 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression(const SpellProgression& original)
   {
-    this->experience = original.experience;
-    this->hit_point_die = original.hit_point_die;
-    this->hit_point_dice = original.hit_point_dice;
-    this->hit_point_bonus = original.hit_point_bonus;
-    this->selectable_wizard = original.selectable_wizard;
-    this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
-    this->proficiencies = original.proficiencies;
+    (void) original;
+    //this->wizard_slots = original.wizard_slots;
+    //this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -70,14 +59,9 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression(SpellProgression& original)
   {
-    this->experience = original.experience;
-    this->hit_point_die = original.hit_point_die;
-    this->hit_point_dice = original.hit_point_dice;
-    this->hit_point_bonus = original.hit_point_bonus;
-    this->selectable_wizard = original.selectable_wizard;
-    this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
-    this->proficiencies = original.proficiencies;
+    (void) original;
+    //this->wizard_slots = original.wizard_slots;
+    //this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -87,14 +71,9 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression(SpellProgression&& original)
   {
-    std::move(this->experience, original.experience);
-    std::move(this->hit_point_die, original.hit_point_die);
-    std::move(this->hit_point_dice, original.hit_point_dice);
-    std::move(this->hit_point_bonus, original.hit_point_bonus);
-    std::move(this->selectable_wizard, original.selectable_wizard);
-    std::move(this->selectable_priest, original.selectable_priest);
-    std::move(this->new_spells, original.new_spells);
-    std::move(this->proficiencies, original.proficiencies);
+    (void) original;
+    ////std::move(this->wizard_slots, original.wizard_slots);
+    ////std::move(this->priest_slots, original.priest_slots);
   }
   
   
@@ -104,15 +83,9 @@ namespace tbrpg
    */
   SpellProgression::~SpellProgression()
   {
-    //TODO implement destructor
-    //delete experience;
-    //delete hit_point_die;
-    //delete hit_point_dice;
-    //delete hit_point_bonus;
-    //delete selectable_wizard;
-    //delete selectable_priest;
-    //delete new_spells;
-    //delete proficiencies;
+    ////TODO implement destructor
+    //delete wizard_slots;
+    //delete priest_slots;
   }
   
   
@@ -125,14 +98,9 @@ namespace tbrpg
    */
   SpellProgression& SpellProgression::operator =(const SpellProgression& original)
   {
-    this->experience = original.experience;
-    this->hit_point_die = original.hit_point_die;
-    this->hit_point_dice = original.hit_point_dice;
-    this->hit_point_bonus = original.hit_point_bonus;
-    this->selectable_wizard = original.selectable_wizard;
-    this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
-    this->proficiencies = original.proficiencies;
+    (void) original;
+    //this->wizard_slots = original.wizard_slots;
+    //this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -144,14 +112,9 @@ namespace tbrpg
    */
   SpellProgression& SpellProgression::operator =(SpellProgression& original)
   {
-    this->experience = original.experience;
-    this->hit_point_die = original.hit_point_die;
-    this->hit_point_dice = original.hit_point_dice;
-    this->hit_point_bonus = original.hit_point_bonus;
-    this->selectable_wizard = original.selectable_wizard;
-    this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
-    this->proficiencies = original.proficiencies;
+    (void) original;
+    //this->wizard_slots = original.wizard_slots;
+    //this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -163,14 +126,9 @@ namespace tbrpg
    */
   SpellProgression& SpellProgression::operator =(SpellProgression&& original)
   {
-    std::move(this->experience, original.experience);
-    std::move(this->hit_point_die, original.hit_point_die);
-    std::move(this->hit_point_dice, original.hit_point_dice);
-    std::move(this->hit_point_bonus, original.hit_point_bonus);
-    std::move(this->selectable_wizard, original.selectable_wizard);
-    std::move(this->selectable_priest, original.selectable_priest);
-    std::move(this->new_spells, original.new_spells);
-    std::move(this->proficiencies, original.proficiencies);
+    (void) original;
+    ////std::move(this->wizard_slots, original.wizard_slots);
+    ////std::move(this->priest_slots, original.priest_slots);
     return *this;
   }
   
@@ -180,9 +138,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void SpellProgression::__copy__(SpellProgression& self, const SpellProgression& original);
+  void SpellProgression::__copy__(SpellProgression& self, const SpellProgression& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DRUID__
-#define __DRUID__
+#ifndef __GUARD_DRUID_HPP__
+#define __GUARD_DRUID_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Priest.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The druid cass
    */
-  class Druid: public  Priest
+  class Druid: public Priest
   {
   public:
     /**
      * Construction
      */
-    Druid() : Priest();
+    Druid();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(const Druid& original) : Priest(original);
+    Druid(const Druid& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(Druid& original) : Priest(original);
+    Druid(Druid& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Druid(Druid&& original) : Priest(original);
+    Druid(Druid&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Druid& self, const Druid& original);
-  
+    
   };
 }
 
 
-#endif//__DRUID__
+#endif//__GUARD_DRUID_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __PARTY__
-#define __PARTY__
+#ifndef __GUARD_PARTY_HPP__
+#define __GUARD_PARTY_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Character.hpp"
 
 
 /**
@@ -42,39 +48,14 @@ namespace tbrpg
   {
   public:
     /**
-     * The strength, excluding extra for 18
+     * The party's reputation
      */
-    short strength;
+    //int reputation;
     
     /**
-     * Extra strength for strength 18
+     * The characters in the party
      */
-    short strength18;
-    
-    /**
-     * The constitution
-     */
-    short constitution;
-    
-    /**
-     * The dexterity
-     */
-    short dexterity;
-    
-    /**
-     * The intelligence
-     */
-    short intelligence;
-    
-    /**
-     * The wisdom
-     */
-    short wisdom;
-    
-    /**
-     * The charisma
-     */
-    short charisma;
+    //Character* characters;
     
     
     
@@ -146,9 +127,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Party& self, const Party& original);
-  
+    
   };
 }
 
 
-#endif//__PARTY__
+#endif//__GUARD_PARTY_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BOOTS__
-#define __BOOTS__
+#ifndef __GUARD_BOOTS_HPP__
+#define __GUARD_BOOTS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Boot item class
    */
-  class Boots: public  Item
+  class Boots: public Item
   {
   public:
     /**
      * Construction
      */
-    Boots() : Item();
+    Boots();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(const Boots& original) : Item(original);
+    Boots(const Boots& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(Boots& original) : Item(original);
+    Boots(Boots& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Boots(Boots&& original) : Item(original);
+    Boots(Boots&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Boots& self, const Boots& original);
-  
+    
   };
 }
 
 
-#endif//__BOOTS__
+#endif//__GUARD_BOOTS_HPP__

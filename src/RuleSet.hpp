@@ -17,12 +17,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ABLITIES__
-#define __ABLITIES__
+#ifndef __GUARD_RULESET_HPP__
+#define __GUARD_RULESET_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "ReputationChart.hpp"
+#include "AbilityChart.hpp"
+#include "Inventory.hpp"
+#include "Spell.hpp"
+#include "Race.hpp"
 
 
 /**
@@ -36,70 +46,90 @@
 namespace tbrpg
 {
   /**
-   * Ability scores
+   * Game rules
    */
-  class Ablities
+  class RuleSet
   {
   public:
     /**
-     * Save versus breath weapons
+     * The number of sides on the dice to roll at the attack roll
      */
-    int breath;
+    //char attack_roll_die;
     
     /**
-     * Save versus paralyzation/poison/death magic
+     * The number of dice to roll at the attack roll
      */
-    int paralyze_poison_death;
+    //char attack_roll_dice;
     
     /**
-     * Save versus petrification/polymorph
+     * The minimum attack roll needed for a critical hit
      */
-    int petrification_polymorph;
+    //char critical_hit;
     
     /**
-     * Save versus rods/staffs/wands
+     * The maximum attack roll needed for a critical miss
      */
-    int rod_staff_wand;
+    //char critical_miss;
     
     /**
-     * Save versus spells
+     * The reputation chart
      */
-    int spell;
+    //ReputationChart reputation_chart;
+    
+    /**
+     * The ability chart
+     */
+    //AbilityChart ability_chart;
+    
+    /**
+     * The inventory prototype, basiclly it defines how many slots there is in the inventory
+     */
+    //Inventory inventory_prototype;
+    
+    /**
+     * All spells, very useful for when new characters selects spells, or to restrict imported characters
+     */
+    //Spell* spells;
+    
+    /**
+     * Races in the game that new charactes can chooses
+     */
+    //Race* races;
     
     
     
     /**
      * Construction
      */
-    Ablities();
+    RuleSet();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ablities(const Ablities& original);
+    RuleSet(const RuleSet& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ablities(Ablities& original);
+    RuleSet(RuleSet& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ablities(Ablities&& original);
+    RuleSet(RuleSet&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~Ablities();
+    virtual ~RuleSet();
     
     
     
@@ -109,7 +139,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Ablities& operator =(const Ablities& original);
+    virtual RuleSet& operator =(const RuleSet& original);
     
     /**
      * Assignment operator
@@ -117,7 +147,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Ablities& operator =(Ablities& original);
+    virtual RuleSet& operator =(RuleSet& original);
     
     /**
      * Move operator
@@ -125,7 +155,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual Ablities& operator =(Ablities&& original);
+    virtual RuleSet& operator =(RuleSet&& original);
     
     
   protected:
@@ -135,10 +165,10 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(Ablities& self, const Ablities& original);
-  
+    static void __copy__(RuleSet& self, const RuleSet& original);
+    
   };
 }
 
 
-#endif//__ABLITIES__
+#endif//__GUARD_RULESET_HPP__

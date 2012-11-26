@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BASTARDSWORD__
-#define __BASTARDSWORD__
+#ifndef __GUARD_BASTARDSWORD_HPP__
+#define __GUARD_BASTARDSWORD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "LargeSword.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Bastard sword item class
    */
-  class BastardSword: public  LargeSword
+  class BastardSword: public LargeSword
   {
   public:
     /**
      * Construction
      */
-    BastardSword() : LargeSword();
+    BastardSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BastardSword(const BastardSword& original) : LargeSword(original);
+    BastardSword(const BastardSword& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BastardSword(BastardSword& original) : LargeSword(original);
+    BastardSword(BastardSword& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    BastardSword(BastardSword&& original) : LargeSword(original);
+    BastardSword(BastardSword&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(BastardSword& self, const BastardSword& original);
-  
+    
   };
 }
 
 
-#endif//__BASTARDSWORD__
+#endif//__GUARD_BASTARDSWORD_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BUCKLER__
-#define __BUCKLER__
+#ifndef __GUARD_BUCKLER_HPP__
+#define __GUARD_BUCKLER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Shield.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Buckler item class
    */
-  class Buckler: public  Shield
+  class Buckler: public Shield
   {
   public:
     /**
      * Construction
      */
-    Buckler() : Shield();
+    Buckler();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(const Buckler& original) : Shield(original);
+    Buckler(const Buckler& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(Buckler& original) : Shield(original);
+    Buckler(Buckler& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Buckler(Buckler&& original) : Shield(original);
+    Buckler(Buckler&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Buckler& self, const Buckler& original);
-  
+    
   };
 }
 
 
-#endif//__BUCKLER__
+#endif//__GUARD_BUCKLER_HPP__

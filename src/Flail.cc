@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Flail::Flail()
+  Flail::Flail() : BluntWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Flail::Flail(const Flail& original)
+  Flail::Flail(const Flail& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Flail::Flail(Flail& original)
+  Flail::Flail(Flail& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Flail::Flail(Flail&& original)
+  Flail::Flail(Flail&& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Flail::~Flail()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Flail& Flail::operator =(const Flail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Flail& Flail::operator =(Flail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Flail& Flail::operator =(Flail&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Flail::__copy__(Flail& self, const Flail& original);
+  void Flail::__copy__(Flail& self, const Flail& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __THROWING__
-#define __THROWING__
+#ifndef __GUARD_THROWING_HPP__
+#define __GUARD_THROWING_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "RangedWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Throwing weapon item class
    */
-  class Throwing: public  RangedWeapon
+  class Throwing: public RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Throwing() : RangedWeapon();
+    Throwing();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Throwing(const Throwing& original) : RangedWeapon(original);
+    Throwing(const Throwing& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Throwing(Throwing& original) : RangedWeapon(original);
+    Throwing(Throwing& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Throwing(Throwing&& original) : RangedWeapon(original);
+    Throwing(Throwing&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Throwing& self, const Throwing& original);
-  
+    
   };
 }
 
 
-#endif//__THROWING__
+#endif//__GUARD_THROWING_HPP__

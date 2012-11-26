@@ -33,22 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Body::Body()
+  Body::Body() : Item()
   {
-    //TODO implement constructor
-    //left_hand = nullptr;
-    //right_hand = nullptr;
-    //quiver = nullptr;
-    //quick_items = nullptr;
-    //headgear = nullptr;
-    //amulett = nullptr;
-    //rings = nullptr;
-    //body = nullptr;
-    //gauntlets = nullptr;
-    //girdle = nullptr;
-    //boots = nullptr;
-    //cloak = nullptr;
-    //personal = nullptr;
+    ////TODO implement constructor
+    //this->character = nullptr;
   }
   
   /**
@@ -56,21 +44,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Body::Body(const Body& original)
+  Body::Body(const Body& original) : Item(original)
   {
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulett = original.amulett;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    (void) original;
+    //this->character = original.character;
   }
   
   /**
@@ -78,21 +55,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Body::Body(Body& original)
+  Body::Body(Body& original) : Item(original)
   {
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulett = original.amulett;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    (void) original;
+    //this->character = original.character;
   }
   
   /**
@@ -100,21 +66,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Body::Body(Body&& original)
+  Body::Body(Body&& original) : Item(original)
   {
-    std::move(this->left_hand, original.left_hand);
-    std::move(this->right_hand, original.right_hand);
-    std::move(this->quiver, original.quiver);
-    std::move(this->quick_items, original.quick_items);
-    std::move(this->headgear, original.headgear);
-    std::move(this->amulett, original.amulett);
-    std::move(this->rings, original.rings);
-    std::move(this->body, original.body);
-    std::move(this->gauntlets, original.gauntlets);
-    std::move(this->girdle, original.girdle);
-    std::move(this->boots, original.boots);
-    std::move(this->cloak, original.cloak);
-    std::move(this->personal, original.personal);
+    (void) original;
+    ////std::move(this->character, original.character);
   }
   
   
@@ -124,20 +79,8 @@ namespace tbrpg
    */
   Body::~Body()
   {
-    //TODO implement destructor
-    //delete left_hand;
-    //delete right_hand;
-    //delete quiver;
-    //delete quick_items;
-    //delete headgear;
-    //delete amulett;
-    //delete rings;
-    //delete body;
-    //delete gauntlets;
-    //delete girdle;
-    //delete boots;
-    //delete cloak;
-    //delete personal;
+    ////TODO implement destructor
+    //delete character;
   }
   
   
@@ -150,31 +93,8 @@ namespace tbrpg
    */
   Body& Body::operator =(const Body& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulett = original.amulett;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->character = original.character;
     return *this;
   }
   
@@ -186,31 +106,8 @@ namespace tbrpg
    */
   Body& Body::operator =(Body& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulett = original.amulett;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->character = original.character;
     return *this;
   }
   
@@ -222,31 +119,8 @@ namespace tbrpg
    */
   Body& Body::operator =(Body&& original)
   {
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->left_hand, original.left_hand);
-    std::move(this->right_hand, original.right_hand);
-    std::move(this->quiver, original.quiver);
-    std::move(this->quick_items, original.quick_items);
-    std::move(this->headgear, original.headgear);
-    std::move(this->amulett, original.amulett);
-    std::move(this->rings, original.rings);
-    std::move(this->body, original.body);
-    std::move(this->gauntlets, original.gauntlets);
-    std::move(this->girdle, original.girdle);
-    std::move(this->boots, original.boots);
-    std::move(this->cloak, original.cloak);
-    std::move(this->personal, original.personal);
+    (void) original;
+    ////std::move((Item&)*this, (Item&)original);    ////std::move(this->character, original.character);
     return *this;
   }
   
@@ -256,9 +130,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Body::__copy__(Body& self, const Body& original);
+  void Body::__copy__(Body& self, const Body& original)
   {
-    left = right;
+    self = original;
   }
   
 }

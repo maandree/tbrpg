@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MACE__
-#define __MACE__
+#ifndef __GUARD_MACE_HPP__
+#define __GUARD_MACE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,41 +44,34 @@ namespace tbrpg
   /**
    * Mace item class
    */
-  class Mace: public  BluntWeapon
+  class Mace: public BluntWeapon
   {
   public:
     /**
-     * The weapon's rate of fire
-     */
-    char rate_of_fire;
-    
-    
-    
-    /**
      * Construction
      */
-    Mace() : BluntWeapon();
+    Mace();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(const Mace& original) : BluntWeapon(original);
+    Mace(const Mace& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(Mace& original) : BluntWeapon(original);
+    Mace(Mace& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Mace(Mace&& original) : BluntWeapon(original);
+    Mace(Mace&& original);
     
     
     
@@ -116,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Mace& self, const Mace& original);
-  
+    
   };
 }
 
 
-#endif//__MACE__
+#endif//__GUARD_MACE_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Club::Club()
+  Club::Club() : BluntWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Club::Club(const Club& original)
+  Club::Club(const Club& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Club::Club(Club& original)
+  Club::Club(Club& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Club::Club(Club&& original)
+  Club::Club(Club&& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Club::~Club()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Club& Club::operator =(const Club& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Club& Club::operator =(Club& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Club& Club::operator =(Club&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Club::__copy__(Club& self, const Club& original);
+  void Club::__copy__(Club& self, const Club& original)
   {
-    left = right;
+    self = original;
   }
   
 }

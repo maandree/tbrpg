@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __RANGEDWEAPON__
-#define __RANGEDWEAPON__
+#ifndef __GUARD_RANGEDWEAPON_HPP__
+#define __GUARD_RANGEDWEAPON_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Weapon.hpp"
+
+
 
 
 /**
@@ -38,56 +44,41 @@ namespace tbrpg
   /**
    * Ranged weapon item class
    */
-  class RangedWeapon: public  Weapon
+  class RangedWeapon: public Weapon
   {
   public:
     /**
-     * Items contained by the container
+     * The weapon's rate of fire
      */
-    std::vector<Item> contains;
-    
-    /**
-     * Number of items that can be put in the container
-     */
-    int contain_limit;
-    
-    /**
-     * Weight multiplier
-     */
-    float weight_modifier;
-    
-    /**
-     * Items that can be put inside the container
-     */
-    Item[] can_contain;
+    //char rate_of_fire;
     
     
     
     /**
      * Construction
      */
-    RangedWeapon() : Weapon();
+    RangedWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(const RangedWeapon& original) : Weapon(original);
+    RangedWeapon(const RangedWeapon& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(RangedWeapon& original) : Weapon(original);
+    RangedWeapon(RangedWeapon& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    RangedWeapon(RangedWeapon&& original) : Weapon(original);
+    RangedWeapon(RangedWeapon&& original);
     
     
     
@@ -131,9 +122,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(RangedWeapon& self, const RangedWeapon& original);
-  
+    
   };
 }
 
 
-#endif//__RANGEDWEAPON__
+#endif//__GUARD_RANGEDWEAPON_HPP__

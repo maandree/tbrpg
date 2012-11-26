@@ -35,9 +35,26 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet()
   {
-    //TODO implement constructor
-    //allowed_classes = nullptr;
-    //bonuses = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
+    //this->biography = nullptr;
+    //this->colour = 0;
+    //this->alignment = 0;
+    //this->portrait = nullptr;
+    //this->female = false;
+    //this->experience = nullptr;
+    //this->level = nullptr;
+    //this->class_abondoned = nullptr;
+    //this->proficiencies = nullptr;
+    //this->affected_by = nullptr;
+    //this->inventory = nullptr;
+    //this->abilities = nullptr;
+    //this->spells = nullptr;
+    //this->race = nullptr;
+    //this->racial_enemy = nullptr;
+    //this->prestige = nullptr;
+    //this->specialisation = nullptr;
+    //this->special_abilities = nullptr;
   }
   
   /**
@@ -47,8 +64,26 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(const CharacterSheet& original)
   {
-    this->allowed_classes = original.allowed_classes;
-    this->bonuses = original.bonuses;
+    (void) original;
+    //this->name = original.name;
+    //this->biography = original.biography;
+    //this->colour = original.colour;
+    //this->alignment = original.alignment;
+    //this->portrait = original.portrait;
+    //this->female = original.female;
+    //this->experience = original.experience;
+    //this->level = original.level;
+    //this->class_abondoned = original.class_abondoned;
+    //this->proficiencies = original.proficiencies;
+    //this->affected_by = original.affected_by;
+    //this->inventory = original.inventory;
+    //this->abilities = original.abilities;
+    //this->spells = original.spells;
+    //this->race = original.race;
+    //this->racial_enemy = original.racial_enemy;
+    //this->prestige = original.prestige;
+    //this->specialisation = original.specialisation;
+    //this->special_abilities = original.special_abilities;
   }
   
   /**
@@ -58,8 +93,26 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet& original)
   {
-    this->allowed_classes = original.allowed_classes;
-    this->bonuses = original.bonuses;
+    (void) original;
+    //this->name = original.name;
+    //this->biography = original.biography;
+    //this->colour = original.colour;
+    //this->alignment = original.alignment;
+    //this->portrait = original.portrait;
+    //this->female = original.female;
+    //this->experience = original.experience;
+    //this->level = original.level;
+    //this->class_abondoned = original.class_abondoned;
+    //this->proficiencies = original.proficiencies;
+    //this->affected_by = original.affected_by;
+    //this->inventory = original.inventory;
+    //this->abilities = original.abilities;
+    //this->spells = original.spells;
+    //this->race = original.race;
+    //this->racial_enemy = original.racial_enemy;
+    //this->prestige = original.prestige;
+    //this->specialisation = original.specialisation;
+    //this->special_abilities = original.special_abilities;
   }
   
   /**
@@ -69,8 +122,26 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet&& original)
   {
-    std::move(this->allowed_classes, original.allowed_classes);
-    std::move(this->bonuses, original.bonuses);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->biography, original.biography);
+    ////std::swap(this->colour, original.colour);
+    ////std::swap(this->alignment, original.alignment);
+    ////std::move(this->portrait, original.portrait);
+    ////std::swap(this->female, original.female);
+    ////std::move(this->experience, original.experience);
+    ////std::move(this->level, original.level);
+    ////std::move(this->class_abondoned, original.class_abondoned);
+    ////std::move(this->proficiencies, original.proficiencies);
+    ////std::move(this->affected_by, original.affected_by);
+    ////std::move(this->inventory, original.inventory);
+    ////std::move(this->abilities, original.abilities);
+    ////std::move(this->spells, original.spells);
+    ////std::move(this->race, original.race);
+    ////std::move(this->racial_enemy, original.racial_enemy);
+    ////std::move(this->prestige, original.prestige);
+    ////std::move(this->specialisation, original.specialisation);
+    ////std::move(this->special_abilities, original.special_abilities);
   }
   
   
@@ -80,9 +151,23 @@ namespace tbrpg
    */
   CharacterSheet::~CharacterSheet()
   {
-    //TODO implement destructor
-    //delete allowed_classes;
-    //delete bonuses;
+    ////TODO implement destructor
+    //delete name;
+    //delete biography;
+    //delete portrait;
+    //delete experience;
+    //delete level;
+    //delete class_abondoned;
+    //delete proficiencies;
+    //delete affected_by;
+    //delete inventory;
+    //delete abilities;
+    //delete spells;
+    //delete race;
+    //delete racial_enemy;
+    //delete prestige;
+    //delete specialisation;
+    //delete special_abilities;
   }
   
   
@@ -95,8 +180,26 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
-    this->allowed_classes = original.allowed_classes;
-    this->bonuses = original.bonuses;
+    (void) original;
+    //this->name = original.name;
+    //this->biography = original.biography;
+    //this->colour = original.colour;
+    //this->alignment = original.alignment;
+    //this->portrait = original.portrait;
+    //this->female = original.female;
+    //this->experience = original.experience;
+    //this->level = original.level;
+    //this->class_abondoned = original.class_abondoned;
+    //this->proficiencies = original.proficiencies;
+    //this->affected_by = original.affected_by;
+    //this->inventory = original.inventory;
+    //this->abilities = original.abilities;
+    //this->spells = original.spells;
+    //this->race = original.race;
+    //this->racial_enemy = original.racial_enemy;
+    //this->prestige = original.prestige;
+    //this->specialisation = original.specialisation;
+    //this->special_abilities = original.special_abilities;
     return *this;
   }
   
@@ -108,8 +211,26 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
-    this->allowed_classes = original.allowed_classes;
-    this->bonuses = original.bonuses;
+    (void) original;
+    //this->name = original.name;
+    //this->biography = original.biography;
+    //this->colour = original.colour;
+    //this->alignment = original.alignment;
+    //this->portrait = original.portrait;
+    //this->female = original.female;
+    //this->experience = original.experience;
+    //this->level = original.level;
+    //this->class_abondoned = original.class_abondoned;
+    //this->proficiencies = original.proficiencies;
+    //this->affected_by = original.affected_by;
+    //this->inventory = original.inventory;
+    //this->abilities = original.abilities;
+    //this->spells = original.spells;
+    //this->race = original.race;
+    //this->racial_enemy = original.racial_enemy;
+    //this->prestige = original.prestige;
+    //this->specialisation = original.specialisation;
+    //this->special_abilities = original.special_abilities;
     return *this;
   }
   
@@ -121,8 +242,26 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
-    std::move(this->allowed_classes, original.allowed_classes);
-    std::move(this->bonuses, original.bonuses);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->biography, original.biography);
+    ////std::swap(this->colour, original.colour);
+    ////std::swap(this->alignment, original.alignment);
+    ////std::move(this->portrait, original.portrait);
+    ////std::swap(this->female, original.female);
+    ////std::move(this->experience, original.experience);
+    ////std::move(this->level, original.level);
+    ////std::move(this->class_abondoned, original.class_abondoned);
+    ////std::move(this->proficiencies, original.proficiencies);
+    ////std::move(this->affected_by, original.affected_by);
+    ////std::move(this->inventory, original.inventory);
+    ////std::move(this->abilities, original.abilities);
+    ////std::move(this->spells, original.spells);
+    ////std::move(this->race, original.race);
+    ////std::move(this->racial_enemy, original.racial_enemy);
+    ////std::move(this->prestige, original.prestige);
+    ////std::move(this->specialisation, original.specialisation);
+    ////std::move(this->special_abilities, original.special_abilities);
     return *this;
   }
   
@@ -132,9 +271,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void CharacterSheet::__copy__(CharacterSheet& self, const CharacterSheet& original);
+  void CharacterSheet::__copy__(CharacterSheet& self, const CharacterSheet& original)
   {
-    left = right;
+    self = original;
   }
   
 }

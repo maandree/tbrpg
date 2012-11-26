@@ -17,12 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ABILITYBONUS__
-#define __ABILITYBONUS__
+#ifndef __GUARD_ABILITYBONUS_HPP__
+#define __GUARD_ABILITYBONUS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Bonuses.hpp"
+#include "ThiefAbilities.hpp"
+#include "SavingThrows.hpp"
+#include "Abilities.hpp"
+#include "SpellBook.hpp"
+#include "Spell.hpp"
 
 
 /**
@@ -42,9 +53,34 @@ namespace tbrpg
   {
   public:
     /**
-     * The dead character
+     * Bonuses
      */
-    Character character;
+    //Bonuses bonuses;
+    
+    /**
+     * Thief abilities
+     */
+    //ThiefAbilities thief_abilities;
+    
+    /**
+     * Saving throws
+     */
+    //SavingThrows saving_throws;
+    
+    /**
+     * Abilities
+     */
+    //Abilities abilities;
+    
+    /**
+     * Spells
+     */
+    //SpellBook spells;
+    
+    /**
+     * Effects
+     */
+    //Spell* effects;
     
     
     
@@ -116,9 +152,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(AbilityBonus& self, const AbilityBonus& original);
-  
+    
   };
 }
 
 
-#endif//__ABILITYBONUS__
+#endif//__GUARD_ABILITYBONUS_HPP__

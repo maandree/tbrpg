@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ROGUE__
-#define __ROGUE__
+#ifndef __GUARD_ROGUE_HPP__
+#define __GUARD_ROGUE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Class.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The rogue superclass
    */
-  class Rogue: public  Class
+  class Rogue: public Class
   {
   public:
     /**
      * Construction
      */
-    Rogue() : Class();
+    Rogue();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(const Rogue& original) : Class(original);
+    Rogue(const Rogue& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(Rogue& original) : Class(original);
+    Rogue(Rogue& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Rogue(Rogue&& original) : Class(original);
+    Rogue(Rogue&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Rogue& self, const Rogue& original);
-  
+    
   };
 }
 
 
-#endif//__ROGUE__
+#endif//__GUARD_ROGUE_HPP__

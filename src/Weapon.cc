@@ -33,15 +33,18 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Weapon::Weapon()
+  Weapon::Weapon() : RightHandItem()
   {
-    //TODO implement constructor
-    //hit_bonus = nullptr;
-    //damage_die = nullptr;
-    //damage_dice = nullptr;
-    //damage_bonus = nullptr;
-    //usable_with = nullptr;
-    //damage_type = nullptr;
+    ////TODO implement constructor
+    //this->hands = 0;
+    //this->speed_factor = 0;
+    //this->hit_bonus = 0;
+    //this->damage_die = 0;
+    //this->damage_dice = 0;
+    //this->damage_bonus = 0;
+    //this->melee = false;
+    //this->damage_type = nullptr;
+    //this->weapon_group = nullptr;
   }
   
   /**
@@ -49,14 +52,18 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Weapon::Weapon(const Weapon& original)
+  Weapon::Weapon(const Weapon& original) : RightHandItem(original)
   {
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->usable_with = original.usable_with;
-    this->damage_type = original.damage_type;
+    (void) original;
+    //this->hands = original.hands;
+    //this->speed_factor = original.speed_factor;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->melee = original.melee;
+    //this->damage_type = original.damage_type;
+    //this->weapon_group = original.weapon_group;
   }
   
   /**
@@ -64,14 +71,18 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Weapon::Weapon(Weapon& original)
+  Weapon::Weapon(Weapon& original) : RightHandItem(original)
   {
-    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->usable_with = original.usable_with;
-    this->damage_type = original.damage_type;
+    (void) original;
+    //this->hands = original.hands;
+    //this->speed_factor = original.speed_factor;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->melee = original.melee;
+    //this->damage_type = original.damage_type;
+    //this->weapon_group = original.weapon_group;
   }
   
   /**
@@ -79,14 +90,18 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Weapon::Weapon(Weapon&& original)
+  Weapon::Weapon(Weapon&& original) : RightHandItem(original)
   {
-    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->damage_die, original.damage_die);
-    std::move(this->damage_dice, original.damage_dice);
-    std::move(this->damage_bonus, original.damage_bonus);
-    std::move(this->usable_with, original.usable_with);
-    std::move(this->damage_type, original.damage_type);
+    (void) original;
+    ////std::swap(this->hands, original.hands);
+    ////std::swap(this->speed_factor, original.speed_factor);
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_die, original.damage_die);
+    ////std::swap(this->damage_dice, original.damage_dice);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::swap(this->melee, original.melee);
+    ////std::move(this->damage_type, original.damage_type);
+    ////std::move(this->weapon_group, original.weapon_group);
   }
   
   
@@ -96,13 +111,9 @@ namespace tbrpg
    */
   Weapon::~Weapon()
   {
-    //TODO implement destructor
-    //delete hit_bonus;
-    //delete damage_die;
-    //delete damage_dice;
-    //delete damage_bonus;
-    //delete usable_with;
+    ////TODO implement destructor
     //delete damage_type;
+    //delete weapon_group;
   }
   
   
@@ -115,17 +126,24 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(const Weapon& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->usable_with = original.usable_with;
-    this->damage_type = original.damage_type;
+    (void) original;
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    //this->hands = original.hands;
+    //this->speed_factor = original.speed_factor;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->melee = original.melee;
+    //this->damage_type = original.damage_type;
+    //this->weapon_group = original.weapon_group;
     return *this;
   }
   
@@ -137,17 +155,24 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(Weapon& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
-    this->damage_die = original.damage_die;
-    this->damage_dice = original.damage_dice;
-    this->damage_bonus = original.damage_bonus;
-    this->usable_with = original.usable_with;
-    this->damage_type = original.damage_type;
+    (void) original;
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    //RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    //this->hands = original.hands;
+    //this->speed_factor = original.speed_factor;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->melee = original.melee;
+    //this->damage_type = original.damage_type;
+    //this->weapon_group = original.weapon_group;
     return *this;
   }
   
@@ -159,17 +184,24 @@ namespace tbrpg
    */
   Weapon& Weapon::operator =(Weapon&& original)
   {
-    std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->damage_die, original.damage_die);
-    std::move(this->damage_dice, original.damage_dice);
-    std::move(this->damage_bonus, original.damage_bonus);
-    std::move(this->usable_with, original.usable_with);
-    std::move(this->damage_type, original.damage_type);
+    (void) original;
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);
+    ////std::move((RightHandItem&)*this, (RightHandItem&)original);    ////std::swap(this->hands, original.hands);
+    ////std::swap(this->speed_factor, original.speed_factor);
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_die, original.damage_die);
+    ////std::swap(this->damage_dice, original.damage_dice);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::swap(this->melee, original.melee);
+    ////std::move(this->damage_type, original.damage_type);
+    ////std::move(this->weapon_group, original.weapon_group);
     return *this;
   }
   
@@ -179,9 +211,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Weapon::__copy__(Weapon& self, const Weapon& original);
+  void Weapon::__copy__(Weapon& self, const Weapon& original)
   {
-    left = right;
+    self = original;
   }
   
 }

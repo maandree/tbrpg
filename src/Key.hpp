@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __KEY__
-#define __KEY__
+#ifndef __GUARD_KEY_HPP__
+#define __GUARD_KEY_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "QuestItem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Key item class
    */
-  class Key: public  QuestItem
+  class Key: public QuestItem
   {
   public:
     /**
      * Construction
      */
-    Key() : QuestItem();
+    Key();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Key(const Key& original) : QuestItem(original);
+    Key(const Key& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Key(Key& original) : QuestItem(original);
+    Key(Key& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Key(Key&& original) : QuestItem(original);
+    Key(Key&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Key& self, const Key& original);
-  
+    
   };
 }
 
 
-#endif//__KEY__
+#endif//__GUARD_KEY_HPP__

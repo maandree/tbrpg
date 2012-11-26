@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Ring::Ring()
+  Ring::Ring() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ring::Ring(const Ring& original)
+  Ring::Ring(const Ring& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ring::Ring(Ring& original)
+  Ring::Ring(Ring& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ring::Ring(Ring&& original)
+  Ring::Ring(Ring&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Ring::~Ring()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Ring& Ring::operator =(const Ring& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Ring& Ring::operator =(Ring& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Ring& Ring::operator =(Ring&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Ring::__copy__(Ring& self, const Ring& original);
+  void Ring::__copy__(Ring& self, const Ring& original)
   {
-    left = right;
+    self = original;
   }
   
 }

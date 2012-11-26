@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FIST__
-#define __FIST__
+#ifndef __GUARD_FIST_HPP__
+#define __GUARD_FIST_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * One-handed hand-to-hand class
    */
-  class Fist: public  BluntWeapon
+  class Fist: public BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Fist() : BluntWeapon();
+    Fist();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(const Fist& original) : BluntWeapon(original);
+    Fist(const Fist& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(Fist& original) : BluntWeapon(original);
+    Fist(Fist& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Fist(Fist&& original) : BluntWeapon(original);
+    Fist(Fist&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Fist& self, const Fist& original);
-  
+    
   };
 }
 
 
-#endif//__FIST__
+#endif//__GUARD_FIST_HPP__

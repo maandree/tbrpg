@@ -35,12 +35,15 @@ namespace tbrpg
    */
   Road::Road()
   {
-    //TODO implement constructor
-    //name = nullptr;
-    //visible = false;
-    //visited = false;
-    //visitable = false;
-    //detectable = false;
+    ////TODO implement constructor
+    //this->first_distance = 0;
+    //this->last_distance = 0;
+    //this->waylay_die = 0;
+    //this->waylay_dice = 0;
+    //this->waylay_risk = 0;
+    //this->direction = nullptr;
+    //this->waylay_map = nullptr;
+    //this->leads_to = nullptr;
   }
   
   /**
@@ -50,11 +53,15 @@ namespace tbrpg
    */
   Road::Road(const Road& original)
   {
-    this->name = original.name;
-    this->visible = original.visible;
-    this->visited = original.visited;
-    this->visitable = original.visitable;
-    this->detectable = original.detectable;
+    (void) original;
+    //this->first_distance = original.first_distance;
+    //this->last_distance = original.last_distance;
+    //this->waylay_die = original.waylay_die;
+    //this->waylay_dice = original.waylay_dice;
+    //this->waylay_risk = original.waylay_risk;
+    //this->direction = original.direction;
+    //this->waylay_map = original.waylay_map;
+    //this->leads_to = original.leads_to;
   }
   
   /**
@@ -64,11 +71,15 @@ namespace tbrpg
    */
   Road::Road(Road& original)
   {
-    this->name = original.name;
-    this->visible = original.visible;
-    this->visited = original.visited;
-    this->visitable = original.visitable;
-    this->detectable = original.detectable;
+    (void) original;
+    //this->first_distance = original.first_distance;
+    //this->last_distance = original.last_distance;
+    //this->waylay_die = original.waylay_die;
+    //this->waylay_dice = original.waylay_dice;
+    //this->waylay_risk = original.waylay_risk;
+    //this->direction = original.direction;
+    //this->waylay_map = original.waylay_map;
+    //this->leads_to = original.leads_to;
   }
   
   /**
@@ -78,11 +89,15 @@ namespace tbrpg
    */
   Road::Road(Road&& original)
   {
-    std::move(this->name, original.name);
-    std::swap(this->visible, original.visible);
-    std::swap(this->visited, original.visited);
-    std::swap(this->visitable, original.visitable);
-    std::swap(this->detectable, original.detectable);
+    (void) original;
+    ////std::swap(this->first_distance, original.first_distance);
+    ////std::swap(this->last_distance, original.last_distance);
+    ////std::swap(this->waylay_die, original.waylay_die);
+    ////std::swap(this->waylay_dice, original.waylay_dice);
+    ////std::swap(this->waylay_risk, original.waylay_risk);
+    ////std::move(this->direction, original.direction);
+    ////std::move(this->waylay_map, original.waylay_map);
+    ////std::move(this->leads_to, original.leads_to);
   }
   
   
@@ -92,8 +107,10 @@ namespace tbrpg
    */
   Road::~Road()
   {
-    //TODO implement destructor
-    //delete name;
+    ////TODO implement destructor
+    //delete direction;
+    //delete waylay_map;
+    //delete leads_to;
   }
   
   
@@ -106,11 +123,15 @@ namespace tbrpg
    */
   Road& Road::operator =(const Road& original)
   {
-    this->name = original.name;
-    this->visible = original.visible;
-    this->visited = original.visited;
-    this->visitable = original.visitable;
-    this->detectable = original.detectable;
+    (void) original;
+    //this->first_distance = original.first_distance;
+    //this->last_distance = original.last_distance;
+    //this->waylay_die = original.waylay_die;
+    //this->waylay_dice = original.waylay_dice;
+    //this->waylay_risk = original.waylay_risk;
+    //this->direction = original.direction;
+    //this->waylay_map = original.waylay_map;
+    //this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -122,11 +143,15 @@ namespace tbrpg
    */
   Road& Road::operator =(Road& original)
   {
-    this->name = original.name;
-    this->visible = original.visible;
-    this->visited = original.visited;
-    this->visitable = original.visitable;
-    this->detectable = original.detectable;
+    (void) original;
+    //this->first_distance = original.first_distance;
+    //this->last_distance = original.last_distance;
+    //this->waylay_die = original.waylay_die;
+    //this->waylay_dice = original.waylay_dice;
+    //this->waylay_risk = original.waylay_risk;
+    //this->direction = original.direction;
+    //this->waylay_map = original.waylay_map;
+    //this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -138,11 +163,15 @@ namespace tbrpg
    */
   Road& Road::operator =(Road&& original)
   {
-    std::move(this->name, original.name);
-    std::swap(this->visible, original.visible);
-    std::swap(this->visited, original.visited);
-    std::swap(this->visitable, original.visitable);
-    std::swap(this->detectable, original.detectable);
+    (void) original;
+    ////std::swap(this->first_distance, original.first_distance);
+    ////std::swap(this->last_distance, original.last_distance);
+    ////std::swap(this->waylay_die, original.waylay_die);
+    ////std::swap(this->waylay_dice, original.waylay_dice);
+    ////std::swap(this->waylay_risk, original.waylay_risk);
+    ////std::move(this->direction, original.direction);
+    ////std::move(this->waylay_map, original.waylay_map);
+    ////std::move(this->leads_to, original.leads_to);
     return *this;
   }
   
@@ -152,9 +181,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Road::__copy__(Road& self, const Road& original);
+  void Road::__copy__(Road& self, const Road& original)
   {
-    left = right;
+    self = original;
   }
   
 }

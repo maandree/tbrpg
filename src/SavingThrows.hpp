@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SAVINGTHROWS__
-#define __SAVINGTHROWS__
+#ifndef __GUARD_SAVINGTHROWS_HPP__
+#define __GUARD_SAVINGTHROWS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,24 +46,29 @@ namespace tbrpg
   {
   public:
     /**
-     * Find traps scores
+     * Save versus breath weapons
      */
-    int find_traps;
+    //int breath;
     
     /**
-     * Open locks scores
+     * Save versus paralyzation/poison/death magic
      */
-    int open_locks;
+    //int paralyze_poison_death;
     
     /**
-     * Pick pockets scores
+     * Save versus petrification/polymorph
      */
-    int pick_pockets;
+    //int petrification_polymorph;
     
     /**
-     * Stealth scores
+     * Save versus rods/staffs/wands
      */
-    int stealth;
+    //int rod_staff_wand;
+    
+    /**
+     * Save versus spells
+     */
+    //int spell;
     
     
     
@@ -131,9 +140,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(SavingThrows& self, const SavingThrows& original);
-  
+    
   };
 }
 
 
-#endif//__SAVINGTHROWS__
+#endif//__GUARD_SAVINGTHROWS_HPP__

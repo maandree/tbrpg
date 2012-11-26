@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __QUICKITEM__
-#define __QUICKITEM__
+#ifndef __GUARD_QUICKITEM_HPP__
+#define __GUARD_QUICKITEM_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Quick item item class
    */
-  class QuickItem: public  Item
+  class QuickItem: public Item
   {
   public:
     /**
      * Construction
      */
-    QuickItem() : Item();
+    QuickItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(const QuickItem& original) : Item(original);
+    QuickItem(const QuickItem& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(QuickItem& original) : Item(original);
+    QuickItem(QuickItem& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    QuickItem(QuickItem&& original) : Item(original);
+    QuickItem(QuickItem&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(QuickItem& self, const QuickItem& original);
-  
+    
   };
 }
 
 
-#endif//__QUICKITEM__
+#endif//__GUARD_QUICKITEM_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Helmet::Helmet()
+  Helmet::Helmet() : Headgear()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Helmet::Helmet(const Helmet& original)
+  Helmet::Helmet(const Helmet& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Helmet::Helmet(Helmet& original)
+  Helmet::Helmet(Helmet& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Helmet::Helmet(Helmet&& original)
+  Helmet::Helmet(Helmet&& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Helmet::~Helmet()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Helmet& Helmet::operator =(const Helmet& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Helmet& Helmet::operator =(Helmet& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Helmet& Helmet::operator =(Helmet&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Helmet::__copy__(Helmet& self, const Helmet& original);
+  void Helmet::__copy__(Helmet& self, const Helmet& original)
   {
-    left = right;
+    self = original;
   }
   
 }

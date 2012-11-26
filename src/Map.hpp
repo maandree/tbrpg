@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MAP__
-#define __MAP__
+#ifndef __GUARD_MAP_HPP__
+#define __GUARD_MAP_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "MapMinor.hpp"
+#include "MapMajor.hpp"
 
 
 /**
@@ -42,29 +49,14 @@ namespace tbrpg
   {
   public:
     /**
-     * Whether the creature is hostile
+     * The start area of the game senario
      */
-    bool hostile;
+    //MapMinor start;
     
     /**
-     * The creatures horizontal position in metres, the parties starts at 0
+     * All major areas in the world map
      */
-    float x;
-    
-    /**
-     * The creatures vertical position in metres, the parties starts at 0
-     */
-    float y;
-    
-    /**
-     * Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
-     */
-    boolean alive;
-    
-    /**
-     * Whether the creature is resurrected when the party leaves the area
-     */
-    boolean resurrect;
+    //MapMajor* majors;
     
     
     
@@ -136,9 +128,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Map& self, const Map& original);
-  
+    
   };
 }
 
 
-#endif//__MAP__
+#endif//__GUARD_MAP_HPP__

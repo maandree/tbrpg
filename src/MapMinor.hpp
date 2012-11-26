@@ -17,12 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MAPMINOR__
-#define __MAPMINOR__
+#ifndef __GUARD_MAPMINOR_HPP__
+#define __GUARD_MAPMINOR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Road.hpp"
+#include "Entrance.hpp"
+#include "Item.hpp"
+#include "Creature.hpp"
+#include "MapMajor.hpp"
+#include "RestInterruption.hpp"
 
 
 /**
@@ -42,24 +53,49 @@ namespace tbrpg
   {
   public:
     /**
-     * Whether the entrance can be used
+     * Descrion of the area
      */
-    bool usable;
+    //std::string description;
     
     /**
-     * A description of what you see
+     * Whether you may rest in the area without renting a room
      */
-    std::string description;
+    //bool may_rest;
     
     /**
-     * The direction to the entrace
+     * The radius of the area, in metres, the party starts at origo
      */
-    std::string direction;
+    //float area;
     
     /**
-     * The area to which the entrance leads
+     * Roads to other major areas in the area
      */
-    MapMinor leads_to;
+    //Road* roads;
+    
+    /**
+     * Entrance to other areas in the area
+     */
+    //Entrance* connections;
+    
+    /**
+     * Items in the area
+     */
+    //std::vector<Item> items;
+    
+    /**
+     * Creatures in the area
+     */
+    //std::vector<Creature> creatures;
+    
+    /**
+     * Which major area to which  the area belongs
+     */
+    //MapMajor is_in;
+    
+    /**
+     * Possible rest interruptions
+     */
+    //RestInterruption* interruptions;
     
     
     
@@ -131,9 +167,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MapMinor& self, const MapMinor& original);
-  
+    
   };
 }
 
 
-#endif//__MAPMINOR__
+#endif//__GUARD_MAPMINOR_HPP__

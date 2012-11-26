@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FISTS__
-#define __FISTS__
+#ifndef __GUARD_FISTS_HPP__
+#define __GUARD_FISTS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "TwoHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Two-handed hand-to-hand class
    */
-  class Fists: public  TwoHandedMelee
+  class Fists: public TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Fists() : TwoHandedMelee();
+    Fists();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(const Fists& original) : TwoHandedMelee(original);
+    Fists(const Fists& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(Fists& original) : TwoHandedMelee(original);
+    Fists(Fists& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Fists(Fists&& original) : TwoHandedMelee(original);
+    Fists(Fists&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Fists& self, const Fists& original);
-  
+    
   };
 }
 
 
-#endif//__FISTS__
+#endif//__GUARD_FISTS_HPP__

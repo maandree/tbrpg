@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BOLT__
-#define __BOLT__
+#ifndef __GUARD_BOLT_HPP__
+#define __GUARD_BOLT_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Ammunition.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Bolt item class
    */
-  class Bolt: public  Ammunition
+  class Bolt: public Ammunition
   {
   public:
     /**
      * Construction
      */
-    Bolt() : Ammunition();
+    Bolt();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(const Bolt& original) : Ammunition(original);
+    Bolt(const Bolt& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(Bolt& original) : Ammunition(original);
+    Bolt(Bolt& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bolt(Bolt&& original) : Ammunition(original);
+    Bolt(Bolt&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Bolt& self, const Bolt& original);
-  
+    
   };
 }
 
 
-#endif//__BOLT__
+#endif//__GUARD_BOLT_HPP__

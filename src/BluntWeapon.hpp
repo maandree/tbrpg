@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BLUNTWEAPON__
-#define __BLUNTWEAPON__
+#ifndef __GUARD_BLUNTWEAPON_HPP__
+#define __GUARD_BLUNTWEAPON_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Blunt weapon item class
    */
-  class BluntWeapon: public  OneHandedMelee
+  class BluntWeapon: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    BluntWeapon() : OneHandedMelee();
+    BluntWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(const BluntWeapon& original) : OneHandedMelee(original);
+    BluntWeapon(const BluntWeapon& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(BluntWeapon& original) : OneHandedMelee(original);
+    BluntWeapon(BluntWeapon& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    BluntWeapon(BluntWeapon&& original) : OneHandedMelee(original);
+    BluntWeapon(BluntWeapon&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(BluntWeapon& self, const BluntWeapon& original);
-  
+    
   };
 }
 
 
-#endif//__BLUNTWEAPON__
+#endif//__GUARD_BLUNTWEAPON_HPP__

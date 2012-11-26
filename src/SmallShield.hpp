@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SMALLSHIELD__
-#define __SMALLSHIELD__
+#ifndef __GUARD_SMALLSHIELD_HPP__
+#define __GUARD_SMALLSHIELD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Shield.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Small shield item class
    */
-  class SmallShield: public  Shield
+  class SmallShield: public Shield
   {
   public:
     /**
      * Construction
      */
-    SmallShield() : Shield();
+    SmallShield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SmallShield(const SmallShield& original) : Shield(original);
+    SmallShield(const SmallShield& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SmallShield(SmallShield& original) : Shield(original);
+    SmallShield(SmallShield& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    SmallShield(SmallShield&& original) : Shield(original);
+    SmallShield(SmallShield&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(SmallShield& self, const SmallShield& original);
-  
+    
   };
 }
 
 
-#endif//__SMALLSHIELD__
+#endif//__GUARD_SMALLSHIELD_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Gem::Gem()
+  Gem::Gem() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gem::Gem(const Gem& original)
+  Gem::Gem(const Gem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gem::Gem(Gem& original)
+  Gem::Gem(Gem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gem::Gem(Gem&& original)
+  Gem::Gem(Gem&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Gem::~Gem()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Gem& Gem::operator =(const Gem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Gem& Gem::operator =(Gem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Gem& Gem::operator =(Gem&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Gem::__copy__(Gem& self, const Gem& original);
+  void Gem::__copy__(Gem& self, const Gem& original)
   {
-    left = right;
+    self = original;
   }
   
 }

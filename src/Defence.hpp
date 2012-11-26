@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DEFENCE__
-#define __DEFENCE__
+#ifndef __GUARD_DEFENCE_HPP__
+#define __GUARD_DEFENCE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,99 +46,44 @@ namespace tbrpg
   {
   public:
     /**
-     * Hit bonus
+     * Armour class versus melée bonus
      */
-    int hit_bonus;
+    //int melee;
     
     /**
-     * Damage bonus
+     * Armour class versus missile bonus
      */
-    int damage_bonus;
+    //int missile;
     
     /**
-     * Weight carry limit in grams
+     * Resistance against fire bonus
      */
-    int carry_limit;
+    //float fire;
     
     /**
-     * Bashing chance
+     * Resistance against cold bonus
      */
-    float bashing;
+    //float cold;
     
     /**
-     * Missile attack bonus
+     * Resistance against lightning bonus
      */
-    int missile_attack_bonus;
+    //float lightning;
     
     /**
-     * Armour class bonus
+     * Resistance against acid bonus
      */
-    int armour_class_bonus;
+    //float acid;
     
     /**
-     * Hit point bonus
+     * Resistance against poison bonus
      */
-    int hit_point_bonus;
+    //float poison;
     
     /**
-     * Resurrectability
+     * Resistance against physical damage bonus
      */
-    float resurrectability;
-    
-    /**
-     * Reaction bonus
-     */
-    int reaction_bonus;
-    
-    /**
-     * Spell level limit
-     */
-    char spell_level_limit;
-    
-    /**
-     * Chance to learn spell
-     */
-    float spell_learn;
-    
-    /**
-     * Maximum learned spells per limit
-     */
-    char max_spells_level;
-    
-    /**
-     * Lore bonus
-     */
-    int lore_bonus;
-    
-    /**
-     * Resistance against magic bonus
-     */
-    float magic_defence_bonus;
-    
-    /**
-     * Chance to fail spell casting
-     */
-    float spell_failure;
-    
-    /**
-     * Extra spell slots per spell level
-     */
-    int[] bonus_spells;
-    
-    /**
-     * Morale bonus
-     */
-    int morale;
-    
-    /**
-     * Luck bonus
-     */
-    int luck;
-    
-    /**
-     * Detect secret door bonus
-     */
-    float detect_doors;
+    //float physical;
     
     
     
@@ -206,9 +155,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Defence& self, const Defence& original);
-  
+    
   };
 }
 
 
-#endif//__DEFENCE__
+#endif//__GUARD_DEFENCE_HPP__

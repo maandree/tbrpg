@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ENVIRONMENTCONTAINER__
-#define __ENVIRONMENTCONTAINER__
+#ifndef __GUARD_ENVIRONMENTCONTAINER_HPP__
+#define __GUARD_ENVIRONMENTCONTAINER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Container.hpp"
+#include "Lockable.hpp"
+
+
 
 
 /**
@@ -38,76 +45,34 @@ namespace tbrpg
   /**
    * Item container that are in the environments
    */
-  class EnvironmentContainer: public  Container, public Lockable
+  class EnvironmentContainer: public Container, public Lockable
   {
   public:
     /**
-     * Distance to the waylay point in metres
-     */
-    int first_distance;
-    
-    /**
-     * Distance from the waylay point in metres
-     */
-    int last_distance;
-    
-    /**
-     * The number of sides on the dice to roll to determine whether you are being waylaid
-     */
-    char waylay_die;
-    
-    /**
-     * The number dice to roll to determine whether you are being waylaid
-     */
-    char waylay_dice;
-    
-    /**
-     * The highest value for at which you get waylaid, use 0 for never, and 255 for always
-     */
-    unsigned char waylay_risk;
-    
-    /**
-     * At which direction the road is located and leads
-     */
-    std::string direction;
-    
-    /**
-     * The area entered if you get waylaid
-     */
-    MapMinor waylay_map;
-    
-    /**
-     * The area to which the the road leads
-     */
-    MapMinor leads_to;
-    
-    
-    
-    /**
      * Construction
      */
-    EnvironmentContainer() : Container(), Lockable();
+    EnvironmentContainer();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(const EnvironmentContainer& original) : Container(original), Lockable(original);
+    EnvironmentContainer(const EnvironmentContainer& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(EnvironmentContainer& original) : Container(original), Lockable(original);
+    EnvironmentContainer(EnvironmentContainer& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    EnvironmentContainer(EnvironmentContainer&& original) : Container(original), Lockable(original);
+    EnvironmentContainer(EnvironmentContainer&& original);
     
     
     
@@ -151,9 +116,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(EnvironmentContainer& self, const EnvironmentContainer& original);
-  
+    
   };
 }
 
 
-#endif//__ENVIRONMENTCONTAINER__
+#endif//__GUARD_ENVIRONMENTCONTAINER_HPP__

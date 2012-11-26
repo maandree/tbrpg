@@ -33,13 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  RangedWeapon::RangedWeapon()
+  RangedWeapon::RangedWeapon() : Weapon()
   {
-    //TODO implement constructor
-    //contains = nullptr;
-    //contain_limit = nullptr;
-    //weight_modifier = nullptr;
-    //can_contain = nullptr;
+    ////TODO implement constructor
+    //this->rate_of_fire = 0;
   }
   
   /**
@@ -47,12 +44,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RangedWeapon::RangedWeapon(const RangedWeapon& original)
+  RangedWeapon::RangedWeapon(const RangedWeapon& original) : Weapon(original)
   {
-    this->contains = original.contains;
-    this->contain_limit = original.contain_limit;
-    this->weight_modifier = original.weight_modifier;
-    this->can_contain = original.can_contain;
+    (void) original;
+    //this->rate_of_fire = original.rate_of_fire;
   }
   
   /**
@@ -60,12 +55,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RangedWeapon::RangedWeapon(RangedWeapon& original)
+  RangedWeapon::RangedWeapon(RangedWeapon& original) : Weapon(original)
   {
-    this->contains = original.contains;
-    this->contain_limit = original.contain_limit;
-    this->weight_modifier = original.weight_modifier;
-    this->can_contain = original.can_contain;
+    (void) original;
+    //this->rate_of_fire = original.rate_of_fire;
   }
   
   /**
@@ -73,12 +66,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RangedWeapon::RangedWeapon(RangedWeapon&& original)
+  RangedWeapon::RangedWeapon(RangedWeapon&& original) : Weapon(original)
   {
-    std::move(this->contains, original.contains);
-    std::move(this->contain_limit, original.contain_limit);
-    std::move(this->weight_modifier, original.weight_modifier);
-    std::move(this->can_contain, original.can_contain);
+    (void) original;
+    ////std::swap(this->rate_of_fire, original.rate_of_fire);
   }
   
   
@@ -88,11 +79,7 @@ namespace tbrpg
    */
   RangedWeapon::~RangedWeapon()
   {
-    //TODO implement destructor
-    //delete contains;
-    //delete contain_limit;
-    //delete weight_modifier;
-    //delete can_contain;
+    ////TODO implement destructor
   }
   
   
@@ -105,13 +92,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(const RangedWeapon& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->contains = original.contains;
-    this->contain_limit = original.contain_limit;
-    this->weight_modifier = original.weight_modifier;
-    this->can_contain = original.can_contain;
+    (void) original;
+    //Weapon::__copy__((Weapon&)*this, (Weapon&)original);    //this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -123,13 +105,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->contains = original.contains;
-    this->contain_limit = original.contain_limit;
-    this->weight_modifier = original.weight_modifier;
-    this->can_contain = original.can_contain;
+    (void) original;
+    //Weapon::__copy__((Weapon&)*this, (Weapon&)original);    //this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -141,13 +118,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon&& original)
   {
-    std::move((Weapon)*this, (Weapon)original);
-    std::move((Weapon)*this, (Weapon)original);
-    std::move((Weapon)*this, (Weapon)original);
-    std::move((Weapon)*this, (Weapon)original);    std::move(this->contains, original.contains);
-    std::move(this->contain_limit, original.contain_limit);
-    std::move(this->weight_modifier, original.weight_modifier);
-    std::move(this->can_contain, original.can_contain);
+    (void) original;
+    ////std::move((Weapon&)*this, (Weapon&)original);    ////std::swap(this->rate_of_fire, original.rate_of_fire);
     return *this;
   }
   
@@ -157,9 +129,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void RangedWeapon::__copy__(RangedWeapon& self, const RangedWeapon& original);
+  void RangedWeapon::__copy__(RangedWeapon& self, const RangedWeapon& original)
   {
-    left = right;
+    self = original;
   }
   
 }

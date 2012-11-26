@@ -35,16 +35,19 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart()
   {
-    //TODO implement constructor
-    //attack_roll_die = nullptr;
-    //attack_roll_dice = nullptr;
-    //critical_hit = nullptr;
-    //critical_miss = nullptr;
-    //reputation_chart = nullptr;
-    //ability_chart = nullptr;
-    //inventory_prototype = nullptr;
-    //spells = nullptr;
-    //races = nullptr;
+    ////TODO implement constructor
+    //this->reaction_adjustment = nullptr;
+    //this->wanted = nullptr;
+    //this->killing_innocent = nullptr;
+    //this->injuring_innocent = nullptr;
+    //this->stealing = nullptr;
+    //this->killing_guard = nullptr;
+    //this->donation_needed = nullptr;
+    //this->price_adjustment = nullptr;
+    //this->good_reaction = nullptr;
+    //this->neutral_reaction = nullptr;
+    //this->evil_reaction = nullptr;
+    //this->alignment_reputation = nullptr;
   }
   
   /**
@@ -54,15 +57,19 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(const ReputationChart& original)
   {
-    this->attack_roll_die = original.attack_roll_die;
-    this->attack_roll_dice = original.attack_roll_dice;
-    this->critical_hit = original.critical_hit;
-    this->critical_miss = original.critical_miss;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
-    this->spells = original.spells;
-    this->races = original.races;
+    (void) original;
+    //this->reaction_adjustment = original.reaction_adjustment;
+    //this->wanted = original.wanted;
+    //this->killing_innocent = original.killing_innocent;
+    //this->injuring_innocent = original.injuring_innocent;
+    //this->stealing = original.stealing;
+    //this->killing_guard = original.killing_guard;
+    //this->donation_needed = original.donation_needed;
+    //this->price_adjustment = original.price_adjustment;
+    //this->good_reaction = original.good_reaction;
+    //this->neutral_reaction = original.neutral_reaction;
+    //this->evil_reaction = original.evil_reaction;
+    //this->alignment_reputation = original.alignment_reputation;
   }
   
   /**
@@ -72,15 +79,19 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart& original)
   {
-    this->attack_roll_die = original.attack_roll_die;
-    this->attack_roll_dice = original.attack_roll_dice;
-    this->critical_hit = original.critical_hit;
-    this->critical_miss = original.critical_miss;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
-    this->spells = original.spells;
-    this->races = original.races;
+    (void) original;
+    //this->reaction_adjustment = original.reaction_adjustment;
+    //this->wanted = original.wanted;
+    //this->killing_innocent = original.killing_innocent;
+    //this->injuring_innocent = original.injuring_innocent;
+    //this->stealing = original.stealing;
+    //this->killing_guard = original.killing_guard;
+    //this->donation_needed = original.donation_needed;
+    //this->price_adjustment = original.price_adjustment;
+    //this->good_reaction = original.good_reaction;
+    //this->neutral_reaction = original.neutral_reaction;
+    //this->evil_reaction = original.evil_reaction;
+    //this->alignment_reputation = original.alignment_reputation;
   }
   
   /**
@@ -90,15 +101,19 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart&& original)
   {
-    std::move(this->attack_roll_die, original.attack_roll_die);
-    std::move(this->attack_roll_dice, original.attack_roll_dice);
-    std::move(this->critical_hit, original.critical_hit);
-    std::move(this->critical_miss, original.critical_miss);
-    std::move(this->reputation_chart, original.reputation_chart);
-    std::move(this->ability_chart, original.ability_chart);
-    std::move(this->inventory_prototype, original.inventory_prototype);
-    std::move(this->spells, original.spells);
-    std::move(this->races, original.races);
+    (void) original;
+    ////std::move(this->reaction_adjustment, original.reaction_adjustment);
+    ////std::move(this->wanted, original.wanted);
+    ////std::move(this->killing_innocent, original.killing_innocent);
+    ////std::move(this->injuring_innocent, original.injuring_innocent);
+    ////std::move(this->stealing, original.stealing);
+    ////std::move(this->killing_guard, original.killing_guard);
+    ////std::move(this->donation_needed, original.donation_needed);
+    ////std::move(this->price_adjustment, original.price_adjustment);
+    ////std::move(this->good_reaction, original.good_reaction);
+    ////std::move(this->neutral_reaction, original.neutral_reaction);
+    ////std::move(this->evil_reaction, original.evil_reaction);
+    ////std::move(this->alignment_reputation, original.alignment_reputation);
   }
   
   
@@ -108,16 +123,19 @@ namespace tbrpg
    */
   ReputationChart::~ReputationChart()
   {
-    //TODO implement destructor
-    //delete attack_roll_die;
-    //delete attack_roll_dice;
-    //delete critical_hit;
-    //delete critical_miss;
-    //delete reputation_chart;
-    //delete ability_chart;
-    //delete inventory_prototype;
-    //delete spells;
-    //delete races;
+    ////TODO implement destructor
+    //delete reaction_adjustment;
+    //delete wanted;
+    //delete killing_innocent;
+    //delete injuring_innocent;
+    //delete stealing;
+    //delete killing_guard;
+    //delete donation_needed;
+    //delete price_adjustment;
+    //delete good_reaction;
+    //delete neutral_reaction;
+    //delete evil_reaction;
+    //delete alignment_reputation;
   }
   
   
@@ -130,15 +148,19 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(const ReputationChart& original)
   {
-    this->attack_roll_die = original.attack_roll_die;
-    this->attack_roll_dice = original.attack_roll_dice;
-    this->critical_hit = original.critical_hit;
-    this->critical_miss = original.critical_miss;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
-    this->spells = original.spells;
-    this->races = original.races;
+    (void) original;
+    //this->reaction_adjustment = original.reaction_adjustment;
+    //this->wanted = original.wanted;
+    //this->killing_innocent = original.killing_innocent;
+    //this->injuring_innocent = original.injuring_innocent;
+    //this->stealing = original.stealing;
+    //this->killing_guard = original.killing_guard;
+    //this->donation_needed = original.donation_needed;
+    //this->price_adjustment = original.price_adjustment;
+    //this->good_reaction = original.good_reaction;
+    //this->neutral_reaction = original.neutral_reaction;
+    //this->evil_reaction = original.evil_reaction;
+    //this->alignment_reputation = original.alignment_reputation;
     return *this;
   }
   
@@ -150,15 +172,19 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart& original)
   {
-    this->attack_roll_die = original.attack_roll_die;
-    this->attack_roll_dice = original.attack_roll_dice;
-    this->critical_hit = original.critical_hit;
-    this->critical_miss = original.critical_miss;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
-    this->spells = original.spells;
-    this->races = original.races;
+    (void) original;
+    //this->reaction_adjustment = original.reaction_adjustment;
+    //this->wanted = original.wanted;
+    //this->killing_innocent = original.killing_innocent;
+    //this->injuring_innocent = original.injuring_innocent;
+    //this->stealing = original.stealing;
+    //this->killing_guard = original.killing_guard;
+    //this->donation_needed = original.donation_needed;
+    //this->price_adjustment = original.price_adjustment;
+    //this->good_reaction = original.good_reaction;
+    //this->neutral_reaction = original.neutral_reaction;
+    //this->evil_reaction = original.evil_reaction;
+    //this->alignment_reputation = original.alignment_reputation;
     return *this;
   }
   
@@ -170,15 +196,19 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart&& original)
   {
-    std::move(this->attack_roll_die, original.attack_roll_die);
-    std::move(this->attack_roll_dice, original.attack_roll_dice);
-    std::move(this->critical_hit, original.critical_hit);
-    std::move(this->critical_miss, original.critical_miss);
-    std::move(this->reputation_chart, original.reputation_chart);
-    std::move(this->ability_chart, original.ability_chart);
-    std::move(this->inventory_prototype, original.inventory_prototype);
-    std::move(this->spells, original.spells);
-    std::move(this->races, original.races);
+    (void) original;
+    ////std::move(this->reaction_adjustment, original.reaction_adjustment);
+    ////std::move(this->wanted, original.wanted);
+    ////std::move(this->killing_innocent, original.killing_innocent);
+    ////std::move(this->injuring_innocent, original.injuring_innocent);
+    ////std::move(this->stealing, original.stealing);
+    ////std::move(this->killing_guard, original.killing_guard);
+    ////std::move(this->donation_needed, original.donation_needed);
+    ////std::move(this->price_adjustment, original.price_adjustment);
+    ////std::move(this->good_reaction, original.good_reaction);
+    ////std::move(this->neutral_reaction, original.neutral_reaction);
+    ////std::move(this->evil_reaction, original.evil_reaction);
+    ////std::move(this->alignment_reputation, original.alignment_reputation);
     return *this;
   }
   
@@ -188,9 +218,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ReputationChart::__copy__(ReputationChart& self, const ReputationChart& original);
+  void ReputationChart::__copy__(ReputationChart& self, const ReputationChart& original)
   {
-    left = right;
+    self = original;
   }
   
 }

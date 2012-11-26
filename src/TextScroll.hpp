@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __TEXTSCROLL__
-#define __TEXTSCROLL__
+#ifndef __GUARD_TEXTSCROLL_HPP__
+#define __GUARD_TEXTSCROLL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Text scroll item class
    */
-  class TextScroll: public  Item
+  class TextScroll: public Item
   {
   public:
     /**
      * Construction
      */
-    TextScroll() : Item();
+    TextScroll();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(const TextScroll& original) : Item(original);
+    TextScroll(const TextScroll& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(TextScroll& original) : Item(original);
+    TextScroll(TextScroll& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    TextScroll(TextScroll&& original) : Item(original);
+    TextScroll(TextScroll&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(TextScroll& self, const TextScroll& original);
-  
+    
   };
 }
 
 
-#endif//__TEXTSCROLL__
+#endif//__GUARD_TEXTSCROLL_HPP__

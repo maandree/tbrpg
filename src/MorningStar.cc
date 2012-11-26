@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MorningStar::MorningStar()
+  MorningStar::MorningStar() : BluntWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MorningStar::MorningStar(const MorningStar& original)
+  MorningStar::MorningStar(const MorningStar& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MorningStar::MorningStar(MorningStar& original)
+  MorningStar::MorningStar(MorningStar& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MorningStar::MorningStar(MorningStar&& original)
+  MorningStar::MorningStar(MorningStar&& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   MorningStar::~MorningStar()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(const MorningStar& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(MorningStar& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(MorningStar&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void MorningStar::__copy__(MorningStar& self, const MorningStar& original);
+  void MorningStar::__copy__(MorningStar& self, const MorningStar& original)
   {
-    left = right;
+    self = original;
   }
   
 }

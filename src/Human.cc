@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Human::Human()
+  Human::Human() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Human::Human(const Human& original)
+  Human::Human(const Human& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Human::Human(Human& original)
+  Human::Human(Human& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Human::Human(Human&& original)
+  Human::Human(Human&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Human::~Human()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Human& Human::operator =(const Human& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Human& Human::operator =(Human& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Human& Human::operator =(Human&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Human::__copy__(Human& self, const Human& original);
+  void Human::__copy__(Human& self, const Human& original)
   {
-    left = right;
+    self = original;
   }
   
 }

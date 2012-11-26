@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ThrowingDagger::ThrowingDagger()
+  ThrowingDagger::ThrowingDagger() : Throwing()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingDagger::ThrowingDagger(const ThrowingDagger& original)
+  ThrowingDagger::ThrowingDagger(const ThrowingDagger& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingDagger::ThrowingDagger(ThrowingDagger& original)
+  ThrowingDagger::ThrowingDagger(ThrowingDagger& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingDagger::ThrowingDagger(ThrowingDagger&& original)
+  ThrowingDagger::ThrowingDagger(ThrowingDagger&& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   ThrowingDagger::~ThrowingDagger()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   ThrowingDagger& ThrowingDagger::operator =(const ThrowingDagger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   ThrowingDagger& ThrowingDagger::operator =(ThrowingDagger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   ThrowingDagger& ThrowingDagger::operator =(ThrowingDagger&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ThrowingDagger::__copy__(ThrowingDagger& self, const ThrowingDagger& original);
+  void ThrowingDagger::__copy__(ThrowingDagger& self, const ThrowingDagger& original)
   {
-    left = right;
+    self = original;
   }
   
 }

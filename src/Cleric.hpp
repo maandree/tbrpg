@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CLERIC__
-#define __CLERIC__
+#ifndef __GUARD_CLERIC_HPP__
+#define __GUARD_CLERIC_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Priest.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The cleric class
    */
-  class Cleric: public  Priest
+  class Cleric: public Priest
   {
   public:
     /**
      * Construction
      */
-    Cleric() : Priest();
+    Cleric();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(const Cleric& original) : Priest(original);
+    Cleric(const Cleric& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(Cleric& original) : Priest(original);
+    Cleric(Cleric& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Cleric(Cleric&& original) : Priest(original);
+    Cleric(Cleric&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Cleric& self, const Cleric& original);
-  
+    
   };
 }
 
 
-#endif//__CLERIC__
+#endif//__GUARD_CLERIC_HPP__

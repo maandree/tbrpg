@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  BluntWeapon::BluntWeapon()
+  BluntWeapon::BluntWeapon() : OneHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BluntWeapon::BluntWeapon(const BluntWeapon& original)
+  BluntWeapon::BluntWeapon(const BluntWeapon& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BluntWeapon::BluntWeapon(BluntWeapon& original)
+  BluntWeapon::BluntWeapon(BluntWeapon& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BluntWeapon::BluntWeapon(BluntWeapon&& original)
+  BluntWeapon::BluntWeapon(BluntWeapon&& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   BluntWeapon::~BluntWeapon()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(const BluntWeapon& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(BluntWeapon& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(BluntWeapon&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void BluntWeapon::__copy__(BluntWeapon& self, const BluntWeapon& original);
+  void BluntWeapon::__copy__(BluntWeapon& self, const BluntWeapon& original)
   {
-    left = right;
+    self = original;
   }
   
 }

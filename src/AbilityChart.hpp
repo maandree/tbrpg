@@ -17,12 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ABILITYCHART__
-#define __ABILITYCHART__
+#ifndef __GUARD_ABILITYCHART_HPP__
+#define __GUARD_ABILITYCHART_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
+#include "AbilityBonus.hpp"
 
 
 /**
@@ -42,74 +54,39 @@ namespace tbrpg
   {
   public:
     /**
-     * Spell name
+     * Strength chart
      */
-    std::string name;
+    //AbilityBonus* strength;
     
     /**
-     * Spell description
+     * Strength 18/* chart
      */
-    std::string description;
+    //AbilityBonus* strength18;
     
     /**
-     * Whether the spell is a wizard spell
+     * Dexterity chart
      */
-    bool wizard;
+    //AbilityBonus* dexterity;
     
     /**
-     * Whether the spell is a priest spell
+     * Constitution chart
      */
-    bool priest;
+    //AbilityBonus* constitution;
     
     /**
-     * Spell level
+     * Intelligence chart
      */
-    char level;
+    //AbilityBonus* intelligence;
     
     /**
-     * Saving, 0 for none, 1 for half and 2 for negation
+     * Wisdom chart
      */
-    char saving;
+    //AbilityBonus* wisdom;
     
     /**
-     * Whether the spell's range is touching
+     * Charisma chart
      */
-    bool touch;
-    
-    /**
-     * Whether the spell's range, negative for touch without zero
-     */
-    float range;
-    
-    /**
-     * Casting time
-     */
-    char casting_time;
-    
-    /**
-     * Duration modifier
-     */
-    char duration;
-    
-    /**
-     * Duration die side count
-     */
-    char duration_die;
-    
-    /**
-     * Duration die count
-     */
-    char duration_dice;
-    
-    /**
-     * Area of effect
-     */
-    std::string effect_area;
-    
-    /**
-     * Magic shool
-     */
-    MagicSchool school;
+    //AbilityBonus* charisma;
     
     
     
@@ -181,9 +158,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(AbilityChart& self, const AbilityChart& original);
-  
+    
   };
 }
 
 
-#endif//__ABILITYCHART__
+#endif//__GUARD_ABILITYCHART_HPP__

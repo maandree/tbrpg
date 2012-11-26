@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Torch::Torch()
+  Torch::Torch() : BluntWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Torch::Torch(const Torch& original)
+  Torch::Torch(const Torch& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Torch::Torch(Torch& original)
+  Torch::Torch(Torch& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Torch::Torch(Torch&& original)
+  Torch::Torch(Torch&& original) : BluntWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Torch::~Torch()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Torch& Torch::operator =(const Torch& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Torch& Torch::operator =(Torch& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Torch& Torch::operator =(Torch&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Torch::__copy__(Torch& self, const Torch& original);
+  void Torch::__copy__(Torch& self, const Torch& original)
   {
-    left = right;
+    self = original;
   }
   
 }

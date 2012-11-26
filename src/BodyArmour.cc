@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  BodyArmour::BodyArmour()
+  BodyArmour::BodyArmour() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BodyArmour::BodyArmour(const BodyArmour& original)
+  BodyArmour::BodyArmour(const BodyArmour& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BodyArmour::BodyArmour(BodyArmour& original)
+  BodyArmour::BodyArmour(BodyArmour& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BodyArmour::BodyArmour(BodyArmour&& original)
+  BodyArmour::BodyArmour(BodyArmour&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   BodyArmour::~BodyArmour()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(const BodyArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(BodyArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(BodyArmour&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void BodyArmour::__copy__(BodyArmour& self, const BodyArmour& original);
+  void BodyArmour::__copy__(BodyArmour& self, const BodyArmour& original)
   {
-    left = right;
+    self = original;
   }
   
 }

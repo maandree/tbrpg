@@ -35,14 +35,9 @@ namespace tbrpg
    */
   Party::Party()
   {
-    //TODO implement constructor
-    //strength = nullptr;
-    //strength18 = nullptr;
-    //constitution = nullptr;
-    //dexterity = nullptr;
-    //intelligence = nullptr;
-    //wisdom = nullptr;
-    //charisma = nullptr;
+    ////TODO implement constructor
+    //this->reputation = 0;
+    //this->characters = nullptr;
   }
   
   /**
@@ -52,13 +47,9 @@ namespace tbrpg
    */
   Party::Party(const Party& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->constitution = original.constitution;
-    this->dexterity = original.dexterity;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->reputation = original.reputation;
+    //this->characters = original.characters;
   }
   
   /**
@@ -68,13 +59,9 @@ namespace tbrpg
    */
   Party::Party(Party& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->constitution = original.constitution;
-    this->dexterity = original.dexterity;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->reputation = original.reputation;
+    //this->characters = original.characters;
   }
   
   /**
@@ -84,13 +71,9 @@ namespace tbrpg
    */
   Party::Party(Party&& original)
   {
-    std::move(this->strength, original.strength);
-    std::move(this->strength18, original.strength18);
-    std::move(this->constitution, original.constitution);
-    std::move(this->dexterity, original.dexterity);
-    std::move(this->intelligence, original.intelligence);
-    std::move(this->wisdom, original.wisdom);
-    std::move(this->charisma, original.charisma);
+    (void) original;
+    ////std::swap(this->reputation, original.reputation);
+    ////std::move(this->characters, original.characters);
   }
   
   
@@ -100,14 +83,8 @@ namespace tbrpg
    */
   Party::~Party()
   {
-    //TODO implement destructor
-    //delete strength;
-    //delete strength18;
-    //delete constitution;
-    //delete dexterity;
-    //delete intelligence;
-    //delete wisdom;
-    //delete charisma;
+    ////TODO implement destructor
+    //delete characters;
   }
   
   
@@ -120,13 +97,9 @@ namespace tbrpg
    */
   Party& Party::operator =(const Party& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->constitution = original.constitution;
-    this->dexterity = original.dexterity;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->reputation = original.reputation;
+    //this->characters = original.characters;
     return *this;
   }
   
@@ -138,13 +111,9 @@ namespace tbrpg
    */
   Party& Party::operator =(Party& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->constitution = original.constitution;
-    this->dexterity = original.dexterity;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->reputation = original.reputation;
+    //this->characters = original.characters;
     return *this;
   }
   
@@ -156,13 +125,9 @@ namespace tbrpg
    */
   Party& Party::operator =(Party&& original)
   {
-    std::move(this->strength, original.strength);
-    std::move(this->strength18, original.strength18);
-    std::move(this->constitution, original.constitution);
-    std::move(this->dexterity, original.dexterity);
-    std::move(this->intelligence, original.intelligence);
-    std::move(this->wisdom, original.wisdom);
-    std::move(this->charisma, original.charisma);
+    (void) original;
+    ////std::swap(this->reputation, original.reputation);
+    ////std::move(this->characters, original.characters);
     return *this;
   }
   
@@ -172,9 +137,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Party::__copy__(Party& self, const Party& original);
+  void Party::__copy__(Party& self, const Party& original)
   {
-    left = right;
+    self = original;
   }
   
 }

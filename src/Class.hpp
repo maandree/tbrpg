@@ -17,12 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CLASS__
-#define __CLASS__
+#ifndef __GUARD_CLASS_HPP__
+#define __GUARD_CLASS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "ExperienceChart.hpp"
+#include "AbilityBonus.hpp"
+#include "Spell.hpp"
+#include "Item.hpp"
+#include "WeaponGroup.hpp"
+#include "Weapon.hpp"
+#include "Weapon.hpp"
 
 
 /**
@@ -42,14 +54,79 @@ namespace tbrpg
   {
   public:
     /**
-     * Prestige class to OR:able index map
+     * Minimum starting hit points
      */
-    std::unorderd_map<Class, long long> index_map;
+    //int hit_points;
     
     /**
-     * Index combination to action slots map
+     * THAC0
      */
-    std::unorderd_map<long long, ActionSlots[]> slot_map;
+    //int thac0;
+    
+    /**
+     * Lore bonus
+     */
+    //int lore_bonus;
+    
+    /**
+     * Allowed alignments
+     */
+    //bool* alignments;
+    
+    /**
+     * Whether the character can learn spells from scrolls
+     */
+    //bool learn_from_scroll;
+    
+    /**
+     * The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
+     */
+    //char proficiencies_each;
+    
+    /**
+     * The class's experience chart
+     */
+    //ExperienceChart experience_chart;
+    
+    /**
+     * The class's spell progression chart
+     */
+    //SpellProgression spell_progressio n;
+    
+    /**
+     * Abilties
+     */
+    //AbilityBonus abilities;
+    
+    /**
+     * Lower abilty bounds
+     */
+    //Abilites lower_limits;
+    
+    /**
+     * Special abilities
+     */
+    //Spell* special_abilties;
+    
+    /**
+     * Usable items
+     */
+    //Item* can_use;
+    
+    /**
+     * Proficiency chart
+     */
+    //std::unordered_map<WeaponGroup, Proficiencies*> proficiency_chart;
+    
+    /**
+     * Weapon used when the character has his left hand free but is holding a shield
+     */
+    //Weapon default_one_hand;
+    
+    /**
+     * Weapon used when the character has both his hands free
+     */
+    //Weapon default_two_hand;
     
     
     
@@ -121,9 +198,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Class& self, const Class& original);
-  
+    
   };
 }
 
 
-#endif//__CLASS__
+#endif//__GUARD_CLASS_HPP__

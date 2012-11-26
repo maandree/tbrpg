@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SHORTBOW__
-#define __SHORTBOW__
+#ifndef __GUARD_SHORTBOW_HPP__
+#define __GUARD_SHORTBOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Bow.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Short bow item class
    */
-  class ShortBow: public  Bow
+  class ShortBow: public Bow
   {
   public:
     /**
      * Construction
      */
-    ShortBow() : Bow();
+    ShortBow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(const ShortBow& original) : Bow(original);
+    ShortBow(const ShortBow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(ShortBow& original) : Bow(original);
+    ShortBow(ShortBow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ShortBow(ShortBow&& original) : Bow(original);
+    ShortBow(ShortBow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ShortBow& self, const ShortBow& original);
-  
+    
   };
 }
 
 
-#endif//__SHORTBOW__
+#endif//__GUARD_SHORTBOW_HPP__

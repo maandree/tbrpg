@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DWARF__
-#define __DWARF__
+#ifndef __GUARD_DWARF_HPP__
+#define __GUARD_DWARF_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Race.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The dwarf race
    */
-  class Dwarf: public  Race
+  class Dwarf: public Race
   {
   public:
     /**
      * Construction
      */
-    Dwarf() : Race();
+    Dwarf();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(const Dwarf& original) : Race(original);
+    Dwarf(const Dwarf& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(Dwarf& original) : Race(original);
+    Dwarf(Dwarf& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dwarf(Dwarf&& original) : Race(original);
+    Dwarf(Dwarf&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Dwarf& self, const Dwarf& original);
-  
+    
   };
 }
 
 
-#endif//__DWARF__
+#endif//__GUARD_DWARF_HPP__

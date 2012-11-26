@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __TORCH__
-#define __TORCH__
+#ifndef __GUARD_TORCH_HPP__
+#define __GUARD_TORCH_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Torch item class
    */
-  class Torch: public  BluntWeapon
+  class Torch: public BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Torch() : BluntWeapon();
+    Torch();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(const Torch& original) : BluntWeapon(original);
+    Torch(const Torch& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(Torch& original) : BluntWeapon(original);
+    Torch(Torch& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Torch(Torch&& original) : BluntWeapon(original);
+    Torch(Torch&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Torch& self, const Torch& original);
-  
+    
   };
 }
 
 
-#endif//__TORCH__
+#endif//__GUARD_TORCH_HPP__

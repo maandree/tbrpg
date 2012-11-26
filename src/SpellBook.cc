@@ -35,13 +35,9 @@ namespace tbrpg
    */
   SpellBook::SpellBook()
   {
-    //TODO implement constructor
-    //bonuses = nullptr;
-    //thief_abilities = nullptr;
-    //saving_throws = nullptr;
-    //abilities = nullptr;
-    //spells = nullptr;
-    //effects = nullptr;
+    ////TODO implement constructor
+    //this->learned = nullptr;
+    //this->memorised = nullptr;
   }
   
   /**
@@ -51,12 +47,9 @@ namespace tbrpg
    */
   SpellBook::SpellBook(const SpellBook& original)
   {
-    this->bonuses = original.bonuses;
-    this->thief_abilities = original.thief_abilities;
-    this->saving_throws = original.saving_throws;
-    this->abilities = original.abilities;
-    this->spells = original.spells;
-    this->effects = original.effects;
+    (void) original;
+    //this->learned = original.learned;
+    //this->memorised = original.memorised;
   }
   
   /**
@@ -66,12 +59,9 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook& original)
   {
-    this->bonuses = original.bonuses;
-    this->thief_abilities = original.thief_abilities;
-    this->saving_throws = original.saving_throws;
-    this->abilities = original.abilities;
-    this->spells = original.spells;
-    this->effects = original.effects;
+    (void) original;
+    //this->learned = original.learned;
+    //this->memorised = original.memorised;
   }
   
   /**
@@ -81,12 +71,9 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook&& original)
   {
-    std::move(this->bonuses, original.bonuses);
-    std::move(this->thief_abilities, original.thief_abilities);
-    std::move(this->saving_throws, original.saving_throws);
-    std::move(this->abilities, original.abilities);
-    std::move(this->spells, original.spells);
-    std::move(this->effects, original.effects);
+    (void) original;
+    ////std::move(this->learned, original.learned);
+    ////std::move(this->memorised, original.memorised);
   }
   
   
@@ -96,13 +83,9 @@ namespace tbrpg
    */
   SpellBook::~SpellBook()
   {
-    //TODO implement destructor
-    //delete bonuses;
-    //delete thief_abilities;
-    //delete saving_throws;
-    //delete abilities;
-    //delete spells;
-    //delete effects;
+    ////TODO implement destructor
+    //delete learned;
+    //delete memorised;
   }
   
   
@@ -115,12 +98,9 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
-    this->bonuses = original.bonuses;
-    this->thief_abilities = original.thief_abilities;
-    this->saving_throws = original.saving_throws;
-    this->abilities = original.abilities;
-    this->spells = original.spells;
-    this->effects = original.effects;
+    (void) original;
+    //this->learned = original.learned;
+    //this->memorised = original.memorised;
     return *this;
   }
   
@@ -132,12 +112,9 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
-    this->bonuses = original.bonuses;
-    this->thief_abilities = original.thief_abilities;
-    this->saving_throws = original.saving_throws;
-    this->abilities = original.abilities;
-    this->spells = original.spells;
-    this->effects = original.effects;
+    (void) original;
+    //this->learned = original.learned;
+    //this->memorised = original.memorised;
     return *this;
   }
   
@@ -149,12 +126,9 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
-    std::move(this->bonuses, original.bonuses);
-    std::move(this->thief_abilities, original.thief_abilities);
-    std::move(this->saving_throws, original.saving_throws);
-    std::move(this->abilities, original.abilities);
-    std::move(this->spells, original.spells);
-    std::move(this->effects, original.effects);
+    (void) original;
+    ////std::move(this->learned, original.learned);
+    ////std::move(this->memorised, original.memorised);
     return *this;
   }
   
@@ -164,9 +138,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void SpellBook::__copy__(SpellBook& self, const SpellBook& original);
+  void SpellBook::__copy__(SpellBook& self, const SpellBook& original)
   {
-    left = right;
+    self = original;
   }
   
 }

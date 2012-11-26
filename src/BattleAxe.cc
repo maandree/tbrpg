@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  BattleAxe::BattleAxe()
+  BattleAxe::BattleAxe() : OneHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BattleAxe::BattleAxe(const BattleAxe& original)
+  BattleAxe::BattleAxe(const BattleAxe& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BattleAxe::BattleAxe(BattleAxe& original)
+  BattleAxe::BattleAxe(BattleAxe& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BattleAxe::BattleAxe(BattleAxe&& original)
+  BattleAxe::BattleAxe(BattleAxe&& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   BattleAxe::~BattleAxe()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(const BattleAxe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(BattleAxe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(BattleAxe&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void BattleAxe::__copy__(BattleAxe& self, const BattleAxe& original);
+  void BattleAxe::__copy__(BattleAxe& self, const BattleAxe& original)
   {
-    left = right;
+    self = original;
   }
   
 }

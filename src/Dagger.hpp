@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DAGGER__
-#define __DAGGER__
+#ifndef __GUARD_DAGGER_HPP__
+#define __GUARD_DAGGER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Dagger item class
    */
-  class Dagger: public  OneHandedMelee
+  class Dagger: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Dagger() : OneHandedMelee();
+    Dagger();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(const Dagger& original) : OneHandedMelee(original);
+    Dagger(const Dagger& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(Dagger& original) : OneHandedMelee(original);
+    Dagger(Dagger& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dagger(Dagger&& original) : OneHandedMelee(original);
+    Dagger(Dagger&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Dagger& self, const Dagger& original);
-  
+    
   };
 }
 
 
-#endif//__DAGGER__
+#endif//__GUARD_DAGGER_HPP__

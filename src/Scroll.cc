@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Scroll::Scroll()
+  Scroll::Scroll() : QuickItem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Scroll::Scroll(const Scroll& original)
+  Scroll::Scroll(const Scroll& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Scroll::Scroll(Scroll& original)
+  Scroll::Scroll(Scroll& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Scroll::Scroll(Scroll&& original)
+  Scroll::Scroll(Scroll&& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Scroll::~Scroll()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Scroll& Scroll::operator =(const Scroll& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Scroll& Scroll::operator =(Scroll& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Scroll& Scroll::operator =(Scroll&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Scroll::__copy__(Scroll& self, const Scroll& original);
+  void Scroll::__copy__(Scroll& self, const Scroll& original)
   {
-    left = right;
+    self = original;
   }
   
 }

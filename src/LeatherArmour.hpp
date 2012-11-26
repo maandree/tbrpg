@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LEATHERARMOUR__
-#define __LEATHERARMOUR__
+#ifndef __GUARD_LEATHERARMOUR_HPP__
+#define __GUARD_LEATHERARMOUR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Leather armour item class
    */
-  class LeatherArmour: public  BodyArmour
+  class LeatherArmour: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    LeatherArmour() : BodyArmour();
+    LeatherArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(const LeatherArmour& original) : BodyArmour(original);
+    LeatherArmour(const LeatherArmour& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(LeatherArmour& original) : BodyArmour(original);
+    LeatherArmour(LeatherArmour& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LeatherArmour(LeatherArmour&& original) : BodyArmour(original);
+    LeatherArmour(LeatherArmour&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LeatherArmour& self, const LeatherArmour& original);
-  
+    
   };
 }
 
 
-#endif//__LEATHERARMOUR__
+#endif//__GUARD_LEATHERARMOUR_HPP__

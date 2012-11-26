@@ -35,13 +35,11 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool()
   {
-    //TODO implement constructor
-    //hit_points = nullptr;
-    //alive = nullptr;
-    //morale = nullptr;
-    //intoxication = nullptr;
-    //fatigue = nullptr;
-    //record = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
+    //this->coluration = nullptr;
+    //this->practicer = nullptr;
+    //this->opposite = nullptr;
   }
   
   /**
@@ -51,12 +49,11 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(const MagicSchool& original)
   {
-    this->hit_points = original.hit_points;
-    this->alive = original.alive;
-    this->morale = original.morale;
-    this->intoxication = original.intoxication;
-    this->fatigue = original.fatigue;
-    this->record = original.record;
+    (void) original;
+    //this->name = original.name;
+    //this->coluration = original.coluration;
+    //this->practicer = original.practicer;
+    //this->opposite = original.opposite;
   }
   
   /**
@@ -66,12 +63,11 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool& original)
   {
-    this->hit_points = original.hit_points;
-    this->alive = original.alive;
-    this->morale = original.morale;
-    this->intoxication = original.intoxication;
-    this->fatigue = original.fatigue;
-    this->record = original.record;
+    (void) original;
+    //this->name = original.name;
+    //this->coluration = original.coluration;
+    //this->practicer = original.practicer;
+    //this->opposite = original.opposite;
   }
   
   /**
@@ -81,12 +77,11 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool&& original)
   {
-    std::move(this->hit_points, original.hit_points);
-    std::move(this->alive, original.alive);
-    std::move(this->morale, original.morale);
-    std::move(this->intoxication, original.intoxication);
-    std::move(this->fatigue, original.fatigue);
-    std::move(this->record, original.record);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->coluration, original.coluration);
+    ////std::move(this->practicer, original.practicer);
+    ////std::move(this->opposite, original.opposite);
   }
   
   
@@ -96,13 +91,11 @@ namespace tbrpg
    */
   MagicSchool::~MagicSchool()
   {
-    //TODO implement destructor
-    //delete hit_points;
-    //delete alive;
-    //delete morale;
-    //delete intoxication;
-    //delete fatigue;
-    //delete record;
+    ////TODO implement destructor
+    //delete name;
+    //delete coluration;
+    //delete practicer;
+    //delete opposite;
   }
   
   
@@ -115,12 +108,11 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
-    this->hit_points = original.hit_points;
-    this->alive = original.alive;
-    this->morale = original.morale;
-    this->intoxication = original.intoxication;
-    this->fatigue = original.fatigue;
-    this->record = original.record;
+    (void) original;
+    //this->name = original.name;
+    //this->coluration = original.coluration;
+    //this->practicer = original.practicer;
+    //this->opposite = original.opposite;
     return *this;
   }
   
@@ -132,12 +124,11 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
-    this->hit_points = original.hit_points;
-    this->alive = original.alive;
-    this->morale = original.morale;
-    this->intoxication = original.intoxication;
-    this->fatigue = original.fatigue;
-    this->record = original.record;
+    (void) original;
+    //this->name = original.name;
+    //this->coluration = original.coluration;
+    //this->practicer = original.practicer;
+    //this->opposite = original.opposite;
     return *this;
   }
   
@@ -149,12 +140,11 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
-    std::move(this->hit_points, original.hit_points);
-    std::move(this->alive, original.alive);
-    std::move(this->morale, original.morale);
-    std::move(this->intoxication, original.intoxication);
-    std::move(this->fatigue, original.fatigue);
-    std::move(this->record, original.record);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->coluration, original.coluration);
+    ////std::move(this->practicer, original.practicer);
+    ////std::move(this->opposite, original.opposite);
     return *this;
   }
   
@@ -164,9 +154,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void MagicSchool::__copy__(MagicSchool& self, const MagicSchool& original);
+  void MagicSchool::__copy__(MagicSchool& self, const MagicSchool& original)
   {
-    left = right;
+    self = original;
   }
   
 }

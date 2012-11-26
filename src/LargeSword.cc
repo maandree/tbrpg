@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  LargeSword::LargeSword()
+  LargeSword::LargeSword() : OneHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LargeSword::LargeSword(const LargeSword& original)
+  LargeSword::LargeSword(const LargeSword& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LargeSword::LargeSword(LargeSword& original)
+  LargeSword::LargeSword(LargeSword& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LargeSword::LargeSword(LargeSword&& original)
+  LargeSword::LargeSword(LargeSword&& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   LargeSword::~LargeSword()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   LargeSword& LargeSword::operator =(const LargeSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   LargeSword& LargeSword::operator =(LargeSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   LargeSword& LargeSword::operator =(LargeSword&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void LargeSword::__copy__(LargeSword& self, const LargeSword& original);
+  void LargeSword::__copy__(LargeSword& self, const LargeSword& original)
   {
-    left = right;
+    self = original;
   }
   
 }

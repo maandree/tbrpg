@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __REPUTATIONCHART__
-#define __REPUTATIONCHART__
+#ifndef __GUARD_REPUTATIONCHART_HPP__
+#define __GUARD_REPUTATIONCHART_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,49 +46,64 @@ namespace tbrpg
   {
   public:
     /**
-     * The number of sides on the dice to roll at the attack roll
+     * Reaction adjustment for each reputation
      */
-    char attack_roll_die;
+    //int* reaction_adjustment;
     
     /**
-     * The number of dice to roll at the attack roll
+     * Whether the party is wanted for each reputation
      */
-    char attack_roll_dice;
+    //bool* wanted;
     
     /**
-     * The minimum attack roll needed for a critical hit
+     * Penalty for killing a innocent for each reputation
      */
-    char critical_hit;
+    //int* killing_innocent;
     
     /**
-     * The maximum attack roll needed for a critical miss
+     * Penalty for injuring a innocent for each reputation
      */
-    char critical_miss;
+    //int* injuring_innocent;
     
     /**
-     * The reputation chart
+     * Penalty for stealing for each reputation
      */
-    ReputationChart reputation_chart;
+    //int* stealing;
     
     /**
-     * The ability chart
+     * Penalty for killing a guard for each reputation
      */
-    AbilityChart ability_chart;
+    //int* killing_guard;
     
     /**
-     * The inventory prototype, basiclly it defines how many slots there is in the inventory
+     * Donation needed to increase reputation for each reputation, zero for not possible
      */
-    Inventory inventory_prototype;
+    //int* donation_needed;
     
     /**
-     * All spells, very useful for when new characters selects spells, or to restrict imported characters
+     * Price multiplier for each reputation
      */
-    Spell[] spells;
+    //float* price_adjustment;
     
     /**
-     * Races in the game that new charactes can chooses
+     * Reaction form good aligned for each reputation
      */
-    Race[] races;
+    //int* good_reaction;
+    
+    /**
+     * Reaction form neutral aligned for each reputation
+     */
+    //int* neutral_reaction;
+    
+    /**
+     * Reaction form evil aligned for each reputation
+     */
+    //int* evil_reaction;
+    
+    /**
+     * Reputation for each alignment of the protagonist
+     */
+    //char* alignment_reputation;
     
     
     
@@ -156,9 +175,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ReputationChart& self, const ReputationChart& original);
-  
+    
   };
 }
 
 
-#endif//__REPUTATIONCHART__
+#endif//__GUARD_REPUTATIONCHART_HPP__

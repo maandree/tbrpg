@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __RING__
-#define __RING__
+#ifndef __GUARD_RING_HPP__
+#define __GUARD_RING_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Ring item class
    */
-  class Ring: public  Item
+  class Ring: public Item
   {
   public:
     /**
      * Construction
      */
-    Ring() : Item();
+    Ring();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(const Ring& original) : Item(original);
+    Ring(const Ring& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(Ring& original) : Item(original);
+    Ring(Ring& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Ring(Ring&& original) : Item(original);
+    Ring(Ring&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Ring& self, const Ring& original);
-  
+    
   };
 }
 
 
-#endif//__RING__
+#endif//__GUARD_RING_HPP__

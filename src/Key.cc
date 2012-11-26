@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Key::Key()
+  Key::Key() : QuestItem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(const Key& original)
+  Key::Key(const Key& original) : QuestItem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key& original)
+  Key::Key(Key& original) : QuestItem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key&& original)
+  Key::Key(Key&& original) : QuestItem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Key::~Key()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Key& Key::operator =(const Key& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Key& Key::operator =(Key& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Key& Key::operator =(Key&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Key::__copy__(Key& self, const Key& original);
+  void Key::__copy__(Key& self, const Key& original)
   {
-    left = right;
+    self = original;
   }
   
 }

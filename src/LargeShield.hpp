@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LARGESHIELD__
-#define __LARGESHIELD__
+#ifndef __GUARD_LARGESHIELD_HPP__
+#define __GUARD_LARGESHIELD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Shield.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Large shield item class
    */
-  class LargeShield: public  Shield
+  class LargeShield: public Shield
   {
   public:
     /**
      * Construction
      */
-    LargeShield() : Shield();
+    LargeShield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(const LargeShield& original) : Shield(original);
+    LargeShield(const LargeShield& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(LargeShield& original) : Shield(original);
+    LargeShield(LargeShield& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LargeShield(LargeShield&& original) : Shield(original);
+    LargeShield(LargeShield&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LargeShield& self, const LargeShield& original);
-  
+    
   };
 }
 
 
-#endif//__LARGESHIELD__
+#endif//__GUARD_LARGESHIELD_HPP__

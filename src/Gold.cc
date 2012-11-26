@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Gold::Gold()
+  Gold::Gold() : Gem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gold::Gold(const Gold& original)
+  Gold::Gold(const Gold& original) : Gem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gold::Gold(Gold& original)
+  Gold::Gold(Gold& original) : Gem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gold::Gold(Gold&& original)
+  Gold::Gold(Gold&& original) : Gem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Gold::~Gold()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Gold& Gold::operator =(const Gold& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Gold& Gold::operator =(Gold& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Gold& Gold::operator =(Gold&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Gold::__copy__(Gold& self, const Gold& original);
+  void Gold::__copy__(Gold& self, const Gold& original)
   {
-    left = right;
+    self = original;
   }
   
 }

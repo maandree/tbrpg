@@ -35,19 +35,26 @@ namespace tbrpg
    */
   Bonuses::Bonuses()
   {
-    //TODO implement constructor
-    //reaction_adjustment = nullptr;
-    //wanted = nullptr;
-    //killing_innocent = nullptr;
-    //injuring_innocent = nullptr;
-    //stealing = nullptr;
-    //killing_guard = nullptr;
-    //donation_needed = nullptr;
-    //price_adjustment = nullptr;
-    //good_reaction = nullptr;
-    //neutral_reaction = nullptr;
-    //evil_reaction = nullptr;
-    //alignment_reputation = nullptr;
+    ////TODO implement constructor
+    //this->hit_bonus = 0;
+    //this->damage_bonus = 0;
+    //this->carry_limit = 0;
+    //this->bashing = 0;
+    //this->missile_attack_bonus = 0;
+    //this->armour_class_bonus = 0;
+    //this->hit_point_bonus = 0;
+    //this->resurrectability = 0;
+    //this->reaction_bonus = 0;
+    //this->spell_level_limit = 0;
+    //this->spell_learn = 0;
+    //this->max_spells_level = 0;
+    //this->lore_bonus = 0;
+    //this->magic_defence_bonus = 0;
+    //this->spell_failure = 0;
+    //this->bonus_spells = nullptr;
+    //this->morale = 0;
+    //this->luck = 0;
+    //this->detect_doors = 0;
   }
   
   /**
@@ -57,18 +64,26 @@ namespace tbrpg
    */
   Bonuses::Bonuses(const Bonuses& original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_bonus = original.damage_bonus;
+    //this->carry_limit = original.carry_limit;
+    //this->bashing = original.bashing;
+    //this->missile_attack_bonus = original.missile_attack_bonus;
+    //this->armour_class_bonus = original.armour_class_bonus;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->resurrectability = original.resurrectability;
+    //this->reaction_bonus = original.reaction_bonus;
+    //this->spell_level_limit = original.spell_level_limit;
+    //this->spell_learn = original.spell_learn;
+    //this->max_spells_level = original.max_spells_level;
+    //this->lore_bonus = original.lore_bonus;
+    //this->magic_defence_bonus = original.magic_defence_bonus;
+    //this->spell_failure = original.spell_failure;
+    //this->bonus_spells = original.bonus_spells;
+    //this->morale = original.morale;
+    //this->luck = original.luck;
+    //this->detect_doors = original.detect_doors;
   }
   
   /**
@@ -78,18 +93,26 @@ namespace tbrpg
    */
   Bonuses::Bonuses(Bonuses& original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_bonus = original.damage_bonus;
+    //this->carry_limit = original.carry_limit;
+    //this->bashing = original.bashing;
+    //this->missile_attack_bonus = original.missile_attack_bonus;
+    //this->armour_class_bonus = original.armour_class_bonus;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->resurrectability = original.resurrectability;
+    //this->reaction_bonus = original.reaction_bonus;
+    //this->spell_level_limit = original.spell_level_limit;
+    //this->spell_learn = original.spell_learn;
+    //this->max_spells_level = original.max_spells_level;
+    //this->lore_bonus = original.lore_bonus;
+    //this->magic_defence_bonus = original.magic_defence_bonus;
+    //this->spell_failure = original.spell_failure;
+    //this->bonus_spells = original.bonus_spells;
+    //this->morale = original.morale;
+    //this->luck = original.luck;
+    //this->detect_doors = original.detect_doors;
   }
   
   /**
@@ -99,18 +122,26 @@ namespace tbrpg
    */
   Bonuses::Bonuses(Bonuses&& original)
   {
-    std::move(this->reaction_adjustment, original.reaction_adjustment);
-    std::move(this->wanted, original.wanted);
-    std::move(this->killing_innocent, original.killing_innocent);
-    std::move(this->injuring_innocent, original.injuring_innocent);
-    std::move(this->stealing, original.stealing);
-    std::move(this->killing_guard, original.killing_guard);
-    std::move(this->donation_needed, original.donation_needed);
-    std::move(this->price_adjustment, original.price_adjustment);
-    std::move(this->good_reaction, original.good_reaction);
-    std::move(this->neutral_reaction, original.neutral_reaction);
-    std::move(this->evil_reaction, original.evil_reaction);
-    std::move(this->alignment_reputation, original.alignment_reputation);
+    (void) original;
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::swap(this->carry_limit, original.carry_limit);
+    ////std::swap(this->bashing, original.bashing);
+    ////std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
+    ////std::swap(this->armour_class_bonus, original.armour_class_bonus);
+    ////std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    ////std::swap(this->resurrectability, original.resurrectability);
+    ////std::swap(this->reaction_bonus, original.reaction_bonus);
+    ////std::swap(this->spell_level_limit, original.spell_level_limit);
+    ////std::swap(this->spell_learn, original.spell_learn);
+    ////std::swap(this->max_spells_level, original.max_spells_level);
+    ////std::swap(this->lore_bonus, original.lore_bonus);
+    ////std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
+    ////std::swap(this->spell_failure, original.spell_failure);
+    ////std::move(this->bonus_spells, original.bonus_spells);
+    ////std::swap(this->morale, original.morale);
+    ////std::swap(this->luck, original.luck);
+    ////std::swap(this->detect_doors, original.detect_doors);
   }
   
   
@@ -120,19 +151,8 @@ namespace tbrpg
    */
   Bonuses::~Bonuses()
   {
-    //TODO implement destructor
-    //delete reaction_adjustment;
-    //delete wanted;
-    //delete killing_innocent;
-    //delete injuring_innocent;
-    //delete stealing;
-    //delete killing_guard;
-    //delete donation_needed;
-    //delete price_adjustment;
-    //delete good_reaction;
-    //delete neutral_reaction;
-    //delete evil_reaction;
-    //delete alignment_reputation;
+    ////TODO implement destructor
+    //delete bonus_spells;
   }
   
   
@@ -145,18 +165,26 @@ namespace tbrpg
    */
   Bonuses& Bonuses::operator =(const Bonuses& original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_bonus = original.damage_bonus;
+    //this->carry_limit = original.carry_limit;
+    //this->bashing = original.bashing;
+    //this->missile_attack_bonus = original.missile_attack_bonus;
+    //this->armour_class_bonus = original.armour_class_bonus;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->resurrectability = original.resurrectability;
+    //this->reaction_bonus = original.reaction_bonus;
+    //this->spell_level_limit = original.spell_level_limit;
+    //this->spell_learn = original.spell_learn;
+    //this->max_spells_level = original.max_spells_level;
+    //this->lore_bonus = original.lore_bonus;
+    //this->magic_defence_bonus = original.magic_defence_bonus;
+    //this->spell_failure = original.spell_failure;
+    //this->bonus_spells = original.bonus_spells;
+    //this->morale = original.morale;
+    //this->luck = original.luck;
+    //this->detect_doors = original.detect_doors;
     return *this;
   }
   
@@ -168,18 +196,26 @@ namespace tbrpg
    */
   Bonuses& Bonuses::operator =(Bonuses& original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_bonus = original.damage_bonus;
+    //this->carry_limit = original.carry_limit;
+    //this->bashing = original.bashing;
+    //this->missile_attack_bonus = original.missile_attack_bonus;
+    //this->armour_class_bonus = original.armour_class_bonus;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->resurrectability = original.resurrectability;
+    //this->reaction_bonus = original.reaction_bonus;
+    //this->spell_level_limit = original.spell_level_limit;
+    //this->spell_learn = original.spell_learn;
+    //this->max_spells_level = original.max_spells_level;
+    //this->lore_bonus = original.lore_bonus;
+    //this->magic_defence_bonus = original.magic_defence_bonus;
+    //this->spell_failure = original.spell_failure;
+    //this->bonus_spells = original.bonus_spells;
+    //this->morale = original.morale;
+    //this->luck = original.luck;
+    //this->detect_doors = original.detect_doors;
     return *this;
   }
   
@@ -191,18 +227,26 @@ namespace tbrpg
    */
   Bonuses& Bonuses::operator =(Bonuses&& original)
   {
-    std::move(this->reaction_adjustment, original.reaction_adjustment);
-    std::move(this->wanted, original.wanted);
-    std::move(this->killing_innocent, original.killing_innocent);
-    std::move(this->injuring_innocent, original.injuring_innocent);
-    std::move(this->stealing, original.stealing);
-    std::move(this->killing_guard, original.killing_guard);
-    std::move(this->donation_needed, original.donation_needed);
-    std::move(this->price_adjustment, original.price_adjustment);
-    std::move(this->good_reaction, original.good_reaction);
-    std::move(this->neutral_reaction, original.neutral_reaction);
-    std::move(this->evil_reaction, original.evil_reaction);
-    std::move(this->alignment_reputation, original.alignment_reputation);
+    (void) original;
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::swap(this->carry_limit, original.carry_limit);
+    ////std::swap(this->bashing, original.bashing);
+    ////std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
+    ////std::swap(this->armour_class_bonus, original.armour_class_bonus);
+    ////std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    ////std::swap(this->resurrectability, original.resurrectability);
+    ////std::swap(this->reaction_bonus, original.reaction_bonus);
+    ////std::swap(this->spell_level_limit, original.spell_level_limit);
+    ////std::swap(this->spell_learn, original.spell_learn);
+    ////std::swap(this->max_spells_level, original.max_spells_level);
+    ////std::swap(this->lore_bonus, original.lore_bonus);
+    ////std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
+    ////std::swap(this->spell_failure, original.spell_failure);
+    ////std::move(this->bonus_spells, original.bonus_spells);
+    ////std::swap(this->morale, original.morale);
+    ////std::swap(this->luck, original.luck);
+    ////std::swap(this->detect_doors, original.detect_doors);
     return *this;
   }
   
@@ -212,9 +256,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Bonuses::__copy__(Bonuses& self, const Bonuses& original);
+  void Bonuses::__copy__(Bonuses& self, const Bonuses& original)
   {
-    left = right;
+    self = original;
   }
   
 }

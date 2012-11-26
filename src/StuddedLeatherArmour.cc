@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  StuddedLeatherArmour::StuddedLeatherArmour()
+  StuddedLeatherArmour::StuddedLeatherArmour() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  StuddedLeatherArmour::StuddedLeatherArmour(const StuddedLeatherArmour& original)
+  StuddedLeatherArmour::StuddedLeatherArmour(const StuddedLeatherArmour& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour& original)
+  StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour&& original)
+  StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour::~StuddedLeatherArmour()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(const StuddedLeatherArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void StuddedLeatherArmour::__copy__(StuddedLeatherArmour& self, const StuddedLeatherArmour& original);
+  void StuddedLeatherArmour::__copy__(StuddedLeatherArmour& self, const StuddedLeatherArmour& original)
   {
-    left = right;
+    self = original;
   }
   
 }

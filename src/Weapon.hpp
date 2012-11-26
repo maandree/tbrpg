@@ -17,12 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WEAPON__
-#define __WEAPON__
+#ifndef __GUARD_WEAPON_HPP__
+#define __GUARD_WEAPON_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "RightHandItem.hpp"
+
+
+
+#include "DamageType.hpp"
+#include "WeaponGroup.hpp"
 
 
 /**
@@ -38,66 +47,81 @@ namespace tbrpg
   /**
    * Weapon item class
    */
-  class Weapon: public  RightHandItem
+  class Weapon: public RightHandItem
   {
   public:
     /**
-     * The hit bonus the ammunition brings
+     * The number of hands required for the weapon
      */
-    int hit_bonus;
+    //char hands;
+    
+    /**
+     * The weapon's speed factor
+     */
+    //char speed_factor;
+    
+    /**
+     * The hit bonus the weapon brings
+     */
+    //int hit_bonus;
     
     /**
      * The number of sides on the dice rolled to determine the inflicted damage
      */
-    char damage_die;
+    //char damage_die;
     
     /**
      * The number dice rolled to determine the inflicted damage
      */
-    char damage_dice;
+    //char damage_dice;
     
     /**
      * Damage modifier
      */
-    int damage_bonus;
+    //int damage_bonus;
     
     /**
-     * Weapon that the ammunition can be used with
+     * Whether the weapon is a melée weapon
      */
-    RangedWeapon usable_with;
+    //bool melee;
     
     /**
-     * The damage type inflicted by the ammunition
+     * The damage type, if multiple, one fill be selected at uniform random for each attack
      */
-    DamageType damage_type;
+    //DamageType* damage_type;
+    
+    /**
+     * The weapon group
+     */
+    //WeaponGroup weapon_group;
     
     
     
     /**
      * Construction
      */
-    Weapon() : RightHandItem();
+    Weapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(const Weapon& original) : RightHandItem(original);
+    Weapon(const Weapon& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(Weapon& original) : RightHandItem(original);
+    Weapon(Weapon& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Weapon(Weapon&& original) : RightHandItem(original);
+    Weapon(Weapon&& original);
     
     
     
@@ -141,9 +165,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Weapon& self, const Weapon& original);
-  
+    
   };
 }
 
 
-#endif//__WEAPON__
+#endif//__GUARD_WEAPON_HPP__

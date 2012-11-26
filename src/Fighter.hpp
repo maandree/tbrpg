@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FIGHTER__
-#define __FIGHTER__
+#ifndef __GUARD_FIGHTER_HPP__
+#define __GUARD_FIGHTER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Warrior.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The fighter class
    */
-  class Fighter: public  Warrior
+  class Fighter: public Warrior
   {
   public:
     /**
      * Construction
      */
-    Fighter() : Warrior();
+    Fighter();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fighter(const Fighter& original) : Warrior(original);
+    Fighter(const Fighter& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Fighter(Fighter& original) : Warrior(original);
+    Fighter(Fighter& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Fighter(Fighter&& original) : Warrior(original);
+    Fighter(Fighter&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Fighter& self, const Fighter& original);
-  
+    
   };
 }
 
 
-#endif//__FIGHTER__
+#endif//__GUARD_FIGHTER_HPP__

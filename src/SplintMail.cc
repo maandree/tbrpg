@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  SplintMail::SplintMail()
+  SplintMail::SplintMail() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SplintMail::SplintMail(const SplintMail& original)
+  SplintMail::SplintMail(const SplintMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SplintMail::SplintMail(SplintMail& original)
+  SplintMail::SplintMail(SplintMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SplintMail::SplintMail(SplintMail&& original)
+  SplintMail::SplintMail(SplintMail&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   SplintMail::~SplintMail()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   SplintMail& SplintMail::operator =(const SplintMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   SplintMail& SplintMail::operator =(SplintMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   SplintMail& SplintMail::operator =(SplintMail&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void SplintMail::__copy__(SplintMail& self, const SplintMail& original);
+  void SplintMail::__copy__(SplintMail& self, const SplintMail& original)
   {
-    left = right;
+    self = original;
   }
   
 }

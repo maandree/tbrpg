@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Fighter::Fighter()
+  Fighter::Fighter() : Warrior()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fighter::Fighter(const Fighter& original)
+  Fighter::Fighter(const Fighter& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fighter::Fighter(Fighter& original)
+  Fighter::Fighter(Fighter& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Fighter::Fighter(Fighter&& original)
+  Fighter::Fighter(Fighter&& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Fighter::~Fighter()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Fighter& Fighter::operator =(const Fighter& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Fighter& Fighter::operator =(Fighter& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Fighter& Fighter::operator =(Fighter&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Fighter::__copy__(Fighter& self, const Fighter& original);
+  void Fighter::__copy__(Fighter& self, const Fighter& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Hood::Hood()
+  Hood::Hood() : Headgear()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hood::Hood(const Hood& original)
+  Hood::Hood(const Hood& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hood::Hood(Hood& original)
+  Hood::Hood(Hood& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Hood::Hood(Hood&& original)
+  Hood::Hood(Hood&& original) : Headgear(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Hood::~Hood()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Hood& Hood::operator =(const Hood& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Hood& Hood::operator =(Hood& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Hood& Hood::operator =(Hood&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Hood::__copy__(Hood& self, const Hood& original);
+  void Hood::__copy__(Hood& self, const Hood& original)
   {
-    left = right;
+    self = original;
   }
   
 }

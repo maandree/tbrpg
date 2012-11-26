@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __THIEFABILITIES__
-#define __THIEFABILITIES__
+#ifndef __GUARD_THIEFABILITIES_HPP__
+#define __GUARD_THIEFABILITIES_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,44 +46,24 @@ namespace tbrpg
   {
   public:
     /**
-     * Armour class versus melée bonus
+     * Find traps scores
      */
-    int melee;
+    //int find_traps;
     
     /**
-     * Armour class versus missile bonus
+     * Open locks scores
      */
-    int missile;
+    //int open_locks;
     
     /**
-     * Resistance against fire bonus
+     * Pick pockets scores
      */
-    float fire;
+    //int pick_pockets;
     
     /**
-     * Resistance against cold bonus
+     * Stealth scores
      */
-    float cold;
-    
-    /**
-     * Resistance against lightning bonus
-     */
-    float lightning;
-    
-    /**
-     * Resistance against acid bonus
-     */
-    float acid;
-    
-    /**
-     * Resistance against poison bonus
-     */
-    float poison;
-    
-    /**
-     * Resistance against physical damage bonus
-     */
-    float physical;
+    //int stealth;
     
     
     
@@ -151,9 +135,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ThiefAbilities& self, const ThiefAbilities& original);
-  
+    
   };
 }
 
 
-#endif//__THIEFABILITIES__
+#endif//__GUARD_THIEFABILITIES_HPP__

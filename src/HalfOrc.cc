@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  HalfOrc::HalfOrc()
+  HalfOrc::HalfOrc() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  HalfOrc::HalfOrc(const HalfOrc& original)
+  HalfOrc::HalfOrc(const HalfOrc& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  HalfOrc::HalfOrc(HalfOrc& original)
+  HalfOrc::HalfOrc(HalfOrc& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  HalfOrc::HalfOrc(HalfOrc&& original)
+  HalfOrc::HalfOrc(HalfOrc&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   HalfOrc::~HalfOrc()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   HalfOrc& HalfOrc::operator =(const HalfOrc& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   HalfOrc& HalfOrc::operator =(HalfOrc& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   HalfOrc& HalfOrc::operator =(HalfOrc&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void HalfOrc::__copy__(HalfOrc& self, const HalfOrc& original);
+  void HalfOrc::__copy__(HalfOrc& self, const HalfOrc& original)
   {
-    left = right;
+    self = original;
   }
   
 }

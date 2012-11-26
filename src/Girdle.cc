@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Girdle::Girdle()
+  Girdle::Girdle() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Girdle::Girdle(const Girdle& original)
+  Girdle::Girdle(const Girdle& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Girdle::Girdle(Girdle& original)
+  Girdle::Girdle(Girdle& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Girdle::Girdle(Girdle&& original)
+  Girdle::Girdle(Girdle&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Girdle::~Girdle()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Girdle& Girdle::operator =(const Girdle& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Girdle& Girdle::operator =(Girdle& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Girdle& Girdle::operator =(Girdle&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Girdle::__copy__(Girdle& self, const Girdle& original);
+  void Girdle::__copy__(Girdle& self, const Girdle& original)
   {
-    left = right;
+    self = original;
   }
   
 }

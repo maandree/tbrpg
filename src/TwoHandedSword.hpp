@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __TWOHANDEDSWORD__
-#define __TWOHANDEDSWORD__
+#ifndef __GUARD_TWOHANDEDSWORD_HPP__
+#define __GUARD_TWOHANDEDSWORD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "TwoHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Two-handed weapon item class
    */
-  class TwoHandedSword: public  TwoHandedMelee
+  class TwoHandedSword: public TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    TwoHandedSword() : TwoHandedMelee();
+    TwoHandedSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TwoHandedSword(const TwoHandedSword& original) : TwoHandedMelee(original);
+    TwoHandedSword(const TwoHandedSword& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    TwoHandedSword(TwoHandedSword& original) : TwoHandedMelee(original);
+    TwoHandedSword(TwoHandedSword& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    TwoHandedSword(TwoHandedSword&& original) : TwoHandedMelee(original);
+    TwoHandedSword(TwoHandedSword&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(TwoHandedSword& self, const TwoHandedSword& original);
-  
+    
   };
 }
 
 
-#endif//__TWOHANDEDSWORD__
+#endif//__GUARD_TWOHANDEDSWORD_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  BastardSword::BastardSword()
+  BastardSword::BastardSword() : LargeSword()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BastardSword::BastardSword(const BastardSword& original)
+  BastardSword::BastardSword(const BastardSword& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BastardSword::BastardSword(BastardSword& original)
+  BastardSword::BastardSword(BastardSword& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  BastardSword::BastardSword(BastardSword&& original)
+  BastardSword::BastardSword(BastardSword&& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   BastardSword::~BastardSword()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   BastardSword& BastardSword::operator =(const BastardSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   BastardSword& BastardSword::operator =(BastardSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   BastardSword& BastardSword::operator =(BastardSword&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void BastardSword::__copy__(BastardSword& self, const BastardSword& original);
+  void BastardSword::__copy__(BastardSword& self, const BastardSword& original)
   {
-    left = right;
+    self = original;
   }
   
 }

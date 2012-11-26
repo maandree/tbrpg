@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MAGICSCHOOL__
-#define __MAGICSCHOOL__
+#ifndef __GUARD_MAGICSCHOOL_HPP__
+#define __GUARD_MAGICSCHOOL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "MagicSchool.hpp"
 
 
 /**
@@ -42,34 +48,24 @@ namespace tbrpg
   {
   public:
     /**
-     * Current hit points
+     * The name of the school
      */
-    int hit_points;
+    //std::string name;
     
     /**
-     * Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
+     * The colouration of the magic in the school
      */
-    char alive;
+    //std::string coluration;
     
     /**
-     * Current morale
+     * The name of the practicers of the school
      */
-    int morale;
+    //std::string practicer;
     
     /**
-     * Current intoxication level
+     * The opposite schools
      */
-    int intoxication;
-    
-    /**
-     * Number of turns since the character last slept with consideration for long travels
-     */
-    int fatigue;
-    
-    /**
-     * The character sheet
-     */
-    CharacterSheet record;
+    //MagicSchool* opposite;
     
     
     
@@ -141,9 +137,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MagicSchool& self, const MagicSchool& original);
-  
+    
   };
 }
 
 
-#endif//__MAGICSCHOOL__
+#endif//__GUARD_MAGICSCHOOL_HPP__

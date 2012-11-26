@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Elf::Elf()
+  Elf::Elf() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Elf::Elf(const Elf& original)
+  Elf::Elf(const Elf& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Elf::Elf(Elf& original)
+  Elf::Elf(Elf& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Elf::Elf(Elf&& original)
+  Elf::Elf(Elf&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Elf::~Elf()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Elf& Elf::operator =(const Elf& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Elf& Elf::operator =(Elf& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Elf& Elf::operator =(Elf&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Elf::__copy__(Elf& self, const Elf& original);
+  void Elf::__copy__(Elf& self, const Elf& original)
   {
-    left = right;
+    self = original;
   }
   
 }

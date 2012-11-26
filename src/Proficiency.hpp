@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __PROFICIENCY__
-#define __PROFICIENCY__
+#ifndef __GUARD_PROFICIENCY_HPP__
+#define __GUARD_PROFICIENCY_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,9 +46,19 @@ namespace tbrpg
   {
   public:
     /**
-     * The name of the weapon group
+     * The hit bonus
      */
-    std::string name;
+    //int hit_bonus;
+    
+    /**
+     * The damage bonus
+     */
+    //int damage bonus;
+    
+    /**
+     * the number of half attacks
+     */
+    //char half_attacks;
     
     
     
@@ -116,9 +130,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Proficiency& self, const Proficiency& original);
-  
+    
   };
 }
 
 
-#endif//__PROFICIENCY__
+#endif//__GUARD_PROFICIENCY_HPP__

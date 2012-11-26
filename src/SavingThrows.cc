@@ -35,11 +35,12 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows()
   {
-    //TODO implement constructor
-    //find_traps = nullptr;
-    //open_locks = nullptr;
-    //pick_pockets = nullptr;
-    //stealth = nullptr;
+    ////TODO implement constructor
+    //this->breath = 0;
+    //this->paralyze_poison_death = 0;
+    //this->petrification_polymorph = 0;
+    //this->rod_staff_wand = 0;
+    //this->spell = 0;
   }
   
   /**
@@ -49,10 +50,12 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(const SavingThrows& original)
   {
-    this->find_traps = original.find_traps;
-    this->open_locks = original.open_locks;
-    this->pick_pockets = original.pick_pockets;
-    this->stealth = original.stealth;
+    (void) original;
+    //this->breath = original.breath;
+    //this->paralyze_poison_death = original.paralyze_poison_death;
+    //this->petrification_polymorph = original.petrification_polymorph;
+    //this->rod_staff_wand = original.rod_staff_wand;
+    //this->spell = original.spell;
   }
   
   /**
@@ -62,10 +65,12 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(SavingThrows& original)
   {
-    this->find_traps = original.find_traps;
-    this->open_locks = original.open_locks;
-    this->pick_pockets = original.pick_pockets;
-    this->stealth = original.stealth;
+    (void) original;
+    //this->breath = original.breath;
+    //this->paralyze_poison_death = original.paralyze_poison_death;
+    //this->petrification_polymorph = original.petrification_polymorph;
+    //this->rod_staff_wand = original.rod_staff_wand;
+    //this->spell = original.spell;
   }
   
   /**
@@ -75,10 +80,12 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(SavingThrows&& original)
   {
-    std::move(this->find_traps, original.find_traps);
-    std::move(this->open_locks, original.open_locks);
-    std::move(this->pick_pockets, original.pick_pockets);
-    std::move(this->stealth, original.stealth);
+    (void) original;
+    ////std::swap(this->breath, original.breath);
+    ////std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
+    ////std::swap(this->petrification_polymorph, original.petrification_polymorph);
+    ////std::swap(this->rod_staff_wand, original.rod_staff_wand);
+    ////std::swap(this->spell, original.spell);
   }
   
   
@@ -88,11 +95,7 @@ namespace tbrpg
    */
   SavingThrows::~SavingThrows()
   {
-    //TODO implement destructor
-    //delete find_traps;
-    //delete open_locks;
-    //delete pick_pockets;
-    //delete stealth;
+    ////TODO implement destructor
   }
   
   
@@ -105,10 +108,12 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(const SavingThrows& original)
   {
-    this->find_traps = original.find_traps;
-    this->open_locks = original.open_locks;
-    this->pick_pockets = original.pick_pockets;
-    this->stealth = original.stealth;
+    (void) original;
+    //this->breath = original.breath;
+    //this->paralyze_poison_death = original.paralyze_poison_death;
+    //this->petrification_polymorph = original.petrification_polymorph;
+    //this->rod_staff_wand = original.rod_staff_wand;
+    //this->spell = original.spell;
     return *this;
   }
   
@@ -120,10 +125,12 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(SavingThrows& original)
   {
-    this->find_traps = original.find_traps;
-    this->open_locks = original.open_locks;
-    this->pick_pockets = original.pick_pockets;
-    this->stealth = original.stealth;
+    (void) original;
+    //this->breath = original.breath;
+    //this->paralyze_poison_death = original.paralyze_poison_death;
+    //this->petrification_polymorph = original.petrification_polymorph;
+    //this->rod_staff_wand = original.rod_staff_wand;
+    //this->spell = original.spell;
     return *this;
   }
   
@@ -135,10 +142,12 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(SavingThrows&& original)
   {
-    std::move(this->find_traps, original.find_traps);
-    std::move(this->open_locks, original.open_locks);
-    std::move(this->pick_pockets, original.pick_pockets);
-    std::move(this->stealth, original.stealth);
+    (void) original;
+    ////std::swap(this->breath, original.breath);
+    ////std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
+    ////std::swap(this->petrification_polymorph, original.petrification_polymorph);
+    ////std::swap(this->rod_staff_wand, original.rod_staff_wand);
+    ////std::swap(this->spell, original.spell);
     return *this;
   }
   
@@ -148,9 +157,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void SavingThrows::__copy__(SavingThrows& self, const SavingThrows& original);
+  void SavingThrows::__copy__(SavingThrows& self, const SavingThrows& original)
   {
-    left = right;
+    self = original;
   }
   
 }

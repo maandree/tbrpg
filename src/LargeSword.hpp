@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LARGESWORD__
-#define __LARGESWORD__
+#ifndef __GUARD_LARGESWORD_HPP__
+#define __GUARD_LARGESWORD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Large sword item class
    */
-  class LargeSword: public  OneHandedMelee
+  class LargeSword: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    LargeSword() : OneHandedMelee();
+    LargeSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(const LargeSword& original) : OneHandedMelee(original);
+    LargeSword(const LargeSword& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(LargeSword& original) : OneHandedMelee(original);
+    LargeSword(LargeSword& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LargeSword(LargeSword&& original) : OneHandedMelee(original);
+    LargeSword(LargeSword&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LargeSword& self, const LargeSword& original);
-  
+    
   };
 }
 
 
-#endif//__LARGESWORD__
+#endif//__GUARD_LARGESWORD_HPP__

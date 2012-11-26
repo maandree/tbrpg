@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CHAINMAIL__
-#define __CHAINMAIL__
+#ifndef __GUARD_CHAINMAIL_HPP__
+#define __GUARD_CHAINMAIL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Chain mail item clss
    */
-  class ChainMail: public  BodyArmour
+  class ChainMail: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    ChainMail() : BodyArmour();
+    ChainMail();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(const ChainMail& original) : BodyArmour(original);
+    ChainMail(const ChainMail& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(ChainMail& original) : BodyArmour(original);
+    ChainMail(ChainMail& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ChainMail(ChainMail&& original) : BodyArmour(original);
+    ChainMail(ChainMail&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ChainMail& self, const ChainMail& original);
-  
+    
   };
 }
 
 
-#endif//__CHAINMAIL__
+#endif//__GUARD_CHAINMAIL_HPP__

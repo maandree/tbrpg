@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ACTIONSLOTCHART__
-#define __ACTIONSLOTCHART__
+#ifndef __GUARD_ACTIONSLOTCHART_HPP__
+#define __GUARD_ACTIONSLOTCHART_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Class.hpp"
 
 
 /**
@@ -42,69 +48,14 @@ namespace tbrpg
   {
   public:
     /**
-     * The name of the item
+     * Prestige class to OR:able index map
      */
-    std::string name;
+    //std::unordered_map<Class, long long> index_map;
     
     /**
-     * Description of the item, text scrolls should use this for their text
+     * Index combination to action slots map
      */
-    std::string description;
-    
-    /**
-     * The armour class, use 2³¹ − 1 for none
-     */
-    int armour_class;
-    
-    /**
-     * The wieght of the item, in grams
-     */
-    int weight;
-    
-    /**
-     * Whether the item is identified
-     */
-    bool identified;
-    
-    /**
-     * The lore needed to identify the item by examining it
-     */
-    int lore_value;
-    
-    /**
-     * Whether the item is stuck in its position
-     */
-    bool stuck;
-    
-    /**
-     * Whether the item is cursed
-     */
-    bool cursed;
-    
-    /**
-     * The current quantity
-     */
-    int quantity;
-    
-    /**
-     * The quantity limit
-     */
-    int quantity_limit;
-    
-    /**
-     * The monetary value of each item
-     */
-    int unit_value;
-    
-    /**
-     * Ability bonuses
-     */
-    AbilityBonus bonuses;
-    
-    /**
-     * Armour class modifiers for the damage types
-     */
-    std::unorderd_map<DamageType, int> armour_class_modifiers;
+    //std::unordered_map<long long, ActionSlots*> slot_map;
     
     
     
@@ -176,9 +127,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ActionSlotChart& self, const ActionSlotChart& original);
-  
+    
   };
 }
 
 
-#endif//__ACTIONSLOTCHART__
+#endif//__GUARD_ACTIONSLOTCHART_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HALFELF__
-#define __HALFELF__
+#ifndef __GUARD_HALFELF_HPP__
+#define __GUARD_HALFELF_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Race.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The half-elf race
    */
-  class HalfElf: public  Race
+  class HalfElf: public Race
   {
   public:
     /**
      * Construction
      */
-    HalfElf() : Race();
+    HalfElf();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HalfElf(const HalfElf& original) : Race(original);
+    HalfElf(const HalfElf& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HalfElf(HalfElf& original) : Race(original);
+    HalfElf(HalfElf& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    HalfElf(HalfElf&& original) : Race(original);
+    HalfElf(HalfElf&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(HalfElf& self, const HalfElf& original);
-  
+    
   };
 }
 
 
-#endif//__HALFELF__
+#endif//__GUARD_HALFELF_HPP__

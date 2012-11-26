@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  LongBow::LongBow()
+  LongBow::LongBow() : Bow()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongBow::LongBow(const LongBow& original)
+  LongBow::LongBow(const LongBow& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongBow::LongBow(LongBow& original)
+  LongBow::LongBow(LongBow& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongBow::LongBow(LongBow&& original)
+  LongBow::LongBow(LongBow&& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   LongBow::~LongBow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   LongBow& LongBow::operator =(const LongBow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   LongBow& LongBow::operator =(LongBow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   LongBow& LongBow::operator =(LongBow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void LongBow::__copy__(LongBow& self, const LongBow& original);
+  void LongBow::__copy__(LongBow& self, const LongBow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Spear::Spear()
+  Spear::Spear() : TwoHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spear::Spear(const Spear& original)
+  Spear::Spear(const Spear& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spear::Spear(Spear& original)
+  Spear::Spear(Spear& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spear::Spear(Spear&& original)
+  Spear::Spear(Spear&& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Spear::~Spear()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Spear& Spear::operator =(const Spear& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Spear& Spear::operator =(Spear& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Spear& Spear::operator =(Spear&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Spear::__copy__(Spear& self, const Spear& original);
+  void Spear::__copy__(Spear& self, const Spear& original)
   {
-    left = right;
+    self = original;
   }
   
 }

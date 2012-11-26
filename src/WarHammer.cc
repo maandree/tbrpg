@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  WarHammer::WarHammer()
+  WarHammer::WarHammer() : OneHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WarHammer::WarHammer(const WarHammer& original)
+  WarHammer::WarHammer(const WarHammer& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WarHammer::WarHammer(WarHammer& original)
+  WarHammer::WarHammer(WarHammer& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WarHammer::WarHammer(WarHammer&& original)
+  WarHammer::WarHammer(WarHammer&& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   WarHammer::~WarHammer()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(const WarHammer& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(WarHammer& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(WarHammer&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void WarHammer::__copy__(WarHammer& self, const WarHammer& original);
+  void WarHammer::__copy__(WarHammer& self, const WarHammer& original)
   {
-    left = right;
+    self = original;
   }
   
 }

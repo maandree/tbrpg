@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Sorcerer::Sorcerer()
+  Sorcerer::Sorcerer() : Wizard()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sorcerer::Sorcerer(const Sorcerer& original)
+  Sorcerer::Sorcerer(const Sorcerer& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sorcerer::Sorcerer(Sorcerer& original)
+  Sorcerer::Sorcerer(Sorcerer& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Sorcerer::Sorcerer(Sorcerer&& original)
+  Sorcerer::Sorcerer(Sorcerer&& original) : Wizard(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Sorcerer::~Sorcerer()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(const Sorcerer& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(Sorcerer& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(Sorcerer&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Sorcerer::__copy__(Sorcerer& self, const Sorcerer& original);
+  void Sorcerer::__copy__(Sorcerer& self, const Sorcerer& original)
   {
-    left = right;
+    self = original;
   }
   
 }

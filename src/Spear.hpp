@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SPEAR__
-#define __SPEAR__
+#ifndef __GUARD_SPEAR_HPP__
+#define __GUARD_SPEAR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "TwoHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Spear item class
    */
-  class Spear: public  TwoHandedMelee
+  class Spear: public TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Spear() : TwoHandedMelee();
+    Spear();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(const Spear& original) : TwoHandedMelee(original);
+    Spear(const Spear& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(Spear& original) : TwoHandedMelee(original);
+    Spear(Spear& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Spear(Spear&& original) : TwoHandedMelee(original);
+    Spear(Spear&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Spear& self, const Spear& original);
-  
+    
   };
 }
 
 
-#endif//__SPEAR__
+#endif//__GUARD_SPEAR_HPP__

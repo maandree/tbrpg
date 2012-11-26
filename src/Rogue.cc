@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Rogue::Rogue()
+  Rogue::Rogue() : Class()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Rogue::Rogue(const Rogue& original)
+  Rogue::Rogue(const Rogue& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Rogue::Rogue(Rogue& original)
+  Rogue::Rogue(Rogue& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Rogue::Rogue(Rogue&& original)
+  Rogue::Rogue(Rogue&& original) : Class(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Rogue::~Rogue()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Rogue& Rogue::operator =(const Rogue& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Rogue& Rogue::operator =(Rogue& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Rogue& Rogue::operator =(Rogue&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Rogue::__copy__(Rogue& self, const Rogue& original);
+  void Rogue::__copy__(Rogue& self, const Rogue& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ActionSlot::ActionSlot()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -45,6 +45,7 @@ namespace tbrpg
    */
   ActionSlot::ActionSlot(const ActionSlot& original)
   {
+    (void) original;
 
   }
   
@@ -55,6 +56,7 @@ namespace tbrpg
    */
   ActionSlot::ActionSlot(ActionSlot& original)
   {
+    (void) original;
 
   }
   
@@ -65,6 +67,7 @@ namespace tbrpg
    */
   ActionSlot::ActionSlot(ActionSlot&& original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   ActionSlot::~ActionSlot()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   ActionSlot& ActionSlot::operator =(const ActionSlot& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   ActionSlot& ActionSlot::operator =(ActionSlot& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   ActionSlot& ActionSlot::operator =(ActionSlot&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ActionSlot::__copy__(ActionSlot& self, const ActionSlot& original);
+  void ActionSlot::__copy__(ActionSlot& self, const ActionSlot& original)
   {
-    left = right;
+    self = original;
   }
   
 }

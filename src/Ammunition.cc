@@ -33,11 +33,15 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Ammunition::Ammunition()
+  Ammunition::Ammunition() : Item()
   {
-    //TODO implement constructor
-    //wizard_slots = nullptr;
-    //priest_slots = nullptr;
+    ////TODO implement constructor
+    //this->hit_bonus = 0;
+    //this->damage_die = 0;
+    //this->damage_dice = 0;
+    //this->damage_bonus = 0;
+    //this->usable_with = nullptr;
+    //this->damage_type = nullptr;
   }
   
   /**
@@ -45,10 +49,15 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ammunition::Ammunition(const Ammunition& original)
+  Ammunition::Ammunition(const Ammunition& original) : Item(original)
   {
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->usable_with = original.usable_with;
+    //this->damage_type = original.damage_type;
   }
   
   /**
@@ -56,10 +65,15 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ammunition::Ammunition(Ammunition& original)
+  Ammunition::Ammunition(Ammunition& original) : Item(original)
   {
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
+    (void) original;
+    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->usable_with = original.usable_with;
+    //this->damage_type = original.damage_type;
   }
   
   /**
@@ -67,10 +81,15 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ammunition::Ammunition(Ammunition&& original)
+  Ammunition::Ammunition(Ammunition&& original) : Item(original)
   {
-    std::move(this->wizard_slots, original.wizard_slots);
-    std::move(this->priest_slots, original.priest_slots);
+    (void) original;
+    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_die, original.damage_die);
+    ////std::swap(this->damage_dice, original.damage_dice);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::move(this->usable_with, original.usable_with);
+    ////std::move(this->damage_type, original.damage_type);
   }
   
   
@@ -80,9 +99,9 @@ namespace tbrpg
    */
   Ammunition::~Ammunition()
   {
-    //TODO implement destructor
-    //delete wizard_slots;
-    //delete priest_slots;
+    ////TODO implement destructor
+    //delete usable_with;
+    //delete damage_type;
   }
   
   
@@ -95,9 +114,18 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(const Ammunition& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->usable_with = original.usable_with;
+    //this->damage_type = original.damage_type;
     return *this;
   }
   
@@ -109,9 +137,18 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->hit_bonus = original.hit_bonus;
+    //this->damage_die = original.damage_die;
+    //this->damage_dice = original.damage_dice;
+    //this->damage_bonus = original.damage_bonus;
+    //this->usable_with = original.usable_with;
+    //this->damage_type = original.damage_type;
     return *this;
   }
   
@@ -123,9 +160,18 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->wizard_slots, original.wizard_slots);
-    std::move(this->priest_slots, original.priest_slots);
+    (void) original;
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);    ////std::swap(this->hit_bonus, original.hit_bonus);
+    ////std::swap(this->damage_die, original.damage_die);
+    ////std::swap(this->damage_dice, original.damage_dice);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
+    ////std::move(this->usable_with, original.usable_with);
+    ////std::move(this->damage_type, original.damage_type);
     return *this;
   }
   
@@ -135,9 +181,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Ammunition::__copy__(Ammunition& self, const Ammunition& original);
+  void Ammunition::__copy__(Ammunition& self, const Ammunition& original)
   {
-    left = right;
+    self = original;
   }
   
 }

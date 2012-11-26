@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __THIEF__
-#define __THIEF__
+#ifndef __GUARD_THIEF_HPP__
+#define __GUARD_THIEF_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Rogue.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The thief class
    */
-  class Thief: public  Rogue
+  class Thief: public Rogue
   {
   public:
     /**
      * Construction
      */
-    Thief() : Rogue();
+    Thief();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(const Thief& original) : Rogue(original);
+    Thief(const Thief& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(Thief& original) : Rogue(original);
+    Thief(Thief& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Thief(Thief&& original) : Rogue(original);
+    Thief(Thief&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Thief& self, const Thief& original);
-  
+    
   };
 }
 
 
-#endif//__THIEF__
+#endif//__GUARD_THIEF_HPP__

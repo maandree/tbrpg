@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HOOD__
-#define __HOOD__
+#ifndef __GUARD_HOOD_HPP__
+#define __GUARD_HOOD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Headgear.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Hood item class
    */
-  class Hood: public  Headgear
+  class Hood: public Headgear
   {
   public:
     /**
      * Construction
      */
-    Hood() : Headgear();
+    Hood();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(const Hood& original) : Headgear(original);
+    Hood(const Hood& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(Hood& original) : Headgear(original);
+    Hood(Hood& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Hood(Hood&& original) : Headgear(original);
+    Hood(Hood&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Hood& self, const Hood& original);
-  
+    
   };
 }
 
 
-#endif//__HOOD__
+#endif//__GUARD_HOOD_HPP__

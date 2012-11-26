@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Buckler::Buckler()
+  Buckler::Buckler() : Shield()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Buckler::Buckler(const Buckler& original)
+  Buckler::Buckler(const Buckler& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Buckler::Buckler(Buckler& original)
+  Buckler::Buckler(Buckler& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Buckler::Buckler(Buckler&& original)
+  Buckler::Buckler(Buckler&& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Buckler::~Buckler()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(const Buckler& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(Buckler& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(Buckler&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Buckler::__copy__(Buckler& self, const Buckler& original);
+  void Buckler::__copy__(Buckler& self, const Buckler& original)
   {
-    left = right;
+    self = original;
   }
   
 }

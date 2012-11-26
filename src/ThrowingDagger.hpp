@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __THROWINGDAGGER__
-#define __THROWINGDAGGER__
+#ifndef __GUARD_THROWINGDAGGER_HPP__
+#define __GUARD_THROWINGDAGGER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Throwing.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Throwing dagger item class
    */
-  class ThrowingDagger: public  Throwing
+  class ThrowingDagger: public Throwing
   {
   public:
     /**
      * Construction
      */
-    ThrowingDagger() : Throwing();
+    ThrowingDagger();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(const ThrowingDagger& original) : Throwing(original);
+    ThrowingDagger(const ThrowingDagger& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(ThrowingDagger& original) : Throwing(original);
+    ThrowingDagger(ThrowingDagger& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    ThrowingDagger(ThrowingDagger&& original) : Throwing(original);
+    ThrowingDagger(ThrowingDagger&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ThrowingDagger& self, const ThrowingDagger& original);
-  
+    
   };
 }
 
 
-#endif//__THROWINGDAGGER__
+#endif//__GUARD_THROWINGDAGGER_HPP__

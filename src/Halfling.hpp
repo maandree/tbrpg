@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HALFLING__
-#define __HALFLING__
+#ifndef __GUARD_HALFLING_HPP__
+#define __GUARD_HALFLING_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Race.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The halfling race
    */
-  class Halfling: public  Race
+  class Halfling: public Race
   {
   public:
     /**
      * Construction
      */
-    Halfling() : Race();
+    Halfling();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(const Halfling& original) : Race(original);
+    Halfling(const Halfling& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(Halfling& original) : Race(original);
+    Halfling(Halfling& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Halfling(Halfling&& original) : Race(original);
+    Halfling(Halfling&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Halfling& self, const Halfling& original);
-  
+    
   };
 }
 
 
-#endif//__HALFLING__
+#endif//__GUARD_HALFLING_HPP__

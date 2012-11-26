@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WAND__
-#define __WAND__
+#ifndef __GUARD_WAND_HPP__
+#define __GUARD_WAND_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "QuickItem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Wand, rod and magic staff item class
    */
-  class Wand: public  QuickItem
+  class Wand: public QuickItem
   {
   public:
     /**
      * Construction
      */
-    Wand() : QuickItem();
+    Wand();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(const Wand& original) : QuickItem(original);
+    Wand(const Wand& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(Wand& original) : QuickItem(original);
+    Wand(Wand& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wand(Wand&& original) : QuickItem(original);
+    Wand(Wand&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Wand& self, const Wand& original);
-  
+    
   };
 }
 
 
-#endif//__WAND__
+#endif//__GUARD_WAND_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  FullPlateMail::FullPlateMail()
+  FullPlateMail::FullPlateMail() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  FullPlateMail::FullPlateMail(const FullPlateMail& original)
+  FullPlateMail::FullPlateMail(const FullPlateMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  FullPlateMail::FullPlateMail(FullPlateMail& original)
+  FullPlateMail::FullPlateMail(FullPlateMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  FullPlateMail::FullPlateMail(FullPlateMail&& original)
+  FullPlateMail::FullPlateMail(FullPlateMail&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   FullPlateMail::~FullPlateMail()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(const FullPlateMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(FullPlateMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(FullPlateMail&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void FullPlateMail::__copy__(FullPlateMail& self, const FullPlateMail& original);
+  void FullPlateMail::__copy__(FullPlateMail& self, const FullPlateMail& original)
   {
-    left = right;
+    self = original;
   }
   
 }

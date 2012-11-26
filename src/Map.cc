@@ -35,12 +35,9 @@ namespace tbrpg
    */
   Map::Map()
   {
-    //TODO implement constructor
-    //hostile = false;
-    //x = nullptr;
-    //y = nullptr;
-    //alive = nullptr;
-    //resurrect = nullptr;
+    ////TODO implement constructor
+    //this->start = nullptr;
+    //this->majors = nullptr;
   }
   
   /**
@@ -50,11 +47,9 @@ namespace tbrpg
    */
   Map::Map(const Map& original)
   {
-    this->hostile = original.hostile;
-    this->x = original.x;
-    this->y = original.y;
-    this->alive = original.alive;
-    this->resurrect = original.resurrect;
+    (void) original;
+    //this->start = original.start;
+    //this->majors = original.majors;
   }
   
   /**
@@ -64,11 +59,9 @@ namespace tbrpg
    */
   Map::Map(Map& original)
   {
-    this->hostile = original.hostile;
-    this->x = original.x;
-    this->y = original.y;
-    this->alive = original.alive;
-    this->resurrect = original.resurrect;
+    (void) original;
+    //this->start = original.start;
+    //this->majors = original.majors;
   }
   
   /**
@@ -78,11 +71,9 @@ namespace tbrpg
    */
   Map::Map(Map&& original)
   {
-    std::swap(this->hostile, original.hostile);
-    std::move(this->x, original.x);
-    std::move(this->y, original.y);
-    std::move(this->alive, original.alive);
-    std::move(this->resurrect, original.resurrect);
+    (void) original;
+    ////std::move(this->start, original.start);
+    ////std::move(this->majors, original.majors);
   }
   
   
@@ -92,11 +83,9 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    //TODO implement destructor
-    //delete x;
-    //delete y;
-    //delete alive;
-    //delete resurrect;
+    ////TODO implement destructor
+    //delete start;
+    //delete majors;
   }
   
   
@@ -109,11 +98,9 @@ namespace tbrpg
    */
   Map& Map::operator =(const Map& original)
   {
-    this->hostile = original.hostile;
-    this->x = original.x;
-    this->y = original.y;
-    this->alive = original.alive;
-    this->resurrect = original.resurrect;
+    (void) original;
+    //this->start = original.start;
+    //this->majors = original.majors;
     return *this;
   }
   
@@ -125,11 +112,9 @@ namespace tbrpg
    */
   Map& Map::operator =(Map& original)
   {
-    this->hostile = original.hostile;
-    this->x = original.x;
-    this->y = original.y;
-    this->alive = original.alive;
-    this->resurrect = original.resurrect;
+    (void) original;
+    //this->start = original.start;
+    //this->majors = original.majors;
     return *this;
   }
   
@@ -141,11 +126,9 @@ namespace tbrpg
    */
   Map& Map::operator =(Map&& original)
   {
-    std::swap(this->hostile, original.hostile);
-    std::move(this->x, original.x);
-    std::move(this->y, original.y);
-    std::move(this->alive, original.alive);
-    std::move(this->resurrect, original.resurrect);
+    (void) original;
+    ////std::move(this->start, original.start);
+    ////std::move(this->majors, original.majors);
     return *this;
   }
   
@@ -155,9 +138,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Map::__copy__(Map& self, const Map& original);
+  void Map::__copy__(Map& self, const Map& original)
   {
-    left = right;
+    self = original;
   }
   
 }

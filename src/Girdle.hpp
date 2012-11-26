@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GIRDLE__
-#define __GIRDLE__
+#ifndef __GUARD_GIRDLE_HPP__
+#define __GUARD_GIRDLE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Girdle and belt item class
    */
-  class Girdle: public  Item
+  class Girdle: public Item
   {
   public:
     /**
      * Construction
      */
-    Girdle() : Item();
+    Girdle();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(const Girdle& original) : Item(original);
+    Girdle(const Girdle& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(Girdle& original) : Item(original);
+    Girdle(Girdle& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Girdle(Girdle&& original) : Item(original);
+    Girdle(Girdle&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Girdle& self, const Girdle& original);
-  
+    
   };
 }
 
 
-#endif//__GIRDLE__
+#endif//__GUARD_GIRDLE_HPP__

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __POTION__
-#define __POTION__
+#ifndef __GUARD_POTION_HPP__
+#define __GUARD_POTION_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "QuickItem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Potion item class
    */
-  class Potion: public  QuickItem
+  class Potion: public QuickItem
   {
   public:
     /**
      * Construction
      */
-    Potion() : QuickItem();
+    Potion();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(const Potion& original) : QuickItem(original);
+    Potion(const Potion& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(Potion& original) : QuickItem(original);
+    Potion(Potion& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Potion(Potion&& original) : QuickItem(original);
+    Potion(Potion&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Potion& self, const Potion& original);
-  
+    
   };
 }
 
 
-#endif//__POTION__
+#endif//__GUARD_POTION_HPP__

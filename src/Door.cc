@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Door::Door()
+  Door::Door() : Entrance(), Lockable()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Door::Door(const Door& original)
+  Door::Door(const Door& original) : Entrance(original), Lockable(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Door::Door(Door& original)
+  Door::Door(Door& original) : Entrance(original), Lockable(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Door::Door(Door&& original)
+  Door::Door(Door&& original) : Entrance(original), Lockable(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Door::~Door()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Door& Door::operator =(const Door& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Door& Door::operator =(Door& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Door& Door::operator =(Door&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Door::__copy__(Door& self, const Door& original);
+  void Door::__copy__(Door& self, const Door& original)
   {
-    left = right;
+    self = original;
   }
   
 }

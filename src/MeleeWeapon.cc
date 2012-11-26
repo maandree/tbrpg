@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MeleeWeapon::MeleeWeapon()
+  MeleeWeapon::MeleeWeapon() : Weapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MeleeWeapon::MeleeWeapon(const MeleeWeapon& original)
+  MeleeWeapon::MeleeWeapon(const MeleeWeapon& original) : Weapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MeleeWeapon::MeleeWeapon(MeleeWeapon& original)
+  MeleeWeapon::MeleeWeapon(MeleeWeapon& original) : Weapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MeleeWeapon::MeleeWeapon(MeleeWeapon&& original)
+  MeleeWeapon::MeleeWeapon(MeleeWeapon&& original) : Weapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   MeleeWeapon::~MeleeWeapon()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   MeleeWeapon& MeleeWeapon::operator =(const MeleeWeapon& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   MeleeWeapon& MeleeWeapon::operator =(MeleeWeapon& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   MeleeWeapon& MeleeWeapon::operator =(MeleeWeapon&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void MeleeWeapon::__copy__(MeleeWeapon& self, const MeleeWeapon& original);
+  void MeleeWeapon::__copy__(MeleeWeapon& self, const MeleeWeapon& original)
   {
-    left = right;
+    self = original;
   }
   
 }

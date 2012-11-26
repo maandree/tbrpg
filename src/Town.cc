@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Town::Town()
+  Town::Town() : MapMinor()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Town::Town(const Town& original)
+  Town::Town(const Town& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Town::Town(Town& original)
+  Town::Town(Town& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Town::Town(Town&& original)
+  Town::Town(Town&& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Town::~Town()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Town& Town::operator =(const Town& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Town& Town::operator =(Town& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Town& Town::operator =(Town&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Town::__copy__(Town& self, const Town& original);
+  void Town::__copy__(Town& self, const Town& original)
   {
-    left = right;
+    self = original;
   }
   
 }

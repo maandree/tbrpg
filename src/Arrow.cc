@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Arrow::Arrow()
+  Arrow::Arrow() : Ammunition()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Arrow::Arrow(const Arrow& original)
+  Arrow::Arrow(const Arrow& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Arrow::Arrow(Arrow& original)
+  Arrow::Arrow(Arrow& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Arrow::Arrow(Arrow&& original)
+  Arrow::Arrow(Arrow&& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Arrow::~Arrow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Arrow& Arrow::operator =(const Arrow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Arrow& Arrow::operator =(Arrow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Arrow& Arrow::operator =(Arrow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Arrow::__copy__(Arrow& self, const Arrow& original);
+  void Arrow::__copy__(Arrow& self, const Arrow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

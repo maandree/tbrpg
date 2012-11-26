@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Wand::Wand()
+  Wand::Wand() : QuickItem()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wand::Wand(const Wand& original)
+  Wand::Wand(const Wand& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wand::Wand(Wand& original)
+  Wand::Wand(Wand& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wand::Wand(Wand&& original)
+  Wand::Wand(Wand&& original) : QuickItem(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Wand::~Wand()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Wand& Wand::operator =(const Wand& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Wand& Wand::operator =(Wand& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Wand& Wand::operator =(Wand&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Wand::__copy__(Wand& self, const Wand& original);
+  void Wand::__copy__(Wand& self, const Wand& original)
   {
-    left = right;
+    self = original;
   }
   
 }

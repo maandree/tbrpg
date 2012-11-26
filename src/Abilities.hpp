@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __EOF__
-#define __EOF__
+#ifndef __GUARD_ABILITIES_HPP__
+#define __GUARD_ABILITIES_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -36,43 +40,80 @@
 namespace tbrpg
 {
   /**
-   * 
+   * Ability scores
    */
-  class EOF
+  class Abilities
   {
   public:
     /**
+     * The strength, excluding extra for 18
+     */
+    //short strength;
+    
+    /**
+     * Extra strength for strength 18
+     */
+    //short strength18;
+    
+    /**
+     * The constitution
+     */
+    //short constitution;
+    
+    /**
+     * The dexterity
+     */
+    //short dexterity;
+    
+    /**
+     * The intelligence
+     */
+    //short intelligence;
+    
+    /**
+     * The wisdom
+     */
+    //short wisdom;
+    
+    /**
+     * The charisma
+     */
+    //short charisma;
+    
+    
+    
+    /**
      * Construction
      */
-    EOF();
+    Abilities();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EOF(const EOF& original);
+    Abilities(const Abilities& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    EOF(EOF& original);
+    Abilities(Abilities& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    EOF(EOF&& original);
+    Abilities(Abilities&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~EOF();
+    virtual ~Abilities();
     
     
     
@@ -82,7 +123,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual EOF& operator =(const EOF& original);
+    virtual Abilities& operator =(const Abilities& original);
     
     /**
      * Assignment operator
@@ -90,7 +131,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual EOF& operator =(EOF& original);
+    virtual Abilities& operator =(Abilities& original);
     
     /**
      * Move operator
@@ -98,7 +139,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual EOF& operator =(EOF&& original);
+    virtual Abilities& operator =(Abilities&& original);
     
     
   protected:
@@ -108,10 +149,10 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(EOF& self, const EOF& original);
-  
+    static void __copy__(Abilities& self, const Abilities& original);
+    
   };
 }
 
 
-#endif//__EOF__
+#endif//__GUARD_ABILITIES_HPP__

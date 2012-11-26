@@ -35,8 +35,20 @@ namespace tbrpg
    */
   Item::Item()
   {
-    //TODO implement constructor
-    //id = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
+    //this->description = nullptr;
+    //this->armour_class = 0;
+    //this->weight = 0;
+    //this->identified = false;
+    //this->lore_value = 0;
+    //this->stuck = false;
+    //this->cursed = false;
+    //this->quantity = 0;
+    //this->quantity_limit = 0;
+    //this->unit_value = 0;
+    //this->bonuses = nullptr;
+    //this->armour_class_modifiers = nullptr;
   }
   
   /**
@@ -46,7 +58,20 @@ namespace tbrpg
    */
   Item::Item(const Item& original)
   {
-    this->id = original.id;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->armour_class = original.armour_class;
+    //this->weight = original.weight;
+    //this->identified = original.identified;
+    //this->lore_value = original.lore_value;
+    //this->stuck = original.stuck;
+    //this->cursed = original.cursed;
+    //this->quantity = original.quantity;
+    //this->quantity_limit = original.quantity_limit;
+    //this->unit_value = original.unit_value;
+    //this->bonuses = original.bonuses;
+    //this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -56,7 +81,20 @@ namespace tbrpg
    */
   Item::Item(Item& original)
   {
-    this->id = original.id;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->armour_class = original.armour_class;
+    //this->weight = original.weight;
+    //this->identified = original.identified;
+    //this->lore_value = original.lore_value;
+    //this->stuck = original.stuck;
+    //this->cursed = original.cursed;
+    //this->quantity = original.quantity;
+    //this->quantity_limit = original.quantity_limit;
+    //this->unit_value = original.unit_value;
+    //this->bonuses = original.bonuses;
+    //this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -66,7 +104,20 @@ namespace tbrpg
    */
   Item::Item(Item&& original)
   {
-    std::move(this->id, original.id);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->description, original.description);
+    ////std::swap(this->armour_class, original.armour_class);
+    ////std::swap(this->weight, original.weight);
+    ////std::swap(this->identified, original.identified);
+    ////std::swap(this->lore_value, original.lore_value);
+    ////std::swap(this->stuck, original.stuck);
+    ////std::swap(this->cursed, original.cursed);
+    ////std::swap(this->quantity, original.quantity);
+    ////std::swap(this->quantity_limit, original.quantity_limit);
+    ////std::swap(this->unit_value, original.unit_value);
+    ////std::move(this->bonuses, original.bonuses);
+    ////std::move(this->armour_class_modifiers, original.armour_class_modifiers);
   }
   
   
@@ -76,8 +127,11 @@ namespace tbrpg
    */
   Item::~Item()
   {
-    //TODO implement destructor
-    //delete id;
+    ////TODO implement destructor
+    //delete name;
+    //delete description;
+    //delete bonuses;
+    //delete armour_class_modifiers;
   }
   
   
@@ -90,7 +144,20 @@ namespace tbrpg
    */
   Item& Item::operator =(const Item& original)
   {
-    this->id = original.id;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->armour_class = original.armour_class;
+    //this->weight = original.weight;
+    //this->identified = original.identified;
+    //this->lore_value = original.lore_value;
+    //this->stuck = original.stuck;
+    //this->cursed = original.cursed;
+    //this->quantity = original.quantity;
+    //this->quantity_limit = original.quantity_limit;
+    //this->unit_value = original.unit_value;
+    //this->bonuses = original.bonuses;
+    //this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -102,7 +169,20 @@ namespace tbrpg
    */
   Item& Item::operator =(Item& original)
   {
-    this->id = original.id;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->armour_class = original.armour_class;
+    //this->weight = original.weight;
+    //this->identified = original.identified;
+    //this->lore_value = original.lore_value;
+    //this->stuck = original.stuck;
+    //this->cursed = original.cursed;
+    //this->quantity = original.quantity;
+    //this->quantity_limit = original.quantity_limit;
+    //this->unit_value = original.unit_value;
+    //this->bonuses = original.bonuses;
+    //this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -114,7 +194,20 @@ namespace tbrpg
    */
   Item& Item::operator =(Item&& original)
   {
-    std::move(this->id, original.id);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->description, original.description);
+    ////std::swap(this->armour_class, original.armour_class);
+    ////std::swap(this->weight, original.weight);
+    ////std::swap(this->identified, original.identified);
+    ////std::swap(this->lore_value, original.lore_value);
+    ////std::swap(this->stuck, original.stuck);
+    ////std::swap(this->cursed, original.cursed);
+    ////std::swap(this->quantity, original.quantity);
+    ////std::swap(this->quantity_limit, original.quantity_limit);
+    ////std::swap(this->unit_value, original.unit_value);
+    ////std::move(this->bonuses, original.bonuses);
+    ////std::move(this->armour_class_modifiers, original.armour_class_modifiers);
     return *this;
   }
   
@@ -124,9 +217,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Item::__copy__(Item& self, const Item& original);
+  void Item::__copy__(Item& self, const Item& original)
   {
-    left = right;
+    self = original;
   }
   
 }

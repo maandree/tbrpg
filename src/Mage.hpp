@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MAGE__
-#define __MAGE__
+#ifndef __GUARD_MAGE_HPP__
+#define __GUARD_MAGE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Wizard.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The mage class
    */
-  class Mage: public  Wizard
+  class Mage: public Wizard
   {
   public:
     /**
      * Construction
      */
-    Mage() : Wizard();
+    Mage();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(const Mage& original) : Wizard(original);
+    Mage(const Mage& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(Mage& original) : Wizard(original);
+    Mage(Mage& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Mage(Mage&& original) : Wizard(original);
+    Mage(Mage&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Mage& self, const Mage& original);
-  
+    
   };
 }
 
 
-#endif//__MAGE__
+#endif//__GUARD_MAGE_HPP__

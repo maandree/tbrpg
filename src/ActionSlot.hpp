@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ACTIONSLOT__
-#define __ACTIONSLOT__
+#ifndef __GUARD_ACTIONSLOT_HPP__
+#define __GUARD_ACTIONSLOT_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -109,9 +113,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(ActionSlot& self, const ActionSlot& original);
-  
+    
   };
 }
 
 
-#endif//__ACTIONSLOT__
+#endif//__GUARD_ACTIONSLOT_HPP__

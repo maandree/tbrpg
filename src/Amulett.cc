@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Amulett::Amulett()
+  Amulett::Amulett() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(const Amulett& original)
+  Amulett::Amulett(const Amulett& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(Amulett& original)
+  Amulett::Amulett(Amulett& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(Amulett&& original)
+  Amulett::Amulett(Amulett&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Amulett::~Amulett()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Amulett& Amulett::operator =(const Amulett& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Amulett& Amulett::operator =(Amulett& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Amulett& Amulett::operator =(Amulett&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Amulett::__copy__(Amulett& self, const Amulett& original);
+  void Amulett::__copy__(Amulett& self, const Amulett& original)
   {
-    left = right;
+    self = original;
   }
   
 }

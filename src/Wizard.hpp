@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WIZARD__
-#define __WIZARD__
+#ifndef __GUARD_WIZARD_HPP__
+#define __GUARD_WIZARD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Class.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The wizard superclass
    */
-  class Wizard: public  Class
+  class Wizard: public Class
   {
   public:
     /**
      * Construction
      */
-    Wizard() : Class();
+    Wizard();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(const Wizard& original) : Class(original);
+    Wizard(const Wizard& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(Wizard& original) : Class(original);
+    Wizard(Wizard& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wizard(Wizard&& original) : Class(original);
+    Wizard(Wizard&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Wizard& self, const Wizard& original);
-  
+    
   };
 }
 
 
-#endif//__WIZARD__
+#endif//__GUARD_WIZARD_HPP__

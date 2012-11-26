@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Bullet::Bullet()
+  Bullet::Bullet() : Ammunition()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bullet::Bullet(const Bullet& original)
+  Bullet::Bullet(const Bullet& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bullet::Bullet(Bullet& original)
+  Bullet::Bullet(Bullet& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bullet::Bullet(Bullet&& original)
+  Bullet::Bullet(Bullet&& original) : Ammunition(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Bullet::~Bullet()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(const Bullet& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(Bullet& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(Bullet&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Bullet::__copy__(Bullet& self, const Bullet& original);
+  void Bullet::__copy__(Bullet& self, const Bullet& original)
   {
-    left = right;
+    self = original;
   }
   
 }

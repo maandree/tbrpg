@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __TOWN__
-#define __TOWN__
+#ifndef __GUARD_TOWN_HPP__
+#define __GUARD_TOWN_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "MapMinor.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Town outdoors environment
    */
-  class Town: public  MapMinor
+  class Town: public MapMinor
   {
   public:
     /**
      * Construction
      */
-    Town() : MapMinor();
+    Town();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Town(const Town& original) : MapMinor(original);
+    Town(const Town& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Town(Town& original) : MapMinor(original);
+    Town(Town& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Town(Town&& original) : MapMinor(original);
+    Town(Town&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Town& self, const Town& original);
-  
+    
   };
 }
 
 
-#endif//__TOWN__
+#endif//__GUARD_TOWN_HPP__

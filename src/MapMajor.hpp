@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MAPMAJOR__
-#define __MAPMAJOR__
+#ifndef __GUARD_MAPMAJOR_HPP__
+#define __GUARD_MAPMAJOR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,14 +46,29 @@ namespace tbrpg
   {
   public:
     /**
-     * The start area of the game senario
+     * The name of the area
      */
-    MapMinor start;
+    //std::string name;
     
     /**
-     * All major areas in the world map
+     * Whether the area is on the parties map
      */
-    MapMajor[] majors;
+    //bool visible;
+    
+    /**
+     * Whether the area has been visited
+     */
+    //bool visited;
+    
+    /**
+     * Whether the area is visitable
+     */
+    //bool visitable;
+    
+    /**
+     * Whether the area is detectable
+     */
+    //bool detectable;
     
     
     
@@ -121,9 +140,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MapMajor& self, const MapMajor& original);
-  
+    
   };
 }
 
 
-#endif//__MAPMAJOR__
+#endif//__GUARD_MAPMAJOR_HPP__

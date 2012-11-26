@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SPLINTMAIL__
-#define __SPLINTMAIL__
+#ifndef __GUARD_SPLINTMAIL_HPP__
+#define __GUARD_SPLINTMAIL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Splint mail item clss
    */
-  class SplintMail: public  BodyArmour
+  class SplintMail: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    SplintMail() : BodyArmour();
+    SplintMail();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(const SplintMail& original) : BodyArmour(original);
+    SplintMail(const SplintMail& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(SplintMail& original) : BodyArmour(original);
+    SplintMail(SplintMail& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    SplintMail(SplintMail&& original) : BodyArmour(original);
+    SplintMail(SplintMail&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(SplintMail& self, const SplintMail& original);
-  
+    
   };
 }
 
 
-#endif//__SPLINTMAIL__
+#endif//__GUARD_SPLINTMAIL_HPP__

@@ -35,11 +35,21 @@ namespace tbrpg
    */
   Spell::Spell()
   {
-    //TODO implement constructor
-    //name = nullptr;
-    //coluration = nullptr;
-    //practicer = nullptr;
-    //opposite = nullptr;
+    ////TODO implement constructor
+    //this->name = nullptr;
+    //this->description = nullptr;
+    //this->wizard = false;
+    //this->priest = false;
+    //this->level = 0;
+    //this->saving = 0;
+    //this->touch = false;
+    //this->range = 0;
+    //this->casting_time = 0;
+    //this->duration = 0;
+    //this->duration_die = 0;
+    //this->duration_dice = 0;
+    //this->effect_area = nullptr;
+    //this->school = nullptr;
   }
   
   /**
@@ -49,10 +59,21 @@ namespace tbrpg
    */
   Spell::Spell(const Spell& original)
   {
-    this->name = original.name;
-    this->coluration = original.coluration;
-    this->practicer = original.practicer;
-    this->opposite = original.opposite;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->wizard = original.wizard;
+    //this->priest = original.priest;
+    //this->level = original.level;
+    //this->saving = original.saving;
+    //this->touch = original.touch;
+    //this->range = original.range;
+    //this->casting_time = original.casting_time;
+    //this->duration = original.duration;
+    //this->duration_die = original.duration_die;
+    //this->duration_dice = original.duration_dice;
+    //this->effect_area = original.effect_area;
+    //this->school = original.school;
   }
   
   /**
@@ -62,10 +83,21 @@ namespace tbrpg
    */
   Spell::Spell(Spell& original)
   {
-    this->name = original.name;
-    this->coluration = original.coluration;
-    this->practicer = original.practicer;
-    this->opposite = original.opposite;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->wizard = original.wizard;
+    //this->priest = original.priest;
+    //this->level = original.level;
+    //this->saving = original.saving;
+    //this->touch = original.touch;
+    //this->range = original.range;
+    //this->casting_time = original.casting_time;
+    //this->duration = original.duration;
+    //this->duration_die = original.duration_die;
+    //this->duration_dice = original.duration_dice;
+    //this->effect_area = original.effect_area;
+    //this->school = original.school;
   }
   
   /**
@@ -75,10 +107,21 @@ namespace tbrpg
    */
   Spell::Spell(Spell&& original)
   {
-    std::move(this->name, original.name);
-    std::move(this->coluration, original.coluration);
-    std::move(this->practicer, original.practicer);
-    std::move(this->opposite, original.opposite);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->description, original.description);
+    ////std::swap(this->wizard, original.wizard);
+    ////std::swap(this->priest, original.priest);
+    ////std::swap(this->level, original.level);
+    ////std::swap(this->saving, original.saving);
+    ////std::swap(this->touch, original.touch);
+    ////std::swap(this->range, original.range);
+    ////std::swap(this->casting_time, original.casting_time);
+    ////std::swap(this->duration, original.duration);
+    ////std::swap(this->duration_die, original.duration_die);
+    ////std::swap(this->duration_dice, original.duration_dice);
+    ////std::move(this->effect_area, original.effect_area);
+    ////std::move(this->school, original.school);
   }
   
   
@@ -88,11 +131,11 @@ namespace tbrpg
    */
   Spell::~Spell()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
     //delete name;
-    //delete coluration;
-    //delete practicer;
-    //delete opposite;
+    //delete description;
+    //delete effect_area;
+    //delete school;
   }
   
   
@@ -105,10 +148,21 @@ namespace tbrpg
    */
   Spell& Spell::operator =(const Spell& original)
   {
-    this->name = original.name;
-    this->coluration = original.coluration;
-    this->practicer = original.practicer;
-    this->opposite = original.opposite;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->wizard = original.wizard;
+    //this->priest = original.priest;
+    //this->level = original.level;
+    //this->saving = original.saving;
+    //this->touch = original.touch;
+    //this->range = original.range;
+    //this->casting_time = original.casting_time;
+    //this->duration = original.duration;
+    //this->duration_die = original.duration_die;
+    //this->duration_dice = original.duration_dice;
+    //this->effect_area = original.effect_area;
+    //this->school = original.school;
     return *this;
   }
   
@@ -120,10 +174,21 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell& original)
   {
-    this->name = original.name;
-    this->coluration = original.coluration;
-    this->practicer = original.practicer;
-    this->opposite = original.opposite;
+    (void) original;
+    //this->name = original.name;
+    //this->description = original.description;
+    //this->wizard = original.wizard;
+    //this->priest = original.priest;
+    //this->level = original.level;
+    //this->saving = original.saving;
+    //this->touch = original.touch;
+    //this->range = original.range;
+    //this->casting_time = original.casting_time;
+    //this->duration = original.duration;
+    //this->duration_die = original.duration_die;
+    //this->duration_dice = original.duration_dice;
+    //this->effect_area = original.effect_area;
+    //this->school = original.school;
     return *this;
   }
   
@@ -135,10 +200,21 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell&& original)
   {
-    std::move(this->name, original.name);
-    std::move(this->coluration, original.coluration);
-    std::move(this->practicer, original.practicer);
-    std::move(this->opposite, original.opposite);
+    (void) original;
+    ////std::move(this->name, original.name);
+    ////std::move(this->description, original.description);
+    ////std::swap(this->wizard, original.wizard);
+    ////std::swap(this->priest, original.priest);
+    ////std::swap(this->level, original.level);
+    ////std::swap(this->saving, original.saving);
+    ////std::swap(this->touch, original.touch);
+    ////std::swap(this->range, original.range);
+    ////std::swap(this->casting_time, original.casting_time);
+    ////std::swap(this->duration, original.duration);
+    ////std::swap(this->duration_die, original.duration_die);
+    ////std::swap(this->duration_dice, original.duration_dice);
+    ////std::move(this->effect_area, original.effect_area);
+    ////std::move(this->school, original.school);
     return *this;
   }
   
@@ -148,9 +224,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Spell::__copy__(Spell& self, const Spell& original);
+  void Spell::__copy__(Spell& self, const Spell& original)
   {
-    left = right;
+    self = original;
   }
   
 }

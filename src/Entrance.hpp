@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ENTRANCE__
-#define __ENTRANCE__
+#ifndef __GUARD_ENTRANCE_HPP__
+#define __GUARD_ENTRANCE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "MapMinor.hpp"
 
 
 /**
@@ -42,29 +48,24 @@ namespace tbrpg
   {
   public:
     /**
-     * Whether the object is locked
+     * Whether the entrance can be used
      */
-    bool locked;
+    //bool usable;
     
     /**
-     * The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
+     * A description of what you see
      */
-    int pick_level;
+    //std::string description;
     
     /**
-     * The lowest value needed from 1D20 roll, with modifiers, to be able to bash the lock
+     * The direction to the entrace
      */
-    int bash_level;
+    //std::string direction;
     
     /**
-     * Whether the lock is pickable
+     * The area to which the entrance leads
      */
-    bool pickable;
-    
-    /**
-     * Whether the lock is bashable
-     */
-    bool bashable;
+    //MapMinor leads_to;
     
     
     
@@ -136,9 +137,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Entrance& self, const Entrance& original);
-  
+    
   };
 }
 
 
-#endif//__ENTRANCE__
+#endif//__GUARD_ENTRANCE_HPP__

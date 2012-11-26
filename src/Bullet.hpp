@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BULLET__
-#define __BULLET__
+#ifndef __GUARD_BULLET_HPP__
+#define __GUARD_BULLET_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Ammunition.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Sling stone item class
    */
-  class Bullet: public  Ammunition
+  class Bullet: public Ammunition
   {
   public:
     /**
      * Construction
      */
-    Bullet() : Ammunition();
+    Bullet();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(const Bullet& original) : Ammunition(original);
+    Bullet(const Bullet& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(Bullet& original) : Ammunition(original);
+    Bullet(Bullet& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bullet(Bullet&& original) : Ammunition(original);
+    Bullet(Bullet&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Bullet& self, const Bullet& original);
-  
+    
   };
 }
 
 
-#endif//__BULLET__
+#endif//__GUARD_BULLET_HPP__

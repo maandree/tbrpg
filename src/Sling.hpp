@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SLING__
-#define __SLING__
+#ifndef __GUARD_SLING_HPP__
+#define __GUARD_SLING_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "RangedWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Sling item class
    */
-  class Sling: public  RangedWeapon
+  class Sling: public RangedWeapon
   {
   public:
     /**
      * Construction
      */
-    Sling() : RangedWeapon();
+    Sling();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(const Sling& original) : RangedWeapon(original);
+    Sling(const Sling& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(Sling& original) : RangedWeapon(original);
+    Sling(Sling& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Sling(Sling&& original) : RangedWeapon(original);
+    Sling(Sling&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Sling& self, const Sling& original);
-  
+    
   };
 }
 
 
-#endif//__SLING__
+#endif//__GUARD_SLING_HPP__

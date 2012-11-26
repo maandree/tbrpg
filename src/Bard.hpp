@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __BARD__
-#define __BARD__
+#ifndef __GUARD_BARD_HPP__
+#define __GUARD_BARD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Rogue.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The bard class
    */
-  class Bard: public  Rogue
+  class Bard: public Rogue
   {
   public:
     /**
      * Construction
      */
-    Bard() : Rogue();
+    Bard();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(const Bard& original) : Rogue(original);
+    Bard(const Bard& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(Bard& original) : Rogue(original);
+    Bard(Bard& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Bard(Bard&& original) : Rogue(original);
+    Bard(Bard&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Bard& self, const Bard& original);
-  
+    
   };
 }
 
 
-#endif//__BARD__
+#endif//__GUARD_BARD_HPP__

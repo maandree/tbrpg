@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __STUDDEDLEATHERARMOUR__
-#define __STUDDEDLEATHERARMOUR__
+#ifndef __GUARD_STUDDEDLEATHERARMOUR_HPP__
+#define __GUARD_STUDDEDLEATHERARMOUR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BodyArmour.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Studded leather armour item class
    */
-  class StuddedLeatherArmour: public  BodyArmour
+  class StuddedLeatherArmour: public BodyArmour
   {
   public:
     /**
      * Construction
      */
-    StuddedLeatherArmour() : BodyArmour();
+    StuddedLeatherArmour();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    StuddedLeatherArmour(const StuddedLeatherArmour& original) : BodyArmour(original);
+    StuddedLeatherArmour(const StuddedLeatherArmour& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    StuddedLeatherArmour(StuddedLeatherArmour& original) : BodyArmour(original);
+    StuddedLeatherArmour(StuddedLeatherArmour& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    StuddedLeatherArmour(StuddedLeatherArmour&& original) : BodyArmour(original);
+    StuddedLeatherArmour(StuddedLeatherArmour&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(StuddedLeatherArmour& self, const StuddedLeatherArmour& original);
-  
+    
   };
 }
 
 
-#endif//__STUDDEDLEATHERARMOUR__
+#endif//__GUARD_STUDDEDLEATHERARMOUR_HPP__

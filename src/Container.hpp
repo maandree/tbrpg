@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CONTAINER__
-#define __CONTAINER__
+#ifndef __GUARD_CONTAINER_HPP__
+#define __GUARD_CONTAINER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,46 +44,56 @@ namespace tbrpg
   /**
    * Item container item class
    */
-  class Container: public  Item
+  class Container: public Item
   {
   public:
     /**
-     * Learned spells
+     * Items contained by the container
      */
-    std::vector<Spell> learned;
+    //std::vector<Item> contains;
     
     /**
-     * Memorisations
+     * Number of items that can be put in the container
      */
-    std::vector<Spell> memorised;
+    //int contain_limit;
+    
+    /**
+     * Weight multiplier
+     */
+    //float weight_modifier;
+    
+    /**
+     * Items that can be put inside the container
+     */
+    //Item* can_contain;
     
     
     
     /**
      * Construction
      */
-    Container() : Item();
+    Container();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Container(const Container& original) : Item(original);
+    Container(const Container& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Container(Container& original) : Item(original);
+    Container(Container& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Container(Container&& original) : Item(original);
+    Container(Container&& original);
     
     
     
@@ -121,9 +137,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Container& self, const Container& original);
-  
+    
   };
 }
 
 
-#endif//__CONTAINER__
+#endif//__GUARD_CONTAINER_HPP__

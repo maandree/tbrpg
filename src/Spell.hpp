@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SPELL__
-#define __SPELL__
+#ifndef __GUARD_SPELL_HPP__
+#define __GUARD_SPELL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "MagicSchool.hpp"
 
 
 /**
@@ -42,24 +48,74 @@ namespace tbrpg
   {
   public:
     /**
-     * The name of the school
+     * Spell name
      */
-    std::string name;
+    //std::string name;
     
     /**
-     * The colouration of the magic in the school
+     * Spell description
      */
-    std::string coluration;
+    //std::string description;
     
     /**
-     * The name of the practicers of the school
+     * Whether the spell is a wizard spell
      */
-    std::string practicer;
+    //bool wizard;
     
     /**
-     * The opposite schools
+     * Whether the spell is a priest spell
      */
-    MagicSchool[] opposite;
+    //bool priest;
+    
+    /**
+     * Spell level
+     */
+    //char level;
+    
+    /**
+     * Saving, 0 for none, 1 for half and 2 for negation
+     */
+    //char saving;
+    
+    /**
+     * Whether the spell's range is touching
+     */
+    //bool touch;
+    
+    /**
+     * Whether the spell's range, negative for touch without zero
+     */
+    //float range;
+    
+    /**
+     * Casting time
+     */
+    //char casting_time;
+    
+    /**
+     * Duration modifier
+     */
+    //char duration;
+    
+    /**
+     * Duration die side count
+     */
+    //char duration_die;
+    
+    /**
+     * Duration die count
+     */
+    //char duration_dice;
+    
+    /**
+     * Area of effect
+     */
+    //std::string effect_area;
+    
+    /**
+     * Magic shool
+     */
+    //MagicSchool school;
     
     
     
@@ -131,9 +187,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Spell& self, const Spell& original);
-  
+    
   };
 }
 
 
-#endif//__SPELL__
+#endif//__GUARD_SPELL_HPP__

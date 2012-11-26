@@ -17,12 +17,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CHARACTERSHEET__
-#define __CHARACTERSHEET__
+#ifndef __GUARD_CHARACTERSHEET_HPP__
+#define __GUARD_CHARACTERSHEET_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "WeaponGroup.hpp"
+#include "Spell.hpp"
+#include "Inventory.hpp"
+#include "SpellBook.hpp"
+#include "Race.hpp"
+#include "Race.hpp"
+#include "Class.hpp"
+#include "MagicSchool.hpp"
+#include "Spell.hpp"
 
 
 /**
@@ -42,14 +56,99 @@ namespace tbrpg
   {
   public:
     /**
-     * Allowed classes for the race
+     * The name of the character
      */
-    Class[][] allowed_classes;
+    //std::string name;
     
     /**
-     * Bonuses for the race
+     * The character's biography
      */
-    AbilityBonus bonuses;
+    //std::string biography;
+    
+    /**
+     * The character's name colouration
+     */
+    //char colour;
+    
+    /**
+     * The character's alignment
+     */
+    //char alignment;
+    
+    /**
+     * The character's portrait in printable data
+     */
+    //std::string portrait;
+    
+    /**
+     * Whether the characters is female
+     */
+    //bool female;
+    
+    /**
+     * The character's experiences for its classes
+     */
+    //int* experience;
+    
+    /**
+     * The character's levels for its classes
+     */
+    //char* level;
+    
+    /**
+     * For each of the character's classes, whether the class is abondoned by dual classing
+     */
+    //bool* class_abondoned;
+    
+    /**
+     * The character's weapon proficiencies
+     */
+    //std::unordered_map<WeaponGroup, int> proficiencies;
+    
+    /**
+     * Spells the character is affected by
+     */
+    //std::vector<Spell> affected_by;
+    
+    /**
+     * The character's inventory
+     */
+    //Inventory inventory;
+    
+    /**
+     * The character's abilities
+     */
+    //AbiltyBonus abilities;
+    
+    /**
+     * The character's spell book
+     */
+    //SpellBook spells;
+    
+    /**
+     * The character's race
+     */
+    //Race race;
+    
+    /**
+     * The character's racial enemy
+     */
+    //Race racial_enemy;
+    
+    /**
+     * The character's prestige classes
+     */
+    //Class* prestige;
+    
+    /**
+     * The character's magic school specialisation
+     */
+    //MagicSchool specialisation;
+    
+    /**
+     * The character's special abilities
+     */
+    //std::vector<Spell> special_abilities;
     
     
     
@@ -121,9 +220,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(CharacterSheet& self, const CharacterSheet& original);
-  
+    
   };
 }
 
 
-#endif//__CHARACTERSHEET__
+#endif//__GUARD_CHARACTERSHEET_HPP__

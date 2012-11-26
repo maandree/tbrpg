@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WARHAMMER__
-#define __WARHAMMER__
+#ifndef __GUARD_WARHAMMER_HPP__
+#define __GUARD_WARHAMMER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "OneHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * War hammer item class
    */
-  class WarHammer: public  OneHandedMelee
+  class WarHammer: public OneHandedMelee
   {
   public:
     /**
      * Construction
      */
-    WarHammer() : OneHandedMelee();
+    WarHammer();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(const WarHammer& original) : OneHandedMelee(original);
+    WarHammer(const WarHammer& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(WarHammer& original) : OneHandedMelee(original);
+    WarHammer(WarHammer& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    WarHammer(WarHammer&& original) : OneHandedMelee(original);
+    WarHammer(WarHammer&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(WarHammer& self, const WarHammer& original);
-  
+    
   };
 }
 
 
-#endif//__WARHAMMER__
+#endif//__GUARD_WARHAMMER_HPP__

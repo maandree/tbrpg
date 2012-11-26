@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Bow::Bow()
+  Bow::Bow() : RangedWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bow::Bow(const Bow& original)
+  Bow::Bow(const Bow& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bow::Bow(Bow& original)
+  Bow::Bow(Bow& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bow::Bow(Bow&& original)
+  Bow::Bow(Bow&& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Bow::~Bow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Bow& Bow::operator =(const Bow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Bow& Bow::operator =(Bow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Bow& Bow::operator =(Bow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Bow::__copy__(Bow& self, const Bow& original);
+  void Bow::__copy__(Bow& self, const Bow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  PlateMail::PlateMail()
+  PlateMail::PlateMail() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  PlateMail::PlateMail(const PlateMail& original)
+  PlateMail::PlateMail(const PlateMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  PlateMail::PlateMail(PlateMail& original)
+  PlateMail::PlateMail(PlateMail& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  PlateMail::PlateMail(PlateMail&& original)
+  PlateMail::PlateMail(PlateMail&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   PlateMail::~PlateMail()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   PlateMail& PlateMail::operator =(const PlateMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   PlateMail& PlateMail::operator =(PlateMail& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   PlateMail& PlateMail::operator =(PlateMail&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void PlateMail::__copy__(PlateMail& self, const PlateMail& original);
+  void PlateMail::__copy__(PlateMail& self, const PlateMail& original)
   {
-    left = right;
+    self = original;
   }
   
 }

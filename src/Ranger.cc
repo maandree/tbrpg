@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Ranger::Ranger()
+  Ranger::Ranger() : Warrior()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ranger::Ranger(const Ranger& original)
+  Ranger::Ranger(const Ranger& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ranger::Ranger(Ranger& original)
+  Ranger::Ranger(Ranger& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Ranger::Ranger(Ranger&& original)
+  Ranger::Ranger(Ranger&& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Ranger::~Ranger()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(const Ranger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(Ranger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(Ranger&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Ranger::__copy__(Ranger& self, const Ranger& original);
+  void Ranger::__copy__(Ranger& self, const Ranger& original)
   {
-    left = right;
+    self = original;
   }
   
 }

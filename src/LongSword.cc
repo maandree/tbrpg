@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  LongSword::LongSword()
+  LongSword::LongSword() : LargeSword()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongSword::LongSword(const LongSword& original)
+  LongSword::LongSword(const LongSword& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongSword::LongSword(LongSword& original)
+  LongSword::LongSword(LongSword& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LongSword::LongSword(LongSword&& original)
+  LongSword::LongSword(LongSword&& original) : LargeSword(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   LongSword::~LongSword()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(const LongSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(LongSword& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(LongSword&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void LongSword::__copy__(LongSword& self, const LongSword& original);
+  void LongSword::__copy__(LongSword& self, const LongSword& original)
   {
-    left = right;
+    self = original;
   }
   
 }

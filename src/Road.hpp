@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ROAD__
-#define __ROAD__
+#ifndef __GUARD_ROAD_HPP__
+#define __GUARD_ROAD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "MapMinor.hpp"
+#include "MapMinor.hpp"
 
 
 /**
@@ -42,29 +49,44 @@ namespace tbrpg
   {
   public:
     /**
-     * The name of the area
+     * Distance to the waylay point in metres
      */
-    std::string name;
+    //int first_distance;
     
     /**
-     * Whether the area is on the parties map
+     * Distance from the waylay point in metres
      */
-    bool visible;
+    //int last_distance;
     
     /**
-     * Whether the area has been visited
+     * The number of sides on the dice to roll to determine whether you are being waylaid
      */
-    bool visited;
+    //char waylay_die;
     
     /**
-     * Whether the area is visitable
+     * The number dice to roll to determine whether you are being waylaid
      */
-    bool visitable;
+    //char waylay_dice;
     
     /**
-     * Whether the area is detectable
+     * The highest value for at which you get waylaid, use 0 for never, and 255 for always
      */
-    bool detectable;
+    //unsigned char waylay_risk;
+    
+    /**
+     * At which direction the road is located and leads
+     */
+    //std::string direction;
+    
+    /**
+     * The area entered if you get waylaid
+     */
+    //MapMinor waylay_map;
+    
+    /**
+     * The area to which the the road leads
+     */
+    //MapMinor leads_to;
     
     
     
@@ -136,9 +158,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Road& self, const Road& original);
-  
+    
   };
 }
 
 
-#endif//__ROAD__
+#endif//__GUARD_ROAD_HPP__

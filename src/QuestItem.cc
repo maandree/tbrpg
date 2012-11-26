@@ -33,12 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  QuestItem::QuestItem()
+  QuestItem::QuestItem() : Item()
   {
-    //TODO implement constructor
-    //hit_bonus = nullptr;
-    //bonus = nullptr;
-    //half_attacks = nullptr;
+    ////TODO implement constructor
+    //this->id = 0;
   }
   
   /**
@@ -46,11 +44,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(const QuestItem& original)
+  QuestItem::QuestItem(const QuestItem& original) : Item(original)
   {
-    this->hit_bonus = original.hit_bonus;
-    this->bonus = original.bonus;
-    this->half_attacks = original.half_attacks;
+    (void) original;
+    //this->id = original.id;
   }
   
   /**
@@ -58,11 +55,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(QuestItem& original)
+  QuestItem::QuestItem(QuestItem& original) : Item(original)
   {
-    this->hit_bonus = original.hit_bonus;
-    this->bonus = original.bonus;
-    this->half_attacks = original.half_attacks;
+    (void) original;
+    //this->id = original.id;
   }
   
   /**
@@ -70,11 +66,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(QuestItem&& original)
+  QuestItem::QuestItem(QuestItem&& original) : Item(original)
   {
-    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->bonus, original.bonus);
-    std::move(this->half_attacks, original.half_attacks);
+    (void) original;
+    ////std::swap(this->id, original.id);
   }
   
   
@@ -84,10 +79,7 @@ namespace tbrpg
    */
   QuestItem::~QuestItem()
   {
-    //TODO implement destructor
-    //delete hit_bonus;
-    //delete bonus;
-    //delete half_attacks;
+    ////TODO implement destructor
   }
   
   
@@ -100,11 +92,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(const QuestItem& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
-    this->bonus = original.bonus;
-    this->half_attacks = original.half_attacks;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->id = original.id;
     return *this;
   }
   
@@ -116,11 +105,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
-    this->bonus = original.bonus;
-    this->half_attacks = original.half_attacks;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->id = original.id;
     return *this;
   }
   
@@ -132,11 +118,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->hit_bonus, original.hit_bonus);
-    std::move(this->bonus, original.bonus);
-    std::move(this->half_attacks, original.half_attacks);
+    (void) original;
+    ////std::move((Item&)*this, (Item&)original);    ////std::swap(this->id, original.id);
     return *this;
   }
   
@@ -146,9 +129,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void QuestItem::__copy__(QuestItem& self, const QuestItem& original);
+  void QuestItem::__copy__(QuestItem& self, const QuestItem& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SPELLBOOK__
-#define __SPELLBOOK__
+#ifndef __GUARD_SPELLBOOK_HPP__
+#define __GUARD_SPELLBOOK_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Spell.hpp"
+#include "Spell.hpp"
 
 
 /**
@@ -42,34 +49,14 @@ namespace tbrpg
   {
   public:
     /**
-     * Bonuses
+     * Learned spells
      */
-    Bonuses bonuses;
+    //std::vector<Spell> learned;
     
     /**
-     * Thief abilities
+     * Memorisations
      */
-    ThiefAbilities thief_abilities;
-    
-    /**
-     * Saving throws
-     */
-    SavingThrows saving_throws;
-    
-    /**
-     * Abilities
-     */
-    Abilities abilities;
-    
-    /**
-     * Spells
-     */
-    SpellBook spells;
-    
-    /**
-     * Effects
-     */
-    Spell[] effects;
+    //std::vector<Spell> memorised;
     
     
     
@@ -141,9 +128,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(SpellBook& self, const SpellBook& original);
-  
+    
   };
 }
 
 
-#endif//__SPELLBOOK__
+#endif//__GUARD_SPELLBOOK_HPP__

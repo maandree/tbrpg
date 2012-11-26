@@ -33,10 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Mace::Mace()
+  Mace::Mace() : BluntWeapon()
   {
-    //TODO implement constructor
-    //rate_of_fire = nullptr;
+    ////TODO implement constructor
   }
   
   /**
@@ -44,9 +43,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mace::Mace(const Mace& original)
+  Mace::Mace(const Mace& original) : BluntWeapon(original)
   {
-    this->rate_of_fire = original.rate_of_fire;
+    (void) original;
+
   }
   
   /**
@@ -54,9 +54,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mace::Mace(Mace& original)
+  Mace::Mace(Mace& original) : BluntWeapon(original)
   {
-    this->rate_of_fire = original.rate_of_fire;
+    (void) original;
+
   }
   
   /**
@@ -64,9 +65,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Mace::Mace(Mace&& original)
+  Mace::Mace(Mace&& original) : BluntWeapon(original)
   {
-    std::move(this->rate_of_fire, original.rate_of_fire);
+    (void) original;
+
   }
   
   
@@ -76,8 +78,7 @@ namespace tbrpg
    */
   Mace::~Mace()
   {
-    //TODO implement destructor
-    //delete rate_of_fire;
+    ////TODO implement destructor
   }
   
   
@@ -90,7 +91,8 @@ namespace tbrpg
    */
   Mace& Mace::operator =(const Mace& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);    this->rate_of_fire = original.rate_of_fire;
+    (void) original;
+
     return *this;
   }
   
@@ -102,7 +104,8 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);    this->rate_of_fire = original.rate_of_fire;
+    (void) original;
+
     return *this;
   }
   
@@ -114,7 +117,8 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace&& original)
   {
-    std::move((BluntWeapon)*this, (BluntWeapon)original);    std::move(this->rate_of_fire, original.rate_of_fire);
+    (void) original;
+
     return *this;
   }
   
@@ -124,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Mace::__copy__(Mace& self, const Mace& original);
+  void Mace::__copy__(Mace& self, const Mace& original)
   {
-    left = right;
+    self = original;
   }
   
 }

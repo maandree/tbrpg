@@ -86,7 +86,7 @@ SavingThrows                             ; Saving throws
 	int rod_staff_wand               ; Save versus rods/staffs/wands
 	int spell                        ; Save versus spells
 
-Ablities                                 ; Ability scores
+Abilities                                ; Ability scores
 	short strength                   ; The strength, excluding extra for 18
 	short strength18                 ; Extra strength for strength 18
 	short constitution               ; The constitution
@@ -149,66 +149,66 @@ Proficiency                              ; Weapon proficiency level
 QuestItem: Item                          ; Quest item class
 	int id                           ; A unique number for the item that the game senario can use for identifying quest items
 
-Item                                                                      ; Item class
-	std::string name                                                  ; The name of the item
-	std::string description                                           ; Description of the item, text scrolls should use this for their text
-	int armour_class                                                  ; The armour class, use 2³¹ − 1 for none
-	int weight                                                        ; The wieght of the item, in grams
-	bool identified                                                   ; Whether the item is identified
-	int lore_value                                                    ; The lore needed to identify the item by examining it
-	bool stuck                                                        ; Whether the item is stuck in its position
-	bool cursed                                                       ; Whether the item is cursed
-	int quantity                                                      ; The current quantity
-	int quantity_limit                                                ; The quantity limit
-	int unit_value                                                    ; The monetary value of each item
-	AbilityBonus bonuses                                              ; Ability bonuses
-	std::unorderd_map<DamageType, int> armour_class_modifiers         ; Armour class modifiers for the damage types
+Item                                                                       ; Item class
+	std::string name                                                   ; The name of the item
+	std::string description                                            ; Description of the item, text scrolls should use this for their text
+	int armour_class                                                   ; The armour class, use 2³¹ − 1 for none
+	int weight                                                         ; The wieght of the item, in grams
+	bool identified                                                    ; Whether the item is identified
+	int lore_value                                                     ; The lore needed to identify the item by examining it
+	bool stuck                                                         ; Whether the item is stuck in its position
+	bool cursed                                                        ; Whether the item is cursed
+	int quantity                                                       ; The current quantity
+	int quantity_limit                                                 ; The quantity limit
+	int unit_value                                                     ; The monetary value of each item
+	AbilityBonus bonuses                                               ; Ability bonuses
+	std::unordered_map<DamageType, int> armour_class_modifiers         ; Armour class modifiers for the damage types
 
-ActionSlotChart	                                                          ; Prestige class–action slot cart
-	std::unorderd_map<Class, long long> index_map                     ; Prestige class to OR:able index map
-	std::unorderd_map<long long, ActionSlots[]> slot_map              ; Index combination to action slots map
+ActionSlotChart	                                                           ; Prestige class–action slot cart
+	std::unordered_map<Class, long long> index_map                     ; Prestige class to OR:able index map
+	std::unordered_map<long long, ActionSlots[]> slot_map              ; Index combination to action slots map
 
-Class                                                                     ; Prestige class
-	int hit_points                                                    ; Minimum starting hit points
-	int thac0                                                         ; THAC0
-	int lore_bonus                                                    ; Lore bonus
-	bool[] alignments                                                 ; Allowed alignments
-	bool learn_from_scroll                                            ; Whether the character can learn spells from scrolls
-	char proficiencies_each                                           ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
-	ExperienceChart experience_chart                                  ; The class's experience chart
-	SpellProgression spell_progression                                ; The class's spell progression chart
-	AbilityBonus abilities                                            ; Abilties
-	Abilites lower_limits                                             ; Lower abilty bounds
-	Spell[] special_abilties                                          ; Special abilities
-	Item[] can_use                                                    ; Usable items
-	std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart ; Proficiency chart
-	Weapon default_one_hand                                           ; Weapon used when the character has his left hand free but is holding a shield
-	Weapon default_two_hand                                           ; Weapon used when the character has both his hands free
+Class                                                                      ; Prestige class
+	int hit_points                                                     ; Minimum starting hit points
+	int thac0                                                          ; THAC0
+	int lore_bonus                                                     ; Lore bonus
+	bool[] alignments                                                  ; Allowed alignments
+	bool learn_from_scroll                                             ; Whether the character can learn spells from scrolls
+	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
+	ExperienceChart experience_chart                                   ; The class's experience chart
+	SpellProgression spell_progressio n                                ; The class's spell progression chart
+	AbilityBonus abilities                                             ; Abilties
+	Abilites lower_limits                                              ; Lower abilty bounds
+	Spell[] special_abilties                                           ; Special abilities
+	Item[] can_use                                                     ; Usable items
+	std::unordered_map<WeaponGroup, Proficiencies[]> proficiency_chart ; Proficiency chart
+	Weapon default_one_hand                                            ; Weapon used when the character has his left hand free but is holding a shield
+	Weapon default_two_hand                                            ; Weapon used when the character has both his hands free
 
-Race                                                                      ; Race class
-	Class[][] allowed_classes                                         ; Allowed classes for the race
-	AbilityBonus bonuses                                              ; Bonuses for the race
+Race                                                                       ; Race class
+	Class[][] allowed_classes                                          ; Allowed classes for the race
+	AbilityBonus bonuses                                               ; Bonuses for the race
 
-CharacterSheet                                                            ; Character sheet
-	std::string name                                                  ; The name of the character
-	std::string biography                                             ; The character's biography
-	char colour                                                       ; The character's name colouration
-	char alignment                                                    ; The character's alignment
-	std::string portrait                                              ; The character's portrait in printable data
-	bool female                                                       ; Whether the characters is female
-	int[] experience                                                  ; The character's experiences for its classes
-	char[] level                                                      ; The character's levels for its classes
-	bool[] class_abondoned                                            ; For each of the character's classes, whether the class is abondoned by dual classing
-	std::unorderd_map<WeaponGroup, int> proficiencies                 ; The character's weapon proficiencies
-	std::vector<Spell> affected_by                                    ; Spells the character is affected by
-	Inventory inventory                                               ; The character's inventory
-	AbiltyBonus abilities                                             ; The character's abilities
-	SpellBook spells                                                  ; The character's spell book
-	Race race                                                         ; The character's race
-	Race racial_enemy                                                 ; The character's racial enemy
-	Class[] prestige                                                  ; The character's prestige classes
-	MagicSchool specialisation                                        ; The character's magic school specialisation
-	std::vector<Spell> special_abilities                              ; The character's special abilities
+CharacterSheet                                                             ; Character sheet
+	std::string name                                                   ; The name of the character
+	std::string biography                                              ; The character's biography
+	char colour                                                        ; The character's name colouration
+	char alignment                                                     ; The character's alignment
+	std::string portrait                                               ; The character's portrait in printable data
+	bool female                                                        ; Whether the characters is female
+	int[] experience                                                   ; The character's experiences for its classes
+	char[] level                                                       ; The character's levels for its classes
+	bool[] class_abondoned                                             ; For each of the character's classes, whether the class is abondoned by dual classing
+	std::unordered_map<WeaponGroup, int> proficiencies                 ; The character's weapon proficiencies
+	std::vector<Spell> affected_by                                     ; Spells the character is affected by
+	Inventory inventory                                                ; The character's inventory
+	AbiltyBonus abilities                                              ; The character's abilities
+	SpellBook spells                                                   ; The character's spell book
+	Race race                                                          ; The character's race
+	Race racial_enemy                                                  ; The character's racial enemy
+	Class[] prestige                                                   ; The character's prestige classes
+	MagicSchool specialisation                                         ; The character's magic school specialisation
+	std::vector<Spell> special_abilities                               ; The character's special abilities
 
 Character                                 ; Character
 	int hit_points                    ; Current hit points
@@ -242,7 +242,7 @@ Spell                                     ; Spell class
 
 AbilityChart                              ; Ability chart
 	AbilityBonus[] strength           ; Strength chart
-	AbilityBonus[] strength18         ; Strength 18/* chart
+	AbilityBonus[] strength18         ; Strength 18/?? chart
 	AbilityBonus[] dexterity          ; Dexterity chart
 	AbilityBonus[] constitution       ; Constitution chart
 	AbilityBonus[] intelligence       ; Intelligence chart
@@ -412,8 +412,8 @@ Creature: Character                       ; A creature in the area
 	bool hostile                      ; Whether the creature is hostile
 	float x                           ; The creatures horizontal position in metres, the parties starts at 0
 	float y                           ; The creatures vertical position in metres, the parties starts at 0
-	boolean alive                     ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
-	boolean resurrect                 ; Whether the creature is resurrected when the party leaves the area
+	bool alive                        ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
+	bool resurrect                    ; Whether the creature is resurrected when the party leaves the area
 
 Map                                       ; The world map
 	MapMinor start                    ; The start area of the game senario

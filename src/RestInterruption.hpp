@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __RESTINTERRUPTION__
-#define __RESTINTERRUPTION__
+#ifndef __GUARD_RESTINTERRUPTION_HPP__
+#define __GUARD_RESTINTERRUPTION_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Creature.hpp"
 
 
 /**
@@ -42,49 +48,24 @@ namespace tbrpg
   {
   public:
     /**
-     * Descrion of the area
+     * The number of sides on the dice to roll to determine whether your sleeps is being interrupted
      */
-    std::string description;
+    //char interrupt_die;
     
     /**
-     * Whether you may rest in the area without renting a room
+     * The number dice to roll to determine whether your sleeps is being interrupted
      */
-    bool may_rest;
+    //char interrupt_dice;
     
     /**
-     * The radius of the area, in metres, the party starts at origo
+     * The highest value for at which your gets interrupted, use 0 for never, and 255 for always
      */
-    float area;
+    //unsigned char interrupt_risk;
     
     /**
-     * Roads to other major areas in the area
+     * Creatures that will be summoned
      */
-    Road[] roads;
-    
-    /**
-     * Entrance to other areas in the area
-     */
-    Entrance[] connections;
-    
-    /**
-     * Items in the area
-     */
-    std::vector<Item> items;
-    
-    /**
-     * Creatures in the area
-     */
-    std::vector<Creature> creatures;
-    
-    /**
-     * Which major area to which  the area belongs
-     */
-    MapMajor is_in;
-    
-    /**
-     * Possible rest interruptions
-     */
-    RestInterruption[] interruptions;
+    //Creature* creatures;
     
     
     
@@ -156,9 +137,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(RestInterruption& self, const RestInterruption& original);
-  
+    
   };
 }
 
 
-#endif//__RESTINTERRUPTION__
+#endif//__GUARD_RESTINTERRUPTION_HPP__

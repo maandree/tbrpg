@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ThrowingAxe::ThrowingAxe()
+  ThrowingAxe::ThrowingAxe() : Throwing()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingAxe::ThrowingAxe(const ThrowingAxe& original)
+  ThrowingAxe::ThrowingAxe(const ThrowingAxe& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingAxe::ThrowingAxe(ThrowingAxe& original)
+  ThrowingAxe::ThrowingAxe(ThrowingAxe& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ThrowingAxe::ThrowingAxe(ThrowingAxe&& original)
+  ThrowingAxe::ThrowingAxe(ThrowingAxe&& original) : Throwing(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   ThrowingAxe::~ThrowingAxe()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(const ThrowingAxe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ThrowingAxe::__copy__(ThrowingAxe& self, const ThrowingAxe& original);
+  void ThrowingAxe::__copy__(ThrowingAxe& self, const ThrowingAxe& original)
   {
-    left = right;
+    self = original;
   }
   
 }

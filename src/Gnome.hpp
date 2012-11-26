@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GNOME__
-#define __GNOME__
+#ifndef __GUARD_GNOME_HPP__
+#define __GUARD_GNOME_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Race.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The gnome race
    */
-  class Gnome: public  Race
+  class Gnome: public Race
   {
   public:
     /**
      * Construction
      */
-    Gnome() : Race();
+    Gnome();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(const Gnome& original) : Race(original);
+    Gnome(const Gnome& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(Gnome& original) : Race(original);
+    Gnome(Gnome& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Gnome(Gnome&& original) : Race(original);
+    Gnome(Gnome&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Gnome& self, const Gnome& original);
-  
+    
   };
 }
 
 
-#endif//__GNOME__
+#endif//__GUARD_GNOME_HPP__

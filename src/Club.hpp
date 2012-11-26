@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CLUB__
-#define __CLUB__
+#ifndef __GUARD_CLUB_HPP__
+#define __GUARD_CLUB_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Club item class
    */
-  class Club: public  BluntWeapon
+  class Club: public BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Club() : BluntWeapon();
+    Club();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Club(const Club& original) : BluntWeapon(original);
+    Club(const Club& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Club(Club& original) : BluntWeapon(original);
+    Club(Club& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Club(Club&& original) : BluntWeapon(original);
+    Club(Club&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Club& self, const Club& original);
-  
+    
   };
 }
 
 
-#endif//__CLUB__
+#endif//__GUARD_CLUB_HPP__

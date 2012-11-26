@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Paladin::Paladin()
+  Paladin::Paladin() : Warrior()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Paladin::Paladin(const Paladin& original)
+  Paladin::Paladin(const Paladin& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Paladin::Paladin(Paladin& original)
+  Paladin::Paladin(Paladin& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Paladin::Paladin(Paladin&& original)
+  Paladin::Paladin(Paladin&& original) : Warrior(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Paladin::~Paladin()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(const Paladin& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(Paladin& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(Paladin&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Paladin::__copy__(Paladin& self, const Paladin& original);
+  void Paladin::__copy__(Paladin& self, const Paladin& original)
   {
-    left = right;
+    self = original;
   }
   
 }

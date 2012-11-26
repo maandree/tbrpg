@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LONGSWORD__
-#define __LONGSWORD__
+#ifndef __GUARD_LONGSWORD_HPP__
+#define __GUARD_LONGSWORD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "LargeSword.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Long sword item class
    */
-  class LongSword: public  LargeSword
+  class LongSword: public LargeSword
   {
   public:
     /**
      * Construction
      */
-    LongSword() : LargeSword();
+    LongSword();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(const LongSword& original) : LargeSword(original);
+    LongSword(const LongSword& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(LongSword& original) : LargeSword(original);
+    LongSword(LongSword& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LongSword(LongSword&& original) : LargeSword(original);
+    LongSword(LongSword&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LongSword& self, const LongSword& original);
-  
+    
   };
 }
 
 
-#endif//__LONGSWORD__
+#endif//__GUARD_LONGSWORD_HPP__

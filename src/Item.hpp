@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ITEM__
-#define __ITEM__
+#ifndef __GUARD_ITEM_HPP__
+#define __GUARD_ITEM_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "AbilityBonus.hpp"
+#include "DamageType.hpp"
 
 
 /**
@@ -42,9 +49,69 @@ namespace tbrpg
   {
   public:
     /**
-     * A unique number for the item that the game senario can use for identifying quest items
+     * The name of the item
      */
-    int id;
+    //std::string name;
+    
+    /**
+     * Description of the item, text scrolls should use this for their text
+     */
+    //std::string description;
+    
+    /**
+     * The armour class, use 2³¹ − 1 for none
+     */
+    //int armour_class;
+    
+    /**
+     * The wieght of the item, in grams
+     */
+    //int weight;
+    
+    /**
+     * Whether the item is identified
+     */
+    //bool identified;
+    
+    /**
+     * The lore needed to identify the item by examining it
+     */
+    //int lore_value;
+    
+    /**
+     * Whether the item is stuck in its position
+     */
+    //bool stuck;
+    
+    /**
+     * Whether the item is cursed
+     */
+    //bool cursed;
+    
+    /**
+     * The current quantity
+     */
+    //int quantity;
+    
+    /**
+     * The quantity limit
+     */
+    //int quantity_limit;
+    
+    /**
+     * The monetary value of each item
+     */
+    //int unit_value;
+    
+    /**
+     * Ability bonuses
+     */
+    //AbilityBonus bonuses;
+    
+    /**
+     * Armour class modifiers for the damage types
+     */
+    //std::unordered_map<DamageType, int> armour_class_modifiers;
     
     
     
@@ -116,9 +183,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Item& self, const Item& original);
-  
+    
   };
 }
 
 
-#endif//__ITEM__
+#endif//__GUARD_ITEM_HPP__

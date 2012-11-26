@@ -17,12 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __RACE__
-#define __RACE__
+#ifndef __GUARD_RACE_HPP__
+#define __GUARD_RACE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Class.hpp"
+#include "AbilityBonus.hpp"
 
 
 /**
@@ -42,79 +49,14 @@ namespace tbrpg
   {
   public:
     /**
-     * Minimum starting hit points
+     * Allowed classes for the race
      */
-    int hit_points;
+    //Class** allowed_classes;
     
     /**
-     * THAC0
+     * Bonuses for the race
      */
-    int thac0;
-    
-    /**
-     * Lore bonus
-     */
-    int lore_bonus;
-    
-    /**
-     * Allowed alignments
-     */
-    bool[] alignments;
-    
-    /**
-     * Whether the character can learn spells from scrolls
-     */
-    bool learn_from_scroll;
-    
-    /**
-     * The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
-     */
-    char proficiencies_each;
-    
-    /**
-     * The class's experience chart
-     */
-    ExperienceChart experience_chart;
-    
-    /**
-     * The class's spell progression chart
-     */
-    SpellProgression spell_progression;
-    
-    /**
-     * Abilties
-     */
-    AbilityBonus abilities;
-    
-    /**
-     * Lower abilty bounds
-     */
-    Abilites lower_limits;
-    
-    /**
-     * Special abilities
-     */
-    Spell[] special_abilties;
-    
-    /**
-     * Usable items
-     */
-    Item[] can_use;
-    
-    /**
-     * Proficiency chart
-     */
-    std::unorderd_map<WeaponGroup, Proficiencies[]> proficiency_chart;
-    
-    /**
-     * Weapon used when the character has his left hand free but is holding a shield
-     */
-    Weapon default_one_hand;
-    
-    /**
-     * Weapon used when the character has both his hands free
-     */
-    Weapon default_two_hand;
+    //AbilityBonus bonuses;
     
     
     
@@ -186,9 +128,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Race& self, const Race& original);
-  
+    
   };
 }
 
 
-#endif//__RACE__
+#endif//__GUARD_RACE_HPP__

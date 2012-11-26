@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CLOAK__
-#define __CLOAK__
+#ifndef __GUARD_CLOAK_HPP__
+#define __GUARD_CLOAK_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Cloak item class
    */
-  class Cloak: public  Item
+  class Cloak: public Item
   {
   public:
     /**
      * Construction
      */
-    Cloak() : Item();
+    Cloak();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(const Cloak& original) : Item(original);
+    Cloak(const Cloak& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(Cloak& original) : Item(original);
+    Cloak(Cloak& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Cloak(Cloak&& original) : Item(original);
+    Cloak(Cloak&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Cloak& self, const Cloak& original);
-  
+    
   };
 }
 
 
-#endif//__CLOAK__
+#endif//__GUARD_CLOAK_HPP__

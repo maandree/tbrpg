@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SPELLPROGRESSION__
-#define __SPELLPROGRESSION__
+#ifndef __GUARD_SPELLPROGRESSION_HPP__
+#define __GUARD_SPELLPROGRESSION_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,44 +46,14 @@ namespace tbrpg
   {
   public:
     /**
-     * Required experience for each level
+     * The number of wizard spell slots per character level and spell level
      */
-    int[] experience;
+    //int** wizard_slots;
     
     /**
-     * The number of sides of the dice to roll that determines the hit points gained when a level is reached
+     * The number of priest spell slots per character level and spell level
      */
-    char[] hit_point_die;
-    
-    /**
-     * The number of dice to roll that determines the hit points gained when a level is reached
-     */
-    char[] hit_point_dice;
-    
-    /**
-     * Hit points gained when a level is reached
-     */
-    int[] hit_point_bonus;
-    
-    /**
-     * The number of wizard spells that can be selected for learning when a level is reached
-     */
-    int[] selectable_wizard;
-    
-    /**
-     * The number of priest spells that can be selected for learning when a level is reached
-     */
-    int[] selectable_priest;
-    
-    /**
-     * Spells that are learned to when a level is reached
-     */
-    Spell[][] new_spells;
-    
-    /**
-     * The number of proficiencies that that can be allocated when a level is reached
-     */
-    int[] proficiencies;
+    //int** priest_slots;
     
     
     
@@ -151,9 +125,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(SpellProgression& self, const SpellProgression& original);
-  
+    
   };
 }
 
 
-#endif//__SPELLPROGRESSION__
+#endif//__GUARD_SPELLPROGRESSION_HPP__

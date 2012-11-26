@@ -33,11 +33,13 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Container::Container()
+  Container::Container() : Item()
   {
-    //TODO implement constructor
-    //learned = nullptr;
-    //memorised = nullptr;
+    ////TODO implement constructor
+    //this->contains = nullptr;
+    //this->contain_limit = 0;
+    //this->weight_modifier = 0;
+    //this->can_contain = nullptr;
   }
   
   /**
@@ -45,10 +47,13 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Container::Container(const Container& original)
+  Container::Container(const Container& original) : Item(original)
   {
-    this->learned = original.learned;
-    this->memorised = original.memorised;
+    (void) original;
+    //this->contains = original.contains;
+    //this->contain_limit = original.contain_limit;
+    //this->weight_modifier = original.weight_modifier;
+    //this->can_contain = original.can_contain;
   }
   
   /**
@@ -56,10 +61,13 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Container::Container(Container& original)
+  Container::Container(Container& original) : Item(original)
   {
-    this->learned = original.learned;
-    this->memorised = original.memorised;
+    (void) original;
+    //this->contains = original.contains;
+    //this->contain_limit = original.contain_limit;
+    //this->weight_modifier = original.weight_modifier;
+    //this->can_contain = original.can_contain;
   }
   
   /**
@@ -67,10 +75,13 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Container::Container(Container&& original)
+  Container::Container(Container&& original) : Item(original)
   {
-    std::move(this->learned, original.learned);
-    std::move(this->memorised, original.memorised);
+    (void) original;
+    ////std::move(this->contains, original.contains);
+    ////std::swap(this->contain_limit, original.contain_limit);
+    ////std::swap(this->weight_modifier, original.weight_modifier);
+    ////std::move(this->can_contain, original.can_contain);
   }
   
   
@@ -80,9 +91,9 @@ namespace tbrpg
    */
   Container::~Container()
   {
-    //TODO implement destructor
-    //delete learned;
-    //delete memorised;
+    ////TODO implement destructor
+    //delete contains;
+    //delete can_contain;
   }
   
   
@@ -95,9 +106,14 @@ namespace tbrpg
    */
   Container& Container::operator =(const Container& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->learned = original.learned;
-    this->memorised = original.memorised;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->contains = original.contains;
+    //this->contain_limit = original.contain_limit;
+    //this->weight_modifier = original.weight_modifier;
+    //this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -109,9 +125,14 @@ namespace tbrpg
    */
   Container& Container::operator =(Container& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this->learned = original.learned;
-    this->memorised = original.memorised;
+    (void) original;
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);
+    //Item::__copy__((Item&)*this, (Item&)original);    //this->contains = original.contains;
+    //this->contain_limit = original.contain_limit;
+    //this->weight_modifier = original.weight_modifier;
+    //this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -123,9 +144,14 @@ namespace tbrpg
    */
   Container& Container::operator =(Container&& original)
   {
-    std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->learned, original.learned);
-    std::move(this->memorised, original.memorised);
+    (void) original;
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);
+    ////std::move((Item&)*this, (Item&)original);    ////std::move(this->contains, original.contains);
+    ////std::swap(this->contain_limit, original.contain_limit);
+    ////std::swap(this->weight_modifier, original.weight_modifier);
+    ////std::move(this->can_contain, original.can_contain);
     return *this;
   }
   
@@ -135,9 +161,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Container::__copy__(Container& self, const Container& original);
+  void Container::__copy__(Container& self, const Container& original)
   {
-    left = right;
+    self = original;
   }
   
 }

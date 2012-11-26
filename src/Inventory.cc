@@ -35,14 +35,20 @@ namespace tbrpg
    */
   Inventory::Inventory()
   {
-    //TODO implement constructor
-    //strength = nullptr;
-    //strength18 = nullptr;
-    //dexterity = nullptr;
-    //constitution = nullptr;
-    //intelligence = nullptr;
-    //wisdom = nullptr;
-    //charisma = nullptr;
+    ////TODO implement constructor
+    //this->left_hand = nullptr;
+    //this->right_hand = nullptr;
+    //this->quiver = nullptr;
+    //this->quick_items = nullptr;
+    //this->headgear = nullptr;
+    //this->amulett = nullptr;
+    //this->rings = nullptr;
+    //this->body = nullptr;
+    //this->gauntlets = nullptr;
+    //this->girdle = nullptr;
+    //this->boots = nullptr;
+    //this->cloak = nullptr;
+    //this->personal = nullptr;
   }
   
   /**
@@ -52,13 +58,20 @@ namespace tbrpg
    */
   Inventory::Inventory(const Inventory& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->left_hand = original.left_hand;
+    //this->right_hand = original.right_hand;
+    //this->quiver = original.quiver;
+    //this->quick_items = original.quick_items;
+    //this->headgear = original.headgear;
+    //this->amulett = original.amulett;
+    //this->rings = original.rings;
+    //this->body = original.body;
+    //this->gauntlets = original.gauntlets;
+    //this->girdle = original.girdle;
+    //this->boots = original.boots;
+    //this->cloak = original.cloak;
+    //this->personal = original.personal;
   }
   
   /**
@@ -68,13 +81,20 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->left_hand = original.left_hand;
+    //this->right_hand = original.right_hand;
+    //this->quiver = original.quiver;
+    //this->quick_items = original.quick_items;
+    //this->headgear = original.headgear;
+    //this->amulett = original.amulett;
+    //this->rings = original.rings;
+    //this->body = original.body;
+    //this->gauntlets = original.gauntlets;
+    //this->girdle = original.girdle;
+    //this->boots = original.boots;
+    //this->cloak = original.cloak;
+    //this->personal = original.personal;
   }
   
   /**
@@ -84,13 +104,20 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory&& original)
   {
-    std::move(this->strength, original.strength);
-    std::move(this->strength18, original.strength18);
-    std::move(this->dexterity, original.dexterity);
-    std::move(this->constitution, original.constitution);
-    std::move(this->intelligence, original.intelligence);
-    std::move(this->wisdom, original.wisdom);
-    std::move(this->charisma, original.charisma);
+    (void) original;
+    ////std::move(this->left_hand, original.left_hand);
+    ////std::move(this->right_hand, original.right_hand);
+    ////std::move(this->quiver, original.quiver);
+    ////std::move(this->quick_items, original.quick_items);
+    ////std::move(this->headgear, original.headgear);
+    ////std::move(this->amulett, original.amulett);
+    ////std::move(this->rings, original.rings);
+    ////std::move(this->body, original.body);
+    ////std::move(this->gauntlets, original.gauntlets);
+    ////std::move(this->girdle, original.girdle);
+    ////std::move(this->boots, original.boots);
+    ////std::move(this->cloak, original.cloak);
+    ////std::move(this->personal, original.personal);
   }
   
   
@@ -100,14 +127,20 @@ namespace tbrpg
    */
   Inventory::~Inventory()
   {
-    //TODO implement destructor
-    //delete strength;
-    //delete strength18;
-    //delete dexterity;
-    //delete constitution;
-    //delete intelligence;
-    //delete wisdom;
-    //delete charisma;
+    ////TODO implement destructor
+    //delete left_hand;
+    //delete right_hand;
+    //delete quiver;
+    //delete quick_items;
+    //delete headgear;
+    //delete amulett;
+    //delete rings;
+    //delete body;
+    //delete gauntlets;
+    //delete girdle;
+    //delete boots;
+    //delete cloak;
+    //delete personal;
   }
   
   
@@ -120,13 +153,20 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(const Inventory& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->left_hand = original.left_hand;
+    //this->right_hand = original.right_hand;
+    //this->quiver = original.quiver;
+    //this->quick_items = original.quick_items;
+    //this->headgear = original.headgear;
+    //this->amulett = original.amulett;
+    //this->rings = original.rings;
+    //this->body = original.body;
+    //this->gauntlets = original.gauntlets;
+    //this->girdle = original.girdle;
+    //this->boots = original.boots;
+    //this->cloak = original.cloak;
+    //this->personal = original.personal;
     return *this;
   }
   
@@ -138,13 +178,20 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory& original)
   {
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    (void) original;
+    //this->left_hand = original.left_hand;
+    //this->right_hand = original.right_hand;
+    //this->quiver = original.quiver;
+    //this->quick_items = original.quick_items;
+    //this->headgear = original.headgear;
+    //this->amulett = original.amulett;
+    //this->rings = original.rings;
+    //this->body = original.body;
+    //this->gauntlets = original.gauntlets;
+    //this->girdle = original.girdle;
+    //this->boots = original.boots;
+    //this->cloak = original.cloak;
+    //this->personal = original.personal;
     return *this;
   }
   
@@ -156,13 +203,20 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory&& original)
   {
-    std::move(this->strength, original.strength);
-    std::move(this->strength18, original.strength18);
-    std::move(this->dexterity, original.dexterity);
-    std::move(this->constitution, original.constitution);
-    std::move(this->intelligence, original.intelligence);
-    std::move(this->wisdom, original.wisdom);
-    std::move(this->charisma, original.charisma);
+    (void) original;
+    ////std::move(this->left_hand, original.left_hand);
+    ////std::move(this->right_hand, original.right_hand);
+    ////std::move(this->quiver, original.quiver);
+    ////std::move(this->quick_items, original.quick_items);
+    ////std::move(this->headgear, original.headgear);
+    ////std::move(this->amulett, original.amulett);
+    ////std::move(this->rings, original.rings);
+    ////std::move(this->body, original.body);
+    ////std::move(this->gauntlets, original.gauntlets);
+    ////std::move(this->girdle, original.girdle);
+    ////std::move(this->boots, original.boots);
+    ////std::move(this->cloak, original.cloak);
+    ////std::move(this->personal, original.personal);
     return *this;
   }
   
@@ -172,9 +226,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Inventory::__copy__(Inventory& self, const Inventory& original);
+  void Inventory::__copy__(Inventory& self, const Inventory& original)
   {
-    left = right;
+    self = original;
   }
   
 }

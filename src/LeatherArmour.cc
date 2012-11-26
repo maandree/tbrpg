@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  LeatherArmour::LeatherArmour()
+  LeatherArmour::LeatherArmour() : BodyArmour()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LeatherArmour::LeatherArmour(const LeatherArmour& original)
+  LeatherArmour::LeatherArmour(const LeatherArmour& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LeatherArmour::LeatherArmour(LeatherArmour& original)
+  LeatherArmour::LeatherArmour(LeatherArmour& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  LeatherArmour::LeatherArmour(LeatherArmour&& original)
+  LeatherArmour::LeatherArmour(LeatherArmour&& original) : BodyArmour(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   LeatherArmour::~LeatherArmour()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   LeatherArmour& LeatherArmour::operator =(const LeatherArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   LeatherArmour& LeatherArmour::operator =(LeatherArmour& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   LeatherArmour& LeatherArmour::operator =(LeatherArmour&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void LeatherArmour::__copy__(LeatherArmour& self, const LeatherArmour& original);
+  void LeatherArmour::__copy__(LeatherArmour& self, const LeatherArmour& original)
   {
-    left = right;
+    self = original;
   }
   
 }

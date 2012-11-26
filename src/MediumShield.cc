@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MediumShield::MediumShield()
+  MediumShield::MediumShield() : Shield()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MediumShield::MediumShield(const MediumShield& original)
+  MediumShield::MediumShield(const MediumShield& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MediumShield::MediumShield(MediumShield& original)
+  MediumShield::MediumShield(MediumShield& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MediumShield::MediumShield(MediumShield&& original)
+  MediumShield::MediumShield(MediumShield&& original) : Shield(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   MediumShield::~MediumShield()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(const MediumShield& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(MediumShield& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(MediumShield&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void MediumShield::__copy__(MediumShield& self, const MediumShield& original);
+  void MediumShield::__copy__(MediumShield& self, const MediumShield& original)
   {
-    left = right;
+    self = original;
   }
   
 }

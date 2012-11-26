@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HEAVYCROSSBOW__
-#define __HEAVYCROSSBOW__
+#ifndef __GUARD_HEAVYCROSSBOW_HPP__
+#define __GUARD_HEAVYCROSSBOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Crossbow.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Heavy crossbow item class
    */
-  class HeavyCrossbow: public  Crossbow
+  class HeavyCrossbow: public Crossbow
   {
   public:
     /**
      * Construction
      */
-    HeavyCrossbow() : Crossbow();
+    HeavyCrossbow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(const HeavyCrossbow& original) : Crossbow(original);
+    HeavyCrossbow(const HeavyCrossbow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(HeavyCrossbow& original) : Crossbow(original);
+    HeavyCrossbow(HeavyCrossbow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    HeavyCrossbow(HeavyCrossbow&& original) : Crossbow(original);
+    HeavyCrossbow(HeavyCrossbow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(HeavyCrossbow& self, const HeavyCrossbow& original);
-  
+    
   };
 }
 
 
-#endif//__HEAVYCROSSBOW__
+#endif//__GUARD_HEAVYCROSSBOW_HPP__

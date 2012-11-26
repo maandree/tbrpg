@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Quarterstaff::Quarterstaff()
+  Quarterstaff::Quarterstaff() : TwoHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Quarterstaff::Quarterstaff(const Quarterstaff& original)
+  Quarterstaff::Quarterstaff(const Quarterstaff& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Quarterstaff::Quarterstaff(Quarterstaff& original)
+  Quarterstaff::Quarterstaff(Quarterstaff& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Quarterstaff::Quarterstaff(Quarterstaff&& original)
+  Quarterstaff::Quarterstaff(Quarterstaff&& original) : TwoHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Quarterstaff::~Quarterstaff()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Quarterstaff& Quarterstaff::operator =(const Quarterstaff& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Quarterstaff& Quarterstaff::operator =(Quarterstaff& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Quarterstaff& Quarterstaff::operator =(Quarterstaff&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Quarterstaff::__copy__(Quarterstaff& self, const Quarterstaff& original);
+  void Quarterstaff::__copy__(Quarterstaff& self, const Quarterstaff& original)
   {
-    left = right;
+    self = original;
   }
   
 }

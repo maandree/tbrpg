@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HEADGEAR__
-#define __HEADGEAR__
+#ifndef __GUARD_HEADGEAR_HPP__
+#define __GUARD_HEADGEAR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,81 +44,41 @@ namespace tbrpg
   /**
    * Headgear item class
    */
-  class Headgear: public  Item
+  class Headgear: public Item
   {
   public:
     /**
-     * The number of hands required for the weapon
+     * Whether the item protects agains critical hits
      */
-    char hands;
-    
-    /**
-     * The weapon's speed factor
-     */
-    char speed_factor;
-    
-    /**
-     * The hit bonus the weapon brings
-     */
-    int hit_bonus;
-    
-    /**
-     * The number of sides on the dice rolled to determine the inflicted damage
-     */
-    char damage_die;
-    
-    /**
-     * The number dice rolled to determine the inflicted damage
-     */
-    char damage_dice;
-    
-    /**
-     * Damage modifier
-     */
-    int damage_bonus;
-    
-    /**
-     * Whether the weapon is a melée weapon
-     */
-    bool melee;
-    
-    /**
-     * The damage type, if multiple, one fill be selected at uniform random for each attack
-     */
-    DamageType[] damage_type;
-    
-    /**
-     * The weapon group
-     */
-    WeaponGroup weapon_group;
+    //bool critical_hit_protection;
     
     
     
     /**
      * Construction
      */
-    Headgear() : Item();
+    Headgear();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(const Headgear& original) : Item(original);
+    Headgear(const Headgear& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(Headgear& original) : Item(original);
+    Headgear(Headgear& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Headgear(Headgear&& original) : Item(original);
+    Headgear(Headgear&& original);
     
     
     
@@ -156,9 +122,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Headgear& self, const Headgear& original);
-  
+    
   };
 }
 
 
-#endif//__HEADGEAR__
+#endif//__GUARD_HEADGEAR_HPP__

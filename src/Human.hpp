@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HUMAN__
-#define __HUMAN__
+#ifndef __GUARD_HUMAN_HPP__
+#define __GUARD_HUMAN_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Race.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * The human race
    */
-  class Human: public  Race
+  class Human: public Race
   {
   public:
     /**
      * Construction
      */
-    Human() : Race();
+    Human();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Human(const Human& original) : Race(original);
+    Human(const Human& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Human(Human& original) : Race(original);
+    Human(Human& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Human(Human&& original) : Race(original);
+    Human(Human&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Human& self, const Human& original);
-  
+    
   };
 }
 
 
-#endif//__HUMAN__
+#endif//__GUARD_HUMAN_HPP__

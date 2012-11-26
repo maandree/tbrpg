@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __QUESTITEM__
-#define __QUESTITEM__
+#ifndef __GUARD_QUESTITEM_HPP__
+#define __GUARD_QUESTITEM_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,51 +44,41 @@ namespace tbrpg
   /**
    * Quest item class
    */
-  class QuestItem: public  Item
+  class QuestItem: public Item
   {
   public:
     /**
-     * The hit bonus
+     * A unique number for the item that the game senario can use for identifying quest items
      */
-    int hit_bonus;
-    
-    /**
-     * The damage bonus
-     */
-    int damage bonus;
-    
-    /**
-     * the number of half attacks
-     */
-    char half_attacks;
+    //int id;
     
     
     
     /**
      * Construction
      */
-    QuestItem() : Item();
+    QuestItem();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(const QuestItem& original) : Item(original);
+    QuestItem(const QuestItem& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(QuestItem& original) : Item(original);
+    QuestItem(QuestItem& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    QuestItem(QuestItem&& original) : Item(original);
+    QuestItem(QuestItem&& original);
     
     
     
@@ -126,9 +122,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(QuestItem& self, const QuestItem& original);
-  
+    
   };
 }
 
 
-#endif//__QUESTITEM__
+#endif//__GUARD_QUESTITEM_HPP__

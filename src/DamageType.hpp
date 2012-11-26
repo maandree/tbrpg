@@ -17,12 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DAMAGETYPE__
-#define __DAMAGETYPE__
+#ifndef __GUARD_DAMAGETYPE_HPP__
+#define __GUARD_DAMAGETYPE_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 
 
 /**
@@ -42,9 +46,9 @@ namespace tbrpg
   {
   public:
     /**
-     * Whether the item protects agains critical hits
+     * The name of the damage type
      */
-    bool critical_hit_protection;
+    //std::string name;
     
     
     
@@ -116,9 +120,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(DamageType& self, const DamageType& original);
-  
+    
   };
 }
 
 
-#endif//__DAMAGETYPE__
+#endif//__GUARD_DAMAGETYPE_HPP__

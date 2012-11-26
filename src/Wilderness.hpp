@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __WILDERNESS__
-#define __WILDERNESS__
+#ifndef __GUARD_WILDERNESS_HPP__
+#define __GUARD_WILDERNESS_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "MapMinor.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Wilderness outdoors environment
    */
-  class Wilderness: public  MapMinor
+  class Wilderness: public MapMinor
   {
   public:
     /**
      * Construction
      */
-    Wilderness() : MapMinor();
+    Wilderness();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(const Wilderness& original) : MapMinor(original);
+    Wilderness(const Wilderness& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(Wilderness& original) : MapMinor(original);
+    Wilderness(Wilderness& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Wilderness(Wilderness&& original) : MapMinor(original);
+    Wilderness(Wilderness&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Wilderness& self, const Wilderness& original);
-  
+    
   };
 }
 
 
-#endif//__WILDERNESS__
+#endif//__GUARD_WILDERNESS_HPP__

@@ -35,8 +35,8 @@ namespace tbrpg
    */
   DamageType::DamageType()
   {
-    //TODO implement constructor
-    //critical_hit_protection = false;
+    ////TODO implement constructor
+    //this->name = nullptr;
   }
   
   /**
@@ -46,7 +46,8 @@ namespace tbrpg
    */
   DamageType::DamageType(const DamageType& original)
   {
-    this->critical_hit_protection = original.critical_hit_protection;
+    (void) original;
+    //this->name = original.name;
   }
   
   /**
@@ -56,7 +57,8 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType& original)
   {
-    this->critical_hit_protection = original.critical_hit_protection;
+    (void) original;
+    //this->name = original.name;
   }
   
   /**
@@ -66,7 +68,8 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType&& original)
   {
-    std::swap(this->critical_hit_protection, original.critical_hit_protection);
+    (void) original;
+    ////std::move(this->name, original.name);
   }
   
   
@@ -76,7 +79,8 @@ namespace tbrpg
    */
   DamageType::~DamageType()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
+    //delete name;
   }
   
   
@@ -89,7 +93,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(const DamageType& original)
   {
-    this->critical_hit_protection = original.critical_hit_protection;
+    (void) original;
+    //this->name = original.name;
     return *this;
   }
   
@@ -101,7 +106,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType& original)
   {
-    this->critical_hit_protection = original.critical_hit_protection;
+    (void) original;
+    //this->name = original.name;
     return *this;
   }
   
@@ -113,7 +119,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType&& original)
   {
-    std::swap(this->critical_hit_protection, original.critical_hit_protection);
+    (void) original;
+    ////std::move(this->name, original.name);
     return *this;
   }
   
@@ -123,9 +130,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void DamageType::__copy__(DamageType& self, const DamageType& original);
+  void DamageType::__copy__(DamageType& self, const DamageType& original)
   {
-    left = right;
+    self = original;
   }
   
 }

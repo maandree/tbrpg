@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FLAIL__
-#define __FLAIL__
+#ifndef __GUARD_FLAIL_HPP__
+#define __GUARD_FLAIL_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "BluntWeapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Flail item class
    */
-  class Flail: public  BluntWeapon
+  class Flail: public BluntWeapon
   {
   public:
     /**
      * Construction
      */
-    Flail() : BluntWeapon();
+    Flail();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(const Flail& original) : BluntWeapon(original);
+    Flail(const Flail& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(Flail& original) : BluntWeapon(original);
+    Flail(Flail& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Flail(Flail&& original) : BluntWeapon(original);
+    Flail(Flail&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Flail& self, const Flail& original);
-  
+    
   };
 }
 
 
-#endif//__FLAIL__
+#endif//__GUARD_FLAIL_HPP__

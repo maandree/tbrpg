@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __HALBERD__
-#define __HALBERD__
+#ifndef __GUARD_HALBERD_HPP__
+#define __GUARD_HALBERD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "TwoHandedMelee.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Halberd item class
    */
-  class Halberd: public  TwoHandedMelee
+  class Halberd: public TwoHandedMelee
   {
   public:
     /**
      * Construction
      */
-    Halberd() : TwoHandedMelee();
+    Halberd();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(const Halberd& original) : TwoHandedMelee(original);
+    Halberd(const Halberd& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(Halberd& original) : TwoHandedMelee(original);
+    Halberd(Halberd& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Halberd(Halberd&& original) : TwoHandedMelee(original);
+    Halberd(Halberd&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Halberd& self, const Halberd& original);
-  
+    
   };
 }
 
 
-#endif//__HALBERD__
+#endif//__GUARD_HALBERD_HPP__

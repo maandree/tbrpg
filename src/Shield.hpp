@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __SHIELD__
-#define __SHIELD__
+#ifndef __GUARD_SHIELD_HPP__
+#define __GUARD_SHIELD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "RightHandItem.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Shield item class
    */
-  class Shield: public  RightHandItem
+  class Shield: public RightHandItem
   {
   public:
     /**
      * Construction
      */
-    Shield() : RightHandItem();
+    Shield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(const Shield& original) : RightHandItem(original);
+    Shield(const Shield& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(Shield& original) : RightHandItem(original);
+    Shield(Shield& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Shield(Shield&& original) : RightHandItem(original);
+    Shield(Shield&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Shield& self, const Shield& original);
-  
+    
   };
 }
 
 
-#endif//__SHIELD__
+#endif//__GUARD_SHIELD_HPP__

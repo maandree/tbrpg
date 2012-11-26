@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __DART__
-#define __DART__
+#ifndef __GUARD_DART_HPP__
+#define __GUARD_DART_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Throwing.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Dart item cals
    */
-  class Dart: public  Throwing
+  class Dart: public Throwing
   {
   public:
     /**
      * Construction
      */
-    Dart() : Throwing();
+    Dart();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(const Dart& original) : Throwing(original);
+    Dart(const Dart& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(Dart& original) : Throwing(original);
+    Dart(Dart& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Dart(Dart&& original) : Throwing(original);
+    Dart(Dart&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Dart& self, const Dart& original);
-  
+    
   };
 }
 
 
-#endif//__DART__
+#endif//__GUARD_DART_HPP__

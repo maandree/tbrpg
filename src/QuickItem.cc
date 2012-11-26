@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  QuickItem::QuickItem()
+  QuickItem::QuickItem() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuickItem::QuickItem(const QuickItem& original)
+  QuickItem::QuickItem(const QuickItem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuickItem::QuickItem(QuickItem& original)
+  QuickItem::QuickItem(QuickItem& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuickItem::QuickItem(QuickItem&& original)
+  QuickItem::QuickItem(QuickItem&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   QuickItem::~QuickItem()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   QuickItem& QuickItem::operator =(const QuickItem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   QuickItem& QuickItem::operator =(QuickItem& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   QuickItem& QuickItem::operator =(QuickItem&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void QuickItem::__copy__(QuickItem& self, const QuickItem& original);
+  void QuickItem::__copy__(QuickItem& self, const QuickItem& original)
   {
-    left = right;
+    self = original;
   }
   
 }

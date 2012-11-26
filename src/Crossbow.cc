@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Crossbow::Crossbow()
+  Crossbow::Crossbow() : RangedWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Crossbow::Crossbow(const Crossbow& original)
+  Crossbow::Crossbow(const Crossbow& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Crossbow::Crossbow(Crossbow& original)
+  Crossbow::Crossbow(Crossbow& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Crossbow::Crossbow(Crossbow&& original)
+  Crossbow::Crossbow(Crossbow&& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Crossbow::~Crossbow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Crossbow& Crossbow::operator =(const Crossbow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Crossbow& Crossbow::operator =(Crossbow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Crossbow& Crossbow::operator =(Crossbow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Crossbow::__copy__(Crossbow& self, const Crossbow& original);
+  void Crossbow::__copy__(Crossbow& self, const Crossbow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

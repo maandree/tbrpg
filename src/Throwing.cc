@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Throwing::Throwing()
+  Throwing::Throwing() : RangedWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Throwing::Throwing(const Throwing& original)
+  Throwing::Throwing(const Throwing& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Throwing::Throwing(Throwing& original)
+  Throwing::Throwing(Throwing& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Throwing::Throwing(Throwing&& original)
+  Throwing::Throwing(Throwing&& original) : RangedWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Throwing::~Throwing()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(const Throwing& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(Throwing& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(Throwing&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Throwing::__copy__(Throwing& self, const Throwing& original);
+  void Throwing::__copy__(Throwing& self, const Throwing& original)
   {
-    left = right;
+    self = original;
   }
   
 }

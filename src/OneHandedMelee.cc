@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  OneHandedMelee::OneHandedMelee()
+  OneHandedMelee::OneHandedMelee() : MeleeWeapon()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  OneHandedMelee::OneHandedMelee(const OneHandedMelee& original)
+  OneHandedMelee::OneHandedMelee(const OneHandedMelee& original) : MeleeWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  OneHandedMelee::OneHandedMelee(OneHandedMelee& original)
+  OneHandedMelee::OneHandedMelee(OneHandedMelee& original) : MeleeWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  OneHandedMelee::OneHandedMelee(OneHandedMelee&& original)
+  OneHandedMelee::OneHandedMelee(OneHandedMelee&& original) : MeleeWeapon(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   OneHandedMelee::~OneHandedMelee()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   OneHandedMelee& OneHandedMelee::operator =(const OneHandedMelee& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   OneHandedMelee& OneHandedMelee::operator =(OneHandedMelee& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   OneHandedMelee& OneHandedMelee::operator =(OneHandedMelee&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void OneHandedMelee::__copy__(OneHandedMelee& self, const OneHandedMelee& original);
+  void OneHandedMelee::__copy__(OneHandedMelee& self, const OneHandedMelee& original)
   {
-    left = right;
+    self = original;
   }
   
 }

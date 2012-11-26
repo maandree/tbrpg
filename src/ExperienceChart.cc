@@ -35,9 +35,15 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart()
   {
-    //TODO implement constructor
-    //reputation = nullptr;
-    //characters = nullptr;
+    ////TODO implement constructor
+    //this->experience = nullptr;
+    //this->hit_point_die = nullptr;
+    //this->hit_point_dice = nullptr;
+    //this->hit_point_bonus = nullptr;
+    //this->selectable_wizard = nullptr;
+    //this->selectable_priest = nullptr;
+    //this->new_spells = nullptr;
+    //this->proficiencies = nullptr;
   }
   
   /**
@@ -47,8 +53,15 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(const ExperienceChart& original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    (void) original;
+    //this->experience = original.experience;
+    //this->hit_point_die = original.hit_point_die;
+    //this->hit_point_dice = original.hit_point_dice;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->selectable_wizard = original.selectable_wizard;
+    //this->selectable_priest = original.selectable_priest;
+    //this->new_spells = original.new_spells;
+    //this->proficiencies = original.proficiencies;
   }
   
   /**
@@ -58,8 +71,15 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(ExperienceChart& original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    (void) original;
+    //this->experience = original.experience;
+    //this->hit_point_die = original.hit_point_die;
+    //this->hit_point_dice = original.hit_point_dice;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->selectable_wizard = original.selectable_wizard;
+    //this->selectable_priest = original.selectable_priest;
+    //this->new_spells = original.new_spells;
+    //this->proficiencies = original.proficiencies;
   }
   
   /**
@@ -69,8 +89,15 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(ExperienceChart&& original)
   {
-    std::move(this->reputation, original.reputation);
-    std::move(this->characters, original.characters);
+    (void) original;
+    ////std::move(this->experience, original.experience);
+    ////std::move(this->hit_point_die, original.hit_point_die);
+    ////std::move(this->hit_point_dice, original.hit_point_dice);
+    ////std::move(this->hit_point_bonus, original.hit_point_bonus);
+    ////std::move(this->selectable_wizard, original.selectable_wizard);
+    ////std::move(this->selectable_priest, original.selectable_priest);
+    ////std::move(this->new_spells, original.new_spells);
+    ////std::move(this->proficiencies, original.proficiencies);
   }
   
   
@@ -80,9 +107,15 @@ namespace tbrpg
    */
   ExperienceChart::~ExperienceChart()
   {
-    //TODO implement destructor
-    //delete reputation;
-    //delete characters;
+    ////TODO implement destructor
+    //delete experience;
+    //delete hit_point_die;
+    //delete hit_point_dice;
+    //delete hit_point_bonus;
+    //delete selectable_wizard;
+    //delete selectable_priest;
+    //delete new_spells;
+    //delete proficiencies;
   }
   
   
@@ -95,8 +128,15 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(const ExperienceChart& original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    (void) original;
+    //this->experience = original.experience;
+    //this->hit_point_die = original.hit_point_die;
+    //this->hit_point_dice = original.hit_point_dice;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->selectable_wizard = original.selectable_wizard;
+    //this->selectable_priest = original.selectable_priest;
+    //this->new_spells = original.new_spells;
+    //this->proficiencies = original.proficiencies;
     return *this;
   }
   
@@ -108,8 +148,15 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(ExperienceChart& original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    (void) original;
+    //this->experience = original.experience;
+    //this->hit_point_die = original.hit_point_die;
+    //this->hit_point_dice = original.hit_point_dice;
+    //this->hit_point_bonus = original.hit_point_bonus;
+    //this->selectable_wizard = original.selectable_wizard;
+    //this->selectable_priest = original.selectable_priest;
+    //this->new_spells = original.new_spells;
+    //this->proficiencies = original.proficiencies;
     return *this;
   }
   
@@ -121,8 +168,15 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(ExperienceChart&& original)
   {
-    std::move(this->reputation, original.reputation);
-    std::move(this->characters, original.characters);
+    (void) original;
+    ////std::move(this->experience, original.experience);
+    ////std::move(this->hit_point_die, original.hit_point_die);
+    ////std::move(this->hit_point_dice, original.hit_point_dice);
+    ////std::move(this->hit_point_bonus, original.hit_point_bonus);
+    ////std::move(this->selectable_wizard, original.selectable_wizard);
+    ////std::move(this->selectable_priest, original.selectable_priest);
+    ////std::move(this->new_spells, original.new_spells);
+    ////std::move(this->proficiencies, original.proficiencies);
     return *this;
   }
   
@@ -132,9 +186,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void ExperienceChart::__copy__(ExperienceChart& self, const ExperienceChart& original);
+  void ExperienceChart::__copy__(ExperienceChart& self, const ExperienceChart& original)
   {
-    left = right;
+    self = original;
   }
   
 }

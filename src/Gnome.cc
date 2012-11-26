@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Gnome::Gnome()
+  Gnome::Gnome() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gnome::Gnome(const Gnome& original)
+  Gnome::Gnome(const Gnome& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gnome::Gnome(Gnome& original)
+  Gnome::Gnome(Gnome& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gnome::Gnome(Gnome&& original)
+  Gnome::Gnome(Gnome&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Gnome::~Gnome()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Gnome& Gnome::operator =(const Gnome& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Gnome& Gnome::operator =(Gnome& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Gnome& Gnome::operator =(Gnome&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Gnome::__copy__(Gnome& self, const Gnome& original);
+  void Gnome::__copy__(Gnome& self, const Gnome& original)
   {
-    left = right;
+    self = original;
   }
   
 }

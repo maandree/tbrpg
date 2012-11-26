@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MELEEWEAPON__
-#define __MELEEWEAPON__
+#ifndef __GUARD_MELEEWEAPON_HPP__
+#define __GUARD_MELEEWEAPON_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Weapon.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Melée weapon item class
    */
-  class MeleeWeapon: public  Weapon
+  class MeleeWeapon: public Weapon
   {
   public:
     /**
      * Construction
      */
-    MeleeWeapon() : Weapon();
+    MeleeWeapon();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(const MeleeWeapon& original) : Weapon(original);
+    MeleeWeapon(const MeleeWeapon& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(MeleeWeapon& original) : Weapon(original);
+    MeleeWeapon(MeleeWeapon& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MeleeWeapon(MeleeWeapon&& original) : Weapon(original);
+    MeleeWeapon(MeleeWeapon&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MeleeWeapon& self, const MeleeWeapon& original);
-  
+    
   };
 }
 
 
-#endif//__MELEEWEAPON__
+#endif//__GUARD_MELEEWEAPON_HPP__

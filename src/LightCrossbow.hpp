@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __LIGHTCROSSBOW__
-#define __LIGHTCROSSBOW__
+#ifndef __GUARD_LIGHTCROSSBOW_HPP__
+#define __GUARD_LIGHTCROSSBOW_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Crossbow.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Light crossbow item class
    */
-  class LightCrossbow: public  Crossbow
+  class LightCrossbow: public Crossbow
   {
   public:
     /**
      * Construction
      */
-    LightCrossbow() : Crossbow();
+    LightCrossbow();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(const LightCrossbow& original) : Crossbow(original);
+    LightCrossbow(const LightCrossbow& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(LightCrossbow& original) : Crossbow(original);
+    LightCrossbow(LightCrossbow& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    LightCrossbow(LightCrossbow&& original) : Crossbow(original);
+    LightCrossbow(LightCrossbow&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(LightCrossbow& self, const LightCrossbow& original);
-  
+    
   };
 }
 
 
-#endif//__LIGHTCROSSBOW__
+#endif//__GUARD_LIGHTCROSSBOW_HPP__

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Cleric::Cleric()
+  Cleric::Cleric() : Priest()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cleric::Cleric(const Cleric& original)
+  Cleric::Cleric(const Cleric& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cleric::Cleric(Cleric& original)
+  Cleric::Cleric(Cleric& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Cleric::Cleric(Cleric&& original)
+  Cleric::Cleric(Cleric&& original) : Priest(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Cleric::~Cleric()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(const Cleric& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(Cleric& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(Cleric&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Cleric::__copy__(Cleric& self, const Cleric& original);
+  void Cleric::__copy__(Cleric& self, const Cleric& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Dagger::Dagger()
+  Dagger::Dagger() : OneHandedMelee()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dagger::Dagger(const Dagger& original)
+  Dagger::Dagger(const Dagger& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dagger::Dagger(Dagger& original)
+  Dagger::Dagger(Dagger& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dagger::Dagger(Dagger&& original)
+  Dagger::Dagger(Dagger&& original) : OneHandedMelee(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Dagger::~Dagger()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Dagger& Dagger::operator =(const Dagger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Dagger& Dagger::operator =(Dagger& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Dagger& Dagger::operator =(Dagger&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Dagger::__copy__(Dagger& self, const Dagger& original);
+  void Dagger::__copy__(Dagger& self, const Dagger& original)
   {
-    left = right;
+    self = original;
   }
   
 }

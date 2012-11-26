@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __MEDIUMSHIELD__
-#define __MEDIUMSHIELD__
+#ifndef __GUARD_MEDIUMSHIELD_HPP__
+#define __GUARD_MEDIUMSHIELD_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Shield.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Medium shield item class
    */
-  class MediumShield: public  Shield
+  class MediumShield: public Shield
   {
   public:
     /**
      * Construction
      */
-    MediumShield() : Shield();
+    MediumShield();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(const MediumShield& original) : Shield(original);
+    MediumShield(const MediumShield& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(MediumShield& original) : Shield(original);
+    MediumShield(MediumShield& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MediumShield(MediumShield&& original) : Shield(original);
+    MediumShield(MediumShield&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(MediumShield& self, const MediumShield& original);
-  
+    
   };
 }
 
 
-#endif//__MEDIUMSHIELD__
+#endif//__GUARD_MEDIUMSHIELD_HPP__

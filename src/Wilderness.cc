@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Wilderness::Wilderness()
+  Wilderness::Wilderness() : MapMinor()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wilderness::Wilderness(const Wilderness& original)
+  Wilderness::Wilderness(const Wilderness& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wilderness::Wilderness(Wilderness& original)
+  Wilderness::Wilderness(Wilderness& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Wilderness::Wilderness(Wilderness&& original)
+  Wilderness::Wilderness(Wilderness&& original) : MapMinor(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Wilderness::~Wilderness()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(const Wilderness& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(Wilderness& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(Wilderness&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Wilderness::__copy__(Wilderness& self, const Wilderness& original);
+  void Wilderness::__copy__(Wilderness& self, const Wilderness& original)
   {
-    left = right;
+    self = original;
   }
   
 }

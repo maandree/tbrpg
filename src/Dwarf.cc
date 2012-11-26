@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Dwarf::Dwarf()
+  Dwarf::Dwarf() : Race()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dwarf::Dwarf(const Dwarf& original)
+  Dwarf::Dwarf(const Dwarf& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dwarf::Dwarf(Dwarf& original)
+  Dwarf::Dwarf(Dwarf& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Dwarf::Dwarf(Dwarf&& original)
+  Dwarf::Dwarf(Dwarf&& original) : Race(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Dwarf::~Dwarf()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Dwarf& Dwarf::operator =(const Dwarf& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Dwarf& Dwarf::operator =(Dwarf& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Dwarf& Dwarf::operator =(Dwarf&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Dwarf::__copy__(Dwarf& self, const Dwarf& original);
+  void Dwarf::__copy__(Dwarf& self, const Dwarf& original)
   {
-    left = right;
+    self = original;
   }
   
 }

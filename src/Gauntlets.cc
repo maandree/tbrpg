@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Gauntlets::Gauntlets()
+  Gauntlets::Gauntlets() : Item()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gauntlets::Gauntlets(const Gauntlets& original)
+  Gauntlets::Gauntlets(const Gauntlets& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gauntlets::Gauntlets(Gauntlets& original)
+  Gauntlets::Gauntlets(Gauntlets& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Gauntlets::Gauntlets(Gauntlets&& original)
+  Gauntlets::Gauntlets(Gauntlets&& original) : Item(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   Gauntlets::~Gauntlets()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(const Gauntlets& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(Gauntlets& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(Gauntlets&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void Gauntlets::__copy__(Gauntlets& self, const Gauntlets& original);
+  void Gauntlets::__copy__(Gauntlets& self, const Gauntlets& original)
   {
-    left = right;
+    self = original;
   }
   
 }

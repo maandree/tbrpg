@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  CompositeLongBow::CompositeLongBow()
+  CompositeLongBow::CompositeLongBow() : Bow()
   {
-    //TODO implement constructor
+    ////TODO implement constructor
   }
   
   /**
@@ -43,8 +43,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CompositeLongBow::CompositeLongBow(const CompositeLongBow& original)
+  CompositeLongBow::CompositeLongBow(const CompositeLongBow& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -53,8 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CompositeLongBow::CompositeLongBow(CompositeLongBow& original)
+  CompositeLongBow::CompositeLongBow(CompositeLongBow& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -63,8 +65,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CompositeLongBow::CompositeLongBow(CompositeLongBow&& original)
+  CompositeLongBow::CompositeLongBow(CompositeLongBow&& original) : Bow(original)
   {
+    (void) original;
 
   }
   
@@ -75,7 +78,7 @@ namespace tbrpg
    */
   CompositeLongBow::~CompositeLongBow()
   {
-    //TODO implement destructor
+    ////TODO implement destructor
   }
   
   
@@ -88,6 +91,7 @@ namespace tbrpg
    */
   CompositeLongBow& CompositeLongBow::operator =(const CompositeLongBow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -100,6 +104,7 @@ namespace tbrpg
    */
   CompositeLongBow& CompositeLongBow::operator =(CompositeLongBow& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -112,6 +117,7 @@ namespace tbrpg
    */
   CompositeLongBow& CompositeLongBow::operator =(CompositeLongBow&& original)
   {
+    (void) original;
 
     return *this;
   }
@@ -122,9 +128,9 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  static void CompositeLongBow::__copy__(CompositeLongBow& self, const CompositeLongBow& original);
+  void CompositeLongBow::__copy__(CompositeLongBow& self, const CompositeLongBow& original)
   {
-    left = right;
+    self = original;
   }
   
 }

@@ -17,12 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __AMULETT__
-#define __AMULETT__
+#ifndef __GUARD_AMULETT_HPP__
+#define __GUARD_AMULETT_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+#include "Item.hpp"
+
+
 
 
 /**
@@ -38,34 +44,34 @@ namespace tbrpg
   /**
    * Amulett and necklace item class
    */
-  class Amulett: public  Item
+  class Amulett: public Item
   {
   public:
     /**
      * Construction
      */
-    Amulett() : Item();
+    Amulett();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(const Amulett& original) : Item(original);
+    Amulett(const Amulett& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett& original) : Item(original);
+    Amulett(Amulett& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett&& original) : Item(original);
+    Amulett(Amulett&& original);
     
     
     
@@ -109,9 +115,9 @@ namespace tbrpg
      * @param  original  The reference object
      */
     static void __copy__(Amulett& self, const Amulett& original);
-  
+    
   };
 }
 
 
-#endif//__AMULETT__
+#endif//__GUARD_AMULETT_HPP__
