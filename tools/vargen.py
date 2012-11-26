@@ -63,24 +63,24 @@ for line in lines:
         for varLine in varLines:
             varComment = varLine[varLine.index(';') + 1:].strip()
             varLine = varLine[:varLine.index(';')].strip()
-            output += '    /**\n     * %s\n     */\n    %s\n\n' % (varComment, varLine)
-        output += '\n\n    /**\n     * Construction\n     */\n    %s();\n\n' % className
+            output += '    /**\n     * %s\n     */\n    %s\n    \n' % (varComment, varLine)
+        output += '\n    \n    /**\n     * Construction\n     */\n    %s();\n    \n' % className
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(const %s& original);\n\n' % (className, className)
+        output += '     */\n    %s(const %s& original);\n    \n' % (className, className)
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(%s& original);\n\n' % (className, className)
+        output += '     */\n    %s(%s& original);\n    \n' % (className, className)
         output += '    /**\n     * Move constructor\n     * \n     * @param  original  The object to clone\n'
-        output += '     */\n    %s(%s&& original);\n\n\n\n' % (className, className)
-        output += '    /**\n     * Destructor\n     */\n    virtual ~%s();\n\n\n\n' % className
+        output += '     */\n    %s(%s&& original);\n    \n    \n    \n' % (className, className)
+        output += '    /**\n     * Destructor\n     */\n    virtual ~%s();\n    \n    \n    \n' % className
         output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
         output += '     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(const %s& original);\n\n' % (className, className)
+        output += '     */    virtual %s& operator =(const %s& original);\n    \n' % (className, className)
         output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
         output += '     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(%s& original);\n\n' % (className, className)
+        output += '     */    virtual %s& operator =(%s& original);\n    \n' % (className, className)
         output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
         output += 'its resourced will be moved\n     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(%s&& original);\n\n' % (className, className)
+        output += '     */    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
         output += '  };\n'
         output += '}\n\n\n'
         output += '#endif//__%s__\n' % className.upper()
@@ -120,27 +120,27 @@ for line in lines:
         output += '\n\n/**\n * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
         output += 'namespace tbrpg\n{\n'
-        output += '  /**\n   * Constructor\n   */\n  %s::%s()\n  {\n%s\n  }\n\n' % (className, className, varInit)
+        output += '  /**\n   * Constructor\n   */\n  %s::%s()\n  {\n%s\n  }\n  \n' % (className, className, varInit)
         output += '  /**\n   * Copy constructor\n   * \n   * @param  original  The object to clone\n   */\n'
-        output += '  %s::%s(const %s& original)\n  {\n%s\n  }\n\n' % (className, className, className, varCopy)
+        output += '  %s::%s(const %s& original)\n  {\n%s\n  }\n  \n' % (className, className, className, varCopy)
         output += '  /**\n   * Copy constructor\n   * \n   * @param  original  The object to clone\n   */\n'
-        output += '  %s::%s(%s& original)\n  {\n%s\n  }\n\n' % (className, className, className, varCopy)
+        output += '  %s::%s(%s& original)\n  {\n%s\n  }\n  \n' % (className, className, className, varCopy)
         output += '  /**\n   * Move constructor\n   * \n   * @param  original  The object to clone\n   */\n'
-        output += '  %s::%s(%s&& original)\n  {\n%s\n  }\n\n\n\n' % (className, className, className, varMove)
+        output += '  %s::%s(%s&& original)\n  {\n%s\n  }\n  \n  \n  \n' % (className, className, className, varMove)
         output += '  /**\n   * Destructor\n   */\n'
-        output += '  %s::~%s()\n  {\n%s\n  }\n\n\n\n' % (className, className, varFree)
-        output += '    /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
+        output += '  %s::~%s()\n  {\n%s\n  }\n  \n  \n  \n' % (className, className, varFree)
+        output += '  /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
         output += '   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(const %s& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n\n' % varCopy
-        output += '    /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
+        output += '%s\n    return *this;\n  }\n  \n' % varCopy
+        output += '  /**\n   * Assignment operator\n   * \n   * @param   original  The reference object\n'
         output += '   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n\n' % varCopy
-        output += '    /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
+        output += '%s\n    return *this;\n  }\n  \n' % varCopy
+        output += '  /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
         output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
-        output += '%s\n    return *this;\n  }\n\n' % varMove
+        output += '%s\n    return *this;\n  }\n  \n' % varMove
         output += '}\n\n'
         with open(className + '.cc', 'wb') as file:
             file.write(output.encode('utf-8'))
