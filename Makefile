@@ -53,7 +53,7 @@ all: code info pdf
 
 code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
+	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*{,/*}.{cc,hpp}
 
 
 

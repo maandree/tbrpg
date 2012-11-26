@@ -17,3 +17,5 @@ tbrpg.pdf
 *-cache
 cachegrind.out.*
 __*
+!__dummy*
+!__dummy/
