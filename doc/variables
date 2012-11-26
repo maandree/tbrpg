@@ -25,8 +25,8 @@ RuleSet                                  ; Game rules
 	ReputationChart reputation_chart ; The reputation chart
 	AbilityChart ability_chart       ; The ability chart
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
-	Spell[] spells                   ; All spells, very useful for when new characters selects spells, or to restrict imported characters
-	Race[] races                     ; Races in the game that new charactes can chooses
+	std::vector<Spell> spells        ; All spells, very useful for when new characters selects spells, or to restrict imported characters
+	std::vector<Race> races          ; Races in the game that new charactes can chooses
 
 ReputationChart                          ; Reputation chart
 	int[] reaction_adjustment        ; Reaction adjustment for each reputation
@@ -58,7 +58,7 @@ Bonuses                                  ; Bonuses
 	int lore_bonus                   ; Lore bonus
 	float magic_defence_bonus        ; Resistance against magic bonus
 	float spell_failure              ; Chance to fail spell casting
-	int[] bonus_spells               ; Extra spell slots per spell level
+	std::vector<int> bonus_spells    ; Extra spell slots per spell level
 	int morale                       ; Morale bonus
 	int luck                         ; Luck bonus
 	float detect_doors               ; Detect secret door bonus
@@ -106,12 +106,12 @@ ExperienceChart                          ; Experience chart
 	int[] hit_point_bonus            ; Hit points gained when a level is reached
 	int[] selectable_wizard          ; The number of wizard spells that can be selected for learning when a level is reached
 	int[] selectable_priest          ; The number of priest spells that can be selected for learning when a level is reached
-	Spell[][] new_spells		 ; Spells that are learned to when a level is reached
+	std::vector<Spell>[] new_spells  ; Spells that are learned to when a level is reached
 	int[] proficiencies		 ; The number of proficiencies that that can be allocated when a level is reached
 
 SpellProgression                         ; Spell progression chart
-	int[][] wizard_slots             ; The number of wizard spell slots per character level and spell level
-	int[][] priest_slots             ; The number of priest spell slots per character level and spell level
+	std::vector<int>[] wizard_slots  ; The number of wizard spell slots per character level and spell level
+	std::vector<int>[] priest_slots  ; The number of priest spell slots per character level and spell level
 
 Ammunition: Item                         ; Ammunition item class
 	int hit_bonus                    ; The hit bonus the ammunition brings
@@ -121,16 +121,16 @@ Ammunition: Item                         ; Ammunition item class
 	RangedWeapon usable_with         ; Weapon that the ammunition can be used with
 	DamageType damage_type           ; The damage type inflicted by the ammunition
 
-Weapon: RightHandItem                    ; Weapon item class
-	char hands                       ; The number of hands required for the weapon
-	char speed_factor                ; The weapon's speed factor
-	int hit_bonus                    ; The hit bonus the weapon brings
-	char damage_die                  ; The number of sides on the dice rolled to determine the inflicted damage
-	char damage_dice                 ; The number dice rolled to determine the inflicted damage
-	int damage_bonus                 ; Damage modifier
-	bool melee                       ; Whether the weapon is a melée weapon
-	DamageType[] damage_type         ; The damage type, if multiple, one fill be selected at uniform random for each attack
-	WeaponGroup weapon_group         ; The weapon group
+Weapon: RightHandItem                       ; Weapon item class
+	char hands                          ; The number of hands required for the weapon
+	char speed_factor                   ; The weapon's speed factor
+	int hit_bonus                       ; The hit bonus the weapon brings
+	char damage_die                     ; The number of sides on the dice rolled to determine the inflicted damage
+	char damage_dice                    ; The number dice rolled to determine the inflicted damage
+	int damage_bonus                    ; Damage modifier
+	bool melee                          ; Whether the weapon is a melée weapon
+	std::vector<DamageType> damage_type ; The damage type, if multiple, one fill be selected at uniform random for each attack
+	WeaponGroup weapon_group            ; The weapon group
 
 Headgear: Item                           ; Headgear item class
 	bool critical_hit_protection     ; Whether the item protects agains critical hits
@@ -166,7 +166,7 @@ Item                                                                       ; Ite
 
 ActionSlotChart	                                                           ; Prestige class–action slot cart
 	std::unordered_map<Class, long long> index_map                     ; Prestige class to OR:able index map
-	std::unordered_map<long long, ActionSlot[]> slot_map               ; Index combination to action slots map
+	std::unordered_map<long long, std::vector<ActionSlot>> slot_map    ; Index combination to action slots map
 
 Class                                                                      ; Prestige class
 	int hit_points                                                     ; Minimum starting hit points
@@ -181,12 +181,12 @@ Class                                                                      ; Pre
 	Abilities lower_limits                                             ; Lower ability bounds
 	Spell[] special_abilities                                          ; Special abilities
 	Item[] can_use                                                     ; Usable items
-	std::unordered_map<WeaponGroup, Proficiency[]> proficiency_chart   ; Proficiency chart
-	Weapon default_one_hand                                            ; Weapon used when the character has his left hand free but is holding a shield
-	Weapon default_two_hand                                            ; Weapon used when the character has both his hands free
+	std::unordered_map<WeaponGroup, std::vector<Proficiency>> proficiency_chart  ; Proficiency chart
+	Weapon default_one_hand                                                      ; Weapon used when the character has his left hand free but is holding a shield
+	Weapon default_two_hand                                                      ; Weapon used when the character has both his hands free
 
 Race                                                                       ; Race class
-	Class[][] allowed_classes                                          ; Allowed classes for the race
+	std::vector<std::vector<Class>> allowed_classes                    ; Allowed classes for the race
 	AbilityBonus bonuses                                               ; Bonuses for the race
 
 CharacterSheet                                                             ; Character sheet
@@ -196,9 +196,9 @@ CharacterSheet                                                             ; Cha
 	char alignment                                                     ; The character's alignment
 	std::string portrait                                               ; The character's portrait in printable data
 	bool female                                                        ; Whether the characters is female
-	int[] experience                                                   ; The character's experiences for its classes
-	char[] level                                                       ; The character's levels for its classes
-	bool[] class_abondoned                                             ; For each of the character's classes, whether the class is abondoned by dual classing
+	std::vector<int> experience                                        ; The character's experiences for its classes
+	std::vector<char> level                                            ; The character's levels for its classes
+	std::vector<bool> class_abondoned                                  ; For each of the character's classes, whether the class is abondoned by dual classing
 	std::unordered_map<WeaponGroup, int> proficiencies                 ; The character's weapon proficiencies
 	std::vector<Spell> affected_by                                     ; Spells the character is affected by
 	Inventory inventory                                                ; The character's inventory
@@ -206,7 +206,7 @@ CharacterSheet                                                             ; Cha
 	SpellBook spells                                                   ; The character's spell book
 	Race race                                                          ; The character's race
 	Race racial_enemy                                                  ; The character's racial enemy
-	Class[] prestige                                                   ; The character's prestige classes
+	std::vector<Class> prestige                                        ; The character's prestige classes
 	MagicSchool specialisation                                         ; The character's magic school specialisation
 	std::vector<Spell> special_abilities                               ; The character's special abilities
 
@@ -222,7 +222,7 @@ MagicSchool                               ; Magic school class
 	std::string name                  ; The name of the school
 	std::string coluration            ; The colouration of the magic in the school
 	std::string practicer             ; The name of the practicers of the school
-	MagicSchool[] opposite            ; The opposite schools
+	std::vector<MagicSchool> opposite ; The opposite schools
 
 Spell                                     ; Spell class
 	std::string name                  ; Spell name
@@ -249,20 +249,20 @@ AbilityChart                              ; Ability chart
 	AbilityBonus[] wisdom             ; Wisdom chart
 	AbilityBonus[] charisma           ; Charisma chart
 
-Inventory                                 ; Character inventory class
-	Weapon[] left_hand                ; Left hand item slots
-	RightHandItem right_hand          ; Right hand item slot
-	Ammunition[] quiver               ; Quiver slots
-	QuickItem[] quick_items           ; Quick item slots
-	Headgear headgear                 ; Headgear slots
-	Amulett amulett                   ; Amulette and necklace slot
-	Ring[] rings                      ; Ring slots
-	BodyArmour body                   ; Body armour slot
-	Gauntlets gauntlets               ; Gauntlet and bracer slots
-	Girdle girdle                     ; Girdle and belt slot
-	Boots boots                       ; Boot slot
-	Cloak cloak                       ; Cloak slot
-	Item[] personal                   ; Personal inventory slots
+Inventory                                  ; Character inventory class
+	std::vector<Weapon> left_hand      ; Left hand item slots
+	RightHandItem right_hand           ; Right hand item slot
+	std::vector<Ammunition> quiver     ; Quiver slots
+	std::vector<QuickItem> quick_items ; Quick item slots
+	Headgear headgear                  ; Headgear slots
+	Amulett amulett                    ; Amulette and necklace slot
+	Ring[] rings                       ; Ring slots
+	BodyArmour body                    ; Body armour slot
+	Gauntlets gauntlets                ; Gauntlet and bracer slots
+	Girdle girdle                      ; Girdle and belt slot
+	Boots boots                        ; Boot slot
+	Cloak cloak                        ; Cloak slot
+	std::vector<Item> personal         ; Personal inventory slots
 
 Body: Item                                ; Character body item class
 	Character character               ; The dead character
@@ -273,7 +273,7 @@ AbilityBonus                              ; Abilities bonus class
 	SavingThrows saving_throws        ; Saving throws
 	Abilities abilities               ; Abilities
 	SpellBook spells                  ; Spells
-	Spell[] effects                   ; Effects
+	std::vector<Spell> effects        ; Effects
 
 SpellBook                                 ; Character spell book
 	std::vector<Spell> learned        ; Learned spells
@@ -283,7 +283,7 @@ Container: Item                           ; Item container item class
 	std::vector<Item> contains        ; Items contained by the container
 	int contain_limit                 ; Number of items that can be put in the container
 	float weight_modifier             ; Weight multiplier
-	Item[] can_contain                ; Items that can be put inside the container
+	std::vector<Item> can_contain     ; Items that can be put inside the container
 
 RangedWeapon: Weapon                      ; Ranged weapon item class
 	char rate_of_fire                 ; The weapon's rate of fire
@@ -391,22 +391,22 @@ Entrance                                  ; Connection between map areas
 	std::string direction             ; The direction to the entrace
 	MapMinor leads_to                 ; The area to which the entrance leads
 
-MapMinor                                  ; Map area
-	std::string description           ; Descrion of the area
-	bool may_rest                     ; Whether you may rest in the area without renting a room
-	float area                        ; The radius of the area, in metres, the party starts at origo
-	Road[] roads                      ; Roads to other major areas in the area
-	Entrance[] connections            ; Entrance to other areas in the area
-	std::vector<Item> items           ; Items in the area
-	std::vector<Creature> creatures   ; Creatures in the area
-	MapMajor is_in                    ; Which major area to which  the area belongs
-	RestInterruption[] interruptions  ; Possible rest interruptions
+MapMinor                                            ; Map area
+	std::string description                     ; Descrion of the area
+	bool may_rest                               ; Whether you may rest in the area without renting a room
+	float area                                  ; The radius of the area, in metres, the party starts at origo
+	std::vector<Road> roads                     ; Roads to other major areas in the area
+	std::vector<Entrance> connections           ; Entrance to other areas in the area
+	std::vector<Item> items                     ; Items in the area
+	std::vector<Creature> creatures             ; Creatures in the area
+	MapMajor is_in                              ; Which major area to which  the area belongs
+	std::vector<RestInterruption> interruptions ; Possible rest interruptions
 
 RestInterruption                          ; A possible rest interruption
 	char interrupt_die                ; The number of sides on the dice to roll to determine whether your sleeps is being interrupted
 	char interrupt_dice               ; The number dice to roll to determine whether your sleeps is being interrupted
 	unsigned char interrupt_risk      ; The highest value for at which your gets interrupted, use 0 for never, and 255 for always
-	Creature[] creatures              ; Creatures that will be summoned
+	std::vector<Creature> creatures   ; Creatures that will be summoned
 
 Creature: Character                       ; A creature in the area
 	bool hostile                      ; Whether the creature is hostile
@@ -417,7 +417,7 @@ Creature: Character                       ; A creature in the area
 
 Map                                       ; The world map
 	MapMinor start                    ; The start area of the game senario
-	MapMajor[] majors                 ; All major areas in the world map
+	std::vector<MapMajor> majors      ; All major areas in the world map
 
 MapMajor                                  ; Areas on the world map
 	std::string name                  ; The name of the area
