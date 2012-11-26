@@ -53,17 +53,19 @@ for line in lines:
         supers = []
         superDefault = ''
         superCopy = ''
+        superInclude = []
         if ':' in className:
             className = className[:className.index(':')]
             superDefault = ' ' + classLine[classLine.index(':'):].replace(', ', '(), ') + '()'
             superCopy = ' ' + classLine[classLine.index(':'):].replace(', ', '(original), ') + '(original)'
             supers = classLine[classLine.index(':') + 2:].split(' ')
             classLine = classLine.replace(',', ', public').replace(':', ': public ')
+            superInclude = ['#include "%s.hpp"' % c for c in supers] + ['', ''];
         
         output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
         output += '#define __%s__\n' % className.upper()
-        output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n\n/**\n'
+        output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n%s/**\n' % '\n'.join(superInclude)
         output += ' * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
         output += 'namespace tbrpg\n{\n'
