@@ -55,7 +55,7 @@ for line in lines:
         output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __%s__\n' % className.upper()
         output += '#define __%s__\n' % className.upper()
-        output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n/**\n'
+        output += '\n\n#include <stdlib.h>\n#include <algorithm>\n\n\n/**\n'
         output += ' * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
         output += 'namespace tbrpg\n{\n'
@@ -63,8 +63,10 @@ for line in lines:
         for varLine in varLines:
             varComment = varLine[varLine.index(';') + 1:].strip()
             varLine = varLine[:varLine.index(';')].strip()
-            output += '    /**\n     * %s\n     */\n    %s\n    \n' % (varComment, varLine)
-        output += '\n    \n    /**\n     * Construction\n     */\n    %s();\n    \n' % className
+            output += '    /**\n     * %s\n     */\n    %s;\n    \n' % (varComment, varLine)
+        if len(varLines) > 0:
+            output += '    \n    \n'
+        output += '    /**\n     * Construction\n     */\n    %s();\n    \n' % className
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
         output += '     */\n    %s(const %s& original);\n    \n' % (className, className)
         output += '    /**\n     * Copy constructor\n     * \n     * @param  original  The object to clone\n'
@@ -74,13 +76,13 @@ for line in lines:
         output += '    /**\n     * Destructor\n     */\n    virtual ~%s();\n    \n    \n    \n' % className
         output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
         output += '     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(const %s& original);\n    \n' % (className, className)
+        output += '     */\n    virtual %s& operator =(const %s& original);\n    \n' % (className, className)
         output += '    /**\n     * Assignment operator\n     * \n     * @param   original  The reference object\n'
         output += '     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(%s& original);\n    \n' % (className, className)
+        output += '     */\n    virtual %s& operator =(%s& original);\n    \n' % (className, className)
         output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
         output += 'its resourced will be moved\n     * @return            The invoked object\n'
-        output += '     */    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
+        output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
         output += '  };\n'
         output += '}\n\n\n'
         output += '#endif//__%s__\n' % className.upper()
