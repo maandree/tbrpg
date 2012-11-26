@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DWARF_HPP__
 #define __GUARD_DWARF_HPP__
+#ifdef  CIRCULAR_DWARF
+#include "Dwarf.circular"
+#endif//CIRCULAR_DWARF
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Dwarf& self, const Dwarf& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Dwarf>
+  {
+  public:
+    size_t operator()(const tbrpg::Dwarf& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_TOWN_HPP__
 #define __GUARD_TOWN_HPP__
+#ifdef  CIRCULAR_TOWN
+#include "Town.circular"
+#endif//CIRCULAR_TOWN
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Town& self, const Town& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Town>
+  {
+  public:
+    size_t operator()(const tbrpg::Town& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_LARGESHIELD_HPP__
 #define __GUARD_LARGESHIELD_HPP__
+#ifdef  CIRCULAR_LARGESHIELD
+#include "LargeShield.circular"
+#endif//CIRCULAR_LARGESHIELD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(LargeShield& self, const LargeShield& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::LargeShield>
+  {
+  public:
+    size_t operator()(const tbrpg::LargeShield& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

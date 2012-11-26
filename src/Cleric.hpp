@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CLERIC_HPP__
 #define __GUARD_CLERIC_HPP__
+#ifdef  CIRCULAR_CLERIC
+#include "Cleric.circular"
+#endif//CIRCULAR_CLERIC
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Cleric& self, const Cleric& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Cleric>
+  {
+  public:
+    size_t operator()(const tbrpg::Cleric& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

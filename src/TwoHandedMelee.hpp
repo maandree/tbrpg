@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_TWOHANDEDMELEE_HPP__
 #define __GUARD_TWOHANDEDMELEE_HPP__
+#ifdef  CIRCULAR_TWOHANDEDMELEE
+#include "TwoHandedMelee.circular"
+#endif//CIRCULAR_TWOHANDEDMELEE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(TwoHandedMelee& self, const TwoHandedMelee& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::TwoHandedMelee>
+  {
+  public:
+    size_t operator()(const tbrpg::TwoHandedMelee& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

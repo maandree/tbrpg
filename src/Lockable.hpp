@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_LOCKABLE_HPP__
 #define __GUARD_LOCKABLE_HPP__
+#ifdef  CIRCULAR_LOCKABLE
+#include "Lockable.circular"
+#endif//CIRCULAR_LOCKABLE
 
 
 #include <stdlib.h>
@@ -48,27 +51,27 @@ namespace tbrpg
     /**
      * Whether the object is locked
      */
-    //bool locked;
+    bool locked;
     
     /**
      * The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
      */
-    //int pick_level;
+    int pick_level;
     
     /**
      * The lowest value needed from 1D20 roll, with modifiers, to be able to bash the lock
      */
-    //int bash_level;
+    int bash_level;
     
     /**
      * Whether the lock is pickable
      */
-    //bool pickable;
+    bool pickable;
     
     /**
      * Whether the lock is bashable
      */
-    //bool bashable;
+    bool bashable;
     
     
     
@@ -141,6 +144,28 @@ namespace tbrpg
      */
     static void __copy__(Lockable& self, const Lockable& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Lockable>
+  {
+  public:
+    size_t operator()(const tbrpg::Lockable& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

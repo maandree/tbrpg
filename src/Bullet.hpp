@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BULLET_HPP__
 #define __GUARD_BULLET_HPP__
+#ifdef  CIRCULAR_BULLET
+#include "Bullet.circular"
+#endif//CIRCULAR_BULLET
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Bullet& self, const Bullet& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Bullet>
+  {
+  public:
+    size_t operator()(const tbrpg::Bullet& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

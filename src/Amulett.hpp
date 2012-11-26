@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_AMULETT_HPP__
 #define __GUARD_AMULETT_HPP__
+#ifdef  CIRCULAR_AMULETT
+#include "Amulett.circular"
+#endif//CIRCULAR_AMULETT
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Amulett& self, const Amulett& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Amulett>
+  {
+  public:
+    size_t operator()(const tbrpg::Amulett& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

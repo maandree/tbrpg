@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_GNOME_HPP__
 #define __GUARD_GNOME_HPP__
+#ifdef  CIRCULAR_GNOME
+#include "Gnome.circular"
+#endif//CIRCULAR_GNOME
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Gnome& self, const Gnome& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Gnome>
+  {
+  public:
+    size_t operator()(const tbrpg::Gnome& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

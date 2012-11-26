@@ -143,7 +143,7 @@ WeaponGroup                              ; Weapon group
 
 Proficiency                              ; Weapon proficiency level
 	int hit_bonus                    ; The hit bonus
-	int damage bonus                 ; The damage bonus
+	int damage_bonus                 ; The damage bonus
 	char half_attacks                ; the number of half attacks
 
 QuestItem: Item                          ; Quest item class
@@ -166,7 +166,7 @@ Item                                                                       ; Ite
 
 ActionSlotChart	                                                           ; Prestige class–action slot cart
 	std::unordered_map<Class, long long> index_map                     ; Prestige class to OR:able index map
-	std::unordered_map<long long, ActionSlots[]> slot_map              ; Index combination to action slots map
+	std::unordered_map<long long, ActionSlot[]> slot_map               ; Index combination to action slots map
 
 Class                                                                      ; Prestige class
 	int hit_points                                                     ; Minimum starting hit points
@@ -176,12 +176,12 @@ Class                                                                      ; Pre
 	bool learn_from_scroll                                             ; Whether the character can learn spells from scrolls
 	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
 	ExperienceChart experience_chart                                   ; The class's experience chart
-	SpellProgression spell_progressio n                                ; The class's spell progression chart
+	SpellProgression spell_progression                                 ; The class's spell progression chart
 	AbilityBonus abilities                                             ; Abilties
-	Abilites lower_limits                                              ; Lower abilty bounds
-	Spell[] special_abilties                                           ; Special abilities
+	Abilities lower_limits                                             ; Lower ability bounds
+	Spell[] special_abilities                                          ; Special abilities
 	Item[] can_use                                                     ; Usable items
-	std::unordered_map<WeaponGroup, Proficiencies[]> proficiency_chart ; Proficiency chart
+	std::unordered_map<WeaponGroup, Proficiency[]> proficiency_chart   ; Proficiency chart
 	Weapon default_one_hand                                            ; Weapon used when the character has his left hand free but is holding a shield
 	Weapon default_two_hand                                            ; Weapon used when the character has both his hands free
 
@@ -202,7 +202,7 @@ CharacterSheet                                                             ; Cha
 	std::unordered_map<WeaponGroup, int> proficiencies                 ; The character's weapon proficiencies
 	std::vector<Spell> affected_by                                     ; Spells the character is affected by
 	Inventory inventory                                                ; The character's inventory
-	AbiltyBonus abilities                                              ; The character's abilities
+	AbilityBonus abilities                                             ; The character's abilities
 	SpellBook spells                                                   ; The character's spell book
 	Race race                                                          ; The character's race
 	Race racial_enemy                                                  ; The character's racial enemy

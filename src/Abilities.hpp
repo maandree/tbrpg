@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ABILITIES_HPP__
 #define __GUARD_ABILITIES_HPP__
+#ifdef  CIRCULAR_ABILITIES
+#include "Abilities.circular"
+#endif//CIRCULAR_ABILITIES
 
 
 #include <stdlib.h>
@@ -48,37 +51,37 @@ namespace tbrpg
     /**
      * The strength, excluding extra for 18
      */
-    //short strength;
+    short strength;
     
     /**
      * Extra strength for strength 18
      */
-    //short strength18;
+    short strength18;
     
     /**
      * The constitution
      */
-    //short constitution;
+    short constitution;
     
     /**
      * The dexterity
      */
-    //short dexterity;
+    short dexterity;
     
     /**
      * The intelligence
      */
-    //short intelligence;
+    short intelligence;
     
     /**
      * The wisdom
      */
-    //short wisdom;
+    short wisdom;
     
     /**
      * The charisma
      */
-    //short charisma;
+    short charisma;
     
     
     
@@ -151,6 +154,28 @@ namespace tbrpg
      */
     static void __copy__(Abilities& self, const Abilities& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Abilities>
+  {
+  public:
+    size_t operator()(const tbrpg::Abilities& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

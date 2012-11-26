@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BUCKLER_HPP__
 #define __GUARD_BUCKLER_HPP__
+#ifdef  CIRCULAR_BUCKLER
+#include "Buckler.circular"
+#endif//CIRCULAR_BUCKLER
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Buckler& self, const Buckler& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Buckler>
+  {
+  public:
+    size_t operator()(const tbrpg::Buckler& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

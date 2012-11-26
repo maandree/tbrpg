@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BLUNTWEAPON_HPP__
 #define __GUARD_BLUNTWEAPON_HPP__
+#ifdef  CIRCULAR_BLUNTWEAPON
+#include "BluntWeapon.circular"
+#endif//CIRCULAR_BLUNTWEAPON
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(BluntWeapon& self, const BluntWeapon& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::BluntWeapon>
+  {
+  public:
+    size_t operator()(const tbrpg::BluntWeapon& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

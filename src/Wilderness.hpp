@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WILDERNESS_HPP__
 #define __GUARD_WILDERNESS_HPP__
+#ifdef  CIRCULAR_WILDERNESS
+#include "Wilderness.circular"
+#endif//CIRCULAR_WILDERNESS
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Wilderness& self, const Wilderness& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Wilderness>
+  {
+  public:
+    size_t operator()(const tbrpg::Wilderness& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

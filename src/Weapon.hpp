@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WEAPON_HPP__
 #define __GUARD_WEAPON_HPP__
+#ifdef  CIRCULAR_WEAPON
+#include "Weapon.circular"
+#endif//CIRCULAR_WEAPON
 
 
 #include <stdlib.h>
@@ -53,47 +56,47 @@ namespace tbrpg
     /**
      * The number of hands required for the weapon
      */
-    //char hands;
+    char hands;
     
     /**
      * The weapon's speed factor
      */
-    //char speed_factor;
+    char speed_factor;
     
     /**
      * The hit bonus the weapon brings
      */
-    //int hit_bonus;
+    int hit_bonus;
     
     /**
      * The number of sides on the dice rolled to determine the inflicted damage
      */
-    //char damage_die;
+    char damage_die;
     
     /**
      * The number dice rolled to determine the inflicted damage
      */
-    //char damage_dice;
+    char damage_dice;
     
     /**
      * Damage modifier
      */
-    //int damage_bonus;
+    int damage_bonus;
     
     /**
      * Whether the weapon is a melée weapon
      */
-    //bool melee;
+    bool melee;
     
     /**
      * The damage type, if multiple, one fill be selected at uniform random for each attack
      */
-    //DamageType* damage_type;
+    DamageType* damage_type;
     
     /**
      * The weapon group
      */
-    //WeaponGroup weapon_group;
+    WeaponGroup weapon_group;
     
     
     
@@ -166,6 +169,28 @@ namespace tbrpg
      */
     static void __copy__(Weapon& self, const Weapon& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Weapon>
+  {
+  public:
+    size_t operator()(const tbrpg::Weapon& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

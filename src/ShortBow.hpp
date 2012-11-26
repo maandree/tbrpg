@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SHORTBOW_HPP__
 #define __GUARD_SHORTBOW_HPP__
+#ifdef  CIRCULAR_SHORTBOW
+#include "ShortBow.circular"
+#endif//CIRCULAR_SHORTBOW
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(ShortBow& self, const ShortBow& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ShortBow>
+  {
+  public:
+    size_t operator()(const tbrpg::ShortBow& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

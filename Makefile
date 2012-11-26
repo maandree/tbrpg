@@ -10,7 +10,7 @@ SHELL=bash
 NODES=3
 OPTIMISE=-O0
 #OPTIMISE=-O3
-CPPFLAGS=
+CPPFLAGS=-DCIRCULAR_MAPMINOR -DCIRCULAR_ROAD -DCIRCULAR_ENTRANCE
 CXXFLAGS=$(OPTIMISE) -g --std=c++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 
@@ -65,6 +65,7 @@ code:
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
 parallel:
+	if [ ! -d bin ]; then  mkdir bin;  fi
 	time ((echo $(NODES) ; cat __order) | tools/paramake.py)
 
 sequecial:

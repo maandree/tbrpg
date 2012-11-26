@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MAP_HPP__
 #define __GUARD_MAP_HPP__
+#ifdef  CIRCULAR_MAP
+#include "Map.circular"
+#endif//CIRCULAR_MAP
 
 
 #include <stdlib.h>
@@ -51,12 +54,12 @@ namespace tbrpg
     /**
      * The start area of the game senario
      */
-    //MapMinor start;
+    MapMinor start;
     
     /**
      * All major areas in the world map
      */
-    //MapMajor* majors;
+    MapMajor* majors;
     
     
     
@@ -129,6 +132,28 @@ namespace tbrpg
      */
     static void __copy__(Map& self, const Map& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Map>
+  {
+  public:
+    size_t operator()(const tbrpg::Map& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_AMMUNITION_HPP__
 #define __GUARD_AMMUNITION_HPP__
+#ifdef  CIRCULAR_AMMUNITION
+#include "Ammunition.circular"
+#endif//CIRCULAR_AMMUNITION
 
 
 #include <stdlib.h>
@@ -53,32 +56,32 @@ namespace tbrpg
     /**
      * The hit bonus the ammunition brings
      */
-    //int hit_bonus;
+    int hit_bonus;
     
     /**
      * The number of sides on the dice rolled to determine the inflicted damage
      */
-    //char damage_die;
+    char damage_die;
     
     /**
      * The number dice rolled to determine the inflicted damage
      */
-    //char damage_dice;
+    char damage_dice;
     
     /**
      * Damage modifier
      */
-    //int damage_bonus;
+    int damage_bonus;
     
     /**
      * Weapon that the ammunition can be used with
      */
-    //RangedWeapon usable_with;
+    RangedWeapon usable_with;
     
     /**
      * The damage type inflicted by the ammunition
      */
-    //DamageType damage_type;
+    DamageType damage_type;
     
     
     
@@ -151,6 +154,28 @@ namespace tbrpg
      */
     static void __copy__(Ammunition& self, const Ammunition& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Ammunition>
+  {
+  public:
+    size_t operator()(const tbrpg::Ammunition& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

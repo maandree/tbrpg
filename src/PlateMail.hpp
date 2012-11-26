@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_PLATEMAIL_HPP__
 #define __GUARD_PLATEMAIL_HPP__
+#ifdef  CIRCULAR_PLATEMAIL
+#include "PlateMail.circular"
+#endif//CIRCULAR_PLATEMAIL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(PlateMail& self, const PlateMail& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::PlateMail>
+  {
+  public:
+    size_t operator()(const tbrpg::PlateMail& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

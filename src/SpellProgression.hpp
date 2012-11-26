@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SPELLPROGRESSION_HPP__
 #define __GUARD_SPELLPROGRESSION_HPP__
+#ifdef  CIRCULAR_SPELLPROGRESSION
+#include "SpellProgression.circular"
+#endif//CIRCULAR_SPELLPROGRESSION
 
 
 #include <stdlib.h>
@@ -48,12 +51,12 @@ namespace tbrpg
     /**
      * The number of wizard spell slots per character level and spell level
      */
-    //int** wizard_slots;
+    int** wizard_slots;
     
     /**
      * The number of priest spell slots per character level and spell level
      */
-    //int** priest_slots;
+    int** priest_slots;
     
     
     
@@ -126,6 +129,28 @@ namespace tbrpg
      */
     static void __copy__(SpellProgression& self, const SpellProgression& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::SpellProgression>
+  {
+  public:
+    size_t operator()(const tbrpg::SpellProgression& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_PALADIN_HPP__
 #define __GUARD_PALADIN_HPP__
+#ifdef  CIRCULAR_PALADIN
+#include "Paladin.circular"
+#endif//CIRCULAR_PALADIN
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Paladin& self, const Paladin& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Paladin>
+  {
+  public:
+    size_t operator()(const tbrpg::Paladin& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

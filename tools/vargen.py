@@ -79,7 +79,7 @@ for line in lines:
                     space = s
             varType = varLine[:space].replace('[]', '*').replace('*', '')
             for c in classes:
-                if c not in supers:
+                if (c not in supers) and (c not in useIncludes):
                     if c == varType:
                         useIncludes.append(c)
                     else:
@@ -103,6 +103,9 @@ for line in lines:
         output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __GUARD_%s_HPP__\n' % className.upper()
         output += '#define __GUARD_%s_HPP__\n' % className.upper()
+        output += '#ifdef  CIRCULAR_%s\n' % className.upper()
+        output += '#include "%s.circular"\n' % className
+        output += '#endif//CIRCULAR_%s\n' % className.upper()
         output += '\n\n%s\n\n%s\n\n%s\n/**\n' % ('\n'.join(includes), '\n'.join(superInclude), '\n'.join(useIncludes))
         output += ' * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'
@@ -111,7 +114,7 @@ for line in lines:
         for varLine in varLines:
             varComment = varLine[varLine.index(';') + 1:].strip()
             varLine = varLine[:varLine.index(';')].strip().replace('[]', '*')
-            output += '    /**\n     * %s\n     */\n    //%s;\n    \n' % (varComment, varLine)
+            output += '    /**\n     * %s\n     */\n    %s;\n    \n' % (varComment, varLine)
         if len(varLines) > 0:
             output += '    \n    \n'
         output += '    /**\n     * Construction\n     */\n    %s();\n    \n' % className
@@ -134,7 +137,12 @@ for line in lines:
         output += '    \n  protected:\n    /**\n     * Copy method\n     * \n'
         output += '     * @param  self      The object to modify\n     * @param  original  The reference object\n'
         output += '     */\n    static void __copy__(%s& self, const %s& original);\n    \n' % (className, className)
-        output += '  };\n}\n\n\n'
+        output += '    \n  public:\n    /**\n     * Hash method\n     * \n     * @return  The object\'s hash code\n'
+        output += '     */\n    size_t hash() const;\n    \n'
+        output += '  };\n}\n\n'
+        output += 'namespace std\n{\n  template<>\n  class hash<tbrpg::%s>\n  {\n  public:\n' % className
+        output += '    size_t operator()(const tbrpg::%s& elem) const\n    {\n' % className
+        output += '       return elem.hash();\n    }\n  };\n}\n\n\n'
         output += '#endif//__GUARD_%s_HPP__\n' % className.upper()
         with open(className + '.hpp', 'wb') as file:
             file.write(output.encode('utf-8'))
@@ -202,8 +210,11 @@ for line in lines:
         output += '  /**\n   * Copy method\n   * \n'
         output += '   * @param  self      The object to modify\n   * @param  original  The reference object\n'
         output += '   */\n  void %s::__copy__(%s& self, const %s& original)\n' % (className, className, className)
-        output += '  {\n    self = original;\n  }\n'
-        output += '  \n}\n\n'
+        output += '  {\n    self = original;\n  }\n  \n'
+        output += '  /**\n   * Hash method\n   * \n   * @return  The object\'s hash code\n'
+        output += '   */\n  size_t %s::hash() const\n  {\n    return (size_t)this;\n  }\n  \n' % className
+        output += '}\n\n'
+
         with open(className + '.cc', 'wb') as file:
             file.write(output.encode('utf-8'))
             file.flush()

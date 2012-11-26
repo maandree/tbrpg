@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MEDIUMSHIELD_HPP__
 #define __GUARD_MEDIUMSHIELD_HPP__
+#ifdef  CIRCULAR_MEDIUMSHIELD
+#include "MediumShield.circular"
+#endif//CIRCULAR_MEDIUMSHIELD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(MediumShield& self, const MediumShield& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MediumShield>
+  {
+  public:
+    size_t operator()(const tbrpg::MediumShield& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

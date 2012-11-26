@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CONTAINER_HPP__
 #define __GUARD_CONTAINER_HPP__
+#ifdef  CIRCULAR_CONTAINER
+#include "Container.circular"
+#endif//CIRCULAR_CONTAINER
 
 
 #include <stdlib.h>
@@ -50,22 +53,22 @@ namespace tbrpg
     /**
      * Items contained by the container
      */
-    //std::vector<Item> contains;
+    std::vector<Item> contains;
     
     /**
      * Number of items that can be put in the container
      */
-    //int contain_limit;
+    int contain_limit;
     
     /**
      * Weight multiplier
      */
-    //float weight_modifier;
+    float weight_modifier;
     
     /**
      * Items that can be put inside the container
      */
-    //Item* can_contain;
+    Item* can_contain;
     
     
     
@@ -138,6 +141,28 @@ namespace tbrpg
      */
     static void __copy__(Container& self, const Container& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Container>
+  {
+  public:
+    size_t operator()(const tbrpg::Container& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

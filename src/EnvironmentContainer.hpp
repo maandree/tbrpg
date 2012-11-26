@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ENVIRONMENTCONTAINER_HPP__
 #define __GUARD_ENVIRONMENTCONTAINER_HPP__
+#ifdef  CIRCULAR_ENVIRONMENTCONTAINER
+#include "EnvironmentContainer.circular"
+#endif//CIRCULAR_ENVIRONMENTCONTAINER
 
 
 #include <stdlib.h>
@@ -117,6 +120,28 @@ namespace tbrpg
      */
     static void __copy__(EnvironmentContainer& self, const EnvironmentContainer& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::EnvironmentContainer>
+  {
+  public:
+    size_t operator()(const tbrpg::EnvironmentContainer& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

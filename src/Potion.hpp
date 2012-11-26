@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_POTION_HPP__
 #define __GUARD_POTION_HPP__
+#ifdef  CIRCULAR_POTION
+#include "Potion.circular"
+#endif//CIRCULAR_POTION
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Potion& self, const Potion& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Potion>
+  {
+  public:
+    size_t operator()(const tbrpg::Potion& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

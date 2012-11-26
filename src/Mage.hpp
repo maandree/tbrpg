@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MAGE_HPP__
 #define __GUARD_MAGE_HPP__
+#ifdef  CIRCULAR_MAGE
+#include "Mage.circular"
+#endif//CIRCULAR_MAGE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Mage& self, const Mage& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Mage>
+  {
+  public:
+    size_t operator()(const tbrpg::Mage& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

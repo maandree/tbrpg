@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_REPUTATIONCHART_HPP__
 #define __GUARD_REPUTATIONCHART_HPP__
+#ifdef  CIRCULAR_REPUTATIONCHART
+#include "ReputationChart.circular"
+#endif//CIRCULAR_REPUTATIONCHART
 
 
 #include <stdlib.h>
@@ -48,62 +51,62 @@ namespace tbrpg
     /**
      * Reaction adjustment for each reputation
      */
-    //int* reaction_adjustment;
+    int* reaction_adjustment;
     
     /**
      * Whether the party is wanted for each reputation
      */
-    //bool* wanted;
+    bool* wanted;
     
     /**
      * Penalty for killing a innocent for each reputation
      */
-    //int* killing_innocent;
+    int* killing_innocent;
     
     /**
      * Penalty for injuring a innocent for each reputation
      */
-    //int* injuring_innocent;
+    int* injuring_innocent;
     
     /**
      * Penalty for stealing for each reputation
      */
-    //int* stealing;
+    int* stealing;
     
     /**
      * Penalty for killing a guard for each reputation
      */
-    //int* killing_guard;
+    int* killing_guard;
     
     /**
      * Donation needed to increase reputation for each reputation, zero for not possible
      */
-    //int* donation_needed;
+    int* donation_needed;
     
     /**
      * Price multiplier for each reputation
      */
-    //float* price_adjustment;
+    float* price_adjustment;
     
     /**
      * Reaction form good aligned for each reputation
      */
-    //int* good_reaction;
+    int* good_reaction;
     
     /**
      * Reaction form neutral aligned for each reputation
      */
-    //int* neutral_reaction;
+    int* neutral_reaction;
     
     /**
      * Reaction form evil aligned for each reputation
      */
-    //int* evil_reaction;
+    int* evil_reaction;
     
     /**
      * Reputation for each alignment of the protagonist
      */
-    //char* alignment_reputation;
+    char* alignment_reputation;
     
     
     
@@ -176,6 +179,28 @@ namespace tbrpg
      */
     static void __copy__(ReputationChart& self, const ReputationChart& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ReputationChart>
+  {
+  public:
+    size_t operator()(const tbrpg::ReputationChart& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

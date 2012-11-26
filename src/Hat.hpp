@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HAT_HPP__
 #define __GUARD_HAT_HPP__
+#ifdef  CIRCULAR_HAT
+#include "Hat.circular"
+#endif//CIRCULAR_HAT
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Hat& self, const Hat& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Hat>
+  {
+  public:
+    size_t operator()(const tbrpg::Hat& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

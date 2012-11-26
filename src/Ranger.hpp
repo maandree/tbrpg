@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RANGER_HPP__
 #define __GUARD_RANGER_HPP__
+#ifdef  CIRCULAR_RANGER
+#include "Ranger.circular"
+#endif//CIRCULAR_RANGER
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Ranger& self, const Ranger& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Ranger>
+  {
+  public:
+    size_t operator()(const tbrpg::Ranger& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

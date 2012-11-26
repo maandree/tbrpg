@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_GAUNTLETS_HPP__
 #define __GUARD_GAUNTLETS_HPP__
+#ifdef  CIRCULAR_GAUNTLETS
+#include "Gauntlets.circular"
+#endif//CIRCULAR_GAUNTLETS
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Gauntlets& self, const Gauntlets& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Gauntlets>
+  {
+  public:
+    size_t operator()(const tbrpg::Gauntlets& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

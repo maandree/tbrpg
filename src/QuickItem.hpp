@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_QUICKITEM_HPP__
 #define __GUARD_QUICKITEM_HPP__
+#ifdef  CIRCULAR_QUICKITEM
+#include "QuickItem.circular"
+#endif//CIRCULAR_QUICKITEM
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(QuickItem& self, const QuickItem& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::QuickItem>
+  {
+  public:
+    size_t operator()(const tbrpg::QuickItem& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SPLINTMAIL_HPP__
 #define __GUARD_SPLINTMAIL_HPP__
+#ifdef  CIRCULAR_SPLINTMAIL
+#include "SplintMail.circular"
+#endif//CIRCULAR_SPLINTMAIL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(SplintMail& self, const SplintMail& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::SplintMail>
+  {
+  public:
+    size_t operator()(const tbrpg::SplintMail& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

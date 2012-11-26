@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HELMET_HPP__
 #define __GUARD_HELMET_HPP__
+#ifdef  CIRCULAR_HELMET
+#include "Helmet.circular"
+#endif//CIRCULAR_HELMET
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Helmet& self, const Helmet& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Helmet>
+  {
+  public:
+    size_t operator()(const tbrpg::Helmet& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

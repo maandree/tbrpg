@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DRUID_HPP__
 #define __GUARD_DRUID_HPP__
+#ifdef  CIRCULAR_DRUID
+#include "Druid.circular"
+#endif//CIRCULAR_DRUID
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Druid& self, const Druid& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Druid>
+  {
+  public:
+    size_t operator()(const tbrpg::Druid& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

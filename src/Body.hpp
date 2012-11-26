@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BODY_HPP__
 #define __GUARD_BODY_HPP__
+#ifdef  CIRCULAR_BODY
+#include "Body.circular"
+#endif//CIRCULAR_BODY
 
 
 #include <stdlib.h>
@@ -52,7 +55,7 @@ namespace tbrpg
     /**
      * The dead character
      */
-    //Character character;
+    Character character;
     
     
     
@@ -125,6 +128,28 @@ namespace tbrpg
      */
     static void __copy__(Body& self, const Body& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Body>
+  {
+  public:
+    size_t operator()(const tbrpg::Body& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

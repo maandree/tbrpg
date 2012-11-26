@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_EXPERIENCECHART_HPP__
 #define __GUARD_EXPERIENCECHART_HPP__
+#ifdef  CIRCULAR_EXPERIENCECHART
+#include "ExperienceChart.circular"
+#endif//CIRCULAR_EXPERIENCECHART
 
 
 #include <stdlib.h>
@@ -50,42 +53,42 @@ namespace tbrpg
     /**
      * Required experience for each level
      */
-    //int* experience;
+    int* experience;
     
     /**
      * The number of sides of the dice to roll that determines the hit points gained when a level is reached
      */
-    //char* hit_point_die;
+    char* hit_point_die;
     
     /**
      * The number of dice to roll that determines the hit points gained when a level is reached
      */
-    //char* hit_point_dice;
+    char* hit_point_dice;
     
     /**
      * Hit points gained when a level is reached
      */
-    //int* hit_point_bonus;
+    int* hit_point_bonus;
     
     /**
      * The number of wizard spells that can be selected for learning when a level is reached
      */
-    //int* selectable_wizard;
+    int* selectable_wizard;
     
     /**
      * The number of priest spells that can be selected for learning when a level is reached
      */
-    //int* selectable_priest;
+    int* selectable_priest;
     
     /**
      * Spells that are learned to when a level is reached
      */
-    //Spell** new_spells;
+    Spell** new_spells;
     
     /**
      * The number of proficiencies that that can be allocated when a level is reached
      */
-    //int* proficiencies;
+    int* proficiencies;
     
     
     
@@ -158,6 +161,28 @@ namespace tbrpg
      */
     static void __copy__(ExperienceChart& self, const ExperienceChart& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ExperienceChart>
+  {
+  public:
+    size_t operator()(const tbrpg::ExperienceChart& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

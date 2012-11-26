@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DAMAGETYPE_HPP__
 #define __GUARD_DAMAGETYPE_HPP__
+#ifdef  CIRCULAR_DAMAGETYPE
+#include "DamageType.circular"
+#endif//CIRCULAR_DAMAGETYPE
 
 
 #include <stdlib.h>
@@ -48,7 +51,7 @@ namespace tbrpg
     /**
      * The name of the damage type
      */
-    //std::string name;
+    std::string name;
     
     
     
@@ -121,6 +124,28 @@ namespace tbrpg
      */
     static void __copy__(DamageType& self, const DamageType& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::DamageType>
+  {
+  public:
+    size_t operator()(const tbrpg::DamageType& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

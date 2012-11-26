@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ABILITYBONUS_HPP__
 #define __GUARD_ABILITYBONUS_HPP__
+#ifdef  CIRCULAR_ABILITYBONUS
+#include "AbilityBonus.circular"
+#endif//CIRCULAR_ABILITYBONUS
 
 
 #include <stdlib.h>
@@ -55,32 +58,32 @@ namespace tbrpg
     /**
      * Bonuses
      */
-    //Bonuses bonuses;
+    Bonuses bonuses;
     
     /**
      * Thief abilities
      */
-    //ThiefAbilities thief_abilities;
+    ThiefAbilities thief_abilities;
     
     /**
      * Saving throws
      */
-    //SavingThrows saving_throws;
+    SavingThrows saving_throws;
     
     /**
      * Abilities
      */
-    //Abilities abilities;
+    Abilities abilities;
     
     /**
      * Spells
      */
-    //SpellBook spells;
+    SpellBook spells;
     
     /**
      * Effects
      */
-    //Spell* effects;
+    Spell* effects;
     
     
     
@@ -153,6 +156,28 @@ namespace tbrpg
      */
     static void __copy__(AbilityBonus& self, const AbilityBonus& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::AbilityBonus>
+  {
+  public:
+    size_t operator()(const tbrpg::AbilityBonus& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

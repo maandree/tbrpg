@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HALBERD_HPP__
 #define __GUARD_HALBERD_HPP__
+#ifdef  CIRCULAR_HALBERD
+#include "Halberd.circular"
+#endif//CIRCULAR_HALBERD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Halberd& self, const Halberd& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Halberd>
+  {
+  public:
+    size_t operator()(const tbrpg::Halberd& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

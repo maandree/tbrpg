@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_TWOHANDEDSWORD_HPP__
 #define __GUARD_TWOHANDEDSWORD_HPP__
+#ifdef  CIRCULAR_TWOHANDEDSWORD
+#include "TwoHandedSword.circular"
+#endif//CIRCULAR_TWOHANDEDSWORD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(TwoHandedSword& self, const TwoHandedSword& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::TwoHandedSword>
+  {
+  public:
+    size_t operator()(const tbrpg::TwoHandedSword& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SPELLBOOK_HPP__
 #define __GUARD_SPELLBOOK_HPP__
+#ifdef  CIRCULAR_SPELLBOOK
+#include "SpellBook.circular"
+#endif//CIRCULAR_SPELLBOOK
 
 
 #include <stdlib.h>
@@ -28,7 +31,6 @@
 
 
 
-#include "Spell.hpp"
 #include "Spell.hpp"
 
 
@@ -51,12 +53,12 @@ namespace tbrpg
     /**
      * Learned spells
      */
-    //std::vector<Spell> learned;
+    std::vector<Spell> learned;
     
     /**
      * Memorisations
      */
-    //std::vector<Spell> memorised;
+    std::vector<Spell> memorised;
     
     
     
@@ -129,6 +131,28 @@ namespace tbrpg
      */
     static void __copy__(SpellBook& self, const SpellBook& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::SpellBook>
+  {
+  public:
+    size_t operator()(const tbrpg::SpellBook& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

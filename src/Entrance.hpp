@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ENTRANCE_HPP__
 #define __GUARD_ENTRANCE_HPP__
+#ifdef  CIRCULAR_ENTRANCE
+#include "Entrance.circular"
+#endif//CIRCULAR_ENTRANCE
 
 
 #include <stdlib.h>
@@ -50,22 +53,22 @@ namespace tbrpg
     /**
      * Whether the entrance can be used
      */
-    //bool usable;
+    bool usable;
     
     /**
      * A description of what you see
      */
-    //std::string description;
+    std::string description;
     
     /**
      * The direction to the entrace
      */
-    //std::string direction;
+    std::string direction;
     
     /**
      * The area to which the entrance leads
      */
-    //MapMinor leads_to;
+    MapMinor leads_to;
     
     
     
@@ -138,6 +141,28 @@ namespace tbrpg
      */
     static void __copy__(Entrance& self, const Entrance& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Entrance>
+  {
+  public:
+    size_t operator()(const tbrpg::Entrance& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

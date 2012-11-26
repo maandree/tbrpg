@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MAGICSCHOOL_HPP__
 #define __GUARD_MAGICSCHOOL_HPP__
+#ifdef  CIRCULAR_MAGICSCHOOL
+#include "MagicSchool.circular"
+#endif//CIRCULAR_MAGICSCHOOL
 
 
 #include <stdlib.h>
@@ -50,22 +53,22 @@ namespace tbrpg
     /**
      * The name of the school
      */
-    //std::string name;
+    std::string name;
     
     /**
      * The colouration of the magic in the school
      */
-    //std::string coluration;
+    std::string coluration;
     
     /**
      * The name of the practicers of the school
      */
-    //std::string practicer;
+    std::string practicer;
     
     /**
      * The opposite schools
      */
-    //MagicSchool* opposite;
+    MagicSchool* opposite;
     
     
     
@@ -138,6 +141,28 @@ namespace tbrpg
      */
     static void __copy__(MagicSchool& self, const MagicSchool& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MagicSchool>
+  {
+  public:
+    size_t operator()(const tbrpg::MagicSchool& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

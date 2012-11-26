@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_PRIEST_HPP__
 #define __GUARD_PRIEST_HPP__
+#ifdef  CIRCULAR_PRIEST
+#include "Priest.circular"
+#endif//CIRCULAR_PRIEST
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Priest& self, const Priest& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Priest>
+  {
+  public:
+    size_t operator()(const tbrpg::Priest& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

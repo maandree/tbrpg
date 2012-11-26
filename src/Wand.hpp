@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WAND_HPP__
 #define __GUARD_WAND_HPP__
+#ifdef  CIRCULAR_WAND
+#include "Wand.circular"
+#endif//CIRCULAR_WAND
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Wand& self, const Wand& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Wand>
+  {
+  public:
+    size_t operator()(const tbrpg::Wand& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

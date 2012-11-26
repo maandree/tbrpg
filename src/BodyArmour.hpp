@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BODYARMOUR_HPP__
 #define __GUARD_BODYARMOUR_HPP__
+#ifdef  CIRCULAR_BODYARMOUR
+#include "BodyArmour.circular"
+#endif//CIRCULAR_BODYARMOUR
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(BodyArmour& self, const BodyArmour& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::BodyArmour>
+  {
+  public:
+    size_t operator()(const tbrpg::BodyArmour& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

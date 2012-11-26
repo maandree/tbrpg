@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RANGEDWEAPON_HPP__
 #define __GUARD_RANGEDWEAPON_HPP__
+#ifdef  CIRCULAR_RANGEDWEAPON
+#include "RangedWeapon.circular"
+#endif//CIRCULAR_RANGEDWEAPON
 
 
 #include <stdlib.h>
@@ -50,7 +53,7 @@ namespace tbrpg
     /**
      * The weapon's rate of fire
      */
-    //char rate_of_fire;
+    char rate_of_fire;
     
     
     
@@ -123,6 +126,28 @@ namespace tbrpg
      */
     static void __copy__(RangedWeapon& self, const RangedWeapon& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::RangedWeapon>
+  {
+  public:
+    size_t operator()(const tbrpg::RangedWeapon& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

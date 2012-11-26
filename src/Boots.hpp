@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BOOTS_HPP__
 #define __GUARD_BOOTS_HPP__
+#ifdef  CIRCULAR_BOOTS
+#include "Boots.circular"
+#endif//CIRCULAR_BOOTS
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Boots& self, const Boots& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Boots>
+  {
+  public:
+    size_t operator()(const tbrpg::Boots& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BONUSES_HPP__
 #define __GUARD_BONUSES_HPP__
+#ifdef  CIRCULAR_BONUSES
+#include "Bonuses.circular"
+#endif//CIRCULAR_BONUSES
 
 
 #include <stdlib.h>
@@ -48,97 +51,97 @@ namespace tbrpg
     /**
      * Hit bonus
      */
-    //int hit_bonus;
+    int hit_bonus;
     
     /**
      * Damage bonus
      */
-    //int damage_bonus;
+    int damage_bonus;
     
     /**
      * Weight carry limit in grams
      */
-    //int carry_limit;
+    int carry_limit;
     
     /**
      * Bashing chance
      */
-    //float bashing;
+    float bashing;
     
     /**
      * Missile attack bonus
      */
-    //int missile_attack_bonus;
+    int missile_attack_bonus;
     
     /**
      * Armour class bonus
      */
-    //int armour_class_bonus;
+    int armour_class_bonus;
     
     /**
      * Hit point bonus
      */
-    //int hit_point_bonus;
+    int hit_point_bonus;
     
     /**
      * Resurrectability
      */
-    //float resurrectability;
+    float resurrectability;
     
     /**
      * Reaction bonus
      */
-    //int reaction_bonus;
+    int reaction_bonus;
     
     /**
      * Spell level limit
      */
-    //char spell_level_limit;
+    char spell_level_limit;
     
     /**
      * Chance to learn spell
      */
-    //float spell_learn;
+    float spell_learn;
     
     /**
      * Maximum learned spells per limit
      */
-    //char max_spells_level;
+    char max_spells_level;
     
     /**
      * Lore bonus
      */
-    //int lore_bonus;
+    int lore_bonus;
     
     /**
      * Resistance against magic bonus
      */
-    //float magic_defence_bonus;
+    float magic_defence_bonus;
     
     /**
      * Chance to fail spell casting
      */
-    //float spell_failure;
+    float spell_failure;
     
     /**
      * Extra spell slots per spell level
      */
-    //int* bonus_spells;
+    int* bonus_spells;
     
     /**
      * Morale bonus
      */
-    //int morale;
+    int morale;
     
     /**
      * Luck bonus
      */
-    //int luck;
+    int luck;
     
     /**
      * Detect secret door bonus
      */
-    //float detect_doors;
+    float detect_doors;
     
     
     
@@ -211,6 +214,28 @@ namespace tbrpg
      */
     static void __copy__(Bonuses& self, const Bonuses& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Bonuses>
+  {
+  public:
+    size_t operator()(const tbrpg::Bonuses& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

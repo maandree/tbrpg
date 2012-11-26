@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RIGHTHANDITEM_HPP__
 #define __GUARD_RIGHTHANDITEM_HPP__
+#ifdef  CIRCULAR_RIGHTHANDITEM
+#include "RightHandItem.circular"
+#endif//CIRCULAR_RIGHTHANDITEM
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(RightHandItem& self, const RightHandItem& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::RightHandItem>
+  {
+  public:
+    size_t operator()(const tbrpg::RightHandItem& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SPELL_HPP__
 #define __GUARD_SPELL_HPP__
+#ifdef  CIRCULAR_SPELL
+#include "Spell.circular"
+#endif//CIRCULAR_SPELL
 
 
 #include <stdlib.h>
@@ -50,72 +53,72 @@ namespace tbrpg
     /**
      * Spell name
      */
-    //std::string name;
+    std::string name;
     
     /**
      * Spell description
      */
-    //std::string description;
+    std::string description;
     
     /**
      * Whether the spell is a wizard spell
      */
-    //bool wizard;
+    bool wizard;
     
     /**
      * Whether the spell is a priest spell
      */
-    //bool priest;
+    bool priest;
     
     /**
      * Spell level
      */
-    //char level;
+    char level;
     
     /**
      * Saving, 0 for none, 1 for half and 2 for negation
      */
-    //char saving;
+    char saving;
     
     /**
      * Whether the spell's range is touching
      */
-    //bool touch;
+    bool touch;
     
     /**
      * Whether the spell's range, negative for touch without zero
      */
-    //float range;
+    float range;
     
     /**
      * Casting time
      */
-    //char casting_time;
+    char casting_time;
     
     /**
      * Duration modifier
      */
-    //char duration;
+    char duration;
     
     /**
      * Duration die side count
      */
-    //char duration_die;
+    char duration_die;
     
     /**
      * Duration die count
      */
-    //char duration_dice;
+    char duration_dice;
     
     /**
      * Area of effect
      */
-    //std::string effect_area;
+    std::string effect_area;
     
     /**
      * Magic shool
      */
-    //MagicSchool school;
+    MagicSchool school;
     
     
     
@@ -188,6 +191,28 @@ namespace tbrpg
      */
     static void __copy__(Spell& self, const Spell& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Spell>
+  {
+  public:
+    size_t operator()(const tbrpg::Spell& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

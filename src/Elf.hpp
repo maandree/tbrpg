@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ELF_HPP__
 #define __GUARD_ELF_HPP__
+#ifdef  CIRCULAR_ELF
+#include "Elf.circular"
+#endif//CIRCULAR_ELF
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Elf& self, const Elf& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Elf>
+  {
+  public:
+    size_t operator()(const tbrpg::Elf& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

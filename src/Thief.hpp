@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_THIEF_HPP__
 #define __GUARD_THIEF_HPP__
+#ifdef  CIRCULAR_THIEF
+#include "Thief.circular"
+#endif//CIRCULAR_THIEF
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Thief& self, const Thief& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Thief>
+  {
+  public:
+    size_t operator()(const tbrpg::Thief& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CLOAK_HPP__
 #define __GUARD_CLOAK_HPP__
+#ifdef  CIRCULAR_CLOAK
+#include "Cloak.circular"
+#endif//CIRCULAR_CLOAK
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Cloak& self, const Cloak& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Cloak>
+  {
+  public:
+    size_t operator()(const tbrpg::Cloak& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

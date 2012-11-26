@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WARHAMMER_HPP__
 #define __GUARD_WARHAMMER_HPP__
+#ifdef  CIRCULAR_WARHAMMER
+#include "WarHammer.circular"
+#endif//CIRCULAR_WARHAMMER
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(WarHammer& self, const WarHammer& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::WarHammer>
+  {
+  public:
+    size_t operator()(const tbrpg::WarHammer& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

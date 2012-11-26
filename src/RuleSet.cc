@@ -195,5 +195,15 @@ namespace tbrpg
     self = original;
   }
   
+  /**
+   * Hash method
+   * 
+   * @return  The object's hash code
+   */
+  size_t RuleSet::hash() const
+  {
+    return (size_t)this;
+  }
+  
 }
 

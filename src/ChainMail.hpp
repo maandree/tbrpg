@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CHAINMAIL_HPP__
 #define __GUARD_CHAINMAIL_HPP__
+#ifdef  CIRCULAR_CHAINMAIL
+#include "ChainMail.circular"
+#endif//CIRCULAR_CHAINMAIL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(ChainMail& self, const ChainMail& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ChainMail>
+  {
+  public:
+    size_t operator()(const tbrpg::ChainMail& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

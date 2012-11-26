@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ROBE_HPP__
 #define __GUARD_ROBE_HPP__
+#ifdef  CIRCULAR_ROBE
+#include "Robe.circular"
+#endif//CIRCULAR_ROBE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Robe& self, const Robe& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Robe>
+  {
+  public:
+    size_t operator()(const tbrpg::Robe& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

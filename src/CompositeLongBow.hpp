@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_COMPOSITELONGBOW_HPP__
 #define __GUARD_COMPOSITELONGBOW_HPP__
+#ifdef  CIRCULAR_COMPOSITELONGBOW
+#include "CompositeLongBow.circular"
+#endif//CIRCULAR_COMPOSITELONGBOW
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(CompositeLongBow& self, const CompositeLongBow& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::CompositeLongBow>
+  {
+  public:
+    size_t operator()(const tbrpg::CompositeLongBow& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

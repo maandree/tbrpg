@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WIZARD_HPP__
 #define __GUARD_WIZARD_HPP__
+#ifdef  CIRCULAR_WIZARD
+#include "Wizard.circular"
+#endif//CIRCULAR_WIZARD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Wizard& self, const Wizard& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Wizard>
+  {
+  public:
+    size_t operator()(const tbrpg::Wizard& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CLASS_HPP__
 #define __GUARD_CLASS_HPP__
+#ifdef  CIRCULAR_CLASS
+#include "Class.circular"
+#endif//CIRCULAR_CLASS
 
 
 #include <stdlib.h>
@@ -29,11 +32,13 @@
 
 
 #include "ExperienceChart.hpp"
+#include "SpellProgression.hpp"
 #include "AbilityBonus.hpp"
+#include "Abilities.hpp"
 #include "Spell.hpp"
 #include "Item.hpp"
 #include "WeaponGroup.hpp"
-#include "Weapon.hpp"
+#include "Proficiency.hpp"
 #include "Weapon.hpp"
 
 
@@ -56,77 +61,77 @@ namespace tbrpg
     /**
      * Minimum starting hit points
      */
-    //int hit_points;
+    int hit_points;
     
     /**
      * THAC0
      */
-    //int thac0;
+    int thac0;
     
     /**
      * Lore bonus
      */
-    //int lore_bonus;
+    int lore_bonus;
     
     /**
      * Allowed alignments
      */
-    //bool* alignments;
+    bool* alignments;
     
     /**
      * Whether the character can learn spells from scrolls
      */
-    //bool learn_from_scroll;
+    bool learn_from_scroll;
     
     /**
      * The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
      */
-    //char proficiencies_each;
+    char proficiencies_each;
     
     /**
      * The class's experience chart
      */
-    //ExperienceChart experience_chart;
+    ExperienceChart experience_chart;
     
     /**
      * The class's spell progression chart
      */
-    //SpellProgression spell_progressio n;
+    SpellProgression spell_progression;
     
     /**
      * Abilties
      */
-    //AbilityBonus abilities;
+    AbilityBonus abilities;
     
     /**
-     * Lower abilty bounds
+     * Lower ability bounds
      */
-    //Abilites lower_limits;
+    Abilities lower_limits;
     
     /**
      * Special abilities
      */
-    //Spell* special_abilties;
+    Spell* special_abilities;
     
     /**
      * Usable items
      */
-    //Item* can_use;
+    Item* can_use;
     
     /**
      * Proficiency chart
      */
-    //std::unordered_map<WeaponGroup, Proficiencies*> proficiency_chart;
+    std::unordered_map<WeaponGroup, Proficiency*> proficiency_chart;
     
     /**
      * Weapon used when the character has his left hand free but is holding a shield
      */
-    //Weapon default_one_hand;
+    Weapon default_one_hand;
     
     /**
      * Weapon used when the character has both his hands free
      */
-    //Weapon default_two_hand;
+    Weapon default_two_hand;
     
     
     
@@ -199,6 +204,28 @@ namespace tbrpg
      */
     static void __copy__(Class& self, const Class& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Class>
+  {
+  public:
+    size_t operator()(const tbrpg::Class& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

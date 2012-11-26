@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CHARACTER_HPP__
 #define __GUARD_CHARACTER_HPP__
+#ifdef  CIRCULAR_CHARACTER
+#include "Character.circular"
+#endif//CIRCULAR_CHARACTER
 
 
 #include <stdlib.h>
@@ -50,32 +53,32 @@ namespace tbrpg
     /**
      * Current hit points
      */
-    //int hit_points;
+    int hit_points;
     
     /**
      * Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
      */
-    //char alive;
+    char alive;
     
     /**
      * Current morale
      */
-    //int morale;
+    int morale;
     
     /**
      * Current intoxication level
      */
-    //int intoxication;
+    int intoxication;
     
     /**
      * Number of turns since the character last slept with consideration for long travels
      */
-    //int fatigue;
+    int fatigue;
     
     /**
      * The character sheet
      */
-    //CharacterSheet record;
+    CharacterSheet record;
     
     
     
@@ -148,6 +151,28 @@ namespace tbrpg
      */
     static void __copy__(Character& self, const Character& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Character>
+  {
+  public:
+    size_t operator()(const tbrpg::Character& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

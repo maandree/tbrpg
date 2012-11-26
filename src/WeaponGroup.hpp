@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WEAPONGROUP_HPP__
 #define __GUARD_WEAPONGROUP_HPP__
+#ifdef  CIRCULAR_WEAPONGROUP
+#include "WeaponGroup.circular"
+#endif//CIRCULAR_WEAPONGROUP
 
 
 #include <stdlib.h>
@@ -48,7 +51,7 @@ namespace tbrpg
     /**
      * The name of the weapon group
      */
-    //std::string name;
+    std::string name;
     
     
     
@@ -121,6 +124,28 @@ namespace tbrpg
      */
     static void __copy__(WeaponGroup& self, const WeaponGroup& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::WeaponGroup>
+  {
+  public:
+    size_t operator()(const tbrpg::WeaponGroup& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_THROWINGAXE_HPP__
 #define __GUARD_THROWINGAXE_HPP__
+#ifdef  CIRCULAR_THROWINGAXE
+#include "ThrowingAxe.circular"
+#endif//CIRCULAR_THROWINGAXE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(ThrowingAxe& self, const ThrowingAxe& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ThrowingAxe>
+  {
+  public:
+    size_t operator()(const tbrpg::ThrowingAxe& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

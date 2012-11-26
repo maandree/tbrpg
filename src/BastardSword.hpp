@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BASTARDSWORD_HPP__
 #define __GUARD_BASTARDSWORD_HPP__
+#ifdef  CIRCULAR_BASTARDSWORD
+#include "BastardSword.circular"
+#endif//CIRCULAR_BASTARDSWORD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(BastardSword& self, const BastardSword& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::BastardSword>
+  {
+  public:
+    size_t operator()(const tbrpg::BastardSword& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

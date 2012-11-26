@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_FIST_HPP__
 #define __GUARD_FIST_HPP__
+#ifdef  CIRCULAR_FIST
+#include "Fist.circular"
+#endif//CIRCULAR_FIST
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Fist& self, const Fist& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Fist>
+  {
+  public:
+    size_t operator()(const tbrpg::Fist& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

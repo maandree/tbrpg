@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BARD_HPP__
 #define __GUARD_BARD_HPP__
+#ifdef  CIRCULAR_BARD
+#include "Bard.circular"
+#endif//CIRCULAR_BARD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Bard& self, const Bard& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Bard>
+  {
+  public:
+    size_t operator()(const tbrpg::Bard& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

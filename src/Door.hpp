@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DOOR_HPP__
 #define __GUARD_DOOR_HPP__
+#ifdef  CIRCULAR_DOOR
+#include "Door.circular"
+#endif//CIRCULAR_DOOR
 
 
 #include <stdlib.h>
@@ -117,6 +120,28 @@ namespace tbrpg
      */
     static void __copy__(Door& self, const Door& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Door>
+  {
+  public:
+    size_t operator()(const tbrpg::Door& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

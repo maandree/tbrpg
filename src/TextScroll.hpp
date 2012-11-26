@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_TEXTSCROLL_HPP__
 #define __GUARD_TEXTSCROLL_HPP__
+#ifdef  CIRCULAR_TEXTSCROLL
+#include "TextScroll.circular"
+#endif//CIRCULAR_TEXTSCROLL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(TextScroll& self, const TextScroll& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::TextScroll>
+  {
+  public:
+    size_t operator()(const tbrpg::TextScroll& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

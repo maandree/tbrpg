@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RULESET_HPP__
 #define __GUARD_RULESET_HPP__
+#ifdef  CIRCULAR_RULESET
+#include "RuleSet.circular"
+#endif//CIRCULAR_RULESET
 
 
 #include <stdlib.h>
@@ -54,47 +57,47 @@ namespace tbrpg
     /**
      * The number of sides on the dice to roll at the attack roll
      */
-    //char attack_roll_die;
+    char attack_roll_die;
     
     /**
      * The number of dice to roll at the attack roll
      */
-    //char attack_roll_dice;
+    char attack_roll_dice;
     
     /**
      * The minimum attack roll needed for a critical hit
      */
-    //char critical_hit;
+    char critical_hit;
     
     /**
      * The maximum attack roll needed for a critical miss
      */
-    //char critical_miss;
+    char critical_miss;
     
     /**
      * The reputation chart
      */
-    //ReputationChart reputation_chart;
+    ReputationChart reputation_chart;
     
     /**
      * The ability chart
      */
-    //AbilityChart ability_chart;
+    AbilityChart ability_chart;
     
     /**
      * The inventory prototype, basiclly it defines how many slots there is in the inventory
      */
-    //Inventory inventory_prototype;
+    Inventory inventory_prototype;
     
     /**
      * All spells, very useful for when new characters selects spells, or to restrict imported characters
      */
-    //Spell* spells;
+    Spell* spells;
     
     /**
      * Races in the game that new charactes can chooses
      */
-    //Race* races;
+    Race* races;
     
     
     
@@ -167,6 +170,28 @@ namespace tbrpg
      */
     static void __copy__(RuleSet& self, const RuleSet& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::RuleSet>
+  {
+  public:
+    size_t operator()(const tbrpg::RuleSet& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

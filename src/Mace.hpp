@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MACE_HPP__
 #define __GUARD_MACE_HPP__
+#ifdef  CIRCULAR_MACE
+#include "Mace.circular"
+#endif//CIRCULAR_MACE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Mace& self, const Mace& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Mace>
+  {
+  public:
+    size_t operator()(const tbrpg::Mace& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

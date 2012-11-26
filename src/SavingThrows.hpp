@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SAVINGTHROWS_HPP__
 #define __GUARD_SAVINGTHROWS_HPP__
+#ifdef  CIRCULAR_SAVINGTHROWS
+#include "SavingThrows.circular"
+#endif//CIRCULAR_SAVINGTHROWS
 
 
 #include <stdlib.h>
@@ -48,27 +51,27 @@ namespace tbrpg
     /**
      * Save versus breath weapons
      */
-    //int breath;
+    int breath;
     
     /**
      * Save versus paralyzation/poison/death magic
      */
-    //int paralyze_poison_death;
+    int paralyze_poison_death;
     
     /**
      * Save versus petrification/polymorph
      */
-    //int petrification_polymorph;
+    int petrification_polymorph;
     
     /**
      * Save versus rods/staffs/wands
      */
-    //int rod_staff_wand;
+    int rod_staff_wand;
     
     /**
      * Save versus spells
      */
-    //int spell;
+    int spell;
     
     
     
@@ -141,6 +144,28 @@ namespace tbrpg
      */
     static void __copy__(SavingThrows& self, const SavingThrows& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::SavingThrows>
+  {
+  public:
+    size_t operator()(const tbrpg::SavingThrows& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

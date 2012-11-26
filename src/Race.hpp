@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RACE_HPP__
 #define __GUARD_RACE_HPP__
+#ifdef  CIRCULAR_RACE
+#include "Race.circular"
+#endif//CIRCULAR_RACE
 
 
 #include <stdlib.h>
@@ -51,12 +54,12 @@ namespace tbrpg
     /**
      * Allowed classes for the race
      */
-    //Class** allowed_classes;
+    Class** allowed_classes;
     
     /**
      * Bonuses for the race
      */
-    //AbilityBonus bonuses;
+    AbilityBonus bonuses;
     
     
     
@@ -129,6 +132,28 @@ namespace tbrpg
      */
     static void __copy__(Race& self, const Race& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Race>
+  {
+  public:
+    size_t operator()(const tbrpg::Race& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

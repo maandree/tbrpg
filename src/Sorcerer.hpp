@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SORCERER_HPP__
 #define __GUARD_SORCERER_HPP__
+#ifdef  CIRCULAR_SORCERER
+#include "Sorcerer.circular"
+#endif//CIRCULAR_SORCERER
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Sorcerer& self, const Sorcerer& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Sorcerer>
+  {
+  public:
+    size_t operator()(const tbrpg::Sorcerer& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

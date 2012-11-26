@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DEFENCE_HPP__
 #define __GUARD_DEFENCE_HPP__
+#ifdef  CIRCULAR_DEFENCE
+#include "Defence.circular"
+#endif//CIRCULAR_DEFENCE
 
 
 #include <stdlib.h>
@@ -48,42 +51,42 @@ namespace tbrpg
     /**
      * Armour class versus melée bonus
      */
-    //int melee;
+    int melee;
     
     /**
      * Armour class versus missile bonus
      */
-    //int missile;
+    int missile;
     
     /**
      * Resistance against fire bonus
      */
-    //float fire;
+    float fire;
     
     /**
      * Resistance against cold bonus
      */
-    //float cold;
+    float cold;
     
     /**
      * Resistance against lightning bonus
      */
-    //float lightning;
+    float lightning;
     
     /**
      * Resistance against acid bonus
      */
-    //float acid;
+    float acid;
     
     /**
      * Resistance against poison bonus
      */
-    //float poison;
+    float poison;
     
     /**
      * Resistance against physical damage bonus
      */
-    //float physical;
+    float physical;
     
     
     
@@ -156,6 +159,28 @@ namespace tbrpg
      */
     static void __copy__(Defence& self, const Defence& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Defence>
+  {
+  public:
+    size_t operator()(const tbrpg::Defence& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

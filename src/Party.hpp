@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_PARTY_HPP__
 #define __GUARD_PARTY_HPP__
+#ifdef  CIRCULAR_PARTY
+#include "Party.circular"
+#endif//CIRCULAR_PARTY
 
 
 #include <stdlib.h>
@@ -50,12 +53,12 @@ namespace tbrpg
     /**
      * The party's reputation
      */
-    //int reputation;
+    int reputation;
     
     /**
      * The characters in the party
      */
-    //Character* characters;
+    Character* characters;
     
     
     
@@ -128,6 +131,28 @@ namespace tbrpg
      */
     static void __copy__(Party& self, const Party& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Party>
+  {
+  public:
+    size_t operator()(const tbrpg::Party& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

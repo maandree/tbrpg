@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ITEM_HPP__
 #define __GUARD_ITEM_HPP__
+#ifdef  CIRCULAR_ITEM
+#include "Item.circular"
+#endif//CIRCULAR_ITEM
 
 
 #include <stdlib.h>
@@ -51,67 +54,67 @@ namespace tbrpg
     /**
      * The name of the item
      */
-    //std::string name;
+    std::string name;
     
     /**
      * Description of the item, text scrolls should use this for their text
      */
-    //std::string description;
+    std::string description;
     
     /**
      * The armour class, use 2³¹ − 1 for none
      */
-    //int armour_class;
+    int armour_class;
     
     /**
      * The wieght of the item, in grams
      */
-    //int weight;
+    int weight;
     
     /**
      * Whether the item is identified
      */
-    //bool identified;
+    bool identified;
     
     /**
      * The lore needed to identify the item by examining it
      */
-    //int lore_value;
+    int lore_value;
     
     /**
      * Whether the item is stuck in its position
      */
-    //bool stuck;
+    bool stuck;
     
     /**
      * Whether the item is cursed
      */
-    //bool cursed;
+    bool cursed;
     
     /**
      * The current quantity
      */
-    //int quantity;
+    int quantity;
     
     /**
      * The quantity limit
      */
-    //int quantity_limit;
+    int quantity_limit;
     
     /**
      * The monetary value of each item
      */
-    //int unit_value;
+    int unit_value;
     
     /**
      * Ability bonuses
      */
-    //AbilityBonus bonuses;
+    AbilityBonus bonuses;
     
     /**
      * Armour class modifiers for the damage types
      */
-    //std::unordered_map<DamageType, int> armour_class_modifiers;
+    std::unordered_map<DamageType, int> armour_class_modifiers;
     
     
     
@@ -184,6 +187,28 @@ namespace tbrpg
      */
     static void __copy__(Item& self, const Item& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Item>
+  {
+  public:
+    size_t operator()(const tbrpg::Item& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

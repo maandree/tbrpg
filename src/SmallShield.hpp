@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SMALLSHIELD_HPP__
 #define __GUARD_SMALLSHIELD_HPP__
+#ifdef  CIRCULAR_SMALLSHIELD
+#include "SmallShield.circular"
+#endif//CIRCULAR_SMALLSHIELD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(SmallShield& self, const SmallShield& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::SmallShield>
+  {
+  public:
+    size_t operator()(const tbrpg::SmallShield& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

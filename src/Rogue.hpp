@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ROGUE_HPP__
 #define __GUARD_ROGUE_HPP__
+#ifdef  CIRCULAR_ROGUE
+#include "Rogue.circular"
+#endif//CIRCULAR_ROGUE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Rogue& self, const Rogue& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Rogue>
+  {
+  public:
+    size_t operator()(const tbrpg::Rogue& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

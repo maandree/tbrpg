@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BOLT_HPP__
 #define __GUARD_BOLT_HPP__
+#ifdef  CIRCULAR_BOLT
+#include "Bolt.circular"
+#endif//CIRCULAR_BOLT
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Bolt& self, const Bolt& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Bolt>
+  {
+  public:
+    size_t operator()(const tbrpg::Bolt& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

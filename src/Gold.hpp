@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_GOLD_HPP__
 #define __GUARD_GOLD_HPP__
+#ifdef  CIRCULAR_GOLD
+#include "Gold.circular"
+#endif//CIRCULAR_GOLD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Gold& self, const Gold& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Gold>
+  {
+  public:
+    size_t operator()(const tbrpg::Gold& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

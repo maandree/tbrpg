@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_FLAIL_HPP__
 #define __GUARD_FLAIL_HPP__
+#ifdef  CIRCULAR_FLAIL
+#include "Flail.circular"
+#endif//CIRCULAR_FLAIL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Flail& self, const Flail& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Flail>
+  {
+  public:
+    size_t operator()(const tbrpg::Flail& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

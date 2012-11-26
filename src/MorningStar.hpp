@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MORNINGSTAR_HPP__
 #define __GUARD_MORNINGSTAR_HPP__
+#ifdef  CIRCULAR_MORNINGSTAR
+#include "MorningStar.circular"
+#endif//CIRCULAR_MORNINGSTAR
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(MorningStar& self, const MorningStar& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MorningStar>
+  {
+  public:
+    size_t operator()(const tbrpg::MorningStar& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

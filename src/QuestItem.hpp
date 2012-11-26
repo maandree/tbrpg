@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_QUESTITEM_HPP__
 #define __GUARD_QUESTITEM_HPP__
+#ifdef  CIRCULAR_QUESTITEM
+#include "QuestItem.circular"
+#endif//CIRCULAR_QUESTITEM
 
 
 #include <stdlib.h>
@@ -50,7 +53,7 @@ namespace tbrpg
     /**
      * A unique number for the item that the game senario can use for identifying quest items
      */
-    //int id;
+    int id;
     
     
     
@@ -123,6 +126,28 @@ namespace tbrpg
      */
     static void __copy__(QuestItem& self, const QuestItem& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::QuestItem>
+  {
+  public:
+    size_t operator()(const tbrpg::QuestItem& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

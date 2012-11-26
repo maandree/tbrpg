@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MELEEWEAPON_HPP__
 #define __GUARD_MELEEWEAPON_HPP__
+#ifdef  CIRCULAR_MELEEWEAPON
+#include "MeleeWeapon.circular"
+#endif//CIRCULAR_MELEEWEAPON
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(MeleeWeapon& self, const MeleeWeapon& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MeleeWeapon>
+  {
+  public:
+    size_t operator()(const tbrpg::MeleeWeapon& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

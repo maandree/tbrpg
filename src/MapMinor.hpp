@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MAPMINOR_HPP__
 #define __GUARD_MAPMINOR_HPP__
+#ifdef  CIRCULAR_MAPMINOR
+#include "MapMinor.circular"
+#endif//CIRCULAR_MAPMINOR
 
 
 #include <stdlib.h>
@@ -55,47 +58,47 @@ namespace tbrpg
     /**
      * Descrion of the area
      */
-    //std::string description;
+    std::string description;
     
     /**
      * Whether you may rest in the area without renting a room
      */
-    //bool may_rest;
+    bool may_rest;
     
     /**
      * The radius of the area, in metres, the party starts at origo
      */
-    //float area;
+    float area;
     
     /**
      * Roads to other major areas in the area
      */
-    //Road* roads;
+    Road* roads;
     
     /**
      * Entrance to other areas in the area
      */
-    //Entrance* connections;
+    Entrance* connections;
     
     /**
      * Items in the area
      */
-    //std::vector<Item> items;
+    std::vector<Item> items;
     
     /**
      * Creatures in the area
      */
-    //std::vector<Creature> creatures;
+    std::vector<Creature> creatures;
     
     /**
      * Which major area to which  the area belongs
      */
-    //MapMajor is_in;
+    MapMajor is_in;
     
     /**
      * Possible rest interruptions
      */
-    //RestInterruption* interruptions;
+    RestInterruption* interruptions;
     
     
     
@@ -168,6 +171,28 @@ namespace tbrpg
      */
     static void __copy__(MapMinor& self, const MapMinor& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MapMinor>
+  {
+  public:
+    size_t operator()(const tbrpg::MapMinor& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

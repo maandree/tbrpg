@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RING_HPP__
 #define __GUARD_RING_HPP__
+#ifdef  CIRCULAR_RING
+#include "Ring.circular"
+#endif//CIRCULAR_RING
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Ring& self, const Ring& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Ring>
+  {
+  public:
+    size_t operator()(const tbrpg::Ring& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

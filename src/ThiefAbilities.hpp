@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_THIEFABILITIES_HPP__
 #define __GUARD_THIEFABILITIES_HPP__
+#ifdef  CIRCULAR_THIEFABILITIES
+#include "ThiefAbilities.circular"
+#endif//CIRCULAR_THIEFABILITIES
 
 
 #include <stdlib.h>
@@ -48,22 +51,22 @@ namespace tbrpg
     /**
      * Find traps scores
      */
-    //int find_traps;
+    int find_traps;
     
     /**
      * Open locks scores
      */
-    //int open_locks;
+    int open_locks;
     
     /**
      * Pick pockets scores
      */
-    //int pick_pockets;
+    int pick_pockets;
     
     /**
      * Stealth scores
      */
-    //int stealth;
+    int stealth;
     
     
     
@@ -136,6 +139,28 @@ namespace tbrpg
      */
     static void __copy__(ThiefAbilities& self, const ThiefAbilities& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ThiefAbilities>
+  {
+  public:
+    size_t operator()(const tbrpg::ThiefAbilities& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

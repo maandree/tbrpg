@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_WARRIOR_HPP__
 #define __GUARD_WARRIOR_HPP__
+#ifdef  CIRCULAR_WARRIOR
+#include "Warrior.circular"
+#endif//CIRCULAR_WARRIOR
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Warrior& self, const Warrior& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Warrior>
+  {
+  public:
+    size_t operator()(const tbrpg::Warrior& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

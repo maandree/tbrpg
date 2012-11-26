@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DART_HPP__
 #define __GUARD_DART_HPP__
+#ifdef  CIRCULAR_DART
+#include "Dart.circular"
+#endif//CIRCULAR_DART
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Dart& self, const Dart& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Dart>
+  {
+  public:
+    size_t operator()(const tbrpg::Dart& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

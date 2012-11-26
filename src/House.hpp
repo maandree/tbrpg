@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HOUSE_HPP__
 #define __GUARD_HOUSE_HPP__
+#ifdef  CIRCULAR_HOUSE
+#include "House.circular"
+#endif//CIRCULAR_HOUSE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(House& self, const House& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::House>
+  {
+  public:
+    size_t operator()(const tbrpg::House& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_GIRDLE_HPP__
 #define __GUARD_GIRDLE_HPP__
+#ifdef  CIRCULAR_GIRDLE
+#include "Girdle.circular"
+#endif//CIRCULAR_GIRDLE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Girdle& self, const Girdle& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Girdle>
+  {
+  public:
+    size_t operator()(const tbrpg::Girdle& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

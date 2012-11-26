@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HALFORC_HPP__
 #define __GUARD_HALFORC_HPP__
+#ifdef  CIRCULAR_HALFORC
+#include "HalfOrc.circular"
+#endif//CIRCULAR_HALFORC
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(HalfOrc& self, const HalfOrc& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::HalfOrc>
+  {
+  public:
+    size_t operator()(const tbrpg::HalfOrc& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ARROW_HPP__
 #define __GUARD_ARROW_HPP__
+#ifdef  CIRCULAR_ARROW
+#include "Arrow.circular"
+#endif//CIRCULAR_ARROW
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Arrow& self, const Arrow& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Arrow>
+  {
+  public:
+    size_t operator()(const tbrpg::Arrow& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

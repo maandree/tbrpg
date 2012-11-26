@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CHARACTERSHEET_HPP__
 #define __GUARD_CHARACTERSHEET_HPP__
+#ifdef  CIRCULAR_CHARACTERSHEET
+#include "CharacterSheet.circular"
+#endif//CIRCULAR_CHARACTERSHEET
 
 
 #include <stdlib.h>
@@ -31,12 +34,11 @@
 #include "WeaponGroup.hpp"
 #include "Spell.hpp"
 #include "Inventory.hpp"
+#include "AbilityBonus.hpp"
 #include "SpellBook.hpp"
-#include "Race.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "MagicSchool.hpp"
-#include "Spell.hpp"
 
 
 /**
@@ -58,97 +60,97 @@ namespace tbrpg
     /**
      * The name of the character
      */
-    //std::string name;
+    std::string name;
     
     /**
      * The character's biography
      */
-    //std::string biography;
+    std::string biography;
     
     /**
      * The character's name colouration
      */
-    //char colour;
+    char colour;
     
     /**
      * The character's alignment
      */
-    //char alignment;
+    char alignment;
     
     /**
      * The character's portrait in printable data
      */
-    //std::string portrait;
+    std::string portrait;
     
     /**
      * Whether the characters is female
      */
-    //bool female;
+    bool female;
     
     /**
      * The character's experiences for its classes
      */
-    //int* experience;
+    int* experience;
     
     /**
      * The character's levels for its classes
      */
-    //char* level;
+    char* level;
     
     /**
      * For each of the character's classes, whether the class is abondoned by dual classing
      */
-    //bool* class_abondoned;
+    bool* class_abondoned;
     
     /**
      * The character's weapon proficiencies
      */
-    //std::unordered_map<WeaponGroup, int> proficiencies;
+    std::unordered_map<WeaponGroup, int> proficiencies;
     
     /**
      * Spells the character is affected by
      */
-    //std::vector<Spell> affected_by;
+    std::vector<Spell> affected_by;
     
     /**
      * The character's inventory
      */
-    //Inventory inventory;
+    Inventory inventory;
     
     /**
      * The character's abilities
      */
-    //AbiltyBonus abilities;
+    AbilityBonus abilities;
     
     /**
      * The character's spell book
      */
-    //SpellBook spells;
+    SpellBook spells;
     
     /**
      * The character's race
      */
-    //Race race;
+    Race race;
     
     /**
      * The character's racial enemy
      */
-    //Race racial_enemy;
+    Race racial_enemy;
     
     /**
      * The character's prestige classes
      */
-    //Class* prestige;
+    Class* prestige;
     
     /**
      * The character's magic school specialisation
      */
-    //MagicSchool specialisation;
+    MagicSchool specialisation;
     
     /**
      * The character's special abilities
      */
-    //std::vector<Spell> special_abilities;
+    std::vector<Spell> special_abilities;
     
     
     
@@ -221,6 +223,28 @@ namespace tbrpg
      */
     static void __copy__(CharacterSheet& self, const CharacterSheet& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::CharacterSheet>
+  {
+  public:
+    size_t operator()(const tbrpg::CharacterSheet& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_LIGHTCROSSBOW_HPP__
 #define __GUARD_LIGHTCROSSBOW_HPP__
+#ifdef  CIRCULAR_LIGHTCROSSBOW
+#include "LightCrossbow.circular"
+#endif//CIRCULAR_LIGHTCROSSBOW
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(LightCrossbow& self, const LightCrossbow& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::LightCrossbow>
+  {
+  public:
+    size_t operator()(const tbrpg::LightCrossbow& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

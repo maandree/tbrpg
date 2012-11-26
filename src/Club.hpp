@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CLUB_HPP__
 #define __GUARD_CLUB_HPP__
+#ifdef  CIRCULAR_CLUB
+#include "Club.circular"
+#endif//CIRCULAR_CLUB
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Club& self, const Club& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Club>
+  {
+  public:
+    size_t operator()(const tbrpg::Club& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

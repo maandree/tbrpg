@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_PROFICIENCY_HPP__
 #define __GUARD_PROFICIENCY_HPP__
+#ifdef  CIRCULAR_PROFICIENCY
+#include "Proficiency.circular"
+#endif//CIRCULAR_PROFICIENCY
 
 
 #include <stdlib.h>
@@ -48,17 +51,17 @@ namespace tbrpg
     /**
      * The hit bonus
      */
-    //int hit_bonus;
+    int hit_bonus;
     
     /**
      * The damage bonus
      */
-    //int damage bonus;
+    int damage_bonus;
     
     /**
      * the number of half attacks
      */
-    //char half_attacks;
+    char half_attacks;
     
     
     
@@ -131,6 +134,28 @@ namespace tbrpg
      */
     static void __copy__(Proficiency& self, const Proficiency& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Proficiency>
+  {
+  public:
+    size_t operator()(const tbrpg::Proficiency& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

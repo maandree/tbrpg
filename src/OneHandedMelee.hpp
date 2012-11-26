@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ONEHANDEDMELEE_HPP__
 #define __GUARD_ONEHANDEDMELEE_HPP__
+#ifdef  CIRCULAR_ONEHANDEDMELEE
+#include "OneHandedMelee.circular"
+#endif//CIRCULAR_ONEHANDEDMELEE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(OneHandedMelee& self, const OneHandedMelee& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::OneHandedMelee>
+  {
+  public:
+    size_t operator()(const tbrpg::OneHandedMelee& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

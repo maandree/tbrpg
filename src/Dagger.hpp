@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_DAGGER_HPP__
 #define __GUARD_DAGGER_HPP__
+#ifdef  CIRCULAR_DAGGER
+#include "Dagger.circular"
+#endif//CIRCULAR_DAGGER
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Dagger& self, const Dagger& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Dagger>
+  {
+  public:
+    size_t operator()(const tbrpg::Dagger& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

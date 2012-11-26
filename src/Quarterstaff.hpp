@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_QUARTERSTAFF_HPP__
 #define __GUARD_QUARTERSTAFF_HPP__
+#ifdef  CIRCULAR_QUARTERSTAFF
+#include "Quarterstaff.circular"
+#endif//CIRCULAR_QUARTERSTAFF
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Quarterstaff& self, const Quarterstaff& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Quarterstaff>
+  {
+  public:
+    size_t operator()(const tbrpg::Quarterstaff& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

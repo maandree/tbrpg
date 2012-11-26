@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SHORTSWORD_HPP__
 #define __GUARD_SHORTSWORD_HPP__
+#ifdef  CIRCULAR_SHORTSWORD
+#include "ShortSword.circular"
+#endif//CIRCULAR_SHORTSWORD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(ShortSword& self, const ShortSword& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ShortSword>
+  {
+  public:
+    size_t operator()(const tbrpg::ShortSword& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

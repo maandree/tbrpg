@@ -43,10 +43,10 @@ namespace tbrpg
     //this->learn_from_scroll = false;
     //this->proficiencies_each = 0;
     //this->experience_chart = nullptr;
-    //this->n = nullptr;
+    //this->spell_progression = nullptr;
     //this->abilities = nullptr;
     //this->lower_limits = nullptr;
-    //this->special_abilties = nullptr;
+    //this->special_abilities = nullptr;
     //this->can_use = nullptr;
     //this->proficiency_chart = nullptr;
     //this->default_one_hand = nullptr;
@@ -68,10 +68,10 @@ namespace tbrpg
     //this->learn_from_scroll = original.learn_from_scroll;
     //this->proficiencies_each = original.proficiencies_each;
     //this->experience_chart = original.experience_chart;
-    //this->n = original.n;
+    //this->spell_progression = original.spell_progression;
     //this->abilities = original.abilities;
     //this->lower_limits = original.lower_limits;
-    //this->special_abilties = original.special_abilties;
+    //this->special_abilities = original.special_abilities;
     //this->can_use = original.can_use;
     //this->proficiency_chart = original.proficiency_chart;
     //this->default_one_hand = original.default_one_hand;
@@ -93,10 +93,10 @@ namespace tbrpg
     //this->learn_from_scroll = original.learn_from_scroll;
     //this->proficiencies_each = original.proficiencies_each;
     //this->experience_chart = original.experience_chart;
-    //this->n = original.n;
+    //this->spell_progression = original.spell_progression;
     //this->abilities = original.abilities;
     //this->lower_limits = original.lower_limits;
-    //this->special_abilties = original.special_abilties;
+    //this->special_abilities = original.special_abilities;
     //this->can_use = original.can_use;
     //this->proficiency_chart = original.proficiency_chart;
     //this->default_one_hand = original.default_one_hand;
@@ -118,10 +118,10 @@ namespace tbrpg
     ////std::swap(this->learn_from_scroll, original.learn_from_scroll);
     ////std::swap(this->proficiencies_each, original.proficiencies_each);
     ////std::move(this->experience_chart, original.experience_chart);
-    ////std::move(this->n, original.n);
+    ////std::move(this->spell_progression, original.spell_progression);
     ////std::move(this->abilities, original.abilities);
     ////std::move(this->lower_limits, original.lower_limits);
-    ////std::move(this->special_abilties, original.special_abilties);
+    ////std::move(this->special_abilities, original.special_abilities);
     ////std::move(this->can_use, original.can_use);
     ////std::move(this->proficiency_chart, original.proficiency_chart);
     ////std::move(this->default_one_hand, original.default_one_hand);
@@ -138,10 +138,10 @@ namespace tbrpg
     ////TODO implement destructor
     //delete alignments;
     //delete experience_chart;
-    //delete n;
+    //delete spell_progression;
     //delete abilities;
     //delete lower_limits;
-    //delete special_abilties;
+    //delete special_abilities;
     //delete can_use;
     //delete proficiency_chart;
     //delete default_one_hand;
@@ -166,10 +166,10 @@ namespace tbrpg
     //this->learn_from_scroll = original.learn_from_scroll;
     //this->proficiencies_each = original.proficiencies_each;
     //this->experience_chart = original.experience_chart;
-    //this->n = original.n;
+    //this->spell_progression = original.spell_progression;
     //this->abilities = original.abilities;
     //this->lower_limits = original.lower_limits;
-    //this->special_abilties = original.special_abilties;
+    //this->special_abilities = original.special_abilities;
     //this->can_use = original.can_use;
     //this->proficiency_chart = original.proficiency_chart;
     //this->default_one_hand = original.default_one_hand;
@@ -193,10 +193,10 @@ namespace tbrpg
     //this->learn_from_scroll = original.learn_from_scroll;
     //this->proficiencies_each = original.proficiencies_each;
     //this->experience_chart = original.experience_chart;
-    //this->n = original.n;
+    //this->spell_progression = original.spell_progression;
     //this->abilities = original.abilities;
     //this->lower_limits = original.lower_limits;
-    //this->special_abilties = original.special_abilties;
+    //this->special_abilities = original.special_abilities;
     //this->can_use = original.can_use;
     //this->proficiency_chart = original.proficiency_chart;
     //this->default_one_hand = original.default_one_hand;
@@ -220,10 +220,10 @@ namespace tbrpg
     ////std::swap(this->learn_from_scroll, original.learn_from_scroll);
     ////std::swap(this->proficiencies_each, original.proficiencies_each);
     ////std::move(this->experience_chart, original.experience_chart);
-    ////std::move(this->n, original.n);
+    ////std::move(this->spell_progression, original.spell_progression);
     ////std::move(this->abilities, original.abilities);
     ////std::move(this->lower_limits, original.lower_limits);
-    ////std::move(this->special_abilties, original.special_abilties);
+    ////std::move(this->special_abilities, original.special_abilities);
     ////std::move(this->can_use, original.can_use);
     ////std::move(this->proficiency_chart, original.proficiency_chart);
     ////std::move(this->default_one_hand, original.default_one_hand);
@@ -240,6 +240,16 @@ namespace tbrpg
   void Class::__copy__(Class& self, const Class& original)
   {
     self = original;
+  }
+  
+  /**
+   * Hash method
+   * 
+   * @return  The object's hash code
+   */
+  size_t Class::hash() const
+  {
+    return (size_t)this;
   }
   
 }

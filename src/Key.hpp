@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_KEY_HPP__
 #define __GUARD_KEY_HPP__
+#ifdef  CIRCULAR_KEY
+#include "Key.circular"
+#endif//CIRCULAR_KEY
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Key& self, const Key& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Key>
+  {
+  public:
+    size_t operator()(const tbrpg::Key& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_CREATURE_HPP__
 #define __GUARD_CREATURE_HPP__
+#ifdef  CIRCULAR_CREATURE
+#include "Creature.circular"
+#endif//CIRCULAR_CREATURE
 
 
 #include <stdlib.h>
@@ -50,27 +53,27 @@ namespace tbrpg
     /**
      * Whether the creature is hostile
      */
-    //bool hostile;
+    bool hostile;
     
     /**
      * The creatures horizontal position in metres, the parties starts at 0
      */
-    //float x;
+    float x;
     
     /**
      * The creatures vertical position in metres, the parties starts at 0
      */
-    //float y;
+    float y;
     
     /**
      * Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
      */
-    //bool alive;
+    bool alive;
     
     /**
      * Whether the creature is resurrected when the party leaves the area
      */
-    //bool resurrect;
+    bool resurrect;
     
     
     
@@ -143,6 +146,28 @@ namespace tbrpg
      */
     static void __copy__(Creature& self, const Creature& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Creature>
+  {
+  public:
+    size_t operator()(const tbrpg::Creature& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

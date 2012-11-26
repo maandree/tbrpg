@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HALFLING_HPP__
 #define __GUARD_HALFLING_HPP__
+#ifdef  CIRCULAR_HALFLING
+#include "Halfling.circular"
+#endif//CIRCULAR_HALFLING
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Halfling& self, const Halfling& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Halfling>
+  {
+  public:
+    size_t operator()(const tbrpg::Halfling& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

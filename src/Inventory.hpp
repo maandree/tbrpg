@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_INVENTORY_HPP__
 #define __GUARD_INVENTORY_HPP__
+#ifdef  CIRCULAR_INVENTORY
+#include "Inventory.circular"
+#endif//CIRCULAR_INVENTORY
 
 
 #include <stdlib.h>
@@ -62,67 +65,67 @@ namespace tbrpg
     /**
      * Left hand item slots
      */
-    //Weapon* left_hand;
+    Weapon* left_hand;
     
     /**
      * Right hand item slot
      */
-    //RightHandItem right_hand;
+    RightHandItem right_hand;
     
     /**
      * Quiver slots
      */
-    //Ammunition* quiver;
+    Ammunition* quiver;
     
     /**
      * Quick item slots
      */
-    //QuickItem* quick_items;
+    QuickItem* quick_items;
     
     /**
      * Headgear slots
      */
-    //Headgear headgear;
+    Headgear headgear;
     
     /**
      * Amulette and necklace slot
      */
-    //Amulett amulett;
+    Amulett amulett;
     
     /**
      * Ring slots
      */
-    //Ring* rings;
+    Ring* rings;
     
     /**
      * Body armour slot
      */
-    //BodyArmour body;
+    BodyArmour body;
     
     /**
      * Gauntlet and bracer slots
      */
-    //Gauntlets gauntlets;
+    Gauntlets gauntlets;
     
     /**
      * Girdle and belt slot
      */
-    //Girdle girdle;
+    Girdle girdle;
     
     /**
      * Boot slot
      */
-    //Boots boots;
+    Boots boots;
     
     /**
      * Cloak slot
      */
-    //Cloak cloak;
+    Cloak cloak;
     
     /**
      * Personal inventory slots
      */
-    //Item* personal;
+    Item* personal;
     
     
     
@@ -195,6 +198,28 @@ namespace tbrpg
      */
     static void __copy__(Inventory& self, const Inventory& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Inventory>
+  {
+  public:
+    size_t operator()(const tbrpg::Inventory& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

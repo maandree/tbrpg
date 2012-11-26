@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_BATTLEAXE_HPP__
 #define __GUARD_BATTLEAXE_HPP__
+#ifdef  CIRCULAR_BATTLEAXE
+#include "BattleAxe.circular"
+#endif//CIRCULAR_BATTLEAXE
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(BattleAxe& self, const BattleAxe& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::BattleAxe>
+  {
+  public:
+    size_t operator()(const tbrpg::BattleAxe& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_GEM_HPP__
 #define __GUARD_GEM_HPP__
+#ifdef  CIRCULAR_GEM
+#include "Gem.circular"
+#endif//CIRCULAR_GEM
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Gem& self, const Gem& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Gem>
+  {
+  public:
+    size_t operator()(const tbrpg::Gem& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

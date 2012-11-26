@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ACTIONSLOTCHART_HPP__
 #define __GUARD_ACTIONSLOTCHART_HPP__
+#ifdef  CIRCULAR_ACTIONSLOTCHART
+#include "ActionSlotChart.circular"
+#endif//CIRCULAR_ACTIONSLOTCHART
 
 
 #include <stdlib.h>
@@ -29,6 +32,7 @@
 
 
 #include "Class.hpp"
+#include "ActionSlot.hpp"
 
 
 /**
@@ -50,12 +54,12 @@ namespace tbrpg
     /**
      * Prestige class to OR:able index map
      */
-    //std::unordered_map<Class, long long> index_map;
+    std::unordered_map<Class, long long> index_map;
     
     /**
      * Index combination to action slots map
      */
-    //std::unordered_map<long long, ActionSlots*> slot_map;
+    std::unordered_map<long long, ActionSlot*> slot_map;
     
     
     
@@ -128,6 +132,28 @@ namespace tbrpg
      */
     static void __copy__(ActionSlotChart& self, const ActionSlotChart& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ActionSlotChart>
+  {
+  public:
+    size_t operator()(const tbrpg::ActionSlotChart& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

@@ -37,7 +37,7 @@ namespace tbrpg
   {
     ////TODO implement constructor
     //this->hit_bonus = 0;
-    //this->bonus = nullptr;
+    //this->damage_bonus = 0;
     //this->half_attacks = 0;
   }
   
@@ -50,7 +50,7 @@ namespace tbrpg
   {
     (void) original;
     //this->hit_bonus = original.hit_bonus;
-    //this->bonus = original.bonus;
+    //this->damage_bonus = original.damage_bonus;
     //this->half_attacks = original.half_attacks;
   }
   
@@ -63,7 +63,7 @@ namespace tbrpg
   {
     (void) original;
     //this->hit_bonus = original.hit_bonus;
-    //this->bonus = original.bonus;
+    //this->damage_bonus = original.damage_bonus;
     //this->half_attacks = original.half_attacks;
   }
   
@@ -76,7 +76,7 @@ namespace tbrpg
   {
     (void) original;
     ////std::swap(this->hit_bonus, original.hit_bonus);
-    ////std::move(this->bonus, original.bonus);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
     ////std::swap(this->half_attacks, original.half_attacks);
   }
   
@@ -88,7 +88,6 @@ namespace tbrpg
   Proficiency::~Proficiency()
   {
     ////TODO implement destructor
-    //delete bonus;
   }
   
   
@@ -103,7 +102,7 @@ namespace tbrpg
   {
     (void) original;
     //this->hit_bonus = original.hit_bonus;
-    //this->bonus = original.bonus;
+    //this->damage_bonus = original.damage_bonus;
     //this->half_attacks = original.half_attacks;
     return *this;
   }
@@ -118,7 +117,7 @@ namespace tbrpg
   {
     (void) original;
     //this->hit_bonus = original.hit_bonus;
-    //this->bonus = original.bonus;
+    //this->damage_bonus = original.damage_bonus;
     //this->half_attacks = original.half_attacks;
     return *this;
   }
@@ -133,7 +132,7 @@ namespace tbrpg
   {
     (void) original;
     ////std::swap(this->hit_bonus, original.hit_bonus);
-    ////std::move(this->bonus, original.bonus);
+    ////std::swap(this->damage_bonus, original.damage_bonus);
     ////std::swap(this->half_attacks, original.half_attacks);
     return *this;
   }
@@ -147,6 +146,16 @@ namespace tbrpg
   void Proficiency::__copy__(Proficiency& self, const Proficiency& original)
   {
     self = original;
+  }
+  
+  /**
+   * Hash method
+   * 
+   * @return  The object's hash code
+   */
+  size_t Proficiency::hash() const
+  {
+    return (size_t)this;
   }
   
 }

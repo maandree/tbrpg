@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HUMAN_HPP__
 #define __GUARD_HUMAN_HPP__
+#ifdef  CIRCULAR_HUMAN
+#include "Human.circular"
+#endif//CIRCULAR_HUMAN
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Human& self, const Human& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Human>
+  {
+  public:
+    size_t operator()(const tbrpg::Human& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

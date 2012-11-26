@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_LARGESWORD_HPP__
 #define __GUARD_LARGESWORD_HPP__
+#ifdef  CIRCULAR_LARGESWORD
+#include "LargeSword.circular"
+#endif//CIRCULAR_LARGESWORD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(LargeSword& self, const LargeSword& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::LargeSword>
+  {
+  public:
+    size_t operator()(const tbrpg::LargeSword& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

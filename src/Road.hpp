@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ROAD_HPP__
 #define __GUARD_ROAD_HPP__
+#ifdef  CIRCULAR_ROAD
+#include "Road.circular"
+#endif//CIRCULAR_ROAD
 
 
 #include <stdlib.h>
@@ -28,7 +31,6 @@
 
 
 
-#include "MapMinor.hpp"
 #include "MapMinor.hpp"
 
 
@@ -51,42 +53,42 @@ namespace tbrpg
     /**
      * Distance to the waylay point in metres
      */
-    //int first_distance;
+    int first_distance;
     
     /**
      * Distance from the waylay point in metres
      */
-    //int last_distance;
+    int last_distance;
     
     /**
      * The number of sides on the dice to roll to determine whether you are being waylaid
      */
-    //char waylay_die;
+    char waylay_die;
     
     /**
      * The number dice to roll to determine whether you are being waylaid
      */
-    //char waylay_dice;
+    char waylay_dice;
     
     /**
      * The highest value for at which you get waylaid, use 0 for never, and 255 for always
      */
-    //unsigned char waylay_risk;
+    unsigned char waylay_risk;
     
     /**
      * At which direction the road is located and leads
      */
-    //std::string direction;
+    std::string direction;
     
     /**
      * The area entered if you get waylaid
      */
-    //MapMinor waylay_map;
+    MapMinor waylay_map;
     
     /**
      * The area to which the the road leads
      */
-    //MapMinor leads_to;
+    MapMinor leads_to;
     
     
     
@@ -159,6 +161,28 @@ namespace tbrpg
      */
     static void __copy__(Road& self, const Road& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Road>
+  {
+  public:
+    size_t operator()(const tbrpg::Road& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

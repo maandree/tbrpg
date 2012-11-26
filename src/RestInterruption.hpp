@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_RESTINTERRUPTION_HPP__
 #define __GUARD_RESTINTERRUPTION_HPP__
+#ifdef  CIRCULAR_RESTINTERRUPTION
+#include "RestInterruption.circular"
+#endif//CIRCULAR_RESTINTERRUPTION
 
 
 #include <stdlib.h>
@@ -50,22 +53,22 @@ namespace tbrpg
     /**
      * The number of sides on the dice to roll to determine whether your sleeps is being interrupted
      */
-    //char interrupt_die;
+    char interrupt_die;
     
     /**
      * The number dice to roll to determine whether your sleeps is being interrupted
      */
-    //char interrupt_dice;
+    char interrupt_dice;
     
     /**
      * The highest value for at which your gets interrupted, use 0 for never, and 255 for always
      */
-    //unsigned char interrupt_risk;
+    unsigned char interrupt_risk;
     
     /**
      * Creatures that will be summoned
      */
-    //Creature* creatures;
+    Creature* creatures;
     
     
     
@@ -138,6 +141,28 @@ namespace tbrpg
      */
     static void __copy__(RestInterruption& self, const RestInterruption& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::RestInterruption>
+  {
+  public:
+    size_t operator()(const tbrpg::RestInterruption& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

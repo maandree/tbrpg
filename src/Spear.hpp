@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SPEAR_HPP__
 #define __GUARD_SPEAR_HPP__
+#ifdef  CIRCULAR_SPEAR
+#include "Spear.circular"
+#endif//CIRCULAR_SPEAR
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Spear& self, const Spear& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Spear>
+  {
+  public:
+    size_t operator()(const tbrpg::Spear& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

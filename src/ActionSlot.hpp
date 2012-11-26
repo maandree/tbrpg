@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ACTIONSLOT_HPP__
 #define __GUARD_ACTIONSLOT_HPP__
+#ifdef  CIRCULAR_ACTIONSLOT
+#include "ActionSlot.circular"
+#endif//CIRCULAR_ACTIONSLOT
 
 
 #include <stdlib.h>
@@ -114,6 +117,28 @@ namespace tbrpg
      */
     static void __copy__(ActionSlot& self, const ActionSlot& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ActionSlot>
+  {
+  public:
+    size_t operator()(const tbrpg::ActionSlot& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

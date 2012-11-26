@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SHIELD_HPP__
 #define __GUARD_SHIELD_HPP__
+#ifdef  CIRCULAR_SHIELD
+#include "Shield.circular"
+#endif//CIRCULAR_SHIELD
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Shield& self, const Shield& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Shield>
+  {
+  public:
+    size_t operator()(const tbrpg::Shield& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

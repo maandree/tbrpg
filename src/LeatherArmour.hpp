@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_LEATHERARMOUR_HPP__
 #define __GUARD_LEATHERARMOUR_HPP__
+#ifdef  CIRCULAR_LEATHERARMOUR
+#include "LeatherArmour.circular"
+#endif//CIRCULAR_LEATHERARMOUR
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(LeatherArmour& self, const LeatherArmour& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::LeatherArmour>
+  {
+  public:
+    size_t operator()(const tbrpg::LeatherArmour& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

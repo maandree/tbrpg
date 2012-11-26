@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_HEADGEAR_HPP__
 #define __GUARD_HEADGEAR_HPP__
+#ifdef  CIRCULAR_HEADGEAR
+#include "Headgear.circular"
+#endif//CIRCULAR_HEADGEAR
 
 
 #include <stdlib.h>
@@ -50,7 +53,7 @@ namespace tbrpg
     /**
      * Whether the item protects agains critical hits
      */
-    //bool critical_hit_protection;
+    bool critical_hit_protection;
     
     
     
@@ -123,6 +126,28 @@ namespace tbrpg
      */
     static void __copy__(Headgear& self, const Headgear& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Headgear>
+  {
+  public:
+    size_t operator()(const tbrpg::Headgear& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

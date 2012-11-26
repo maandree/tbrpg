@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_FULLPLATEMAIL_HPP__
 #define __GUARD_FULLPLATEMAIL_HPP__
+#ifdef  CIRCULAR_FULLPLATEMAIL
+#include "FullPlateMail.circular"
+#endif//CIRCULAR_FULLPLATEMAIL
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(FullPlateMail& self, const FullPlateMail& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::FullPlateMail>
+  {
+  public:
+    size_t operator()(const tbrpg::FullPlateMail& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

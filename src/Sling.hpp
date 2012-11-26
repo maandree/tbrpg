@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_SLING_HPP__
 #define __GUARD_SLING_HPP__
+#ifdef  CIRCULAR_SLING
+#include "Sling.circular"
+#endif//CIRCULAR_SLING
 
 
 #include <stdlib.h>
@@ -116,6 +119,28 @@ namespace tbrpg
      */
     static void __copy__(Sling& self, const Sling& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::Sling>
+  {
+  public:
+    size_t operator()(const tbrpg::Sling& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

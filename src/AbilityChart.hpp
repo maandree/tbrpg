@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_ABILITYCHART_HPP__
 #define __GUARD_ABILITYCHART_HPP__
+#ifdef  CIRCULAR_ABILITYCHART
+#include "AbilityChart.circular"
+#endif//CIRCULAR_ABILITYCHART
 
 
 #include <stdlib.h>
@@ -28,12 +31,6 @@
 
 
 
-#include "AbilityBonus.hpp"
-#include "AbilityBonus.hpp"
-#include "AbilityBonus.hpp"
-#include "AbilityBonus.hpp"
-#include "AbilityBonus.hpp"
-#include "AbilityBonus.hpp"
 #include "AbilityBonus.hpp"
 
 
@@ -56,37 +53,37 @@ namespace tbrpg
     /**
      * Strength chart
      */
-    //AbilityBonus* strength;
+    AbilityBonus* strength;
     
     /**
-     * Strength 18/* chart
+     * Strength 18/?? chart
      */
-    //AbilityBonus* strength18;
+    AbilityBonus* strength18;
     
     /**
      * Dexterity chart
      */
-    //AbilityBonus* dexterity;
+    AbilityBonus* dexterity;
     
     /**
      * Constitution chart
      */
-    //AbilityBonus* constitution;
+    AbilityBonus* constitution;
     
     /**
      * Intelligence chart
      */
-    //AbilityBonus* intelligence;
+    AbilityBonus* intelligence;
     
     /**
      * Wisdom chart
      */
-    //AbilityBonus* wisdom;
+    AbilityBonus* wisdom;
     
     /**
      * Charisma chart
      */
-    //AbilityBonus* charisma;
+    AbilityBonus* charisma;
     
     
     
@@ -159,6 +156,28 @@ namespace tbrpg
      */
     static void __copy__(AbilityChart& self, const AbilityChart& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::AbilityChart>
+  {
+  public:
+    size_t operator()(const tbrpg::AbilityChart& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 

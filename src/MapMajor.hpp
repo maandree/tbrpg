@@ -19,6 +19,9 @@
  */
 #ifndef __GUARD_MAPMAJOR_HPP__
 #define __GUARD_MAPMAJOR_HPP__
+#ifdef  CIRCULAR_MAPMAJOR
+#include "MapMajor.circular"
+#endif//CIRCULAR_MAPMAJOR
 
 
 #include <stdlib.h>
@@ -48,27 +51,27 @@ namespace tbrpg
     /**
      * The name of the area
      */
-    //std::string name;
+    std::string name;
     
     /**
      * Whether the area is on the parties map
      */
-    //bool visible;
+    bool visible;
     
     /**
      * Whether the area has been visited
      */
-    //bool visited;
+    bool visited;
     
     /**
      * Whether the area is visitable
      */
-    //bool visitable;
+    bool visitable;
     
     /**
      * Whether the area is detectable
      */
-    //bool detectable;
+    bool detectable;
     
     
     
@@ -141,6 +144,28 @@ namespace tbrpg
      */
     static void __copy__(MapMajor& self, const MapMajor& original);
     
+    
+  public:
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+}
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::MapMajor>
+  {
+  public:
+    size_t operator()(const tbrpg::MapMajor& elem) const
+    {
+       return elem.hash();
+    }
   };
 }
 
