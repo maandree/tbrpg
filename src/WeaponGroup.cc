@@ -36,7 +36,7 @@ namespace tbrpg
   WeaponGroup::WeaponGroup()
   {
     //TODO implement constructor
-    // = nullptr;
+    //name = nullptr;
   }
   
   /**
@@ -46,7 +46,7 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(const WeaponGroup& original)
   {
-    this-> = original.;
+    this->name = original.name;
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup& original)
   {
-    this-> = original.;
+    this->name = original.name;
   }
   
   /**
@@ -66,7 +66,7 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup&& original)
   {
-    std::move(this->, original.);
+    std::move(this->name, original.name);
   }
   
   
@@ -77,7 +77,7 @@ namespace tbrpg
   WeaponGroup::~WeaponGroup()
   {
     //TODO implement destructor
-    //delete ;
+    //delete name;
   }
   
   
@@ -90,7 +90,7 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
   {
-    this-> = original.;
+    this->name = original.name;
     return *this;
   }
   
@@ -102,7 +102,7 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
   {
-    this-> = original.;
+    this->name = original.name;
     return *this;
   }
   
@@ -114,7 +114,7 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
-    std::move(this->, original.);
+    std::move(this->name, original.name);
     return *this;
   }
   

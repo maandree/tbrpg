@@ -36,19 +36,19 @@ namespace tbrpg
   Body::Body()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //left_hand = nullptr;
+    //right_hand = nullptr;
+    //quiver = nullptr;
+    //quick_items = nullptr;
+    //headgear = nullptr;
+    //amulett = nullptr;
+    //rings = nullptr;
+    //body = nullptr;
+    //gauntlets = nullptr;
+    //girdle = nullptr;
+    //boots = nullptr;
+    //cloak = nullptr;
+    //personal = nullptr;
   }
   
   /**
@@ -58,19 +58,19 @@ namespace tbrpg
    */
   Body::Body(const Body& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
   }
   
   /**
@@ -80,19 +80,19 @@ namespace tbrpg
    */
   Body::Body(Body& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
   }
   
   /**
@@ -102,19 +102,19 @@ namespace tbrpg
    */
   Body::Body(Body&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->left_hand, original.left_hand);
+    std::move(this->right_hand, original.right_hand);
+    std::move(this->quiver, original.quiver);
+    std::move(this->quick_items, original.quick_items);
+    std::move(this->headgear, original.headgear);
+    std::move(this->amulett, original.amulett);
+    std::move(this->rings, original.rings);
+    std::move(this->body, original.body);
+    std::move(this->gauntlets, original.gauntlets);
+    std::move(this->girdle, original.girdle);
+    std::move(this->boots, original.boots);
+    std::move(this->cloak, original.cloak);
+    std::move(this->personal, original.personal);
   }
   
   
@@ -125,19 +125,19 @@ namespace tbrpg
   Body::~Body()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete left_hand;
+    //delete right_hand;
+    //delete quiver;
+    //delete quick_items;
+    //delete headgear;
+    //delete amulett;
+    //delete rings;
+    //delete body;
+    //delete gauntlets;
+    //delete girdle;
+    //delete boots;
+    //delete cloak;
+    //delete personal;
   }
   
   
@@ -162,19 +162,19 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
     return *this;
   }
   
@@ -198,19 +198,19 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->left_hand = original.left_hand;
+    this->right_hand = original.right_hand;
+    this->quiver = original.quiver;
+    this->quick_items = original.quick_items;
+    this->headgear = original.headgear;
+    this->amulett = original.amulett;
+    this->rings = original.rings;
+    this->body = original.body;
+    this->gauntlets = original.gauntlets;
+    this->girdle = original.girdle;
+    this->boots = original.boots;
+    this->cloak = original.cloak;
+    this->personal = original.personal;
     return *this;
   }
   
@@ -234,19 +234,19 @@ namespace tbrpg
     std::move((Item)*this, (Item)original);
     std::move((Item)*this, (Item)original);
     std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);    std::move(this->left_hand, original.left_hand);
+    std::move(this->right_hand, original.right_hand);
+    std::move(this->quiver, original.quiver);
+    std::move(this->quick_items, original.quick_items);
+    std::move(this->headgear, original.headgear);
+    std::move(this->amulett, original.amulett);
+    std::move(this->rings, original.rings);
+    std::move(this->body, original.body);
+    std::move(this->gauntlets, original.gauntlets);
+    std::move(this->girdle, original.girdle);
+    std::move(this->boots, original.boots);
+    std::move(this->cloak, original.cloak);
+    std::move(this->personal, original.personal);
     return *this;
   }
   

@@ -36,12 +36,12 @@ namespace tbrpg
   MagicSchool::MagicSchool()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //hit_points = nullptr;
+    //alive = nullptr;
+    //morale = nullptr;
+    //intoxication = nullptr;
+    //fatigue = nullptr;
+    //record = nullptr;
   }
   
   /**
@@ -51,12 +51,12 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(const MagicSchool& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->alive = original.alive;
+    this->morale = original.morale;
+    this->intoxication = original.intoxication;
+    this->fatigue = original.fatigue;
+    this->record = original.record;
   }
   
   /**
@@ -66,12 +66,12 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->alive = original.alive;
+    this->morale = original.morale;
+    this->intoxication = original.intoxication;
+    this->fatigue = original.fatigue;
+    this->record = original.record;
   }
   
   /**
@@ -81,12 +81,12 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_points, original.hit_points);
+    std::move(this->alive, original.alive);
+    std::move(this->morale, original.morale);
+    std::move(this->intoxication, original.intoxication);
+    std::move(this->fatigue, original.fatigue);
+    std::move(this->record, original.record);
   }
   
   
@@ -97,12 +97,12 @@ namespace tbrpg
   MagicSchool::~MagicSchool()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete hit_points;
+    //delete alive;
+    //delete morale;
+    //delete intoxication;
+    //delete fatigue;
+    //delete record;
   }
   
   
@@ -115,12 +115,12 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->alive = original.alive;
+    this->morale = original.morale;
+    this->intoxication = original.intoxication;
+    this->fatigue = original.fatigue;
+    this->record = original.record;
     return *this;
   }
   
@@ -132,12 +132,12 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->alive = original.alive;
+    this->morale = original.morale;
+    this->intoxication = original.intoxication;
+    this->fatigue = original.fatigue;
+    this->record = original.record;
     return *this;
   }
   
@@ -149,12 +149,12 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_points, original.hit_points);
+    std::move(this->alive, original.alive);
+    std::move(this->morale, original.morale);
+    std::move(this->intoxication, original.intoxication);
+    std::move(this->fatigue, original.fatigue);
+    std::move(this->record, original.record);
     return *this;
   }
   

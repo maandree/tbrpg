@@ -36,8 +36,8 @@ namespace tbrpg
   Class::Class()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //index_map = nullptr;
+    //slot_map = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   Class::Class(const Class& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   Class::Class(Class& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   Class::Class(Class&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->index_map, original.index_map);
+    std::move(this->slot_map, original.slot_map);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   Class::~Class()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete index_map;
+    //delete slot_map;
   }
   
   
@@ -95,8 +95,8 @@ namespace tbrpg
    */
   Class& Class::operator =(const Class& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
     return *this;
   }
   
@@ -108,8 +108,8 @@ namespace tbrpg
    */
   Class& Class::operator =(Class& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->index_map = original.index_map;
+    this->slot_map = original.slot_map;
     return *this;
   }
   
@@ -121,8 +121,8 @@ namespace tbrpg
    */
   Class& Class::operator =(Class&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->index_map, original.index_map);
+    std::move(this->slot_map, original.slot_map);
     return *this;
   }
   

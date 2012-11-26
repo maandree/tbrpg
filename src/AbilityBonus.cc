@@ -36,7 +36,7 @@ namespace tbrpg
   AbilityBonus::AbilityBonus()
   {
     //TODO implement constructor
-    // = nullptr;
+    //character = nullptr;
   }
   
   /**
@@ -46,7 +46,7 @@ namespace tbrpg
    */
   AbilityBonus::AbilityBonus(const AbilityBonus& original)
   {
-    this-> = original.;
+    this->character = original.character;
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
    */
   AbilityBonus::AbilityBonus(AbilityBonus& original)
   {
-    this-> = original.;
+    this->character = original.character;
   }
   
   /**
@@ -66,7 +66,7 @@ namespace tbrpg
    */
   AbilityBonus::AbilityBonus(AbilityBonus&& original)
   {
-    std::move(this->, original.);
+    std::move(this->character, original.character);
   }
   
   
@@ -77,7 +77,7 @@ namespace tbrpg
   AbilityBonus::~AbilityBonus()
   {
     //TODO implement destructor
-    //delete ;
+    //delete character;
   }
   
   
@@ -90,7 +90,7 @@ namespace tbrpg
    */
   AbilityBonus& AbilityBonus::operator =(const AbilityBonus& original)
   {
-    this-> = original.;
+    this->character = original.character;
     return *this;
   }
   
@@ -102,7 +102,7 @@ namespace tbrpg
    */
   AbilityBonus& AbilityBonus::operator =(AbilityBonus& original)
   {
-    this-> = original.;
+    this->character = original.character;
     return *this;
   }
   
@@ -114,7 +114,7 @@ namespace tbrpg
    */
   AbilityBonus& AbilityBonus::operator =(AbilityBonus&& original)
   {
-    std::move(this->, original.);
+    std::move(this->character, original.character);
     return *this;
   }
   

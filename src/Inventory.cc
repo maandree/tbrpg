@@ -36,13 +36,13 @@ namespace tbrpg
   Inventory::Inventory()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //strength = nullptr;
+    //strength18 = nullptr;
+    //dexterity = nullptr;
+    //constitution = nullptr;
+    //intelligence = nullptr;
+    //wisdom = nullptr;
+    //charisma = nullptr;
   }
   
   /**
@@ -52,13 +52,13 @@ namespace tbrpg
    */
   Inventory::Inventory(const Inventory& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
   }
   
   /**
@@ -68,13 +68,13 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
   }
   
   /**
@@ -84,13 +84,13 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->strength, original.strength);
+    std::move(this->strength18, original.strength18);
+    std::move(this->dexterity, original.dexterity);
+    std::move(this->constitution, original.constitution);
+    std::move(this->intelligence, original.intelligence);
+    std::move(this->wisdom, original.wisdom);
+    std::move(this->charisma, original.charisma);
   }
   
   
@@ -101,13 +101,13 @@ namespace tbrpg
   Inventory::~Inventory()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete strength;
+    //delete strength18;
+    //delete dexterity;
+    //delete constitution;
+    //delete intelligence;
+    //delete wisdom;
+    //delete charisma;
   }
   
   
@@ -120,13 +120,13 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(const Inventory& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
     return *this;
   }
   
@@ -138,13 +138,13 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->strength = original.strength;
+    this->strength18 = original.strength18;
+    this->dexterity = original.dexterity;
+    this->constitution = original.constitution;
+    this->intelligence = original.intelligence;
+    this->wisdom = original.wisdom;
+    this->charisma = original.charisma;
     return *this;
   }
   
@@ -156,13 +156,13 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->strength, original.strength);
+    std::move(this->strength18, original.strength18);
+    std::move(this->dexterity, original.dexterity);
+    std::move(this->constitution, original.constitution);
+    std::move(this->intelligence, original.intelligence);
+    std::move(this->wisdom, original.wisdom);
+    std::move(this->charisma, original.charisma);
     return *this;
   }
   

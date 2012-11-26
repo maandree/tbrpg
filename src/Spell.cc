@@ -36,10 +36,10 @@ namespace tbrpg
   Spell::Spell()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //name = nullptr;
+    //coluration = nullptr;
+    //practicer = nullptr;
+    //opposite = nullptr;
   }
   
   /**
@@ -49,10 +49,10 @@ namespace tbrpg
    */
   Spell::Spell(const Spell& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
   }
   
   /**
@@ -62,10 +62,10 @@ namespace tbrpg
    */
   Spell::Spell(Spell& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
   }
   
   /**
@@ -75,10 +75,10 @@ namespace tbrpg
    */
   Spell::Spell(Spell&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->coluration, original.coluration);
+    std::move(this->practicer, original.practicer);
+    std::move(this->opposite, original.opposite);
   }
   
   
@@ -89,10 +89,10 @@ namespace tbrpg
   Spell::~Spell()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete name;
+    //delete coluration;
+    //delete practicer;
+    //delete opposite;
   }
   
   
@@ -105,10 +105,10 @@ namespace tbrpg
    */
   Spell& Spell::operator =(const Spell& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
     return *this;
   }
   
@@ -120,10 +120,10 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->coluration = original.coluration;
+    this->practicer = original.practicer;
+    this->opposite = original.opposite;
     return *this;
   }
   
@@ -135,10 +135,10 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->coluration, original.coluration);
+    std::move(this->practicer, original.practicer);
+    std::move(this->opposite, original.opposite);
     return *this;
   }
   

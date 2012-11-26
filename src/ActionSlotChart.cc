@@ -36,19 +36,19 @@ namespace tbrpg
   ActionSlotChart::ActionSlotChart()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //name = nullptr;
+    //description = nullptr;
+    //armour_class = nullptr;
+    //weight = nullptr;
+    //identified = false;
+    //lore_value = nullptr;
+    //stuck = false;
+    //cursed = false;
+    //quantity = nullptr;
+    //quantity_limit = nullptr;
+    //unit_value = nullptr;
+    //bonuses = nullptr;
+    //armour_class_modifiers = nullptr;
   }
   
   /**
@@ -58,19 +58,19 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(const ActionSlotChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -80,19 +80,19 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(ActionSlotChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
   }
   
   /**
@@ -102,19 +102,19 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(ActionSlotChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->description, original.description);
+    std::move(this->armour_class, original.armour_class);
+    std::move(this->weight, original.weight);
+    std::swap(this->identified, original.identified);
+    std::move(this->lore_value, original.lore_value);
+    std::swap(this->stuck, original.stuck);
+    std::swap(this->cursed, original.cursed);
+    std::move(this->quantity, original.quantity);
+    std::move(this->quantity_limit, original.quantity_limit);
+    std::move(this->unit_value, original.unit_value);
+    std::move(this->bonuses, original.bonuses);
+    std::move(this->armour_class_modifiers, original.armour_class_modifiers);
   }
   
   
@@ -125,19 +125,16 @@ namespace tbrpg
   ActionSlotChart::~ActionSlotChart()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete name;
+    //delete description;
+    //delete armour_class;
+    //delete weight;
+    //delete lore_value;
+    //delete quantity;
+    //delete quantity_limit;
+    //delete unit_value;
+    //delete bonuses;
+    //delete armour_class_modifiers;
   }
   
   
@@ -150,19 +147,19 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(const ActionSlotChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -174,19 +171,19 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->armour_class = original.armour_class;
+    this->weight = original.weight;
+    this->identified = original.identified;
+    this->lore_value = original.lore_value;
+    this->stuck = original.stuck;
+    this->cursed = original.cursed;
+    this->quantity = original.quantity;
+    this->quantity_limit = original.quantity_limit;
+    this->unit_value = original.unit_value;
+    this->bonuses = original.bonuses;
+    this->armour_class_modifiers = original.armour_class_modifiers;
     return *this;
   }
   
@@ -198,19 +195,19 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->description, original.description);
+    std::move(this->armour_class, original.armour_class);
+    std::move(this->weight, original.weight);
+    std::swap(this->identified, original.identified);
+    std::move(this->lore_value, original.lore_value);
+    std::swap(this->stuck, original.stuck);
+    std::swap(this->cursed, original.cursed);
+    std::move(this->quantity, original.quantity);
+    std::move(this->quantity_limit, original.quantity_limit);
+    std::move(this->unit_value, original.unit_value);
+    std::move(this->bonuses, original.bonuses);
+    std::move(this->armour_class_modifiers, original.armour_class_modifiers);
     return *this;
   }
   

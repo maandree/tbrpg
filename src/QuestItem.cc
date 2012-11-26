@@ -36,9 +36,9 @@ namespace tbrpg
   QuestItem::QuestItem()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //hit_bonus = nullptr;
+    //bonus = nullptr;
+    //half_attacks = nullptr;
   }
   
   /**
@@ -48,9 +48,9 @@ namespace tbrpg
    */
   QuestItem::QuestItem(const QuestItem& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_bonus = original.hit_bonus;
+    this->bonus = original.bonus;
+    this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -60,9 +60,9 @@ namespace tbrpg
    */
   QuestItem::QuestItem(QuestItem& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_bonus = original.hit_bonus;
+    this->bonus = original.bonus;
+    this->half_attacks = original.half_attacks;
   }
   
   /**
@@ -72,9 +72,9 @@ namespace tbrpg
    */
   QuestItem::QuestItem(QuestItem&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_bonus, original.hit_bonus);
+    std::move(this->bonus, original.bonus);
+    std::move(this->half_attacks, original.half_attacks);
   }
   
   
@@ -85,9 +85,9 @@ namespace tbrpg
   QuestItem::~QuestItem()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete hit_bonus;
+    //delete bonus;
+    //delete half_attacks;
   }
   
   
@@ -102,9 +102,9 @@ namespace tbrpg
   {
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
+    this->bonus = original.bonus;
+    this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -118,9 +118,9 @@ namespace tbrpg
   {
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
+    this->bonus = original.bonus;
+    this->half_attacks = original.half_attacks;
     return *this;
   }
   
@@ -134,9 +134,9 @@ namespace tbrpg
   {
     std::move((Item)*this, (Item)original);
     std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);    std::move(this->hit_bonus, original.hit_bonus);
+    std::move(this->bonus, original.bonus);
+    std::move(this->half_attacks, original.half_attacks);
     return *this;
   }
   

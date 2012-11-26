@@ -36,7 +36,7 @@ namespace tbrpg
   DamageType::DamageType()
   {
     //TODO implement constructor
-    // = nullptr;
+    //critical_hit_protection = false;
   }
   
   /**
@@ -46,7 +46,7 @@ namespace tbrpg
    */
   DamageType::DamageType(const DamageType& original)
   {
-    this-> = original.;
+    this->critical_hit_protection = original.critical_hit_protection;
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType& original)
   {
-    this-> = original.;
+    this->critical_hit_protection = original.critical_hit_protection;
   }
   
   /**
@@ -66,7 +66,7 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType&& original)
   {
-    std::move(this->, original.);
+    std::swap(this->critical_hit_protection, original.critical_hit_protection);
   }
   
   
@@ -77,7 +77,6 @@ namespace tbrpg
   DamageType::~DamageType()
   {
     //TODO implement destructor
-    //delete ;
   }
   
   
@@ -90,7 +89,7 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(const DamageType& original)
   {
-    this-> = original.;
+    this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -102,7 +101,7 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType& original)
   {
-    this-> = original.;
+    this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -114,7 +113,7 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType&& original)
   {
-    std::move(this->, original.);
+    std::swap(this->critical_hit_protection, original.critical_hit_protection);
     return *this;
   }
   

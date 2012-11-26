@@ -36,10 +36,10 @@ namespace tbrpg
   Creature::Creature()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //interrupt_die = nullptr;
+    //interrupt_dice = nullptr;
+    //interrupt_risk = 0;
+    //creatures = nullptr;
   }
   
   /**
@@ -49,10 +49,10 @@ namespace tbrpg
    */
   Creature::Creature(const Creature& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
   }
   
   /**
@@ -62,10 +62,10 @@ namespace tbrpg
    */
   Creature::Creature(Creature& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
   }
   
   /**
@@ -75,10 +75,10 @@ namespace tbrpg
    */
   Creature::Creature(Creature&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->interrupt_die, original.interrupt_die);
+    std::move(this->interrupt_dice, original.interrupt_dice);
+    std::swap(this->interrupt_risk, original.interrupt_risk);
+    std::move(this->creatures, original.creatures);
   }
   
   
@@ -89,10 +89,9 @@ namespace tbrpg
   Creature::~Creature()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete interrupt_die;
+    //delete interrupt_dice;
+    //delete creatures;
   }
   
   
@@ -108,10 +107,10 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
     return *this;
   }
   
@@ -126,10 +125,10 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->interrupt_die = original.interrupt_die;
+    this->interrupt_dice = original.interrupt_dice;
+    this->interrupt_risk = original.interrupt_risk;
+    this->creatures = original.creatures;
     return *this;
   }
   
@@ -144,10 +143,10 @@ namespace tbrpg
     std::move((Character)*this, (Character)original);
     std::move((Character)*this, (Character)original);
     std::move((Character)*this, (Character)original);
-    std::move((Character)*this, (Character)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Character)*this, (Character)original);    std::move(this->interrupt_die, original.interrupt_die);
+    std::move(this->interrupt_dice, original.interrupt_dice);
+    std::swap(this->interrupt_risk, original.interrupt_risk);
+    std::move(this->creatures, original.creatures);
     return *this;
   }
   

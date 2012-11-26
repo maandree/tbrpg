@@ -36,12 +36,12 @@ namespace tbrpg
   SpellBook::SpellBook()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //bonuses = nullptr;
+    //thief_abilities = nullptr;
+    //saving_throws = nullptr;
+    //abilities = nullptr;
+    //spells = nullptr;
+    //effects = nullptr;
   }
   
   /**
@@ -51,12 +51,12 @@ namespace tbrpg
    */
   SpellBook::SpellBook(const SpellBook& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
   }
   
   /**
@@ -66,12 +66,12 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
   }
   
   /**
@@ -81,12 +81,12 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->bonuses, original.bonuses);
+    std::move(this->thief_abilities, original.thief_abilities);
+    std::move(this->saving_throws, original.saving_throws);
+    std::move(this->abilities, original.abilities);
+    std::move(this->spells, original.spells);
+    std::move(this->effects, original.effects);
   }
   
   
@@ -97,12 +97,12 @@ namespace tbrpg
   SpellBook::~SpellBook()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete bonuses;
+    //delete thief_abilities;
+    //delete saving_throws;
+    //delete abilities;
+    //delete spells;
+    //delete effects;
   }
   
   
@@ -115,12 +115,12 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
     return *this;
   }
   
@@ -132,12 +132,12 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->bonuses = original.bonuses;
+    this->thief_abilities = original.thief_abilities;
+    this->saving_throws = original.saving_throws;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->effects = original.effects;
     return *this;
   }
   
@@ -149,12 +149,12 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->bonuses, original.bonuses);
+    std::move(this->thief_abilities, original.thief_abilities);
+    std::move(this->saving_throws, original.saving_throws);
+    std::move(this->abilities, original.abilities);
+    std::move(this->spells, original.spells);
+    std::move(this->effects, original.effects);
     return *this;
   }
   

@@ -36,20 +36,20 @@ namespace tbrpg
   AbilityChart::AbilityChart()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //name = nullptr;
+    //description = nullptr;
+    //wizard = false;
+    //priest = false;
+    //level = nullptr;
+    //saving = nullptr;
+    //touch = false;
+    //range = nullptr;
+    //casting_time = nullptr;
+    //duration = nullptr;
+    //duration_die = nullptr;
+    //duration_dice = nullptr;
+    //effect_area = nullptr;
+    //school = nullptr;
   }
   
   /**
@@ -59,20 +59,20 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(const AbilityChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->wizard = original.wizard;
+    this->priest = original.priest;
+    this->level = original.level;
+    this->saving = original.saving;
+    this->touch = original.touch;
+    this->range = original.range;
+    this->casting_time = original.casting_time;
+    this->duration = original.duration;
+    this->duration_die = original.duration_die;
+    this->duration_dice = original.duration_dice;
+    this->effect_area = original.effect_area;
+    this->school = original.school;
   }
   
   /**
@@ -82,20 +82,20 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(AbilityChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->wizard = original.wizard;
+    this->priest = original.priest;
+    this->level = original.level;
+    this->saving = original.saving;
+    this->touch = original.touch;
+    this->range = original.range;
+    this->casting_time = original.casting_time;
+    this->duration = original.duration;
+    this->duration_die = original.duration_die;
+    this->duration_dice = original.duration_dice;
+    this->effect_area = original.effect_area;
+    this->school = original.school;
   }
   
   /**
@@ -105,20 +105,20 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(AbilityChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->description, original.description);
+    std::swap(this->wizard, original.wizard);
+    std::swap(this->priest, original.priest);
+    std::move(this->level, original.level);
+    std::move(this->saving, original.saving);
+    std::swap(this->touch, original.touch);
+    std::move(this->range, original.range);
+    std::move(this->casting_time, original.casting_time);
+    std::move(this->duration, original.duration);
+    std::move(this->duration_die, original.duration_die);
+    std::move(this->duration_dice, original.duration_dice);
+    std::move(this->effect_area, original.effect_area);
+    std::move(this->school, original.school);
   }
   
   
@@ -129,20 +129,17 @@ namespace tbrpg
   AbilityChart::~AbilityChart()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete name;
+    //delete description;
+    //delete level;
+    //delete saving;
+    //delete range;
+    //delete casting_time;
+    //delete duration;
+    //delete duration_die;
+    //delete duration_dice;
+    //delete effect_area;
+    //delete school;
   }
   
   
@@ -155,20 +152,20 @@ namespace tbrpg
    */
   AbilityChart& AbilityChart::operator =(const AbilityChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->wizard = original.wizard;
+    this->priest = original.priest;
+    this->level = original.level;
+    this->saving = original.saving;
+    this->touch = original.touch;
+    this->range = original.range;
+    this->casting_time = original.casting_time;
+    this->duration = original.duration;
+    this->duration_die = original.duration_die;
+    this->duration_dice = original.duration_dice;
+    this->effect_area = original.effect_area;
+    this->school = original.school;
     return *this;
   }
   
@@ -180,20 +177,20 @@ namespace tbrpg
    */
   AbilityChart& AbilityChart::operator =(AbilityChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->description = original.description;
+    this->wizard = original.wizard;
+    this->priest = original.priest;
+    this->level = original.level;
+    this->saving = original.saving;
+    this->touch = original.touch;
+    this->range = original.range;
+    this->casting_time = original.casting_time;
+    this->duration = original.duration;
+    this->duration_die = original.duration_die;
+    this->duration_dice = original.duration_dice;
+    this->effect_area = original.effect_area;
+    this->school = original.school;
     return *this;
   }
   
@@ -205,20 +202,20 @@ namespace tbrpg
    */
   AbilityChart& AbilityChart::operator =(AbilityChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->description, original.description);
+    std::swap(this->wizard, original.wizard);
+    std::swap(this->priest, original.priest);
+    std::move(this->level, original.level);
+    std::move(this->saving, original.saving);
+    std::swap(this->touch, original.touch);
+    std::move(this->range, original.range);
+    std::move(this->casting_time, original.casting_time);
+    std::move(this->duration, original.duration);
+    std::move(this->duration_die, original.duration_die);
+    std::move(this->duration_dice, original.duration_dice);
+    std::move(this->effect_area, original.effect_area);
+    std::move(this->school, original.school);
     return *this;
   }
   

@@ -36,14 +36,14 @@ namespace tbrpg
   ThiefAbilities::ThiefAbilities()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //melee = nullptr;
+    //missile = nullptr;
+    //fire = nullptr;
+    //cold = nullptr;
+    //lightning = nullptr;
+    //acid = nullptr;
+    //poison = nullptr;
+    //physical = nullptr;
   }
   
   /**
@@ -53,14 +53,14 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(const ThiefAbilities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->melee = original.melee;
+    this->missile = original.missile;
+    this->fire = original.fire;
+    this->cold = original.cold;
+    this->lightning = original.lightning;
+    this->acid = original.acid;
+    this->poison = original.poison;
+    this->physical = original.physical;
   }
   
   /**
@@ -70,14 +70,14 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(ThiefAbilities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->melee = original.melee;
+    this->missile = original.missile;
+    this->fire = original.fire;
+    this->cold = original.cold;
+    this->lightning = original.lightning;
+    this->acid = original.acid;
+    this->poison = original.poison;
+    this->physical = original.physical;
   }
   
   /**
@@ -87,14 +87,14 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(ThiefAbilities&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->melee, original.melee);
+    std::move(this->missile, original.missile);
+    std::move(this->fire, original.fire);
+    std::move(this->cold, original.cold);
+    std::move(this->lightning, original.lightning);
+    std::move(this->acid, original.acid);
+    std::move(this->poison, original.poison);
+    std::move(this->physical, original.physical);
   }
   
   
@@ -105,14 +105,14 @@ namespace tbrpg
   ThiefAbilities::~ThiefAbilities()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete melee;
+    //delete missile;
+    //delete fire;
+    //delete cold;
+    //delete lightning;
+    //delete acid;
+    //delete poison;
+    //delete physical;
   }
   
   
@@ -125,14 +125,14 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(const ThiefAbilities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->melee = original.melee;
+    this->missile = original.missile;
+    this->fire = original.fire;
+    this->cold = original.cold;
+    this->lightning = original.lightning;
+    this->acid = original.acid;
+    this->poison = original.poison;
+    this->physical = original.physical;
     return *this;
   }
   
@@ -144,14 +144,14 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(ThiefAbilities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->melee = original.melee;
+    this->missile = original.missile;
+    this->fire = original.fire;
+    this->cold = original.cold;
+    this->lightning = original.lightning;
+    this->acid = original.acid;
+    this->poison = original.poison;
+    this->physical = original.physical;
     return *this;
   }
   
@@ -163,14 +163,14 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(ThiefAbilities&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->melee, original.melee);
+    std::move(this->missile, original.missile);
+    std::move(this->fire, original.fire);
+    std::move(this->cold, original.cold);
+    std::move(this->lightning, original.lightning);
+    std::move(this->acid, original.acid);
+    std::move(this->poison, original.poison);
+    std::move(this->physical, original.physical);
     return *this;
   }
   

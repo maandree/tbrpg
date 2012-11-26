@@ -36,10 +36,10 @@ namespace tbrpg
   MapMinor::MapMinor()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //usable = false;
+    //description = nullptr;
+    //direction = nullptr;
+    //leads_to = nullptr;
   }
   
   /**
@@ -49,10 +49,10 @@ namespace tbrpg
    */
   MapMinor::MapMinor(const MapMinor& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->usable = original.usable;
+    this->description = original.description;
+    this->direction = original.direction;
+    this->leads_to = original.leads_to;
   }
   
   /**
@@ -62,10 +62,10 @@ namespace tbrpg
    */
   MapMinor::MapMinor(MapMinor& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->usable = original.usable;
+    this->description = original.description;
+    this->direction = original.direction;
+    this->leads_to = original.leads_to;
   }
   
   /**
@@ -75,10 +75,10 @@ namespace tbrpg
    */
   MapMinor::MapMinor(MapMinor&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::swap(this->usable, original.usable);
+    std::move(this->description, original.description);
+    std::move(this->direction, original.direction);
+    std::move(this->leads_to, original.leads_to);
   }
   
   
@@ -89,10 +89,9 @@ namespace tbrpg
   MapMinor::~MapMinor()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete description;
+    //delete direction;
+    //delete leads_to;
   }
   
   
@@ -105,10 +104,10 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(const MapMinor& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->usable = original.usable;
+    this->description = original.description;
+    this->direction = original.direction;
+    this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -120,10 +119,10 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(MapMinor& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->usable = original.usable;
+    this->description = original.description;
+    this->direction = original.direction;
+    this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -135,10 +134,10 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::swap(this->usable, original.usable);
+    std::move(this->description, original.description);
+    std::move(this->direction, original.direction);
+    std::move(this->leads_to, original.leads_to);
     return *this;
   }
   

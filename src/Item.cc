@@ -36,7 +36,7 @@ namespace tbrpg
   Item::Item()
   {
     //TODO implement constructor
-    // = nullptr;
+    //id = nullptr;
   }
   
   /**
@@ -46,7 +46,7 @@ namespace tbrpg
    */
   Item::Item(const Item& original)
   {
-    this-> = original.;
+    this->id = original.id;
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
    */
   Item::Item(Item& original)
   {
-    this-> = original.;
+    this->id = original.id;
   }
   
   /**
@@ -66,7 +66,7 @@ namespace tbrpg
    */
   Item::Item(Item&& original)
   {
-    std::move(this->, original.);
+    std::move(this->id, original.id);
   }
   
   
@@ -77,7 +77,7 @@ namespace tbrpg
   Item::~Item()
   {
     //TODO implement destructor
-    //delete ;
+    //delete id;
   }
   
   
@@ -90,7 +90,7 @@ namespace tbrpg
    */
   Item& Item::operator =(const Item& original)
   {
-    this-> = original.;
+    this->id = original.id;
     return *this;
   }
   
@@ -102,7 +102,7 @@ namespace tbrpg
    */
   Item& Item::operator =(Item& original)
   {
-    this-> = original.;
+    this->id = original.id;
     return *this;
   }
   
@@ -114,7 +114,7 @@ namespace tbrpg
    */
   Item& Item::operator =(Item&& original)
   {
-    std::move(this->, original.);
+    std::move(this->id, original.id);
     return *this;
   }
   

@@ -36,15 +36,15 @@ namespace tbrpg
   ReputationChart::ReputationChart()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //attack_roll_die = nullptr;
+    //attack_roll_dice = nullptr;
+    //critical_hit = nullptr;
+    //critical_miss = nullptr;
+    //reputation_chart = nullptr;
+    //ability_chart = nullptr;
+    //inventory_prototype = nullptr;
+    //spells = nullptr;
+    //races = nullptr;
   }
   
   /**
@@ -54,15 +54,15 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(const ReputationChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->attack_roll_die = original.attack_roll_die;
+    this->attack_roll_dice = original.attack_roll_dice;
+    this->critical_hit = original.critical_hit;
+    this->critical_miss = original.critical_miss;
+    this->reputation_chart = original.reputation_chart;
+    this->ability_chart = original.ability_chart;
+    this->inventory_prototype = original.inventory_prototype;
+    this->spells = original.spells;
+    this->races = original.races;
   }
   
   /**
@@ -72,15 +72,15 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->attack_roll_die = original.attack_roll_die;
+    this->attack_roll_dice = original.attack_roll_dice;
+    this->critical_hit = original.critical_hit;
+    this->critical_miss = original.critical_miss;
+    this->reputation_chart = original.reputation_chart;
+    this->ability_chart = original.ability_chart;
+    this->inventory_prototype = original.inventory_prototype;
+    this->spells = original.spells;
+    this->races = original.races;
   }
   
   /**
@@ -90,15 +90,15 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->attack_roll_die, original.attack_roll_die);
+    std::move(this->attack_roll_dice, original.attack_roll_dice);
+    std::move(this->critical_hit, original.critical_hit);
+    std::move(this->critical_miss, original.critical_miss);
+    std::move(this->reputation_chart, original.reputation_chart);
+    std::move(this->ability_chart, original.ability_chart);
+    std::move(this->inventory_prototype, original.inventory_prototype);
+    std::move(this->spells, original.spells);
+    std::move(this->races, original.races);
   }
   
   
@@ -109,15 +109,15 @@ namespace tbrpg
   ReputationChart::~ReputationChart()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete attack_roll_die;
+    //delete attack_roll_dice;
+    //delete critical_hit;
+    //delete critical_miss;
+    //delete reputation_chart;
+    //delete ability_chart;
+    //delete inventory_prototype;
+    //delete spells;
+    //delete races;
   }
   
   
@@ -130,15 +130,15 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(const ReputationChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->attack_roll_die = original.attack_roll_die;
+    this->attack_roll_dice = original.attack_roll_dice;
+    this->critical_hit = original.critical_hit;
+    this->critical_miss = original.critical_miss;
+    this->reputation_chart = original.reputation_chart;
+    this->ability_chart = original.ability_chart;
+    this->inventory_prototype = original.inventory_prototype;
+    this->spells = original.spells;
+    this->races = original.races;
     return *this;
   }
   
@@ -150,15 +150,15 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->attack_roll_die = original.attack_roll_die;
+    this->attack_roll_dice = original.attack_roll_dice;
+    this->critical_hit = original.critical_hit;
+    this->critical_miss = original.critical_miss;
+    this->reputation_chart = original.reputation_chart;
+    this->ability_chart = original.ability_chart;
+    this->inventory_prototype = original.inventory_prototype;
+    this->spells = original.spells;
+    this->races = original.races;
     return *this;
   }
   
@@ -170,15 +170,15 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->attack_roll_die, original.attack_roll_die);
+    std::move(this->attack_roll_dice, original.attack_roll_dice);
+    std::move(this->critical_hit, original.critical_hit);
+    std::move(this->critical_miss, original.critical_miss);
+    std::move(this->reputation_chart, original.reputation_chart);
+    std::move(this->ability_chart, original.ability_chart);
+    std::move(this->inventory_prototype, original.inventory_prototype);
+    std::move(this->spells, original.spells);
+    std::move(this->races, original.races);
     return *this;
   }
   

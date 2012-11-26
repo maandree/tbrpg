@@ -36,11 +36,11 @@ namespace tbrpg
   Ablities::Ablities()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //breath = nullptr;
+    //paralyze_poison_death = nullptr;
+    //petrification_polymorph = nullptr;
+    //rod_staff_wand = nullptr;
+    //spell = nullptr;
   }
   
   /**
@@ -50,11 +50,11 @@ namespace tbrpg
    */
   Ablities::Ablities(const Ablities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->breath = original.breath;
+    this->paralyze_poison_death = original.paralyze_poison_death;
+    this->petrification_polymorph = original.petrification_polymorph;
+    this->rod_staff_wand = original.rod_staff_wand;
+    this->spell = original.spell;
   }
   
   /**
@@ -64,11 +64,11 @@ namespace tbrpg
    */
   Ablities::Ablities(Ablities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->breath = original.breath;
+    this->paralyze_poison_death = original.paralyze_poison_death;
+    this->petrification_polymorph = original.petrification_polymorph;
+    this->rod_staff_wand = original.rod_staff_wand;
+    this->spell = original.spell;
   }
   
   /**
@@ -78,11 +78,11 @@ namespace tbrpg
    */
   Ablities::Ablities(Ablities&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->breath, original.breath);
+    std::move(this->paralyze_poison_death, original.paralyze_poison_death);
+    std::move(this->petrification_polymorph, original.petrification_polymorph);
+    std::move(this->rod_staff_wand, original.rod_staff_wand);
+    std::move(this->spell, original.spell);
   }
   
   
@@ -93,11 +93,11 @@ namespace tbrpg
   Ablities::~Ablities()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete breath;
+    //delete paralyze_poison_death;
+    //delete petrification_polymorph;
+    //delete rod_staff_wand;
+    //delete spell;
   }
   
   
@@ -110,11 +110,11 @@ namespace tbrpg
    */
   Ablities& Ablities::operator =(const Ablities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->breath = original.breath;
+    this->paralyze_poison_death = original.paralyze_poison_death;
+    this->petrification_polymorph = original.petrification_polymorph;
+    this->rod_staff_wand = original.rod_staff_wand;
+    this->spell = original.spell;
     return *this;
   }
   
@@ -126,11 +126,11 @@ namespace tbrpg
    */
   Ablities& Ablities::operator =(Ablities& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->breath = original.breath;
+    this->paralyze_poison_death = original.paralyze_poison_death;
+    this->petrification_polymorph = original.petrification_polymorph;
+    this->rod_staff_wand = original.rod_staff_wand;
+    this->spell = original.spell;
     return *this;
   }
   
@@ -142,11 +142,11 @@ namespace tbrpg
    */
   Ablities& Ablities::operator =(Ablities&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->breath, original.breath);
+    std::move(this->paralyze_poison_death, original.paralyze_poison_death);
+    std::move(this->petrification_polymorph, original.petrification_polymorph);
+    std::move(this->rod_staff_wand, original.rod_staff_wand);
+    std::move(this->spell, original.spell);
     return *this;
   }
   

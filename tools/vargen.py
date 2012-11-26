@@ -111,8 +111,8 @@ for line in lines:
             for s in range(0, len(varLine)):
                 if varLine[s] == ' ':
                     space = s
-            varType = varLine[:s]
-            varName = varLine[s + 1:]
+            varType = varLine[:space]
+            varName = varLine[space + 1:]
             if varType == 'bool':
                 varInit.append(varName + ' = false;')
             elif varType in numericals:

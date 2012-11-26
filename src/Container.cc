@@ -36,8 +36,8 @@ namespace tbrpg
   Container::Container()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //learned = nullptr;
+    //memorised = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   Container::Container(const Container& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   Container::Container(Container& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->learned = original.learned;
+    this->memorised = original.memorised;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   Container::Container(Container&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->learned, original.learned);
+    std::move(this->memorised, original.memorised);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   Container::~Container()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete learned;
+    //delete memorised;
   }
   
   
@@ -96,8 +96,8 @@ namespace tbrpg
   Container& Container::operator =(const Container& original)
   {
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->learned = original.learned;
+    this->memorised = original.memorised;
     return *this;
   }
   
@@ -110,8 +110,8 @@ namespace tbrpg
   Container& Container::operator =(Container& original)
   {
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->learned = original.learned;
+    this->memorised = original.memorised;
     return *this;
   }
   
@@ -124,8 +124,8 @@ namespace tbrpg
   Container& Container::operator =(Container&& original)
   {
     std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);    std::move(this->learned, original.learned);
+    std::move(this->memorised, original.memorised);
     return *this;
   }
   

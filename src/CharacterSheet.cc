@@ -36,8 +36,8 @@ namespace tbrpg
   CharacterSheet::CharacterSheet()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //allowed_classes = nullptr;
+    //bonuses = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(const CharacterSheet& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->allowed_classes = original.allowed_classes;
+    this->bonuses = original.bonuses;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->allowed_classes = original.allowed_classes;
+    this->bonuses = original.bonuses;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->allowed_classes, original.allowed_classes);
+    std::move(this->bonuses, original.bonuses);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   CharacterSheet::~CharacterSheet()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete allowed_classes;
+    //delete bonuses;
   }
   
   
@@ -95,8 +95,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->allowed_classes = original.allowed_classes;
+    this->bonuses = original.bonuses;
     return *this;
   }
   
@@ -108,8 +108,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->allowed_classes = original.allowed_classes;
+    this->bonuses = original.bonuses;
     return *this;
   }
   
@@ -121,8 +121,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->allowed_classes, original.allowed_classes);
+    std::move(this->bonuses, original.bonuses);
     return *this;
   }
   

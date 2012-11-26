@@ -36,10 +36,10 @@ namespace tbrpg
   RangedWeapon::RangedWeapon()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //contains = nullptr;
+    //contain_limit = nullptr;
+    //weight_modifier = nullptr;
+    //can_contain = nullptr;
   }
   
   /**
@@ -49,10 +49,10 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(const RangedWeapon& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
   }
   
   /**
@@ -62,10 +62,10 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(RangedWeapon& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
   }
   
   /**
@@ -75,10 +75,10 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(RangedWeapon&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->contains, original.contains);
+    std::move(this->contain_limit, original.contain_limit);
+    std::move(this->weight_modifier, original.weight_modifier);
+    std::move(this->can_contain, original.can_contain);
   }
   
   
@@ -89,10 +89,10 @@ namespace tbrpg
   RangedWeapon::~RangedWeapon()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete contains;
+    //delete contain_limit;
+    //delete weight_modifier;
+    //delete can_contain;
   }
   
   
@@ -108,10 +108,10 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -126,10 +126,10 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->contains = original.contains;
+    this->contain_limit = original.contain_limit;
+    this->weight_modifier = original.weight_modifier;
+    this->can_contain = original.can_contain;
     return *this;
   }
   
@@ -144,10 +144,10 @@ namespace tbrpg
     std::move((Weapon)*this, (Weapon)original);
     std::move((Weapon)*this, (Weapon)original);
     std::move((Weapon)*this, (Weapon)original);
-    std::move((Weapon)*this, (Weapon)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Weapon)*this, (Weapon)original);    std::move(this->contains, original.contains);
+    std::move(this->contain_limit, original.contain_limit);
+    std::move(this->weight_modifier, original.weight_modifier);
+    std::move(this->can_contain, original.can_contain);
     return *this;
   }
   

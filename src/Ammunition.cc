@@ -36,8 +36,8 @@ namespace tbrpg
   Ammunition::Ammunition()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //wizard_slots = nullptr;
+    //priest_slots = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   Ammunition::Ammunition(const Ammunition& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   Ammunition::Ammunition(Ammunition& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   Ammunition::Ammunition(Ammunition&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->wizard_slots, original.wizard_slots);
+    std::move(this->priest_slots, original.priest_slots);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   Ammunition::~Ammunition()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete wizard_slots;
+    //delete priest_slots;
   }
   
   
@@ -96,8 +96,8 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(const Ammunition& original)
   {
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -110,8 +110,8 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(Ammunition& original)
   {
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->wizard_slots = original.wizard_slots;
+    this->priest_slots = original.priest_slots;
     return *this;
   }
   
@@ -124,8 +124,8 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
     std::move((Item)*this, (Item)original);
-    std::move((Item)*this, (Item)original);    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Item)*this, (Item)original);    std::move(this->wizard_slots, original.wizard_slots);
+    std::move(this->priest_slots, original.priest_slots);
     return *this;
   }
   

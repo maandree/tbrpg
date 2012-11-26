@@ -36,15 +36,15 @@ namespace tbrpg
   RestInterruption::RestInterruption()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //description = nullptr;
+    //may_rest = false;
+    //area = nullptr;
+    //roads = nullptr;
+    //connections = nullptr;
+    //items = nullptr;
+    //creatures = nullptr;
+    //is_in = nullptr;
+    //interruptions = nullptr;
   }
   
   /**
@@ -54,15 +54,15 @@ namespace tbrpg
    */
   RestInterruption::RestInterruption(const RestInterruption& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
   }
   
   /**
@@ -72,15 +72,15 @@ namespace tbrpg
    */
   RestInterruption::RestInterruption(RestInterruption& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
   }
   
   /**
@@ -90,15 +90,15 @@ namespace tbrpg
    */
   RestInterruption::RestInterruption(RestInterruption&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->description, original.description);
+    std::swap(this->may_rest, original.may_rest);
+    std::move(this->area, original.area);
+    std::move(this->roads, original.roads);
+    std::move(this->connections, original.connections);
+    std::move(this->items, original.items);
+    std::move(this->creatures, original.creatures);
+    std::move(this->is_in, original.is_in);
+    std::move(this->interruptions, original.interruptions);
   }
   
   
@@ -109,15 +109,14 @@ namespace tbrpg
   RestInterruption::~RestInterruption()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete description;
+    //delete area;
+    //delete roads;
+    //delete connections;
+    //delete items;
+    //delete creatures;
+    //delete is_in;
+    //delete interruptions;
   }
   
   
@@ -130,15 +129,15 @@ namespace tbrpg
    */
   RestInterruption& RestInterruption::operator =(const RestInterruption& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
     return *this;
   }
   
@@ -150,15 +149,15 @@ namespace tbrpg
    */
   RestInterruption& RestInterruption::operator =(RestInterruption& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->description = original.description;
+    this->may_rest = original.may_rest;
+    this->area = original.area;
+    this->roads = original.roads;
+    this->connections = original.connections;
+    this->items = original.items;
+    this->creatures = original.creatures;
+    this->is_in = original.is_in;
+    this->interruptions = original.interruptions;
     return *this;
   }
   
@@ -170,15 +169,15 @@ namespace tbrpg
    */
   RestInterruption& RestInterruption::operator =(RestInterruption&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->description, original.description);
+    std::swap(this->may_rest, original.may_rest);
+    std::move(this->area, original.area);
+    std::move(this->roads, original.roads);
+    std::move(this->connections, original.connections);
+    std::move(this->items, original.items);
+    std::move(this->creatures, original.creatures);
+    std::move(this->is_in, original.is_in);
+    std::move(this->interruptions, original.interruptions);
     return *this;
   }
   

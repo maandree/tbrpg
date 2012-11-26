@@ -36,11 +36,11 @@ namespace tbrpg
   Road::Road()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //name = nullptr;
+    //visible = false;
+    //visited = false;
+    //visitable = false;
+    //detectable = false;
   }
   
   /**
@@ -50,11 +50,11 @@ namespace tbrpg
    */
   Road::Road(const Road& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
   }
   
   /**
@@ -64,11 +64,11 @@ namespace tbrpg
    */
   Road::Road(Road& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
   }
   
   /**
@@ -78,11 +78,11 @@ namespace tbrpg
    */
   Road::Road(Road&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::swap(this->visible, original.visible);
+    std::swap(this->visited, original.visited);
+    std::swap(this->visitable, original.visitable);
+    std::swap(this->detectable, original.detectable);
   }
   
   
@@ -93,11 +93,7 @@ namespace tbrpg
   Road::~Road()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete name;
   }
   
   
@@ -110,11 +106,11 @@ namespace tbrpg
    */
   Road& Road::operator =(const Road& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
     return *this;
   }
   
@@ -126,11 +122,11 @@ namespace tbrpg
    */
   Road& Road::operator =(Road& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->visible = original.visible;
+    this->visited = original.visited;
+    this->visitable = original.visitable;
+    this->detectable = original.detectable;
     return *this;
   }
   
@@ -142,11 +138,11 @@ namespace tbrpg
    */
   Road& Road::operator =(Road&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::swap(this->visible, original.visible);
+    std::swap(this->visited, original.visited);
+    std::swap(this->visitable, original.visitable);
+    std::swap(this->detectable, original.detectable);
     return *this;
   }
   

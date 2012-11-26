@@ -36,25 +36,25 @@ namespace tbrpg
   Character::Character()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //name = nullptr;
+    //biography = nullptr;
+    //colour = nullptr;
+    //alignment = nullptr;
+    //portrait = nullptr;
+    //female = false;
+    //experience = nullptr;
+    //level = nullptr;
+    //class_abondoned = nullptr;
+    //proficiencies = nullptr;
+    //affected_by = nullptr;
+    //inventory = nullptr;
+    //abilities = nullptr;
+    //spells = nullptr;
+    //race = nullptr;
+    //racial_enemy = nullptr;
+    //prestige = nullptr;
+    //specialisation = nullptr;
+    //special_abilities = nullptr;
   }
   
   /**
@@ -64,25 +64,25 @@ namespace tbrpg
    */
   Character::Character(const Character& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->biography = original.biography;
+    this->colour = original.colour;
+    this->alignment = original.alignment;
+    this->portrait = original.portrait;
+    this->female = original.female;
+    this->experience = original.experience;
+    this->level = original.level;
+    this->class_abondoned = original.class_abondoned;
+    this->proficiencies = original.proficiencies;
+    this->affected_by = original.affected_by;
+    this->inventory = original.inventory;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->race = original.race;
+    this->racial_enemy = original.racial_enemy;
+    this->prestige = original.prestige;
+    this->specialisation = original.specialisation;
+    this->special_abilities = original.special_abilities;
   }
   
   /**
@@ -92,25 +92,25 @@ namespace tbrpg
    */
   Character::Character(Character& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->biography = original.biography;
+    this->colour = original.colour;
+    this->alignment = original.alignment;
+    this->portrait = original.portrait;
+    this->female = original.female;
+    this->experience = original.experience;
+    this->level = original.level;
+    this->class_abondoned = original.class_abondoned;
+    this->proficiencies = original.proficiencies;
+    this->affected_by = original.affected_by;
+    this->inventory = original.inventory;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->race = original.race;
+    this->racial_enemy = original.racial_enemy;
+    this->prestige = original.prestige;
+    this->specialisation = original.specialisation;
+    this->special_abilities = original.special_abilities;
   }
   
   /**
@@ -120,25 +120,25 @@ namespace tbrpg
    */
   Character::Character(Character&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->biography, original.biography);
+    std::move(this->colour, original.colour);
+    std::move(this->alignment, original.alignment);
+    std::move(this->portrait, original.portrait);
+    std::swap(this->female, original.female);
+    std::move(this->experience, original.experience);
+    std::move(this->level, original.level);
+    std::move(this->class_abondoned, original.class_abondoned);
+    std::move(this->proficiencies, original.proficiencies);
+    std::move(this->affected_by, original.affected_by);
+    std::move(this->inventory, original.inventory);
+    std::move(this->abilities, original.abilities);
+    std::move(this->spells, original.spells);
+    std::move(this->race, original.race);
+    std::move(this->racial_enemy, original.racial_enemy);
+    std::move(this->prestige, original.prestige);
+    std::move(this->specialisation, original.specialisation);
+    std::move(this->special_abilities, original.special_abilities);
   }
   
   
@@ -149,25 +149,24 @@ namespace tbrpg
   Character::~Character()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete name;
+    //delete biography;
+    //delete colour;
+    //delete alignment;
+    //delete portrait;
+    //delete experience;
+    //delete level;
+    //delete class_abondoned;
+    //delete proficiencies;
+    //delete affected_by;
+    //delete inventory;
+    //delete abilities;
+    //delete spells;
+    //delete race;
+    //delete racial_enemy;
+    //delete prestige;
+    //delete specialisation;
+    //delete special_abilities;
   }
   
   
@@ -180,25 +179,25 @@ namespace tbrpg
    */
   Character& Character::operator =(const Character& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->biography = original.biography;
+    this->colour = original.colour;
+    this->alignment = original.alignment;
+    this->portrait = original.portrait;
+    this->female = original.female;
+    this->experience = original.experience;
+    this->level = original.level;
+    this->class_abondoned = original.class_abondoned;
+    this->proficiencies = original.proficiencies;
+    this->affected_by = original.affected_by;
+    this->inventory = original.inventory;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->race = original.race;
+    this->racial_enemy = original.racial_enemy;
+    this->prestige = original.prestige;
+    this->specialisation = original.specialisation;
+    this->special_abilities = original.special_abilities;
     return *this;
   }
   
@@ -210,25 +209,25 @@ namespace tbrpg
    */
   Character& Character::operator =(Character& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->name = original.name;
+    this->biography = original.biography;
+    this->colour = original.colour;
+    this->alignment = original.alignment;
+    this->portrait = original.portrait;
+    this->female = original.female;
+    this->experience = original.experience;
+    this->level = original.level;
+    this->class_abondoned = original.class_abondoned;
+    this->proficiencies = original.proficiencies;
+    this->affected_by = original.affected_by;
+    this->inventory = original.inventory;
+    this->abilities = original.abilities;
+    this->spells = original.spells;
+    this->race = original.race;
+    this->racial_enemy = original.racial_enemy;
+    this->prestige = original.prestige;
+    this->specialisation = original.specialisation;
+    this->special_abilities = original.special_abilities;
     return *this;
   }
   
@@ -240,25 +239,25 @@ namespace tbrpg
    */
   Character& Character::operator =(Character&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->name, original.name);
+    std::move(this->biography, original.biography);
+    std::move(this->colour, original.colour);
+    std::move(this->alignment, original.alignment);
+    std::move(this->portrait, original.portrait);
+    std::swap(this->female, original.female);
+    std::move(this->experience, original.experience);
+    std::move(this->level, original.level);
+    std::move(this->class_abondoned, original.class_abondoned);
+    std::move(this->proficiencies, original.proficiencies);
+    std::move(this->affected_by, original.affected_by);
+    std::move(this->inventory, original.inventory);
+    std::move(this->abilities, original.abilities);
+    std::move(this->spells, original.spells);
+    std::move(this->race, original.race);
+    std::move(this->racial_enemy, original.racial_enemy);
+    std::move(this->prestige, original.prestige);
+    std::move(this->specialisation, original.specialisation);
+    std::move(this->special_abilities, original.special_abilities);
     return *this;
   }
   

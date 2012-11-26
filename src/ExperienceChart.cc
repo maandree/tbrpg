@@ -36,8 +36,8 @@ namespace tbrpg
   ExperienceChart::ExperienceChart()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //reputation = nullptr;
+    //characters = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(const ExperienceChart& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(ExperienceChart& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart(ExperienceChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->reputation, original.reputation);
+    std::move(this->characters, original.characters);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   ExperienceChart::~ExperienceChart()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete reputation;
+    //delete characters;
   }
   
   
@@ -95,8 +95,8 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(const ExperienceChart& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
     return *this;
   }
   
@@ -108,8 +108,8 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(ExperienceChart& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->reputation = original.reputation;
+    this->characters = original.characters;
     return *this;
   }
   
@@ -121,8 +121,8 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(ExperienceChart&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->reputation, original.reputation);
+    std::move(this->characters, original.characters);
     return *this;
   }
   

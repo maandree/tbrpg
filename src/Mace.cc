@@ -36,7 +36,7 @@ namespace tbrpg
   Mace::Mace()
   {
     //TODO implement constructor
-    // = nullptr;
+    //rate_of_fire = nullptr;
   }
   
   /**
@@ -46,7 +46,7 @@ namespace tbrpg
    */
   Mace::Mace(const Mace& original)
   {
-    this-> = original.;
+    this->rate_of_fire = original.rate_of_fire;
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
    */
   Mace::Mace(Mace& original)
   {
-    this-> = original.;
+    this->rate_of_fire = original.rate_of_fire;
   }
   
   /**
@@ -66,7 +66,7 @@ namespace tbrpg
    */
   Mace::Mace(Mace&& original)
   {
-    std::move(this->, original.);
+    std::move(this->rate_of_fire, original.rate_of_fire);
   }
   
   
@@ -77,7 +77,7 @@ namespace tbrpg
   Mace::~Mace()
   {
     //TODO implement destructor
-    //delete ;
+    //delete rate_of_fire;
   }
   
   
@@ -90,7 +90,7 @@ namespace tbrpg
    */
   Mace& Mace::operator =(const Mace& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -102,7 +102,7 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace& original)
   {
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -114,7 +114,7 @@ namespace tbrpg
    */
   Mace& Mace::operator =(Mace&& original)
   {
-    std::move((BluntWeapon)*this, (BluntWeapon)original);    std::move(this->, original.);
+    std::move((BluntWeapon)*this, (BluntWeapon)original);    std::move(this->rate_of_fire, original.rate_of_fire);
     return *this;
   }
   

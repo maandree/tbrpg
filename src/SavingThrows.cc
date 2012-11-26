@@ -36,10 +36,10 @@ namespace tbrpg
   SavingThrows::SavingThrows()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //find_traps = nullptr;
+    //open_locks = nullptr;
+    //pick_pockets = nullptr;
+    //stealth = nullptr;
   }
   
   /**
@@ -49,10 +49,10 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(const SavingThrows& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->find_traps = original.find_traps;
+    this->open_locks = original.open_locks;
+    this->pick_pockets = original.pick_pockets;
+    this->stealth = original.stealth;
   }
   
   /**
@@ -62,10 +62,10 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(SavingThrows& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->find_traps = original.find_traps;
+    this->open_locks = original.open_locks;
+    this->pick_pockets = original.pick_pockets;
+    this->stealth = original.stealth;
   }
   
   /**
@@ -75,10 +75,10 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows(SavingThrows&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->find_traps, original.find_traps);
+    std::move(this->open_locks, original.open_locks);
+    std::move(this->pick_pockets, original.pick_pockets);
+    std::move(this->stealth, original.stealth);
   }
   
   
@@ -89,10 +89,10 @@ namespace tbrpg
   SavingThrows::~SavingThrows()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete find_traps;
+    //delete open_locks;
+    //delete pick_pockets;
+    //delete stealth;
   }
   
   
@@ -105,10 +105,10 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(const SavingThrows& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->find_traps = original.find_traps;
+    this->open_locks = original.open_locks;
+    this->pick_pockets = original.pick_pockets;
+    this->stealth = original.stealth;
     return *this;
   }
   
@@ -120,10 +120,10 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(SavingThrows& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->find_traps = original.find_traps;
+    this->open_locks = original.open_locks;
+    this->pick_pockets = original.pick_pockets;
+    this->stealth = original.stealth;
     return *this;
   }
   
@@ -135,10 +135,10 @@ namespace tbrpg
    */
   SavingThrows& SavingThrows::operator =(SavingThrows&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->find_traps, original.find_traps);
+    std::move(this->open_locks, original.open_locks);
+    std::move(this->pick_pockets, original.pick_pockets);
+    std::move(this->stealth, original.stealth);
     return *this;
   }
   

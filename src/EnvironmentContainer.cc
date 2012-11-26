@@ -36,14 +36,14 @@ namespace tbrpg
   EnvironmentContainer::EnvironmentContainer()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //first_distance = nullptr;
+    //last_distance = nullptr;
+    //waylay_die = nullptr;
+    //waylay_dice = nullptr;
+    //waylay_risk = 0;
+    //direction = nullptr;
+    //waylay_map = nullptr;
+    //leads_to = nullptr;
   }
   
   /**
@@ -53,14 +53,14 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer(const EnvironmentContainer& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->first_distance = original.first_distance;
+    this->last_distance = original.last_distance;
+    this->waylay_die = original.waylay_die;
+    this->waylay_dice = original.waylay_dice;
+    this->waylay_risk = original.waylay_risk;
+    this->direction = original.direction;
+    this->waylay_map = original.waylay_map;
+    this->leads_to = original.leads_to;
   }
   
   /**
@@ -70,14 +70,14 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer(EnvironmentContainer& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->first_distance = original.first_distance;
+    this->last_distance = original.last_distance;
+    this->waylay_die = original.waylay_die;
+    this->waylay_dice = original.waylay_dice;
+    this->waylay_risk = original.waylay_risk;
+    this->direction = original.direction;
+    this->waylay_map = original.waylay_map;
+    this->leads_to = original.leads_to;
   }
   
   /**
@@ -87,14 +87,14 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer(EnvironmentContainer&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->first_distance, original.first_distance);
+    std::move(this->last_distance, original.last_distance);
+    std::move(this->waylay_die, original.waylay_die);
+    std::move(this->waylay_dice, original.waylay_dice);
+    std::swap(this->waylay_risk, original.waylay_risk);
+    std::move(this->direction, original.direction);
+    std::move(this->waylay_map, original.waylay_map);
+    std::move(this->leads_to, original.leads_to);
   }
   
   
@@ -105,14 +105,13 @@ namespace tbrpg
   EnvironmentContainer::~EnvironmentContainer()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete first_distance;
+    //delete last_distance;
+    //delete waylay_die;
+    //delete waylay_dice;
+    //delete direction;
+    //delete waylay_map;
+    //delete leads_to;
   }
   
   
@@ -140,14 +139,14 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->first_distance = original.first_distance;
+    this->last_distance = original.last_distance;
+    this->waylay_die = original.waylay_die;
+    this->waylay_dice = original.waylay_dice;
+    this->waylay_risk = original.waylay_risk;
+    this->direction = original.direction;
+    this->waylay_map = original.waylay_map;
+    this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -174,14 +173,14 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->first_distance = original.first_distance;
+    this->last_distance = original.last_distance;
+    this->waylay_die = original.waylay_die;
+    this->waylay_dice = original.waylay_dice;
+    this->waylay_risk = original.waylay_risk;
+    this->direction = original.direction;
+    this->waylay_map = original.waylay_map;
+    this->leads_to = original.leads_to;
     return *this;
   }
   
@@ -208,14 +207,14 @@ namespace tbrpg
     std::move((Container,)*this, (Container,)original);
     std::move((Lockable)*this, (Lockable)original);
     std::move((Container,)*this, (Container,)original);
-    std::move((Lockable)*this, (Lockable)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((Lockable)*this, (Lockable)original);    std::move(this->first_distance, original.first_distance);
+    std::move(this->last_distance, original.last_distance);
+    std::move(this->waylay_die, original.waylay_die);
+    std::move(this->waylay_dice, original.waylay_dice);
+    std::swap(this->waylay_risk, original.waylay_risk);
+    std::move(this->direction, original.direction);
+    std::move(this->waylay_map, original.waylay_map);
+    std::move(this->leads_to, original.leads_to);
     return *this;
   }
   

@@ -36,11 +36,11 @@ namespace tbrpg
   Entrance::Entrance()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //locked = false;
+    //pick_level = nullptr;
+    //bash_level = nullptr;
+    //pickable = false;
+    //bashable = false;
   }
   
   /**
@@ -50,11 +50,11 @@ namespace tbrpg
    */
   Entrance::Entrance(const Entrance& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->locked = original.locked;
+    this->pick_level = original.pick_level;
+    this->bash_level = original.bash_level;
+    this->pickable = original.pickable;
+    this->bashable = original.bashable;
   }
   
   /**
@@ -64,11 +64,11 @@ namespace tbrpg
    */
   Entrance::Entrance(Entrance& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->locked = original.locked;
+    this->pick_level = original.pick_level;
+    this->bash_level = original.bash_level;
+    this->pickable = original.pickable;
+    this->bashable = original.bashable;
   }
   
   /**
@@ -78,11 +78,11 @@ namespace tbrpg
    */
   Entrance::Entrance(Entrance&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::swap(this->locked, original.locked);
+    std::move(this->pick_level, original.pick_level);
+    std::move(this->bash_level, original.bash_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->bashable, original.bashable);
   }
   
   
@@ -93,11 +93,8 @@ namespace tbrpg
   Entrance::~Entrance()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete pick_level;
+    //delete bash_level;
   }
   
   
@@ -110,11 +107,11 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(const Entrance& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->locked = original.locked;
+    this->pick_level = original.pick_level;
+    this->bash_level = original.bash_level;
+    this->pickable = original.pickable;
+    this->bashable = original.bashable;
     return *this;
   }
   
@@ -126,11 +123,11 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(Entrance& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->locked = original.locked;
+    this->pick_level = original.pick_level;
+    this->bash_level = original.bash_level;
+    this->pickable = original.pickable;
+    this->bashable = original.bashable;
     return *this;
   }
   
@@ -142,11 +139,11 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(Entrance&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::swap(this->locked, original.locked);
+    std::move(this->pick_level, original.pick_level);
+    std::move(this->bash_level, original.bash_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->bashable, original.bashable);
     return *this;
   }
   

@@ -36,21 +36,21 @@ namespace tbrpg
   Race::Race()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //hit_points = nullptr;
+    //thac0 = nullptr;
+    //lore_bonus = nullptr;
+    //alignments = nullptr;
+    //learn_from_scroll = false;
+    //proficiencies_each = nullptr;
+    //experience_chart = nullptr;
+    //spell_progression = nullptr;
+    //abilities = nullptr;
+    //lower_limits = nullptr;
+    //special_abilties = nullptr;
+    //can_use = nullptr;
+    //proficiency_chart = nullptr;
+    //default_one_hand = nullptr;
+    //default_two_hand = nullptr;
   }
   
   /**
@@ -60,21 +60,21 @@ namespace tbrpg
    */
   Race::Race(const Race& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->thac0 = original.thac0;
+    this->lore_bonus = original.lore_bonus;
+    this->alignments = original.alignments;
+    this->learn_from_scroll = original.learn_from_scroll;
+    this->proficiencies_each = original.proficiencies_each;
+    this->experience_chart = original.experience_chart;
+    this->spell_progression = original.spell_progression;
+    this->abilities = original.abilities;
+    this->lower_limits = original.lower_limits;
+    this->special_abilties = original.special_abilties;
+    this->can_use = original.can_use;
+    this->proficiency_chart = original.proficiency_chart;
+    this->default_one_hand = original.default_one_hand;
+    this->default_two_hand = original.default_two_hand;
   }
   
   /**
@@ -84,21 +84,21 @@ namespace tbrpg
    */
   Race::Race(Race& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->thac0 = original.thac0;
+    this->lore_bonus = original.lore_bonus;
+    this->alignments = original.alignments;
+    this->learn_from_scroll = original.learn_from_scroll;
+    this->proficiencies_each = original.proficiencies_each;
+    this->experience_chart = original.experience_chart;
+    this->spell_progression = original.spell_progression;
+    this->abilities = original.abilities;
+    this->lower_limits = original.lower_limits;
+    this->special_abilties = original.special_abilties;
+    this->can_use = original.can_use;
+    this->proficiency_chart = original.proficiency_chart;
+    this->default_one_hand = original.default_one_hand;
+    this->default_two_hand = original.default_two_hand;
   }
   
   /**
@@ -108,21 +108,21 @@ namespace tbrpg
    */
   Race::Race(Race&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_points, original.hit_points);
+    std::move(this->thac0, original.thac0);
+    std::move(this->lore_bonus, original.lore_bonus);
+    std::move(this->alignments, original.alignments);
+    std::swap(this->learn_from_scroll, original.learn_from_scroll);
+    std::move(this->proficiencies_each, original.proficiencies_each);
+    std::move(this->experience_chart, original.experience_chart);
+    std::move(this->spell_progression, original.spell_progression);
+    std::move(this->abilities, original.abilities);
+    std::move(this->lower_limits, original.lower_limits);
+    std::move(this->special_abilties, original.special_abilties);
+    std::move(this->can_use, original.can_use);
+    std::move(this->proficiency_chart, original.proficiency_chart);
+    std::move(this->default_one_hand, original.default_one_hand);
+    std::move(this->default_two_hand, original.default_two_hand);
   }
   
   
@@ -133,21 +133,20 @@ namespace tbrpg
   Race::~Race()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete hit_points;
+    //delete thac0;
+    //delete lore_bonus;
+    //delete alignments;
+    //delete proficiencies_each;
+    //delete experience_chart;
+    //delete spell_progression;
+    //delete abilities;
+    //delete lower_limits;
+    //delete special_abilties;
+    //delete can_use;
+    //delete proficiency_chart;
+    //delete default_one_hand;
+    //delete default_two_hand;
   }
   
   
@@ -160,21 +159,21 @@ namespace tbrpg
    */
   Race& Race::operator =(const Race& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->thac0 = original.thac0;
+    this->lore_bonus = original.lore_bonus;
+    this->alignments = original.alignments;
+    this->learn_from_scroll = original.learn_from_scroll;
+    this->proficiencies_each = original.proficiencies_each;
+    this->experience_chart = original.experience_chart;
+    this->spell_progression = original.spell_progression;
+    this->abilities = original.abilities;
+    this->lower_limits = original.lower_limits;
+    this->special_abilties = original.special_abilties;
+    this->can_use = original.can_use;
+    this->proficiency_chart = original.proficiency_chart;
+    this->default_one_hand = original.default_one_hand;
+    this->default_two_hand = original.default_two_hand;
     return *this;
   }
   
@@ -186,21 +185,21 @@ namespace tbrpg
    */
   Race& Race::operator =(Race& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_points = original.hit_points;
+    this->thac0 = original.thac0;
+    this->lore_bonus = original.lore_bonus;
+    this->alignments = original.alignments;
+    this->learn_from_scroll = original.learn_from_scroll;
+    this->proficiencies_each = original.proficiencies_each;
+    this->experience_chart = original.experience_chart;
+    this->spell_progression = original.spell_progression;
+    this->abilities = original.abilities;
+    this->lower_limits = original.lower_limits;
+    this->special_abilties = original.special_abilties;
+    this->can_use = original.can_use;
+    this->proficiency_chart = original.proficiency_chart;
+    this->default_one_hand = original.default_one_hand;
+    this->default_two_hand = original.default_two_hand;
     return *this;
   }
   
@@ -212,21 +211,21 @@ namespace tbrpg
    */
   Race& Race::operator =(Race&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_points, original.hit_points);
+    std::move(this->thac0, original.thac0);
+    std::move(this->lore_bonus, original.lore_bonus);
+    std::move(this->alignments, original.alignments);
+    std::swap(this->learn_from_scroll, original.learn_from_scroll);
+    std::move(this->proficiencies_each, original.proficiencies_each);
+    std::move(this->experience_chart, original.experience_chart);
+    std::move(this->spell_progression, original.spell_progression);
+    std::move(this->abilities, original.abilities);
+    std::move(this->lower_limits, original.lower_limits);
+    std::move(this->special_abilties, original.special_abilties);
+    std::move(this->can_use, original.can_use);
+    std::move(this->proficiency_chart, original.proficiency_chart);
+    std::move(this->default_one_hand, original.default_one_hand);
+    std::move(this->default_two_hand, original.default_two_hand);
     return *this;
   }
   

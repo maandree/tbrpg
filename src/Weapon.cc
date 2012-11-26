@@ -36,12 +36,12 @@ namespace tbrpg
   Weapon::Weapon()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
-    // = nullptr;
+    //hit_bonus = nullptr;
+    //damage_die = nullptr;
+    //damage_dice = nullptr;
+    //damage_bonus = nullptr;
+    //usable_with = nullptr;
+    //damage_type = nullptr;
   }
   
   /**
@@ -51,12 +51,12 @@ namespace tbrpg
    */
   Weapon::Weapon(const Weapon& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_die = original.damage_die;
+    this->damage_dice = original.damage_dice;
+    this->damage_bonus = original.damage_bonus;
+    this->usable_with = original.usable_with;
+    this->damage_type = original.damage_type;
   }
   
   /**
@@ -66,12 +66,12 @@ namespace tbrpg
    */
   Weapon::Weapon(Weapon& original)
   {
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    this->hit_bonus = original.hit_bonus;
+    this->damage_die = original.damage_die;
+    this->damage_dice = original.damage_dice;
+    this->damage_bonus = original.damage_bonus;
+    this->usable_with = original.usable_with;
+    this->damage_type = original.damage_type;
   }
   
   /**
@@ -81,12 +81,12 @@ namespace tbrpg
    */
   Weapon::Weapon(Weapon&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->hit_bonus, original.hit_bonus);
+    std::move(this->damage_die, original.damage_die);
+    std::move(this->damage_dice, original.damage_dice);
+    std::move(this->damage_bonus, original.damage_bonus);
+    std::move(this->usable_with, original.usable_with);
+    std::move(this->damage_type, original.damage_type);
   }
   
   
@@ -97,12 +97,12 @@ namespace tbrpg
   Weapon::~Weapon()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
-    //delete ;
+    //delete hit_bonus;
+    //delete damage_die;
+    //delete damage_dice;
+    //delete damage_bonus;
+    //delete usable_with;
+    //delete damage_type;
   }
   
   
@@ -120,12 +120,12 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
+    this->damage_die = original.damage_die;
+    this->damage_dice = original.damage_dice;
+    this->damage_bonus = original.damage_bonus;
+    this->usable_with = original.usable_with;
+    this->damage_type = original.damage_type;
     return *this;
   }
   
@@ -142,12 +142,12 @@ namespace tbrpg
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
     %s::__copy__((%s&)*this, (%s&)original);
-    %s::__copy__((%s&)*this, (%s&)original);    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
-    this-> = original.;
+    %s::__copy__((%s&)*this, (%s&)original);    this->hit_bonus = original.hit_bonus;
+    this->damage_die = original.damage_die;
+    this->damage_dice = original.damage_dice;
+    this->damage_bonus = original.damage_bonus;
+    this->usable_with = original.usable_with;
+    this->damage_type = original.damage_type;
     return *this;
   }
   
@@ -164,12 +164,12 @@ namespace tbrpg
     std::move((RightHandItem)*this, (RightHandItem)original);
     std::move((RightHandItem)*this, (RightHandItem)original);
     std::move((RightHandItem)*this, (RightHandItem)original);
-    std::move((RightHandItem)*this, (RightHandItem)original);    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move((RightHandItem)*this, (RightHandItem)original);    std::move(this->hit_bonus, original.hit_bonus);
+    std::move(this->damage_die, original.damage_die);
+    std::move(this->damage_dice, original.damage_dice);
+    std::move(this->damage_bonus, original.damage_bonus);
+    std::move(this->usable_with, original.usable_with);
+    std::move(this->damage_type, original.damage_type);
     return *this;
   }
   

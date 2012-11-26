@@ -36,8 +36,8 @@ namespace tbrpg
   MapMajor::MapMajor()
   {
     //TODO implement constructor
-    // = nullptr;
-    // = nullptr;
+    //start = nullptr;
+    //majors = nullptr;
   }
   
   /**
@@ -47,8 +47,8 @@ namespace tbrpg
    */
   MapMajor::MapMajor(const MapMajor& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->start = original.start;
+    this->majors = original.majors;
   }
   
   /**
@@ -58,8 +58,8 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->start = original.start;
+    this->majors = original.majors;
   }
   
   /**
@@ -69,8 +69,8 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->start, original.start);
+    std::move(this->majors, original.majors);
   }
   
   
@@ -81,8 +81,8 @@ namespace tbrpg
   MapMajor::~MapMajor()
   {
     //TODO implement destructor
-    //delete ;
-    //delete ;
+    //delete start;
+    //delete majors;
   }
   
   
@@ -95,8 +95,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->start = original.start;
+    this->majors = original.majors;
     return *this;
   }
   
@@ -108,8 +108,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
-    this-> = original.;
-    this-> = original.;
+    this->start = original.start;
+    this->majors = original.majors;
     return *this;
   }
   
@@ -121,8 +121,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
-    std::move(this->, original.);
-    std::move(this->, original.);
+    std::move(this->start, original.start);
+    std::move(this->majors, original.majors);
     return *this;
   }
   
