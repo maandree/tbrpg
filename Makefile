@@ -52,7 +52,7 @@ GAMEDIR=/bin
 
 
 
-all: parallel info pdf
+all: code info pdf
 
 
 

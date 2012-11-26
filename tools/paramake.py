@@ -106,7 +106,6 @@ class MakeThread(Thread):
                     break
                 file = queue[0]
                 queue[:] = queue[1:]
-                threadmap[self.index] = file
                 for dep in deps[file]:
                     if dep in threadmap:
                         i = threadmap.index(dep)
@@ -117,6 +116,7 @@ class MakeThread(Thread):
                         m.wait()
                         readmutex.acquire()
                         m.release()
+                threadmap[self.index] = file
                 print('\033[01;34mCompiling ' + file + ' [' + str(self.index) + ']\033[21;39m')
                 readmutex.release()
                 ev = self.compile(file)
