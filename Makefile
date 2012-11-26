@@ -5,8 +5,12 @@
 # 
 # [GNU All Permissive License]
 
+SHELL=bash
+
+OPTIMISE=-O0
+#OPTIMISE=-O3
 CPPFLAGS=
-CXXFLAGS=-g --std=c++11 -pedantic -W{all,extra} -O3
+CXXFLAGS=$(OPTIMISE) -g --std=c++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 
 BOOK=tbrpg
@@ -47,14 +51,35 @@ GAMEDIR=/bin
 
 
 
-all: code info pdf
+all: best info pdf
 
 
 
 code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
+	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*{,/*}.{cc,hpp}
 
+%.o: src/%.cc
+	if [ ! -d bin ]; then  mkdir bin;  fi
+	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
+
+best:
+	if [ ! -d bin ]; then  mkdir bin;  fi
+	sort < __order | uniq | tsort | tac > .tmp1
+	ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
+	$(SHELL) -c 'diff <(sort < .tmp1 | uniq) .tmp > .tmp2 || echo -n'
+	((grep '> ' < .tmp2 | sed -e 's/> //g') ; cat .tmp1) > .tmp
+	time (count=$$(cat .tmp | wc -l);                                    \
+	index=0;                                                             \
+	cat .tmp | while read file; do                                       \
+	    index=$$(( $$index + 1 ));                                       \
+	    echo -e '\033[01;34m'$$file' ('$$index'/'$$count')\033[21;39m';  \
+	    make $$file.o || exit 100;                                       \
+	done)
+
+
+regen:
+	cd src; ../tools/vargen.py < ../doc/variables 2> ../__order
 
 
 info:
@@ -64,7 +89,7 @@ info:
 pdf:
 	texi2pdf "$(BOOKDIR)$(BOOK).texinfo"
 	for ext in `echo aux cp cps fn ky log pg toc tp vr op ops pgs vrs`; do  \
-		if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi        \
+	    if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi            \
 	done
 	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
 
@@ -79,7 +104,7 @@ spell:
 
 grammar:
 	link-parser < "$(BOOK)".texinfo 2>&1 | sed -e  \
-		s/'No complete linkages found'/'\x1b[1;31mNo complete linkage found\x1b[m'/g | less -r
+	    s/'No complete linkages found'/'\x1b[1;31mNo complete linkage found\x1b[m'/g | less -r
 
 
 
@@ -134,12 +159,16 @@ uninstall:
 	@echo Not implemented
 
 
-clean:
+clean: clean-gch
+	if [ -d "bin" ]; then  rm -r "bin";  fi
 	find ./ | grep \\.a\$$    | while read file; do  rm "$$file";  done
 	find ./ | grep \\.o\$$    | while read file; do  rm "$$file";  done
 	find ./ | grep \\.out\$$  | while read file; do  rm "$$file";  done
 	find ./ | grep \\.info\$$ | while read file; do  rm "$$file";  done
 	find ./ | grep \\.gz\$$   | while read file; do  rm "$$file";  done
+	if [ -f .tmp  ]; then  rm .tmp ;  fi
+	if [ -f .tmp1 ]; then  rm .tmp1;  fi
+	if [ -f .tmp2 ]; then  rm .tmp2;  fi
 	for ext in `echo aux cp cps fn ky log pg toc tp vr bak op ops pgs vrs`; do  \
 		if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi            \
 	done
@@ -152,10 +181,10 @@ clean-gch:
 
 
 view:
-	if [ ! $$PDF_VIEWER = '' ]; then     \
-		$$PDF_VIEWER "$(BOOK).pdf";  \
-	else                                 \
-		xpdf "$(BOOK).pdf";          \
+	if [ ! $$PDF_VIEWER = '' ]; then  \
+	    $$PDF_VIEWER "$(BOOK).pdf";   \
+	else                              \
+	    xpdf "$(BOOK).pdf";           \
 	fi
 
 atril:
@@ -181,5 +210,5 @@ jfbview:
 
 .PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
 	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey view atril evince xpdf okular gs jfbview all
+	valgrind-lackey view atril evince xpdf okular gs jfbview all regen
 

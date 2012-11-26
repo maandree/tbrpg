@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++, coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -17,12 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __ITEM__
-#define __ITEM__
+#ifndef __GUARD_MAPMINOR_HPP__
+#define __GUARD_MAPMINOR_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "Road.hpp"
+#include "Entrance.hpp"
+#include "Item.hpp"
+#include "Creature.hpp"
+#include "MapMajor.hpp"
+#include "RestInterruption.hpp"
 
 
 /**
@@ -36,75 +47,90 @@
 namespace tbrpg
 {
   /**
-   * Item base class
+   * Map area
    */
-  class Item
+  class MapMinor
   {
-  protected:
-    /**
-     * The item's weight in grams
-     */
-    int weight;
-    
-    /**
-     * Is the item stuck in its current position?
-     */
-    bool stuck;
-    
-    /**
-     * The item's monetary value
-     */
-    int value;
-    
-    /**
-     * Is the item identified?
-     */
-    bool identified;
-    
-    /**
-     * The lore needed to be able to identify the item without magic
-     */
-    int identifyLore;
-    
-    /**
-     * Is the item cursed?
-     */
-    bool cursed;
-    
-    
   public:
     /**
-     * Constructor
+     * Descrion of the area
      */
-    Item();
+    //std::string description;
+    
+    /**
+     * Whether you may rest in the area without renting a room
+     */
+    //bool may_rest;
+    
+    /**
+     * The radius of the area, in metres, the party starts at origo
+     */
+    //float area;
+    
+    /**
+     * Roads to other major areas in the area
+     */
+    //Road* roads;
+    
+    /**
+     * Entrance to other areas in the area
+     */
+    //Entrance* connections;
+    
+    /**
+     * Items in the area
+     */
+    //std::vector<Item> items;
+    
+    /**
+     * Creatures in the area
+     */
+    //std::vector<Creature> creatures;
+    
+    /**
+     * Which major area to which  the area belongs
+     */
+    //MapMajor is_in;
+    
+    /**
+     * Possible rest interruptions
+     */
+    //RestInterruption* interruptions;
+    
+    
+    
+    /**
+     * Construction
+     */
+    MapMinor();
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
-    Item(const Item& original);
+    MapMinor(const MapMinor& original);
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
-    Item(Item& original);
+    MapMinor(MapMinor& original);
     
     /**
      * Move constructor
-     *
+     * 
      * @param  original  The object to clone
      */
-    Item(Item&& original);
+    MapMinor(MapMinor&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~Item();
+    virtual ~MapMinor();
     
     
     
@@ -114,7 +140,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Item& operator =(const Item& original);
+    virtual MapMinor& operator =(const MapMinor& original);
     
     /**
      * Assignment operator
@@ -122,7 +148,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Item& operator =(Item& original);
+    virtual MapMinor& operator =(MapMinor& original);
     
     /**
      * Move operator
@@ -130,60 +156,20 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual Item& operator =(Item&& original);
+    virtual MapMinor& operator =(MapMinor&& original);
     
     
-    
+  protected:
     /**
-     * Get the weight of the item
+     * Copy method
      * 
-     * @return  The weight of the item
+     * @param  self      The object to modify
+     * @param  original  The reference object
      */
-    virtual int getWeight() const;
-    
-    /**
-     * Is the item stuck in its position
-     * 
-     * @return  Whether the item is stuck in its position
-     */
-    virtual bool isStuck() const;
-    
-    /**
-     * Get the item's monetary value
-     * 
-     * @return  The item's monetary value
-     */
-    virtual int getValue() const;
-    
-    /**
-     * Is the item identified?
-     * 
-     * @return  Wether the item identified
-     */
-    virtual bool isIdentified() const;
-    
-    /**
-     * Get the lore needed to be able to identify the item without magic
-     * 
-     * @return  The lore needed to be able to identify the item without magic
-     */
-    virtual int getIdentifyLore() const;
-    
-    /**
-     * Set the item as identified
-     */
-    virtual void identify();
-    
-    /**
-     * Is the item cursed?
-     * 
-     * @return  Whether the item is cursed
-     */
-    virtual bool isCursed() const;
+    static void __copy__(MapMinor& self, const MapMinor& original);
     
   };
 }
 
 
-#endif//__ITEM__
-
+#endif//__GUARD_MAPMINOR_HPP__

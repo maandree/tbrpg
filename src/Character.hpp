@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++, coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -17,13 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CHARACTER__
-#define __CHARACTER__
+#ifndef __GUARD_CHARACTER_HPP__
+#define __GUARD_CHARACTER_HPP__
 
 
 #include <stdlib.h>
 #include <algorithm>
-#include <string>
+#include <vector>
+#include <unordered_map>
+
+
+
+#include "CharacterSheet.hpp"
 
 
 /**
@@ -37,155 +42,65 @@
 namespace tbrpg
 {
   /**
-   * Character class
+   * Character
    */
   class Character
   {
   public:
     /**
-     * Gender: female
+     * Current hit points
      */
-    const static bool FEMALE = false;
+    //int hit_points;
     
     /**
-     * Gender: male
+     * Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
      */
-    const static bool MALE = true;
+    //char alive;
+    
+    /**
+     * Current morale
+     */
+    //int morale;
+    
+    /**
+     * Current intoxication level
+     */
+    //int intoxication;
+    
+    /**
+     * Number of turns since the character last slept with consideration for long travels
+     */
+    //int fatigue;
+    
+    /**
+     * The character sheet
+     */
+    //CharacterSheet record;
+    
     
     
     /**
-     * Alignment: lawful good
-     */
-    const static char LAWFUL_GOOD = 8;
-    
-    /**
-     * Alignment: neutral good
-     */
-    const static char NEUTRAL_GOOD = 7;
-    
-    /**
-     * Alignment: chaotic good
-     */
-    const static char CHAOTIC_GOOD = 6;
-    
-    /**
-     * Alignment: lawful neutral
-     */
-    const static char LAWFUL_NEUTRAL = 5;
-    
-    /**
-     * Alignment: neutral
-     */
-    const static char TRUE_NEUTRAL = 4;
-    
-    /**
-     * Alignment: chaotic neutral
-     */
-    const static char CHAOTIC_NEUTRAL = 3;
-    
-    /**
-     * Alignment: lawful evil
-     */
-    const static char LAWFUL_EVIL = 2;
-    
-    /**
-     * Alignment: neutral evil
-     */
-    const static char NEUTRAL_EVIL = 1;
-    
-    /**
-     * Alignment: chaotic evil
-     */
-    const static char CHAOTIC_EVIL = 0;
-    
-    
-    
-  protected:
-    /**
-     * The gender of the character
-     */
-    bool gender;
-    
-    /**
-     * The name of the character
-     */
-    std::string name;
-    
-    /**
-     * Optional image, no bigger than 80x80 pixels
-     */
-    std::string image;
-    
-    /**
-     * ANSI colour value used on the character name
-     */
-    char colour;
-    
-    /**
-     * Character alignment
-     */
-    char alignment;
-    
-    /**
-     * The characters reputation
-     */
-    char reputation;
-    
-    /**
-     * The character's strength
-     */
-    char strength;
-    
-    /**
-     * The character's constitution
-     */
-    char constitution;
-    
-    /**
-     * The character's dexterity
-     */
-    char dexterity;
-    
-    /**
-     * The character's intelligence
-     */
-    char intelligence;
-    
-    /**
-     * The character's wisdom
-     */
-    char wisdom;
-    
-    /**
-     * The character's charisma
-     */
-    char charisma;
-    
-    
-    
-  public:
-    /**
-     * Constructor
+     * Construction
      */
     Character();
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Character(const Character& original);
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Character(Character& original);
     
     /**
      * Move constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Character(Character&& original);
@@ -223,9 +138,18 @@ namespace tbrpg
      */
     virtual Character& operator =(Character&& original);
     
+    
+  protected:
+    /**
+     * Copy method
+     * 
+     * @param  self      The object to modify
+     * @param  original  The reference object
+     */
+    static void __copy__(Character& self, const Character& original);
+    
   };
 }
 
 
-#endif//__ITEM__
-
+#endif//__GUARD_CHARACTER_HPP__
