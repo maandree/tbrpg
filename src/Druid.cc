@@ -35,7 +35,25 @@ namespace tbrpg
    */
   Druid::Druid() : Priest()
   {
-    ////TODO implement constructor
+    this->experience_chart.experience = std::vector<int>(31);
+    
+    for (int i = 1; i <= 30; i++)
+      if (i <= 1)
+	this->experience_chart.experience[i] = 0;
+      else if (i <= 3)
+	this->experience_chart.experience[i] = 2000 << (i - 2);
+      else if (i <= 5)
+	this->experience_chart.experience[i] = 7500 + 5000 * (i - 4);
+      else if (i <= 7)
+	this->experience_chart.experience[i] = 20000 + 15000 * (i - 6);
+      else if (i <= 9)
+	this->experience_chart.experience[i] = 60000 + 30000 * (i - 8);
+      else if (i <= 12)
+	this->experience_chart.experience[i] = i == 10 ? 125000 : (100000 * (i - 9));
+      else if (i <= 14)
+	this->experience_chart.experience[i] = 750000 * (i - 12);
+      else
+	this->experience_chart.experience[i] = 225000 * (i - 7);
   }
   
   /**

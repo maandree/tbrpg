@@ -184,6 +184,32 @@ namespace tbrpg
 	  }
 	this->spell_progression.wizard_slots[i][9] = cur;
       }
+    
+    this->experience_chart.experience = std::vector<int>(31);
+    this->experience_chart.hit_point_die = std::vector<char>(31);
+    this->experience_chart.hit_point_dice = std::vector<char>(31);
+    this->experience_chart.hit_point_bonus = std::vector<int>(31);
+    this->experience_chart.proficiencies = std::vector<int>(31);
+    
+    for (int i = 1; i <= 30; i++)
+      {
+	this->experience_chart.hit_point_die[i] = 4;
+	this->experience_chart.hit_point_dice[i] = i > 10 ? 10 : i;
+	this->experience_chart.hit_point_bonus[i] = i <= 10 ? 0 : (i - 10);
+	this->experience_chart.proficiencies[i] = i / 5 + 2;
+	if (i <= 1)
+	  this->experience_chart.experience[i] = 0;
+	else if (i <= 6)
+	  this->experience_chart.experience[i] = 2500 << (i - 2);
+	else if (i <= 8)
+	  this->experience_chart.experience[i] = 60000 + 30000 * (i - 7);
+	else if (i == 9)
+	  this->experience_chart.experience[i] = 135000;
+	else if (i <= 11)
+	  this->experience_chart.experience[i] = 250000 + 125000 * (i - 10);
+	else
+	  this->experience_chart.experience[i] = 750000 + 375000 * (i - 12);
+      }
   }
   
   /**

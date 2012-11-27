@@ -163,6 +163,19 @@ namespace tbrpg
 	  }
 	this->spell_progression.priest_slots[i][7] = cur;
       }
+    
+    this->experience_chart.hit_point_die = std::vector<char>(31);
+    this->experience_chart.hit_point_dice = std::vector<char>(31);
+    this->experience_chart.hit_point_bonus = std::vector<int>(31);
+    this->experience_chart.proficiencies = std::vector<int>(31);
+    
+    for (int i = 1; i <= 30; i++)
+      {
+	this->experience_chart.hit_point_die[i] = 10;
+	this->experience_chart.hit_point_dice[i] = i > 9 ? 9 : i;
+	this->experience_chart.hit_point_bonus[i] = i <= 9 ? 0 : ((i - 9) * 2);
+	this->experience_chart.proficiencies[i] = i / 4 + 2;
+      }
   }
   
   /**

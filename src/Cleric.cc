@@ -35,7 +35,19 @@ namespace tbrpg
    */
   Cleric::Cleric() : Priest()
   {
-    ////TODO implement constructor
+    this->experience_chart.experience = std::vector<int>(31);
+    
+    for (int i = 1; i <= 30; i++)
+      if (i <= 1)
+	this->experience_chart.experience[i] = 0;
+      else if (i <= 4)
+	this->experience_chart.experience[i] = 1500 << (i - 2);
+      else if (i == 5)
+	this->experience_chart.experience[i] = 13000;
+      else if (i <= 8)
+	this->experience_chart.experience[i] = 27500 << (i - 6);
+      else
+	this->experience_chart.experience[i] = 225000 * (i - 8);
   }
   
   /**

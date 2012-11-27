@@ -35,7 +35,27 @@ namespace tbrpg
    */
   Warrior::Warrior() : Class()
   {
-    ////TODO implement constructor
+    this->experience_chart.experience = std::vector<int>(31);
+    this->experience_chart.hit_point_die = std::vector<char>(31);
+    this->experience_chart.hit_point_dice = std::vector<char>(31);
+    this->experience_chart.hit_point_bonus = std::vector<int>(31);
+    this->experience_chart.proficiencies = std::vector<int>(31);
+    
+    for (int i = 1; i <= 30; i++)
+      {
+	this->experience_chart.hit_point_die[i] = 10;
+	this->experience_chart.hit_point_dice[i] = i > 9 ? 9 : i;
+	this->experience_chart.hit_point_bonus[i] = i <= 9 ? 0 : ((i - 9) * 3);
+	this->experience_chart.proficiencies[i] = i / 3 + 4;
+	if (i <= 1)
+	  this->experience_chart.experience[i] = 0;
+	else if (i <= 6)
+	  this->experience_chart.experience[i] = 2250 << (i - 2);
+	else if (i <= 10)
+	  this->experience_chart.experience[i] = 75000 << (i - 7);
+	else
+	  this->experience_chart.experience[i] = 300000 * (i - 8);
+      }
   }
   
   /**
