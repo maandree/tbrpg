@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "dice.hpp"
+#include "Dice.hpp"
 
 
 /**
@@ -33,11 +33,13 @@ namespace tbrpg
   /**
    * Constructor
    * 
+   * @param  dieCount   The number of dice
    * @param  sideCount  The number of sides on the dice
    */
-  Dice::Dice(int sideCount)
+  Dice(int dieCount, int sideCount)
   {
-    this->sides = sideCount;
+    this->count = dieCount;
+    this->die = Die(sideCount);
   }
   
   /**
@@ -47,6 +49,7 @@ namespace tbrpg
    */
   Dice::Dice(const Dice& original)
   {
+    this->die = original.die
     this->sides = original.sides;
   }
   
@@ -57,6 +60,7 @@ namespace tbrpg
    */
   Dice::Dice(Dice& original)
   {
+    this->die = original.die;
     this->sides = original.sides;
   }
   
@@ -67,7 +71,8 @@ namespace tbrpg
    */
   Dice::Dice(Dice&& original)
   {
-    this->sides = original.sides;
+    std::swap(this->die, original.die);
+    std::swap(this->count, original.count);
   }
   
   
@@ -83,18 +88,6 @@ namespace tbrpg
   
   
   /**
-   * Reconstruction operator
-   * 
-   * @param   sideCount  The number of sides on the dice 
-   * @return             The invoked object
-   */
-  Dice& Dice::operator =(int sideCount)
-  {
-    this->sides = sideCount;
-    return *this;
-  }
-  
-  /**
    * Assignment operator
    * 
    * @param   original  The reference object
@@ -102,6 +95,7 @@ namespace tbrpg
    */
   Dice& Dice::operator =(const Dice& original)
   {
+    this->die = original.die
     this->sides = original.sides;
     return *this;
   }
@@ -114,6 +108,7 @@ namespace tbrpg
    */
   Dice& Dice::operator =(Dice& original)
   {
+    this->die = original.die
     this->sides = original.sides;
     return *this;
   }
@@ -126,11 +121,22 @@ namespace tbrpg
    */
   Dice& Dice::operator =(Dice&& original)
   {
-    std::swap(this->sides, original.sides);
+    std::swap(this->die, original.die);
+    std::swap(this->count, original.count);
     return *this;
   }
   
   
+  
+  /**
+   * Gets the number of dice
+   * 
+   * @return  The number of dice
+   */
+  virtual int getCount() const
+  {
+    this->count;
+  }
   
   /**
    * Gets the number of sides on the dice
@@ -139,7 +145,7 @@ namespace tbrpg
    */
   int Dice::getSides() const
   {
-    return this->sides;
+    return this->die.sides;
   }
   
   /**
@@ -149,7 +155,10 @@ namespace tbrpg
    */
   int Dice::roll() const
   {
-    return (random() % this->sides) + 1;
+    int sum;
+    for (int i = 0; i < this->count; i++)
+      sum += this->die.roll();
+    return sum;
   }
   
 }

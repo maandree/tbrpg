@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <algorithm>
 
+#include "Die.hpp"
+
 
 /**
  * Text based roll playing game
@@ -42,36 +44,42 @@ namespace tbrpg
   {
   protected:
     /**
-     * The number of sides on the dice
+     * The number of dice
      */
-    int sides;
+    int count;
+    
+    /**
+     * The die prototype
+     */
+    Die die;
     
     
   public:
     /**
      * Constructor
      * 
+     * @param  dieCount   The number of dice
      * @param  sideCount  The number of sides on the dice
      */
-    Dice(int sideCount = 0);
+    Dice(int dieCount = 0, int sideCount = 0);
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Dice(const Dice& original);
     
     /**
      * Copy constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Dice(Dice& original);
     
     /**
      * Move constructor
-     *
+     * 
      * @param  original  The object to clone
      */
     Dice(Dice&& original);
@@ -84,14 +92,6 @@ namespace tbrpg
     virtual ~Dice();
     
     
-    
-    /**
-     * Reconstruction operator
-     * 
-     * @param   sideCount  The number of sides on the dice 
-     * @return             The invoked object
-     */
-    virtual Dice& operator =(int sideCount);
     
     /**
      * Assignment operator
@@ -118,6 +118,13 @@ namespace tbrpg
     virtual Dice& operator =(Dice&& original);
     
     
+    
+    /**
+     * Gets the number of dice
+     * 
+     * @return  The number of dice
+     */
+    virtual int getCount() const;
     
     /**
      * Gets the number of sides on the dice
