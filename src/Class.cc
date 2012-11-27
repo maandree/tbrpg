@@ -48,6 +48,7 @@ namespace tbrpg
     //this->lower_limits = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
+    //this->specialisations = nullptr;
     //this->proficiency_chart = nullptr;
     //this->default_one_hand = nullptr;
     //this->default_two_hand = nullptr;
@@ -73,6 +74,7 @@ namespace tbrpg
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
     this->can_use = original.can_use;
+    this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
     this->default_two_hand = original.default_two_hand;
@@ -98,6 +100,7 @@ namespace tbrpg
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
     this->can_use = original.can_use;
+    this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
     this->default_two_hand = original.default_two_hand;
@@ -123,6 +126,7 @@ namespace tbrpg
     std::swap(this->lower_limits, original.lower_limits);
     std::swap(this->special_abilities, original.special_abilities);
     std::swap(this->can_use, original.can_use);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->proficiency_chart, original.proficiency_chart);
     std::swap(this->default_one_hand, original.default_one_hand);
     std::swap(this->default_two_hand, original.default_two_hand);
@@ -143,6 +147,7 @@ namespace tbrpg
     //delete lower_limits;
     //delete special_abilities;
     //delete can_use;
+    //delete specialisations;
     //delete proficiency_chart;
     //delete default_one_hand;
     //delete default_two_hand;
@@ -171,6 +176,7 @@ namespace tbrpg
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
     this->can_use = original.can_use;
+    this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
     this->default_two_hand = original.default_two_hand;
@@ -198,6 +204,7 @@ namespace tbrpg
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
     this->can_use = original.can_use;
+    this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
     this->default_two_hand = original.default_two_hand;
@@ -225,6 +232,7 @@ namespace tbrpg
     std::swap(this->lower_limits, original.lower_limits);
     std::swap(this->special_abilities, original.special_abilities);
     std::swap(this->can_use, original.can_use);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->proficiency_chart, original.proficiency_chart);
     std::swap(this->default_one_hand, original.default_one_hand);
     std::swap(this->default_two_hand, original.default_two_hand);

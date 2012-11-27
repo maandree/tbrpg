@@ -55,7 +55,7 @@ namespace tbrpg
     /**
      * The characters in the party
      */
-    Character* characters;
+    std::vector<Character> characters;
     
     
     

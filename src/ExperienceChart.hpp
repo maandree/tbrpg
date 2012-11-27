@@ -50,42 +50,42 @@ namespace tbrpg
     /**
      * Required experience for each level
      */
-    int* experience;
+    std::vector<int> experience;
     
     /**
      * The number of sides of the dice to roll that determines the hit points gained when a level is reached
      */
-    char* hit_point_die;
+    std::vector<char> hit_point_die;
     
     /**
      * The number of dice to roll that determines the hit points gained when a level is reached
      */
-    char* hit_point_dice;
+    std::vector<char> hit_point_dice;
     
     /**
      * Hit points gained when a level is reached
      */
-    int* hit_point_bonus;
+    std::vector<int> hit_point_bonus;
     
     /**
      * The number of wizard spells that can be selected for learning when a level is reached
      */
-    int* selectable_wizard;
+    std::vector<int> selectable_wizard;
     
     /**
      * The number of priest spells that can be selected for learning when a level is reached
      */
-    int* selectable_priest;
+    std::vector<int> selectable_priest;
     
     /**
      * Spells that are learned to when a level is reached
      */
-    std::vector<Spell>* new_spells;
+    std::vector<std::vector<Spell>> new_spells;
     
     /**
      * The number of proficiencies that that can be allocated when a level is reached
      */
-    int* proficiencies;
+    std::vector<int> proficiencies;
     
     
     

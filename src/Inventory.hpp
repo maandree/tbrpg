@@ -92,7 +92,7 @@ namespace tbrpg
     /**
      * Ring slots
      */
-    Ring* rings;
+    std::vector<Ring> rings;
     
     /**
      * Body armour slot
