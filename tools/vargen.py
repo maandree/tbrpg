@@ -144,9 +144,13 @@ for line in lines:
         output += '    size_t operator()(const tbrpg::%s& elem) const\n    {\n' % className
         output += '       return elem.hash();\n    }\n  };\n}\n\n\n'
         output += '#endif//__GUARD_%s_HPP__\n' % className.upper()
-        with open(className + '.hpp', 'wb') as file:
-            file.write(output.encode('utf-8'))
-            file.flush()
+        modified = False
+        with open(className + '.hpp', 'rb') as file:
+            modified = file.read().decode('utf-8', 'replace') != output
+        if modified:
+            with open(className + '.hpp', 'wb') as file:
+                file.write(output.encode('utf-8'))
+                file.flush()
         
         voidIt = '    (void) original;'
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long', 'float', 'long float', 'double']
@@ -218,9 +222,13 @@ for line in lines:
         output += '  /**\n   * Hash method\n   * \n   * @return  The object\'s hash code\n'
         output += '   */\n  size_t %s::hash() const\n  {\n    return (size_t)this;\n  }\n  \n' % className
         output += '}\n\n'
-        with open(className + '.cc', 'wb') as file:
-            file.write(output.encode('utf-8'))
-            file.flush()
+        modified = False
+        with open(className + '.cc', 'rb') as file:
+            modified = file.read().decode('utf-8', 'replace') != output
+        if modified:
+            with open(className + '.cc', 'wb') as file:
+                file.write(output.encode('utf-8'))
+                file.flush()
         
         classLine = line
         varLines = []
