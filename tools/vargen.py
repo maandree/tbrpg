@@ -79,7 +79,7 @@ for line in lines:
                     space = s
             varType = varLine[:space].replace('[]', '*').replace('*', '')
             for c in classes:
-                if (c not in supers) and (c not in useIncludes):
+                if (c not in supers) and (c not in useIncludes) and (c != className):
                     if c == varType:
                         useIncludes.append(c)
                     else:
@@ -218,7 +218,6 @@ for line in lines:
         output += '  /**\n   * Hash method\n   * \n   * @return  The object\'s hash code\n'
         output += '   */\n  size_t %s::hash() const\n  {\n    return (size_t)this;\n  }\n  \n' % className
         output += '}\n\n'
-
         with open(className + '.cc', 'wb') as file:
             file.write(output.encode('utf-8'))
             file.flush()
