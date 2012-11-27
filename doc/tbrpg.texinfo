@@ -606,7 +606,7 @@ Spells that alters the physical reality.
 @end multitable
 
 Offensive spell are printed in red, defensive spell are
-printed blue, and information spell are printed in white.
+printed in blue, and information spell are printed in white.
 
 
 @node Spell properties
