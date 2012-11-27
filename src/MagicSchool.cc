@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MagicSchool::MagicSchool(std::string name, std::string practicer, std::string coluration, std::vector<MagicSchool> opposite)
+  MagicSchool::MagicSchool()
   {
     ////TODO implement constructor
     //this->name = nullptr;

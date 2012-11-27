@@ -29,6 +29,8 @@
 #include <vector>
 #include <unordered_map>
 
+
+
 #include "MagicSchool.hpp"
 
 
@@ -73,7 +75,7 @@ namespace tbrpg
     /**
      * Construction
      */
-    MagicSchool(std::string name, std::string practicer, std::string coluration, std::vector<MagicSchool> opposite);
+    MagicSchool();
     
     /**
      * Copy constructor
