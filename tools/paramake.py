@@ -129,6 +129,7 @@ class MakeThread(Thread):
                 if ev == 0:
                     print('\033[01;32mDone ' + file + ' [' + str(self.index) + ']\033[21;39m')
                 else:
+                    success = False
                     print('\033[01;31mFailed with ' + file + ', returned ' + str(ev) + ' [' + str(self.index) + ']\033[21;39m')
                 threadmap[self.index] = None
             readmutex.release()
