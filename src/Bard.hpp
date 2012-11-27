@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BARD_HPP__
 #define __GUARD_BARD_HPP__
-#ifdef  CIRCULAR_BARD
-#include "Bard.circular"
-#endif//CIRCULAR_BARD
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HALBERD_HPP__
 #define __GUARD_HALBERD_HPP__
-#ifdef  CIRCULAR_HALBERD
-#include "Halberd.circular"
-#endif//CIRCULAR_HALBERD
 
 
 #include <stdlib.h>

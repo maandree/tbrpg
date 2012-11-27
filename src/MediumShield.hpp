@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MEDIUMSHIELD_HPP__
 #define __GUARD_MEDIUMSHIELD_HPP__
-#ifdef  CIRCULAR_MEDIUMSHIELD
-#include "MediumShield.circular"
-#endif//CIRCULAR_MEDIUMSHIELD
 
 
 #include <stdlib.h>

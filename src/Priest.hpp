@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_PRIEST_HPP__
 #define __GUARD_PRIEST_HPP__
-#ifdef  CIRCULAR_PRIEST
-#include "Priest.circular"
-#endif//CIRCULAR_PRIEST
 
 
 #include <stdlib.h>

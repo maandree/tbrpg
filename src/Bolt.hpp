@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BOLT_HPP__
 #define __GUARD_BOLT_HPP__
-#ifdef  CIRCULAR_BOLT
-#include "Bolt.circular"
-#endif//CIRCULAR_BOLT
 
 
 #include <stdlib.h>

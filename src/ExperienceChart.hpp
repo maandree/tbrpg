@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_EXPERIENCECHART_HPP__
 #define __GUARD_EXPERIENCECHART_HPP__
-#ifdef  CIRCULAR_EXPERIENCECHART
-#include "ExperienceChart.circular"
-#endif//CIRCULAR_EXPERIENCECHART
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_THROWINGDAGGER_HPP__
 #define __GUARD_THROWINGDAGGER_HPP__
-#ifdef  CIRCULAR_THROWINGDAGGER
-#include "ThrowingDagger.circular"
-#endif//CIRCULAR_THROWINGDAGGER
 
 
 #include <stdlib.h>

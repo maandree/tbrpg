@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_PARTY_HPP__
 #define __GUARD_PARTY_HPP__
-#ifdef  CIRCULAR_PARTY
-#include "Party.circular"
-#endif//CIRCULAR_PARTY
 
 
 #include <stdlib.h>

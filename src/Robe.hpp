@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ROBE_HPP__
 #define __GUARD_ROBE_HPP__
-#ifdef  CIRCULAR_ROBE
-#include "Robe.circular"
-#endif//CIRCULAR_ROBE
 
 
 #include <stdlib.h>

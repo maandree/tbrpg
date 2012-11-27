@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BLUNTWEAPON_HPP__
 #define __GUARD_BLUNTWEAPON_HPP__
-#ifdef  CIRCULAR_BLUNTWEAPON
-#include "BluntWeapon.circular"
-#endif//CIRCULAR_BLUNTWEAPON
 
 
 #include <stdlib.h>

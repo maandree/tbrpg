@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_COMPOSITELONGBOW_HPP__
 #define __GUARD_COMPOSITELONGBOW_HPP__
-#ifdef  CIRCULAR_COMPOSITELONGBOW
-#include "CompositeLongBow.circular"
-#endif//CIRCULAR_COMPOSITELONGBOW
 
 
 #include <stdlib.h>

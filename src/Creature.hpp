@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CREATURE_HPP__
 #define __GUARD_CREATURE_HPP__
-#ifdef  CIRCULAR_CREATURE
-#include "Creature.circular"
-#endif//CIRCULAR_CREATURE
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CHAINMAIL_HPP__
 #define __GUARD_CHAINMAIL_HPP__
-#ifdef  CIRCULAR_CHAINMAIL
-#include "ChainMail.circular"
-#endif//CIRCULAR_CHAINMAIL
 
 
 #include <stdlib.h>

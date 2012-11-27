@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BASTARDSWORD_HPP__
 #define __GUARD_BASTARDSWORD_HPP__
-#ifdef  CIRCULAR_BASTARDSWORD
-#include "BastardSword.circular"
-#endif//CIRCULAR_BASTARDSWORD
 
 
 #include <stdlib.h>

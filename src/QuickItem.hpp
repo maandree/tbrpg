@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_QUICKITEM_HPP__
 #define __GUARD_QUICKITEM_HPP__
-#ifdef  CIRCULAR_QUICKITEM
-#include "QuickItem.circular"
-#endif//CIRCULAR_QUICKITEM
 
 
 #include <stdlib.h>

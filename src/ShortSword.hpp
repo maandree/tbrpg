@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SHORTSWORD_HPP__
 #define __GUARD_SHORTSWORD_HPP__
-#ifdef  CIRCULAR_SHORTSWORD
-#include "ShortSword.circular"
-#endif//CIRCULAR_SHORTSWORD
 
 
 #include <stdlib.h>

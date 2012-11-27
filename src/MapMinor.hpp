@@ -19,15 +19,14 @@
  */
 #ifndef __GUARD_MAPMINOR_HPP__
 #define __GUARD_MAPMINOR_HPP__
-#ifdef  CIRCULAR_MAPMINOR
-#include "MapMinor.circular"
-#endif//CIRCULAR_MAPMINOR
 
 
 #include <stdlib.h>
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
+
+#include "_MapMinor.hpp"
 
 
 
@@ -52,7 +51,7 @@ namespace tbrpg
   /**
    * Map area
    */
-  class MapMinor
+  class MapMinor: public _MapMinor
   {
   public:
     /**
@@ -71,24 +70,14 @@ namespace tbrpg
     float area;
     
     /**
-     * The number of elements in {@link roads} [needed due to circular dependency]
-     */
-    size_t road_count;
-    
-    /**
-     * The number of elements in {@link connections} [needed due to circular dependency]
-     */
-    size_t connection_count;
-    
-    /**
      * Roads to other major areas in the area
      */
-    Road* roads;
+    std::vector<Road> roads;
     
     /**
      * Entrance to other areas in the area
      */
-    Entrance* connections;
+    std::vector<Entrance> connections;
     
     /**
      * Items in the area

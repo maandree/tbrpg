@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_QUESTITEM_HPP__
 #define __GUARD_QUESTITEM_HPP__
-#ifdef  CIRCULAR_QUESTITEM
-#include "QuestItem.circular"
-#endif//CIRCULAR_QUESTITEM
 
 
 #include <stdlib.h>

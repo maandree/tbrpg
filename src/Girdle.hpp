@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_GIRDLE_HPP__
 #define __GUARD_GIRDLE_HPP__
-#ifdef  CIRCULAR_GIRDLE
-#include "Girdle.circular"
-#endif//CIRCULAR_GIRDLE
 
 
 #include <stdlib.h>

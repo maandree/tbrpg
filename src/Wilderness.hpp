@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WILDERNESS_HPP__
 #define __GUARD_WILDERNESS_HPP__
-#ifdef  CIRCULAR_WILDERNESS
-#include "Wilderness.circular"
-#endif//CIRCULAR_WILDERNESS
 
 
 #include <stdlib.h>

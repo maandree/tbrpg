@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WAND_HPP__
 #define __GUARD_WAND_HPP__
-#ifdef  CIRCULAR_WAND
-#include "Wand.circular"
-#endif//CIRCULAR_WAND
 
 
 #include <stdlib.h>

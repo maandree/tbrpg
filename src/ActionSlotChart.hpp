@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ACTIONSLOTCHART_HPP__
 #define __GUARD_ACTIONSLOTCHART_HPP__
-#ifdef  CIRCULAR_ACTIONSLOTCHART
-#include "ActionSlotChart.circular"
-#endif//CIRCULAR_ACTIONSLOTCHART
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RACE_HPP__
 #define __GUARD_RACE_HPP__
-#ifdef  CIRCULAR_RACE
-#include "Race.circular"
-#endif//CIRCULAR_RACE
 
 
 #include <stdlib.h>

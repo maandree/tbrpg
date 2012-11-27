@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SHIELD_HPP__
 #define __GUARD_SHIELD_HPP__
-#ifdef  CIRCULAR_SHIELD
-#include "Shield.circular"
-#endif//CIRCULAR_SHIELD
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HOOD_HPP__
 #define __GUARD_HOOD_HPP__
-#ifdef  CIRCULAR_HOOD
-#include "Hood.circular"
-#endif//CIRCULAR_HOOD
 
 
 #include <stdlib.h>

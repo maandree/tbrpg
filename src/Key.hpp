@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_KEY_HPP__
 #define __GUARD_KEY_HPP__
-#ifdef  CIRCULAR_KEY
-#include "Key.circular"
-#endif//CIRCULAR_KEY
 
 
 #include <stdlib.h>

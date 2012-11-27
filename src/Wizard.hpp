@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WIZARD_HPP__
 #define __GUARD_WIZARD_HPP__
-#ifdef  CIRCULAR_WIZARD
-#include "Wizard.circular"
-#endif//CIRCULAR_WIZARD
 
 
 #include <stdlib.h>

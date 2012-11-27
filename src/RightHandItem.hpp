@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RIGHTHANDITEM_HPP__
 #define __GUARD_RIGHTHANDITEM_HPP__
-#ifdef  CIRCULAR_RIGHTHANDITEM
-#include "RightHandItem.circular"
-#endif//CIRCULAR_RIGHTHANDITEM
 
 
 #include <stdlib.h>

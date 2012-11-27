@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SPELLBOOK_HPP__
 #define __GUARD_SPELLBOOK_HPP__
-#ifdef  CIRCULAR_SPELLBOOK
-#include "SpellBook.circular"
-#endif//CIRCULAR_SPELLBOOK
 
 
 #include <stdlib.h>

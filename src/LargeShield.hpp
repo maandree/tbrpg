@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_LARGESHIELD_HPP__
 #define __GUARD_LARGESHIELD_HPP__
-#ifdef  CIRCULAR_LARGESHIELD
-#include "LargeShield.circular"
-#endif//CIRCULAR_LARGESHIELD
 
 
 #include <stdlib.h>

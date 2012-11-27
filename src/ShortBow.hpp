@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SHORTBOW_HPP__
 #define __GUARD_SHORTBOW_HPP__
-#ifdef  CIRCULAR_SHORTBOW
-#include "ShortBow.circular"
-#endif//CIRCULAR_SHORTBOW
 
 
 #include <stdlib.h>

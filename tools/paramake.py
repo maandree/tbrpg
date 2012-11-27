@@ -24,6 +24,11 @@ from subprocess import Popen
 from threading import Thread, Lock, Condition
 
 
+def print(text):
+    sys.stderr.buffer.write((text + '\n').encode('utf-8'))
+    sys.stderr.buffer.flush();
+
+
 nodes = int(input())
 pairs = []
 

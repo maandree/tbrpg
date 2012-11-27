@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RANGER_HPP__
 #define __GUARD_RANGER_HPP__
-#ifdef  CIRCULAR_RANGER
-#include "Ranger.circular"
-#endif//CIRCULAR_RANGER
 
 
 #include <stdlib.h>

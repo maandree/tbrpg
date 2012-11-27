@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CLASS_HPP__
 #define __GUARD_CLASS_HPP__
-#ifdef  CIRCULAR_CLASS
-#include "Class.circular"
-#endif//CIRCULAR_CLASS
 
 
 #include <stdlib.h>

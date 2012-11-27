@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DRUID_HPP__
 #define __GUARD_DRUID_HPP__
-#ifdef  CIRCULAR_DRUID
-#include "Druid.circular"
-#endif//CIRCULAR_DRUID
 
 
 #include <stdlib.h>

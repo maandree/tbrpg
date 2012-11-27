@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MAP_HPP__
 #define __GUARD_MAP_HPP__
-#ifdef  CIRCULAR_MAP
-#include "Map.circular"
-#endif//CIRCULAR_MAP
 
 
 #include <stdlib.h>

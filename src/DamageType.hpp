@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DAMAGETYPE_HPP__
 #define __GUARD_DAMAGETYPE_HPP__
-#ifdef  CIRCULAR_DAMAGETYPE
-#include "DamageType.circular"
-#endif//CIRCULAR_DAMAGETYPE
 
 
 #include <stdlib.h>

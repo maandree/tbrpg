@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ABILITIES_HPP__
 #define __GUARD_ABILITIES_HPP__
-#ifdef  CIRCULAR_ABILITIES
-#include "Abilities.circular"
-#endif//CIRCULAR_ABILITIES
 
 
 #include <stdlib.h>

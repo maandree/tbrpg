@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MACE_HPP__
 #define __GUARD_MACE_HPP__
-#ifdef  CIRCULAR_MACE
-#include "Mace.circular"
-#endif//CIRCULAR_MACE
 
 
 #include <stdlib.h>

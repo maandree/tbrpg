@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_FIST_HPP__
 #define __GUARD_FIST_HPP__
-#ifdef  CIRCULAR_FIST
-#include "Fist.circular"
-#endif//CIRCULAR_FIST
 
 
 #include <stdlib.h>

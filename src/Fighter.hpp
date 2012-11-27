@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_FIGHTER_HPP__
 #define __GUARD_FIGHTER_HPP__
-#ifdef  CIRCULAR_FIGHTER
-#include "Fighter.circular"
-#endif//CIRCULAR_FIGHTER
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ACTIONSLOT_HPP__
 #define __GUARD_ACTIONSLOT_HPP__
-#ifdef  CIRCULAR_ACTIONSLOT
-#include "ActionSlot.circular"
-#endif//CIRCULAR_ACTIONSLOT
 
 
 #include <stdlib.h>

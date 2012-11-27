@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MAGE_HPP__
 #define __GUARD_MAGE_HPP__
-#ifdef  CIRCULAR_MAGE
-#include "Mage.circular"
-#endif//CIRCULAR_MAGE
 
 
 #include <stdlib.h>

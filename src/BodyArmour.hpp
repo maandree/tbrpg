@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BODYARMOUR_HPP__
 #define __GUARD_BODYARMOUR_HPP__
-#ifdef  CIRCULAR_BODYARMOUR
-#include "BodyArmour.circular"
-#endif//CIRCULAR_BODYARMOUR
 
 
 #include <stdlib.h>

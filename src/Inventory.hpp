@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_INVENTORY_HPP__
 #define __GUARD_INVENTORY_HPP__
-#ifdef  CIRCULAR_INVENTORY
-#include "Inventory.circular"
-#endif//CIRCULAR_INVENTORY
 
 
 #include <stdlib.h>

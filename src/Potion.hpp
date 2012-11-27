@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_POTION_HPP__
 #define __GUARD_POTION_HPP__
-#ifdef  CIRCULAR_POTION
-#include "Potion.circular"
-#endif//CIRCULAR_POTION
 
 
 #include <stdlib.h>

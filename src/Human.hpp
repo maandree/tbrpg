@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HUMAN_HPP__
 #define __GUARD_HUMAN_HPP__
-#ifdef  CIRCULAR_HUMAN
-#include "Human.circular"
-#endif//CIRCULAR_HUMAN
 
 
 #include <stdlib.h>

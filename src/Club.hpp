@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CLUB_HPP__
 #define __GUARD_CLUB_HPP__
-#ifdef  CIRCULAR_CLUB
-#include "Club.circular"
-#endif//CIRCULAR_CLUB
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WEAPONGROUP_HPP__
 #define __GUARD_WEAPONGROUP_HPP__
-#ifdef  CIRCULAR_WEAPONGROUP
-#include "WeaponGroup.circular"
-#endif//CIRCULAR_WEAPONGROUP
 
 
 #include <stdlib.h>

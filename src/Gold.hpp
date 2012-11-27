@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_GOLD_HPP__
 #define __GUARD_GOLD_HPP__
-#ifdef  CIRCULAR_GOLD
-#include "Gold.circular"
-#endif//CIRCULAR_GOLD
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BATTLEAXE_HPP__
 #define __GUARD_BATTLEAXE_HPP__
-#ifdef  CIRCULAR_BATTLEAXE
-#include "BattleAxe.circular"
-#endif//CIRCULAR_BATTLEAXE
 
 
 #include <stdlib.h>

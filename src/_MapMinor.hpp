@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_ABILITYBONUS_HPP__
-#define __GUARD_ABILITYBONUS_HPP__
+#ifndef __GUARD__MAPMINOR_HPP__
+#define __GUARD__MAPMINOR_HPP__
 
 
 #include <stdlib.h>
@@ -27,13 +27,6 @@
 #include <unordered_map>
 
 
-
-#include "Bonuses.hpp"
-#include "ThiefAbilities.hpp"
-#include "SavingThrows.hpp"
-#include "Abilities.hpp"
-#include "SpellBook.hpp"
-#include "Spell.hpp"
 
 
 /**
@@ -47,75 +40,43 @@
 namespace tbrpg
 {
   /**
-   * Abilities bonus class
+   * Used to break circular dependency, all instances must be instances of {@link MapMinor}
    */
-  class AbilityBonus
+  class _MapMinor
   {
   public:
     /**
-     * Bonuses
-     */
-    Bonuses bonuses;
-    
-    /**
-     * Thief abilities
-     */
-    ThiefAbilities thief_abilities;
-    
-    /**
-     * Saving throws
-     */
-    SavingThrows saving_throws;
-    
-    /**
-     * Abilities
-     */
-    Abilities abilities;
-    
-    /**
-     * Spells
-     */
-    SpellBook spells;
-    
-    /**
-     * Effects
-     */
-    std::vector<Spell> effects;
-    
-    
-    
-    /**
      * Construction
      */
-    AbilityBonus();
+    _MapMinor();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    AbilityBonus(const AbilityBonus& original);
+    _MapMinor(const _MapMinor& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    AbilityBonus(AbilityBonus& original);
+    _MapMinor(_MapMinor& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    AbilityBonus(AbilityBonus&& original);
+    _MapMinor(_MapMinor&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~AbilityBonus();
+    virtual ~_MapMinor();
     
     
     
@@ -125,7 +86,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual AbilityBonus& operator =(const AbilityBonus& original);
+    virtual _MapMinor& operator =(const _MapMinor& original);
     
     /**
      * Assignment operator
@@ -133,7 +94,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual AbilityBonus& operator =(AbilityBonus& original);
+    virtual _MapMinor& operator =(_MapMinor& original);
     
     /**
      * Move operator
@@ -141,7 +102,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual AbilityBonus& operator =(AbilityBonus&& original);
+    virtual _MapMinor& operator =(_MapMinor&& original);
     
     
   protected:
@@ -151,7 +112,7 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(AbilityBonus& self, const AbilityBonus& original);
+    static void __copy__(_MapMinor& self, const _MapMinor& original);
     
     
   public:
@@ -168,10 +129,10 @@ namespace tbrpg
 namespace std
 {
   template<>
-  class hash<tbrpg::AbilityBonus>
+  class hash<tbrpg::_MapMinor>
   {
   public:
-    size_t operator()(const tbrpg::AbilityBonus& elem) const
+    size_t operator()(const tbrpg::_MapMinor& elem) const
     {
        return elem.hash();
     }
@@ -179,4 +140,4 @@ namespace std
 }
 
 
-#endif//__GUARD_ABILITYBONUS_HPP__
+#endif//__GUARD__MAPMINOR_HPP__

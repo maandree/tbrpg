@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WARRIOR_HPP__
 #define __GUARD_WARRIOR_HPP__
-#ifdef  CIRCULAR_WARRIOR
-#include "Warrior.circular"
-#endif//CIRCULAR_WARRIOR
 
 
 #include <stdlib.h>

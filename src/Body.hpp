@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BODY_HPP__
 #define __GUARD_BODY_HPP__
-#ifdef  CIRCULAR_BODY
-#include "Body.circular"
-#endif//CIRCULAR_BODY
 
 
 #include <stdlib.h>

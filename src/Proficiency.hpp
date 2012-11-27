@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_PROFICIENCY_HPP__
 #define __GUARD_PROFICIENCY_HPP__
-#ifdef  CIRCULAR_PROFICIENCY
-#include "Proficiency.circular"
-#endif//CIRCULAR_PROFICIENCY
 
 
 #include <stdlib.h>

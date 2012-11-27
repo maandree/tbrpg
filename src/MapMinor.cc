@@ -33,14 +33,12 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MapMinor::MapMinor()
+  MapMinor::MapMinor() : _MapMinor()
   {
     ////TODO implement constructor
     //this->description = nullptr;
     //this->may_rest = false;
     //this->area = 0;
-    //this->road_count = 0;
-    //this->connection_count = 0;
     //this->roads = nullptr;
     //this->connections = nullptr;
     //this->items = nullptr;
@@ -54,14 +52,12 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMinor::MapMinor(const MapMinor& original)
+  MapMinor::MapMinor(const MapMinor& original) : _MapMinor(original)
   {
     (void) original;
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
-    this->road_count = original.road_count;
-    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -75,14 +71,12 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMinor::MapMinor(MapMinor& original)
+  MapMinor::MapMinor(MapMinor& original) : _MapMinor(original)
   {
     (void) original;
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
-    this->road_count = original.road_count;
-    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -96,14 +90,12 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMinor::MapMinor(MapMinor&& original)
+  MapMinor::MapMinor(MapMinor&& original) : _MapMinor(original)
   {
     (void) original;
     std::swap(this->description, original.description);
     std::swap(this->may_rest, original.may_rest);
     std::swap(this->area, original.area);
-    std::swap(this->road_count, original.road_count);
-    std::swap(this->connection_count, original.connection_count);
     std::swap(this->roads, original.roads);
     std::swap(this->connections, original.connections);
     std::swap(this->items, original.items);
@@ -140,11 +132,17 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(const MapMinor& original)
   {
     (void) original;
-    this->description = original.description;
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
-    this->road_count = original.road_count;
-    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -163,11 +161,17 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor& original)
   {
     (void) original;
-    this->description = original.description;
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
-    this->road_count = original.road_count;
-    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -186,11 +190,17 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
     (void) original;
-    std::swap(this->description, original.description);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);    std::swap(this->description, original.description);
     std::swap(this->may_rest, original.may_rest);
     std::swap(this->area, original.area);
-    std::swap(this->road_count, original.road_count);
-    std::swap(this->connection_count, original.connection_count);
     std::swap(this->roads, original.roads);
     std::swap(this->connections, original.connections);
     std::swap(this->items, original.items);

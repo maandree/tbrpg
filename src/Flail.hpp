@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_FLAIL_HPP__
 #define __GUARD_FLAIL_HPP__
-#ifdef  CIRCULAR_FLAIL
-#include "Flail.circular"
-#endif//CIRCULAR_FLAIL
 
 
 #include <stdlib.h>

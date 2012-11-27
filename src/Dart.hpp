@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DART_HPP__
 #define __GUARD_DART_HPP__
-#ifdef  CIRCULAR_DART
-#include "Dart.circular"
-#endif//CIRCULAR_DART
 
 
 #include <stdlib.h>

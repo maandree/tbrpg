@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_FULLPLATEMAIL_HPP__
 #define __GUARD_FULLPLATEMAIL_HPP__
-#ifdef  CIRCULAR_FULLPLATEMAIL
-#include "FullPlateMail.circular"
-#endif//CIRCULAR_FULLPLATEMAIL
 
 
 #include <stdlib.h>

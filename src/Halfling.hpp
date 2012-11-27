@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HALFLING_HPP__
 #define __GUARD_HALFLING_HPP__
-#ifdef  CIRCULAR_HALFLING
-#include "Halfling.circular"
-#endif//CIRCULAR_HALFLING
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MELEEWEAPON_HPP__
 #define __GUARD_MELEEWEAPON_HPP__
-#ifdef  CIRCULAR_MELEEWEAPON
-#include "MeleeWeapon.circular"
-#endif//CIRCULAR_MELEEWEAPON
 
 
 #include <stdlib.h>

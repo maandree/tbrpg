@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ROGUE_HPP__
 #define __GUARD_ROGUE_HPP__
-#ifdef  CIRCULAR_ROGUE
-#include "Rogue.circular"
-#endif//CIRCULAR_ROGUE
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HALFORC_HPP__
 #define __GUARD_HALFORC_HPP__
-#ifdef  CIRCULAR_HALFORC
-#include "HalfOrc.circular"
-#endif//CIRCULAR_HALFORC
 
 
 #include <stdlib.h>

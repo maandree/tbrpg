@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SMALLSHIELD_HPP__
 #define __GUARD_SMALLSHIELD_HPP__
-#ifdef  CIRCULAR_SMALLSHIELD
-#include "SmallShield.circular"
-#endif//CIRCULAR_SMALLSHIELD
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_LONGBOW_HPP__
 #define __GUARD_LONGBOW_HPP__
-#ifdef  CIRCULAR_LONGBOW
-#include "LongBow.circular"
-#endif//CIRCULAR_LONGBOW
 
 
 #include <stdlib.h>

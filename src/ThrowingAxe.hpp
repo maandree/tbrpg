@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_THROWINGAXE_HPP__
 #define __GUARD_THROWINGAXE_HPP__
-#ifdef  CIRCULAR_THROWINGAXE
-#include "ThrowingAxe.circular"
-#endif//CIRCULAR_THROWINGAXE
 
 
 #include <stdlib.h>

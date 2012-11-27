@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HOUSE_HPP__
 #define __GUARD_HOUSE_HPP__
-#ifdef  CIRCULAR_HOUSE
-#include "House.circular"
-#endif//CIRCULAR_HOUSE
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ELF_HPP__
 #define __GUARD_ELF_HPP__
-#ifdef  CIRCULAR_ELF
-#include "Elf.circular"
-#endif//CIRCULAR_ELF
 
 
 #include <stdlib.h>

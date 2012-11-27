@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CHARACTERSHEET_HPP__
 #define __GUARD_CHARACTERSHEET_HPP__
-#ifdef  CIRCULAR_CHARACTERSHEET
-#include "CharacterSheet.circular"
-#endif//CIRCULAR_CHARACTERSHEET
 
 
 #include <stdlib.h>

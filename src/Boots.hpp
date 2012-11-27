@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BOOTS_HPP__
 #define __GUARD_BOOTS_HPP__
-#ifdef  CIRCULAR_BOOTS
-#include "Boots.circular"
-#endif//CIRCULAR_BOOTS
 
 
 #include <stdlib.h>

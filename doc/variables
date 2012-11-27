@@ -389,16 +389,15 @@ Entrance                                  ; Connection between map areas
 	bool usable                       ; Whether the entrance can be used
 	std::string description           ; A description of what you see
 	std::string direction             ; The direction to the entrace
-	MapMinor leads_to                 ; The area to which the entrance leads
+	_MapMinor leads_to                ; The area to which the entrance leads
 
-MapMinor                                            ; Map area
+_MapMinor                                           ; Used to break circular dependency, all instances must be instances of {@link MapMinor}
+MapMinor: _MapMinor                                 ; Map area
 	std::string description                     ; Descrion of the area
 	bool may_rest                               ; Whether you may rest in the area without renting a room
 	float area                                  ; The radius of the area, in metres, the party starts at origo
-	size_t road_count                           ; The number of elements in {@link roads} [needed due to circular dependency]
-	size_t connection_count                     ; The number of elements in {@link connections} [needed due to circular dependency]
-	Road[] roads                                ; Roads to other major areas in the area
-	Entrance[] connections                      ; Entrance to other areas in the area
+	std::vector<Road> roads                     ; Roads to other major areas in the area
+	std::vector<Entrance> connections           ; Entrance to other areas in the area
 	std::vector<Item> items                     ; Items in the area
 	std::vector<Creature> creatures             ; Creatures in the area
 	MapMajor is_in                              ; Which major area to which  the area belongs
@@ -435,8 +434,8 @@ Road                                      ; A road between major map area
 	char waylay_dice                  ; The number dice to roll to determine whether you are being waylaid
 	unsigned char waylay_risk         ; The highest value for at which you get waylaid, use 0 for never, and 255 for always
 	std::string direction             ; At which direction the road is located and leads
-	MapMinor waylay_map               ; The area entered if you get waylaid
-	MapMinor leads_to                 ; The area to which the the road leads
+	_MapMinor waylay_map              ; The area entered if you get waylaid
+	_MapMinor leads_to                ; The area to which the the road leads
 
 EnvironmentContainer: Container, Lockable ; Item container that are in the environments
 Door: Entrance, Lockable                  ; Door separating environments

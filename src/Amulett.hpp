@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_AMULETT_HPP__
 #define __GUARD_AMULETT_HPP__
-#ifdef  CIRCULAR_AMULETT
-#include "Amulett.circular"
-#endif//CIRCULAR_AMULETT
 
 
 #include <stdlib.h>

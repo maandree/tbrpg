@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_TORCH_HPP__
 #define __GUARD_TORCH_HPP__
-#ifdef  CIRCULAR_TORCH
-#include "Torch.circular"
-#endif//CIRCULAR_TORCH
 
 
 #include <stdlib.h>

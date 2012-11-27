@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SAVINGTHROWS_HPP__
 #define __GUARD_SAVINGTHROWS_HPP__
-#ifdef  CIRCULAR_SAVINGTHROWS
-#include "SavingThrows.circular"
-#endif//CIRCULAR_SAVINGTHROWS
 
 
 #include <stdlib.h>

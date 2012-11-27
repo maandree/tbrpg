@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MORNINGSTAR_HPP__
 #define __GUARD_MORNINGSTAR_HPP__
-#ifdef  CIRCULAR_MORNINGSTAR
-#include "MorningStar.circular"
-#endif//CIRCULAR_MORNINGSTAR
 
 
 #include <stdlib.h>

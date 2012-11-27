@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_GEM_HPP__
 #define __GUARD_GEM_HPP__
-#ifdef  CIRCULAR_GEM
-#include "Gem.circular"
-#endif//CIRCULAR_GEM
 
 
 #include <stdlib.h>

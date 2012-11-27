@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SPEAR_HPP__
 #define __GUARD_SPEAR_HPP__
-#ifdef  CIRCULAR_SPEAR
-#include "Spear.circular"
-#endif//CIRCULAR_SPEAR
 
 
 #include <stdlib.h>

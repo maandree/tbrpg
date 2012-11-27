@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_QUARTERSTAFF_HPP__
 #define __GUARD_QUARTERSTAFF_HPP__
-#ifdef  CIRCULAR_QUARTERSTAFF
-#include "Quarterstaff.circular"
-#endif//CIRCULAR_QUARTERSTAFF
 
 
 #include <stdlib.h>

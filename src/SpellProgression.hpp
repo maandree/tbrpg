@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SPELLPROGRESSION_HPP__
 #define __GUARD_SPELLPROGRESSION_HPP__
-#ifdef  CIRCULAR_SPELLPROGRESSION
-#include "SpellProgression.circular"
-#endif//CIRCULAR_SPELLPROGRESSION
 
 
 #include <stdlib.h>

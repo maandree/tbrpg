@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_THIEFABILITIES_HPP__
 #define __GUARD_THIEFABILITIES_HPP__
-#ifdef  CIRCULAR_THIEFABILITIES
-#include "ThiefAbilities.circular"
-#endif//CIRCULAR_THIEFABILITIES
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RING_HPP__
 #define __GUARD_RING_HPP__
-#ifdef  CIRCULAR_RING
-#include "Ring.circular"
-#endif//CIRCULAR_RING
 
 
 #include <stdlib.h>

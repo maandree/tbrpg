@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CHARACTER_HPP__
 #define __GUARD_CHARACTER_HPP__
-#ifdef  CIRCULAR_CHARACTER
-#include "Character.circular"
-#endif//CIRCULAR_CHARACTER
 
 
 #include <stdlib.h>

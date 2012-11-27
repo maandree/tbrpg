@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_GNOME_HPP__
 #define __GUARD_GNOME_HPP__
-#ifdef  CIRCULAR_GNOME
-#include "Gnome.circular"
-#endif//CIRCULAR_GNOME
 
 
 #include <stdlib.h>

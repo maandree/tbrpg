@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_TWOHANDEDSWORD_HPP__
 #define __GUARD_TWOHANDEDSWORD_HPP__
-#ifdef  CIRCULAR_TWOHANDEDSWORD
-#include "TwoHandedSword.circular"
-#endif//CIRCULAR_TWOHANDEDSWORD
 
 
 #include <stdlib.h>

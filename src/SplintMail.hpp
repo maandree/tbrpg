@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SPLINTMAIL_HPP__
 #define __GUARD_SPLINTMAIL_HPP__
-#ifdef  CIRCULAR_SPLINTMAIL
-#include "SplintMail.circular"
-#endif//CIRCULAR_SPLINTMAIL
 
 
 #include <stdlib.h>

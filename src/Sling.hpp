@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SLING_HPP__
 #define __GUARD_SLING_HPP__
-#ifdef  CIRCULAR_SLING
-#include "Sling.circular"
-#endif//CIRCULAR_SLING
 
 
 #include <stdlib.h>

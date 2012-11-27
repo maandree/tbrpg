@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RULESET_HPP__
 #define __GUARD_RULESET_HPP__
-#ifdef  CIRCULAR_RULESET
-#include "RuleSet.circular"
-#endif//CIRCULAR_RULESET
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SORCERER_HPP__
 #define __GUARD_SORCERER_HPP__
-#ifdef  CIRCULAR_SORCERER
-#include "Sorcerer.circular"
-#endif//CIRCULAR_SORCERER
 
 
 #include <stdlib.h>

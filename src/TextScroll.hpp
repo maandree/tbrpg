@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_TEXTSCROLL_HPP__
 #define __GUARD_TEXTSCROLL_HPP__
-#ifdef  CIRCULAR_TEXTSCROLL
-#include "TextScroll.circular"
-#endif//CIRCULAR_TEXTSCROLL
 
 
 #include <stdlib.h>

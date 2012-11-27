@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SCROLL_HPP__
 #define __GUARD_SCROLL_HPP__
-#ifdef  CIRCULAR_SCROLL
-#include "Scroll.circular"
-#endif//CIRCULAR_SCROLL
 
 
 #include <stdlib.h>

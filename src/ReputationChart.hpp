@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_REPUTATIONCHART_HPP__
 #define __GUARD_REPUTATIONCHART_HPP__
-#ifdef  CIRCULAR_REPUTATIONCHART
-#include "ReputationChart.circular"
-#endif//CIRCULAR_REPUTATIONCHART
 
 
 #include <stdlib.h>

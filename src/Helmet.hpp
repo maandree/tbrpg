@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HELMET_HPP__
 #define __GUARD_HELMET_HPP__
-#ifdef  CIRCULAR_HELMET
-#include "Helmet.circular"
-#endif//CIRCULAR_HELMET
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MAGICSCHOOL_HPP__
 #define __GUARD_MAGICSCHOOL_HPP__
-#ifdef  CIRCULAR_MAGICSCHOOL
-#include "MagicSchool.circular"
-#endif//CIRCULAR_MAGICSCHOOL
 
 
 #include <stdlib.h>

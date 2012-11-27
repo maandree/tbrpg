@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_MAPMAJOR_HPP__
 #define __GUARD_MAPMAJOR_HPP__
-#ifdef  CIRCULAR_MAPMAJOR
-#include "MapMajor.circular"
-#endif//CIRCULAR_MAPMAJOR
 
 
 #include <stdlib.h>

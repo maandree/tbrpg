@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CROSSBOW_HPP__
 #define __GUARD_CROSSBOW_HPP__
-#ifdef  CIRCULAR_CROSSBOW
-#include "Crossbow.circular"
-#endif//CIRCULAR_CROSSBOW
 
 
 #include <stdlib.h>

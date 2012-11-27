@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_GAUNTLETS_HPP__
 #define __GUARD_GAUNTLETS_HPP__
-#ifdef  CIRCULAR_GAUNTLETS
-#include "Gauntlets.circular"
-#endif//CIRCULAR_GAUNTLETS
 
 
 #include <stdlib.h>

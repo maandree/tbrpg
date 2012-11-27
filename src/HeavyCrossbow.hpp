@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HEAVYCROSSBOW_HPP__
 #define __GUARD_HEAVYCROSSBOW_HPP__
-#ifdef  CIRCULAR_HEAVYCROSSBOW
-#include "HeavyCrossbow.circular"
-#endif//CIRCULAR_HEAVYCROSSBOW
 
 
 #include <stdlib.h>

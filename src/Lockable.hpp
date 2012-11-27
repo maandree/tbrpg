@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_LOCKABLE_HPP__
 #define __GUARD_LOCKABLE_HPP__
-#ifdef  CIRCULAR_LOCKABLE
-#include "Lockable.circular"
-#endif//CIRCULAR_LOCKABLE
 
 
 #include <stdlib.h>

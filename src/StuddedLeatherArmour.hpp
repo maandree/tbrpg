@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_STUDDEDLEATHERARMOUR_HPP__
 #define __GUARD_STUDDEDLEATHERARMOUR_HPP__
-#ifdef  CIRCULAR_STUDDEDLEATHERARMOUR
-#include "StuddedLeatherArmour.circular"
-#endif//CIRCULAR_STUDDEDLEATHERARMOUR
 
 
 #include <stdlib.h>

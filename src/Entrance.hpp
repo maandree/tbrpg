@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ENTRANCE_HPP__
 #define __GUARD_ENTRANCE_HPP__
-#ifdef  CIRCULAR_ENTRANCE
-#include "Entrance.circular"
-#endif//CIRCULAR_ENTRANCE
 
 
 #include <stdlib.h>
@@ -31,7 +28,7 @@
 
 
 
-#include "MapMinor.hpp"
+#include "_MapMinor.hpp"
 
 
 /**
@@ -68,7 +65,7 @@ namespace tbrpg
     /**
      * The area to which the entrance leads
      */
-    MapMinor leads_to;
+    _MapMinor leads_to;
     
     
     

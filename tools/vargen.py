@@ -103,9 +103,6 @@ for line in lines:
         output = '// -*- mode: c++, coding: utf-8 -*-\n' + copyNotice + '\n'
         output += '#ifndef __GUARD_%s_HPP__\n' % className.upper()
         output += '#define __GUARD_%s_HPP__\n' % className.upper()
-        output += '#ifdef  CIRCULAR_%s\n' % className.upper()
-        output += '#include "%s.circular"\n' % className
-        output += '#endif//CIRCULAR_%s\n' % className.upper()
         output += '\n\n%s\n\n%s\n\n%s\n/**\n' % ('\n'.join(includes), '\n'.join(superInclude), '\n'.join(useIncludes))
         output += ' * Text based roll playing game\n * \n * DD2387 Program construction with C++\n'
         output += ' * Laboration 3\n * \n * @author  Mattias Andrée <maandree@kth.se>\n */\n'

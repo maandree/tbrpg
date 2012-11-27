@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HALFELF_HPP__
 #define __GUARD_HALFELF_HPP__
-#ifdef  CIRCULAR_HALFELF
-#include "HalfElf.circular"
-#endif//CIRCULAR_HALFELF
 
 
 #include <stdlib.h>

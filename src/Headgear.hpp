@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HEADGEAR_HPP__
 #define __GUARD_HEADGEAR_HPP__
-#ifdef  CIRCULAR_HEADGEAR
-#include "Headgear.circular"
-#endif//CIRCULAR_HEADGEAR
 
 
 #include <stdlib.h>

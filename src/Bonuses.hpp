@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BONUSES_HPP__
 #define __GUARD_BONUSES_HPP__
-#ifdef  CIRCULAR_BONUSES
-#include "Bonuses.circular"
-#endif//CIRCULAR_BONUSES
 
 
 #include <stdlib.h>

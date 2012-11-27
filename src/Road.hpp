@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ROAD_HPP__
 #define __GUARD_ROAD_HPP__
-#ifdef  CIRCULAR_ROAD
-#include "Road.circular"
-#endif//CIRCULAR_ROAD
 
 
 #include <stdlib.h>
@@ -31,7 +28,7 @@
 
 
 
-#include "MapMinor.hpp"
+#include "_MapMinor.hpp"
 
 
 /**
@@ -83,12 +80,12 @@ namespace tbrpg
     /**
      * The area entered if you get waylaid
      */
-    MapMinor waylay_map;
+    _MapMinor waylay_map;
     
     /**
      * The area to which the the road leads
      */
-    MapMinor leads_to;
+    _MapMinor leads_to;
     
     
     

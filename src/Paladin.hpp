@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_PALADIN_HPP__
 #define __GUARD_PALADIN_HPP__
-#ifdef  CIRCULAR_PALADIN
-#include "Paladin.circular"
-#endif//CIRCULAR_PALADIN
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_SPELL_HPP__
 #define __GUARD_SPELL_HPP__
-#ifdef  CIRCULAR_SPELL
-#include "Spell.circular"
-#endif//CIRCULAR_SPELL
 
 
 #include <stdlib.h>

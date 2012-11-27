@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RESTINTERRUPTION_HPP__
 #define __GUARD_RESTINTERRUPTION_HPP__
-#ifdef  CIRCULAR_RESTINTERRUPTION
-#include "RestInterruption.circular"
-#endif//CIRCULAR_RESTINTERRUPTION
 
 
 #include <stdlib.h>

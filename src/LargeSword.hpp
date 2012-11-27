@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_LARGESWORD_HPP__
 #define __GUARD_LARGESWORD_HPP__
-#ifdef  CIRCULAR_LARGESWORD
-#include "LargeSword.circular"
-#endif//CIRCULAR_LARGESWORD
 
 
 #include <stdlib.h>

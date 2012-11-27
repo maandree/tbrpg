@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ENVIRONMENTCONTAINER_HPP__
 #define __GUARD_ENVIRONMENTCONTAINER_HPP__
-#ifdef  CIRCULAR_ENVIRONMENTCONTAINER
-#include "EnvironmentContainer.circular"
-#endif//CIRCULAR_ENVIRONMENTCONTAINER
 
 
 #include <stdlib.h>

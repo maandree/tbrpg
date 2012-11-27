@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_RANGEDWEAPON_HPP__
 #define __GUARD_RANGEDWEAPON_HPP__
-#ifdef  CIRCULAR_RANGEDWEAPON
-#include "RangedWeapon.circular"
-#endif//CIRCULAR_RANGEDWEAPON
 
 
 #include <stdlib.h>

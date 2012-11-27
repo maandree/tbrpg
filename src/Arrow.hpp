@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ARROW_HPP__
 #define __GUARD_ARROW_HPP__
-#ifdef  CIRCULAR_ARROW
-#include "Arrow.circular"
-#endif//CIRCULAR_ARROW
 
 
 #include <stdlib.h>

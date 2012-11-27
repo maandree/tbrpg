@@ -10,7 +10,7 @@ SHELL=bash
 NODES=3
 OPTIMISE=-O0
 #OPTIMISE=-O3
-CPPFLAGS=-DCIRCULAR_MAPMINOR -DCIRCULAR_ROAD -DCIRCULAR_ENTRANCE
+CPPFLAGS=
 CXXFLAGS=$(OPTIMISE) -g --std=c++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 
@@ -64,9 +64,14 @@ code:
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
+
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	time ((echo $(NODES) ; cat compiledependencies __order) | tools/paramake.py)
+	(time ((echo $(NODES) ; cat compiledependencies __order) | tools/paramake.py)) |&  \
+	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                       \
+	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'              \
+	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'    \
+	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g'
 
 sequecial:
 	if [ ! -d bin ]; then  mkdir bin;  fi

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BOW_HPP__
 #define __GUARD_BOW_HPP__
-#ifdef  CIRCULAR_BOW
-#include "Bow.circular"
-#endif//CIRCULAR_BOW
 
 
 #include <stdlib.h>

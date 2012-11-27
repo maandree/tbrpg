@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CLOAK_HPP__
 #define __GUARD_CLOAK_HPP__
-#ifdef  CIRCULAR_CLOAK
-#include "Cloak.circular"
-#endif//CIRCULAR_CLOAK
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CONTAINER_HPP__
 #define __GUARD_CONTAINER_HPP__
-#ifdef  CIRCULAR_CONTAINER
-#include "Container.circular"
-#endif//CIRCULAR_CONTAINER
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ABILITYCHART_HPP__
 #define __GUARD_ABILITYCHART_HPP__
-#ifdef  CIRCULAR_ABILITYCHART
-#include "AbilityChart.circular"
-#endif//CIRCULAR_ABILITYCHART
 
 
 #include <stdlib.h>

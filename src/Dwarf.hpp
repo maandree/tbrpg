@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DWARF_HPP__
 #define __GUARD_DWARF_HPP__
-#ifdef  CIRCULAR_DWARF
-#include "Dwarf.circular"
-#endif//CIRCULAR_DWARF
 
 
 #include <stdlib.h>

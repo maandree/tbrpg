@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BULLET_HPP__
 #define __GUARD_BULLET_HPP__
-#ifdef  CIRCULAR_BULLET
-#include "Bullet.circular"
-#endif//CIRCULAR_BULLET
 
 
 #include <stdlib.h>

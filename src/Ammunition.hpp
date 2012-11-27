@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_AMMUNITION_HPP__
 #define __GUARD_AMMUNITION_HPP__
-#ifdef  CIRCULAR_AMMUNITION
-#include "Ammunition.circular"
-#endif//CIRCULAR_AMMUNITION
 
 
 #include <stdlib.h>

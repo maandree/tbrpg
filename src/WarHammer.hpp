@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_WARHAMMER_HPP__
 #define __GUARD_WARHAMMER_HPP__
-#ifdef  CIRCULAR_WARHAMMER
-#include "WarHammer.circular"
-#endif//CIRCULAR_WARHAMMER
 
 
 #include <stdlib.h>

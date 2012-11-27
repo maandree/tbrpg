@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_THIEF_HPP__
 #define __GUARD_THIEF_HPP__
-#ifdef  CIRCULAR_THIEF
-#include "Thief.circular"
-#endif//CIRCULAR_THIEF
 
 
 #include <stdlib.h>

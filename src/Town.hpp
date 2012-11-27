@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_TOWN_HPP__
 #define __GUARD_TOWN_HPP__
-#ifdef  CIRCULAR_TOWN
-#include "Town.circular"
-#endif//CIRCULAR_TOWN
 
 
 #include <stdlib.h>

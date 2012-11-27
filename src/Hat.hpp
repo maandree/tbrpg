@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_HAT_HPP__
 #define __GUARD_HAT_HPP__
-#ifdef  CIRCULAR_HAT
-#include "Hat.circular"
-#endif//CIRCULAR_HAT
 
 
 #include <stdlib.h>

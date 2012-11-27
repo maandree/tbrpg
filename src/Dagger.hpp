@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DAGGER_HPP__
 #define __GUARD_DAGGER_HPP__
-#ifdef  CIRCULAR_DAGGER
-#include "Dagger.circular"
-#endif//CIRCULAR_DAGGER
 
 
 #include <stdlib.h>

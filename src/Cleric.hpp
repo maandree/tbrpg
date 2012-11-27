@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_CLERIC_HPP__
 #define __GUARD_CLERIC_HPP__
-#ifdef  CIRCULAR_CLERIC
-#include "Cleric.circular"
-#endif//CIRCULAR_CLERIC
 
 
 #include <stdlib.h>

@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ITEM_HPP__
 #define __GUARD_ITEM_HPP__
-#ifdef  CIRCULAR_ITEM
-#include "Item.circular"
-#endif//CIRCULAR_ITEM
 
 
 #include <stdlib.h>

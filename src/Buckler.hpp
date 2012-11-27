@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_BUCKLER_HPP__
 #define __GUARD_BUCKLER_HPP__
-#ifdef  CIRCULAR_BUCKLER
-#include "Buckler.circular"
-#endif//CIRCULAR_BUCKLER
 
 
 #include <stdlib.h>

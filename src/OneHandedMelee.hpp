@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_ONEHANDEDMELEE_HPP__
 #define __GUARD_ONEHANDEDMELEE_HPP__
-#ifdef  CIRCULAR_ONEHANDEDMELEE
-#include "OneHandedMelee.circular"
-#endif//CIRCULAR_ONEHANDEDMELEE
 
 
 #include <stdlib.h>

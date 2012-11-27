@@ -19,9 +19,6 @@
  */
 #ifndef __GUARD_DOOR_HPP__
 #define __GUARD_DOOR_HPP__
-#ifdef  CIRCULAR_DOOR
-#include "Door.circular"
-#endif//CIRCULAR_DOOR
 
 
 #include <stdlib.h>
