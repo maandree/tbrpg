@@ -84,10 +84,12 @@ while len(_deps) > 0:
         queue.append(bestfile)
         del _deps[bestfile]
 
-success = True
-readmutex = Lock()
+failures = 0
+mutex = Lock()
 threadmap = [None] * nodes
 threads = []
+total = len(queue)
+running = 0
 
 class MakeThread(Thread):
     def __init__(self, index):
@@ -96,43 +98,50 @@ class MakeThread(Thread):
         self.index = index
     
     def run(self):
+        global running
+        global failures
         file = None
         ev = 0
         while True:
             try:
-                readmutex.acquire()
+                mutex.acquire()
                 if len(queue) == 0:
-                    readmutex.release()
+                    mutex.release()
                     break
                 file = queue[0]
                 queue[:] = queue[1:]
+                running += 1
                 for dep in deps[file]:
                     if dep in threadmap:
                         i = threadmap.index(dep)
-                        print('\033[01;33mWaiting for ' + dep + '@' + str(i) + ' [' + str(self.index) + ']\033[21;39m')
+                        print('\033[01;33mWaiting for ' + dep + '\033[21m@' + str(i) + ' [' + str(self.index) + ']\033[39m')
                         m = threads[i].monitor
                         m.acquire()
-                        readmutex.release()
+                        mutex.release()
                         m.wait()
-                        readmutex.acquire()
+                        mutex.acquire()
                         m.release()
                 threadmap[self.index] = file
-                print('\033[01;34mCompiling ' + file + ' [' + str(self.index) + ']\033[21;39m')
-                readmutex.release()
+                print('\033[01;34mCompiling ' + file + '\033[21m [' + str(self.index) + '] (' + str(total - len(queue) - running) + '/' + str(total) + ')\033[39m')
+                mutex.release()
                 ev = self.compile(file)
             except:
-                readmutex.acquire()
-                success = False
-                print('\033[01;31mFailed! with ' + file + ', returned ' + str(ev) + ' [' + str(self.index) + ']\033[21;39m')
+                mutex.acquire()
+                failures += 1
+                running -= 1
+                prog = str(total - len(queue) - running) + '/' + str(total) + ')\033[39m'
+                print('\033[01;31mFailed! with ' + file + ', returned ' + str(ev) + '\033[21m [' + str(self.index) + '] (' + prog)
             else:
-                readmutex.acquire()
+                mutex.acquire()
+                running -= 1
+                prog = str(total - len(queue) - running) + '/' + str(total) + ')\033[39m'
                 if ev == 0:
-                    print('\033[01;32mDone ' + file + ' [' + str(self.index) + ']\033[21;39m')
+                    print('\033[01;32mDone ' + file + '\033[21m [' + str(self.index) + '] (' + prog)
                 else:
-                    success = False
-                    print('\033[01;31mFailed with ' + file + ', returned ' + str(ev) + ' [' + str(self.index) + ']\033[21;39m')
+                    failures += 1
+                    print('\033[01;31mFailed with ' + file + ', returned ' + str(ev) + '\033[21m [' + str(self.index) + '] (' + prog)
                 threadmap[self.index] = None
-            readmutex.release()
+            mutex.release()
             self.monitor.acquire()
             self.monitor.notify_all()
             self.monitor.release()
@@ -148,5 +157,5 @@ for i in range(0, nodes):
 for i in range(0, nodes):
     threads[i].join()
 
-exit(0 if success else 1)
+exit(255 if failures > 255 else failures)
 

@@ -69,7 +69,7 @@ namespace tbrpg
   WeaponGroup::WeaponGroup(WeaponGroup&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
+    std::swap(this->name, original.name);
   }
   
   
@@ -120,7 +120,7 @@ namespace tbrpg
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
+    std::swap(this->name, original.name);
     return *this;
   }
   

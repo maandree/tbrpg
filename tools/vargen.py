@@ -134,6 +134,9 @@ for line in lines:
         output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
         output += 'its resourced will be moved\n     * @return            The invoked object\n'
         output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
+#        output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
+#        output += 'its resourced will be moved\n     * @return            The invoked object\n'
+#        output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
         output += '    \n  protected:\n    /**\n     * Copy method\n     * \n'
         output += '     * @param  self      The object to modify\n     * @param  original  The reference object\n'
         output += '     */\n    static void __copy__(%s& self, const %s& original);\n    \n' % (className, className)
@@ -157,7 +160,7 @@ for line in lines:
             space = 0
             for superClass in supers:
                 classCopy.append('%s::__copy__((%s&)*this, (%s&)original);' % (superClass, superClass, superClass))
-                classMove.append('//std::move((%s&)*this, (%s&)original);' % (superClass, superClass))
+                classMove.append('std::swap((%s&)*this, (%s&)original);' % (superClass, superClass))
             for s in range(0, len(varLine)):
                 if varLine[s] == ' ':
                     space = s
@@ -171,9 +174,9 @@ for line in lines:
                 varInit.append('this->' + varName + ' = nullptr;')
             varCopy.append('this->%s = original.%s;' % (varName, varName))
             if (varType == 'bool') or (varType in numericals):
-                varMove.append('//std::swap(this->%s, original.%s);' % (varName, varName))
+                varMove.append('std::swap(this->%s, original.%s);' % (varName, varName))
             else:
-                varMove.append('//std::move(this->%s, original.%s);' % (varName, varName))
+                varMove.append('std::swap(this->%s, original.%s);' % (varName, varName))
             if (varType != 'bool') and (varType not in numericals):
                 varFree.append('delete %s;' % varName)
         varInit = '\n'.join(['    //' + item for item in (['//TO' + 'DO implement constructor'] + varInit)])
@@ -207,6 +210,10 @@ for line in lines:
         output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
         output += '%s\n%s\n    return *this;\n  }\n  \n' % (voidIt, classMove + varMove)
+#        output += '  /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
+#        output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
+#        output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
+#        output += '%s\n%s\n    return *this;\n  }\n  \n' % (voidIt, classMove + varMove)
         output += '  /**\n   * Copy method\n   * \n'
         output += '   * @param  self      The object to modify\n   * @param  original  The reference object\n'
         output += '   */\n  void %s::__copy__(%s& self, const %s& original)\n' % (className, className, className)

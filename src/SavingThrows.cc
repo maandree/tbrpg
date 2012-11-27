@@ -81,11 +81,11 @@ namespace tbrpg
   SavingThrows::SavingThrows(SavingThrows&& original)
   {
     (void) original;
-    //std::swap(this->breath, original.breath);
-    //std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
-    //std::swap(this->petrification_polymorph, original.petrification_polymorph);
-    //std::swap(this->rod_staff_wand, original.rod_staff_wand);
-    //std::swap(this->spell, original.spell);
+    std::swap(this->breath, original.breath);
+    std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
+    std::swap(this->petrification_polymorph, original.petrification_polymorph);
+    std::swap(this->rod_staff_wand, original.rod_staff_wand);
+    std::swap(this->spell, original.spell);
   }
   
   
@@ -143,11 +143,11 @@ namespace tbrpg
   SavingThrows& SavingThrows::operator =(SavingThrows&& original)
   {
     (void) original;
-    //std::swap(this->breath, original.breath);
-    //std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
-    //std::swap(this->petrification_polymorph, original.petrification_polymorph);
-    //std::swap(this->rod_staff_wand, original.rod_staff_wand);
-    //std::swap(this->spell, original.spell);
+    std::swap(this->breath, original.breath);
+    std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
+    std::swap(this->petrification_polymorph, original.petrification_polymorph);
+    std::swap(this->rod_staff_wand, original.rod_staff_wand);
+    std::swap(this->spell, original.spell);
     return *this;
   }
   

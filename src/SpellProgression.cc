@@ -72,8 +72,8 @@ namespace tbrpg
   SpellProgression::SpellProgression(SpellProgression&& original)
   {
     (void) original;
-    //std::move(this->wizard_slots, original.wizard_slots);
-    //std::move(this->priest_slots, original.priest_slots);
+    std::swap(this->wizard_slots, original.wizard_slots);
+    std::swap(this->priest_slots, original.priest_slots);
   }
   
   
@@ -127,8 +127,8 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression&& original)
   {
     (void) original;
-    //std::move(this->wizard_slots, original.wizard_slots);
-    //std::move(this->priest_slots, original.priest_slots);
+    std::swap(this->wizard_slots, original.wizard_slots);
+    std::swap(this->priest_slots, original.priest_slots);
     return *this;
   }
   

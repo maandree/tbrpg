@@ -21,7 +21,7 @@ namespace tbrpg
 {
   class MapMinor;
 }
-#define __GUARD_MINORMAP_HPP__
+#define __GUARD_MAPMINOR_HPP__
 
 namespace tbrpg
 {

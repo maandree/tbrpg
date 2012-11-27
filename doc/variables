@@ -395,8 +395,10 @@ MapMinor                                            ; Map area
 	std::string description                     ; Descrion of the area
 	bool may_rest                               ; Whether you may rest in the area without renting a room
 	float area                                  ; The radius of the area, in metres, the party starts at origo
-	std::vector<Road> roads                     ; Roads to other major areas in the area
-	std::vector<Entrance> connections           ; Entrance to other areas in the area
+	size_t road_count                           ; The number of elements in {@link roads} [needed due to circular dependency]
+	size_t connection_count                     ; The number of elements in {@link connections} [needed due to circular dependency]
+	Road[] roads                                ; Roads to other major areas in the area
+	Entrance[] connections                      ; Entrance to other areas in the area
 	std::vector<Item> items                     ; Items in the area
 	std::vector<Creature> creatures             ; Creatures in the area
 	MapMajor is_in                              ; Which major area to which  the area belongs

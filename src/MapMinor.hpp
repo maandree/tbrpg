@@ -71,14 +71,24 @@ namespace tbrpg
     float area;
     
     /**
+     * The number of elements in {@link roads} [needed due to circular dependency]
+     */
+    size_t road_count;
+    
+    /**
+     * The number of elements in {@link connections} [needed due to circular dependency]
+     */
+    size_t connection_count;
+    
+    /**
      * Roads to other major areas in the area
      */
-    std::vector<Road> roads;
+    Road* roads;
     
     /**
      * Entrance to other areas in the area
      */
-    std::vector<Entrance> connections;
+    Entrance* connections;
     
     /**
      * Items in the area

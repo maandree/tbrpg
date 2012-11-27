@@ -69,7 +69,7 @@ namespace tbrpg
   QuestItem::QuestItem(QuestItem&& original) : Item(original)
   {
     (void) original;
-    //std::swap(this->id, original.id);
+    std::swap(this->id, original.id);
   }
   
   
@@ -119,7 +119,7 @@ namespace tbrpg
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
     (void) original;
-    //std::move((Item&)*this, (Item&)original);    //std::swap(this->id, original.id);
+    std::swap((Item&)*this, (Item&)original);    std::swap(this->id, original.id);
     return *this;
   }
   

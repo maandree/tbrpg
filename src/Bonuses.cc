@@ -123,25 +123,25 @@ namespace tbrpg
   Bonuses::Bonuses(Bonuses&& original)
   {
     (void) original;
-    //std::swap(this->hit_bonus, original.hit_bonus);
-    //std::swap(this->damage_bonus, original.damage_bonus);
-    //std::swap(this->carry_limit, original.carry_limit);
-    //std::swap(this->bashing, original.bashing);
-    //std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
-    //std::swap(this->armour_class_bonus, original.armour_class_bonus);
-    //std::swap(this->hit_point_bonus, original.hit_point_bonus);
-    //std::swap(this->resurrectability, original.resurrectability);
-    //std::swap(this->reaction_bonus, original.reaction_bonus);
-    //std::swap(this->spell_level_limit, original.spell_level_limit);
-    //std::swap(this->spell_learn, original.spell_learn);
-    //std::swap(this->max_spells_level, original.max_spells_level);
-    //std::swap(this->lore_bonus, original.lore_bonus);
-    //std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
-    //std::swap(this->spell_failure, original.spell_failure);
-    //std::move(this->bonus_spells, original.bonus_spells);
-    //std::swap(this->morale, original.morale);
-    //std::swap(this->luck, original.luck);
-    //std::swap(this->detect_doors, original.detect_doors);
+    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap(this->damage_bonus, original.damage_bonus);
+    std::swap(this->carry_limit, original.carry_limit);
+    std::swap(this->bashing, original.bashing);
+    std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
+    std::swap(this->armour_class_bonus, original.armour_class_bonus);
+    std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    std::swap(this->resurrectability, original.resurrectability);
+    std::swap(this->reaction_bonus, original.reaction_bonus);
+    std::swap(this->spell_level_limit, original.spell_level_limit);
+    std::swap(this->spell_learn, original.spell_learn);
+    std::swap(this->max_spells_level, original.max_spells_level);
+    std::swap(this->lore_bonus, original.lore_bonus);
+    std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
+    std::swap(this->spell_failure, original.spell_failure);
+    std::swap(this->bonus_spells, original.bonus_spells);
+    std::swap(this->morale, original.morale);
+    std::swap(this->luck, original.luck);
+    std::swap(this->detect_doors, original.detect_doors);
   }
   
   
@@ -228,25 +228,25 @@ namespace tbrpg
   Bonuses& Bonuses::operator =(Bonuses&& original)
   {
     (void) original;
-    //std::swap(this->hit_bonus, original.hit_bonus);
-    //std::swap(this->damage_bonus, original.damage_bonus);
-    //std::swap(this->carry_limit, original.carry_limit);
-    //std::swap(this->bashing, original.bashing);
-    //std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
-    //std::swap(this->armour_class_bonus, original.armour_class_bonus);
-    //std::swap(this->hit_point_bonus, original.hit_point_bonus);
-    //std::swap(this->resurrectability, original.resurrectability);
-    //std::swap(this->reaction_bonus, original.reaction_bonus);
-    //std::swap(this->spell_level_limit, original.spell_level_limit);
-    //std::swap(this->spell_learn, original.spell_learn);
-    //std::swap(this->max_spells_level, original.max_spells_level);
-    //std::swap(this->lore_bonus, original.lore_bonus);
-    //std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
-    //std::swap(this->spell_failure, original.spell_failure);
-    //std::move(this->bonus_spells, original.bonus_spells);
-    //std::swap(this->morale, original.morale);
-    //std::swap(this->luck, original.luck);
-    //std::swap(this->detect_doors, original.detect_doors);
+    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap(this->damage_bonus, original.damage_bonus);
+    std::swap(this->carry_limit, original.carry_limit);
+    std::swap(this->bashing, original.bashing);
+    std::swap(this->missile_attack_bonus, original.missile_attack_bonus);
+    std::swap(this->armour_class_bonus, original.armour_class_bonus);
+    std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    std::swap(this->resurrectability, original.resurrectability);
+    std::swap(this->reaction_bonus, original.reaction_bonus);
+    std::swap(this->spell_level_limit, original.spell_level_limit);
+    std::swap(this->spell_learn, original.spell_learn);
+    std::swap(this->max_spells_level, original.max_spells_level);
+    std::swap(this->lore_bonus, original.lore_bonus);
+    std::swap(this->magic_defence_bonus, original.magic_defence_bonus);
+    std::swap(this->spell_failure, original.spell_failure);
+    std::swap(this->bonus_spells, original.bonus_spells);
+    std::swap(this->morale, original.morale);
+    std::swap(this->luck, original.luck);
+    std::swap(this->detect_doors, original.detect_doors);
     return *this;
   }
   

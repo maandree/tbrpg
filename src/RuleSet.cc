@@ -93,15 +93,15 @@ namespace tbrpg
   RuleSet::RuleSet(RuleSet&& original)
   {
     (void) original;
-    //std::swap(this->attack_roll_die, original.attack_roll_die);
-    //std::swap(this->attack_roll_dice, original.attack_roll_dice);
-    //std::swap(this->critical_hit, original.critical_hit);
-    //std::swap(this->critical_miss, original.critical_miss);
-    //std::move(this->reputation_chart, original.reputation_chart);
-    //std::move(this->ability_chart, original.ability_chart);
-    //std::move(this->inventory_prototype, original.inventory_prototype);
-    //std::move(this->spells, original.spells);
-    //std::move(this->races, original.races);
+    std::swap(this->attack_roll_die, original.attack_roll_die);
+    std::swap(this->attack_roll_dice, original.attack_roll_dice);
+    std::swap(this->critical_hit, original.critical_hit);
+    std::swap(this->critical_miss, original.critical_miss);
+    std::swap(this->reputation_chart, original.reputation_chart);
+    std::swap(this->ability_chart, original.ability_chart);
+    std::swap(this->inventory_prototype, original.inventory_prototype);
+    std::swap(this->spells, original.spells);
+    std::swap(this->races, original.races);
   }
   
   
@@ -172,15 +172,15 @@ namespace tbrpg
   RuleSet& RuleSet::operator =(RuleSet&& original)
   {
     (void) original;
-    //std::swap(this->attack_roll_die, original.attack_roll_die);
-    //std::swap(this->attack_roll_dice, original.attack_roll_dice);
-    //std::swap(this->critical_hit, original.critical_hit);
-    //std::swap(this->critical_miss, original.critical_miss);
-    //std::move(this->reputation_chart, original.reputation_chart);
-    //std::move(this->ability_chart, original.ability_chart);
-    //std::move(this->inventory_prototype, original.inventory_prototype);
-    //std::move(this->spells, original.spells);
-    //std::move(this->races, original.races);
+    std::swap(this->attack_roll_die, original.attack_roll_die);
+    std::swap(this->attack_roll_dice, original.attack_roll_dice);
+    std::swap(this->critical_hit, original.critical_hit);
+    std::swap(this->critical_miss, original.critical_miss);
+    std::swap(this->reputation_chart, original.reputation_chart);
+    std::swap(this->ability_chart, original.ability_chart);
+    std::swap(this->inventory_prototype, original.inventory_prototype);
+    std::swap(this->spells, original.spells);
+    std::swap(this->races, original.races);
     return *this;
   }
   

@@ -78,10 +78,10 @@ namespace tbrpg
   Entrance::Entrance(Entrance&& original)
   {
     (void) original;
-    //std::swap(this->usable, original.usable);
-    //std::move(this->description, original.description);
-    //std::move(this->direction, original.direction);
-    //std::move(this->leads_to, original.leads_to);
+    std::swap(this->usable, original.usable);
+    std::swap(this->description, original.description);
+    std::swap(this->direction, original.direction);
+    std::swap(this->leads_to, original.leads_to);
   }
   
   
@@ -140,10 +140,10 @@ namespace tbrpg
   Entrance& Entrance::operator =(Entrance&& original)
   {
     (void) original;
-    //std::swap(this->usable, original.usable);
-    //std::move(this->description, original.description);
-    //std::move(this->direction, original.direction);
-    //std::move(this->leads_to, original.leads_to);
+    std::swap(this->usable, original.usable);
+    std::swap(this->description, original.description);
+    std::swap(this->direction, original.direction);
+    std::swap(this->leads_to, original.leads_to);
     return *this;
   }
   

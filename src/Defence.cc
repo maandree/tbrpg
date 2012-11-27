@@ -90,14 +90,14 @@ namespace tbrpg
   Defence::Defence(Defence&& original)
   {
     (void) original;
-    //std::swap(this->melee, original.melee);
-    //std::swap(this->missile, original.missile);
-    //std::swap(this->fire, original.fire);
-    //std::swap(this->cold, original.cold);
-    //std::swap(this->lightning, original.lightning);
-    //std::swap(this->acid, original.acid);
-    //std::swap(this->poison, original.poison);
-    //std::swap(this->physical, original.physical);
+    std::swap(this->melee, original.melee);
+    std::swap(this->missile, original.missile);
+    std::swap(this->fire, original.fire);
+    std::swap(this->cold, original.cold);
+    std::swap(this->lightning, original.lightning);
+    std::swap(this->acid, original.acid);
+    std::swap(this->poison, original.poison);
+    std::swap(this->physical, original.physical);
   }
   
   
@@ -161,14 +161,14 @@ namespace tbrpg
   Defence& Defence::operator =(Defence&& original)
   {
     (void) original;
-    //std::swap(this->melee, original.melee);
-    //std::swap(this->missile, original.missile);
-    //std::swap(this->fire, original.fire);
-    //std::swap(this->cold, original.cold);
-    //std::swap(this->lightning, original.lightning);
-    //std::swap(this->acid, original.acid);
-    //std::swap(this->poison, original.poison);
-    //std::swap(this->physical, original.physical);
+    std::swap(this->melee, original.melee);
+    std::swap(this->missile, original.missile);
+    std::swap(this->fire, original.fire);
+    std::swap(this->cold, original.cold);
+    std::swap(this->lightning, original.lightning);
+    std::swap(this->acid, original.acid);
+    std::swap(this->poison, original.poison);
+    std::swap(this->physical, original.physical);
     return *this;
   }
   

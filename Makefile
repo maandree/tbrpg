@@ -61,16 +61,16 @@ code:
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*{,/*}.{cc,hpp}
 
 %.o: src/%.cc
-	if [ ! -d bin ]; then  mkdir bin;  fi
-	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	time ((echo $(NODES) ; cat __order) | tools/paramake.py)
+	time ((echo $(NODES) ; cat compiledependencies __order) | tools/paramake.py)
 
 sequecial:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	sort < __order | uniq | tsort | tac > .tmp1
+	cat compiledependencies __order | sort | uniq | tsort | tac > .tmp1
 	ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
 	$(SHELL) -c 'diff <(sort < .tmp1 | uniq) .tmp > .tmp2 || echo -n'
 	((grep '> ' < .tmp2 | sed -e 's/> //g') ; cat .tmp1) > .tmp

@@ -108,20 +108,20 @@ namespace tbrpg
   Spell::Spell(Spell&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
-    //std::move(this->description, original.description);
-    //std::swap(this->wizard, original.wizard);
-    //std::swap(this->priest, original.priest);
-    //std::swap(this->level, original.level);
-    //std::swap(this->saving, original.saving);
-    //std::swap(this->touch, original.touch);
-    //std::swap(this->range, original.range);
-    //std::swap(this->casting_time, original.casting_time);
-    //std::swap(this->duration, original.duration);
-    //std::swap(this->duration_die, original.duration_die);
-    //std::swap(this->duration_dice, original.duration_dice);
-    //std::move(this->effect_area, original.effect_area);
-    //std::move(this->school, original.school);
+    std::swap(this->name, original.name);
+    std::swap(this->description, original.description);
+    std::swap(this->wizard, original.wizard);
+    std::swap(this->priest, original.priest);
+    std::swap(this->level, original.level);
+    std::swap(this->saving, original.saving);
+    std::swap(this->touch, original.touch);
+    std::swap(this->range, original.range);
+    std::swap(this->casting_time, original.casting_time);
+    std::swap(this->duration, original.duration);
+    std::swap(this->duration_die, original.duration_die);
+    std::swap(this->duration_dice, original.duration_dice);
+    std::swap(this->effect_area, original.effect_area);
+    std::swap(this->school, original.school);
   }
   
   
@@ -201,20 +201,20 @@ namespace tbrpg
   Spell& Spell::operator =(Spell&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
-    //std::move(this->description, original.description);
-    //std::swap(this->wizard, original.wizard);
-    //std::swap(this->priest, original.priest);
-    //std::swap(this->level, original.level);
-    //std::swap(this->saving, original.saving);
-    //std::swap(this->touch, original.touch);
-    //std::swap(this->range, original.range);
-    //std::swap(this->casting_time, original.casting_time);
-    //std::swap(this->duration, original.duration);
-    //std::swap(this->duration_die, original.duration_die);
-    //std::swap(this->duration_dice, original.duration_dice);
-    //std::move(this->effect_area, original.effect_area);
-    //std::move(this->school, original.school);
+    std::swap(this->name, original.name);
+    std::swap(this->description, original.description);
+    std::swap(this->wizard, original.wizard);
+    std::swap(this->priest, original.priest);
+    std::swap(this->level, original.level);
+    std::swap(this->saving, original.saving);
+    std::swap(this->touch, original.touch);
+    std::swap(this->range, original.range);
+    std::swap(this->casting_time, original.casting_time);
+    std::swap(this->duration, original.duration);
+    std::swap(this->duration_die, original.duration_die);
+    std::swap(this->duration_dice, original.duration_dice);
+    std::swap(this->effect_area, original.effect_area);
+    std::swap(this->school, original.school);
     return *this;
   }
   

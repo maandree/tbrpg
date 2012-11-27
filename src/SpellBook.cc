@@ -72,8 +72,8 @@ namespace tbrpg
   SpellBook::SpellBook(SpellBook&& original)
   {
     (void) original;
-    //std::move(this->learned, original.learned);
-    //std::move(this->memorised, original.memorised);
+    std::swap(this->learned, original.learned);
+    std::swap(this->memorised, original.memorised);
   }
   
   
@@ -127,8 +127,8 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
     (void) original;
-    //std::move(this->learned, original.learned);
-    //std::move(this->memorised, original.memorised);
+    std::swap(this->learned, original.learned);
+    std::swap(this->memorised, original.memorised);
     return *this;
   }
   

@@ -69,7 +69,7 @@ namespace tbrpg
   Headgear::Headgear(Headgear&& original) : Item(original)
   {
     (void) original;
-    //std::swap(this->critical_hit_protection, original.critical_hit_protection);
+    std::swap(this->critical_hit_protection, original.critical_hit_protection);
   }
   
   
@@ -119,7 +119,7 @@ namespace tbrpg
   Headgear& Headgear::operator =(Headgear&& original)
   {
     (void) original;
-    //std::move((Item&)*this, (Item&)original);    //std::swap(this->critical_hit_protection, original.critical_hit_protection);
+    std::swap((Item&)*this, (Item&)original);    std::swap(this->critical_hit_protection, original.critical_hit_protection);
     return *this;
   }
   

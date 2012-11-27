@@ -102,18 +102,18 @@ namespace tbrpg
   ReputationChart::ReputationChart(ReputationChart&& original)
   {
     (void) original;
-    //std::move(this->reaction_adjustment, original.reaction_adjustment);
-    //std::move(this->wanted, original.wanted);
-    //std::move(this->killing_innocent, original.killing_innocent);
-    //std::move(this->injuring_innocent, original.injuring_innocent);
-    //std::move(this->stealing, original.stealing);
-    //std::move(this->killing_guard, original.killing_guard);
-    //std::move(this->donation_needed, original.donation_needed);
-    //std::move(this->price_adjustment, original.price_adjustment);
-    //std::move(this->good_reaction, original.good_reaction);
-    //std::move(this->neutral_reaction, original.neutral_reaction);
-    //std::move(this->evil_reaction, original.evil_reaction);
-    //std::move(this->alignment_reputation, original.alignment_reputation);
+    std::swap(this->reaction_adjustment, original.reaction_adjustment);
+    std::swap(this->wanted, original.wanted);
+    std::swap(this->killing_innocent, original.killing_innocent);
+    std::swap(this->injuring_innocent, original.injuring_innocent);
+    std::swap(this->stealing, original.stealing);
+    std::swap(this->killing_guard, original.killing_guard);
+    std::swap(this->donation_needed, original.donation_needed);
+    std::swap(this->price_adjustment, original.price_adjustment);
+    std::swap(this->good_reaction, original.good_reaction);
+    std::swap(this->neutral_reaction, original.neutral_reaction);
+    std::swap(this->evil_reaction, original.evil_reaction);
+    std::swap(this->alignment_reputation, original.alignment_reputation);
   }
   
   
@@ -197,18 +197,18 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(ReputationChart&& original)
   {
     (void) original;
-    //std::move(this->reaction_adjustment, original.reaction_adjustment);
-    //std::move(this->wanted, original.wanted);
-    //std::move(this->killing_innocent, original.killing_innocent);
-    //std::move(this->injuring_innocent, original.injuring_innocent);
-    //std::move(this->stealing, original.stealing);
-    //std::move(this->killing_guard, original.killing_guard);
-    //std::move(this->donation_needed, original.donation_needed);
-    //std::move(this->price_adjustment, original.price_adjustment);
-    //std::move(this->good_reaction, original.good_reaction);
-    //std::move(this->neutral_reaction, original.neutral_reaction);
-    //std::move(this->evil_reaction, original.evil_reaction);
-    //std::move(this->alignment_reputation, original.alignment_reputation);
+    std::swap(this->reaction_adjustment, original.reaction_adjustment);
+    std::swap(this->wanted, original.wanted);
+    std::swap(this->killing_innocent, original.killing_innocent);
+    std::swap(this->injuring_innocent, original.injuring_innocent);
+    std::swap(this->stealing, original.stealing);
+    std::swap(this->killing_guard, original.killing_guard);
+    std::swap(this->donation_needed, original.donation_needed);
+    std::swap(this->price_adjustment, original.price_adjustment);
+    std::swap(this->good_reaction, original.good_reaction);
+    std::swap(this->neutral_reaction, original.neutral_reaction);
+    std::swap(this->evil_reaction, original.evil_reaction);
+    std::swap(this->alignment_reputation, original.alignment_reputation);
     return *this;
   }
   

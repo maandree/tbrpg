@@ -90,14 +90,14 @@ namespace tbrpg
   Road::Road(Road&& original)
   {
     (void) original;
-    //std::swap(this->first_distance, original.first_distance);
-    //std::swap(this->last_distance, original.last_distance);
-    //std::swap(this->waylay_die, original.waylay_die);
-    //std::swap(this->waylay_dice, original.waylay_dice);
-    //std::swap(this->waylay_risk, original.waylay_risk);
-    //std::move(this->direction, original.direction);
-    //std::move(this->waylay_map, original.waylay_map);
-    //std::move(this->leads_to, original.leads_to);
+    std::swap(this->first_distance, original.first_distance);
+    std::swap(this->last_distance, original.last_distance);
+    std::swap(this->waylay_die, original.waylay_die);
+    std::swap(this->waylay_dice, original.waylay_dice);
+    std::swap(this->waylay_risk, original.waylay_risk);
+    std::swap(this->direction, original.direction);
+    std::swap(this->waylay_map, original.waylay_map);
+    std::swap(this->leads_to, original.leads_to);
   }
   
   
@@ -164,14 +164,14 @@ namespace tbrpg
   Road& Road::operator =(Road&& original)
   {
     (void) original;
-    //std::swap(this->first_distance, original.first_distance);
-    //std::swap(this->last_distance, original.last_distance);
-    //std::swap(this->waylay_die, original.waylay_die);
-    //std::swap(this->waylay_dice, original.waylay_dice);
-    //std::swap(this->waylay_risk, original.waylay_risk);
-    //std::move(this->direction, original.direction);
-    //std::move(this->waylay_map, original.waylay_map);
-    //std::move(this->leads_to, original.leads_to);
+    std::swap(this->first_distance, original.first_distance);
+    std::swap(this->last_distance, original.last_distance);
+    std::swap(this->waylay_die, original.waylay_die);
+    std::swap(this->waylay_dice, original.waylay_dice);
+    std::swap(this->waylay_risk, original.waylay_risk);
+    std::swap(this->direction, original.direction);
+    std::swap(this->waylay_map, original.waylay_map);
+    std::swap(this->leads_to, original.leads_to);
     return *this;
   }
   

@@ -39,6 +39,8 @@ namespace tbrpg
     //this->description = nullptr;
     //this->may_rest = false;
     //this->area = 0;
+    //this->road_count = 0;
+    //this->connection_count = 0;
     //this->roads = nullptr;
     //this->connections = nullptr;
     //this->items = nullptr;
@@ -58,6 +60,8 @@ namespace tbrpg
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
+    this->road_count = original.road_count;
+    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -77,6 +81,8 @@ namespace tbrpg
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
+    this->road_count = original.road_count;
+    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -93,15 +99,17 @@ namespace tbrpg
   MapMinor::MapMinor(MapMinor&& original)
   {
     (void) original;
-    //std::move(this->description, original.description);
-    //std::swap(this->may_rest, original.may_rest);
-    //std::swap(this->area, original.area);
-    //std::move(this->roads, original.roads);
-    //std::move(this->connections, original.connections);
-    //std::move(this->items, original.items);
-    //std::move(this->creatures, original.creatures);
-    //std::move(this->is_in, original.is_in);
-    //std::move(this->interruptions, original.interruptions);
+    std::swap(this->description, original.description);
+    std::swap(this->may_rest, original.may_rest);
+    std::swap(this->area, original.area);
+    std::swap(this->road_count, original.road_count);
+    std::swap(this->connection_count, original.connection_count);
+    std::swap(this->roads, original.roads);
+    std::swap(this->connections, original.connections);
+    std::swap(this->items, original.items);
+    std::swap(this->creatures, original.creatures);
+    std::swap(this->is_in, original.is_in);
+    std::swap(this->interruptions, original.interruptions);
   }
   
   
@@ -135,6 +143,8 @@ namespace tbrpg
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
+    this->road_count = original.road_count;
+    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -156,6 +166,8 @@ namespace tbrpg
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
+    this->road_count = original.road_count;
+    this->connection_count = original.connection_count;
     this->roads = original.roads;
     this->connections = original.connections;
     this->items = original.items;
@@ -174,15 +186,17 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
     (void) original;
-    //std::move(this->description, original.description);
-    //std::swap(this->may_rest, original.may_rest);
-    //std::swap(this->area, original.area);
-    //std::move(this->roads, original.roads);
-    //std::move(this->connections, original.connections);
-    //std::move(this->items, original.items);
-    //std::move(this->creatures, original.creatures);
-    //std::move(this->is_in, original.is_in);
-    //std::move(this->interruptions, original.interruptions);
+    std::swap(this->description, original.description);
+    std::swap(this->may_rest, original.may_rest);
+    std::swap(this->area, original.area);
+    std::swap(this->road_count, original.road_count);
+    std::swap(this->connection_count, original.connection_count);
+    std::swap(this->roads, original.roads);
+    std::swap(this->connections, original.connections);
+    std::swap(this->items, original.items);
+    std::swap(this->creatures, original.creatures);
+    std::swap(this->is_in, original.is_in);
+    std::swap(this->interruptions, original.interruptions);
     return *this;
   }
   

@@ -72,8 +72,8 @@ namespace tbrpg
   Race::Race(Race&& original)
   {
     (void) original;
-    //std::move(this->allowed_classes, original.allowed_classes);
-    //std::move(this->bonuses, original.bonuses);
+    std::swap(this->allowed_classes, original.allowed_classes);
+    std::swap(this->bonuses, original.bonuses);
   }
   
   
@@ -127,8 +127,8 @@ namespace tbrpg
   Race& Race::operator =(Race&& original)
   {
     (void) original;
-    //std::move(this->allowed_classes, original.allowed_classes);
-    //std::move(this->bonuses, original.bonuses);
+    std::swap(this->allowed_classes, original.allowed_classes);
+    std::swap(this->bonuses, original.bonuses);
     return *this;
   }
   

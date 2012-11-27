@@ -69,7 +69,7 @@ namespace tbrpg
   DamageType::DamageType(DamageType&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
+    std::swap(this->name, original.name);
   }
   
   
@@ -120,7 +120,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
+    std::swap(this->name, original.name);
     return *this;
   }
   

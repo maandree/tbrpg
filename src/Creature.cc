@@ -81,11 +81,11 @@ namespace tbrpg
   Creature::Creature(Creature&& original) : Character(original)
   {
     (void) original;
-    //std::swap(this->hostile, original.hostile);
-    //std::swap(this->x, original.x);
-    //std::swap(this->y, original.y);
-    //std::swap(this->alive, original.alive);
-    //std::swap(this->resurrect, original.resurrect);
+    std::swap(this->hostile, original.hostile);
+    std::swap(this->x, original.x);
+    std::swap(this->y, original.y);
+    std::swap(this->alive, original.alive);
+    std::swap(this->resurrect, original.resurrect);
   }
   
   
@@ -151,15 +151,15 @@ namespace tbrpg
   Creature& Creature::operator =(Creature&& original)
   {
     (void) original;
-    //std::move((Character&)*this, (Character&)original);
-    //std::move((Character&)*this, (Character&)original);
-    //std::move((Character&)*this, (Character&)original);
-    //std::move((Character&)*this, (Character&)original);
-    //std::move((Character&)*this, (Character&)original);    //std::swap(this->hostile, original.hostile);
-    //std::swap(this->x, original.x);
-    //std::swap(this->y, original.y);
-    //std::swap(this->alive, original.alive);
-    //std::swap(this->resurrect, original.resurrect);
+    std::swap((Character&)*this, (Character&)original);
+    std::swap((Character&)*this, (Character&)original);
+    std::swap((Character&)*this, (Character&)original);
+    std::swap((Character&)*this, (Character&)original);
+    std::swap((Character&)*this, (Character&)original);    std::swap(this->hostile, original.hostile);
+    std::swap(this->x, original.x);
+    std::swap(this->y, original.y);
+    std::swap(this->alive, original.alive);
+    std::swap(this->resurrect, original.resurrect);
     return *this;
   }
   

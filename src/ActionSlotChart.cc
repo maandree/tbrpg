@@ -72,8 +72,8 @@ namespace tbrpg
   ActionSlotChart::ActionSlotChart(ActionSlotChart&& original)
   {
     (void) original;
-    //std::move(this->index_map, original.index_map);
-    //std::move(this->slot_map, original.slot_map);
+    std::swap(this->index_map, original.index_map);
+    std::swap(this->slot_map, original.slot_map);
   }
   
   
@@ -127,8 +127,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart&& original)
   {
     (void) original;
-    //std::move(this->index_map, original.index_map);
-    //std::move(this->slot_map, original.slot_map);
+    std::swap(this->index_map, original.index_map);
+    std::swap(this->slot_map, original.slot_map);
     return *this;
   }
   

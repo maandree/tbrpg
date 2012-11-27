@@ -87,13 +87,13 @@ namespace tbrpg
   AbilityChart::AbilityChart(AbilityChart&& original)
   {
     (void) original;
-    //std::move(this->strength, original.strength);
-    //std::move(this->strength18, original.strength18);
-    //std::move(this->dexterity, original.dexterity);
-    //std::move(this->constitution, original.constitution);
-    //std::move(this->intelligence, original.intelligence);
-    //std::move(this->wisdom, original.wisdom);
-    //std::move(this->charisma, original.charisma);
+    std::swap(this->strength, original.strength);
+    std::swap(this->strength18, original.strength18);
+    std::swap(this->dexterity, original.dexterity);
+    std::swap(this->constitution, original.constitution);
+    std::swap(this->intelligence, original.intelligence);
+    std::swap(this->wisdom, original.wisdom);
+    std::swap(this->charisma, original.charisma);
   }
   
   
@@ -162,13 +162,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(AbilityChart&& original)
   {
     (void) original;
-    //std::move(this->strength, original.strength);
-    //std::move(this->strength18, original.strength18);
-    //std::move(this->dexterity, original.dexterity);
-    //std::move(this->constitution, original.constitution);
-    //std::move(this->intelligence, original.intelligence);
-    //std::move(this->wisdom, original.wisdom);
-    //std::move(this->charisma, original.charisma);
+    std::swap(this->strength, original.strength);
+    std::swap(this->strength18, original.strength18);
+    std::swap(this->dexterity, original.dexterity);
+    std::swap(this->constitution, original.constitution);
+    std::swap(this->intelligence, original.intelligence);
+    std::swap(this->wisdom, original.wisdom);
+    std::swap(this->charisma, original.charisma);
     return *this;
   }
   

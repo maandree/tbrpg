@@ -72,8 +72,8 @@ namespace tbrpg
   Map::Map(Map&& original)
   {
     (void) original;
-    //std::move(this->start, original.start);
-    //std::move(this->majors, original.majors);
+    std::swap(this->start, original.start);
+    std::swap(this->majors, original.majors);
   }
   
   
@@ -127,8 +127,8 @@ namespace tbrpg
   Map& Map::operator =(Map&& original)
   {
     (void) original;
-    //std::move(this->start, original.start);
-    //std::move(this->majors, original.majors);
+    std::swap(this->start, original.start);
+    std::swap(this->majors, original.majors);
     return *this;
   }
   

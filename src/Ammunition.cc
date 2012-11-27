@@ -84,12 +84,12 @@ namespace tbrpg
   Ammunition::Ammunition(Ammunition&& original) : Item(original)
   {
     (void) original;
-    //std::swap(this->hit_bonus, original.hit_bonus);
-    //std::swap(this->damage_die, original.damage_die);
-    //std::swap(this->damage_dice, original.damage_dice);
-    //std::swap(this->damage_bonus, original.damage_bonus);
-    //std::move(this->usable_with, original.usable_with);
-    //std::move(this->damage_type, original.damage_type);
+    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap(this->damage_die, original.damage_die);
+    std::swap(this->damage_dice, original.damage_dice);
+    std::swap(this->damage_bonus, original.damage_bonus);
+    std::swap(this->usable_with, original.usable_with);
+    std::swap(this->damage_type, original.damage_type);
   }
   
   
@@ -161,17 +161,17 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
     (void) original;
-    //std::move((Item&)*this, (Item&)original);
-    //std::move((Item&)*this, (Item&)original);
-    //std::move((Item&)*this, (Item&)original);
-    //std::move((Item&)*this, (Item&)original);
-    //std::move((Item&)*this, (Item&)original);
-    //std::move((Item&)*this, (Item&)original);    //std::swap(this->hit_bonus, original.hit_bonus);
-    //std::swap(this->damage_die, original.damage_die);
-    //std::swap(this->damage_dice, original.damage_dice);
-    //std::swap(this->damage_bonus, original.damage_bonus);
-    //std::move(this->usable_with, original.usable_with);
-    //std::move(this->damage_type, original.damage_type);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap((Item&)*this, (Item&)original);    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap(this->damage_die, original.damage_die);
+    std::swap(this->damage_dice, original.damage_dice);
+    std::swap(this->damage_bonus, original.damage_bonus);
+    std::swap(this->usable_with, original.usable_with);
+    std::swap(this->damage_type, original.damage_type);
     return *this;
   }
   

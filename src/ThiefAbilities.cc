@@ -78,10 +78,10 @@ namespace tbrpg
   ThiefAbilities::ThiefAbilities(ThiefAbilities&& original)
   {
     (void) original;
-    //std::swap(this->find_traps, original.find_traps);
-    //std::swap(this->open_locks, original.open_locks);
-    //std::swap(this->pick_pockets, original.pick_pockets);
-    //std::swap(this->stealth, original.stealth);
+    std::swap(this->find_traps, original.find_traps);
+    std::swap(this->open_locks, original.open_locks);
+    std::swap(this->pick_pockets, original.pick_pockets);
+    std::swap(this->stealth, original.stealth);
   }
   
   
@@ -137,10 +137,10 @@ namespace tbrpg
   ThiefAbilities& ThiefAbilities::operator =(ThiefAbilities&& original)
   {
     (void) original;
-    //std::swap(this->find_traps, original.find_traps);
-    //std::swap(this->open_locks, original.open_locks);
-    //std::swap(this->pick_pockets, original.pick_pockets);
-    //std::swap(this->stealth, original.stealth);
+    std::swap(this->find_traps, original.find_traps);
+    std::swap(this->open_locks, original.open_locks);
+    std::swap(this->pick_pockets, original.pick_pockets);
+    std::swap(this->stealth, original.stealth);
     return *this;
   }
   

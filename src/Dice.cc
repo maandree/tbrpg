@@ -36,7 +36,7 @@ namespace tbrpg
    * @param  dieCount   The number of dice
    * @param  sideCount  The number of sides on the dice
    */
-  Dice(int dieCount, int sideCount)
+  Dice::Dice(int dieCount, int sideCount)
   {
     this->count = dieCount;
     this->die = Die(sideCount);
@@ -49,8 +49,8 @@ namespace tbrpg
    */
   Dice::Dice(const Dice& original)
   {
-    this->die = original.die
-    this->sides = original.sides;
+    this->die = original.die;
+    this->count = original.count;
   }
   
   /**
@@ -61,7 +61,7 @@ namespace tbrpg
   Dice::Dice(Dice& original)
   {
     this->die = original.die;
-    this->sides = original.sides;
+    this->count = original.count;
   }
   
   /**
@@ -95,8 +95,8 @@ namespace tbrpg
    */
   Dice& Dice::operator =(const Dice& original)
   {
-    this->die = original.die
-    this->sides = original.sides;
+    this->die = original.die;
+    this->count = original.count;
     return *this;
   }
   
@@ -108,8 +108,8 @@ namespace tbrpg
    */
   Dice& Dice::operator =(Dice& original)
   {
-    this->die = original.die
-    this->sides = original.sides;
+    this->die = original.die;
+    this->count = original.count;
     return *this;
   }
   
@@ -133,7 +133,7 @@ namespace tbrpg
    * 
    * @return  The number of dice
    */
-  virtual int getCount() const
+  int Dice::getCount() const
   {
     this->count;
   }
@@ -145,7 +145,7 @@ namespace tbrpg
    */
   int Dice::getSides() const
   {
-    return this->die.sides;
+    return this->die.getSides();
   }
   
   /**

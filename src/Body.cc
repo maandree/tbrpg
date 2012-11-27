@@ -69,7 +69,7 @@ namespace tbrpg
   Body::Body(Body&& original) : Item(original)
   {
     (void) original;
-    //std::move(this->character, original.character);
+    std::swap(this->character, original.character);
   }
   
   
@@ -120,7 +120,7 @@ namespace tbrpg
   Body& Body::operator =(Body&& original)
   {
     (void) original;
-    //std::move((Item&)*this, (Item&)original);    //std::move(this->character, original.character);
+    std::swap((Item&)*this, (Item&)original);    std::swap(this->character, original.character);
     return *this;
   }
   

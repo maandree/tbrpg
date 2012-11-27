@@ -105,19 +105,19 @@ namespace tbrpg
   Inventory::Inventory(Inventory&& original)
   {
     (void) original;
-    //std::move(this->left_hand, original.left_hand);
-    //std::move(this->right_hand, original.right_hand);
-    //std::move(this->quiver, original.quiver);
-    //std::move(this->quick_items, original.quick_items);
-    //std::move(this->headgear, original.headgear);
-    //std::move(this->amulett, original.amulett);
-    //std::move(this->rings, original.rings);
-    //std::move(this->body, original.body);
-    //std::move(this->gauntlets, original.gauntlets);
-    //std::move(this->girdle, original.girdle);
-    //std::move(this->boots, original.boots);
-    //std::move(this->cloak, original.cloak);
-    //std::move(this->personal, original.personal);
+    std::swap(this->left_hand, original.left_hand);
+    std::swap(this->right_hand, original.right_hand);
+    std::swap(this->quiver, original.quiver);
+    std::swap(this->quick_items, original.quick_items);
+    std::swap(this->headgear, original.headgear);
+    std::swap(this->amulett, original.amulett);
+    std::swap(this->rings, original.rings);
+    std::swap(this->body, original.body);
+    std::swap(this->gauntlets, original.gauntlets);
+    std::swap(this->girdle, original.girdle);
+    std::swap(this->boots, original.boots);
+    std::swap(this->cloak, original.cloak);
+    std::swap(this->personal, original.personal);
   }
   
   
@@ -204,19 +204,19 @@ namespace tbrpg
   Inventory& Inventory::operator =(Inventory&& original)
   {
     (void) original;
-    //std::move(this->left_hand, original.left_hand);
-    //std::move(this->right_hand, original.right_hand);
-    //std::move(this->quiver, original.quiver);
-    //std::move(this->quick_items, original.quick_items);
-    //std::move(this->headgear, original.headgear);
-    //std::move(this->amulett, original.amulett);
-    //std::move(this->rings, original.rings);
-    //std::move(this->body, original.body);
-    //std::move(this->gauntlets, original.gauntlets);
-    //std::move(this->girdle, original.girdle);
-    //std::move(this->boots, original.boots);
-    //std::move(this->cloak, original.cloak);
-    //std::move(this->personal, original.personal);
+    std::swap(this->left_hand, original.left_hand);
+    std::swap(this->right_hand, original.right_hand);
+    std::swap(this->quiver, original.quiver);
+    std::swap(this->quick_items, original.quick_items);
+    std::swap(this->headgear, original.headgear);
+    std::swap(this->amulett, original.amulett);
+    std::swap(this->rings, original.rings);
+    std::swap(this->body, original.body);
+    std::swap(this->gauntlets, original.gauntlets);
+    std::swap(this->girdle, original.girdle);
+    std::swap(this->boots, original.boots);
+    std::swap(this->cloak, original.cloak);
+    std::swap(this->personal, original.personal);
     return *this;
   }
   

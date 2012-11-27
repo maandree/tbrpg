@@ -69,7 +69,7 @@ namespace tbrpg
   RangedWeapon::RangedWeapon(RangedWeapon&& original) : Weapon(original)
   {
     (void) original;
-    //std::swap(this->rate_of_fire, original.rate_of_fire);
+    std::swap(this->rate_of_fire, original.rate_of_fire);
   }
   
   
@@ -119,7 +119,7 @@ namespace tbrpg
   RangedWeapon& RangedWeapon::operator =(RangedWeapon&& original)
   {
     (void) original;
-    //std::move((Weapon&)*this, (Weapon&)original);    //std::swap(this->rate_of_fire, original.rate_of_fire);
+    std::swap((Weapon&)*this, (Weapon&)original);    std::swap(this->rate_of_fire, original.rate_of_fire);
     return *this;
   }
   

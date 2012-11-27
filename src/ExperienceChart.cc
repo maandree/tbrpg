@@ -90,14 +90,14 @@ namespace tbrpg
   ExperienceChart::ExperienceChart(ExperienceChart&& original)
   {
     (void) original;
-    //std::move(this->experience, original.experience);
-    //std::move(this->hit_point_die, original.hit_point_die);
-    //std::move(this->hit_point_dice, original.hit_point_dice);
-    //std::move(this->hit_point_bonus, original.hit_point_bonus);
-    //std::move(this->selectable_wizard, original.selectable_wizard);
-    //std::move(this->selectable_priest, original.selectable_priest);
-    //std::move(this->new_spells, original.new_spells);
-    //std::move(this->proficiencies, original.proficiencies);
+    std::swap(this->experience, original.experience);
+    std::swap(this->hit_point_die, original.hit_point_die);
+    std::swap(this->hit_point_dice, original.hit_point_dice);
+    std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    std::swap(this->selectable_wizard, original.selectable_wizard);
+    std::swap(this->selectable_priest, original.selectable_priest);
+    std::swap(this->new_spells, original.new_spells);
+    std::swap(this->proficiencies, original.proficiencies);
   }
   
   
@@ -169,14 +169,14 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(ExperienceChart&& original)
   {
     (void) original;
-    //std::move(this->experience, original.experience);
-    //std::move(this->hit_point_die, original.hit_point_die);
-    //std::move(this->hit_point_dice, original.hit_point_dice);
-    //std::move(this->hit_point_bonus, original.hit_point_bonus);
-    //std::move(this->selectable_wizard, original.selectable_wizard);
-    //std::move(this->selectable_priest, original.selectable_priest);
-    //std::move(this->new_spells, original.new_spells);
-    //std::move(this->proficiencies, original.proficiencies);
+    std::swap(this->experience, original.experience);
+    std::swap(this->hit_point_die, original.hit_point_die);
+    std::swap(this->hit_point_dice, original.hit_point_dice);
+    std::swap(this->hit_point_bonus, original.hit_point_bonus);
+    std::swap(this->selectable_wizard, original.selectable_wizard);
+    std::swap(this->selectable_priest, original.selectable_priest);
+    std::swap(this->new_spells, original.new_spells);
+    std::swap(this->proficiencies, original.proficiencies);
     return *this;
   }
   

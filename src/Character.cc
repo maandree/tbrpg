@@ -84,12 +84,12 @@ namespace tbrpg
   Character::Character(Character&& original)
   {
     (void) original;
-    //std::swap(this->hit_points, original.hit_points);
-    //std::swap(this->alive, original.alive);
-    //std::swap(this->morale, original.morale);
-    //std::swap(this->intoxication, original.intoxication);
-    //std::swap(this->fatigue, original.fatigue);
-    //std::move(this->record, original.record);
+    std::swap(this->hit_points, original.hit_points);
+    std::swap(this->alive, original.alive);
+    std::swap(this->morale, original.morale);
+    std::swap(this->intoxication, original.intoxication);
+    std::swap(this->fatigue, original.fatigue);
+    std::swap(this->record, original.record);
   }
   
   
@@ -150,12 +150,12 @@ namespace tbrpg
   Character& Character::operator =(Character&& original)
   {
     (void) original;
-    //std::swap(this->hit_points, original.hit_points);
-    //std::swap(this->alive, original.alive);
-    //std::swap(this->morale, original.morale);
-    //std::swap(this->intoxication, original.intoxication);
-    //std::swap(this->fatigue, original.fatigue);
-    //std::move(this->record, original.record);
+    std::swap(this->hit_points, original.hit_points);
+    std::swap(this->alive, original.alive);
+    std::swap(this->morale, original.morale);
+    std::swap(this->intoxication, original.intoxication);
+    std::swap(this->fatigue, original.fatigue);
+    std::swap(this->record, original.record);
     return *this;
   }
   

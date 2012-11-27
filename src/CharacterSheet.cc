@@ -123,25 +123,25 @@ namespace tbrpg
   CharacterSheet::CharacterSheet(CharacterSheet&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
-    //std::move(this->biography, original.biography);
-    //std::swap(this->colour, original.colour);
-    //std::swap(this->alignment, original.alignment);
-    //std::move(this->portrait, original.portrait);
-    //std::swap(this->female, original.female);
-    //std::move(this->experience, original.experience);
-    //std::move(this->level, original.level);
-    //std::move(this->class_abondoned, original.class_abondoned);
-    //std::move(this->proficiencies, original.proficiencies);
-    //std::move(this->affected_by, original.affected_by);
-    //std::move(this->inventory, original.inventory);
-    //std::move(this->abilities, original.abilities);
-    //std::move(this->spells, original.spells);
-    //std::move(this->race, original.race);
-    //std::move(this->racial_enemy, original.racial_enemy);
-    //std::move(this->prestige, original.prestige);
-    //std::move(this->specialisation, original.specialisation);
-    //std::move(this->special_abilities, original.special_abilities);
+    std::swap(this->name, original.name);
+    std::swap(this->biography, original.biography);
+    std::swap(this->colour, original.colour);
+    std::swap(this->alignment, original.alignment);
+    std::swap(this->portrait, original.portrait);
+    std::swap(this->female, original.female);
+    std::swap(this->experience, original.experience);
+    std::swap(this->level, original.level);
+    std::swap(this->class_abondoned, original.class_abondoned);
+    std::swap(this->proficiencies, original.proficiencies);
+    std::swap(this->affected_by, original.affected_by);
+    std::swap(this->inventory, original.inventory);
+    std::swap(this->abilities, original.abilities);
+    std::swap(this->spells, original.spells);
+    std::swap(this->race, original.race);
+    std::swap(this->racial_enemy, original.racial_enemy);
+    std::swap(this->prestige, original.prestige);
+    std::swap(this->specialisation, original.specialisation);
+    std::swap(this->special_abilities, original.special_abilities);
   }
   
   
@@ -243,25 +243,25 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
     (void) original;
-    //std::move(this->name, original.name);
-    //std::move(this->biography, original.biography);
-    //std::swap(this->colour, original.colour);
-    //std::swap(this->alignment, original.alignment);
-    //std::move(this->portrait, original.portrait);
-    //std::swap(this->female, original.female);
-    //std::move(this->experience, original.experience);
-    //std::move(this->level, original.level);
-    //std::move(this->class_abondoned, original.class_abondoned);
-    //std::move(this->proficiencies, original.proficiencies);
-    //std::move(this->affected_by, original.affected_by);
-    //std::move(this->inventory, original.inventory);
-    //std::move(this->abilities, original.abilities);
-    //std::move(this->spells, original.spells);
-    //std::move(this->race, original.race);
-    //std::move(this->racial_enemy, original.racial_enemy);
-    //std::move(this->prestige, original.prestige);
-    //std::move(this->specialisation, original.specialisation);
-    //std::move(this->special_abilities, original.special_abilities);
+    std::swap(this->name, original.name);
+    std::swap(this->biography, original.biography);
+    std::swap(this->colour, original.colour);
+    std::swap(this->alignment, original.alignment);
+    std::swap(this->portrait, original.portrait);
+    std::swap(this->female, original.female);
+    std::swap(this->experience, original.experience);
+    std::swap(this->level, original.level);
+    std::swap(this->class_abondoned, original.class_abondoned);
+    std::swap(this->proficiencies, original.proficiencies);
+    std::swap(this->affected_by, original.affected_by);
+    std::swap(this->inventory, original.inventory);
+    std::swap(this->abilities, original.abilities);
+    std::swap(this->spells, original.spells);
+    std::swap(this->race, original.race);
+    std::swap(this->racial_enemy, original.racial_enemy);
+    std::swap(this->prestige, original.prestige);
+    std::swap(this->specialisation, original.specialisation);
+    std::swap(this->special_abilities, original.special_abilities);
     return *this;
   }
   

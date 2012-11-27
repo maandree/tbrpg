@@ -111,21 +111,21 @@ namespace tbrpg
   Class::Class(Class&& original)
   {
     (void) original;
-    //std::swap(this->hit_points, original.hit_points);
-    //std::swap(this->thac0, original.thac0);
-    //std::swap(this->lore_bonus, original.lore_bonus);
-    //std::move(this->alignments, original.alignments);
-    //std::swap(this->learn_from_scroll, original.learn_from_scroll);
-    //std::swap(this->proficiencies_each, original.proficiencies_each);
-    //std::move(this->experience_chart, original.experience_chart);
-    //std::move(this->spell_progression, original.spell_progression);
-    //std::move(this->abilities, original.abilities);
-    //std::move(this->lower_limits, original.lower_limits);
-    //std::move(this->special_abilities, original.special_abilities);
-    //std::move(this->can_use, original.can_use);
-    //std::move(this->proficiency_chart, original.proficiency_chart);
-    //std::move(this->default_one_hand, original.default_one_hand);
-    //std::move(this->default_two_hand, original.default_two_hand);
+    std::swap(this->hit_points, original.hit_points);
+    std::swap(this->thac0, original.thac0);
+    std::swap(this->lore_bonus, original.lore_bonus);
+    std::swap(this->alignments, original.alignments);
+    std::swap(this->learn_from_scroll, original.learn_from_scroll);
+    std::swap(this->proficiencies_each, original.proficiencies_each);
+    std::swap(this->experience_chart, original.experience_chart);
+    std::swap(this->spell_progression, original.spell_progression);
+    std::swap(this->abilities, original.abilities);
+    std::swap(this->lower_limits, original.lower_limits);
+    std::swap(this->special_abilities, original.special_abilities);
+    std::swap(this->can_use, original.can_use);
+    std::swap(this->proficiency_chart, original.proficiency_chart);
+    std::swap(this->default_one_hand, original.default_one_hand);
+    std::swap(this->default_two_hand, original.default_two_hand);
   }
   
   
@@ -213,21 +213,21 @@ namespace tbrpg
   Class& Class::operator =(Class&& original)
   {
     (void) original;
-    //std::swap(this->hit_points, original.hit_points);
-    //std::swap(this->thac0, original.thac0);
-    //std::swap(this->lore_bonus, original.lore_bonus);
-    //std::move(this->alignments, original.alignments);
-    //std::swap(this->learn_from_scroll, original.learn_from_scroll);
-    //std::swap(this->proficiencies_each, original.proficiencies_each);
-    //std::move(this->experience_chart, original.experience_chart);
-    //std::move(this->spell_progression, original.spell_progression);
-    //std::move(this->abilities, original.abilities);
-    //std::move(this->lower_limits, original.lower_limits);
-    //std::move(this->special_abilities, original.special_abilities);
-    //std::move(this->can_use, original.can_use);
-    //std::move(this->proficiency_chart, original.proficiency_chart);
-    //std::move(this->default_one_hand, original.default_one_hand);
-    //std::move(this->default_two_hand, original.default_two_hand);
+    std::swap(this->hit_points, original.hit_points);
+    std::swap(this->thac0, original.thac0);
+    std::swap(this->lore_bonus, original.lore_bonus);
+    std::swap(this->alignments, original.alignments);
+    std::swap(this->learn_from_scroll, original.learn_from_scroll);
+    std::swap(this->proficiencies_each, original.proficiencies_each);
+    std::swap(this->experience_chart, original.experience_chart);
+    std::swap(this->spell_progression, original.spell_progression);
+    std::swap(this->abilities, original.abilities);
+    std::swap(this->lower_limits, original.lower_limits);
+    std::swap(this->special_abilities, original.special_abilities);
+    std::swap(this->can_use, original.can_use);
+    std::swap(this->proficiency_chart, original.proficiency_chart);
+    std::swap(this->default_one_hand, original.default_one_hand);
+    std::swap(this->default_two_hand, original.default_two_hand);
     return *this;
   }
   

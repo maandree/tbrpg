@@ -81,11 +81,11 @@ namespace tbrpg
   Lockable::Lockable(Lockable&& original)
   {
     (void) original;
-    //std::swap(this->locked, original.locked);
-    //std::swap(this->pick_level, original.pick_level);
-    //std::swap(this->bash_level, original.bash_level);
-    //std::swap(this->pickable, original.pickable);
-    //std::swap(this->bashable, original.bashable);
+    std::swap(this->locked, original.locked);
+    std::swap(this->pick_level, original.pick_level);
+    std::swap(this->bash_level, original.bash_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->bashable, original.bashable);
   }
   
   
@@ -143,11 +143,11 @@ namespace tbrpg
   Lockable& Lockable::operator =(Lockable&& original)
   {
     (void) original;
-    //std::swap(this->locked, original.locked);
-    //std::swap(this->pick_level, original.pick_level);
-    //std::swap(this->bash_level, original.bash_level);
-    //std::swap(this->pickable, original.pickable);
-    //std::swap(this->bashable, original.bashable);
+    std::swap(this->locked, original.locked);
+    std::swap(this->pick_level, original.pick_level);
+    std::swap(this->bash_level, original.bash_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->bashable, original.bashable);
     return *this;
   }
   
