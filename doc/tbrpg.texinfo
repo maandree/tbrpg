@@ -686,7 +686,7 @@ is allowed.
 @tab  @b{Carry limit}
 @tab  @b{Bashing %}
 @item  1        @tab −5  @tab −2   @tab 1,75   @tab 0
-@item  2        @tab −5  @tab −2   @tab 1      @tab 1
+@item  2        @tab −5  @tab −2   @tab 2      @tab 1
 @item  3        @tab −3  @tab −1   @tab 2,25   @tab 3
 @item  4        @tab −2  @tab −1   @tab 6,75   @tab 4
 @item  5        @tab −2  @tab −1   @tab 6,75   @tab 4
@@ -699,9 +699,9 @@ is allowed.
 @item 12        @tab 0   @tab 0    @tab 40,5   @tab 12
 @item 13        @tab 0   @tab 0    @tab 40,5   @tab 12
 @item 14        @tab 0   @tab 0    @tab 45     @tab 14
-@item 15        @tab 0   @tab 0    @tab 54     @tab 14
+@item 15        @tab 0   @tab 0    @tab 45     @tab 14
 @item 16        @tab 0   @tab +1   @tab 67,5   @tab 16
-@item 17        @tab +1  @tab +1   @tab 76,5   @tab 18
+@item 17        @tab +1  @tab +1   @tab 67,5   @tab 18
 @item 18        @tab +1  @tab +2   @tab 90     @tab 20
 @item 18/01–50  @tab +1  @tab +3   @tab 99     @tab 25
 @item 18/51–75  @tab +2  @tab +3   @tab 112,5  @tab 30
@@ -844,7 +844,7 @@ always be successful.
 @tab  @b{Spell learn %}
 @tab  @b{@w{Maximum spell} count per level}
 @tab  @b{Lore bonus}
-@item  1  @tab none  @tab 0    @tab 0          @tab −30
+@item  1  @tab 0th   @tab 0    @tab 0          @tab −30
 @item  2  @tab 1st   @tab 1    @tab 0          @tab −30
 @item  3  @tab 1st   @tab 5    @tab 1          @tab −20
 @item  4  @tab 2nd   @tab 10   @tab 1          @tab −20
@@ -900,7 +900,7 @@ lore bonus from the wisdom.
 @tab  @b{Bonus spells}
 @tab  @b{Spell Failure %}
 @tab  @b{Lore bonus}
-@item  1  @tab −5  @tab none      @tab 50  @tab −30
+@item  1  @tab −5  @tab none      @tab 60  @tab −30
 @item  2  @tab −4  @tab none      @tab 55  @tab −30
 @item  3  @tab −3  @tab none      @tab 50  @tab −20
 @item  4  @tab −2  @tab none      @tab 45  @tab −20

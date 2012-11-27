@@ -116,14 +116,14 @@ namespace tbrpg
      * 
      * @return  The number of sides on the die
      */
-    virtual char getSides() const;
+    inline char getSides() const;
     
     /**
      * Roll the die
      * 
      * @return  The number of eyes on the die's value side
      */
-    virtual char roll() const;
+    inline char roll() const;
     
   };
 }

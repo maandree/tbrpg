@@ -124,21 +124,21 @@ namespace tbrpg
      * 
      * @return  The number of dice
      */
-    virtual char getCount() const;
+    inline char getCount() const;
     
     /**
      * Gets the number of sides on the dice
      * 
      * @return  The number of sides on the dice
      */
-    virtual char getSides() const;
+    inline char getSides() const;
     
     /**
      * Roll the dice
      * 
      * @return  The number of eyes on the dice's value side
      */
-    virtual int roll() const;
+    inline int roll() const;
     
   };
 }

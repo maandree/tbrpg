@@ -133,7 +133,7 @@ namespace tbrpg
    * 
    * @return  The number of dice
    */
-  char Dice::getCount() const
+  inline char Dice::getCount() const
   {
     return this->count;
   }
@@ -143,7 +143,7 @@ namespace tbrpg
    * 
    * @return  The number of sides on the dice
    */
-  char Dice::getSides() const
+  inline char Dice::getSides() const
   {
     return this->die.getSides();
   }
@@ -153,7 +153,7 @@ namespace tbrpg
    * 
    * @return  The number of eyes on the dice's value side
    */
-  int Dice::roll() const
+  inline int Dice::roll() const
   {
     int sum = 0;
     for (int i = 0; i < this->count; i++)
