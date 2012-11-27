@@ -593,7 +593,7 @@ Spells that alters the physical reality.
 @tab  invocation
 @item Illusionist
 @tab  illusion
-@tab  multicolored
+@tab  multicoloured
 @tab  necromancy
 @item Invoker
 @tab  invocation
