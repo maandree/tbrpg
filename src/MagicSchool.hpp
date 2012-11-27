@@ -28,8 +28,6 @@
 
 
 
-#include "MagicSchool.hpp"
-
 
 /**
  * Text based roll playing game
