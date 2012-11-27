@@ -34,6 +34,7 @@
 #include "Abilities.hpp"
 #include "Spell.hpp"
 #include "Item.hpp"
+#include "MagicSchool.hpp"
 #include "WeaponGroup.hpp"
 #include "Proficiency.hpp"
 #include "Weapon.hpp"
@@ -108,12 +109,17 @@ namespace tbrpg
     /**
      * Special abilities
      */
-    Spell* special_abilities;
+    std::vector<Spell> special_abilities;
     
     /**
      * Usable items
      */
-    Item* can_use;
+    std::vector<Item> can_use;
+    
+    /**
+     * Availiable specialisations for the class
+     */
+    std::vector<MagicSchool> specialisations;
     
     /**
      * Proficiency chart
