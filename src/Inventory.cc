@@ -35,20 +35,19 @@ namespace tbrpg
    */
   Inventory::Inventory()
   {
-    ////TODO implement constructor
-    //this->left_hand = nullptr;
+    this->left_hand = std::vector<Weapon>(1);
     //this->right_hand = nullptr;
-    //this->quiver = nullptr;
-    //this->quick_items = nullptr;
+    this->quiver = std::vector<Ammunition>(3);
+    this->quick_items = std::vector<QuickItem>(3);
     //this->headgear = nullptr;
     //this->amulett = nullptr;
-    //this->rings = nullptr;
+    this->rings = std::vector<Ring>(2);
     //this->body = nullptr;
     //this->gauntlets = nullptr;
     //this->girdle = nullptr;
     //this->boots = nullptr;
     //this->cloak = nullptr;
-    //this->personal = nullptr;
+    this->personal = std::vector<Item>(16);
   }
   
   /**
@@ -127,20 +126,7 @@ namespace tbrpg
    */
   Inventory::~Inventory()
   {
-    ////TODO implement destructor
-    //delete left_hand;
-    //delete right_hand;
-    //delete quiver;
-    //delete quick_items;
-    //delete headgear;
-    //delete amulett;
-    //delete rings;
-    //delete body;
-    //delete gauntlets;
-    //delete girdle;
-    //delete boots;
-    //delete cloak;
-    //delete personal;
+    // do nothing
   }
   
   
