@@ -35,7 +35,45 @@ namespace tbrpg
    */
   Ranger::Ranger() : Warrior()
   {
-    ////TODO implement constructor
+    this->spell_progression.priest_slots = std::vector<std::vector<int>>(17);
+    for (int i = 0; i <= 16; i++)
+      this->spell_progression.priest_slots[i] = std::vector<int>(4);
+    
+    for (int cur = 0, i = 0; i <= 16; i++)
+      {
+	switch (cur)
+	  {
+	  case 8:
+	  case 9:
+	  case 13:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][1] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 16; i++)
+      {
+	switch (cur)
+	  {
+	  case 10:
+	  case 11:
+	  case 15:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][2] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 16; i++)
+      {
+	switch (cur)
+	  {
+	  case 12:
+	  case 14:
+	  case 16:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][3] = cur;
+      }
   }
   
   /**

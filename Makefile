@@ -67,11 +67,12 @@ code:
 
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	(time ((echo $(NODES) ; cat compiledependencies __order) | tools/paramake.py)) |&  \
-	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                       \
-	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'              \
-	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'    \
-	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g'
+	rm .tmp; \
+	((time ((echo $(NODES) ; cat compiledependencies __order) | (tools/paramake.py ; echo $$? > .tmp))) |&  \
+	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                            \
+	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                                   \
+	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'                         \
+	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g') ; exit $$(cat .tmp)
 
 sequecial:
 	if [ ! -d bin ]; then  mkdir bin;  fi

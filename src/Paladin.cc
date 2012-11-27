@@ -35,7 +35,57 @@ namespace tbrpg
    */
   Paladin::Paladin() : Warrior()
   {
-    ////TODO implement constructor
+    this->spell_progression.priest_slots = std::vector<std::vector<int>>(21);
+    for (int i = 0; i <= 20; i++)
+      this->spell_progression.priest_slots[i] = std::vector<int>(5);
+    
+    for (int cur = 0, i = 0; i <= 20; i++)
+      {
+	switch (cur)
+	  {
+	  case 9:
+	  case 10:
+	  case 14:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][1] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 20; i++)
+      {
+	switch (cur)
+	  {
+	  case 11:
+	  case 12:
+	  case 16:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][2] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 20; i++)
+      {
+	switch (cur)
+	  {
+	  case 13:
+	  case 16:
+	  case 17:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][3] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 20; i++)
+      {
+	switch (cur)
+	  {
+	  case 15:
+	  case 19:
+	  case 20:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][4] = cur;
+      }
   }
   
   /**

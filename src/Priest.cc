@@ -35,7 +35,134 @@ namespace tbrpg
    */
   Priest::Priest() : Class()
   {
-    ////TODO implement constructor
+    this->spell_progression.priest_slots = std::vector<std::vector<int>>(31);
+    for (int i = 0; i <= 30; i++)
+      this->spell_progression.priest_slots[i] = std::vector<int>(8);
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 1:
+	  case 2:
+	  case 4:
+	  case 9:
+	  case 11:
+	  case 12:
+	  case 16:
+	  case 18:
+	  case 19:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][1] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 3:
+	  case 4:
+	  case 5:
+	  case 9:
+	  case 12:
+	  case 13:
+	  case 16:
+	  case 18:
+	  case 19:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][2] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 5:
+	  case 6:
+	  case 8:
+	  case 11:
+	  case 12:
+	  case 13:
+	  case 16:
+	  case 18:
+	  case 19:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][3] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 7:
+	  case 8:
+	  case 10:
+	  case 13:
+	  case 14:
+	  case 15:
+	  case 17:
+	  case 18:
+	  case 21:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][4] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 9:
+	  case 10:
+	  case 14:
+	  case 15:
+	  case 17:
+	  case 18:
+	  case 20:
+	  case 21:
+	  case 22:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][5] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 11:
+	  case 12:
+	  case 16:
+	  case 18:
+	  case 20:
+	  case 21:
+	  case 23:
+	  case 24:
+	  case 26:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][6] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 30; i++)
+      {
+	switch (cur)
+	  {
+	  case 14:
+	  case 17:
+	  case 22:
+	  case 25:
+	  case 27:
+	  case 28:
+	  case 29:
+	  case 30:
+	    cur++;
+	  }
+	this->spell_progression.priest_slots[i][7] = cur;
+      }
   }
   
   /**

@@ -35,7 +35,90 @@ namespace tbrpg
    */
   Bard::Bard() : Rogue()
   {
-    ////TODO implement constructor
+    this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
+    for (int i = 0; i <= 23; i++)
+      this->spell_progression.wizard_slots[i] = std::vector<int>(7);
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 2:
+	  case 3:
+	  case 5:
+	  case 16:
+	  case 21:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][1] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 4:
+	  case 6:
+	  case 8:
+	  case 17:
+	  case 22:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][2] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 7:
+	  case 9:
+	  case 11:
+	  case 18:
+	  case 23:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][3] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 10:
+	  case 12:
+	  case 14:
+	  case 19:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][4] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 13:
+	  case 15:
+	  case 17:
+	  case 20:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][5] = cur;
+      }
+    
+    for (int cur = 0, i = 0; i <= 23; i++)
+      {
+	switch (cur)
+	  {
+	  case 16:
+	  case 18:
+	  case 20:
+	  case 23:
+	    cur++;
+	  }
+	this->spell_progression.wizard_slots[i][6] = cur;
+      }
   }
   
   /**
