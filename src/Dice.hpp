@@ -46,7 +46,7 @@ namespace tbrpg
     /**
      * The number of dice
      */
-    int count;
+    char count;
     
     /**
      * The die prototype
@@ -61,7 +61,7 @@ namespace tbrpg
      * @param  dieCount   The number of dice
      * @param  sideCount  The number of sides on the dice
      */
-    Dice(int dieCount = 0, int sideCount = 0);
+    Dice(char dieCount = 0, char sideCount = 0);
     
     /**
      * Copy constructor
@@ -124,14 +124,14 @@ namespace tbrpg
      * 
      * @return  The number of dice
      */
-    virtual int getCount() const;
+    virtual char getCount() const;
     
     /**
      * Gets the number of sides on the dice
      * 
      * @return  The number of sides on the dice
      */
-    virtual int getSides() const;
+    virtual char getSides() const;
     
     /**
      * Roll the dice

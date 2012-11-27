@@ -35,7 +35,7 @@ namespace tbrpg
    * 
    * @param  sideCount  The number of sides on the die
    */
-  Die::Die(int sideCount)
+  Die::Die(char sideCount)
   {
     this->sides = sideCount;
   }
@@ -83,18 +83,6 @@ namespace tbrpg
   
   
   /**
-   * Reconstruction operator
-   * 
-   * @param   sideCount  The number of sides on the die 
-   * @return             The invoked object
-   */
-  Die& Die::operator =(int sideCount)
-  {
-    this->sides = sideCount;
-    return *this;
-  }
-  
-  /**
    * Assignment operator
    * 
    * @param   original  The reference object
@@ -137,7 +125,7 @@ namespace tbrpg
    * 
    * @return  The number of sides on the die
    */
-  int Die::getSides() const
+  char Die::getSides() const
   {
     return this->sides;
   }
@@ -147,7 +135,7 @@ namespace tbrpg
    * 
    * @return  The number of eyes on the die's value side
    */
-  int Die::roll() const
+  char Die::roll() const
   {
     /* Actually using simulated die */
     
@@ -155,7 +143,7 @@ namespace tbrpg
       return (random() % (this->sides << 1)) / 2 + 1;
     if (this->sides == 100)
       {
-	int rc = (random() % 10) * 10 + random() % 10;
+	char rc = (random() % 10) * 10 + random() % 10;
 	return rc ? rc : 100;
       }
     return (random() % this->sides) + 1;

@@ -44,7 +44,7 @@ namespace tbrpg
     /**
      * The number of sides on the die
      */
-    int sides;
+    char sides;
     
     
   public:
@@ -53,7 +53,7 @@ namespace tbrpg
      * 
      * @param  sideCount  The number of sides on the die
      */
-    Die(int sideCount = 0);
+    Die(char sideCount = 0);
     
     /**
      * Copy constructor
@@ -86,14 +86,6 @@ namespace tbrpg
     
     
     /**
-     * Reconstruction operator
-     * 
-     * @param   sideCount  The number of sides on the die 
-     * @return             The invoked object
-     */
-    virtual Die& operator =(int sideCount);
-    
-    /**
      * Assignment operator
      * 
      * @param   original  The reference object
@@ -124,14 +116,14 @@ namespace tbrpg
      * 
      * @return  The number of sides on the die
      */
-    virtual int getSides() const;
+    virtual char getSides() const;
     
     /**
      * Roll the die
      * 
      * @return  The number of eyes on the die's value side
      */
-    virtual int roll() const;
+    virtual char roll() const;
     
   };
 }
