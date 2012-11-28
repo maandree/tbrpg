@@ -84,8 +84,8 @@ namespace tbrpg
   SpellBook::~SpellBook()
   {
     ////TODO implement destructor
-    //delete learned;
-    //delete memorised;
+    //delete this->learned;
+    //delete this->memorised;
   }
   
   

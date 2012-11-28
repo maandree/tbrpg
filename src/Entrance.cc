@@ -92,9 +92,9 @@ namespace tbrpg
   Entrance::~Entrance()
   {
     ////TODO implement destructor
-    //delete description;
-    //delete direction;
-    //delete leads_to;
+    //delete this->description;
+    //delete this->direction;
+    //delete this->leads_to;
   }
   
   

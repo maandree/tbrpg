@@ -80,7 +80,7 @@ namespace tbrpg
   WeaponGroup::~WeaponGroup()
   {
     ////TODO implement destructor
-    //delete name;
+    //delete this->name;
   }
   
   

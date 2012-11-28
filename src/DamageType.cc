@@ -80,7 +80,7 @@ namespace tbrpg
   DamageType::~DamageType()
   {
     ////TODO implement destructor
-    //delete name;
+    //delete this->name;
   }
   
   

@@ -84,8 +84,8 @@ namespace tbrpg
   Map::~Map()
   {
     ////TODO implement destructor
-    //delete start;
-    //delete majors;
+    //delete this->start;
+    //delete this->majors;
   }
   
   

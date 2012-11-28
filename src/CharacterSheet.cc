@@ -152,22 +152,22 @@ namespace tbrpg
   CharacterSheet::~CharacterSheet()
   {
     ////TODO implement destructor
-    //delete name;
-    //delete biography;
-    //delete portrait;
-    //delete experience;
-    //delete level;
-    //delete class_abondoned;
-    //delete proficiencies;
-    //delete affected_by;
-    //delete inventory;
-    //delete abilities;
-    //delete spells;
-    //delete race;
-    //delete racial_enemy;
-    //delete prestige;
-    //delete specialisation;
-    //delete special_abilities;
+    //delete this->name;
+    //delete this->biography;
+    //delete this->portrait;
+    //delete this->experience;
+    //delete this->level;
+    //delete this->class_abondoned;
+    //delete this->proficiencies;
+    //delete this->affected_by;
+    //delete this->inventory;
+    //delete this->abilities;
+    //delete this->spells;
+    //delete this->race;
+    //delete this->racial_enemy;
+    //delete this->prestige;
+    //delete this->specialisation;
+    //delete this->special_abilities;
   }
   
   

@@ -108,14 +108,14 @@ namespace tbrpg
   ExperienceChart::~ExperienceChart()
   {
     ////TODO implement destructor
-    //delete experience;
-    //delete hit_point_die;
-    //delete hit_point_dice;
-    //delete hit_point_bonus;
-    //delete selectable_wizard;
-    //delete selectable_priest;
-    //delete new_spells;
-    //delete proficiencies;
+    //delete this->experience;
+    //delete this->hit_point_die;
+    //delete this->hit_point_dice;
+    //delete this->hit_point_bonus;
+    //delete this->selectable_wizard;
+    //delete this->selectable_priest;
+    //delete this->new_spells;
+    //delete this->proficiencies;
   }
   
   

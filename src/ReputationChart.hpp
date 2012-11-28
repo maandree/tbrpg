@@ -88,17 +88,17 @@ namespace tbrpg
     /**
      * Reaction form good aligned for each reputation
      */
-    int* good_reaction;
+    signed char* good_reaction;
     
     /**
      * Reaction form neutral aligned for each reputation
      */
-    int* neutral_reaction;
+    signed char* neutral_reaction;
     
     /**
      * Reaction form evil aligned for each reputation
      */
-    int* evil_reaction;
+    signed char* evil_reaction;
     
     /**
      * Reputation for each alignment of the protagonist

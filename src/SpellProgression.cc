@@ -84,8 +84,8 @@ namespace tbrpg
   SpellProgression::~SpellProgression()
   {
     ////TODO implement destructor
-    //delete wizard_slots;
-    //delete priest_slots;
+    //delete this->wizard_slots;
+    //delete this->priest_slots;
   }
   
   

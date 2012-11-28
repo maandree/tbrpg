@@ -112,13 +112,13 @@ namespace tbrpg
   MapMinor::~MapMinor()
   {
     ////TODO implement destructor
-    //delete description;
-    //delete roads;
-    //delete connections;
-    //delete items;
-    //delete creatures;
-    //delete is_in;
-    //delete interruptions;
+    //delete this->description;
+    //delete this->roads;
+    //delete this->connections;
+    //delete this->items;
+    //delete this->creatures;
+    //delete this->is_in;
+    //delete this->interruptions;
   }
   
   

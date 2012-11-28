@@ -124,18 +124,18 @@ namespace tbrpg
   ReputationChart::~ReputationChart()
   {
     ////TODO implement destructor
-    //delete reaction_adjustment;
-    //delete wanted;
-    //delete killing_innocent;
-    //delete injuring_innocent;
-    //delete stealing;
-    //delete killing_guard;
-    //delete donation_needed;
-    //delete price_adjustment;
-    //delete good_reaction;
-    //delete neutral_reaction;
-    //delete evil_reaction;
-    //delete alignment_reputation;
+    //delete this->reaction_adjustment;
+    //delete this->wanted;
+    //delete this->killing_innocent;
+    //delete this->injuring_innocent;
+    //delete this->stealing;
+    //delete this->killing_guard;
+    //delete this->donation_needed;
+    //delete this->price_adjustment;
+    //delete this->good_reaction;
+    //delete this->neutral_reaction;
+    //delete this->evil_reaction;
+    //delete this->alignment_reputation;
   }
   
   

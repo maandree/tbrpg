@@ -128,10 +128,10 @@ namespace tbrpg
   Item::~Item()
   {
     ////TODO implement destructor
-    //delete name;
-    //delete description;
-    //delete bonuses;
-    //delete armour_class_modifiers;
+    //delete this->name;
+    //delete this->description;
+    //delete this->bonuses;
+    //delete this->armour_class_modifiers;
   }
   
   

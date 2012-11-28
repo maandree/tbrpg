@@ -104,13 +104,13 @@ namespace tbrpg
   AbilityChart::~AbilityChart()
   {
     ////TODO implement destructor
-    //delete strength;
-    //delete strength18;
-    //delete dexterity;
-    //delete constitution;
-    //delete intelligence;
-    //delete wisdom;
-    //delete charisma;
+    //delete this->strength;
+    //delete this->strength18;
+    //delete this->dexterity;
+    //delete this->constitution;
+    //delete this->intelligence;
+    //delete this->wisdom;
+    //delete this->charisma;
   }
   
   

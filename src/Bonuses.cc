@@ -152,7 +152,7 @@ namespace tbrpg
   Bonuses::~Bonuses()
   {
     ////TODO implement destructor
-    //delete bonus_spells;
+    //delete this->bonus_spells;
   }
   
   

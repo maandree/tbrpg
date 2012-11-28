@@ -100,7 +100,7 @@ namespace tbrpg
   Character::~Character()
   {
     ////TODO implement destructor
-    //delete record;
+    //delete this->record;
   }
   
   

@@ -132,10 +132,10 @@ namespace tbrpg
   Spell::~Spell()
   {
     ////TODO implement destructor
-    //delete name;
-    //delete description;
-    //delete effect_area;
-    //delete school;
+    //delete this->name;
+    //delete this->description;
+    //delete this->effect_area;
+    //delete this->school;
   }
   
   

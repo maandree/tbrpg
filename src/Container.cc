@@ -92,8 +92,8 @@ namespace tbrpg
   Container::~Container()
   {
     ////TODO implement destructor
-    //delete contains;
-    //delete can_contain;
+    //delete this->contains;
+    //delete this->can_contain;
   }
   
   
