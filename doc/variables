@@ -37,9 +37,9 @@ ReputationChart                          ; Reputation chart
 	int[] killing_guard              ; Penalty for killing a guard for each reputation
 	int[] donation_needed            ; Donation needed to increase reputation for each reputation, zero for not possible
 	float[] price_adjustment         ; Price multiplier for each reputation
-	int[] good_reaction              ; Reaction form good aligned for each reputation
-	int[] neutral_reaction           ; Reaction form neutral aligned for each reputation
-	int[] evil_reaction              ; Reaction form evil aligned for each reputation
+	signed char[] good_reaction      ; Reaction form good aligned for each reputation
+	signed char[] neutral_reaction   ; Reaction form neutral aligned for each reputation
+	signed char[] evil_reaction      ; Reaction form evil aligned for each reputation
 	char[] alignment_reputation      ; Reputation for each alignment of the protagonist
 
 Bonuses                                  ; Bonuses
