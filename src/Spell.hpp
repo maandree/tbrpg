@@ -113,6 +113,11 @@ namespace tbrpg
     std::string effect_area;
     
     /**
+     * 1 if offensive, −1 if defensive and 0 if informative
+     */
+    signed char offensiveness;
+    
+    /**
      * Magic shool
      */
     MagicSchool school;

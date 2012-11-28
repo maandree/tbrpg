@@ -241,6 +241,7 @@ Spell                                     ; Spell class
 	char duration_die                 ; Duration die side count
 	char duration_dice                ; Duration die count
 	std::string effect_area           ; Area of effect
+	signed char offensiveness         ; 1 if offensive, −1 if defensive and 0 if informative
 	MagicSchool school                ; Magic shool
 
 AbilityChart                              ; Ability chart
