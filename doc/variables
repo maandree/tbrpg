@@ -112,6 +112,8 @@ ExperienceChart                                     ; Experience chart
 SpellProgression                                    ; Spell progression chart
 	std::vector<std::vector<int>> wizard_slots  ; The number of wizard spell slots per character level and spell level
 	std::vector<std::vector<int>> priest_slots  ; The number of priest spell slots per character level and spell level
+	std::vector<int> wizard_levels              ; Wizard castings level for each prestige level
+	std::vector<int> priest_levels              ; Priest castings level for each prestige level
 
 Ammunition: Item                                    ; Ammunition item class
 	int hit_bonus                               ; The hit bonus the ammunition brings
@@ -173,7 +175,7 @@ Class                                                                      ; Pre
 	int thac0                                                          ; THAC0
 	int lore_bonus                                                     ; Lore bonus
 	bool[] alignments                                                  ; Allowed alignments
-	bool learn_from_scroll                                             ; Whether the character can learn spells from scrolls
+	bool learn_from_scroll                                             ; Whether the character can learn wizard spells from scrolls
 	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
 	ExperienceChart experience_chart                                   ; The class's experience chart
 	SpellProgression spell_progression                                 ; The class's spell progression chart
