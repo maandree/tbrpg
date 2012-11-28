@@ -49,6 +49,7 @@ namespace tbrpg
     //this->duration_die = 0;
     //this->duration_dice = 0;
     //this->effect_area = nullptr;
+    //this->offensiveness = 0;
     //this->school = nullptr;
   }
   
@@ -73,6 +74,7 @@ namespace tbrpg
     this->duration_die = original.duration_die;
     this->duration_dice = original.duration_dice;
     this->effect_area = original.effect_area;
+    this->offensiveness = original.offensiveness;
     this->school = original.school;
   }
   
@@ -97,6 +99,7 @@ namespace tbrpg
     this->duration_die = original.duration_die;
     this->duration_dice = original.duration_dice;
     this->effect_area = original.effect_area;
+    this->offensiveness = original.offensiveness;
     this->school = original.school;
   }
   
@@ -121,6 +124,7 @@ namespace tbrpg
     std::swap(this->duration_die, original.duration_die);
     std::swap(this->duration_dice, original.duration_dice);
     std::swap(this->effect_area, original.effect_area);
+    std::swap(this->offensiveness, original.offensiveness);
     std::swap(this->school, original.school);
   }
   
@@ -162,6 +166,7 @@ namespace tbrpg
     this->duration_die = original.duration_die;
     this->duration_dice = original.duration_dice;
     this->effect_area = original.effect_area;
+    this->offensiveness = original.offensiveness;
     this->school = original.school;
     return *this;
   }
@@ -188,6 +193,7 @@ namespace tbrpg
     this->duration_die = original.duration_die;
     this->duration_dice = original.duration_dice;
     this->effect_area = original.effect_area;
+    this->offensiveness = original.offensiveness;
     this->school = original.school;
     return *this;
   }
@@ -214,6 +220,7 @@ namespace tbrpg
     std::swap(this->duration_die, original.duration_die);
     std::swap(this->duration_dice, original.duration_dice);
     std::swap(this->effect_area, original.effect_area);
+    std::swap(this->offensiveness, original.offensiveness);
     std::swap(this->school, original.school);
     return *this;
   }
