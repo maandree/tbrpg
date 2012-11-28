@@ -55,6 +55,16 @@ namespace tbrpg
      */
     std::vector<std::vector<int>> priest_slots;
     
+    /**
+     * Wizard castings level for each prestige level
+     */
+    std::vector<int> wizard_levels;
+    
+    /**
+     * Priest castings level for each prestige level
+     */
+    std::vector<int> priest_levels;
+    
     
     
     /**

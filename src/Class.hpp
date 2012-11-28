@@ -77,7 +77,7 @@ namespace tbrpg
     bool* alignments;
     
     /**
-     * Whether the character can learn spells from scrolls
+     * Whether the character can learn wizard spells from scrolls
      */
     bool learn_from_scroll;
     
