@@ -35,7 +35,11 @@ namespace tbrpg
    */
   WarHammer::WarHammer() : OneHandedMelee()
   {
-    ////TODO implement constructor
+    this->speed_factor = 4;
+    this->damage_die = 4;
+    this->damage_dice = 1;
+    this->damage_bonus = 1;
+    this->damage_type = {BLUDGEONING};
   }
   
   /**

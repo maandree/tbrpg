@@ -35,7 +35,10 @@ namespace tbrpg
    */
   BastardSword::BastardSword() : LargeSword()
   {
-    ////TODO implement constructor
+    this->speed_factor = 8;
+    this->damage_die = 4;
+    this->damage_dice = 2;
+    this->damage_type = {SLASHING};
   }
   
   /**

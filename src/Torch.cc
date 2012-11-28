@@ -35,7 +35,9 @@ namespace tbrpg
    */
   Torch::Torch() : BluntWeapon()
   {
-    ////TODO implement constructor
+    this->speed_factor = 4;
+    this->damage_die = 6;
+    this->damage_dice = 1;
   }
   
   /**

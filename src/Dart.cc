@@ -37,6 +37,9 @@ namespace tbrpg
   {
     this->rate_of_fire = 3;
     this->speed_factor = 2;
+    this->damage_die = 3;
+    this->damage_dice = 1;
+    this->damage_type = {PIERCING};
   }
   
   /**

@@ -35,7 +35,10 @@ namespace tbrpg
    */
   Dagger::Dagger() : OneHandedMelee()
   {
-    ////TODO implement constructor
+    this->speed_factor = 2;
+    this->damage_die = 4;
+    this->damage_dice = 1;
+    this->damage_type = {PIERCING};
   }
   
   /**

@@ -35,7 +35,10 @@ namespace tbrpg
    */
   Fists::Fists() : TwoHandedMelee()
   {
-    ////TODO implement constructor
+    this->speed_factor = 2;
+    this->damage_die = 2;
+    this->damage_dice = 2;
+    this->damage_type = {BLUDGEONING};
   }
   
   /**

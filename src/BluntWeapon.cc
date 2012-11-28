@@ -35,7 +35,7 @@ namespace tbrpg
    */
   BluntWeapon::BluntWeapon() : OneHandedMelee()
   {
-    ////TODO implement constructor
+    this->damage_type = {BLUDGEONING};
   }
   
   /**

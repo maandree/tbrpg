@@ -35,7 +35,10 @@ namespace tbrpg
    */
   LongSword::LongSword() : LargeSword()
   {
-    ////TODO implement constructor
+    this->speed_factor = 5;
+    this->damage_die = 8;
+    this->damage_dice = 1;
+    this->damage_type = {SLASHING};
   }
   
   /**

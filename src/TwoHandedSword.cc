@@ -35,7 +35,10 @@ namespace tbrpg
    */
   TwoHandedSword::TwoHandedSword() : TwoHandedMelee()
   {
-    ////TODO implement constructor
+    this->speed_factor = 10;
+    this->damage_die = 10;
+    this->damage_dice = 1;
+    this->damage_type = {SLASHING};
   }
   
   /**

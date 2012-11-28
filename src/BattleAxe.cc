@@ -35,7 +35,10 @@ namespace tbrpg
    */
   BattleAxe::BattleAxe() : OneHandedMelee()
   {
-    ////TODO implement constructor
+    this->speed_factor = 7;
+    this->damage_die = 8;
+    this->damage_dice = 1;
+    this->damage_type = {SLASHING};
   }
   
   /**

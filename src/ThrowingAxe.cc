@@ -37,6 +37,9 @@ namespace tbrpg
   {
     this->rate_of_fire = 1;
     this->speed_factor = 4;
+    this->damage_die = 6;
+    this->damage_dice = 1;
+    this->damage_type = {SLASHING};
   }
   
   /**
