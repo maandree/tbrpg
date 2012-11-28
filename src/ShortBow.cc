@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ShortBow::ShortBow() : Bow()
   {
-    ////TODO implement constructor
+    this->speed_factor = 6;
   }
   
   /**

@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Dart::Dart() : Throwing()
   {
-    ////TODO implement constructor
+    this->rate_of_fire = 3;
+    this->speed_factor = 2;
   }
   
   /**

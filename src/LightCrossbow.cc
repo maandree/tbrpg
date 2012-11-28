@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LightCrossbow::LightCrossbow() : Crossbow()
   {
-    ////TODO implement constructor
+    this->speed_factor = 7;
   }
   
   /**

@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Bow.hpp"
+
 #include "Ammunition.hpp"
 
 

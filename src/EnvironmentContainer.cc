@@ -35,7 +35,7 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer() : Container(), Lockable()
   {
-    ////TODO implement constructor
+    this->stuck = true;
   }
   
   /**

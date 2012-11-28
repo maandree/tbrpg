@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Helmet::Helmet() : Headgear()
   {
-    ////TODO implement constructor
+    this->critical_hit_protection = true;
   }
   
   /**
@@ -78,7 +78,7 @@ namespace tbrpg
    */
   Helmet::~Helmet()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   

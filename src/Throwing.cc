@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Throwing::Throwing() : RangedWeapon()
   {
-    ////TODO implement constructor
+    this->hands = 1;
   }
   
   /**

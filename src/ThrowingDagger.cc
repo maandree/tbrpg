@@ -35,7 +35,8 @@ namespace tbrpg
    */
   ThrowingDagger::ThrowingDagger() : Throwing()
   {
-    ////TODO implement constructor
+    this->rate_of_fire = 2;
+    this->speed_factor = 2;
   }
   
   /**

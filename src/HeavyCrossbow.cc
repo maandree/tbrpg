@@ -35,7 +35,8 @@ namespace tbrpg
    */
   HeavyCrossbow::HeavyCrossbow() : Crossbow()
   {
-    ////TODO implement constructor
+    this->speed_factor = 10;
+    this->damage_bonus = 2;
   }
   
   /**

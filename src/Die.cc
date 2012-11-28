@@ -125,7 +125,7 @@ namespace tbrpg
    * 
    * @return  The number of sides on the die
    */
-  inline char Die::getSides() const
+  char Die::getSides() const
   {
     return this->sides;
   }
@@ -135,7 +135,7 @@ namespace tbrpg
    * 
    * @return  The number of eyes on the die's value side
    */
-  inline char Die::roll() const
+  char Die::roll() const
   {
     /* Actually using simulated die */
     

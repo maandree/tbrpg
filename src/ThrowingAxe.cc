@@ -35,7 +35,8 @@ namespace tbrpg
    */
   ThrowingAxe::ThrowingAxe() : Throwing()
   {
-    ////TODO implement constructor
+    this->rate_of_fire = 1;
+    this->speed_factor = 4;
   }
   
   /**

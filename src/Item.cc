@@ -38,14 +38,14 @@ namespace tbrpg
     ////TODO implement constructor
     //this->name = nullptr;
     //this->description = nullptr;
-    //this->armour_class = 0;
+    this->armour_class = 0x7FFFffff;
     //this->weight = 0;
-    //this->identified = false;
+    this->identified = true;
     //this->lore_value = 0;
-    //this->stuck = false;
-    //this->cursed = false;
-    //this->quantity = 0;
-    //this->quantity_limit = 0;
+    this->stuck = false;
+    this->cursed = false;
+    this->quantity = 1;
+    this->quantity_limit = 1;
     //this->unit_value = 0;
     //this->bonuses = nullptr;
     //this->armour_class_modifiers = nullptr;

@@ -1451,9 +1451,9 @@ reputation level become fighters cannot regain their status.
 @end multitable
 
 However bucklers does not protect against missile and
-piercing weapons, small shield does not protect against
-missile weapons, and large shield add an additional −2
-agains missile weapons.
+piercing weapons, small shields does not protect against
+missile weapons, and large shield adds an additional −2
+against missile weapons.
 
 
 @node Headgear
@@ -3146,3 +3146,5 @@ Game play
 Spell list
 Item list
 Bestiary
+multiclass proficiencies
+

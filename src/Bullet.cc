@@ -35,7 +35,11 @@ namespace tbrpg
    */
   Bullet::Bullet() : Ammunition()
   {
-    ////TODO implement constructor
+    this->damage_type = BLUDGEONING;
+    this->damage_die = 4;
+    this->damage_dice = 1;
+    this->damage_bonus = 1;
+    this->usable_with = Sling();
   }
   
   /**

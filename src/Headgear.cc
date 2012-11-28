@@ -35,8 +35,7 @@ namespace tbrpg
    */
   Headgear::Headgear() : Item()
   {
-    ////TODO implement constructor
-    //this->critical_hit_protection = false;
+    this->critical_hit_protection = false;
   }
   
   /**

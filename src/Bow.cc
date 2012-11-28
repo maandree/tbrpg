@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Bow::Bow() : RangedWeapon()
   {
-    ////TODO implement constructor
+    this->hands = 2;
+    this->rate_of_fire = 2;
   }
   
   /**

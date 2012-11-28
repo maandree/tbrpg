@@ -35,7 +35,11 @@ namespace tbrpg
    */
   Bolt::Bolt() : Ammunition()
   {
-    ////TODO implement constructor
+    this->damage_type = PIERCING
+    this->damage_die = 6;
+    this->damage_dice = 1;
+    this->damage_bonus = 0;
+    this->usable_with = Crossbow();
   }
   
   /**

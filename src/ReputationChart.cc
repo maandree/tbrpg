@@ -35,19 +35,89 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart()
   {
-    ////TODO implement constructor
-    //this->reaction_adjustment = nullptr;
-    //this->wanted = nullptr;
-    //this->killing_innocent = nullptr;
-    //this->injuring_innocent = nullptr;
-    //this->stealing = nullptr;
-    //this->killing_guard = nullptr;
-    //this->donation_needed = nullptr;
-    //this->price_adjustment = nullptr;
-    //this->good_reaction = nullptr;
-    //this->neutral_reaction = nullptr;
-    //this->evil_reaction = nullptr;
-    //this->alignment_reputation = nullptr;
+    this->reaction_adjustment = new int[21];
+    this->wanted = new bool[21];
+    this->killing_innocent = new int[21];
+    this->injuring_innocent = new int[21];
+    this->stealing = new int[21];
+    this->killing_guard = new int[21];
+    this->donation_needed = new int[21];
+    this->price_adjustment = new float[21];
+    this->good_reaction = new signed char[21];
+    this->neutral_reaction = new signed char[21];
+    this->evil_reaction = new signed char[21];
+    this->alignment_reputation = new char[9];
+    
+    for (int i = 0; i <= 20; i++)
+      this->wanted[i] = i < 6;
+    
+    for (int i = 0; i <= 13; i++)
+      this->reaction_adjustment[i] = i < 8 ? (i - 8) : 0;
+    for (int i = 14; i <= 20; i++)
+      {
+	this->reaction_adjustment[i] = (i - 12) >> 1;
+	this->donation_needed[i] = i > 17 ? i == 17 ? 500 : -1 : (500 * (i - 14));
+      }
+    this->donation_needed[0] = -1;
+    this->donation_needed[13] = this->donation_needed[2] = 1200;
+    this->donation_needed[14] = 900;
+    this->donation_needed[15] = 700;
+    for (int i = 7; i <= 10; i++)
+      this->donation_needed[i] = 100 * (i - 5);
+    this->donation_needed[4] = this->donation_needed[3] = 1000;
+    this->donation_needed[1] = 1500;
+    
+    for (int i = 0; i <= 20; i++)
+      {
+	this->stealing[i] = i > 8 ? -1 : 0;
+	this->injuring_innocent[i] = i > 4 ? i > 17 ? -2 : -1 : 0;
+	this->killing_guard[i] = -((i + (i > 6 ? i > 17 ? 1 : 2 : 0)) >> 1);
+      }
+    
+    for (int i = 0; i <= 1; i++)
+      this->killing_innocent[i] = i > 1 ? -1 : 0;
+    for (int i = 2; i <= 9; i++)
+      this->killing_innocent[i] = i == 9 ? -3 : -2;
+    for (int i = 10; i <= 14; i++)
+      this->killing_innocent[i] = i > 11 ? -5 : -4;
+    for (int i = 15; i <= 19; i++)
+      this->killing_innocent[i] = 9 - i;
+    this->killing_innocent[20] = -10;
+    
+    for (int i = 0; i <= 2; i++)
+      this->price_adjustment[i] = -1.;
+    this->price_adjustment[3] = 2.00;
+    this->price_adjustment[15] = 0.90;
+    for (int i = 10; i <= 14; i++)
+      this->price_adjustment[i] = 1.00;
+    for (int i = 16; i <= 20; i++)
+      this->price_adjustment[i] = (10 * (25 - i)) / 100.;
+    for (int i = 5; i <= 9; i++)
+      this->price_adjustment[i] = (10 * (19 - i) + (i > 7 ? 10 : 0)) / 100.;
+    
+    for (int i = 0; i <= 5; i++)
+      this->good_reaction[i] = i < 3 ? -3 : -2;
+    for (int i = 6; i <= 12; i++)
+      this->good_reaction[i] = i < 9 ? -1 : 0;
+    for (int i = 13; i <= 20; i++)
+      this->good_reaction[i] = 1;
+    
+    for (int i = 0; i <= 3; i++)
+      this->neutral_reaction[i] = i < 2 ? -3 : -2;
+    for (int i = 4; i <= 18; i++)
+      this->neutral_reaction[i] = i < 6 ? -1 : 0;
+    for (int i = 19; i <= 20; i++)
+      this->neutral_reaction[i] = -1;
+    
+    for (int i = 0; i <= 12; i++)
+      this->evil_reaction[i] = i < 7 ? 1 : -0;
+    for (int i = 13; i <= 20; i++)
+      this->evil_reaction[i] = (10 - i) / 3;
+    
+    for (int i = 1; i <= 7; i++)
+      this->alignment_reputation[i] = (i / 3) + 9;
+    this->alignment_reputation[0] = 8;
+    this->alignment_reputation[8] = 12;
   }
   
   /**
@@ -123,19 +193,18 @@ namespace tbrpg
    */
   ReputationChart::~ReputationChart()
   {
-    ////TODO implement destructor
-    //delete reaction_adjustment;
-    //delete wanted;
-    //delete killing_innocent;
-    //delete injuring_innocent;
-    //delete stealing;
-    //delete killing_guard;
-    //delete donation_needed;
-    //delete price_adjustment;
-    //delete good_reaction;
-    //delete neutral_reaction;
-    //delete evil_reaction;
-    //delete alignment_reputation;
+    delete[] this->reaction_adjustment;
+    delete[] this->wanted;
+    delete[] this->killing_innocent;
+    delete[] this->injuring_innocent;
+    delete[] this->stealing;
+    delete[] this->killing_guard;
+    delete[] this->donation_needed;
+    delete[] this->price_adjustment;
+    delete[] this->good_reaction;
+    delete[] this->neutral_reaction;
+    delete[] this->evil_reaction;
+    delete[] this->alignment_reputation;
   }
   
   

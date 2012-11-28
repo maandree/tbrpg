@@ -35,7 +35,9 @@ namespace tbrpg
    */
   FullPlateMail::FullPlateMail() : BodyArmour()
   {
-    ////TODO implement constructor
+    this->armour_class = 1;
+    this->armour_class_modifiers[SLASHING] = -4;
+    this->armour_class_modifiers[PIERCING] = -3;
   }
   
   /**
@@ -82,6 +84,11 @@ namespace tbrpg
   }
   
   
+  
+  bool FullPlateMail::operator ==(const FullPlateMail& o) const
+  {
+    return o.hash() == this->hash();
+  }
   
   /**
    * Assignment operator

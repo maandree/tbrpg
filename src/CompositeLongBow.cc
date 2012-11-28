@@ -35,7 +35,9 @@ namespace tbrpg
    */
   CompositeLongBow::CompositeLongBow() : Bow()
   {
-    ////TODO implement constructor
+    this->speed_factor = 7;
+    this->hit_bonus = 1;
+    this->damage_bonus = 2;
   }
   
   /**

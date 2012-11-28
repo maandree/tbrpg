@@ -32,11 +32,12 @@ namespace tbrpg
 {
   /**
    * Constructor
+   * 
+   * @param  damageTypeName  The name of the damage type
    */
-  DamageType::DamageType()
+  DamageType::DamageType(std::string damageTypeName)
   {
-    ////TODO implement constructor
-    //this->name = nullptr;
+    this->name = damageTypeName;
   }
   
   /**
@@ -79,11 +80,15 @@ namespace tbrpg
    */
   DamageType::~DamageType()
   {
-    ////TODO implement destructor
-    //delete name;
+    // do nothing
   }
   
   
+  
+  bool DamageType::operator ==(const DamageType& other) const
+  {
+    return this->hash() == other.hash();
+  }
   
   /**
    * Assignment operator

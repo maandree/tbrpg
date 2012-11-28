@@ -35,7 +35,8 @@ namespace tbrpg
    */
   LeatherArmour::LeatherArmour() : BodyArmour()
   {
-    ////TODO implement constructor
+    this->armour_class = 8;
+    this->armour_class_modifiers[PIERCING] = 2;
   }
   
   /**

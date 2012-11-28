@@ -35,7 +35,9 @@ namespace tbrpg
    */
   SplintMail::SplintMail() : BodyArmour()
   {
-    ////TODO implement constructor
+    this->armour_class = 4;
+    this->armour_class_modifiers[PIERCING] = -1;
+    this->armour_class_modifiers[BLUDGEONING] = -2;
   }
   
   /**

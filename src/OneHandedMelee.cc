@@ -35,7 +35,7 @@ namespace tbrpg
    */
   OneHandedMelee::OneHandedMelee() : MeleeWeapon()
   {
-    ////TODO implement constructor
+    this->hands = 1;
   }
   
   /**
