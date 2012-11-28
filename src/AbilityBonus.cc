@@ -100,12 +100,12 @@ namespace tbrpg
   AbilityBonus::~AbilityBonus()
   {
     ////TODO implement destructor
-    //delete bonuses;
-    //delete thief_abilities;
-    //delete saving_throws;
-    //delete abilities;
-    //delete spells;
-    //delete effects;
+    //delete this->bonuses;
+    //delete this->thief_abilities;
+    //delete this->saving_throws;
+    //delete this->abilities;
+    //delete this->spells;
+    //delete this->effects;
   }
   
   

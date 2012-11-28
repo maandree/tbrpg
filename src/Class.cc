@@ -140,17 +140,17 @@ namespace tbrpg
   Class::~Class()
   {
     ////TODO implement destructor
-    //delete alignments;
-    //delete experience_chart;
-    //delete spell_progression;
-    //delete abilities;
-    //delete lower_limits;
-    //delete special_abilities;
-    //delete can_use;
-    //delete specialisations;
-    //delete proficiency_chart;
-    //delete default_one_hand;
-    //delete default_two_hand;
+    //delete this->alignments;
+    //delete this->experience_chart;
+    //delete this->spell_progression;
+    //delete this->abilities;
+    //delete this->lower_limits;
+    //delete this->special_abilities;
+    //delete this->can_use;
+    //delete this->specialisations;
+    //delete this->proficiency_chart;
+    //delete this->default_one_hand;
+    //delete this->default_two_hand;
   }
   
   

@@ -108,9 +108,9 @@ namespace tbrpg
   Road::~Road()
   {
     ////TODO implement destructor
-    //delete direction;
-    //delete waylay_map;
-    //delete leads_to;
+    //delete this->direction;
+    //delete this->waylay_map;
+    //delete this->leads_to;
   }
   
   

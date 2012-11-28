@@ -92,10 +92,10 @@ namespace tbrpg
   MagicSchool::~MagicSchool()
   {
     ////TODO implement destructor
-    //delete name;
-    //delete coluration;
-    //delete practicer;
-    //delete opposite;
+    //delete this->name;
+    //delete this->coluration;
+    //delete this->practicer;
+    //delete this->opposite;
   }
   
   

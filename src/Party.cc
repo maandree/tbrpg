@@ -84,7 +84,7 @@ namespace tbrpg
   Party::~Party()
   {
     ////TODO implement destructor
-    //delete characters;
+    //delete this->characters;
   }
   
   

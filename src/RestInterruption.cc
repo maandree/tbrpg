@@ -92,7 +92,7 @@ namespace tbrpg
   RestInterruption::~RestInterruption()
   {
     ////TODO implement destructor
-    //delete creatures;
+    //delete this->creatures;
   }
   
   

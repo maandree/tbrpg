@@ -84,8 +84,8 @@ namespace tbrpg
   Race::~Race()
   {
     ////TODO implement destructor
-    //delete allowed_classes;
-    //delete bonuses;
+    //delete this->allowed_classes;
+    //delete this->bonuses;
   }
   
   

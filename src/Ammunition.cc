@@ -100,8 +100,8 @@ namespace tbrpg
   Ammunition::~Ammunition()
   {
     ////TODO implement destructor
-    //delete usable_with;
-    //delete damage_type;
+    //delete this->usable_with;
+    //delete this->damage_type;
   }
   
   

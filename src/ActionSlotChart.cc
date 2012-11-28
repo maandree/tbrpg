@@ -84,8 +84,8 @@ namespace tbrpg
   ActionSlotChart::~ActionSlotChart()
   {
     ////TODO implement destructor
-    //delete index_map;
-    //delete slot_map;
+    //delete this->index_map;
+    //delete this->slot_map;
   }
   
   

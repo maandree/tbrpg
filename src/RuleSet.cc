@@ -112,11 +112,11 @@ namespace tbrpg
   RuleSet::~RuleSet()
   {
     ////TODO implement destructor
-    //delete reputation_chart;
-    //delete ability_chart;
-    //delete inventory_prototype;
-    //delete spells;
-    //delete races;
+    //delete this->reputation_chart;
+    //delete this->ability_chart;
+    //delete this->inventory_prototype;
+    //delete this->spells;
+    //delete this->races;
   }
   
   

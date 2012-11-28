@@ -80,7 +80,7 @@ namespace tbrpg
   Body::~Body()
   {
     ////TODO implement destructor
-    //delete character;
+    //delete this->character;
   }
   
   

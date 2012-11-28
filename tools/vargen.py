@@ -179,7 +179,7 @@ for line in lines:
             else:
                 varMove.append('std::swap(this->%s, original.%s);' % (varName, varName))
             if (varType != 'bool') and (varType not in numericals):
-                varFree.append('delete %s;' % varName)
+                varFree.append('delete this->%s;' % varName)
         varInit = '\n'.join(['    //' + item for item in (['//TO' + 'DO implement constructor'] + varInit)])
         varCopy = '\n'.join(['    ' + item for item in varCopy])
         varMove = '\n'.join(['    ' + item for item in varMove])

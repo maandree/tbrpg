@@ -96,7 +96,7 @@ namespace tbrpg
   MapMajor::~MapMajor()
   {
     ////TODO implement destructor
-    //delete name;
+    //delete this->name;
   }
   
   

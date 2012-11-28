@@ -112,8 +112,8 @@ namespace tbrpg
   Weapon::~Weapon()
   {
     ////TODO implement destructor
-    //delete damage_type;
-    //delete weapon_group;
+    //delete this->damage_type;
+    //delete this->weapon_group;
   }
   
   
