@@ -35,6 +35,13 @@ namespace tbrpg
    */
   Priest::Priest() : Class()
   {
+    this->hit_points = 8;
+    this->abilities.saving_throws.breath = 16;
+    this->abilities.saving_throws.paralyze_poison_death = 10;
+    this->abilities.saving_throws.petrification_polymorph = 13;
+    this->abilities.saving_throws.rod_staff_wand = 14;
+    this->abilities.saving_throws.spell = 15;
+    
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(8);

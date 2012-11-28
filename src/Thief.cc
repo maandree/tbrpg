@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Thief::Thief() : Rogue()
   {
-    ////TODO implement constructor
+    this->thac0 = 23;
   }
   
   /**

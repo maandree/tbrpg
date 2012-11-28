@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Mage::Mage() : Wizard()
   {
-    ////TODO implement constructor
+    this->learn_from_scroll = true;
   }
   
   /**

@@ -1549,7 +1549,7 @@ neutral protection.
                         @tab 1D6       @tab all
 @end multitable
 
-Melée weapons other than dagger, flail nad hand-to-hand have
+Melée weapons other than dagger, flail and hand-to-hand have
 have a +1 armour class against melée bonus.
 
 

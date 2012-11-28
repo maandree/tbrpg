@@ -35,6 +35,13 @@ namespace tbrpg
    */
   Rogue::Rogue() : Class()
   {
+    this->hit_points = 6;
+    this->abilities.saving_throws.breath = 16;
+    this->abilities.saving_throws.paralyze_poison_death = 13;
+    this->abilities.saving_throws.petrification_polymorph = 12;
+    this->abilities.saving_throws.rod_staff_wand = 14;
+    this->abilities.saving_throws.spell = 15;
+    
     this->experience_chart.experience = std::vector<int>(31);
     this->experience_chart.hit_point_die = std::vector<char>(31);
     this->experience_chart.hit_point_dice = std::vector<char>(31);

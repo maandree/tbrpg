@@ -35,6 +35,8 @@ namespace tbrpg
    */
   Druid::Druid() : Priest()
   {
+    this->thac0 = 23;
+    
     this->experience_chart.experience = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)

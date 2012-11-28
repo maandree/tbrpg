@@ -35,6 +35,15 @@ namespace tbrpg
    */
   Warrior::Warrior() : Class()
   {
+    this->proficiencies_each = 2;
+    this->hit_pints = 10;
+    this->thac0 = 22;
+    this->abilities.saving_throws.breath = 17;
+    this->abilities.saving_throws.paralyze_poison_death = 14;
+    this->abilities.saving_throws.petrification_polymorph = 15;
+    this->abilities.saving_throws.rod_staff_wand = 16;
+    this->abilities.saving_throws.spell = 17;
+    
     this->experience_chart.experience = std::vector<int>(31);
     this->experience_chart.hit_point_die = std::vector<char>(31);
     this->experience_chart.hit_point_dice = std::vector<char>(31);

@@ -40,8 +40,8 @@ namespace tbrpg
     //this->thac0 = 0;
     //this->lore_bonus = 0;
     //this->alignments = nullptr;
-    //this->learn_from_scroll = false;
-    //this->proficiencies_each = 0;
+    this->learn_from_scroll = false;
+    this->proficiencies_each = 1;
     //this->experience_chart = nullptr;
     //this->spell_progression = nullptr;
     //this->abilities = nullptr;

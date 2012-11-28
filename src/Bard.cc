@@ -35,6 +35,8 @@ namespace tbrpg
    */
   Bard::Bard() : Rogue()
   {
+    this->thac0 = 20;
+    
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
     for (int i = 0; i <= 23; i++)
       this->spell_progression.wizard_slots[i] = std::vector<int>(7);
