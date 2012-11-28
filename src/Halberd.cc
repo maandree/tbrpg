@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Halberd::Halberd() : TwoHandedMelee()
   {
-    this->speedfactor = 9;
+    this->speed_factor = 9;
     this->damage_die = 10;
     this->damage_dice = 1;
     this->damage_type = {PIERCING, BLUDGEONING};
