@@ -32,11 +32,12 @@ namespace tbrpg
 {
   /**
    * Constructor
+   * 
+   * @param  weaponGroupName  The name of the weapon group
    */
-  WeaponGroup::WeaponGroup()
+  WeaponGroup::WeaponGroup(const std::string weaponGroupName)
   {
-    ////TODO implement constructor
-    //this->name = nullptr;
+    this->name = weaponGroupName;
   }
   
   /**

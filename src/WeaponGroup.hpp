@@ -54,8 +54,10 @@ namespace tbrpg
     
     /**
      * Construction
+     * 
+     * @param  weaponGroupName  The name of the weapon group
      */
-    WeaponGroup();
+    WeaponGroup(const std::string weaponGroupName);
     
     /**
      * Copy constructor
@@ -131,6 +133,48 @@ namespace tbrpg
     size_t hash() const;
     
   };
+  
+  
+  /**
+   * Bows
+   */
+  static WeaponGroup BOW = WeaponGroup("bow");
+  
+  /**
+   * Spiked weapons
+   */
+  static WeaponGroup SPIKED_WEAPONS = WeaponGroup("spiked weapons");
+  
+  /**
+   * Small swords
+   */
+  static WeaponGroup SMALL_SWORDS = WeaponGroup("small swords");
+  
+  /**
+   * Large swords
+   */
+  static WeaponGroup LARGE_SWORDS = WeaponGroup("large swords");
+  
+  /**
+   * Axe
+   */
+  static WeaponGroup AXE = WeaponGroup("axe");
+  
+  /**
+   * Blunt weapons
+   */
+  static WeaponGroup BLUNT_WEAPONS = WeaponGroup("blunt weapons");
+  
+  /**
+   * Missile weapons
+   */
+  static WeaponGroup MISSILE_WEAPONS = WeaponGroup("missile weapons");
+  
+  /**
+   * Spear
+   */
+  static WeaponGroup SPEAR = WeaponGroup("spear");
+  
 }
 
 namespace std

@@ -36,7 +36,7 @@ namespace tbrpg
   Warrior::Warrior() : Class()
   {
     this->proficiencies_each = 2;
-    this->hit_pints = 10;
+    this->hit_points = 10;
     this->thac0 = 22;
     this->abilities.saving_throws.breath = 17;
     this->abilities.saving_throws.paralyze_poison_death = 14;
