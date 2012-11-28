@@ -42,6 +42,7 @@ namespace tbrpg
     this->abilities.saving_throws.petrification_polymorph = 13;
     this->abilities.saving_throws.rod_staff_wand = 11;
     this->abilities.saving_throws.spell = 12;
+    this->lower_limits.intelligence = 9;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)
@@ -50,7 +51,7 @@ namespace tbrpg
 	this->spell_progression.wizard_slots[i][0] = 1 + i;
       }
     
-    this->spell_progression.wizard_levels = std::vector<std::vector<int>>(31);
+    this->spell_progression.wizard_levels = std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
       this->spell_progression.wizard_levels[i] = i;
     

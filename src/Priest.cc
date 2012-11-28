@@ -41,12 +41,13 @@ namespace tbrpg
     this->abilities.saving_throws.petrification_polymorph = 13;
     this->abilities.saving_throws.rod_staff_wand = 14;
     this->abilities.saving_throws.spell = 15;
+    this->lower_limits.wisdom = 9;
     
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(8);
     
-    this->spell_progression.priest_levels = std::vector<std::vector<int>>(31);
+    this->spell_progression.priest_levels = std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
       this->spell_progression.priest_levels[i] = i;
     

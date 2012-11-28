@@ -69,8 +69,12 @@ namespace tbrpg
     
     /**
      * Construction
+     * 
+     * @param  schoolName        The name of the school
+     * @param  effectColuration  The colouration of the magic in the school
+     * @param  practicerName     The name of the practicers of the school
      */
-    MagicSchool();
+    MagicSchool(std::string schoolName, std::string effectColuration, std::string practicerName);
     
     /**
      * Copy constructor
@@ -146,6 +150,49 @@ namespace tbrpg
     size_t hash() const;
     
   };
+  
+  
+  
+  /**
+   * Magic school: abjuration
+   */
+  static MagicSchool ABJURATION = MagicSchool("abjuration", "green", "abjurer");
+  
+  /**
+   * Magic school: alteration
+   */
+  static MagicSchool ALTERATION = MagicSchool("alteration", "blue", "transmuter");
+  
+  /**
+   * Magic school: conjuration
+   */
+  static MagicSchool CONJURATION = MagicSchool("conjuration", "orange", "conjurer");
+  
+  /**
+   * Magic school: divination
+   */
+  static MagicSchool DIVINATION = MagicSchool("divination", "white/pearl", "diviner");
+  
+  /**
+   * Magic school: enchantment
+   */
+  static MagicSchool ENCHANTMENT = MagicSchool("enchantment", "magenta", "enchanter");
+  
+  /**
+   * Magic school: illusion
+   */
+  static MagicSchool ILLUSION = MagicSchool("illusion", "multicoloured", "illusionist");
+  
+  /**
+   * Magic school: invocation
+   */
+  static MagicSchool INVOCATION = MagicSchool("invocation", "red", "invoker");
+  
+  /**
+   * Magic school: necromancy
+   */
+  static MagicSchool NECROMANCY = MagicSchool("necromancy", "ice/blue", "necromancer");
+  
 }
 
 namespace std

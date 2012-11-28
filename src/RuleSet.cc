@@ -45,6 +45,15 @@ namespace tbrpg
     //this->inventory_prototype = nullptr;
     //this->spells = nullptr;
     //this->races = nullptr;
+    
+    ABJURATION.opposite = {ALTERATION};
+    ALTERATION.opposite = {ABJURATION, NECROMANCY};
+    CONJURATION.opposite = {DIVINATION};
+    DIVINATION.opposite = {CONJURATION};
+    ENCHANTMENT.opposite = {INVOCATION};
+    ILLUSION.opposite = {NECROMANCY};
+    INVOCATION.opposite = {ENCHANTMENT, CONJURATION};
+    NECROMANCY.opposite = {ILLUSION};
   }
   
   /**

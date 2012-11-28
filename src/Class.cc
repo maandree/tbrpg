@@ -45,13 +45,20 @@ namespace tbrpg
     //this->experience_chart = nullptr;
     //this->spell_progression = nullptr;
     //this->abilities = nullptr;
-    //this->lower_limits = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
     //this->specialisations = nullptr;
     //this->proficiency_chart = nullptr;
     //this->default_one_hand = nullptr;
     //this->default_two_hand = nullptr;
+    
+    this->lower_limits.strength = 3;
+    this->lower_limits.strength18 = 0;
+    this->lower_limits.constitution = 3;
+    this->lower_limits.dexterity = 3;
+    this->lower_limits.intelligence = 3;
+    this->lower_limits.wisdom = 3;
+    this->lower_limits.charisma = 3;
   }
   
   /**

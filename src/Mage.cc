@@ -36,6 +36,8 @@ namespace tbrpg
   Mage::Mage() : Wizard()
   {
     this->learn_from_scroll = true;
+    this->specialisations = {ABJURATION, ALTERATION, CONJURATION, DIVINATION,
+			     ENCHANTMENT, ILLUSION, INVOCATION, NECROMANCY};
   }
   
   /**

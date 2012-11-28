@@ -26,8 +26,6 @@
 #include <vector>
 #include <unordered_map>
 
-
-
 #include "ReputationChart.hpp"
 #include "AbilityChart.hpp"
 #include "Inventory.hpp"

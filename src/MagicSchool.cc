@@ -32,14 +32,16 @@ namespace tbrpg
 {
   /**
    * Constructor
+   * 
+   * @param  schoolName        The name of the school
+   * @param  effectColuration  The colouration of the magic in the school
+   * @param  practicerName     The name of the practicers of the school
    */
-  MagicSchool::MagicSchool()
+  MagicSchool::MagicSchool(std::string schoolName, std::string effectColuration, std::string practicerName)
   {
-    ////TODO implement constructor
-    //this->name = nullptr;
-    //this->coluration = nullptr;
-    //this->practicer = nullptr;
-    //this->opposite = nullptr;
+    this->name = schoolName;
+    this->coluration = effectColuration;
+    this->practicer = practicerName;
   }
   
   /**
