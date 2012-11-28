@@ -41,6 +41,10 @@ namespace tbrpg
     for (int i = 0; i <= 23; i++)
       this->spell_progression.wizard_slots[i] = std::vector<int>(7);
     
+    this->spell_progression.wizard_levels = std::vector<std::vector<int>>(31);
+    for (int i = 0; i <= 30; i++)
+      this->spell_progression.wizard_levels[i] = i < 2 ? 0 : i > 23 ? 8 : ((i + 1) / 3);
+    
     for (int cur = 0, i = 0; i <= 23; i++)
       {
 	switch (cur)

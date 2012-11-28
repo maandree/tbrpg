@@ -39,6 +39,10 @@ namespace tbrpg
     for (int i = 0; i <= 20; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(5);
     
+    this->spell_progression.priest_levels = std::vector<std::vector<int>>(31);
+    for (int i = 0; i <= 30; i++)
+      this->spell_progression.priest_levels[i] = i < 9 ? 0 : i > 17 ? 9 : (i - 8);
+    
     for (int cur = 0, i = 0; i <= 20; i++)
       {
 	switch (cur)
