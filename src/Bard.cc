@@ -36,6 +36,7 @@ namespace tbrpg
   Bard::Bard() : Rogue()
   {
     this->thac0 = 20;
+    this->lore_bonus = 10;
     this->lower_limits.charisma = 9;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);

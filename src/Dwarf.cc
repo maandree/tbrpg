@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Dwarf::Dwarf() : Race()
   {
-    ////TODO implement constructor
+    this->bonuses.bonuses.detect_doors = 0.10;
   }
   
   /**

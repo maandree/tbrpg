@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Elf::Elf() : Race()
   {
-    ////TODO implement constructor
+    this->bonuses.bonuses.detect_doors = 0.20;
   }
   
   /**

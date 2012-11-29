@@ -60,10 +60,13 @@ code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*{,/*}.{cc,hpp}
 
-%.o: src/%.cc
+%.o: src/%.cc src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
+%.o: src/%.c src/%.h
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{c,h}
 
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi

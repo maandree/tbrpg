@@ -37,12 +37,14 @@ namespace tbrpg
   {
     this->hit_points = 4;
     this->thac0 = 25;
+    this->lore_bonus = 3;
     this->abilities.saving_throws.breath = 15;
     this->abilities.saving_throws.paralyze_poison_death = 14;
     this->abilities.saving_throws.petrification_polymorph = 13;
     this->abilities.saving_throws.rod_staff_wand = 11;
     this->abilities.saving_throws.spell = 12;
     this->lower_limits.intelligence = 9;
+    this->abilities.bonuses.detect_doors = 0.05;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Halfling::Halfling() : Race()
   {
-    ////TODO implement constructor
+    this->bonuses.bonuses.detect_doors = 0.05;
   }
   
   /**

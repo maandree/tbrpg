@@ -57,7 +57,7 @@ namespace tbrpg
      * 
      * @param  weaponGroupName  The name of the weapon group
      */
-    WeaponGroup(const std::string weaponGroupName);
+    WeaponGroup(const std::string weaponGroupName = nullptr);
     
     /**
      * Copy constructor
@@ -174,6 +174,13 @@ namespace tbrpg
    * Spear
    */
   static WeaponGroup SPEAR = WeaponGroup("spear");
+  
+  
+  /**
+   * All weapon groups
+   */
+  static std::vector<WeaponGroup> WEAPON_GROUPS = {BOW, SPIKED_WEAPONS, SMALL_SWORDS, LARGE_SWORDS,
+						   AXE, BLUNT_WEAPONS, MISSILE_WEAPONS, SPEAR};
   
 }
 

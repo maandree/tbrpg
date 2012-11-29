@@ -64,8 +64,12 @@ namespace tbrpg
     
     /**
      * Construction
+     * 
+     * @param  hit      The hit bonus
+     * @param  damage   The damage bonus
+     * @param  attacks  the number of half attacks
      */
-    Proficiency();
+    Proficiency(int hit = 0, int damage = 0, char attacks = 2);
     
     /**
      * Copy constructor

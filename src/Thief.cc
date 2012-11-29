@@ -36,7 +36,9 @@ namespace tbrpg
   Thief::Thief() : Rogue()
   {
     this->thac0 = 23;
+    this->lore_bonus = 3;
     this->lower_limits.dexterity = 9;
+    this->abilities.bonuses.detect_doors = 0.15;
   }
   
   /**

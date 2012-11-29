@@ -45,6 +45,9 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 17;
     this->lower_limits.strength = 9;
     
+    for (WeaponGroup weapongroup : WEAPON_GROUPS)
+      this->proficiency_chart[weapongroup].push_back(Proficiency(3, 4, 3));
+    
     this->experience_chart.experience = std::vector<int>(31);
     this->experience_chart.hit_point_die = std::vector<char>(31);
     this->experience_chart.hit_point_dice = std::vector<char>(31);

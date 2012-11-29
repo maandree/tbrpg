@@ -33,12 +33,11 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Proficiency::Proficiency()
+  Proficiency::Proficiency(int hit, int damage, char attacks)
   {
-    ////TODO implement constructor
-    //this->hit_bonus = 0;
-    //this->damage_bonus = 0;
-    //this->half_attacks = 0;
+    this->hit_bonus = hit;
+    this->damage_bonus = damage;
+    this->half_attacks = attacks;
   }
   
   /**
@@ -87,7 +86,7 @@ namespace tbrpg
    */
   Proficiency::~Proficiency()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   

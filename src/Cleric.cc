@@ -36,6 +36,7 @@ namespace tbrpg
   Cleric::Cleric() : Priest()
   {
     this->thac0 = 20;
+    this->abilities.bonuses.detect_doors = 0.10;
     
     this->experience_chart.experience = std::vector<int>(31);
     

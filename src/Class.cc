@@ -36,21 +36,14 @@ namespace tbrpg
   Class::Class()
   {
     ////TODO implement constructor
-    //this->hit_points = 0;
-    //this->thac0 = 0;
-    //this->lore_bonus = 0;
+    this->lore_bonus = 1;
     //this->alignments = nullptr;
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
-    //this->experience_chart = nullptr;
-    //this->spell_progression = nullptr;
     //this->abilities = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
     //this->specialisations = nullptr;
-    //this->proficiency_chart = nullptr;
-    //this->default_one_hand = nullptr;
-    //this->default_two_hand = nullptr;
     
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
@@ -59,6 +52,11 @@ namespace tbrpg
     this->lower_limits.intelligence = 3;
     this->lower_limits.wisdom = 3;
     this->lower_limits.charisma = 3;
+    this->default_one_hand = Fist();
+    this->default_two_hand = Fists();
+    
+    for (WeaponGroup weapongroup : WEAPON_GROUPS)
+      this->proficiency_chart[weapongroup] = {Proficiency(0, -1, 2), Proficiency(0, 1, 2), Proficiency(1, 3, 3)};
   }
   
   /**

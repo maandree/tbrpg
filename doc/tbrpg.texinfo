@@ -381,7 +381,7 @@ available proficiency.
 @section Thief abilities
 @cindex thief abilities
 
-Thieves, both singleclasses and multiclassed, have four
+Thieves, both singleclassed and multiclassed, have four
 special abilities.
 
 @itemize @bullet
