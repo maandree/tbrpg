@@ -190,6 +190,7 @@ Class                                                                      ; Pre
 
 Race                                                                       ; Race class
 	std::vector<std::vector<Class>> allowed_classes                    ; Allowed classes for the race
+	short dualclass_level                                              ; At which level the dual class is allowed, use 2³¹ − 1 for never
 	AbilityBonus bonuses                                               ; Bonuses for the race
 
 CharacterSheet                                                             ; Character sheet
