@@ -220,6 +220,7 @@ Character                                 ; Character
 	int morale                        ; Current morale
 	int intoxication                  ; Current intoxication level
 	int fatigue                       ; Number of turns since the character last slept with consideration for long travels
+	char extra_attacks                ; Extra attacks, increased by one when warriors reach level 7
 	CharacterSheet record             ; The character sheet
 
 MagicSchool                               ; Magic school class
