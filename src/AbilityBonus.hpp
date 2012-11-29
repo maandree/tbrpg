@@ -27,7 +27,6 @@
 #include <unordered_map>
 
 
-
 #include "Bonuses.hpp"
 #include "ThiefAbilities.hpp"
 #include "SavingThrows.hpp"

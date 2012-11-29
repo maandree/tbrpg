@@ -38,6 +38,10 @@ namespace tbrpg
     this->armour_class_modifiers[SLASHING] = -1;
     this->armour_class_modifiers[PIERCING] = -1;
     this->armour_class_modifiers[BLUDGEONING] = -1;
+    this->protect_melee[SLASHING] = true;
+    this->protect_melee[PIERCING] = true;
+    this->protect_melee[BLUDGEONING] = true;
+    this->protect_missile = true;
   }
   
   /**

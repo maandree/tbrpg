@@ -36,6 +36,11 @@ namespace tbrpg
   Dwarf::Dwarf() : Race()
   {
     this->bonuses.bonuses.detect_doors = 0.10;
+    this->bonuses.bonuses.magic_defence_bonus = 1.00;
+    this->bonuses.defence.poison = 1.00;
+    this->bonuses.abilities.constitution = 1;
+    this->bonuses.abilities.dexterity = -1;
+    this->bonuses.abilities.charisma = -1;
   }
   
   /**

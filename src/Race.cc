@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Race::Race()
   {
-    this->dualclass_level = 0x7FFFffff;
+    this->dualclass_level = 0x7FFF;
   }
   
   /**

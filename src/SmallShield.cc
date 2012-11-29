@@ -35,7 +35,7 @@ namespace tbrpg
    */
   SmallShield::SmallShield() : Shield()
   {
-    ////TODO implement constructor
+    this->protect_missile = false;
   }
   
   /**

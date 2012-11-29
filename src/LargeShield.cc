@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LargeShield::LargeShield() : Shield()
   {
-    ////TODO implement constructor
+    this->bonuses.defence.missile = 2;
   }
   
   /**

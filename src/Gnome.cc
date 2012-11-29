@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Gnome::Gnome() : Race()
   {
-    ////TODO implement constructor
+    this->bonuses.abilities.intelligence = 1;
+    this->bonuses.abilities.wisdom = -1;
   }
   
   /**

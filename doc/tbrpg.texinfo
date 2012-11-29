@@ -145,33 +145,33 @@ must choose yout character's race.
 @item  Human
 There really is nothing special about humans.
 @item  Half-Orc
-Half-Orcs recieve a bonus point to their strength and
+Half-Orcs receive a bonus point to their strength and
 constitution, but a penality point to intelligence and
 charisma.
 @item  Half-Elf
-Half-elves have infravisiton and limited resistance to
-charm and sleep spells.
+Half-elves have infravisiton and limited (50 %) resistance
+to charm and sleep spells.
 @item  Elf
 Elves have infravistion and full resistance to charm and
-sleep spells. They have a −2 bonus point THAC0 when using
-bows and long swords. Finally, they have a recieve a bonus
+sleep spells. They have a  −2 bonus point THAC0 when using
+bows and long swords. Finally, they have a receive a bonus
 point to their dexterity, but a penalty point to their
 constitution.
 @item  Dwarf
 Dwarves have infravision and full resistance to magic and
-poison. They have a recieve a bonus point to their
+poison. They have a receive a bonus point to their
 constituion, but a penalty point to their charisma and
 dexterity.
 @item  Halfling
-Halflings have high resistance to poison and magic, and have
-a −4 bonues when using slings. They have a recieve a bonus
-point to their dexterity, but a penalty point to their
-strength.
+Halflings have high (75 %) resistance to poison and magic,
+and have −4 2 bonus point THAC0 when using slings. They
+have a receive a bonus point to their dexterity, but a
+penalty point to their strength.
 @item  Gnome
 Gnomes have infravision and full resistance to magic, both
 protective and distructive magic, but only wizard spells.
-They recieve a bonus to their intelligence, but a penalty
-point to their wisdom.
+They receive a bonus point to their intelligence, but a
+penalty point to their wisdom.
 @end table
 
 
@@ -209,7 +209,7 @@ Must be of good alignment.
 Can wield any weapon and any armour except robes.
 Special abilities: Lay on Hands, Turn Undead,
 Protection from Evil, detect Evil.
-Recieve +2 bonus to all Saving throws,
+Receive +2 bonus to all Saving throws,
 Must maintain lawful good alignment.
 @item  Thief (T)
 Cannot be of lawful good alignment.
@@ -348,10 +348,10 @@ reputation.
 @cindex proficiencies, weapon
 
 Charaters receive weapon proficiencies, when wielding a
-weapon the character recieve a +1 damage bonus for each
+weapon the character receive a +1 damage bonus for each
 proficiencies level on the wielded weapon. Additionally,
 when wielding a weapon without for which the charater lack
-a proficiency he recieves a −1 damage penalty.
+a proficiency he receives a −1 damage penalty.
 
 Level 1 fighters, rangers and paladins can assign four
 proficiency points, at most two per weapon, other classes

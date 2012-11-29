@@ -27,7 +27,6 @@
 #include <unordered_map>
 
 
-
 #include "Class.hpp"
 #include "AbilityBonus.hpp"
 

@@ -36,6 +36,10 @@ namespace tbrpg
   Halfling::Halfling() : Race()
   {
     this->bonuses.bonuses.detect_doors = 0.05;
+    this->bonuses.bonuses.magic_defence_bonus = 0.75;
+    this->bonuses.defence.poison = 0.75;
+    this->bonuses.abilities.dexterity = 1;
+    this->bonuses.abilities.strength = -1;
   }
   
   /**

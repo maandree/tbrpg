@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Buckler::Buckler() : Shield()
   {
-    ////TODO implement constructor
+    this->protect_melee[PIERCING] = false;
+    this->protect_missile = false;
   }
   
   /**

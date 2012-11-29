@@ -39,9 +39,7 @@ namespace tbrpg
     this->damage_die = 2;
     this->damage_dice = 2;
     this->damage_type = {BLUDGEONING};
-    this->armour_class_modifiers[SLASHING] = 0;
-    this->armour_class_modifiers[PIERCING] = 0;
-    this->armour_class_modifiers[BLUDGEONING] = 0;
+    this->bonuses.defence.melee = 0;
   }
   
   /**

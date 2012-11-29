@@ -35,9 +35,7 @@ namespace tbrpg
    */
   MeleeWeapon::MeleeWeapon() : Weapon()
   {
-    this->armour_class_modifiers[SLASHING] = 1;
-    this->armour_class_modifiers[PIERCING] = 1;
-    this->armour_class_modifiers[BLUDGEONING] = 1;
+    this->bonuses.defence.melee = 1;
   }
   
   /**

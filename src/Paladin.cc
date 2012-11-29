@@ -35,6 +35,11 @@ namespace tbrpg
    */
   Paladin::Paladin() : Warrior()
   {
+    this->abilities.thief_abilities.breath = 2;
+    this->abilities.thief_abilities.paralyze_poison_death = 2;
+    this->abilities.thief_abilities.petrification_polymorph = 2;
+    this->abilities.thief_abilities.rod_staff_wand = 2;
+    this->abilities.thief_abilities.spell = 2;
     this->lower_limits.charisma = 17;
     for (int i = 0; i < 8; i++)
       this->alignments[i] = false;
