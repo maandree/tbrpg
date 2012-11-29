@@ -149,6 +149,15 @@ namespace tbrpg
     virtual Road& operator =(Road&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Road& other) const;
+    
+    
   protected:
     /**
      * Copy method

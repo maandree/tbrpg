@@ -107,6 +107,15 @@ namespace tbrpg
     virtual TwoHandedMelee& operator =(TwoHandedMelee&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const TwoHandedMelee& other) const;
+    
+    
   protected:
     /**
      * Copy method

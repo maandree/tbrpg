@@ -114,6 +114,15 @@ namespace tbrpg
     virtual RangedWeapon& operator =(RangedWeapon&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const RangedWeapon& other) const;
+    
+    
   protected:
     /**
      * Copy method

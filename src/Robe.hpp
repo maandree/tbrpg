@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Robe& operator =(Robe&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Robe& other) const;
+    
+    
   protected:
     /**
      * Copy method

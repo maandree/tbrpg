@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Dwarf& operator =(Dwarf&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Dwarf& other) const;
+    
+    
   protected:
     /**
      * Copy method

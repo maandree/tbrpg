@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Quarterstaff& operator =(Quarterstaff&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Quarterstaff& other) const;
+    
+    
   protected:
     /**
      * Copy method

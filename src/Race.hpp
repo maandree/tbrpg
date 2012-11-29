@@ -120,6 +120,15 @@ namespace tbrpg
     virtual Race& operator =(Race&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Race& other) const;
+    
+    
   protected:
     /**
      * Copy method

@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Fist& operator =(Fist&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Fist& other) const;
+    
+    
   protected:
     /**
      * Copy method

@@ -105,6 +105,15 @@ namespace tbrpg
     virtual _MapMinor& operator =(_MapMinor&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const _MapMinor& other) const;
+    
+    
   protected:
     /**
      * Copy method

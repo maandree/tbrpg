@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Cleric& operator =(Cleric&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Cleric& other) const;
+    
+    
   protected:
     /**
      * Copy method

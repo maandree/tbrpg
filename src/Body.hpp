@@ -116,6 +116,15 @@ namespace tbrpg
     virtual Body& operator =(Body&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Body& other) const;
+    
+    
   protected:
     /**
      * Copy method

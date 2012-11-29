@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Crossbow& operator =(Crossbow&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Crossbow& other) const;
+    
+    
   protected:
     /**
      * Copy method

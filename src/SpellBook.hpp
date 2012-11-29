@@ -119,6 +119,15 @@ namespace tbrpg
     virtual SpellBook& operator =(SpellBook&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const SpellBook& other) const;
+    
+    
   protected:
     /**
      * Copy method

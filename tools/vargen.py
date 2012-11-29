@@ -130,10 +130,10 @@ for line in lines:
         output += '     */\n    virtual %s& operator =(%s& original);\n    \n' % (className, className)
         output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
         output += 'its resourced will be moved\n     * @return            The invoked object\n'
-        output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
-#        output += '    /**\n     * Move operator\n     * \n     * @param   original  The moved object, '
-#        output += 'its resourced will be moved\n     * @return            The invoked object\n'
-#        output += '     */\n    virtual %s& operator =(%s&& original);\n    \n' % (className, className)
+        output += '     */\n    virtual %s& operator =(%s&& original);\n    \n    \n' % (className, className)
+        output += '    /**\n     * Equality evaluator\n     * \n     * @param   other  The other comparand\n'
+        output += '     * @return         Whether the instances are equal\n'
+        output += '     */\n    virtual bool operation ==(const %s& other) const;\n    \n' % className
         output += '    \n  protected:\n    /**\n     * Copy method\n     * \n'
         output += '     * @param  self      The object to modify\n     * @param  original  The reference object\n'
         output += '     */\n    static void __copy__(%s& self, const %s& original);\n    \n' % (className, className)
@@ -210,11 +210,10 @@ for line in lines:
         output += '  /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
         output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
         output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
-        output += '%s\n%s\n    return *this;\n  }\n  \n' % (voidIt, classMove + varMove)
-#        output += '  /**\n   * Move operator\n   * \n   * @param   original  The moved object, '
-#        output += 'its resourced will be moved\n   * @return            The invoked object\n   */'
-#        output += '\n  %s& %s::operator =(%s&& original)\n  {\n' % (className, className, className)
-#        output += '%s\n%s\n    return *this;\n  }\n  \n' % (voidIt, classMove + varMove)
+        output += '%s\n%s\n    return *this;\n  }\n  \n  \n' % (voidIt, classMove + varMove)
+        output += '  /**\n   * Equality evaluator\n   * \n   * @param   other  The other comparand\n'
+        output += '   * @return         Whether the instances are equal\n   */\n'
+        output += '  bool %s::operation ==(const %s& other) const\n  {\n    return this == &other;\n  }\n  \n' % (className, className)
         output += '  /**\n   * Copy method\n   * \n'
         output += '   * @param  self      The object to modify\n   * @param  original  The reference object\n'
         output += '   */\n  void %s::__copy__(%s& self, const %s& original)\n' % (className, className, className)
