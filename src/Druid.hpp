@@ -27,8 +27,7 @@
 #include <unordered_map>
 
 #include "Priest.hpp"
-
-
+#include "Spear.hpp"
 
 
 /**

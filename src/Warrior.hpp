@@ -27,8 +27,31 @@
 #include <unordered_map>
 
 #include "Class.hpp"
-
-
+#include "MediumShield.hpp"
+#include "LargeShield.hpp"
+#include "ChainMail.hpp"
+#include "SplintMail.hpp"
+#include "PlateMail.hpp"
+#include "FullPlateMail.hpp"
+#include "CompositeLongBow.hpp"
+#include "LongBow.hpp"
+#include "ShortBow.hpp"
+#include "HeavyCrossbow.hpp"
+#include "LightCrossbow.hpp"
+#include "ThrownigAxe.hpp"
+#include "Flail.hpp"
+#include "Halberd.hpp"
+#include "TwoHandedSword.hpp"
+#include "WarHammer.hpp"
+#include "Arrow.hpp"
+#include "BastardSword.hpp"
+#include "BattleAxe.hpp"
+#include "Bolt.hpp"
+#include "LongSword.hpp"
+#include "Mace.hpp"
+#include "MorningStar.hpp"
+#include "ShortSword.hpp"
+#include "Spear.hpp"
 
 
 /**

@@ -39,6 +39,21 @@ namespace tbrpg
     this->lore_bonus = 10;
     this->lower_limits.charisma = 9;
     
+    this->can_use[ChainMail()] = true;
+    this->can_use[LongBow()] = true;
+    this->can_use[HeavyCrossbow()] = true;
+    this->can_use[LightCrossbow()] = true;
+    this->can_use[Flail()] = true;
+    this->can_use[Halberd()] = true;
+    this->can_use[TwoHandedSword()] = true;
+    this->can_use[WarHammer()] = true;
+    this->can_use[BastardSword()] = true;
+    this->can_use[BattleAxe()] = true;
+    this->can_use[Bolt()] = true;
+    this->can_use[Mace()] = true;
+    this->can_use[MorningStar()] = true;
+    this->can_use[Spear()] = true;
+    
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
     for (int i = 0; i <= 23; i++)
       this->spell_progression.wizard_slots[i] = std::vector<int>(7);

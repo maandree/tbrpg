@@ -45,6 +45,32 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 17;
     this->lower_limits.strength = 9;
     
+    this->can_use[MediumShield()] = true;
+    this->can_use[LargeShield()] = true;
+    this->can_use[ChainMail()] = true;
+    this->can_use[SplintMail()] = true;
+    this->can_use[PlateMail()] = true;
+    this->can_use[FullPlateMail()] = true;
+    this->can_use[CompositeLongBow()] = true;
+    this->can_use[LongBow()] = true;
+    this->can_use[ShortBow()] = true;
+    this->can_use[HeavyCrossbow()] = true;
+    this->can_use[LightCrossbow()] = true;
+    this->can_use[ThrownigAxe()] = true;
+    this->can_use[Flail()] = true;
+    this->can_use[Halberd()] = true;
+    this->can_use[TwoHandedSword()] = true;
+    this->can_use[WarHammer()] = true;
+    this->can_use[Arrow()] = true;
+    this->can_use[BastardSword()] = true;
+    this->can_use[BattleAxe()] = true;
+    this->can_use[Bolt()] = true;
+    this->can_use[LongSword()] = true;
+    this->can_use[Mace()] = true;
+    this->can_use[MorningStar()] = true;
+    this->can_use[ShortSword()] = true;
+    this->can_use[Spear()] = true;
+    
     for (WeaponGroup weapongroup : WEAPON_GROUPS)
       this->proficiency_chart[weapongroup].push_back(Proficiency(3, 4, 3));
     

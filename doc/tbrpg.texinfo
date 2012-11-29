@@ -1568,21 +1568,21 @@ have a +1 armour class against melée bonus.
 @tab   @b{Damage bonus}
 @tab   @b{Usable by}
 @item Composite long bow  @tab 2   @tab 2  @tab 7   @tab +1
-                          @tab +2  @tab F,B,P
+                          @tab +2  @tab F,R,P
 @item Dart                @tab 1   @tab 3  @tab 2   @tab 0
                           @tab 0   @tab not cleric
 @item Heavy crossbow      @tab 2   @tab 1  @tab 10  @tab 0
-                          @tab +2  @tab F,B,P,B
+                          @tab +2  @tab F,R,P,B
 @item Light crossbow      @tab 2   @tab 1  @tab 7   @tab 0
-                          @tab 0   @tab F,B,P,B
+                          @tab 0   @tab F,R,P,B
 @item Long bow            @tab 2   @tab 2  @tab 8   @tab +1
-                          @tab 0   @tab F,B,P,B
+                          @tab 0   @tab F,R,P,B
 @item Short bow           @tab 2   @tab 2  @tab 6   @tab 0
-                          @tab 0   @tab F,B,P,T,B
+                          @tab 0   @tab F,R,P,T,B
 @item Sling               @tab 1   @tab 1  @tab 6   @tab 0
                           @tab 0   @tab all
 @item Throwing axe        @tab 1   @tab 1  @tab 4   @tab 0
-                          @tab 0   @tab F,B,P
+                          @tab 0   @tab F,R,P
 @item Throwing dagger     @tab 1   @tab 2  @tab 2   @tab 0
                           @tab 0   @tab not priest
 @end multitable

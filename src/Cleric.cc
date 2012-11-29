@@ -38,6 +38,18 @@ namespace tbrpg
     this->thac0 = 20;
     this->abilities.bonuses.detect_doors = 0.10;
     
+    this->can_use[MediumShield()] = true;
+    this->can_use[LargeShield()] = true;
+    this->can_use[ChainMail()] = true;
+    this->can_use[SplintMail()] = true;
+    this->can_use[PlateMail()] = true;
+    this->can_use[FullPlateMail()] = true;
+    this->can_use[Dart()] = false;
+    this->can_use[Dagger()] = false;
+    this->can_use[Flail()] = true;
+    this->can_use[Mace()] = true;
+    this->can_use[MorningStar()] = true;
+    
     this->experience_chart.experience = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)

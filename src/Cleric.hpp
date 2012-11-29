@@ -25,9 +25,16 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
-
 #include "Priest.hpp"
-
+#include "MediumShield.hpp"
+#include "LargeShield.hpp"
+#include "ChainMail.hpp"
+#include "SplintMail.hpp"
+#include "PlateMail.hpp"
+#include "FullPlateMail.hpp"
+#include "Flail.hpp"
+#include "Mace.hpp"
+#include "MorningStar.hpp"
 
 
 

@@ -45,6 +45,23 @@ namespace tbrpg
     //this->can_use = nullptr;
     //this->specialisations = nullptr;
     
+    this->can_use[Hood()] = true;
+    this->can_use[Helmet()] = true;
+    this->can_use[Buckler()] = true;
+    this->can_use[SmallShield()] = true;
+    this->can_use[LeatherArmour()] = true;
+    this->can_use[StuddedLeatherArmour()] = true;
+    this->can_use[Dart()] = true;
+    this->can_use[Sling()] = true;
+    this->can_use[ThrowingDagger()] = true;
+    this->can_use[Fist()] = true;
+    this->can_use[Fists()] = true;
+    this->can_use[Bullet()] = true;
+    this->can_use[Torch()] = true;
+    this->can_use[QuarterStaff()] = true;
+    this->can_use[Dagger()] = true;
+    this->can_use[Club()] = true;
+    
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
     this->lower_limits.constitution = 3;

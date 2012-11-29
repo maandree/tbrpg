@@ -27,8 +27,10 @@
 #include <unordered_map>
 
 #include "Class.hpp"
-
-
+#include "Arrow.hpp"
+#include "LongSword.hpp"
+#include "ShortSword.hpp"
+#include "ShortBow.hpp"
 
 
 /**

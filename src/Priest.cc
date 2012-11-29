@@ -43,6 +43,8 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 15;
     this->lower_limits.wisdom = 9;
     
+    this->can_use[ThrowingDagger()] = false;
+    
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(8);

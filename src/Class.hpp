@@ -39,7 +39,20 @@
 #include "WeaponGroup.hpp"
 #include "Proficiency.hpp"
 #include "Weapon.hpp"
-
+#include "Helmet.hpp"
+#include "Hood.hpp"
+#include "StuddedLeatherArmour.hpp"
+#include "LeatherArmour.hpp"
+#include "SmallShield.hpp"
+#include "Buckler.hpp"
+#include "Dart.hpp"
+#include "Sling.hpp"
+#include "ThrowingDagger.hpp"
+#include "Bullet.hpp"
+#include "Torch.hpp"
+#include "QuarterStaff.hpp"
+#include "Dagger.hpp"
+#include "Club.hpp"
 
 /**
  * Text based roll playing game

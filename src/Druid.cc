@@ -38,6 +38,8 @@ namespace tbrpg
     this->thac0 = 23;
     this->lower_limits.charisma = 9;
     
+    this->can_use[Spear()] = true;
+    
     this->experience_chart.experience = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)

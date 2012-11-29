@@ -27,8 +27,20 @@
 #include <unordered_map>
 
 #include "Rogue.hpp"
-
-
+#include "ChainMail.hpp"
+#include "LongBow.hpp"
+#include "HeavyCrossbow.hpp"
+#include "LightCrossbow.hpp"
+#include "Flail.hpp"
+#include "Halberd.hpp"
+#include "TwoHandedSword.hpp"
+#include "WarHammer.hpp"
+#include "BastardSword.hpp"
+#include "BattleAxe.hpp"
+#include "Bolt.hpp"
+#include "Mace.hpp"
+#include "MorningStar.hpp"
+#include "Spear.hpp"
 
 
 /**
