@@ -35,6 +35,10 @@ namespace tbrpg
    */
   HalfElf::HalfElf() : Race()
   {
+    this->bonuses.thief_abilities.find_traps = 0;
+    this->bonuses.thief_abilities.open_locks = 0;
+    this->bonuses.thief_abilities.pick_pockets = 10;
+    this->bonuses.thief_abilities.stealth = 5;
     this->allowed_classes =
       {{Fighter()}, {Ranger()},
        {Thief()}, {Bard()},

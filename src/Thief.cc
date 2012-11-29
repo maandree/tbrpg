@@ -40,6 +40,10 @@ namespace tbrpg
     this->lower_limits.dexterity = 9;
     this->abilities.bonuses.detect_doors = 0.15;
     this->alignments[8] = false;
+    this->abilities.thief_abilities.find_traps = 5;
+    this->abilities.thief_abilities.open_locks = 10;
+    this->abilities.thief_abilities.pick_pockets = 15;
+    this->abilities.thief_abilities.stealth = 10;
   }
   
   /**

@@ -41,6 +41,10 @@ namespace tbrpg
     this->bonuses.abilities.constitution = 1;
     this->bonuses.abilities.dexterity = -1;
     this->bonuses.abilities.charisma = -1;
+    this->bonuses.thief_abilities.find_traps = 15;
+    this->bonuses.thief_abilities.open_locks = 10;
+    this->bonuses.thief_abilities.pick_pockets = 0;
+    this->bonuses.thief_abilities.stealth = 0;
     
     this->allowed_classes =
       {{Fighter()},

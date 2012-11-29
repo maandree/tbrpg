@@ -393,13 +393,13 @@ special abilities.
 (move silently/hide in shadows)
 @end itemize
 
-Theives have 30 points to allocate at first level,
-indicated by the brackets in the list aboce, and will
-receive 20 additional points to allocate for each level.
-Rangers also have stealth, and bards have pick pocket, 5
-points per level, starting at 10 and limited to 99.
-A point is a 1 %-unit unit, that is multiplied th a
-1D20 roll.
+Thieves have 30 points allocated at the first level,
+indicated by the brackets in the list above, and will
+receive 20 additional points to allocate for each level,
+including the first level. Rangers also have stealth, and
+bards have pick pocket, 5 points per level, starting at 10
+and limited to 99. A point is a 1 %-unit unit, that is
+multiplied the 1D20 roll.
 
 During stealth mode a character by be successful in
 performing a backstab when attacking with melée weapons.

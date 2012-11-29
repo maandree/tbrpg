@@ -40,6 +40,10 @@ namespace tbrpg
     this->bonuses.defence.poison = 0.75;
     this->bonuses.abilities.dexterity = 1;
     this->bonuses.abilities.strength = -1;
+    this->bonuses.thief_abilities.find_traps = 5;
+    this->bonuses.thief_abilities.open_locks = 5;
+    this->bonuses.thief_abilities.pick_pockets = 5;
+    this->bonuses.thief_abilities.stealth = 15;
     
     this->allowed_classes =
       {{Fighter()},
