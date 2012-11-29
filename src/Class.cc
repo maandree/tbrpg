@@ -58,7 +58,7 @@ namespace tbrpg
     this->can_use[Fists()] = true;
     this->can_use[Bullet()] = true;
     this->can_use[Torch()] = true;
-    this->can_use[QuarterStaff()] = true;
+    this->can_use[Quarterstaff()] = true;
     this->can_use[Dagger()] = true;
     this->can_use[Club()] = true;
     

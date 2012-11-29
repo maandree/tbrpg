@@ -50,7 +50,7 @@
 #include "ThrowingDagger.hpp"
 #include "Bullet.hpp"
 #include "Torch.hpp"
-#include "QuarterStaff.hpp"
+#include "Quarterstaff.hpp"
 #include "Dagger.hpp"
 #include "Club.hpp"
 
