@@ -48,6 +48,13 @@ namespace tbrpg
   {
   public:
     /**
+     * Whether wizard spells can be casted while wearing the armour
+     */
+    bool wizard_magic_use;
+    
+    
+    
+    /**
      * Construction
      */
     BodyArmour();
