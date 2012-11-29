@@ -29,7 +29,6 @@
 
 
 #include "Class.hpp"
-#include "ActionSlot.hpp"
 
 
 /**
