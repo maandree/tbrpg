@@ -68,7 +68,7 @@ namespace tbrpg
     int thac0;
     
     /**
-     * Lore bonus
+     * Lore bonus per level
      */
     int lore_bonus;
     
@@ -115,7 +115,7 @@ namespace tbrpg
     /**
      * Usable items
      */
-    std::vector<Item> can_use;
+    std::unordered_map<Item, bool> can_use;
     
     /**
      * Availiable specialisations for the class
