@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_HALFELF_HPP__
+

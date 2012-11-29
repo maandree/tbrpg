@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_RING_HPP__
+

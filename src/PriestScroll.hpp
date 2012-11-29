@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_PRIESTSCROLL_HPP__
+

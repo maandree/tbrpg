@@ -157,3 +157,4 @@ namespace std
 
 
 #endif//__GUARD_DAMAGETYPE_HPP__
+

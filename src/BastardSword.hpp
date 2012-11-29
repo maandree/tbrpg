@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_BASTARDSWORD_HPP__
+

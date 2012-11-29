@@ -229,3 +229,4 @@ namespace std
 
 
 #endif//__GUARD_SPELL_HPP__
+

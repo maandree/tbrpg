@@ -192,3 +192,4 @@ namespace std
 
 
 #endif//__GUARD_DEFENCE_HPP__
+

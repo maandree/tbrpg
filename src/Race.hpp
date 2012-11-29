@@ -170,3 +170,4 @@ namespace std
 
 
 #endif//__GUARD_RACE_HPP__
+

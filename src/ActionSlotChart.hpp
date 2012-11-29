@@ -164,3 +164,4 @@ namespace std
 
 
 #endif//__GUARD_ACTIONSLOTCHART_HPP__
+

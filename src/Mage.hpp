@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_MAGE_HPP__
+

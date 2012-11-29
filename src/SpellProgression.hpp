@@ -172,3 +172,4 @@ namespace std
 
 
 #endif//__GUARD_SPELLPROGRESSION_HPP__
+

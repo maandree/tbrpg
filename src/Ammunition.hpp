@@ -187,3 +187,4 @@ namespace std
 
 
 #endif//__GUARD_AMMUNITION_HPP__
+

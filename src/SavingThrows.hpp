@@ -177,3 +177,4 @@ namespace std
 
 
 #endif//__GUARD_SAVINGTHROWS_HPP__
+

@@ -212,3 +212,4 @@ namespace std
 
 
 #endif//__GUARD_REPUTATIONCHART_HPP__
+

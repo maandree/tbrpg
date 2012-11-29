@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_FIGHTER_HPP__
+

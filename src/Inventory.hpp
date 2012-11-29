@@ -231,3 +231,4 @@ namespace std
 
 
 #endif//__GUARD_INVENTORY_HPP__
+

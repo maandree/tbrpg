@@ -247,3 +247,4 @@ namespace std
 
 
 #endif//__GUARD_BONUSES_HPP__
+

@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_MELEEWEAPON_HPP__
+

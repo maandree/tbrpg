@@ -243,3 +243,4 @@ namespace std
 
 
 #endif//__GUARD_CLASS_HPP__
+

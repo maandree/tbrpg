@@ -150,3 +150,4 @@ namespace std
 
 
 #endif//__GUARD__MAPMINOR_HPP__
+
