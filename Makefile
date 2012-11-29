@@ -64,9 +64,17 @@ code:
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
 
+%.o: src/%.hpp
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.hpp
+
 %.o: src/%.c src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{c,h}
+
+%.o: src/%.h
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.h
 
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi

@@ -27,8 +27,8 @@
 #include <unordered_map>
 
 
-
 #include "Class.hpp"
+#include "ActionSlot.hpp"
 
 
 /**
