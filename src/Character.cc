@@ -41,6 +41,7 @@ namespace tbrpg
     //this->morale = 0;
     //this->intoxication = 0;
     //this->fatigue = 0;
+    //this->extra_attacks = 0;
     //this->record = nullptr;
   }
   
@@ -57,6 +58,7 @@ namespace tbrpg
     this->morale = original.morale;
     this->intoxication = original.intoxication;
     this->fatigue = original.fatigue;
+    this->extra_attacks = original.extra_attacks;
     this->record = original.record;
   }
   
@@ -73,6 +75,7 @@ namespace tbrpg
     this->morale = original.morale;
     this->intoxication = original.intoxication;
     this->fatigue = original.fatigue;
+    this->extra_attacks = original.extra_attacks;
     this->record = original.record;
   }
   
@@ -89,6 +92,7 @@ namespace tbrpg
     std::swap(this->morale, original.morale);
     std::swap(this->intoxication, original.intoxication);
     std::swap(this->fatigue, original.fatigue);
+    std::swap(this->extra_attacks, original.extra_attacks);
     std::swap(this->record, original.record);
   }
   
@@ -119,6 +123,7 @@ namespace tbrpg
     this->morale = original.morale;
     this->intoxication = original.intoxication;
     this->fatigue = original.fatigue;
+    this->extra_attacks = original.extra_attacks;
     this->record = original.record;
     return *this;
   }
@@ -137,6 +142,7 @@ namespace tbrpg
     this->morale = original.morale;
     this->intoxication = original.intoxication;
     this->fatigue = original.fatigue;
+    this->extra_attacks = original.extra_attacks;
     this->record = original.record;
     return *this;
   }
@@ -155,6 +161,7 @@ namespace tbrpg
     std::swap(this->morale, original.morale);
     std::swap(this->intoxication, original.intoxication);
     std::swap(this->fatigue, original.fatigue);
+    std::swap(this->extra_attacks, original.extra_attacks);
     std::swap(this->record, original.record);
     return *this;
   }

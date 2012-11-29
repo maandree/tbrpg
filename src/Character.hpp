@@ -73,6 +73,11 @@ namespace tbrpg
     int fatigue;
     
     /**
+     * Extra attacks, increased by one when warriors reach level 7
+     */
+    char extra_attacks;
+    
+    /**
      * The character sheet
      */
     CharacterSheet record;
