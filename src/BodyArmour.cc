@@ -35,8 +35,7 @@ namespace tbrpg
    */
   BodyArmour::BodyArmour() : Item()
   {
-    ////TODO implement constructor
-    //this->wizard_magic_use = false;
+    this->wizard_magic_use = false;
   }
   
   /**

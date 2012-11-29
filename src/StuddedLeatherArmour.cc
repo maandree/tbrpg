@@ -38,6 +38,7 @@ namespace tbrpg
     this->armour_class = 7;
     this->armour_class_modifiers[SLASHING] = -2;
     this->armour_class_modifiers[PIERCING] = -1;
+    this->wizard_magic_use = true;
   }
   
   /**
