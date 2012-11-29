@@ -55,6 +55,8 @@ namespace tbrpg
     this->can_use[StuddedLeatherArmour()] = false;
     this->can_use[Robe()] = true;
     this->can_use[Club()] = false;
+    this->can_use[HighWand()] = true;
+    this->can_use[WizardScroll()] = true;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)

@@ -29,6 +29,8 @@
 #include "Class.hpp"
 #include "Hat.hpp"
 #include "Robe.hpp"
+#include "HighWand.hpp"
+#include "WizardScroll.hpp"
 
 
 /**

@@ -73,3 +73,10 @@ Cleric FullPlateMail
 Cleric Flail
 Cleric Mace
 Cleric MorningStar
+Class Potion
+Class LowScroll
+Class LowWand
+Priest HighWand
+Priest PriestScroll
+Wizard HighWand
+Wizard WizardScroll

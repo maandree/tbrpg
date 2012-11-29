@@ -53,6 +53,10 @@
 #include "Quarterstaff.hpp"
 #include "Dagger.hpp"
 #include "Club.hpp"
+#include "Potion.hpp"
+#include "LowScroll.hpp"
+#include "LowWand.hpp"
+
 
 /**
  * Text based roll playing game

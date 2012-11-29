@@ -61,6 +61,9 @@ namespace tbrpg
     this->can_use[Quarterstaff()] = true;
     this->can_use[Dagger()] = true;
     this->can_use[Club()] = true;
+    this->can_use[Potion()] = true;
+    this->can_use[LowScroll()] = true;
+    this->can_use[LowWand()] = true;
     
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
