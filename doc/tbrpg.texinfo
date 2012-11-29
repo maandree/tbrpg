@@ -301,7 +301,7 @@ Additionally fighters, rangers and paladins throw two
 the strength if it is set to 18. The extra strength value is
 0 for non-fighters and for fighters the first roll modulo 10
 times 10 plus the second roll modulo 10, if this adds up to
-0, than the value is instead 100. The strength 18 with 100 as
+0, then the value is instead 100. The strength 18 with 100 as
 the extra is displayed as 18/00. During the character
 creation you can rearrange the values and reroll the dice
 until you are satisfied.
