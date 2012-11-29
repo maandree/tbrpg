@@ -149,6 +149,15 @@ namespace tbrpg
     virtual ExperienceChart& operator =(ExperienceChart&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const ExperienceChart& other) const;
+    
+    
   protected:
     /**
      * Copy method

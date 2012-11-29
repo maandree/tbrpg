@@ -107,6 +107,15 @@ namespace tbrpg
     virtual HalfElf& operator =(HalfElf&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const HalfElf& other) const;
+    
+    
   protected:
     /**
      * Copy method

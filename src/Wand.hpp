@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Wand& operator =(Wand&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Wand& other) const;
+    
+    
   protected:
     /**
      * Copy method

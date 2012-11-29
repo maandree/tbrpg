@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Thief& operator =(Thief&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Thief& other) const;
+    
+    
   protected:
     /**
      * Copy method

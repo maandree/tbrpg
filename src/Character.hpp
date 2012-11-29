@@ -139,6 +139,15 @@ namespace tbrpg
     virtual Character& operator =(Character&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Character& other) const;
+    
+    
   protected:
     /**
      * Copy method

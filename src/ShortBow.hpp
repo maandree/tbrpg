@@ -107,6 +107,15 @@ namespace tbrpg
     virtual ShortBow& operator =(ShortBow&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const ShortBow& other) const;
+    
+    
   protected:
     /**
      * Copy method

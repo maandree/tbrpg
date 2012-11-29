@@ -144,6 +144,15 @@ namespace tbrpg
     virtual AbilityBonus& operator =(AbilityBonus&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const AbilityBonus& other) const;
+    
+    
   protected:
     /**
      * Copy method

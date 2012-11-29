@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Buckler& operator =(Buckler&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Buckler& other) const;
+    
+    
   protected:
     /**
      * Copy method

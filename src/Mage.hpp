@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Mage& operator =(Mage&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Mage& other) const;
+    
+    
   protected:
     /**
      * Copy method

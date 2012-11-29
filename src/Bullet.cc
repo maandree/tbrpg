@@ -126,6 +126,18 @@ namespace tbrpg
     return *this;
   }
   
+  
+  /**
+   * Equality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are equal
+   */
+  bool Bullet::operation ==(const Bullet& other) const
+  {
+    return this == &other;
+  }
+  
   /**
    * Copy method
    * 

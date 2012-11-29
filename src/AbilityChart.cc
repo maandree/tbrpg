@@ -494,6 +494,18 @@ namespace tbrpg
     return *this;
   }
   
+  
+  /**
+   * Equality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are equal
+   */
+  bool AbilityChart::operation ==(const AbilityChart& other) const
+  {
+    return this == &other;
+  }
+  
   /**
    * Copy method
    * 

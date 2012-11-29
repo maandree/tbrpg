@@ -107,6 +107,15 @@ namespace tbrpg
     virtual Spear& operator =(Spear&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const Spear& other) const;
+    
+    
   protected:
     /**
      * Copy method

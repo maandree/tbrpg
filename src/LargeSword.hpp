@@ -107,6 +107,15 @@ namespace tbrpg
     virtual LargeSword& operator =(LargeSword&& original);
     
     
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    virtual bool operation ==(const LargeSword& other) const;
+    
+    
   protected:
     /**
      * Copy method
