@@ -37,6 +37,7 @@ namespace tbrpg
   {
     ////TODO implement constructor
     //this->allowed_classes = nullptr;
+    //this->dualclass_level = 0;
     //this->bonuses = nullptr;
   }
   
@@ -49,6 +50,7 @@ namespace tbrpg
   {
     (void) original;
     this->allowed_classes = original.allowed_classes;
+    this->dualclass_level = original.dualclass_level;
     this->bonuses = original.bonuses;
   }
   
@@ -61,6 +63,7 @@ namespace tbrpg
   {
     (void) original;
     this->allowed_classes = original.allowed_classes;
+    this->dualclass_level = original.dualclass_level;
     this->bonuses = original.bonuses;
   }
   
@@ -73,6 +76,7 @@ namespace tbrpg
   {
     (void) original;
     std::swap(this->allowed_classes, original.allowed_classes);
+    std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->bonuses, original.bonuses);
   }
   
@@ -100,6 +104,7 @@ namespace tbrpg
   {
     (void) original;
     this->allowed_classes = original.allowed_classes;
+    this->dualclass_level = original.dualclass_level;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -114,6 +119,7 @@ namespace tbrpg
   {
     (void) original;
     this->allowed_classes = original.allowed_classes;
+    this->dualclass_level = original.dualclass_level;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -128,6 +134,7 @@ namespace tbrpg
   {
     (void) original;
     std::swap(this->allowed_classes, original.allowed_classes);
+    std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->bonuses, original.bonuses);
     return *this;
   }

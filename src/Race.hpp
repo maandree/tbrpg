@@ -54,6 +54,11 @@ namespace tbrpg
     std::vector<std::vector<Class>> allowed_classes;
     
     /**
+     * At which level the dual class is allowed, use 2³¹ − 1 for never
+     */
+    short dualclass_level;
+    
+    /**
      * Bonuses for the race
      */
     AbilityBonus bonuses;
