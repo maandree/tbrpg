@@ -38,6 +38,9 @@ namespace tbrpg
     this->speed_factor = 4;
     this->damage_die = 2;
     this->damage_dice = 1;
+    this->armour_class_modifiers[SLASHING] = 0;
+    this->armour_class_modifiers[PIERCING] = 0;
+    this->armour_class_modifiers[BLUDGEONING] = 0;
   }
   
   /**
