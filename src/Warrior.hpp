@@ -38,7 +38,7 @@
 #include "ShortBow.hpp"
 #include "HeavyCrossbow.hpp"
 #include "LightCrossbow.hpp"
-#include "ThrowningAxe.hpp"
+#include "ThrowingAxe.hpp"
 #include "Flail.hpp"
 #include "Halberd.hpp"
 #include "TwoHandedSword.hpp"
