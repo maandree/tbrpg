@@ -200,7 +200,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool RuleSet::operation ==(const RuleSet& other) const
+  bool RuleSet::operator ==(const RuleSet& other) const
   {
     return this == &other;
   }

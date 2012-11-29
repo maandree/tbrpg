@@ -133,7 +133,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Arrow::operation ==(const Arrow& other) const
+  bool Arrow::operator ==(const Arrow& other) const
   {
     return this == &other;
   }

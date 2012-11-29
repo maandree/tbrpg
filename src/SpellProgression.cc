@@ -155,7 +155,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool SpellProgression::operation ==(const SpellProgression& other) const
+  bool SpellProgression::operator ==(const SpellProgression& other) const
   {
     return this == &other;
   }

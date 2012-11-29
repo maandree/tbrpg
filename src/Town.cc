@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Town::operation ==(const Town& other) const
+  bool Town::operator ==(const Town& other) const
   {
     return this == &other;
   }

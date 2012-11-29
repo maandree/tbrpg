@@ -143,7 +143,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Proficiency::operation ==(const Proficiency& other) const
+  bool Proficiency::operator ==(const Proficiency& other) const
   {
     return this == &other;
   }

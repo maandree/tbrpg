@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Headgear::operation ==(const Headgear& other) const
+  bool Headgear::operator ==(const Headgear& other) const
   {
     return this == &other;
   }

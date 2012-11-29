@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool HalfOrc::operation ==(const HalfOrc& other) const
+  bool HalfOrc::operator ==(const HalfOrc& other) const
   {
     return this == &other;
   }

@@ -113,7 +113,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const Druid& other) const;
+    virtual bool operator ==(const Druid& other) const;
     
     
   protected:

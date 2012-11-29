@@ -131,7 +131,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool ChainMail::operation ==(const ChainMail& other) const
+  bool ChainMail::operator ==(const ChainMail& other) const
   {
     return this == &other;
   }

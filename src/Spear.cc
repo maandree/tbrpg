@@ -132,7 +132,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Spear::operation ==(const Spear& other) const
+  bool Spear::operator ==(const Spear& other) const
   {
     return this == &other;
   }

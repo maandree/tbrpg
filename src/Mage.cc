@@ -131,7 +131,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Mage::operation ==(const Mage& other) const
+  bool Mage::operator ==(const Mage& other) const
   {
     return this == &other;
   }

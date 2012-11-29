@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Gauntlets::operation ==(const Gauntlets& other) const
+  bool Gauntlets::operator ==(const Gauntlets& other) const
   {
     return this == &other;
   }

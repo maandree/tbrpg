@@ -272,7 +272,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool CharacterSheet::operation ==(const CharacterSheet& other) const
+  bool CharacterSheet::operator ==(const CharacterSheet& other) const
   {
     return this == &other;
   }

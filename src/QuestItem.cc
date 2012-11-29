@@ -130,7 +130,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool QuestItem::operation ==(const QuestItem& other) const
+  bool QuestItem::operator ==(const QuestItem& other) const
   {
     return this == &other;
   }

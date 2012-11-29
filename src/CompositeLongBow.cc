@@ -131,7 +131,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool CompositeLongBow::operation ==(const CompositeLongBow& other) const
+  bool CompositeLongBow::operator ==(const CompositeLongBow& other) const
   {
     return this == &other;
   }

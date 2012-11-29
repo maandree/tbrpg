@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Cloak::operation ==(const Cloak& other) const
+  bool Cloak::operator ==(const Cloak& other) const
   {
     return this == &other;
   }

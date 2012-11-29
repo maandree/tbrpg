@@ -131,7 +131,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool MorningStar::operation ==(const MorningStar& other) const
+  bool MorningStar::operator ==(const MorningStar& other) const
   {
     return this == &other;
   }

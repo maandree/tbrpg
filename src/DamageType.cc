@@ -136,7 +136,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool DamageType::operation ==(const DamageType& other) const
+  bool DamageType::operator ==(const DamageType& other) const
   {
     return this == &other;
   }

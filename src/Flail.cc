@@ -132,7 +132,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Flail::operation ==(const Flail& other) const
+  bool Flail::operator ==(const Flail& other) const
   {
     return this == &other;
   }

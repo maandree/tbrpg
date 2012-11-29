@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Wand::operation ==(const Wand& other) const
+  bool Wand::operator ==(const Wand& other) const
   {
     return this == &other;
   }

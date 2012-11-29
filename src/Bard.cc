@@ -220,7 +220,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Bard::operation ==(const Bard& other) const
+  bool Bard::operator ==(const Bard& other) const
   {
     return this == &other;
   }

@@ -139,7 +139,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Map::operation ==(const Map& other) const
+  bool Map::operator ==(const Map& other) const
   {
     return this == &other;
   }

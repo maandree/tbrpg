@@ -232,7 +232,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Spell::operation ==(const Spell& other) const
+  bool Spell::operator ==(const Spell& other) const
   {
     return this == &other;
   }

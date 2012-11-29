@@ -115,7 +115,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const Bullet& other) const;
+    virtual bool operator ==(const Bullet& other) const;
     
     
   protected:

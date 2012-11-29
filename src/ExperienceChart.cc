@@ -187,7 +187,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool ExperienceChart::operation ==(const ExperienceChart& other) const
+  bool ExperienceChart::operator ==(const ExperienceChart& other) const
   {
     return this == &other;
   }

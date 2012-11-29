@@ -152,7 +152,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool RestInterruption::operation ==(const RestInterruption& other) const
+  bool RestInterruption::operator ==(const RestInterruption& other) const
   {
     return this == &other;
   }
