@@ -90,3 +90,12 @@ Race Druid
 Race Mage
 Race Sorcerer
 ActionSlotChart ActionSlot
+ActionSlotChart Fighter
+ActionSlotChart Ranger
+ActionSlotChart Paladin
+ActionSlotChart Thief
+ActionSlotChart Bard
+ActionSlotChart Cleric
+ActionSlotChart Druid
+ActionSlotChart Mage
+ActionSlotChart Sorcerer

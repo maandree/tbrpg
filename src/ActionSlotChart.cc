@@ -35,9 +35,55 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart()
   {
-    ////TODO implement constructor
-    //this->index_map = nullptr;
-    //this->slot_map = nullptr;
+    #define F  (1LL << 0LL)
+    #define R  (1LL << 1LL)
+    #define P  (1LL << 2LL)
+    #define T  (1LL << 3LL)
+    #define B  (1LL << 4LL)
+    #define C  (1LL << 5LL)
+    #define D  (1LL << 6LL)
+    #define M  (1LL << 7LL)
+    #define S  (1LL << 8LL)
+    
+    this->index_map[Fighter()] = F;
+    this->index_map[Ranger()] = R;
+    this->index_map[Paladin()] = P;
+    this->index_map[Thief()] = T;
+    this->index_map[Bard()] = B;
+    this->index_map[Cleric()] = C;
+    this->index_map[Druid()] = D;
+    this->index_map[Mage()] = M;
+    this->index_map[Sorcerer()] = S;
+    
+    this->slot_map[F] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON};
+    this->slot_map[P] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, CAST_SPELL};
+    this->slot_map[R] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, STEALTH, CAST_SPELL};
+    this->slot_map[M] = {QUICK_WEAPON, QUICK_SPELL, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[S] = {QUICK_WEAPON, QUICK_SPELL, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[C] = {QUICK_WEAPON, TURN_UNDEAD, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[D] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[B] = {QUICK_WEAPON, BARD_SONG, THIEVING, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[T] = {QUICK_WEAPON, QUICK_WEAPON, FIND_TRAPS, THIEVING, STEALTH};
+    this->slot_map[F|T] = {QUICK_WEAPON, QUICK_WEAPON, FIND_TRAPS, THIEVING, STEALTH};
+    this->slot_map[F|M] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[F|C] = {QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[F|D] = {QUICK_WEAPON, QUICK_WEAPON, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[R|C] = {QUICK_WEAPON, TURN_UNDEAD, STEALTH, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[T|C] = {QUICK_WEAPON, FIND_TRAPS, THIEVING, STEALTH, CAST_SPELL};
+    this->slot_map[M|T] = {QUICK_WEAPON, FIND_TRAPS, THIEVING, STEALTH, CAST_SPELL};
+    this->slot_map[M|C] = {QUICK_WEAPON, TURN_UNDEAD, QUICK_SPELL, QUICK_SPELL, CAST_SPELL};
+    this->slot_map[F|M|T] = {QUICK_WEAPON, FIND_TRAPS, THIEVING, STEALTH, CAST_SPELL};
+    this->slot_map[F|M|C] = {QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, QUICK_SPELL, CAST_SPELL};
+    
+    #undef F
+    #undef R
+    #undef P
+    #undef T
+    #undef B
+    #undef C
+    #undef D
+    #undef M
+    #undef S
   }
   
   /**

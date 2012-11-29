@@ -21,10 +21,56 @@
 #define __GUARD_ACTIONSLOT_HPP__
 
 
-/**
- * Action slot typename
- */
-typedef char ActionSlot;
+namespace tbrpg
+{
+  /**
+   * Action slot typename
+   */
+  typedef char ActionSlot;
+  
+  
+  
+  /**
+   * Action slot: Quick weapon
+   */
+  ActionSlot QUICK_WEAPON = 0;
+  
+  /**
+   * Action slot: Quick spell
+   */
+  ActionSlot QUICK_SPELL = 1;
+  
+  /**
+   * Action slot: Turn undead
+   */
+  ActionSlot TURN_UNDEAD = 2;
+  
+  /**
+   * Action slot: Bard song
+   */
+  ActionSlot BARD_SONG = 3;
+  
+  /**
+   * Action slot: Find traps
+   */
+  ActionSlot FIND_TRAPS = 4;
+  
+  /**
+   * Action slot: Thieving
+   */
+  ActionSlot THIEVING = 5;
+  
+  /**
+   * Action slot: Stealth
+   */
+  ActionSlot STEALTH = 6;
+  
+  /**
+   * Action slot: Stealth
+   */
+  ActionSlot CAST_SPELL = 6;
+  
+}
 
 
 #endif//__GUARD_ACTIONSLOT_HPP__
