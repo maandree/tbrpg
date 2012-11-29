@@ -145,8 +145,11 @@ for line in lines:
         output += '       return elem.hash();\n    }\n  };\n}\n\n\n'
         output += '#endif//__GUARD_%s_HPP__\n' % className.upper()
         modified = False
-        with open(className + '.hpp', 'rb') as file:
-            modified = file.read().decode('utf-8', 'replace') != output
+        if os.path.isfile(className + '.hpp'):
+            with open(className + '.hpp', 'rb') as file:
+                modified = file.read().decode('utf-8', 'replace') != output
+        else:
+            modified = True
         if modified:
             with open(className + '.hpp', 'wb') as file:
                 file.write(output.encode('utf-8'))
@@ -222,8 +225,11 @@ for line in lines:
         output += '   */\n  size_t %s::hash() const\n  {\n    return (size_t)this;\n  }\n  \n' % className
         output += '}\n\n'
         modified = False
-        with open(className + '.cc', 'rb') as file:
-            modified = file.read().decode('utf-8', 'replace') != output
+        if os.path.isfile(className + '.cc'):
+            with open(className + '.cc', 'rb') as file:
+                modified = file.read().decode('utf-8', 'replace') != output
+        else:
+            modified = True
         if modified:
             with open(className + '.cc', 'wb') as file:
                 file.write(output.encode('utf-8'))

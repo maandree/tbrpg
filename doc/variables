@@ -382,6 +382,11 @@ Dwarf: Race                               ; The dwarf race
 Halfling: Race                            ; The halfling race
 Gnome: Race                               ; The gnome race
 ActionSlot                                ; Action slot class
+LowScroll: Scroll                         ; Magic scroll so simple anyone can use it
+PriestScroll: Scroll                      ; Priest magic scroll
+WizardScroll: Scroll                      ; Wizard magic scroll
+HighWand: Wand                            ; High order magic wand
+LowWand: Wand                             ; Low order magic wand
 
 Lockable                                  ; Lockable object
 	bool locked                       ; Whether the object is locked
