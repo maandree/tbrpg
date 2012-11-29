@@ -56,7 +56,7 @@ namespace tbrpg
     this->can_use[ShortBow()] = true;
     this->can_use[HeavyCrossbow()] = true;
     this->can_use[LightCrossbow()] = true;
-    this->can_use[ThrownigAxe()] = true;
+    this->can_use[ThrowningAxe()] = true;
     this->can_use[Flail()] = true;
     this->can_use[Halberd()] = true;
     this->can_use[TwoHandedSword()] = true;
