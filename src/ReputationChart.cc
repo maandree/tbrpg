@@ -219,7 +219,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool ReputationChart::operation ==(const ReputationChart& other) const
+  bool ReputationChart::operator ==(const ReputationChart& other) const
   {
     return this == &other;
   }

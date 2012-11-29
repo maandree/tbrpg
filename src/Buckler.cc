@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Buckler::operation ==(const Buckler& other) const
+  bool Buckler::operator ==(const Buckler& other) const
   {
     return this == &other;
   }

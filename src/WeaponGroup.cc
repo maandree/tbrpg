@@ -131,7 +131,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool WeaponGroup::operation ==(const WeaponGroup& other) const
+  bool WeaponGroup::operator ==(const WeaponGroup& other) const
   {
     return this == &other;
   }

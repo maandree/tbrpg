@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Girdle::operation ==(const Girdle& other) const
+  bool Girdle::operator ==(const Girdle& other) const
   {
     return this == &other;
   }

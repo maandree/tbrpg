@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Potion::operation ==(const Potion& other) const
+  bool Potion::operator ==(const Potion& other) const
   {
     return this == &other;
   }

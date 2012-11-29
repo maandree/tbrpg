@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Cleric::operation ==(const Cleric& other) const
+  bool Cleric::operator ==(const Cleric& other) const
   {
     return this == &other;
   }

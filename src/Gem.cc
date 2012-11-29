@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Gem::operation ==(const Gem& other) const
+  bool Gem::operator ==(const Gem& other) const
   {
     return this == &other;
   }

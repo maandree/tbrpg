@@ -167,7 +167,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const MapMinor& other) const;
+    virtual bool operator ==(const MapMinor& other) const;
     
     
   protected:

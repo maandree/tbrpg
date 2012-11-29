@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Amulett::operation ==(const Amulett& other) const
+  bool Amulett::operator ==(const Amulett& other) const
   {
     return this == &other;
   }

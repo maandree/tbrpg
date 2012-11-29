@@ -158,7 +158,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool SavingThrows::operation ==(const SavingThrows& other) const
+  bool SavingThrows::operator ==(const SavingThrows& other) const
   {
     return this == &other;
   }

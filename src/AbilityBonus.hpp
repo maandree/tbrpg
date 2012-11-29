@@ -150,7 +150,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const AbilityBonus& other) const;
+    virtual bool operator ==(const AbilityBonus& other) const;
     
     
   protected:

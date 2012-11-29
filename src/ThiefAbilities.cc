@@ -151,7 +151,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool ThiefAbilities::operation ==(const ThiefAbilities& other) const
+  bool ThiefAbilities::operator ==(const ThiefAbilities& other) const
   {
     return this == &other;
   }

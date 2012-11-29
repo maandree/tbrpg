@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool PlateMail::operation ==(const PlateMail& other) const
+  bool PlateMail::operator ==(const PlateMail& other) const
   {
     return this == &other;
   }

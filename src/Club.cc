@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Club::operation ==(const Club& other) const
+  bool Club::operator ==(const Club& other) const
   {
     return this == &other;
   }

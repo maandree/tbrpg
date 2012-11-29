@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Druid::operation ==(const Druid& other) const
+  bool Druid::operator ==(const Druid& other) const
   {
     return this == &other;
   }

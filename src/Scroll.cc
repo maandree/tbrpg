@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Scroll::operation ==(const Scroll& other) const
+  bool Scroll::operator ==(const Scroll& other) const
   {
     return this == &other;
   }

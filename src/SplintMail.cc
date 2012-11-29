@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool SplintMail::operation ==(const SplintMail& other) const
+  bool SplintMail::operator ==(const SplintMail& other) const
   {
     return this == &other;
   }

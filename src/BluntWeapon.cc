@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool BluntWeapon::operation ==(const BluntWeapon& other) const
+  bool BluntWeapon::operator ==(const BluntWeapon& other) const
   {
     return this == &other;
   }

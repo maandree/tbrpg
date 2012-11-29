@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool LightCrossbow::operation ==(const LightCrossbow& other) const
+  bool LightCrossbow::operator ==(const LightCrossbow& other) const
   {
     return this == &other;
   }

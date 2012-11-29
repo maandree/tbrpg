@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool TwoHandedSword::operation ==(const TwoHandedSword& other) const
+  bool TwoHandedSword::operator ==(const TwoHandedSword& other) const
   {
     return this == &other;
   }

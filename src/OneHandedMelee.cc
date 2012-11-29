@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool OneHandedMelee::operation ==(const OneHandedMelee& other) const
+  bool OneHandedMelee::operator ==(const OneHandedMelee& other) const
   {
     return this == &other;
   }

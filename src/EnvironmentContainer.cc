@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool EnvironmentContainer::operation ==(const EnvironmentContainer& other) const
+  bool EnvironmentContainer::operator ==(const EnvironmentContainer& other) const
   {
     return this == &other;
   }

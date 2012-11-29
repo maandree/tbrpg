@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool ShortBow::operation ==(const ShortBow& other) const
+  bool ShortBow::operator ==(const ShortBow& other) const
   {
     return this == &other;
   }

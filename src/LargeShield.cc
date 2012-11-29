@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool LargeShield::operation ==(const LargeShield& other) const
+  bool LargeShield::operator ==(const LargeShield& other) const
   {
     return this == &other;
   }

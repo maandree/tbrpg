@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Wilderness::operation ==(const Wilderness& other) const
+  bool Wilderness::operator ==(const Wilderness& other) const
   {
     return this == &other;
   }

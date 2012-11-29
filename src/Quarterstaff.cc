@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Quarterstaff::operation ==(const Quarterstaff& other) const
+  bool Quarterstaff::operator ==(const Quarterstaff& other) const
   {
     return this == &other;
   }

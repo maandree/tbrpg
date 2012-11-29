@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Dart::operation ==(const Dart& other) const
+  bool Dart::operator ==(const Dart& other) const
   {
     return this == &other;
   }

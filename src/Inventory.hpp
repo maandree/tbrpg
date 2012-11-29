@@ -192,7 +192,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const Inventory& other) const;
+    virtual bool operator ==(const Inventory& other) const;
     
     
   protected:

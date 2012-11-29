@@ -133,7 +133,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operation ==(const SpellProgression& other) const;
+    virtual bool operator ==(const SpellProgression& other) const;
     
     
   protected:

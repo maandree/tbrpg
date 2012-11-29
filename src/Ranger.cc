@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Ranger::operation ==(const Ranger& other) const
+  bool Ranger::operator ==(const Ranger& other) const
   {
     return this == &other;
   }

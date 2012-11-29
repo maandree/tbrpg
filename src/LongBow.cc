@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool LongBow::operation ==(const LongBow& other) const
+  bool LongBow::operator ==(const LongBow& other) const
   {
     return this == &other;
   }

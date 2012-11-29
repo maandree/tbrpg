@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool MeleeWeapon::operation ==(const MeleeWeapon& other) const
+  bool MeleeWeapon::operator ==(const MeleeWeapon& other) const
   {
     return this == &other;
   }

@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Dwarf::operation ==(const Dwarf& other) const
+  bool Dwarf::operator ==(const Dwarf& other) const
   {
     return this == &other;
   }

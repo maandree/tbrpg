@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool MediumShield::operation ==(const MediumShield& other) const
+  bool MediumShield::operator ==(const MediumShield& other) const
   {
     return this == &other;
   }

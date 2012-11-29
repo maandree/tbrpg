@@ -179,7 +179,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool AbilityChart::operation ==(const AbilityChart& other) const
+  bool AbilityChart::operator ==(const AbilityChart& other) const
   {
     return this == &other;
   }

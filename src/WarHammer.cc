@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool WarHammer::operation ==(const WarHammer& other) const
+  bool WarHammer::operator ==(const WarHammer& other) const
   {
     return this == &other;
   }

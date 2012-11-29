@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Dagger::operation ==(const Dagger& other) const
+  bool Dagger::operator ==(const Dagger& other) const
   {
     return this == &other;
   }

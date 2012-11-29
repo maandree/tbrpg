@@ -182,7 +182,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Road::operation ==(const Road& other) const
+  bool Road::operator ==(const Road& other) const
   {
     return this == &other;
   }

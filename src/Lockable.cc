@@ -158,7 +158,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Lockable::operation ==(const Lockable& other) const
+  bool Lockable::operator ==(const Lockable& other) const
   {
     return this == &other;
   }
