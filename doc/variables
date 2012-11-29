@@ -388,7 +388,6 @@ HalfElf: Race                             ; The half-elf race
 Dwarf: Race                               ; The dwarf race
 Halfling: Race                            ; The halfling race
 Gnome: Race                               ; The gnome race
-ActionSlot                                ; Action slot class
 LowScroll: Scroll                         ; Magic scroll so simple anyone can use it
 PriestScroll: Scroll                      ; Priest magic scroll
 WizardScroll: Scroll                      ; Wizard magic scroll
