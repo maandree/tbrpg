@@ -159,3 +159,4 @@ namespace std
 
 
 #endif//__GUARD_RANGEDWEAPON_HPP__
+

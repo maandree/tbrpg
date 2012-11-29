@@ -153,3 +153,4 @@ namespace std
 
 
 #endif//__GUARD_ENVIRONMENTCONTAINER_HPP__
+

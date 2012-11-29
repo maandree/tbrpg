@@ -175,3 +175,4 @@ namespace std
 
 
 #endif//__GUARD_WARRIOR_HPP__
+

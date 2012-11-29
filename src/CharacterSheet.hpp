@@ -256,3 +256,4 @@ namespace std
 
 
 #endif//__GUARD_CHARACTERSHEET_HPP__
+

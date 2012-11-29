@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_STUDDEDLEATHERARMOUR_HPP__
+

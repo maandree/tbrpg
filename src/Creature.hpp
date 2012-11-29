@@ -179,3 +179,4 @@ namespace std
 
 
 #endif//__GUARD_CREATURE_HPP__
+

@@ -208,3 +208,4 @@ namespace std
 
 
 #endif//__GUARD_WEAPONGROUP_HPP__
+

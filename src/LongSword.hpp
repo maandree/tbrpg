@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_LONGSWORD_HPP__
+

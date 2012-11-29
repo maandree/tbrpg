@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_HALFORC_HPP__
+

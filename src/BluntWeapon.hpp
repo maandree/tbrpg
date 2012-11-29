@@ -152,3 +152,4 @@ namespace std
 
 
 #endif//__GUARD_BLUNTWEAPON_HPP__
+

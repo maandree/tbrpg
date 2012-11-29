@@ -159,3 +159,4 @@ namespace std
 
 
 #endif//__GUARD_CLERIC_HPP__
+

@@ -189,3 +189,4 @@ namespace std
 
 
 #endif//__GUARD_CHARACTER_HPP__
+

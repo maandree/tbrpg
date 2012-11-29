@@ -206,3 +206,4 @@ namespace std
 
 
 #endif//__GUARD_MAPMINOR_HPP__
+

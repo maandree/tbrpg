@@ -151,3 +151,4 @@ namespace std
 
 
 #endif//__GUARD_DRUID_HPP__
+

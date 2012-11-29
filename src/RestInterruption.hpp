@@ -174,3 +174,4 @@ namespace std
 
 
 #endif//__GUARD_RESTINTERRUPTION_HPP__
+

@@ -154,3 +154,4 @@ namespace std
 
 
 #endif//__GUARD_WIZARD_HPP__
+

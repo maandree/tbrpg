@@ -194,3 +194,4 @@ namespace std
 
 
 #endif//__GUARD_ABILITYBONUS_HPP__
+
