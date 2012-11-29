@@ -34,6 +34,7 @@
 #include "Abilities.hpp"
 #include "SpellBook.hpp"
 #include "Spell.hpp"
+#include "Defence.hpp"
 
 
 /**
@@ -81,6 +82,11 @@ namespace tbrpg
      * Effects
      */
     std::vector<Spell> effects;
+    
+    /**
+     * Defences
+     */
+    Defence defence;
     
     
     

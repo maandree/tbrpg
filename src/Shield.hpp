@@ -30,6 +30,8 @@
 
 
 
+#include "DamageType.hpp"
+
 
 /**
  * Text based roll playing game
@@ -47,6 +49,18 @@ namespace tbrpg
   class Shield: public RightHandItem
   {
   public:
+    /**
+     * Whether the shield protects against missiles
+     */
+    bool protect_missile;
+    
+    /**
+     * Whether the shield protects against different damage types in melée battle
+     */
+    std::unordered_map<DamageType, bool> protect_melee;
+    
+    
+    
     /**
      * Construction
      */
