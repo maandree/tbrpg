@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Human::Human() : Race()
   {
-    ////TODO implement constructor
+    this->dualclass_level = 4;
   }
   
   /**

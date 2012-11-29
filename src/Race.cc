@@ -35,10 +35,7 @@ namespace tbrpg
    */
   Race::Race()
   {
-    ////TODO implement constructor
-    //this->allowed_classes = nullptr;
-    //this->dualclass_level = 0;
-    //this->bonuses = nullptr;
+    this->dualclass_level = 0x7FFFffff;
   }
   
   /**
