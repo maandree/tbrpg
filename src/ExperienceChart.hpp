@@ -27,7 +27,6 @@
 #include <unordered_map>
 
 
-
 #include "Spell.hpp"
 
 
