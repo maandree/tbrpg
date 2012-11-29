@@ -27,7 +27,8 @@
 #include <unordered_map>
 
 
-
+#include "Fist.hpp"
+#include "Fists.hpp"
 #include "ExperienceChart.hpp"
 #include "SpellProgression.hpp"
 #include "AbilityBonus.hpp"

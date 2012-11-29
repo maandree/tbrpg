@@ -85,11 +85,6 @@ namespace tbrpg
   
   
   
-  bool FullPlateMail::operator ==(const FullPlateMail& o) const
-  {
-    return o.hash() == this->hash();
-  }
-  
   /**
    * Assignment operator
    * 

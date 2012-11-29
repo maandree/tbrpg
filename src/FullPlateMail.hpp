@@ -82,8 +82,6 @@ namespace tbrpg
     
     
     
-    virtual bool operator ==(const FullPlateMail& o) const;
-    
     /**
      * Assignment operator
      * 

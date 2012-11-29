@@ -85,11 +85,6 @@ namespace tbrpg
   
   
   
-  bool DamageType::operator ==(const DamageType& other) const
-  {
-    return this->hash() == other.hash();
-  }
-  
   /**
    * Assignment operator
    * 

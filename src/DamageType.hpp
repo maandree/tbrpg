@@ -89,8 +89,6 @@ namespace tbrpg
     
     
     
-    virtual bool operator ==(const DamageType& other) const;
-    
     /**
      * Assignment operator
      * 
