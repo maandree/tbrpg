@@ -29,6 +29,15 @@
 
 #include "Class.hpp"
 #include "AbilityBonus.hpp"
+#include "Fighter.hpp"
+#include "Ranger.hpp"
+#include "Paladin.hpp"
+#include "Thief.hpp"
+#include "Bard.hpp"
+#include "Cleric.hpp"
+#include "Druid.hpp"
+#include "Mage.hpp"
+#include "Sorcerer.hpp"
 
 
 /**

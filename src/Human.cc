@@ -36,6 +36,16 @@ namespace tbrpg
   Human::Human() : Race()
   {
     this->dualclass_level = 4;
+    
+    this->allowed_classes =
+      {{Fighter()}, {Ranger()}, {Paladin()},
+       {Cleric()}, {Druid()},
+       {Mage()}, {Sorcerer()},
+       {Thief()}, {Bard()},
+       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
+       {Ranger(), Cleric()},
+       {Thief(), Cleric()}, {Thief(), Mage()},
+       {Fighter(), Mage(), Thief()}, {Fighter(), Mage(), Cleric()}};
   }
   
   /**

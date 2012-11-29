@@ -38,6 +38,15 @@ namespace tbrpg
     this->bonuses.bonuses.detect_doors = 0.20;
     this->bonuses.abilities.dexterity = 1;
     this->bonuses.abilities.constitution = -1;
+    
+    this->allowed_classes =
+      {{Fighter()}, {Ranger()},
+       {Thief()},
+       {Cleric()},
+       {Mage()}, {Sorcerer()},
+       {Fighter(), Thief()}, {Fighter(), Mage()},
+       {Thief(), Mage()},
+       {Fighter(), Mage(), Thief()}};
   }
   
   /**

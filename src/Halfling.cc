@@ -40,6 +40,16 @@ namespace tbrpg
     this->bonuses.defence.poison = 0.75;
     this->bonuses.abilities.dexterity = 1;
     this->bonuses.abilities.strength = -1;
+    
+    this->allowed_classes =
+      {{Fighter()},
+       {Thief()},
+       {Cleric()},
+       {Mage()}, {Sorcerer()},
+       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
+       {Mage(), Cleric()},
+       {Fighter(), Mage(), Thief()},
+       {Fighter(), Mage(), Cleric()}};
   }
   
   /**

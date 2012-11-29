@@ -2476,6 +2476,7 @@ held in the character's hands.
 @multitable @columnfractions 0.09 0.18 0.18 0.18 0.18 0.19
 @item @b{Class}  @tab @b{Slot 1}    @tab @b{Slot 2}    @tab @b{Slot 3}    @tab @b{Slot 4}    @tab @b{Slot 5}
 @item Fighter    @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab ---
+@item Paladin    @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab Turn undead   @tab Cast spell
 @item Ranger     @tab Quick weapon  @tab Quick weapon  @tab Quick weapon  @tab Stealth       @tab Cast spell
 @item Mage       @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Quick spell   @tab Cast spell
 @item Sorcerer   @tab Quick weapon  @tab Quick spell   @tab Quick spell   @tab Quick spell   @tab Cast spell

@@ -37,6 +37,17 @@ namespace tbrpg
   {
     this->bonuses.abilities.intelligence = 1;
     this->bonuses.abilities.wisdom = -1;
+    
+    this->allowed_classes =
+      {{Fighter()},
+       {Thief()},
+       {Cleric()},
+       {Mage()}, {Sorcerer()},
+       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
+       {Mage(), Cleric()},
+       {Ranger(), Cleric()},
+       {Fighter(), Mage(), Thief()},
+       {Fighter(), Mage(), Cleric()}};
   }
   
   /**

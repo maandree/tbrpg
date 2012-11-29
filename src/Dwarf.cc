@@ -41,6 +41,13 @@ namespace tbrpg
     this->bonuses.abilities.constitution = 1;
     this->bonuses.abilities.dexterity = -1;
     this->bonuses.abilities.charisma = -1;
+    
+    this->allowed_classes =
+      {{Fighter()},
+       {Thief()},
+       {Cleric()},
+       {Mage()}, {Sorcerer()},
+       {Fighter(), Thief()}};
   }
   
   /**

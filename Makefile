@@ -114,7 +114,7 @@ softer:
 	pdfjam --pagecolor 249,246,240 -o "$(BOOK).pdf" "$(BOOK).pdf"
 
 spell:
-	aspell --lang="$(LANG)" check "$(BOOK).texinfo"
+	aspell --lang="$(LANG)" check "$(BOOKDIR)$(BOOK).texinfo"
 
 grammar:
 	link-parser < "$(BOOK)".texinfo 2>&1 | sed -e  \

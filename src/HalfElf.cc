@@ -35,7 +35,15 @@ namespace tbrpg
    */
   HalfElf::HalfElf() : Race()
   {
-    ////TODO implement constructor
+    this->allowed_classes =
+      {{Fighter()}, {Ranger()},
+       {Thief()}, {Bard()},
+       {Cleric()}, {Druid()},
+       {Mage()}, {Sorcerer()},
+       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
+       {Mage(), Cleric()},
+       {Fighter(), Mage(), Thief()},
+       {Fighter(), Mage(), Cleric()}};
   }
   
   /**
