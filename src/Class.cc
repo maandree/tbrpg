@@ -37,13 +37,16 @@ namespace tbrpg
   {
     ////TODO implement constructor
     this->lore_bonus = 1;
-    //this->alignments = nullptr;
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
     //this->abilities = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
     //this->specialisations = nullptr;
+    
+    this->alignments = new bool[9];
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = true;
     
     this->can_use[Hood()] = true;
     this->can_use[Helmet()] = true;
@@ -165,7 +168,7 @@ namespace tbrpg
   Class::~Class()
   {
     ////TODO implement destructor
-    //delete this->alignments;
+    delete[] this->alignments;
     //delete this->experience_chart;
     //delete this->spell_progression;
     //delete this->abilities;

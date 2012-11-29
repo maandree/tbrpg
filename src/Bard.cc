@@ -38,6 +38,10 @@ namespace tbrpg
     this->thac0 = 20;
     this->lore_bonus = 10;
     this->lower_limits.charisma = 9;
+    this->alignments[8] = false;
+    this->alignments[6] = false;
+    this->alignments[2] = false;
+    this->alignments[0] = false;
     
     this->can_use[ChainMail()] = true;
     this->can_use[LongBow()] = true;

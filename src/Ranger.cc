@@ -35,6 +35,9 @@ namespace tbrpg
    */
   Ranger::Ranger() : Warrior()
   {
+    for (int i = 0; i < 6; i++)
+      this->alignments[i] = false;
+    
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(17);
     for (int i = 0; i <= 16; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(4);

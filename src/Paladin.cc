@@ -36,6 +36,8 @@ namespace tbrpg
   Paladin::Paladin() : Warrior()
   {
     this->lower_limits.charisma = 17;
+    for (int i = 0; i < 8; i++)
+      this->alignments[i] = false;
     
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(21);
     for (int i = 0; i <= 20; i++)

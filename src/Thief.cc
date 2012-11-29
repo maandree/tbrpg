@@ -39,6 +39,7 @@ namespace tbrpg
     this->lore_bonus = 3;
     this->lower_limits.dexterity = 9;
     this->abilities.bonuses.detect_doors = 0.15;
+    this->alignments[8] = false;
   }
   
   /**
