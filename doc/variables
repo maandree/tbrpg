@@ -299,6 +299,9 @@ Shield: RightHandItem                                      ; Shield item class
 	bool protect_missile                               ; Whether the shield protects against missiles
 	std::unordered_map<DamageType, bool> protect_melee ; Whether the shield protects against different damage types in melée battle
 
+BodyArmour: Item                          ; Body armour item class
+	bool wizard_magic_use             ; Whether wizard spells can be casted while wearing the armour
+
 Mace: BluntWeapon                         ; Mace item class
 Fist: BluntWeapon                         ; One-handed hand-to-hand class
 Club: BluntWeapon                         ; Club item class
@@ -347,7 +350,6 @@ Wand: QuickItem                           ; Wand, rod and magic staff item class
 Hat: Headgear                             ; Hat item class
 Hood: Headgear                            ; Hood item class
 Helmet: Headgear                          ; Helmet item class
-BodyArmour: Item                          ; Body armour item class
 Robe: BodyArmour                          ; Robe item class
 LeatherArmour: BodyArmour                 ; Leather armour item class
 StuddedLeatherArmour: BodyArmour          ; Studded leather armour item class
