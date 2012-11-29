@@ -280,6 +280,7 @@ AbilityBonus                              ; Abilities bonus class
 	Abilities abilities               ; Abilities
 	SpellBook spells                  ; Spells
 	std::vector<Spell> effects        ; Effects
+	Defence defence                   ; Defences
 
 SpellBook                                 ; Character spell book
 	std::vector<Spell> learned        ; Learned spells
@@ -293,6 +294,10 @@ Container: Item                           ; Item container item class
 
 RangedWeapon: Weapon                      ; Ranged weapon item class
 	char rate_of_fire                 ; The weapon's rate of fire
+
+Shield: RightHandItem                                      ; Shield item class
+	bool protect_missile                               ; Whether the shield protects against missiles
+	std::unordered_map<DamageType, bool> protect_melee ; Whether the shield protects against different damage types in melée battle
 
 Mace: BluntWeapon                         ; Mace item class
 Fist: BluntWeapon                         ; One-handed hand-to-hand class
@@ -328,7 +333,6 @@ LightCrossbow: Crossbow                   ; Light crossbow item class
 CompositeLongBow: Bow                     ; Composite long bow item class
 LongBow: Bow                              ; Long bow item class
 ShortBow: Bow                             ; Short bow item class
-Shield: RightHandItem                     ; Shield item class
 Buckler: Shield                           ; Buckler item class
 SmallShield: Shield                       ; Small shield item class
 MediumShield: Shield                      ; Medium shield item class

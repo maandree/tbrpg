@@ -52,7 +52,8 @@ namespace tbrpg
   Shield::Shield(const Shield& original) : RightHandItem(original)
   {
     (void) original;
-
+    this->protect_missile = original.protect_missile;
+    this->protect_melee = original.protect_melee;
   }
   
   /**
@@ -63,7 +64,8 @@ namespace tbrpg
   Shield::Shield(Shield& original) : RightHandItem(original)
   {
     (void) original;
-
+    this->protect_missile = original.protect_missile;
+    this->protect_melee = original.protect_melee;
   }
   
   /**
@@ -74,7 +76,8 @@ namespace tbrpg
   Shield::Shield(Shield&& original) : RightHandItem(original)
   {
     (void) original;
-
+    std::swap(this->protect_missile, original.protect_missile);
+    std::swap(this->protect_melee, original.protect_melee);
   }
   
   
@@ -85,6 +88,7 @@ namespace tbrpg
   Shield::~Shield()
   {
     ////TODO implement destructor
+    //delete this->protect_melee;
   }
   
   
@@ -98,7 +102,9 @@ namespace tbrpg
   Shield& Shield::operator =(const Shield& original)
   {
     (void) original;
-
+    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    this->protect_missile = original.protect_missile;
+    this->protect_melee = original.protect_melee;
     return *this;
   }
   
@@ -111,7 +117,9 @@ namespace tbrpg
   Shield& Shield::operator =(Shield& original)
   {
     (void) original;
-
+    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
+    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    this->protect_missile = original.protect_missile;
+    this->protect_melee = original.protect_melee;
     return *this;
   }
   
@@ -124,7 +132,9 @@ namespace tbrpg
   Shield& Shield::operator =(Shield&& original)
   {
     (void) original;
-
+    std::swap((RightHandItem&)*this, (RightHandItem&)original);
+    std::swap((RightHandItem&)*this, (RightHandItem&)original);    std::swap(this->protect_missile, original.protect_missile);
+    std::swap(this->protect_melee, original.protect_melee);
     return *this;
   }
   

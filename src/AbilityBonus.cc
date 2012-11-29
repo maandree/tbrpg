@@ -42,6 +42,7 @@ namespace tbrpg
     //this->abilities = nullptr;
     //this->spells = nullptr;
     //this->effects = nullptr;
+    //this->defence = nullptr;
   }
   
   /**
@@ -58,6 +59,7 @@ namespace tbrpg
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->effects = original.effects;
+    this->defence = original.defence;
   }
   
   /**
@@ -74,6 +76,7 @@ namespace tbrpg
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->effects = original.effects;
+    this->defence = original.defence;
   }
   
   /**
@@ -90,6 +93,7 @@ namespace tbrpg
     std::swap(this->abilities, original.abilities);
     std::swap(this->spells, original.spells);
     std::swap(this->effects, original.effects);
+    std::swap(this->defence, original.defence);
   }
   
   
@@ -106,6 +110,7 @@ namespace tbrpg
     //delete this->abilities;
     //delete this->spells;
     //delete this->effects;
+    //delete this->defence;
   }
   
   
@@ -125,6 +130,7 @@ namespace tbrpg
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->effects = original.effects;
+    this->defence = original.defence;
     return *this;
   }
   
@@ -143,6 +149,7 @@ namespace tbrpg
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->effects = original.effects;
+    this->defence = original.defence;
     return *this;
   }
   
@@ -161,6 +168,7 @@ namespace tbrpg
     std::swap(this->abilities, original.abilities);
     std::swap(this->spells, original.spells);
     std::swap(this->effects, original.effects);
+    std::swap(this->defence, original.defence);
     return *this;
   }
   
