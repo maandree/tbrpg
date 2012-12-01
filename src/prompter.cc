@@ -86,7 +86,7 @@ namespace tbrpg
                 case CTRL('X'):
                  break;
                 
-                case CTRL('V'):
+                case CTRL('C'):
 		  {
                     prompterdata.ignoreNUL ^= true;
 		  }
@@ -352,7 +352,7 @@ namespace tbrpg
           
           
           case '\0':
-          case CTRL('V'):
+          case CTRL('C'):
             if (prompterdata.ignoreNUL && (prompterdata.c == '\0'))
 	      break;
             break;

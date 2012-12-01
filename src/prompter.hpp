@@ -47,23 +47,91 @@ namespace tbrpg
    */
   struct
   {
+    /**
+     * Before point size
+     */
     long bpz;
+    
+    /**
+     * After point size
+     */
     long apz;
+    
+    /**
+     * Before point buffer
+     */
     char* bp;
+    
+    /**
+     * After point buffer
+     */
     char* ap;
+    
+    /**
+     * Temporary buffer
+     */
     char* tmp;
+    
+    /**
+     * Escape sequence buffer
+     */
     char* esc;
+    
+    /**
+     * Current byte
+     */
     char c;
+    
+    /**
+     * Whether the prompter is still taking input
+     */
     bool reading;
+    
+    /**
+     * Assigned characters before point
+     */
     long before;
+    
+    /**
+     * Assigned characters after point
+     */
     long after;
+    
+    /**
+     * Whether the prompter was interrupted
+     */
     bool aborted;
+    
+    /**
+     * Escape sequence buffer pointer
+     */
     long escptr;
+    
+    /**
+     * Escape sequence buffer size
+     */
     long escsize;
+    
+    /**
+     * Whether override mode is enabled
+     */
     bool override;
+    
+    /**
+     * Whether ignore NUL mode is enabled, C-c can used instead
+     */
     bool ignoreNUL;
+    
+    /**
+     * Whether override mode is enabled
+     */
     bool controlX;
+    
+    /**
+     * Complete ANSI escape sequence
+     */
     std::string ansi;
+    
   } prompterdata;
   
   
