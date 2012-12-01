@@ -43,6 +43,31 @@ namespace tbrpg
   
   
   /**
+   * Prompter internal data, some information is stored between promptings
+   */
+  struct
+  {
+    long bpz;
+    long apz;
+    char* bp;
+    char* ap;
+    char* tmp;
+    char* esc;
+    char c;
+    bool reading;
+    long before;
+    long after;
+    bool aborted;
+    long escptr;
+    long escsize;
+    bool override;
+    bool ignoreNUL;
+    bool controlX;
+    std::string ansi;
+  } prompterdata;
+  
+  
+  /**
    * Prompt the user for an arbitrary string
    * 
    * @param   instruction  Instruction for the user
