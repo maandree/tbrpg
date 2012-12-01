@@ -68,37 +68,68 @@ namespace tbrpg
     char m;
     char* cc;
     
+    char* utf8buf;
+    bool ucs = false;
+    
     symbol sym;
     while ((sym = *(symbols + s++)))
       if (sym < 128)
 	*(chars + c++) = (char)sym;
       else
 	{
+	  if (ucs == false)
+	    {
+	      ucs = true;
+	      utf8buf = (char*)malloc(8);
+	    }
+	  
 	  #define mm  (128 | (m >> 1))
 	  
 	  m = n = 0;
-	  cc = chars + c + 8;
 	  for (;;)
 	    {
-	      *(cc - n) = (char)(sym & 63) | 128;
+	      *(utf8buf + n++) = (char)(sym & 63) | 128;
 	      sym >>= 6;
-	      n++;
 	      m = mm;
 	      
-	      if ((sym == 0) && ((mm & *(cc - 1 - n)) == 0))
-		break;
+	      if ((sym == 0) && ((mm & (*(utf8buf + n - 1) & 127)) == 0))
+		{
+		  *(utf8buf + n - 1) |= m;
+		  break;
+		}
 	    }
-	  for (i = 0; i < n; i++)
-	    *(chars + c + i) = *(cc + i - n);
-	  c += n;
+	  while (n)
+	    *(chars + c++) = *(utf8buf + --n);
 	  
           #undef mm
 	}
     
     *(chars + c) = 0;
+    
+    if (ucs)
+      free(utf8buf);
   }
   
-  
+  /**
+   * Complete prompting
+   */
+  void prompt_done()
+  {
+    long i;
+    prompterdata.reading = false;
+    std::cout << std::endl;
+    std::flush(std::cout);
+    
+    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
+    for (i = 0; i < prompterdata.before; i++)
+      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
+    free(prompterdata.bp);
+    for (i = prompterdata.after - 1; i >= 0; i--)
+      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
+    free(prompterdata.ap);
+    *prompterdata.tmp = 0;
+    prompterdata.tmp -= prompterdata.before + prompterdata.after;
+  }
   
   /**
    * Fetch escape sequences, after the initial \e
@@ -122,19 +153,7 @@ namespace tbrpg
 	if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
           {
 	    free(prompterdata.esc);
-	    prompterdata.reading = false;
-	    std::cout << std::endl;
-	    std::flush(std::cout);
-	    
-	    prompterdata.esc = (char*)malloc(prompterdata.before + prompterdata.after + 1);
-	    for (i = 0; i < prompterdata.before; i++)
-	      *prompterdata.esc++ = *(prompterdata.bp + i);
-	    free(prompterdata.bp);
-	    for (i = prompterdata.after - 1; i >= 0; i--)
-	      *prompterdata.esc++ = *(prompterdata.ap + i);
-	    free(prompterdata.ap);
-	    *prompterdata.esc++ = 0;
-	    prompterdata.esc -= (prompterdata.before + prompterdata.after + 1);
+	    prompt_done();
 	    break;
 	  }
 	if (prompterdata.c != '\0') /* C-space can be sent from the kernel */
@@ -165,14 +184,13 @@ namespace tbrpg
   
   
   /**
-   * Insert a ASCII character
+   * Insert a character (no echo)
+   * 
+   * @param  sym  The character to insert
    */
-  void prompt_ascii()
+  void prompt_char(symbol sym)
   {
     long i;
-    if (prompterdata.c < ' ')
-      return;
-    
     if (prompterdata.before == prompterdata.bpz)
       {
 	prompterdata.tmp = __malloc_string(prompterdata.bpz <<= 1);
@@ -182,12 +200,75 @@ namespace tbrpg
 	prompterdata.bp = prompterdata.tmp;
       }
     
-    *(prompterdata.bp + prompterdata.before++) = prompterdata.c;
+    *(prompterdata.bp + prompterdata.before++) = sym;
     if (prompterdata.after > 0)
       prompterdata.after--;
     
+  }
+
+  /**
+   * Insert a ASCII character
+   */
+  void prompt_ascii()
+  {
+    long i;
+    if (prompterdata.c < ' ')
+      return;
+    
+    prompt_char((symbol)(prompterdata.c));
+    
     printf("%c", prompterdata.c);
     std::flush(std::cout);
+  }
+  
+  /**
+   * Insert a UTF-8 encoded character
+   */
+  void prompt_utf8()
+  {
+    char n = 0;
+    while (prompterdata.c & 0x80)
+      {
+	prompterdata.c <<= 1;
+	n++;
+      }
+    
+    char invalid = 0xC0;
+    symbol sym = (symbol)((prompterdata.c & 127) >> n);
+    for (char i = 1; i != n; i++)
+      {
+	if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
+	  {
+	    prompt_done();
+	    return;
+	  }
+        if ((prompterdata.c & 0xC0) != 0x80)
+	  {
+	    invalid = prompterdata.c;
+	    break;
+	  }
+	sym = (sym << 6) | (symbol)(prompterdata.c & 63);
+      }
+    
+    prompt_char(sym);
+    
+    char* chars = (char*)malloc(9);
+    symbol* syms = __malloc_string(2);
+    *syms = sym;
+    *(syms + 1) = 0;
+    symbol_decode(syms, chars);
+    
+    printf("%s", chars);
+    std::flush(std::cout);
+    
+    free(chars);
+    free(syms);
+    
+    if (invalid != 0xC0)
+      {
+	prompterdata.c = invalid;
+	prompt_ascii();
+      }
   }
   
   /**
@@ -202,27 +283,6 @@ namespace tbrpg
     free(prompterdata.ap);
     free(prompterdata.bp);
     prompterdata.aborted = true;
-  }
-  
-  /**
-   * Complete prompting
-   */
-  void prompt_done()
-  {
-    long i;
-    prompterdata.reading = false;
-    std::cout << std::endl;
-    std::flush(std::cout);
-    
-    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
-    for (i = 0; i < prompterdata.before; i++)
-      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
-    free(prompterdata.bp);
-    for (i = prompterdata.after - 1; i >= 0; i--)
-      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
-    free(prompterdata.ap);
-    *prompterdata.tmp = 0;
-    prompterdata.tmp -= prompterdata.before + prompterdata.after;
   }
   
   /**
@@ -539,9 +599,7 @@ namespace tbrpg
 	      if ((prompterdata.c & 0x80) == 0)
 		prompt_ascii();
 	      else
-		{
-		  // TODO implement UTF-8 support
-		}
+		prompt_utf8();
 	    }
 	    break;
 	  }
