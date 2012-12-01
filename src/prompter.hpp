@@ -143,12 +143,19 @@ namespace tbrpg
   
   
   /**
+   * No operator
+   */
+  void promptNoop();
+  
+  /**
    * Prompt the user for an arbitrary string
    * 
    * @param   instruction  Instruction for the user
+   * @param   previous     Previous entry hook
+   * @param   next         Next entry hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction);
+  std::string promptArbitrary(std::string instruction, void (*previous)() = promptNoop, void (*next)() = promptNoop);
   
 }
 

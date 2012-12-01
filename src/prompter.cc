@@ -64,9 +64,8 @@ namespace tbrpg
   {
     int s = 0;
     int c = 0;
-    long n, i;
+    long n;
     char m;
-    char* cc;
     
     char* utf8buf;
     bool ucs = false;
@@ -218,21 +217,23 @@ namespace tbrpg
       printf("%c", (char)(prompterdata.c));
     
     if (prompterdata.after > 0)
-      if (prompterdata.override)
-	prompterdata.after--;
-      else
-	{
-	  char* tmpc = (char*)malloc(prompterdata.after * 8 + 1);
-	  symbol* tmps = __malloc_string(prompterdata.after + 1);
-	  symbol* a = prompterdata.ap + prompterdata.after - 1;
-	  for (i = 0; i < prompterdata.after; i++)
-	    *(tmps + i) = *(a - i);
-	  *(tmps + prompterdata.after) = 0;
-	  symbol_decode(tmps, tmpc);
-	  free(tmps);
-	  printf("%s\e[%liD", tmpc, prompterdata.after);
-	  free(tmpc);
-	}
+      {
+	if (prompterdata.override)
+	  prompterdata.after--;
+	else
+	  {
+	    char* tmpc = (char*)malloc(prompterdata.after * 8 + 1);
+	    symbol* tmps = __malloc_string(prompterdata.after + 1);
+	    symbol* a = prompterdata.ap + prompterdata.after - 1;
+	    for (i = 0; i < prompterdata.after; i++)
+	      *(tmps + i) = *(a - i);
+	    *(tmps + prompterdata.after) = 0;
+	    symbol_decode(tmps, tmpc);
+	    free(tmps);
+	    printf("%s\e[%liD", tmpc, prompterdata.after);
+	    free(tmpc);
+	  }
+      }
     
     std::flush(std::cout);
   }
@@ -242,7 +243,6 @@ namespace tbrpg
    */
   void prompt_ascii()
   {
-    long i;
     if (prompterdata.c < ' ')
       return;
     
@@ -261,7 +261,7 @@ namespace tbrpg
 	n++;
       }
     
-    char invalid = 0xC0;
+    char invalid = (char)0xC0;
     symbol sym = (symbol)((prompterdata.c & 127) >> n);
     for (char i = 1; i != n; i++)
       {
@@ -280,7 +280,7 @@ namespace tbrpg
     
     prompt_char(sym);
     
-    if (invalid != 0xC0)
+    if (invalid != (char)0xC0)
       {
 	prompterdata.c = invalid;
 	prompt_ascii();
@@ -457,14 +457,66 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Redraw
+   * 
+   * @param  instruction  Instruction for the user
+   */
+  void prompt_redraw(std::string instruction)
+  {
+    char* tmpc;
+    symbol* tmps;
+    symbol* a;
+    long i;
+    
+    std::cout << "\e[H\e[2J" << instruction;
+    if (prompterdata.before > 0)
+    {
+      tmpc = (char*)malloc(prompterdata.before * 8 + 1);
+      tmps = __malloc_string(prompterdata.before + 1);
+      for (i = 0; i < prompterdata.before; i++)
+	*(tmps + i) = *(prompterdata.bp + i);
+      *(tmps + prompterdata.before) = 0;
+      symbol_decode(tmps, tmpc);
+      free(tmps);
+      printf("%s", tmpc);
+      free(tmpc);
+    }
+    if (prompterdata.after > 0)
+    {
+      tmpc = (char*)malloc(prompterdata.after * 8 + 1);
+      tmps = __malloc_string(prompterdata.after + 1);
+      a = prompterdata.ap + prompterdata.after - 1;
+      for (i = 0; i < prompterdata.after; i++)
+	*(tmps + i) = *(a - i);
+      *(tmps + prompterdata.after) = 0;
+      symbol_decode(tmps, tmpc);
+      free(tmps);
+      printf("%s\e[%liD", tmpc, prompterdata.after);
+      free(tmpc);
+    }
+    std::flush(std::cout);
+  }
+  
+  
+  /**
+   * No operator
+   */
+  void promptNoop()
+  {
+    // noop
+  }
+  
   
   /**
    * Prompt the user for an arbitrary string
    * 
    * @param   instruction  Instruction for the user
+   * @param   previous     Previous entry hook
+   * @param   next         Next entry hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction)
+  std::string promptArbitrary(std::string instruction, void (*previous)(), void (*next)())
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -536,14 +588,14 @@ namespace tbrpg
 		;
 	      else if (prompterdata.ansi == "[3~") /* delete */
 		prompt_delete();
-	      else if (prompterdata.ansi == "[5~") /* page up */
-		;
-	      else if (prompterdata.ansi == "[6~") /* page down */
-		;
+	      //else if (prompterdata.ansi == "[5~") /* page up */
+	      //  ;
+	      //else if (prompterdata.ansi == "[6~") /* page down */
+	      //  ;
 	      else if (prompterdata.ansi == "[A") /* up */
-		;
+		previous();
 	      else if (prompterdata.ansi == "[B") /* down */
-		;
+		next();
 	      else if (prompterdata.ansi == "[C") /* right */
 		prompt_right();
 	      else if (prompterdata.ansi == "[D") /* left */
@@ -596,18 +648,17 @@ namespace tbrpg
             break;
           
           
-	  case CTRL('L'):
-            break;
 	  case CTRL('W'):
             break;
 	  case CTRL('Y'):
             break;
 	  case CTRL('K'):
             break;
-	  case CTRL('F'): prompt_right(); break;
-	  case CTRL('B'): prompt_left();  break;
-	  case CTRL('A'): prompt_home();  break;
-	  case CTRL('E'): prompt_end();   break;
+	  case CTRL('L'):  prompt_redraw(instruction);  break;
+	  case CTRL('F'):  prompt_right();              break;
+	  case CTRL('B'):  prompt_left();               break;
+	  case CTRL('A'):  prompt_home();               break;
+	  case CTRL('E'):  prompt_end();                break;
           
 	  
 	  default:
