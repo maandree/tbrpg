@@ -184,13 +184,14 @@ namespace tbrpg
   
   
   /**
-   * Insert a character (no echo)
+   * Insert a character
    * 
    * @param  sym  The character to insert
    */
   void prompt_char(symbol sym)
   {
     long i;
+    
     if (prompterdata.before == prompterdata.bpz)
       {
 	prompterdata.tmp = __malloc_string(prompterdata.bpz <<= 1);
@@ -199,11 +200,41 @@ namespace tbrpg
 	free(prompterdata.bp);
 	prompterdata.bp = prompterdata.tmp;
       }
-    
     *(prompterdata.bp + prompterdata.before++) = sym;
-    if (prompterdata.after > 0)
-      prompterdata.after--;
     
+    if (sym > 127)
+      {
+	char* chars = (char*)malloc(9);
+	symbol* syms = __malloc_string(2);
+	*syms = sym;
+	*(syms + 1) = 0;
+	symbol_decode(syms, chars);
+	printf("%s", chars);
+	std::flush(std::cout);
+	free(chars);
+	free(syms);
+      }
+    else
+      printf("%c", (char)(prompterdata.c));
+    
+    if (prompterdata.after > 0)
+      if (prompterdata.override)
+	prompterdata.after--;
+      else
+	{
+	  char* tmpc = (char*)malloc(prompterdata.after * 8 + 1);
+	  symbol* tmps = __malloc_string(prompterdata.after + 1);
+	  symbol* a = prompterdata.ap + prompterdata.after - 1;
+	  for (i = 0; i < prompterdata.after; i++)
+	    *(tmps + i) = *(a - i);
+	  *(tmps + prompterdata.after) = 0;
+	  symbol_decode(tmps, tmpc);
+	  free(tmps);
+	  printf("%s\e[%liD", tmpc, prompterdata.after);
+	  free(tmpc);
+	}
+    
+    std::flush(std::cout);
   }
 
   /**
@@ -216,9 +247,6 @@ namespace tbrpg
       return;
     
     prompt_char((symbol)(prompterdata.c));
-    
-    printf("%c", prompterdata.c);
-    std::flush(std::cout);
   }
   
   /**
@@ -251,18 +279,6 @@ namespace tbrpg
       }
     
     prompt_char(sym);
-    
-    char* chars = (char*)malloc(9);
-    symbol* syms = __malloc_string(2);
-    *syms = sym;
-    *(syms + 1) = 0;
-    symbol_decode(syms, chars);
-    
-    printf("%s", chars);
-    std::flush(std::cout);
-    
-    free(chars);
-    free(syms);
     
     if (invalid != 0xC0)
       {

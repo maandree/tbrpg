@@ -121,7 +121,7 @@ namespace tbrpg
     /**
      * Whether override mode is enabled
      */
-    bool override;
+    bool override = false;
     
     /**
      * Whether ignore NUL mode is enabled, C-c can used instead
