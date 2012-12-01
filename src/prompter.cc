@@ -142,7 +142,7 @@ namespace tbrpg
 	      esc = (char*)malloc(escsize = 16);
 	      escptr = 0;
 	      
-	      while (((c != '~') && ! ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))) || (escptr == 0))
+	      while (((c != '~') && ! ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))) || (escptr == 1))
 		{
 		  if (read(STDIN_FILENO, &c, 1) <= 0)
 		    {
