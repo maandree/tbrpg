@@ -55,7 +55,7 @@ namespace tbrpg
    * Prompt the user for an arbitrary string
    * 
    * @param   instruction  Instruction for the user
-   * @return               The string provided by the user, nullptr is returned if aborted
+   * @return               The string provided by the user, empty string is returned if aborted
    */
   std::string promptArbitrary(std::string instruction)
   {
@@ -71,8 +71,9 @@ namespace tbrpg
     char c;
     bool reading = true;
     long i, before = 0, after = 0;
-    bool retnullptr = false;
+    bool aborted = false;
     long escptr, escsize;
+    bool override = false, ignoreNUL = false, controlX = false;
     std::string ansi;
     
     __store_tty();
@@ -82,6 +83,27 @@ namespace tbrpg
 	if (read(STDIN_FILENO, &c, 1) <= 0)
 	  c = '\n';
         
+        if (controlX && ! ((c == '\n') || CTRL('D') || CTRL('G')))
+	  {
+            switch (c)
+	      {
+                case CTRL('X'):
+                 break;
+                
+                case CTRL('V'):
+		  {
+                    ignoreNUL ^= true;
+		  }
+                  break;
+              }
+            
+            if (c != '\0') /* C-space can be sent from the kernel */
+	      {
+	        controlX = false;
+	        continue;
+              }
+          }
+  
 	switch (c)
 	  {
 	  case '\n':
@@ -112,7 +134,7 @@ namespace tbrpg
 	      
 	      free(ap);
 	      free(bp);
-	      retnullptr = true;
+	      aborted = true;
 	    }
 	    break;
 	    
@@ -142,7 +164,7 @@ namespace tbrpg
 	      esc = (char*)malloc(escsize = 16);
 	      escptr = 0;
 	      
-	      while (((c != '~') && ! ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))) || (escptr == 1))
+	      while (((c != '~') && ! ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))) || ((escptr == 1) && (c == 'O')))
 		{
 		  if (read(STDIN_FILENO, &c, 1) <= 0)
 		    {
@@ -162,15 +184,17 @@ namespace tbrpg
 		      esc -= (before + after + 1);
 		      break;
 		    }
-		  
-		  *(esc + escptr++) = c;
-		  if (escptr == escsize)
+		  if (c != '\0') /* C-space can be sent from the kernel */
 		    {
-		      tmp = (char*)malloc(escsize <<= 1);
-		      for (i = 0; i < escptr; i++)
-			*(tmp + i) = *(esc + i);
-		      free(esc);
-		      esc = tmp;
+		      *(esc + escptr++) = c;
+		      if (escptr == escsize)
+			{
+			  tmp = (char*)malloc(escsize <<= 1);
+			  for (i = 0; i < escptr; i++)
+			    *(tmp + i) = *(esc + i);
+			  free(esc);
+			  esc = tmp;
+		        }
 		    }
 		}
 	      if ((c != '~') && ! ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z'))))
@@ -230,6 +254,8 @@ namespace tbrpg
 		    __bell();
 		  }
 	      else if (ansi == "[2~") /* insert */
+		override ^= true;
+	      else if (ansi == "[3;2~") /* C-delete */
 		;
 	      else if (ansi == "[3~") /* delete */
 		if (after > 0)
@@ -286,7 +312,29 @@ namespace tbrpg
 		      *(ap + after) = *(bp + before);
 		      after++;
 		    }
-		} /* gcc suggests these braces, but I cannot understand why */
+		}
+	      else if (ansi == "[1;2C") /* S-right */
+		;
+	      else if (ansi == "[1;2D") /* S-left */
+		;
+	      else if (ansi == "[1;3C") /* C-right */
+		;
+	      else if (ansi == "[1;3D") /* C-left */
+		;
+	      else if (ansi == "[1;4C") /* C-S-right */
+		;
+	      else if (ansi == "[1;4D") /* C-S-left */
+		;
+	      else if ((ansi == "\t") || (ansi == "[Z")) /* backtab */
+		;
+	      else if ((ansi == "y") || ansi == "Y") /* M-y */
+		;
+	      else if ((ansi == "w") || ansi == "W") /* M-w */
+		;
+	      else if ((ansi == "f") || ansi == "F") /* M-f */
+		;
+	      else if ((ansi == "b") || ansi == "B") /* M-b */
+		;
 	      #ifdef DEBUG
 	        else
 		  {
@@ -297,26 +345,69 @@ namespace tbrpg
 	      std::flush(std::cout);
 	    }
 	    break;
-	    
-	    
+          
+          
+          case '\0':
+          case CTRL('V'):
+            if (ignoreNUL && (c == '\0'))
+	      break;
+            break;
+          
+          
+          case '\t':
+            break;
+          
+          
+	  case CTRL('L'):
+            break;
+	  case CTRL('W'):
+            break;
+	  case CTRL('Y'):
+            break;
+	  case CTRL('K'):
+            break;
+	  case CTRL('F'):
+            break;
+	  case CTRL('B'):
+            break;
+	  case CTRL('A'):
+            break;
+	  case CTRL('E'):
+            break;
+          
+         
+	  case CTRL('X'):
+	    {
+              controlX = true;
+            }
+            break;
+	  
+	  
 	  default:
 	    {
-	      if (c < ' ')
-		break;
-	      
-	      if (before == bpz)
+	      if ((c & 0x80) == 0)
 		{
-		  tmp = (char*)malloc(bpz <<= 1);
-		  for (i = 0; i < before; i++)
-		    *(tmp + i) = *(ap + i);
-		  free(bp);
-		  bp = tmp;
+		  if (c < ' ')
+		    break;
+		  
+		  if (before == bpz)
+		    {
+		      tmp = (char*)malloc(bpz <<= 1);
+		      for (i = 0; i < before; i++)
+			*(tmp + i) = *(ap + i);
+		      free(bp);
+		      bp = tmp;
+		    }
+		  *(bp + before++) = c;
+		  if (after > 0)
+		    after--;
+		  printf("%c", c);
+		  std::flush(std::cout);
 		}
-	      *(bp + before++) = c;
-	      if (after > 0)
-		after--;
-	      printf("%c", c);
-	      std::flush(std::cout);
+	      else
+		{
+		  // TODO implement UTF-8 support
+		}
 	    }
 	    break;
 	  }
@@ -324,8 +415,8 @@ namespace tbrpg
     
     __restore_tty();
     
-    if (retnullptr)
-      return nullptr;
+    if (aborted)
+      return "";
     std::string rc = std::string(tmp);
     free(tmp);
     return rc;

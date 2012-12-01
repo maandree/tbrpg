@@ -46,7 +46,7 @@ namespace tbrpg
    * Prompt the user for an arbitrary string
    * 
    * @param   instruction  Instruction for the user
-   * @return               The string provided by the user, nullptr is returned if aborted
+   * @return               The string provided by the user, empty string is returned if aborted
    */
   std::string promptArbitrary(std::string instruction);
   

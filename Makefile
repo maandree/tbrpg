@@ -10,7 +10,7 @@ SHELL=bash
 NODES=3
 OPTIMISE=-O0
 #OPTIMISE=-O3
-CPPFLAGS=
+CPPFLAGS=-DDEBUG
 CXXFLAGS=$(OPTIMISE) -g --std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 

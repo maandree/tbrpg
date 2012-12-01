@@ -55,8 +55,11 @@ namespace tbrpg
     std::cout << dice.roll() << std::endl;
     
     std::string str = promptArbitrary("Enter the character's name: ");
-    std::cout << str << std::endl;
-    std::flush(std::cout);
+    if (str != "")
+      {
+	std::cout << str << std::endl;
+	std::flush(std::cout);
+      }
     
     return 0;
   }
