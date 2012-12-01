@@ -547,6 +547,10 @@ namespace tbrpg
                 case CTRL('C'):
                   prompterdata.ignoreNUL ^= true;
                   break;
+		  
+	        case 'u':
+	        case 'U':
+		  break;
               }
             
             if (prompterdata.c != '\0') /* C-space can be sent from the kernel */
@@ -571,7 +575,6 @@ namespace tbrpg
 	  case 127:
 	    prompt_erase();
 	    break;
-	    
 	    
 	  case '\e':
 	    {
@@ -633,20 +636,13 @@ namespace tbrpg
 	    }
 	    break;
           
-          
           case '\0':
           case CTRL('C'):
 	    prompt_mark();
             break;
-         
-	  case CTRL('X'):
-	    prompterdata.controlX = true;
-            break;
-          
           
           case '\t':
             break;
-          
           
 	  case CTRL('W'):
             break;
@@ -654,13 +650,20 @@ namespace tbrpg
             break;
 	  case CTRL('K'):
             break;
-	  case CTRL('L'):  prompt_redraw(instruction);  break;
-	  case CTRL('F'):  prompt_right();              break;
-	  case CTRL('B'):  prompt_left();               break;
-	  case CTRL('A'):  prompt_home();               break;
-	  case CTRL('E'):  prompt_end();                break;
+	  case CTRL('_'):
+            break;
+	  case CTRL('O'):
+            break;
           
-	  
+	  case CTRL('X'):  prompterdata.controlX = true;  break;
+	  case CTRL('L'):  prompt_redraw(instruction);    break;
+	  case CTRL('F'):  prompt_right();                break;
+	  case CTRL('B'):  prompt_left();                 break;
+	  case CTRL('A'):  prompt_home();                 break;
+	  case CTRL('E'):  prompt_end();                  break;
+	  case CTRL('P'):  previous();                    break;
+	  case CTRL('N'):  next();                        break;
+          
 	  default:
 	    {
 	      if ((prompterdata.c & 0x80) == 0)
