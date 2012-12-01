@@ -49,6 +49,55 @@ namespace tbrpg
     printf("\a"); /* bell, some people have bell enabled */	\
     std::flush(std::cout)
   
+  #define __malloc_string(CHARS)  \
+    (symbol*)malloc((CHARS) * sizeof(symbol))
+  
+  
+  
+  /**
+   * `symbol*` to `char*` converter
+   * 
+   * @param  symbols  `symbol*` NUL-free string to use
+   * @param  chars    `char*` NUL-free string to fill
+   */
+  void symbol_decode(symbol* symbols, char* chars)
+  {
+    int s = 0;
+    int c = 0;
+    long n, i;
+    char m;
+    char* cc;
+    
+    symbol sym;
+    while ((sym = *(symbols + s++)))
+      if (sym < 128)
+	*(chars + c++) = (char)sym;
+      else
+	{
+	  #define mm  (128 | (m >> 1))
+	  
+	  m = n = 0;
+	  cc = chars + c + 8;
+	  for (;;)
+	    {
+	      *(cc - n) = (char)(sym & 63) | 128;
+	      sym >>= 6;
+	      n++;
+	      m = mm;
+	      
+	      if ((sym == 0) && ((mm & *(cc - 1 - n)) == 0))
+		break;
+	    }
+	  for (i = 0; i < n; i++)
+	    *(chars + c + i) = *(cc + i - n);
+	  c += n;
+	  
+          #undef mm
+	}
+    
+    *(chars + c) = 0;
+  }
+  
   
   
   /**
@@ -59,6 +108,7 @@ namespace tbrpg
   bool prompt_esc()
   {
     long i;
+    char* tmp;
     prompterdata.esc = (char*)malloc(prompterdata.escsize = 16);
     prompterdata.escptr = 0;
     
@@ -92,11 +142,11 @@ namespace tbrpg
 	    *(prompterdata.esc + prompterdata.escptr++) = prompterdata.c;
 	    if (prompterdata.escptr == prompterdata.escsize)
 	      {
-		prompterdata.tmp = (char*)malloc(prompterdata.escsize <<= 1);
+		tmp = (char*)malloc(prompterdata.escsize <<= 1);
 		for (i = 0; i < prompterdata.escptr; i++)
-		  *(prompterdata.tmp + i) = *(prompterdata.esc + i);
+		  *(tmp + i) = *(prompterdata.esc + i);
 		free(prompterdata.esc);
-		prompterdata.esc = prompterdata.tmp;
+		prompterdata.esc = tmp;
 	      }
 	  }
 	}
@@ -125,7 +175,7 @@ namespace tbrpg
     
     if (prompterdata.before == prompterdata.bpz)
       {
-	prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
+	prompterdata.tmp = __malloc_string(prompterdata.bpz <<= 1);
 	for (i = 0; i < prompterdata.before; i++)
 	  *(prompterdata.tmp + i) = *(prompterdata.ap + i);
 	free(prompterdata.bp);
@@ -164,15 +214,15 @@ namespace tbrpg
     std::cout << std::endl;
     std::flush(std::cout);
     
-    prompterdata.tmp = (char*)malloc(prompterdata.before + prompterdata.after + 1);
+    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
     for (i = 0; i < prompterdata.before; i++)
       *(prompterdata.tmp)++ = *(prompterdata.bp + i);
     free(prompterdata.bp);
     for (i = prompterdata.after - 1; i >= 0; i--)
       *(prompterdata.tmp)++ = *(prompterdata.ap + i);
     free(prompterdata.ap);
-    *(prompterdata.tmp)++ = 0;
-    prompterdata.tmp -= (prompterdata.before + prompterdata.after + 1);
+    *prompterdata.tmp = 0;
+    prompterdata.tmp -= prompterdata.before + prompterdata.after;
   }
   
   /**
@@ -218,7 +268,7 @@ namespace tbrpg
 	  {
 	    if (prompterdata.after == prompterdata.apz)
 	      {
-		prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
+		prompterdata.tmp = __malloc_string(prompterdata.apz <<= 1);
 		for (i = 0; i < prompterdata.after; i++)
 		  *(prompterdata.tmp + i) = *(prompterdata.ap + i);
 		free(prompterdata.ap);
@@ -249,7 +299,7 @@ namespace tbrpg
 	  {
 	    if (prompterdata.before == prompterdata.bpz)
 	      {
-		prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
+		prompterdata.tmp = __malloc_string(prompterdata.bpz <<= 1);
 		for (i = 0; i < prompterdata.before; i++)
 		  *(prompterdata.tmp + i) = *(prompterdata.bp + i);
 		free(prompterdata.bp);
@@ -301,7 +351,7 @@ namespace tbrpg
 	printf("\e[D");
 	if (prompterdata.after == prompterdata.apz)
 	  {
-	    prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
+	    prompterdata.tmp = __malloc_string(prompterdata.apz <<= 1);
 	    for (i = 0; i < prompterdata.after; i++)
 	      *(prompterdata.tmp + i) = *(prompterdata.ap + i);
 	    free(prompterdata.ap);
@@ -345,8 +395,8 @@ namespace tbrpg
     
     prompterdata.bpz = 64;
     prompterdata.apz = 64;
-    prompterdata.bp = (char*)malloc(prompterdata.bpz);
-    prompterdata.ap = (char*)malloc(prompterdata.apz);
+    prompterdata.bp = __malloc_string(prompterdata.bpz);
+    prompterdata.ap = __malloc_string(prompterdata.apz);
     prompterdata.reading = true;
     prompterdata.after = 0;
     prompterdata.aborted = false;
@@ -501,8 +551,11 @@ namespace tbrpg
     
     if (prompterdata.aborted)
       return "";
-    std::string rc = std::string(prompterdata.tmp);
+    char* tmp = (char*)malloc((prompterdata.before + prompterdata.after) * 8 + 1);
+    symbol_decode(prompterdata.tmp, tmp);
     free(prompterdata.tmp);
+    std::string rc = std::string(tmp);
+    free(tmp);
     return rc;
   }
   
@@ -510,6 +563,7 @@ namespace tbrpg
   #undef __store_tty
   #undef __restore_tty
   #undef __bell
+  #undef __malloc_string
   
 }
 

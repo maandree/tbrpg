@@ -43,6 +43,12 @@ namespace tbrpg
   
   
   /**
+   * UCS character type
+   */
+  typedef signed int /* sic */  symbol;
+  
+  
+  /**
    * Prompter internal data, some information is stored between promptings
    */
   struct
@@ -60,17 +66,17 @@ namespace tbrpg
     /**
      * Before point buffer
      */
-    char* bp;
+    symbol* bp;
     
     /**
      * After point buffer
      */
-    char* ap;
+    symbol* ap;
     
     /**
      * Temporary buffer
      */
-    char* tmp;
+    symbol* tmp;
     
     /**
      * Escape sequence buffer
