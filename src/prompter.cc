@@ -50,6 +50,12 @@ namespace tbrpg
     std::flush(std::cout)
   
   
+  
+  /**
+   * Fetch escape sequences, after the initial \e
+   * 
+   * @return  Whether a sequences was fetched
+   */
   bool prompt_esc()
   {
     long i;
@@ -108,6 +114,9 @@ namespace tbrpg
   }
   
   
+  /**
+   * Insert a ASCII character
+   */
   void prompt_ascii()
   {
     long i;
@@ -131,6 +140,9 @@ namespace tbrpg
     std::flush(std::cout);
   }
   
+  /**
+   * Abort prompting
+   */
   void prompt_abort()
   {
     prompterdata.reading = false;
@@ -142,6 +154,9 @@ namespace tbrpg
     prompterdata.aborted = true;
   }
   
+  /**
+   * Complete prompting
+   */
   void prompt_done()
   {
     long i;
@@ -160,6 +175,9 @@ namespace tbrpg
     prompterdata.tmp -= (prompterdata.before + prompterdata.after + 1);
   }
   
+  /**
+   * Erase a character
+   */
   void prompt_erase()
   {
     long i;
@@ -178,12 +196,18 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Set mark
+   */
   void prompt_mark()
   {
     if (prompterdata.ignoreNUL && (prompterdata.c == '\0'))
       return;
   }
   
+  /**
+   * Go to the beginning
+   */
   void prompt_home()
   {
     long i;
@@ -212,6 +236,9 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Go to the end
+   */
   void prompt_end()
   {
     long i;
@@ -240,6 +267,9 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Delete a character
+   */
   void prompt_delete()
   {
     long i;
@@ -256,6 +286,9 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Go left of character
+   */
   void prompt_left()
   {
     long i;
@@ -280,6 +313,9 @@ namespace tbrpg
       }
   }
   
+  /**
+   * Go right of character
+   */
   void prompt_right()
   {
     if (prompterdata.after == 0)
