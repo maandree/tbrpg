@@ -135,6 +135,7 @@ namespace tbrpg
   } prompterdata;
   
   
+  
   /**
    * Prompt the user for an arbitrary string
    * 

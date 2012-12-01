@@ -50,6 +50,251 @@ namespace tbrpg
     std::flush(std::cout)
   
   
+  bool prompt_esc()
+  {
+    long i;
+    prompterdata.esc = (char*)malloc(prompterdata.escsize = 16);
+    prompterdata.escptr = 0;
+    
+    #define __check(LOWER, UPPER)  \
+      ((LOWER <= prompterdata.c) && (prompterdata.c <= UPPER))
+    #define ___check  \
+      !(__check('~', '~') || __check('a', 'z') || __check('A', 'Z'))
+    
+    while (___check || ((prompterdata.escptr == 1) && (prompterdata.c == 'O')))
+      {
+	if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
+          {
+	    free(prompterdata.esc);
+	    prompterdata.reading = false;
+	    std::cout << std::endl;
+	    std::flush(std::cout);
+	    
+	    prompterdata.esc = (char*)malloc(prompterdata.before + prompterdata.after + 1);
+	    for (i = 0; i < prompterdata.before; i++)
+	      *prompterdata.esc++ = *(prompterdata.bp + i);
+	    free(prompterdata.bp);
+	    for (i = prompterdata.after - 1; i >= 0; i--)
+	      *prompterdata.esc++ = *(prompterdata.ap + i);
+	    free(prompterdata.ap);
+	    *prompterdata.esc++ = 0;
+	    prompterdata.esc -= (prompterdata.before + prompterdata.after + 1);
+	    break;
+	  }
+	if (prompterdata.c != '\0') /* C-space can be sent from the kernel */
+	  {
+	    *(prompterdata.esc + prompterdata.escptr++) = prompterdata.c;
+	    if (prompterdata.escptr == prompterdata.escsize)
+	      {
+		prompterdata.tmp = (char*)malloc(prompterdata.escsize <<= 1);
+		for (i = 0; i < prompterdata.escptr; i++)
+		  *(prompterdata.tmp + i) = *(prompterdata.esc + i);
+		free(prompterdata.esc);
+		prompterdata.esc = prompterdata.tmp;
+	      }
+	  }
+	}
+    if (___check)
+      return false;
+    
+    #undef __check
+    #undef ___check
+    
+    *(prompterdata.esc + prompterdata.escptr) = 0;
+    prompterdata.ansi = std::string(prompterdata.esc);
+    free(prompterdata.esc);
+    
+    return true;
+  }
+  
+  
+  void prompt_ascii()
+  {
+    long i;
+    if (prompterdata.c < ' ')
+      return;
+    
+    if (prompterdata.before == prompterdata.bpz)
+      {
+	prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
+	for (i = 0; i < prompterdata.before; i++)
+	  *(prompterdata.tmp + i) = *(prompterdata.ap + i);
+	free(prompterdata.bp);
+	prompterdata.bp = prompterdata.tmp;
+      }
+    
+    *(prompterdata.bp + prompterdata.before++) = prompterdata.c;
+    if (prompterdata.after > 0)
+      prompterdata.after--;
+    
+    printf("%c", prompterdata.c);
+    std::flush(std::cout);
+  }
+  
+  void prompt_abort()
+  {
+    prompterdata.reading = false;
+    std::cout << std::endl;
+    std::flush(std::cout);
+    
+    free(prompterdata.ap);
+    free(prompterdata.bp);
+    prompterdata.aborted = true;
+  }
+  
+  void prompt_done()
+  {
+    long i;
+    prompterdata.reading = false;
+    std::cout << std::endl;
+    std::flush(std::cout);
+    
+    prompterdata.tmp = (char*)malloc(prompterdata.before + prompterdata.after + 1);
+    for (i = 0; i < prompterdata.before; i++)
+      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
+    free(prompterdata.bp);
+    for (i = prompterdata.after - 1; i >= 0; i--)
+      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
+    free(prompterdata.ap);
+    *(prompterdata.tmp)++ = 0;
+    prompterdata.tmp -= (prompterdata.before + prompterdata.after + 1);
+  }
+  
+  void prompt_erase()
+  {
+    long i;
+    if (prompterdata.before > 0)
+      {
+	prompterdata.before--;
+	printf("\e[D");
+	for (i = prompterdata.after - 1; i >= 0; i--)
+	  printf("%c", *(prompterdata.ap + i));
+	printf(" \e[%liD", prompterdata.after + 1);
+	std::flush(std::cout);
+      }
+    else
+      {
+	__bell();
+      }
+  }
+  
+  void prompt_mark()
+  {
+    if (prompterdata.ignoreNUL && (prompterdata.c == '\0'))
+      return;
+  }
+  
+  void prompt_home()
+  {
+    long i;
+    if (prompterdata.before > 0)
+      {
+	printf("\e[%liD", prompterdata.before);
+	while (prompterdata.before != 0)
+	  {
+	    if (prompterdata.after == prompterdata.apz)
+	      {
+		prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
+		for (i = 0; i < prompterdata.after; i++)
+		  *(prompterdata.tmp + i) = *(prompterdata.ap + i);
+		free(prompterdata.ap);
+		prompterdata.ap = prompterdata.tmp;
+	      }
+	    prompterdata.before--;
+	    *(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
+	    prompterdata.after++;
+	  }
+	prompterdata.before = 0;
+      }
+    else
+      {
+	__bell();
+      }
+  }
+  
+  void prompt_end()
+  {
+    long i;
+    if (prompterdata.after > 0)
+      {
+	printf("\e[%liC", prompterdata.after);
+	while (prompterdata.after != 0)
+	  {
+	    if (prompterdata.before == prompterdata.bpz)
+	      {
+		prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
+		for (i = 0; i < prompterdata.before; i++)
+		  *(prompterdata.tmp + i) = *(prompterdata.bp + i);
+		free(prompterdata.bp);
+		prompterdata.bp = prompterdata.tmp;
+	      }
+	    prompterdata.after--;
+	    *(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
+	    prompterdata.before++;
+	  }
+	prompterdata.after = 0;
+      }
+    else
+      {
+	__bell();
+      }
+  }
+  
+  void prompt_delete()
+  {
+    long i;
+    if (prompterdata.after > 0)
+      {
+	prompterdata.after--;
+	for (i = prompterdata.after - 1; i >= 0; i--)
+	  printf("%c", *(prompterdata.ap + i));
+	printf(" \e[%liD", prompterdata.after + 1);
+      }
+    else
+      {
+	__bell();
+      }
+  }
+  
+  void prompt_left()
+  {
+    long i;
+    if (prompterdata.before == 0)
+      {
+	__bell();
+      }
+    else
+      {
+	printf("\e[D");
+	if (prompterdata.after == prompterdata.apz)
+	  {
+	    prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
+	    for (i = 0; i < prompterdata.after; i++)
+	      *(prompterdata.tmp + i) = *(prompterdata.ap + i);
+	    free(prompterdata.ap);
+	    prompterdata.ap = prompterdata.tmp;
+	  }
+	prompterdata.before--;
+	*(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
+	prompterdata.after++;
+      }
+  }
+  
+  void prompt_right()
+  {
+    if (prompterdata.after == 0)
+      {
+	__bell();
+      }
+    else
+      {
+	printf("\e[C");
+	prompterdata.after--;
+	*(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
+	prompterdata.before++;
+      }
+  }
+  
   
   /**
    * Prompt the user for an arbitrary string
@@ -70,7 +315,6 @@ namespace tbrpg
     prompterdata.after = 0;
     prompterdata.aborted = false;
     prompterdata.controlX = false;
-    long i;
     
     __store_tty();
     
@@ -87,9 +331,7 @@ namespace tbrpg
                  break;
                 
                 case CTRL('C'):
-		  {
-                    prompterdata.ignoreNUL ^= true;
-		  }
+                  prompterdata.ignoreNUL ^= true;
                   break;
               }
             
@@ -104,175 +346,34 @@ namespace tbrpg
 	  {
 	  case '\n':
           case CTRL('D'):
-	    {
-	      prompterdata.reading = false;
-	      std::cout << std::endl;
-	      std::flush(std::cout);
-	      
-	      prompterdata.tmp = (char*)malloc(prompterdata.before + prompterdata.after + 1);
-	      for (i = 0; i < prompterdata.before; i++)
-		*(prompterdata.tmp)++ = *(prompterdata.bp + i);
-	      free(prompterdata.bp);
-	      for (i = prompterdata.after - 1; i >= 0; i--)
-		*(prompterdata.tmp)++ = *(prompterdata.ap + i);
-	      free(prompterdata.ap);
-	      *(prompterdata.tmp)++ = 0;
-	      prompterdata.tmp -= (prompterdata.before + prompterdata.after + 1);
-	    }
+	    prompt_done();
 	    break;
-	    
 	    
 	  case CTRL('G'):
-	    {
-	      prompterdata.reading = false;
-	      std::cout << std::endl;
-	      std::flush(std::cout);
-	      
-	      free(prompterdata.ap);
-	      free(prompterdata.bp);
-	      prompterdata.aborted = true;
-	    }
+	    prompt_abort();
 	    break;
-	    
 	    
 	  case '\b':
 	  case 127:
-	    {
-	      if (prompterdata.before > 0)
-		{
-		  prompterdata.before--;
-		  printf("\e[D");
-		  for (i = prompterdata.after - 1; i >= 0; i--)
-		    printf("%c", *(prompterdata.ap + i));
-		  printf(" \e[%liD", prompterdata.after + 1);
-		  std::flush(std::cout);
-		}
-	      else
-		{
-		  __bell();
-		}
-	    }
+	    prompt_erase();
 	    break;
 	    
 	    
 	  case '\e':
 	    {
-	      prompterdata.esc = (char*)malloc(prompterdata.escsize = 16);
-	      prompterdata.escptr = 0;
-	      
-	      #define __check(LOWER, UPPER)  \
-	        ((LOWER <= prompterdata.c) && (prompterdata.c <= UPPER))
-              #define ___check  \
-                !(__check('~', '~') || __check('a', 'z') || __check('A', 'Z'))
-              
-	      while (___check || ((prompterdata.escptr == 1) && (prompterdata.c == 'O')))
-		{
-		  if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
-		    {
-		      free(prompterdata.esc);
-		      prompterdata.reading = false;
-		      std::cout << std::endl;
-		      std::flush(std::cout);
-		      
-		      prompterdata.esc = (char*)malloc(prompterdata.before + prompterdata.after + 1);
-		      for (i = 0; i < prompterdata.before; i++)
-			*prompterdata.esc++ = *(prompterdata.bp + i);
-		      free(prompterdata.bp);
-		      for (i = prompterdata.after - 1; i >= 0; i--)
-			*prompterdata.esc++ = *(prompterdata.ap + i);
-		      free(prompterdata.ap);
-		      *prompterdata.esc++ = 0;
-		      prompterdata.esc -= (prompterdata.before + prompterdata.after + 1);
-		      break;
-		    }
-		  if (prompterdata.c != '\0') /* C-space can be sent from the kernel */
-		    {
-		      *(prompterdata.esc + prompterdata.escptr++) = prompterdata.c;
-		      if (prompterdata.escptr == prompterdata.escsize)
-			{
-			  prompterdata.tmp = (char*)malloc(prompterdata.escsize <<= 1);
-			  for (i = 0; i < prompterdata.escptr; i++)
-			    *(prompterdata.tmp + i) = *(prompterdata.esc + i);
-			  free(prompterdata.esc);
-			  prompterdata.esc = prompterdata.tmp;
-		        }
-		    }
-		}
-	      if (___check)
-		break;
-  	      
-	      #undef __check
-	      #undef ___check
-	      
-	      *(prompterdata.esc + prompterdata.escptr) = 0;
-	      prompterdata.ansi = std::string(prompterdata.esc);
-	      free(prompterdata.esc);
-	      
+	      if (prompt_esc() == false)
+	        break;
 	      
 	      if ((prompterdata.ansi == "OH") || (prompterdata.ansi == "[1~")) /* home */
-		if (prompterdata.before > 0)
-		  {
-		    printf("\e[%liD", prompterdata.before);
-		    while (prompterdata.before != 0)
-		      {
-			if (prompterdata.after == prompterdata.apz)
-			  {
-			    prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
-			    for (i = 0; i < prompterdata.after; i++)
-			      *(prompterdata.tmp + i) = *(prompterdata.ap + i);
-			    free(prompterdata.ap);
-			    prompterdata.ap = prompterdata.tmp;
-			}
-			prompterdata.before--;
-			*(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
-			prompterdata.after++;
-		      }
-		    prompterdata.before = 0;
-		  }
-		else
-		  {
-		    __bell();
-		  }
+		prompt_home();
 	      else if ((prompterdata.ansi == "OF") || (prompterdata.ansi == "[4~")) /* end */
-		if (prompterdata.after > 0)
-		  {
-		    printf("\e[%liC", prompterdata.after);
-		    while (prompterdata.after != 0)
-		      {
-			if (prompterdata.before == prompterdata.bpz)
-			  {
-			    prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
-			    for (i = 0; i < prompterdata.before; i++)
-			      *(prompterdata.tmp + i) = *(prompterdata.bp + i);
-			    free(prompterdata.bp);
-			    prompterdata.bp = prompterdata.tmp;
-			  }
-			prompterdata.after--;
-			*(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
-			prompterdata.before++;
-		      }
-		    prompterdata.after = 0;
-		  }
-		else
-		  {
-		    __bell();
-		  }
+		prompt_end();
 	      else if (prompterdata.ansi == "[2~") /* insert */
 		prompterdata.override ^= true;
 	      else if (prompterdata.ansi == "[3;2~") /* C-delete */
 		;
 	      else if (prompterdata.ansi == "[3~") /* delete */
-		if (prompterdata.after > 0)
-		  {
-		    prompterdata.after--;
-		    for (i = prompterdata.after - 1; i >= 0; i--)
-		      printf("%c", *(prompterdata.ap + i));
-		    printf(" \e[%liD", prompterdata.after + 1);
-		  }
-		else
-		  {
-		    __bell();
-		  }
+		prompt_delete();
 	      else if (prompterdata.ansi == "[5~") /* page up */
 		;
 	      else if (prompterdata.ansi == "[6~") /* page down */
@@ -282,41 +383,9 @@ namespace tbrpg
 	      else if (prompterdata.ansi == "[B") /* down */
 		;
 	      else if (prompterdata.ansi == "[C") /* right */
-		if (prompterdata.after == 0)
-		  {
-		    __bell();
-		    break;
-		  }
-		else
-		  {
-		    printf("\e[C");
-		    prompterdata.after--;
-		    *(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
-		    prompterdata.before++;
-		  }
+		prompt_right();
 	      else if (prompterdata.ansi == "[D") /* left */
-		{
-		  if (prompterdata.before == 0)
-		    {
-		      __bell();
-		      break;
-		    }
-		  else
-		    {
-		      printf("\e[D");
-		      if (prompterdata.after == prompterdata.apz)
-			{
-			  prompterdata.tmp = (char*)malloc(prompterdata.apz <<= 1);
-			  for (i = 0; i < prompterdata.after; i++)
-			    *(prompterdata.tmp + i) = *(prompterdata.ap + i);
-			  free(prompterdata.ap);
-			  prompterdata.ap = prompterdata.tmp;
-			}
-		      prompterdata.before--;
-		      *(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
-		      prompterdata.after++;
-		    }
-		}
+		prompt_left();
 	      else if (prompterdata.ansi == "[1;2C") /* S-right */
 		;
 	      else if (prompterdata.ansi == "[1;2D") /* S-left */
@@ -353,8 +422,11 @@ namespace tbrpg
           
           case '\0':
           case CTRL('C'):
-            if (prompterdata.ignoreNUL && (prompterdata.c == '\0'))
-	      break;
+	    prompt_mark();
+            break;
+         
+	  case CTRL('X'):
+	    prompterdata.controlX = true;
             break;
           
           
@@ -370,44 +442,16 @@ namespace tbrpg
             break;
 	  case CTRL('K'):
             break;
-	  case CTRL('F'):
-            break;
-	  case CTRL('B'):
-            break;
-	  case CTRL('A'):
-            break;
-	  case CTRL('E'):
-            break;
+	  case CTRL('F'): prompt_right(); break;
+	  case CTRL('B'): prompt_left();  break;
+	  case CTRL('A'): prompt_home();  break;
+	  case CTRL('E'): prompt_end();   break;
           
-         
-	  case CTRL('X'):
-	    {
-              prompterdata.controlX = true;
-            }
-            break;
-	  
 	  
 	  default:
 	    {
 	      if ((prompterdata.c & 0x80) == 0)
-		{
-		  if (prompterdata.c < ' ')
-		    break;
-		  
-		  if (prompterdata.before == prompterdata.bpz)
-		    {
-		      prompterdata.tmp = (char*)malloc(prompterdata.bpz <<= 1);
-		      for (i = 0; i < prompterdata.before; i++)
-			*(prompterdata.tmp + i) = *(prompterdata.ap + i);
-		      free(prompterdata.bp);
-		      prompterdata.bp = prompterdata.tmp;
-		    }
-                  *(prompterdata.bp + prompterdata.before++) = prompterdata.c;
-		  if (prompterdata.after > 0)
-		    prompterdata.after--;
-		  printf("%c", prompterdata.c);
-		  std::flush(std::cout);
-		}
+		prompt_ascii();
 	      else
 		{
 		  // TODO implement UTF-8 support
