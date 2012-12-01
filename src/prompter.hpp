@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++, coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -17,11 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef __GUARD_PROMPTER_HPP__
+#define __GUARD_PROMPTER_HPP__
+
+
 #include <iostream>
 #include <stdlib.h>
-
-#include "Dice.hpp"
-#include "prompter.hpp"
+#include <vector>
+#include <unistd.h>
+#include <stdio.h>
+#include <termios.h>
 
 
 /**
@@ -34,36 +39,19 @@
  */
 namespace tbrpg
 {
+  /* Enhanced command line prompter */
+  
+  
   /**
-   * This the main entry point of the program
+   * Prompt the user for an arbitrary string
    * 
-   * @param   argc  The number of elements in `argv`
-   * @param   argv  Command line arguments, including the execute file
-   * @return        Exit value, 0 if successful
+   * @param   instruction  Instruction for the user
+   * @return               The string provided by the user, nullptr is returned if aborted
    */
-  int __main__(int argc, char** argv)
-  {
-    (void) argc;
-    (void) argv;
-    
-    unsigned a, d;
-    asm("cpuid");
-    asm volatile("rdtsc" : "=a" (a), "=d" (d));
-    srand(((long long)a) | (((long long)d) << 32LL));
-    
-    Dice dice = Dice(2, 20);
-    std::cout << dice.roll() << std::endl;
-    
-    std::string str = promptArbitrary("Enter the character's name: ");
-    std::cout << str << std::endl;
-    std::flush(std::cout);
-    
-    return 0;
-  }
+  std::string promptArbitrary(std::string instruction);
+  
 }
 
-int main(int argc, char** argv)
-{
-  return tbrpg::__main__(argc, argv);
-}
+
+#endif//__GUARD_PROMPTER_HPP__
 

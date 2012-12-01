@@ -11,7 +11,7 @@ NODES=3
 OPTIMISE=-O0
 #OPTIMISE=-O3
 CPPFLAGS=
-CXXFLAGS=$(OPTIMISE) -g --std=c++11 -pedantic -W{all,extra} -iquotedir=src/
+CXXFLAGS=$(OPTIMISE) -g --std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 
 BOOK=tbrpg
@@ -76,6 +76,10 @@ code:
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.h
 
+program: src/program.cc
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/program.cc *.o
+
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	rm .tmp; \
@@ -84,6 +88,7 @@ parallel:
 	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                                   \
 	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'                         \
 	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g') ; exit $$(cat .tmp)
+	make program
 
 sequecial:
 	if [ ! -d bin ]; then  mkdir bin;  fi
@@ -169,7 +174,7 @@ valgrind-lackey:
 	valgrind --tool=lackey $(X_LACKEY) bin/tbrpg; fi
 
 
-run: code
+run:
 	bin/tbrpg
 
 
