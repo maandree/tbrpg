@@ -402,11 +402,6 @@ namespace tbrpg
     
     long p = prompterdata.before + 1;
     
-    char* tmpc;
-    symbol* tmps;
-    symbol* a;
-    long i;
-    
     if (prompterdata.mark == p)
       prompterdata.mark = -p;
     else
@@ -490,16 +485,44 @@ namespace tbrpg
   }
   
   /**
-   * Erase a character
+   * Delete a character
    */
-  void prompt_erase()
+  void prompt_delete()
   {
-    if (prompterdata.before > 0)
+    if ((prompterdata.mark > 0) && (prompterdata.mark - 1 != prompterdata.before))
       {
-	prompterdata.before--;
-	printf("\e[D");
-	prompt_print_after(0, prompterdata.after, true);
+	long cursor = prompterdata.before, del, i, deld = 0;
+	if (prompterdata.before < prompterdata.mark - 1)
+	  prompterdata.after -= del = prompterdata.mark - 1 - prompterdata.before;
+	else
+	  prompterdata.before -= del = -(prompterdata.mark - 1 - prompterdata.before);
+	prompterdata.mark = -(prompterdata.before + 1);
+	prompt_redraw(cursor);
+	if (prompterdata.after > 0)
+	  printf("\033[%liC", prompterdata.after);
+	if (del &  1)  printf(" ");
+	if (del &  2)  printf("  ");
+	if (del &  4)  printf("    ");
+	if (del &  8)  printf("        ");
+	if (del & 16)  printf("                ");
+        for (i = 0; i + 32 < (del & ~31); i += 32)
+	  printf("                                ");
+	printf("\033[%liD", prompterdata.after + del);
 	std::flush(std::cout);
+      }
+    else if (prompterdata.after > 0)
+      {
+	prompt_print_after(0, --(prompterdata.after), true);
+	std::flush(std::cout);
+	bool neg = prompterdata.mark < 0;
+	if (neg)
+	  prompterdata.mark = -(prompterdata.mark);
+	if (prompterdata.mark - 1 > prompterdata.before)
+	  prompterdata.mark--;
+	else if (prompterdata.mark - 1 == prompterdata.before)
+	  prompterdata.mark == 0;
+	if (neg)
+	  prompterdata.mark = -(prompterdata.mark);
       }
     else
       {
@@ -508,14 +531,27 @@ namespace tbrpg
   }
   
   /**
-   * Delete a character
+   * Erase a character
    */
-  void prompt_delete()
+  void prompt_erase()
   {
-    if (prompterdata.after > 0)
+    if ((prompterdata.mark > 0) && (prompterdata.mark - 1 != prompterdata.before))
+      prompt_delete();
+    else if (prompterdata.before > 0)
       {
-	prompt_print_after(0, --(prompterdata.after), true);
+	prompterdata.before--;
+	printf("\e[D");
+	prompt_print_after(0, prompterdata.after, true);
 	std::flush(std::cout);
+	bool neg = prompterdata.mark < 0;
+	if (neg)
+	  prompterdata.mark = -(prompterdata.mark);
+	if (prompterdata.mark - 1 > prompterdata.before)
+	  prompterdata.mark--;
+	else if (prompterdata.mark - 1 == prompterdata.before)
+	  prompterdata.mark == 0;
+	if (neg)
+	  prompterdata.mark = -(prompterdata.mark);
       }
     else
       {
