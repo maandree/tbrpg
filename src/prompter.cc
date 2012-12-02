@@ -52,6 +52,7 @@ namespace tbrpg
   #define __malloc_string(CHARS)  \
     (symbol*)malloc((CHARS) * sizeof(symbol))
   
+  #define  ESC  "\033"  /* since \e generates a non-ISO-standard warning */
   
   
   /**
@@ -157,11 +158,11 @@ namespace tbrpg
 	*(tmps + end) = 0;
 	symbol_decode(tmps + start, tmpc + start);
 	free(tmps);
-	printf(del ? "%s \e[%liD" : "%s\e[%liD", tmpc + start, end - start + (del ? 1 : 0));
+	printf(del ? "%s " ESC "[%liD" : "%s" ESC "[%liD", tmpc + start, end - start + (del ? 1 : 0));
 	free(tmpc);
       }
     else if (del)
-      printf(" \e[D");
+      printf(" " ESC "[D");
   }
   
   /**
@@ -172,7 +173,7 @@ namespace tbrpg
   void prompt_redraw(long position)
   {
     if (position > 0)
-      printf("\e[%liD", position);
+      printf(ESC "[%liD", position);
     if (prompterdata.mark <= 0)
       prompt_print_before(0, prompterdata.before);
     else if (prompterdata.mark - 1 >= prompterdata.before)
@@ -180,16 +181,16 @@ namespace tbrpg
     else
       {
 	prompt_print_before(0, prompterdata.mark - 1);
-	printf("\e[44m");
+	printf(ESC "[44m");
 	prompt_print_before(prompterdata.mark - 1, prompterdata.before);
-	printf("\e[49m");
+	printf(ESC "[49m");
       }
     prompt_print_after(0, prompterdata.after);
     if (prompterdata.mark - 1 > prompterdata.before)
       {
-	printf("\e[44m");
+	printf(ESC "[44m");
 	prompt_print_after(0, prompterdata.mark - 1 - prompterdata.before);
-	printf("\e[49m");
+	printf(ESC "[49m");
       }
   }
   
@@ -292,7 +293,7 @@ namespace tbrpg
     *(prompterdata.bp + prompterdata.before++) = sym;
     
     if ((prompterdata.mark > 0) && (prompterdata.mark < prompterdata.before))
-      printf("\e[44m");
+      printf(ESC "[44m");
     if (sym > 127)
       {
 	char* chars = (char*)malloc(9);
@@ -308,7 +309,7 @@ namespace tbrpg
     else
       printf("%c", (char)(prompterdata.c));
     if ((prompterdata.mark > 0) && (prompterdata.mark < prompterdata.before))
-      printf("\e[49m");
+      printf(ESC "[49m");
     
     if (prompterdata.after > 0)
       {
@@ -319,9 +320,9 @@ namespace tbrpg
 	    prompt_print_after(0, prompterdata.after);
 	    if (prompterdata.mark - 1 > prompterdata.before)
 	      {
-		printf("\e[44m");
+		printf(ESC "[44m");
 		prompt_print_after(0, prompterdata.mark - 1 - prompterdata.before);
-		printf("\e[49m");
+		printf(ESC "[49m");
 	      }
 	  }
       }
@@ -420,7 +421,7 @@ namespace tbrpg
       {
 	if (prompterdata.mark > 0)
 	  prompt_print_after(0, prompterdata.after);
-	printf("\e[%liD", prompterdata.before);
+	printf(ESC "[%liD", prompterdata.before);
 	while (prompterdata.before != 0)
 	  {
 	    if (prompterdata.after == prompterdata.apz)
@@ -438,9 +439,9 @@ namespace tbrpg
 	prompterdata.before = 0;
 	if (prompterdata.mark > 0)
 	  {
-	    printf("\e[44m");
+	    printf(ESC "[44m");
 	    prompt_print_after(0, prompterdata.mark - 1);
-	    printf("\e[49m");
+	    printf(ESC "[49m");
 	  }
 	prompt_redraw(prompterdata.before);
 	std::flush(std::cout);
@@ -459,7 +460,7 @@ namespace tbrpg
     long i;
     if (prompterdata.after > 0)
       {
-	printf("\e[%liC", prompterdata.after);
+	printf(ESC "[%liC", prompterdata.after);
 	while (prompterdata.after != 0)
 	  {
 	    if (prompterdata.before == prompterdata.bpz)
@@ -486,12 +487,14 @@ namespace tbrpg
   
   /**
    * Delete a character
+   * 
+   * @param  whether to insert the deletion to the killring  TODO implement
    */
-  void prompt_delete()
+  void prompt_delete(bool store = false)
   {
     if ((prompterdata.mark > 0) && (prompterdata.mark - 1 != prompterdata.before))
       {
-	long cursor = prompterdata.before, del, i, deld = 0;
+	long cursor = prompterdata.before, del, i;
 	if (prompterdata.before < prompterdata.mark - 1)
 	  prompterdata.after -= del = prompterdata.mark - 1 - prompterdata.before;
 	else
@@ -499,34 +502,37 @@ namespace tbrpg
 	prompterdata.mark = -(prompterdata.before + 1);
 	prompt_redraw(cursor);
 	if (prompterdata.after > 0)
-	  printf("\033[%liC", prompterdata.after);
+	  printf(ESC "[%liC", prompterdata.after);
 	if (del &  1)  printf(" ");
 	if (del &  2)  printf("  ");
 	if (del &  4)  printf("    ");
 	if (del &  8)  printf("        ");
 	if (del & 16)  printf("                ");
-        for (i = 0; i + 32 < (del & ~31); i += 32)
+        for (i = 0; i + 32 <= del; i += 32)
 	  printf("                                ");
-	printf("\033[%liD", prompterdata.after + del);
+	printf(ESC "[%liD", prompterdata.after + del);
 	std::flush(std::cout);
       }
-    else if (prompterdata.after > 0)
+    else if (store == false)
       {
-	prompt_print_after(0, --(prompterdata.after), true);
-	std::flush(std::cout);
-	bool neg = prompterdata.mark < 0;
-	if (neg)
-	  prompterdata.mark = -(prompterdata.mark);
-	if (prompterdata.mark - 1 > prompterdata.before)
-	  prompterdata.mark--;
-	else if (prompterdata.mark - 1 == prompterdata.before)
-	  prompterdata.mark == 0;
-	if (neg)
-	  prompterdata.mark = -(prompterdata.mark);
-      }
-    else
-      {
-	__bell();
+	if (prompterdata.after > 0)
+	  {
+	    prompt_print_after(0, --(prompterdata.after), true);
+	    std::flush(std::cout);
+	    bool neg = prompterdata.mark < 0;
+	    if (neg)
+	      prompterdata.mark = -(prompterdata.mark);
+	    if (prompterdata.mark - 1 > prompterdata.before)
+	      prompterdata.mark--;
+	    else if (prompterdata.mark - 1 == prompterdata.before)
+	      prompterdata.mark == 0;
+	    if (neg)
+	      prompterdata.mark = -(prompterdata.mark);
+	  }
+	else
+	  {
+	    __bell();
+	  }
       }
   }
   
@@ -540,7 +546,7 @@ namespace tbrpg
     else if (prompterdata.before > 0)
       {
 	prompterdata.before--;
-	printf("\e[D");
+	printf(ESC "[D");
 	prompt_print_after(0, prompterdata.after, true);
 	std::flush(std::cout);
 	bool neg = prompterdata.mark < 0;
@@ -560,6 +566,24 @@ namespace tbrpg
   }
   
   /**
+   * Adjust the buffer for going left of the character
+   */
+  inline void prompt_left_buffer()
+  {
+    if (prompterdata.after == prompterdata.apz)
+      {
+	prompterdata.tmp = __malloc_string(prompterdata.apz <<= 1);
+	for (long i = 0; i < prompterdata.after; i++)
+	  *(prompterdata.tmp + i) = *(prompterdata.ap + i);
+	free(prompterdata.ap);
+	prompterdata.ap = prompterdata.tmp;
+      }
+    prompterdata.before--;
+    *(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
+    prompterdata.after++;
+  }
+  
+  /**
    * Go left of character
    */
   void prompt_left()
@@ -571,27 +595,36 @@ namespace tbrpg
       }
     else
       {
-	printf("\e[D");
-	if (prompterdata.after == prompterdata.apz)
-	  {
-	    prompterdata.tmp = __malloc_string(prompterdata.apz <<= 1);
-	    for (i = 0; i < prompterdata.after; i++)
-	      *(prompterdata.tmp + i) = *(prompterdata.ap + i);
-	    free(prompterdata.ap);
-	    prompterdata.ap = prompterdata.tmp;
-	  }
-	prompterdata.before--;
-	*(prompterdata.ap + prompterdata.after) = *(prompterdata.bp + prompterdata.before);
-	prompterdata.after++;
+	printf(ESC "[D");
+	prompt_left_buffer();
 	if (prompterdata.mark - 1 > prompterdata.before)
 	  {
-	    printf("\e[44m");
+	    printf(ESC "[44m");
 	    prompt_print_after(0, 1);
-	    printf("\e[49m");
+	    printf(ESC "[49m");
 	  }
 	else if (prompterdata.mark - 1 <= prompterdata.before)
 	  prompt_print_after(0, 1);
+	std::flush(std::cout);
       }
+  }
+  
+  /**
+   * Adjust the buffer for going right of the character
+   */
+  inline void prompt_right_buffer()
+  {
+    if (prompterdata.before == prompterdata.bpz)
+      {
+	prompterdata.tmp = __malloc_string(prompterdata.bpz <<= 1);
+	for (long i = 0; i < prompterdata.before; i++)
+	  *(prompterdata.tmp + i) = *(prompterdata.bp + i);
+	free(prompterdata.bp);
+	prompterdata.bp = prompterdata.tmp;
+      }
+    prompterdata.after--;
+    *(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
+    prompterdata.before++;
   }
   
   /**
@@ -607,19 +640,18 @@ namespace tbrpg
       {
 	if ((prompterdata.mark - 1 <= prompterdata.before) && (prompterdata.mark > 0))
 	  {
-	    printf("\e[44m");
+	    printf(ESC "[44m");
 	    prompt_print_after(0, 1);
-	    printf("\e[49m");
+	    printf(ESC "[49m");
 	  }
-	printf("\e[C");
-	prompterdata.after--;
-	*(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
-	prompterdata.before++;
+	printf(ESC "[C");
+	prompt_right_buffer();
         if (prompterdata.mark - 1 >= prompterdata.before)
 	  {
-	    printf("\e[D");
+	    printf(ESC "[D");
 	    prompt_print_before(prompterdata.before - 1, prompterdata.before);
 	  }
+	std::flush(std::cout);
       }
   }
   
@@ -630,9 +662,45 @@ namespace tbrpg
    */
   void prompt_redraw(std::string instruction)
   {
-    std::cout << "\e[H\e[2J" << instruction;
+    std::cout << ESC "[H" ESC "[2J" << instruction;
     prompt_redraw(0);
     std::flush(std::cout);
+  }
+  
+  /**
+   * Swap the mark and the point
+   */
+  void prompt_swap_mark()
+  {
+    if (  prompterdata.mark - 1  == prompterdata.before)  return;
+    if (-(prompterdata.mark - 1) == prompterdata.before)  return;
+    if (prompterdata.mark == 0)  return;
+    
+    bool neg = prompterdata.mark < 0;
+    if (neg)
+      prompterdata.mark = -(prompterdata.mark);
+    prompterdata.mark--;
+    
+    long n, i, b = prompterdata.before;
+    if (prompterdata.mark > prompterdata.before)
+      {
+	printf(ESC "[%liC", n = prompterdata.mark - prompterdata.before);
+	for (i = 0; i < n; i++)
+	  prompt_right_buffer();
+      }
+    else
+      {
+	printf(ESC "[%liD", n = prompterdata.before - prompterdata.mark);
+	for (i = 0; i < n; i++)
+	  prompt_left_buffer();
+      }
+    
+    std::flush(std::cout);
+    std::swap(prompterdata.mark, prompterdata.before = b);
+    
+    prompterdata.mark++;
+    if (neg)
+      prompterdata.mark = -(prompterdata.mark);
   }
   
   
@@ -676,20 +744,21 @@ namespace tbrpg
 	if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
 	  prompterdata.c = '\n';
         
-        if (prompterdata.controlX && ! ((prompterdata.c == '\n') || CTRL('D') || CTRL('G')))
+        if (prompterdata.controlX && ! ((prompterdata.c == '\n') || (prompterdata.c == CTRL('D')) || (prompterdata.c == CTRL('G'))))
 	  {
             switch (prompterdata.c)
 	      {
-                case CTRL('X'):
-                 break;
+	      case CTRL('X'):
+		prompt_swap_mark();
+		break;
                 
-                case CTRL('C'):
-                  prompterdata.ignoreNUL ^= true;
-                  break;
-		  
-	        case 'u':
-	        case 'U':
-		  break;
+	      case CTRL('C'):
+		prompterdata.ignoreNUL ^= true;
+		break;
+		
+	      case 'u':
+	      case 'U':
+		break;
               }
             
             if (prompterdata.c != '\0') /* C-space can be sent from the kernel */
@@ -705,7 +774,7 @@ namespace tbrpg
 	  case '\b': case 127:        prompt_erase();  break;
           case '\0': case CTRL('C'):  prompt_mark();   break;
 	    
-	  case '\e':
+	  case '\033': /* \e */
 	    {
 	      if (prompt_esc() == false)
 	        break;
@@ -733,9 +802,17 @@ namespace tbrpg
 	      else if (prompterdata.ansi == "[D") /* left */
 		prompt_left();
 	      else if (prompterdata.ansi == "[1;2C") /* S-right */
-		;
+		{
+		  if (prompterdata.mark <= 0)
+		    prompterdata.mark = prompterdata.before;
+		  prompt_right();
+		}
 	      else if (prompterdata.ansi == "[1;2D") /* S-left */
-		;
+		{
+		  if (prompterdata.mark <= 0)
+		    prompterdata.mark = prompterdata.before;
+		  prompt_left();
+		}
 	      else if (prompterdata.ansi == "[1;5C") /* C-right */
 		;
 	      else if (prompterdata.ansi == "[1;5D") /* C-left */
@@ -761,24 +838,21 @@ namespace tbrpg
 		    std::flush(std::cerr);
 		  }
 	      #endif
-	      std::flush(std::cout);
 	    }
 	    break;
           
           case '\t':
             break;
           
-	  case CTRL('W'):
-            break;
 	  case CTRL('Y'):
-            break;
-	  case CTRL('K'):
             break;
 	  case CTRL('_'):
             break;
 	  case CTRL('O'):
             break;
           
+	  case CTRL('K'):  prompterdata.mark = prompterdata.before + prompterdata.after + 1; /* fall-through */
+	  case CTRL('W'):  prompt_delete(true);           break;
 	  case CTRL('X'):  prompterdata.controlX = true;  break;
 	  case CTRL('L'):  prompt_redraw(instruction);    break;
 	  case CTRL('F'):  prompt_right();                break;
