@@ -39,7 +39,7 @@ namespace tbrpg
     struct termios stty;                       \
     tcgetattr(STDIN_FILENO, &saved_stty);      \
     tcgetattr(STDIN_FILENO, &stty);            \
-    stty.c_lflag &= ~(ICANON | ECHO);          \
+    stty.c_lflag &= ~(ICANON | ECHO | ISIG);   \
     tcsetattr(STDIN_FILENO, TCSAFLUSH, &stty)
     
   #define __restore_tty()					\
