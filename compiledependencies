@@ -99,3 +99,5 @@ ActionSlotChart Cleric
 ActionSlotChart Druid
 ActionSlotChart Mage
 ActionSlotChart Sorcerer
+CharacterCreator CharacterSheet
+CharacterCreator prompter
