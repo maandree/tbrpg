@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <unistd.h>
+#include <unordered_map>
 
 #include "CharacterSheet.hpp"
 #include "RuleSet.hpp"
@@ -72,9 +73,9 @@ namespace tbrpg
     /**
      * Create a character sheet
      * 
-     * @return  A character sheet
+     * @return  A character sheet, nullptr if aborted
      */
-    virtual CharacterSheet create() const;
+    virtual CharacterSheet* create() const;
     
   };
   

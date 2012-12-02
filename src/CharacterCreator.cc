@@ -52,17 +52,92 @@ namespace tbrpg
   /**
    * Create a character sheet
    * 
-   * @return  A character sheet
+   * @return  A character sheet, nullptr if aborted
    */
-  CharacterSheet create() const
+  CharacterSheet* create() const
   {
-    // bool female
-    // Race race
-    // std::vector<Class> prestige
-    // std::vector<bool> class_abondoned
-    // std::vector<int> experience
-    // std::vector<char> level
-    // MagicSchool specialisation
+    std::vector<std::string> genders = {"male", "female"};
+    
+    std::vector<std::string> races = std::vector<std::string>();
+    std::unordered_map<std::string, Race> raceMap = std::unordered_map<std::string, Race>();
+    for (Race& r : this->ruleset.races)
+      {
+	raceMap[r.name] = r;
+	races.push_back(r);
+      }
+    
+    std::vector<std::string> prestiges;
+    std::unordered_map<std::string, std::vector<Class>> prestigeMap;
+    
+    std::vector<std::string> specialisations = std::vector<std::string>();
+    std::unordered_map<std::string, MagicSchool> specialisationMap = std::unordered_map<std::string, MagicSchool>();
+    
+    std::string input;
+    CharacterSheet sheet = CharacterSheet();
+    
+    
+  _01:
+    input = promptList("Select gender: ", genders);
+    if (input == "")
+      return nullptr;
+    sheet.female = input == "female";
+    
+    
+  _02:
+    input = promptList("Select race: ", races);
+    if (input == "")
+      goto _01;
+    sheet.race = raceMap[input];
+    
+    
+  _03:
+    std::string c;
+    prestiges = std::vector<std::string>();
+    prestigeMap = std::unordered_map<std::string, std::vector<Class>>();
+    for (std::vector<Class>& p : sheet.race.allowed_classes)
+      {
+	c = "";
+	for (Class& c : p)
+	  if (c == "")
+	    c = p.name;
+	  else
+	    c += "/" + p.name;
+	prestigeMap[c] = p;
+        prestiges.push_back(p);
+      }
+    input = promptList("Select class: ", prestiges);
+    if (input == "")
+      goto _02;
+    sheet.prestige = prestigeMap[input];
+    sheet.class_abondoned = {};
+    sheet.experience = {};
+    sheet.level = {};
+    for (long i = 0, n = sheet.prestige.size(); i < n; i++)
+      {
+	sheet.class_abondoned.push_back(false);
+	sheet.experience.push_back(0);
+	sheet.level.push_back(1);
+      }
+    
+    
+  _04:
+    sheet.specialisation = GENERAL_MAGE;
+    for (Class& c : sheet.prestige)
+      if (c.specialisations.size() > 0)
+	{
+	  specialisations = std::vector<std::string>();
+	  specialisationMap = std::unordered_map<std::string, MagicSchool>();
+	  input = promptList("Select mage specialisation: ", specialisations);
+	  for (MagicSchool& s : c.specialisations)
+	    {
+	      specialisationMap[s.practicer] = s;
+	      specialisations.push_back(s);
+	    }
+	  if (input == "")
+	    goto _03;
+	  break;
+	}
+    
     // char alignment
     // AbilityBonus abilities
     // std::unordered_map<WeaponGroup, int> proficiencies
@@ -71,6 +146,8 @@ namespace tbrpg
     // std::string portrait
     // char colour
     // std::string name
+    
+    return &sheet;
   }
   
 }
