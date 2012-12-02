@@ -165,27 +165,6 @@ namespace tbrpg
   }
   
   /**
-   * Complete prompting
-   */
-  void prompt_done()
-  {
-    long i;
-    prompterdata.reading = false;
-    std::cout << std::endl;
-    std::flush(std::cout);
-    
-    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
-    for (i = 0; i < prompterdata.before; i++)
-      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
-    free(prompterdata.bp);
-    for (i = prompterdata.after - 1; i >= 0; i--)
-      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
-    free(prompterdata.ap);
-    *prompterdata.tmp = 0;
-    prompterdata.tmp -= prompterdata.before + prompterdata.after;
-  }
-  
-  /**
    * Redraw the input
    * 
    * @param  position  The current position of the cursor
@@ -212,6 +191,30 @@ namespace tbrpg
 	prompt_print_after(0, prompterdata.mark - 1 - prompterdata.before);
 	printf("\e[49m");
       }
+  }
+  
+  /**
+   * Complete prompting
+   */
+  void prompt_done()
+  {
+    prompterdata.mark = 0;
+    prompt_redraw(prompterdata.before);
+    
+    long i;
+    prompterdata.reading = false;
+    std::cout << std::endl;
+    std::flush(std::cout);
+    
+    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
+    for (i = 0; i < prompterdata.before; i++)
+      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
+    free(prompterdata.bp);
+    for (i = prompterdata.after - 1; i >= 0; i--)
+      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
+    free(prompterdata.ap);
+    *prompterdata.tmp = 0;
+    prompterdata.tmp -= prompterdata.before + prompterdata.after;
   }
   
   /**
@@ -550,7 +553,7 @@ namespace tbrpg
 	    prompt_print_after(0, 1);
 	    printf("\e[49m");
 	  }
-	else if (prompterdata.mark - 1 < prompterdata.before)
+	else if (prompterdata.mark - 1 <= prompterdata.before)
 	  prompt_print_after(0, 1);
       }
   }
@@ -576,7 +579,7 @@ namespace tbrpg
 	prompterdata.after--;
 	*(prompterdata.bp + prompterdata.before) = *(prompterdata.ap + prompterdata.after);
 	prompterdata.before++;
-        if (prompterdata.mark - 1 > prompterdata.before)
+        if (prompterdata.mark - 1 >= prompterdata.before)
 	  {
 	    printf("\e[D");
 	    prompt_print_before(prompterdata.before - 1, prompterdata.before);
