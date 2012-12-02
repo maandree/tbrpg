@@ -104,6 +104,11 @@ namespace tbrpg
     long after;
     
     /**
+     * The mark position + 1, negated if deactivated, and zero if not set
+     */
+    long mark;
+    
+    /**
      * Whether the prompter was interrupted
      */
     bool aborted;
