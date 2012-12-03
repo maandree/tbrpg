@@ -82,6 +82,9 @@ namespace tbrpg
     
     
     std::string input;
+    long indexInput;
+    std::string c;
+    boolean ok;
     CharacterSheet sheet = CharacterSheet();
     
     
@@ -100,7 +103,6 @@ namespace tbrpg
     
     
   _03:
-    std::string c;
     prestiges = std::vector<std::string>();
     prestigeMap = std::unordered_map<std::string, std::vector<Class>>();
     for (std::vector<Class>& p : sheet.race.allowed_classes)
@@ -138,10 +140,13 @@ namespace tbrpg
 	  specialisationMap = std::unordered_map<std::string, MagicSchool>();
 	  input = promptList("Select mage specialisation: ", specialisations);
 	  for (MagicSchool& s : c.specialisations)
-	    {
-	      specialisationMap[s.practicer] = s;
-	      specialisations.push_back(s);
-	    }
+	    for (MagicSchool& z : sheet.race.specialisations)
+	      if (s == z)
+		{
+		  specialisationMap[s.practicer] = s;
+		  specialisations.push_back(s);
+		  break;
+		}
 	  if (input == "")
 	    goto _03;
 	  break;
@@ -149,8 +154,7 @@ namespace tbrpg
     
     
   _05:
-    std::vector<std::string> alignments = std::vector<std::string>();
-    boolean ok;
+    alignments = std::vector<std::string>();
     for (long i = 0; i < all_alignments.size(); i++)
       {
 	ok = true;
@@ -167,13 +171,49 @@ namespace tbrpg
     sheet.alignment = alignmentMap[input];
     
     
-    // AbilityBonus abilities
+  _06:
+    // Abilities abilities.abilities
+    
+    
+  _07:
     // std::unordered_map<WeaponGroup, int> proficiencies
+    
+    
+  _08:
     // Race racial_enemy
-    // SpellBook spells
-    // std::string portrait
-    // char colour
-    // std::string name
+    // SpellBook abilities.spells
+    // ThiefAbilities abilities.thief_abilities
+    
+    
+  _09:
+    input = promptBoolean("Do you have a portrait: ", "yes", "no");
+    if (input == "")
+      goto _08;
+    if (input == "no")
+      sheet.portrait = "";
+    else
+      {
+	input = promptFile("Select portrait: ", true);
+	if (input == "")
+	  goto _08;
+	sheet.portrait = input;
+      }
+    
+    
+  _10:
+    indexInput = promptIndex("Select colour: ", {"red", "green", "yellow", "blue", "magenta", "cyan"});
+    if (indexInput < 0)
+      goto _09;
+    sheet.colour = (char)(indexInput + 1);
+    
+    
+  _11:
+    input = promptArbitrary("Select name: ");
+    if (input == "")
+      goto _10;
+    sheet.name = input;
+    
+    
     
     return &sheet;
   }
