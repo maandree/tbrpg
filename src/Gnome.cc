@@ -42,6 +42,8 @@ namespace tbrpg
     this->bonuses.thief_abilities.pick_pockets = 0;
     this->bonuses.thief_abilities.stealth = 5;
     
+    this->specialisations = {ILLUSION};
+    
     this->allowed_classes =
       {{Fighter()},
        {Thief()},
