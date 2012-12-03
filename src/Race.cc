@@ -38,6 +38,7 @@ namespace tbrpg
     ////TODO implement constructor
     //this->allowed_classes = nullptr;
     //this->dualclass_level = 0;
+    //this->specialisations = nullptr;
     //this->bonuses = nullptr;
   }
   
@@ -51,6 +52,7 @@ namespace tbrpg
     (void) original;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
   }
   
@@ -64,6 +66,7 @@ namespace tbrpg
     (void) original;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
   }
   
@@ -77,6 +80,7 @@ namespace tbrpg
     (void) original;
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->bonuses, original.bonuses);
   }
   
@@ -89,6 +93,7 @@ namespace tbrpg
   {
     ////TODO implement destructor
     //delete this->allowed_classes;
+    //delete this->specialisations;
     //delete this->bonuses;
   }
   
@@ -105,6 +110,7 @@ namespace tbrpg
     (void) original;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -120,6 +126,7 @@ namespace tbrpg
     (void) original;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -135,6 +142,7 @@ namespace tbrpg
     (void) original;
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->bonuses, original.bonuses);
     return *this;
   }

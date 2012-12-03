@@ -29,6 +29,7 @@
 
 
 #include "Class.hpp"
+#include "MagicSchool.hpp"
 #include "AbilityBonus.hpp"
 
 
@@ -57,6 +58,11 @@ namespace tbrpg
      * At which level the dual class is allowed, use 2³¹ − 1 for never
      */
     short dualclass_level;
+    
+    /**
+     * Allowed magic specialisations
+     */
+    std::vector<MagicSchool> specialisations;
     
     /**
      * Bonuses for the race
