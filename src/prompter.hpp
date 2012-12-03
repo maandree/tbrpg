@@ -162,6 +162,17 @@ namespace tbrpg
    */
   std::string promptArbitrary(std::string instruction, void (*previous)() = promptNoop, void (*next)() = promptNoop);
   
+  /**
+   * Prompt the user for an alternative and return the index
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = promptNoop, void (*next)() = promptNoop);
+  
 }
 
 
