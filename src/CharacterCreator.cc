@@ -180,7 +180,7 @@ namespace tbrpg
     
     
   _08:
-    // Race racial_enemy
+    // Race* racial_enemy
     // SpellBook abilities.spells
     // ThiefAbilities abilities.thief_abilities
     
