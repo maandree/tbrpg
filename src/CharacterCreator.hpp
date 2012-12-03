@@ -29,6 +29,7 @@
 
 #include "CharacterSheet.hpp"
 #include "RuleSet.hpp"
+#include "Dice.hpp"
 #include "prompter.hpp"
 
 
@@ -76,6 +77,33 @@ namespace tbrpg
      * @return  A character sheet, nullptr if aborted
      */
     virtual CharacterSheet* create() const;
+    
+    
+  protected:
+    
+    /**
+     * Assign scores
+     * 
+     * @param   n           Number of printers
+     * @param   start       The start values, these are updated by the function
+     * @param   lower       The lower bounds
+     * @param   upper       The upper bounds
+     * @param   unassigned  Unassigned scores
+     * @param   extra       Extra data to add as argument to the value printer
+     * @param   printer     Value printer, takes arguments: index, value, extra data
+     * @param   reroll      Pointer to a reroll function pointer, nullptr if not allowed
+     * @return              Whether the assignment was completed
+     */
+    virtual bool assign(int n, int* start, int* lower, int* upper, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)() == nullptr) const;
+    
+    /**
+     * Ability score printer
+     * 
+     * @param  index  The index of the ability
+     * @param  value  The value of the ability
+     * @param  data   Pointer to the 100-part of the strenght
+     */
+    virtual void abilityPrinter(int index, int value, void* data) const;
     
   };
   

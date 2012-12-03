@@ -54,7 +54,7 @@ namespace tbrpg
    * 
    * @return  A character sheet, nullptr if aborted
    */
-  CharacterSheet* create() const
+  CharacterSheet* CharacterCreator::create() const
   {
     std::vector<std::string> genders = {"male", "female"};
     
@@ -81,8 +81,17 @@ namespace tbrpg
       alignmentMap[all_alignments[i]] = (char)i;
     
     
+    int* start;
+    int* lower;
+    int* upper;
+    
+    
+    Dice abilityDice = Dice(3, 6);
+    Dice dice100 = Dice(1, 100);
+    
+    
     std::string input;
-    long indexInput;
+    long indexInput, i;
     std::string c;
     boolean ok;
     CharacterSheet sheet = CharacterSheet();
@@ -138,7 +147,6 @@ namespace tbrpg
 	{
 	  specialisations = std::vector<std::string>();
 	  specialisationMap = std::unordered_map<std::string, MagicSchool>();
-	  input = promptList("Select mage specialisation: ", specialisations);
 	  for (MagicSchool& s : c.specialisations)
 	    for (MagicSchool& z : sheet.race.specialisations)
 	      if (s == z)
@@ -147,8 +155,15 @@ namespace tbrpg
 		  specialisations.push_back(s);
 		  break;
 		}
-	  if (input == "")
-	    goto _03;
+	  if (specialisations.size() == 1)
+	    sheet.specialisation = specialisationMap[specialisations[0]];
+	  else if (specialisations.size() > 1)
+	    {
+	      input = promptList("Select mage specialisation: ", specialisations);
+	      if (input == "")
+		goto _03;
+	      sheet.specialisation = specialisationMap[input];
+	    }
 	  break;
 	}
     
@@ -173,6 +188,47 @@ namespace tbrpg
     
   _06:
     // Abilities abilities.abilities
+    start = new int[6];
+    lower = new int[6];
+    upper = new int[6];
+    sheet.abilities.abilities.strength18 = dice100.roll();
+    lower[0] = sheet.prestige.lower_limits.strength;
+    lower[1] = sheet.prestige.lower_limits.constitution;
+    lower[2] = sheet.prestige.lower_limits.dexterity;
+    lower[3] = sheet.prestige.lower_limits.intelligence;
+    lower[4] = sheet.prestige.lower_limits.wisdom;
+    lower[5] = sheet.prestige.lower_limits.charisma;
+    upper[0] = sheet.race.bonuses.abilities.strength;
+    upper[1] = sheet.race.bonuses.abilities.constitution;
+    upper[2] = sheet.race.bonuses.abilities.dexterity;
+    upper[3] = sheet.race.bonuses.abilities.intelligence;
+    upper[4] = sheet.race.bonuses.abilities.wisdom;
+    upper[5] = sheet.race.bonuses.abilities.charisma;
+    for (i = 0; i < 6; i++)
+      {
+	upper[i] += 18;
+	start[i] = abilityDice.roll();
+	if (start[i] < lower[i])
+	  start[i] = lower[i];
+	lower[i] += upper[i];
+      }
+    ok = assign(6, start, lower, upper, 0,
+		&(sheet.abilities.abilities.strength18),
+		abilityPrinter); // TODO implement reroll
+    if (ok)
+      {
+	sheet.abilities.abilities.strength     = start[0];
+	sheet.abilities.abilities.constitution = start[1];
+	sheet.abilities.abilities.dexterity    = start[2];
+	sheet.abilities.abilities.intelligence = start[3];
+	sheet.abilities.abilities.wisdom       = start[4];
+	sheet.abilities.abilities.charisma     = start[5];
+      }
+    delete[] start;
+    delete[] lower;
+    delete[] upper;
+    if (ok == false)
+      goto _05;
     
     
   _07:
@@ -216,6 +272,191 @@ namespace tbrpg
     
     
     return &sheet;
+  }
+  
+  
+  /**
+   * Assign scores
+   * 
+   * @param   n           Number of printers
+   * @param   start       The start values, these are updated by the function
+   * @param   lower       The lower bounds
+   * @param   upper       The upper bounds
+   * @param   unassigned  Unassigned scores
+   * @param   extra       Extra data to add as argument to the value printer
+   * @param   printer     Value printer, takes arguments: index, value, extra data
+   * @param   reroll      Pointer to a reroll function pointer, nullptr if not allowed
+   * @return              Whether the assignment was completed
+   */
+  bool CharacterCreator::assign(int n, int* start, int* lower, int* upper, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)()) const
+  {
+    struct termios saved_stty;
+    struct termios stty;
+    tcgetattr(STDIN_FILENO, &saved_stty);
+    tcgetattr(STDIN_FILENO, &stty);
+    stty.c_lflag &= ~(ICANON | ECHO | ISIG);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &stty);
+    std::cout << "\033[?25l"; /* hide cursor */
+    
+    int cur = 0, leftover = unassigned, tmp;
+    char c = 0, last;
+    bool reading = true;
+    int* stored = (int*)malloc((n + 1) * sizeof(int));
+    
+    for (int i = 0; i < n; i++)
+      *(stored + i) = *(start + i);
+    *(stored + n) = leftover;
+    
+    
+    while (reading)
+      {
+	std::cout << "\033[H\033[2J" << "Unassigned points: " << leftover << "\n\n";
+	for (int i = 0; i < n; i++)
+	  {
+	    if (i == cur)
+	      std::cout << "\033[01;34m";
+	    printer(i, start[i], data);
+	    if (i == cur)
+	      std::cout << "\033[21;39m";
+	    std::cout << std::endl;
+	  }
+        printf("\033[%iA", n - cur - 1);
+	std::flush(std::cout);
+	
+	while (reading)
+	  {
+	    last = c;
+	    if ((read(STDIN_FILENO, &c, 1) <= 0) || (c == CTRL('G')))
+	      {
+		std::cout << "\033[H\033[2J\033[?25h"; /* show cursor */
+		std::flush(std::out);
+		tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved_stty);
+		free(stored);
+		return false;
+	      }
+
+	    tmp = leftover;
+	    if ((last == '[') && (c == 'A')) /* up */
+	      {
+		if (cur == 0)
+		  continue;
+		std::cout << "\033[A\033[K";
+		printer(cur, start[cur], data);
+		cur--;
+		std::cout << "\n\033[2A\033[01;34m\033[K";
+		printer(cur, start[cur], data);
+		std::cout << "\033[21;39m\n";
+	      }
+	    else if (((last == '[') && (c == 'B')) || (c == '\n')) /* down */
+	      {
+		if (cur + 1 == n)
+		  continue;
+		std::cout << "\033[A\033[K";
+		printer(cur, start[cur], data);
+		cur++;
+		std::cout << "\n\033[01;34m\033[K";
+		printer(cur, start[cur], data);
+		std::cout << "\033[21;39m\n";
+	      }
+	    else if ((last == '[') && (c == 'C')) /* right */
+	      {
+		if (start[cur] < upper[cur])
+		  {
+		    if (leftover == 0)
+		      std::cout << "\a";
+		    else
+		      {
+			leftover--;
+			std::cout << "\033[A\033[01;34m\033[K";
+			printer(cur, ++(start[cur]), data);
+			std::cout << "\033[21;39m\n";
+		      }
+		  }
+	      }
+	    else if ((last == '[') && (c == 'D')) /* left */
+	      {
+		if (lower[cur] < start[cur])
+		  {
+		    leftover++;
+		    std::cout << "\033[A\033[01;34m\033[K";
+		    printer(cur, --(start[cur]), data);
+		    std::cout << "\033[21;39m\n";
+		  }
+	      }
+	    else if (c == CTRL('L'))
+	      break;
+	    else if ((c == 'd') || (c == 'D'))
+	      {
+		reading = false;
+		break;
+	      }
+	    else if ((c == 'r') || (c == 'R'))
+	      {
+		leftover = *(stored + n);
+		for (int i = 0; i < n; i++)
+		  *(start + i) = *(stored + i);
+		break;
+	      }
+	    else if ((c == 's') || (c == 's'))
+	      {
+		for (int i = 0; i < n; i++)
+		  *(stored + i) = *(start + i);
+		*(stored + n) = leftover;
+	      }
+	    else if ((reroll != nullptr) && (c == CTRL('R')))
+	      {
+		(*reroll)();
+		leftover = unassigned;
+		break;
+	      }
+	    
+	    if (leftover != tmp)
+	      {
+		tmp = cur + 3;
+		printf("\033[%iAUnassigned points: %i\n\033[%iB", tmp, leftover, tmp - 1);
+	      }
+	    std::flush(std::out);
+	  }
+      }
+    
+    
+    std::cout << "\033[H\033[2J";
+    for (int i = 0; i < n; i++)
+      {
+	printer(i, start[i], data);
+	std::cout << std::endl;
+      }
+    std::cout << "\033[?25h" << std::endl; /* show cursor */
+    std::flush(std::out);
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved_stty);
+    free(stored);
+    return true;
+  }
+  
+  
+  /**
+   * Ability score printer
+   * 
+   * @param  index  The index of the ability
+   * @param  value  The value of the ability
+   * @param  data   Pointer to the 100-part of the strenght
+   */
+  void CharacterCreator::abilityPrinter(int index, int value, void* data) const;
+  {
+    if ((index == 0) && (value == 18))
+      std::cout << "Strength: " << value << "/" << *((char*)data);
+    else if (index == 0)
+      std::cout << "Strength: " << value;
+    else if (index == 1)
+      std::cout << "Constitution: " << value;
+    else if (index == 2)
+      std::cout << "Dexterity: " << value;
+    else if (index == 3)
+      std::cout << "Intelligence: " << value;
+    else if (index == 4)
+      std::cout << "Wisdom: " << value;
+    else if (index == 5)
+      std::cout << "Charisma: " << value;
   }
   
 }
