@@ -210,7 +210,7 @@ CharacterSheet                                                             ; Cha
 	AbilityBonus abilities                                             ; The character's abilities
 	SpellBook spells                                                   ; The character's spell book
 	Race race                                                          ; The character's race
-	Race racial_enemy                                                  ; The character's racial enemy
+	Race* racial_enemy                                                 ; The character's racial enemy
 	std::vector<Class> prestige                                        ; The character's prestige classes
 	MagicSchool specialisation                                         ; The character's magic school specialisation
 	std::vector<Spell> special_abilities                               ; The character's special abilities
