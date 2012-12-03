@@ -51,7 +51,7 @@ namespace tbrpg
     //this->abilities = nullptr;
     //this->spells = nullptr;
     //this->race = nullptr;
-    //this->racial_enemy = nullptr;
+    this->racial_enemy = nullptr;
     //this->prestige = nullptr;
     //this->specialisation = nullptr;
     //this->special_abilities = nullptr;

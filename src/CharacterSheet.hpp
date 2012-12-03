@@ -132,7 +132,7 @@ namespace tbrpg
     /**
      * The character's racial enemy
      */
-    Race racial_enemy;
+    Race* racial_enemy;
     
     /**
      * The character's prestige classes
