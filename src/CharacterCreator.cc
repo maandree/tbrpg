@@ -72,6 +72,15 @@ namespace tbrpg
     std::vector<std::string> specialisations = std::vector<std::string>();
     std::unordered_map<std::string, MagicSchool> specialisationMap = std::unordered_map<std::string, MagicSchool>();
     
+    std::vector<std::string> alignments;
+    std::vector<std::string> all_alignments = {"chaotic evil", "neutral evil", "lawful evil",
+					       "chaotic neutral", "true neutral", "lawful neutral",
+					       "chaotic good", "neutral good", "lawful good"};
+    std::unordered_map<std::string, char> alignmentMap = std::unordered_map<std::string, char>();
+    for (long i = 0; i < all_alignments.size(); i++)
+      alignmentMap[all_alignments[i]] = (char)i;
+    
+    
     std::string input;
     CharacterSheet sheet = CharacterSheet();
     
@@ -138,7 +147,26 @@ namespace tbrpg
 	  break;
 	}
     
-    // char alignment
+    
+  _05:
+    std::vector<std::string> alignments = std::vector<std::string>();
+    boolean ok;
+    for (long i = 0; i < all_alignments.size(); i++)
+      {
+	ok = true;
+	for (Class& c : sheet.prestige)
+	  ok &= *(c.alignments + i);
+	if (ok)
+	  alignments.push_back(all_alignments[i]);
+      }
+    input = promptList("Select alignment: ", alignments.size() == 0
+		                           ? all_alignments /* fail safe */
+		                           : alignments);
+    if (input == "")
+      goto _04;
+    sheet.alignment = alignmentMap[input];
+    
+    
     // AbilityBonus abilities
     // std::unordered_map<WeaponGroup, int> proficiencies
     // Race racial_enemy

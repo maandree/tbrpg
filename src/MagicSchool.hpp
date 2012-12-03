@@ -163,6 +163,11 @@ namespace tbrpg
   
   
   /**
+   * Magic school: none
+   */
+  static MagicSchool GENERAL_MAGE = MagicSchool("general", "", "general mage");
+  
+  /**
    * Magic school: abjuration
    */
   static MagicSchool ABJURATION = MagicSchool("abjuration", "green", "abjurer");
