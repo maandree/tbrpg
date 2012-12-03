@@ -36,6 +36,9 @@ namespace tbrpg
   Race::Race()
   {
     this->dualclass_level = 0x7FFF;
+    this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
+			     CONJURATION, DIVINATION, ENCHANTMENT,
+			     ILLUSION, INVOCATION, NECROMANCY};
   }
   
   /**
