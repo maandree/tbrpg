@@ -186,7 +186,7 @@ namespace tbrpg
     
     
   _09:
-    input = promptBoolean("Do you have a portrait: ", "yes", "no");
+    input = promptList("Do you have a portrait: ", {"yes", "no"});
     if (input == "")
       goto _08;
     if (input == "no")
