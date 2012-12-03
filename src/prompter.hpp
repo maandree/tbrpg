@@ -143,6 +143,11 @@ namespace tbrpg
      */
     std::string ansi;
     
+    /**
+     * Possible alternatives
+     */
+    std::vector<std::string> alternatives;
+    
   } prompterdata;
   
   
@@ -150,7 +155,12 @@ namespace tbrpg
   /**
    * No operator
    */
-  void promptNoop();
+  void prompt_noop();
+  
+  /**
+   * Complete prompting
+   */
+  void prompt_done();
   
   /**
    * Prompt the user for an arbitrary string
@@ -158,9 +168,10 @@ namespace tbrpg
    * @param   instruction  Instruction for the user
    * @param   previous     Previous entry hook
    * @param   next         Next entry hook
+   * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)() = promptNoop, void (*next)() = promptNoop);
+  std::string promptArbitrary(std::string instruction, void (*previous)() = prompt_noop, void (*next)() = prompt_noop, void (*done)() = prompt_done());
   
   /**
    * Prompt the user for an alternative and return the index
@@ -171,7 +182,18 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = promptNoop, void (*next)() = promptNoop);
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  
+  /**
+   * Prompt the user for an alternative
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The select alternative
+   */
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
   
 }
 

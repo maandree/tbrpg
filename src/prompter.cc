@@ -707,7 +707,7 @@ namespace tbrpg
   /**
    * No operator
    */
-  void promptNoop()
+  void prompt_noop()
   {
     // noop
   }
@@ -719,9 +719,10 @@ namespace tbrpg
    * @param   instruction  Instruction for the user
    * @param   previous     Previous entry hook
    * @param   next         Next entry hook
+   * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)(), void (*next)())
+  std::string promptArbitrary(std::string instruction, void (*previous)(), void (*next)(), void (*done)())
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -770,7 +771,8 @@ namespace tbrpg
   
 	switch (prompterdata.c)
 	  {
-	  case '\n': case CTRL('D'):  prompt_done();   break;
+	  case '\n':                  done();          break;
+	  case CTRL('D'):             prompt_done();   break;
 	  case '\b': case 127:        prompt_erase();  break;
           case '\0': case CTRL('C'):  prompt_mark();   break;
 	    
@@ -903,6 +905,27 @@ namespace tbrpg
       if (input == alternatives[i])
 	return i;
     return -1;
+  }
+  
+  
+  /**
+   * Prompt the user for an alternative
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The select alternative
+   */
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(), void (*next)())
+  {
+    prompterdata.alternatives = alternatives;
+    std::string input = promptArbitrary(instruction, alternatives, previous, next); // TODO done hook
+    if (input != "")
+      for (String& alternative : alternatives)
+	if (input == alternative)
+	  return alternative;
+    return "";
   }
   
   
