@@ -115,7 +115,16 @@ namespace tbrpg
      * @param  value  The value of the ability
      * @param  data   Pointer to the 100-part of the strenght
      */
-    virtual void abilityPrinter(int index, int value, void* data);
+    virtual void abilityPrinter(int index, int value, void* data) const;
+    
+    /**
+     * Generic attribute score printer
+     * 
+     * @param  index  The index of the attribute
+     * @param  value  The value of the attribute
+     * @param  data   The labels of the attributes
+     */
+    virtual void genericPrinter(int index, int value, void* data) const;
     
     /**
      * Ability score reroll
