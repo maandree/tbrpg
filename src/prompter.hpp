@@ -23,11 +23,14 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <vector>
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <vector>
+#include <algorithm>
+#include <unistd.h>
 #include <termios.h>
-#include <stropts.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
 
 
 /**
@@ -172,7 +175,7 @@ namespace tbrpg
    * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)() = prompt_noop, void (*next)() = prompt_noop, void (*done)() = prompt_done());
+  std::string promptArbitrary(std::string instruction, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop, void (*done)(void) = prompt_done);
   
   /**
    * Prompt the user for an alternative and return the index
@@ -183,7 +186,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Prompt the user for an alternative
@@ -194,7 +197,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected alternative
    */
-  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Prompt the user for a file
@@ -205,7 +208,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected file, or if loadfile is true, its content
    */
-  std::string promptFile(std::string instruction, bool loadfile, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Print a list in columns

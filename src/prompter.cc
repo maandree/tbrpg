@@ -224,9 +224,9 @@ namespace tbrpg
   void prompt_alternative()
   {
     prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
-    for (i = 0; i < prompterdata.before; i++)
+    for (long i = 0; i < prompterdata.before; i++)
       *(prompterdata.tmp)++ = *(prompterdata.bp + i);
-    for (i = prompterdata.after - 1; i >= 0; i--)
+    for (long i = prompterdata.after - 1; i >= 0; i--)
       *(prompterdata.tmp)++ = *(prompterdata.ap + i);
     *prompterdata.tmp = 0;
     prompterdata.tmp -= prompterdata.before + prompterdata.after;
@@ -237,7 +237,7 @@ namespace tbrpg
     std::string str = std::string(tmp);
     free(tmp);
     
-    for (String& alternative : prompterdata.alternatives)
+    for (std::string& alternative : prompterdata.alternatives)
       if (str == alternative)
 	{
 	  prompt_done();
@@ -557,7 +557,7 @@ namespace tbrpg
 	    if (prompterdata.mark - 1 > prompterdata.before)
 	      prompterdata.mark--;
 	    else if (prompterdata.mark - 1 == prompterdata.before)
-	      prompterdata.mark == 0;
+	      prompterdata.mark = 0;
 	    if (neg)
 	      prompterdata.mark = -(prompterdata.mark);
 	  }
@@ -587,7 +587,7 @@ namespace tbrpg
 	if (prompterdata.mark - 1 > prompterdata.before)
 	  prompterdata.mark--;
 	else if (prompterdata.mark - 1 == prompterdata.before)
-	  prompterdata.mark == 0;
+	  prompterdata.mark = 0;
 	if (neg)
 	  prompterdata.mark = -(prompterdata.mark);
       }
@@ -620,7 +620,6 @@ namespace tbrpg
    */
   void prompt_left()
   {
-    long i;
     if (prompterdata.before == 0)
       {
 	__bell();
@@ -754,7 +753,7 @@ namespace tbrpg
    * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)(), void (*next)(), void (*done)()) /* TODO colouring hooks and more editing command */
+  std::string promptArbitrary(std::string instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* TODO colouring hooks and more editing command */
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -928,7 +927,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = promptNoop, void (*next)() = promptNoop)
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
   {
     std::string input = promptList(instruction, alternatives, previous, next);
     if (input == "")
@@ -949,13 +948,13 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The select alternative
    */
-  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(), void (*next)())
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
   {
     prompterdata.alternatives = alternatives;
-    qsort(prompterdata.alternatives.begin(), prompterdata.alternatives.size(), sizeof(std::string), std::less);
-    std::string input = promptArbitrary(instruction, alternatives, previous, prompt_alternative);
+    std::sort(prompterdata.alternatives.begin(), prompterdata.alternatives.end());
+    std::string input = promptArbitrary(instruction, previous, next, prompt_alternative);
     if (input != "")
-      for (String& alternative : alternatives)
+      for (std::string& alternative : alternatives)
 	if (input == alternative)
 	  return alternative;
     return "";
@@ -971,21 +970,28 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected file, or if loadfile is true, its content
    */
-  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(), void (*next)())
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void), void (*next)(void))
   {
-    std::string input = promptArbitrary(instruction, alternatives, previous, next); // TODO done hook
+    std::string input = promptArbitrary(instruction, previous, next); // TODO done hook
     if (input != "")
       {
 	struct stat filestat;
-	if (stat(input, &filestat) == -1)
-	  return "";
+	char* cstr = (char*)(input.c_str());
+	if (stat(cstr, &filestat) == -1)
+	  {
+	    free(cstr);
+	    return "";
+	  }
+	free(cstr);
 	
 	if (loadfile == false)
 	  return input;
 	
-	FILE* file = fopen(input, "r");
-	long blocksize = (long)(filestat->st_blksize);
-        long filesize = (long)(filestat->st_size);
+	char* filename = (char*)(input.c_str());
+	FILE* file = fopen(filename, "r");
+	free(filename);
+	long blocksize = (long)(filestat.st_blksize);
+        long filesize = (long)(filestat.st_size);
 	long ptr = 0, n, i;
 	char* data = (char*)malloc(filesize);
 	char* buf = (char*)malloc(blocksize);
@@ -1016,22 +1022,23 @@ namespace tbrpg
    */
   void columnate(std::vector<std::string> items)
   {
-    struct ttysize termsize;
+    struct winsize termsize;
     int termwidth = 120;
     for (int fd = 1; fd <= 3; fd++)
       if (ioctl(fd % 3, TIOCGWINSZ, &termsize) != -1)
 	{
-	  termwidth = termsize.ts_cols;
+	  std::cout << "<< " << termsize.ws_row << " " << termsize.ws_col << " " << termsize.ws_xpixel << " " << termsize.ws_ypixel << " >>" << std::endl;
+	  termwidth = termsize.ws_col;
 	  break;
 	}
     termwidth += 2;
     
     int width = 0;
-    std::vector<int> widths = new std::vector<int>();
+    std::vector<int> widths = std::vector<int>();
     for (std::string item : items)
       {
 	int w = 0, n = 0;
-	char* cstr = item.c_str;
+	char* cstr = (char*)(item.c_str());
 	char* beginning = cstr;
 	char c = 1;
 	symbol sym = 0;
@@ -1075,9 +1082,9 @@ namespace tbrpg
     int cols = termwidth / width;
     int rows = (items.size() + cols - 1) / cols;
     
-    std::vector<std::vector<std::string>> columns = new std::vector<std::vector<std::string>>();
+    std::vector<std::vector<std::string>> columns = std::vector<std::vector<std::string>>();
     for (int i = 0; i < cols; i++)
-      columns.push_back(new std::vector<std::string>());
+      columns.push_back(std::vector<std::string>());
     
     char* cpad = (char*)malloc(width + 1);
     for (int i = 0; i < width; i++)
@@ -1098,9 +1105,7 @@ namespace tbrpg
 	  }
       }
     
-    delete widths;
-    
-    int diff = rows * cols - len(items);
+    int diff = rows * cols - items.size();
     if (diff > 2)
       {
 	int c = cols - 1;
@@ -1117,18 +1122,14 @@ namespace tbrpg
 	  }
       }
     
-    std::vector<std::vector<std::string>> lines = new std::vector<std::vector<std::string>>();
+    std::vector<std::vector<std::string>> lines = std::vector<std::vector<std::string>>();
     for (int r = 0; r < rows; r++)
       {
-	lines.push_back(new std::vector<std::string>());
+	lines.push_back(std::vector<std::string>());
 	for (int c = 0; c < cols; c++)
-	  if (r < columns[c].size())
+	  if (r < (long)(columns[c].size()))
 	    lines[r].push_back(columns[c][r]);
       }
-    
-    for (int i = 0; i < cols; i++)
-      delete columns[i];
-    delete columns;
     
     for (int r = 0; r < rows; r++)
       {
@@ -1140,10 +1141,6 @@ namespace tbrpg
 	    std::cout << line[c];
 	std::cout << std::endl;
       }
-    
-    for (int i = 0; i < rows; i++)
-      delete lines[i];
-    delete lines;
   }
   
   

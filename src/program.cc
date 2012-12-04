@@ -54,7 +54,7 @@ namespace tbrpg
     Dice dice = Dice(2, 20);
     std::cout << dice.roll() << std::endl;
     
-    std::string str = promptArbitrary("Enter the character's name: ");
+    std::string str = promptList("Select race: ", {"human", "half-elf", "half-orc", "elf", "halfling", "dwarf", "gnome"});
     if (str != "")
       {
 	std::cout << str << std::endl;
