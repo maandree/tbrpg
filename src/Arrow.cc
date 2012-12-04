@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Arrow::Arrow() : Ammunition()
   {
+    this->name = "arrow";
     this->damage_type = PIERCING;
     this->damage_die = 10;
     this->damage_dice = 1;

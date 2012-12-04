@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Helmet::Helmet() : Headgear()
   {
+    this->name = "helmet";
     this->critical_hit_protection = true;
   }
   

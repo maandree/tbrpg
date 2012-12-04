@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MorningStar::MorningStar() : BluntWeapon()
   {
+    this->name = "morning star";
     this->speed_factor = 7;
     this->damage_die = 4;
     this->damage_dice = 2;

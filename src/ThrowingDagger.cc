@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ThrowingDagger::ThrowingDagger() : Throwing()
   {
+    this->name = "throwing dagger";
     this->rate_of_fire = 2;
     this->speed_factor = 2;
     this->damage_die = 4;

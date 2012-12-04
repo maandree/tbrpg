@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bullet::Bullet() : Ammunition()
   {
+    this->name = "bullet";
     this->damage_type = BLUDGEONING;
     this->damage_die = 4;
     this->damage_dice = 1;

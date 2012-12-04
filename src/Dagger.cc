@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dagger::Dagger() : OneHandedMelee()
   {
+    this->name = "dagger";
     this->speed_factor = 2;
     this->damage_die = 4;
     this->damage_dice = 1;

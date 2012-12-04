@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Boots::Boots() : Item()
   {
-    ////TODO implement constructor
+    this->name = "warn out boots";
   }
   
   /**

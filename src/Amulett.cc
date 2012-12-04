@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Amulett::Amulett() : Item()
   {
-    ////TODO implement constructor
+    this->name = "amulett";
   }
   
   /**

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dart::Dart() : Throwing()
   {
+    this->name = "dart";
     this->rate_of_fire = 3;
     this->speed_factor = 2;
     this->damage_die = 3;

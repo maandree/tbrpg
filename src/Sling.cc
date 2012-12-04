@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Sling::Sling() : RangedWeapon()
   {
+    this->name = "sling";
     this->hands = 1;
     this->rate_of_fire = 1;
     this->speed_factor = 6;

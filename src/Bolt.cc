@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bolt::Bolt() : Ammunition()
   {
+    this->name = "bolt";
     this->damage_type = PIERCING;
     this->damage_die = 6;
     this->damage_dice = 1;

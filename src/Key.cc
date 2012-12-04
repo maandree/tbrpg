@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Key::Key() : QuestItem()
   {
-    ////TODO implement constructor
+    this->name = "key";
   }
   
   /**
