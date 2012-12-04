@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LongSword::LongSword() : LargeSword()
   {
+    this->name = "long sword";
     this->speed_factor = 5;
     this->damage_die = 8;
     this->damage_dice = 1;

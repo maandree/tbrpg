@@ -35,7 +35,7 @@ namespace tbrpg
    */
   QuickItem::QuickItem() : Item()
   {
-    ////TODO implement constructor
+    this->name = "quick item";
   }
   
   /**

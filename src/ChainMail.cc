@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ChainMail::ChainMail() : BodyArmour()
   {
+    this->name = "chain mail";
     this->armour_class = 5;
     this->armour_class_modifiers[SLASHING] = -2;
     this->armour_class_modifiers[BLUDGEONING] = 2;

@@ -23,10 +23,14 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <vector>
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <vector>
+#include <algorithm>
+#include <unistd.h>
 #include <termios.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
 
 
 /**
@@ -143,6 +147,11 @@ namespace tbrpg
      */
     std::string ansi;
     
+    /**
+     * Possible alternatives
+     */
+    std::vector<std::string> alternatives;
+    
   } prompterdata;
   
   
@@ -150,7 +159,12 @@ namespace tbrpg
   /**
    * No operator
    */
-  void promptNoop();
+  void prompt_noop();
+  
+  /**
+   * Complete prompting
+   */
+  void prompt_done();
   
   /**
    * Prompt the user for an arbitrary string
@@ -158,9 +172,50 @@ namespace tbrpg
    * @param   instruction  Instruction for the user
    * @param   previous     Previous entry hook
    * @param   next         Next entry hook
+   * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)() = promptNoop, void (*next)() = promptNoop);
+  std::string promptArbitrary(std::string instruction, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop, void (*done)(void) = prompt_done);
+  
+  /**
+   * Prompt the user for an alternative and return the index
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  
+  /**
+   * Prompt the user for an alternative
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The selected alternative
+   */
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  
+  /**
+   * Prompt the user for a file
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   loadfile      Whether to load the file
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The selected file, or if loadfile is true, its content
+   */
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  
+  /**
+   * Print a list in columns
+   * 
+   * @param  items  The items to print
+   */
+  void columnate(std::vector<std::string> items);
   
 }
 

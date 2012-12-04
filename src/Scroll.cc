@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Scroll::Scroll() : QuickItem()
   {
-    ////TODO implement constructor
+    this->name = "scroll";
+    this->quantity_limit = 5;
   }
   
   /**

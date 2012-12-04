@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Container::Container() : Item()
   {
+    this->name = "container";
     ////TODO implement constructor
     //this->contains = nullptr;
     //this->contain_limit = 0;

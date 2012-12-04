@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Cloak::Cloak() : Item()
   {
-    ////TODO implement constructor
+    this->name = "cloak";
   }
   
   /**

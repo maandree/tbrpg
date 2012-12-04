@@ -35,6 +35,8 @@ namespace tbrpg
    */
   WarHammer::WarHammer() : OneHandedMelee()
   {
+    this->name = "war hammer";
+    this->weapon_group = BLUNT_WEAPONS;
     this->speed_factor = 4;
     this->damage_die = 4;
     this->damage_dice = 1;

@@ -58,6 +58,11 @@ namespace tbrpg
   {
   public:
     /**
+     * The name of the race
+     */
+    std::string name;
+    
+    /**
      * Allowed classes for the race
      */
     std::vector<std::vector<Class>> allowed_classes;

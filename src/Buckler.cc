@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Buckler::Buckler() : Shield()
   {
+    this->name = "buckler";
     this->protect_melee[PIERCING] = false;
     this->protect_missile = false;
   }

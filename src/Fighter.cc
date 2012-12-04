@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Fighter::Fighter() : Warrior()
   {
+    this->name = "fighter";
     this->abilities.bonuses.detect_doors = 0.10;
     
     for (WeaponGroup weapongroup : WEAPON_GROUPS)

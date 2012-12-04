@@ -35,6 +35,7 @@ namespace tbrpg
    */
   HeavyCrossbow::HeavyCrossbow() : Crossbow()
   {
+    this->name = "heavy crossbow";
     this->speed_factor = 10;
     this->damage_bonus = 2;
   }

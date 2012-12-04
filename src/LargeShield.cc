@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LargeShield::LargeShield() : Shield()
   {
+    this->name = "large sheild";
     this->bonuses.defence.missile = 2;
   }
   

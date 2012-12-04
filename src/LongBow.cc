@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LongBow::LongBow() : Bow()
   {
+    this->name = "long bow";
     this->speed_factor = 8;
     this->hit_bonus = 1;
   }

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   SmallShield::SmallShield() : Shield()
   {
+    this->name = "small shield";
     this->protect_missile = false;
   }
   

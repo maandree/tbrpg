@@ -35,7 +35,7 @@ namespace tbrpg
    */
   TextScroll::TextScroll() : Item()
   {
-    ////TODO implement constructor
+    this->name = "text scroll";
   }
   
   /**

@@ -219,6 +219,40 @@ namespace tbrpg
   }
   
   /**
+   * Complete prompting hook for alternative prompting
+   */
+  void prompt_alternative()
+  {
+    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
+    for (long i = 0; i < prompterdata.before; i++)
+      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
+    for (long i = prompterdata.after - 1; i >= 0; i--)
+      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
+    *prompterdata.tmp = 0;
+    prompterdata.tmp -= prompterdata.before + prompterdata.after;
+    
+    char* tmp = (char*)malloc((prompterdata.before + prompterdata.after) * 8 + 1);
+    symbol_decode(prompterdata.tmp, tmp);
+    free(prompterdata.tmp);
+    std::string str = std::string(tmp);
+    
+    for (std::string& alternative : prompterdata.alternatives)
+      if (str == alternative)
+	{
+	  free(tmp);
+	  prompt_done();
+	  return;
+	}
+    
+    __bell();
+    
+    free(tmp);
+    std::cout << std::endl;
+    columnate(prompterdata.alternatives);
+    std::flush(std::cout);
+  }
+  
+  /**
    * Fetch escape sequences, after the initial \e
    * 
    * @return  Whether a sequences was fetched
@@ -525,7 +559,7 @@ namespace tbrpg
 	    if (prompterdata.mark - 1 > prompterdata.before)
 	      prompterdata.mark--;
 	    else if (prompterdata.mark - 1 == prompterdata.before)
-	      prompterdata.mark == 0;
+	      prompterdata.mark = 0;
 	    if (neg)
 	      prompterdata.mark = -(prompterdata.mark);
 	  }
@@ -555,7 +589,7 @@ namespace tbrpg
 	if (prompterdata.mark - 1 > prompterdata.before)
 	  prompterdata.mark--;
 	else if (prompterdata.mark - 1 == prompterdata.before)
-	  prompterdata.mark == 0;
+	  prompterdata.mark = 0;
 	if (neg)
 	  prompterdata.mark = -(prompterdata.mark);
       }
@@ -588,7 +622,6 @@ namespace tbrpg
    */
   void prompt_left()
   {
-    long i;
     if (prompterdata.before == 0)
       {
 	__bell();
@@ -707,7 +740,7 @@ namespace tbrpg
   /**
    * No operator
    */
-  void promptNoop()
+  void prompt_noop()
   {
     // noop
   }
@@ -719,9 +752,10 @@ namespace tbrpg
    * @param   instruction  Instruction for the user
    * @param   previous     Previous entry hook
    * @param   next         Next entry hook
+   * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)(), void (*next)())
+  std::string promptArbitrary(std::string instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* TODO colouring hooks and more editing command */
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -770,7 +804,19 @@ namespace tbrpg
   
 	switch (prompterdata.c)
 	  {
-	  case '\n': case CTRL('D'):  prompt_done();   break;
+	  case '\n':
+	    done();
+	    if (prompterdata.reading)
+	      {
+		std::cout << std::endl << instruction;
+		prompterdata.mark = 0;
+		prompt_print_before(0, prompterdata.before);
+		prompt_print_after(0, prompterdata.after);
+		std::flush(std::cout);
+	      }
+	    break;
+	    
+	  case CTRL('D'):             prompt_done();   break;
 	  case '\b': case 127:        prompt_erase();  break;
           case '\0': case CTRL('C'):  prompt_mark();   break;
 	    
@@ -883,6 +929,242 @@ namespace tbrpg
     free(tmp);
     return rc;
   }
+  
+  
+  /**
+   * Prompt the user for an alternative and return the index
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
+  {
+    std::string input = promptList(instruction, alternatives, previous, next);
+    if (input == "")
+      return -1;
+    for (long i = 0, n = alternatives.size(); i < n; i++)
+      if (input == alternatives[i])
+	return i;
+    return -1;
+  }
+  
+  
+  /**
+   * Prompt the user for an alternative
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The select alternative
+   */
+  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
+  {
+    prompterdata.alternatives = alternatives;
+    std::sort(prompterdata.alternatives.begin(), prompterdata.alternatives.end());
+    std::string input = promptArbitrary(instruction, previous, next, prompt_alternative);
+    if (input != "")
+      for (std::string& alternative : alternatives)
+	if (input == alternative)
+	  return alternative;
+    return "";
+  }
+  
+  
+  /**
+   * Prompt the user for a file
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   loadfile      Whether to load the file
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The selected file, or if loadfile is true, its content
+   */
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void), void (*next)(void))
+  {
+    std::string input = promptArbitrary(instruction, previous, next); // TODO done hook
+    if (input != "")
+      {
+	struct stat filestat;
+	char* cstr = (char*)(input.c_str());
+	if (stat(cstr, &filestat) == -1)
+	  {
+	    free(cstr);
+	    return "";
+	  }
+	free(cstr);
+	
+	if (loadfile == false)
+	  return input;
+	
+	char* filename = (char*)(input.c_str());
+	FILE* file = fopen(filename, "r");
+	free(filename);
+	long blocksize = (long)(filestat.st_blksize);
+        long filesize = (long)(filestat.st_size);
+	long ptr = 0, n, i;
+	char* data = (char*)malloc(filesize);
+	char* buf = (char*)malloc(blocksize);
+	
+	while (ptr < filesize)
+	  {
+	    n = ptr + blocksize <= filesize ? blocksize : (filesize - ptr);
+	    n = (long)(fread(buf, n, 1, file));
+	    for (i = 0; i < n; i++)
+	      if ((*(data + ptr++) = *(buf + i)) != 0)
+		i--;
+	  }
+	
+	fclose(file);
+	free(buf);
+	std::string rc = std::string(data);
+	free(data);
+	return rc;
+      }
+    return "";
+  }
+  
+  
+  /**
+   * Print a list in columns
+   * 
+   * @param  items  The items to print
+   */
+  void columnate(std::vector<std::string> items)
+  {
+    struct winsize termsize;
+    int termwidth = 120;
+    for (int fd = 1; fd <= 3; fd++)
+      if (ioctl(fd % 3, TIOCGWINSZ, &termsize) != -1)
+	{
+	  termwidth = termsize.ws_col;
+	  break;
+	}
+    termwidth += 2;
+    
+    int width = 0;
+    std::vector<int> widths = std::vector<int>();
+    for (std::string item : items)
+      {
+	int w = 0, n = 0;
+	char* cstr = (char*)(item.c_str());
+	char c = 1;
+	symbol sym = 0;
+	while ((c))
+	  {
+	    if ((c & 0xC0) != 0x80)
+	      {
+		if      ((0x0300 <= sym) && (sym <= 0x036F))  w--;
+		else if ((0x20D0 <= sym) && (sym <= 0x20FF))  w--;
+		else if ((0x1DC0 <= sym) && (sym <= 0x1DFF))  w--;
+		else if ((0xFE20 <= sym) && (sym <= 0xFE2F))  w--;
+	      }
+	    if ((c = *cstr++) == 0)
+	      break;
+	    if ((c & 0x80) == 0)
+	      {
+		w++;
+	        sym = 0;
+	      }
+	    else if ((c & 0xC0) == 0xC0)
+	      {
+		w++;
+		while ((c & 0x80))
+		  {
+	  	    c <<= 1;
+		    n++;
+		  }
+		sym = ((symbol)c & 127) >> n;
+	      }
+	    else
+	      sym = (sym << 6) | (sym & 0x3F);
+	  }
+	widths.push_back(w);
+      }
+    for (int w : widths)
+      if (width < w)
+	width = w;
+    width += 2;
+    
+    int cols = termwidth / width;
+    int rows = (items.size() + cols - 1) / cols;
+    
+    std::vector<std::vector<std::string>> columns = std::vector<std::vector<std::string>>();
+    for (int i = 0; i < cols; i++)
+      columns.push_back(std::vector<std::string>());
+    
+    char* spaces = (char*)malloc(width * 16 + 1);
+    
+    int y = 0, x = 0, i, j = 0, w;
+    for (std::string item : items)
+      {
+	int i = 0;
+	char* cstr =(char*)(item.c_str());
+	while ((*(cstr + i)))
+	  {
+	    *(spaces + i) = *(cstr + i);
+	    i++;
+	  }
+	w = widths[j++];
+	while (w < width)
+	  {
+	    *(spaces + i++) = ' ';
+	    w++;
+	  }
+	*(spaces + i) = 0;
+	std::string cell = std::string(spaces);
+	columns[x].push_back(cell);
+	if (++y == rows)
+	  {
+	    x++;
+	    y = 0;
+	  }
+      }
+    
+    free(spaces);
+    
+    int diff = rows * cols - items.size();
+    if ((diff > 2) && (rows > 1))
+      {
+	int c = cols - 1;
+	diff--;
+	while (diff > 0)
+	  {
+	    for (int i = 0; i < diff; i++)
+	      {
+		columns[c].insert(columns[c].begin(), columns[c - 1][columns[c - 1].size() - 1]);
+		columns[c - 1].pop_back();
+	      }
+	    c--;
+	    diff--;
+	  }
+      }
+    
+    std::vector<std::vector<std::string>> lines = std::vector<std::vector<std::string>>();
+    for (int r = 0; r < rows; r++)
+      {
+	lines.push_back(std::vector<std::string>());
+	for (int c = 0; c < cols; c++)
+	  if (r < (long)(columns[c].size()))
+	    lines[r].push_back(columns[c][r]);
+      }
+    
+    for (int r = 0; r < rows; r++)
+      {
+	auto line = lines[r];
+	cols = line.size();
+	for (int c = 0; c < cols; c++)
+	  if (c + 1 == cols)
+	    std::cout << line[c].substr(0, width - 2);
+	  else
+	    std::cout << line[c];
+	std::cout << std::endl;
+      }
+  }
+  
   
   
   #undef __store_tty

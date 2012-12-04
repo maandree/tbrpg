@@ -35,6 +35,7 @@ namespace tbrpg
    */
   BastardSword::BastardSword() : LargeSword()
   {
+    this->name = "bastard sword";
     this->speed_factor = 8;
     this->damage_die = 4;
     this->damage_dice = 2;

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Wand::Wand() : QuickItem()
   {
-    ////TODO implement constructor
+    this->name = "wand";
   }
   
   /**

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Gnome::Gnome() : Race()
   {
+    this->name = "gnome";
     this->bonuses.abilities.intelligence = 1;
     this->bonuses.abilities.wisdom = -1;
     this->bonuses.thief_abilities.find_traps = 10;
