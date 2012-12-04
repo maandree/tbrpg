@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_AMULETT_HPP__
-#define __GUARD_AMULETT_HPP__
+#ifndef __GUARD_AMULET_HPP__
+#define __GUARD_AMULET_HPP__
 
 
 #include <stdlib.h>
@@ -42,43 +42,43 @@
 namespace tbrpg
 {
   /**
-   * Amulett and necklace item class
+   * Amulet, necklace and locket item class
    */
-  class Amulett: public Item
+  class Amulet: public Item
   {
   public:
     /**
      * Construction
      */
-    Amulett();
+    Amulet();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(const Amulett& original);
+    Amulet(const Amulet& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett& original);
+    Amulet(Amulet& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    Amulett(Amulett&& original);
+    Amulet(Amulet&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~Amulett();
+    virtual ~Amulet();
     
     
     
@@ -88,7 +88,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Amulett& operator =(const Amulett& original);
+    virtual Amulet& operator =(const Amulet& original);
     
     /**
      * Assignment operator
@@ -96,7 +96,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual Amulett& operator =(Amulett& original);
+    virtual Amulet& operator =(Amulet& original);
     
     /**
      * Move operator
@@ -104,7 +104,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual Amulett& operator =(Amulett&& original);
+    virtual Amulet& operator =(Amulet&& original);
     
     
     /**
@@ -113,7 +113,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operator ==(const Amulett& other) const;
+    virtual bool operator ==(const Amulet& other) const;
     
     
   protected:
@@ -123,7 +123,7 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(Amulett& self, const Amulett& original);
+    static void __copy__(Amulet& self, const Amulet& original);
     
     
   public:
@@ -140,10 +140,10 @@ namespace tbrpg
 namespace std
 {
   template<>
-  class hash<tbrpg::Amulett>
+  class hash<tbrpg::Amulet>
   {
   public:
-    size_t operator()(const tbrpg::Amulett& elem) const
+    size_t operator()(const tbrpg::Amulet& elem) const
     {
        return elem.hash();
     }
@@ -151,5 +151,5 @@ namespace std
 }
 
 
-#endif//__GUARD_AMULETT_HPP__
+#endif//__GUARD_AMULET_HPP__
 
