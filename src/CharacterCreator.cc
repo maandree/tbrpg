@@ -80,7 +80,6 @@ namespace tbrpg
     for (long i = 0; i < all_alignments.size(); i++)
       alignmentMap[all_alignments[i]] = (char)i;
     
-    
     Dice abilityDice = Dice(3, 6);
     Dice dice100 = Dice(1, 100);
     
@@ -183,8 +182,7 @@ namespace tbrpg
     
   _06:
     abilityReroll();
-    ok = assign(6, 0, &(sheet.abilities.abilities.strength18),
-		abilityPrinter, &(reroll));
+    ok = assign(6, 0, &(sheet.abilities.abilities.strength18), abilityPrinter, &(reroll));
     if (ok)
       {
 	sheet.abilities.abilities.strength     = this->start[0];
@@ -202,7 +200,42 @@ namespace tbrpg
     
     
   _07:
-    // std::unordered_map<WeaponGroup, int> proficiencies
+    {
+      int count = 0;
+      std::unordered_map<WeaponGroup, int> proficiencyMap = new std::unordered_map<WeaponGroup, int>();
+      {
+	auto ptr = proficiencyMap.begin();
+	auto end = proficiencyMap.end();
+	while (ptr != end)
+	  {
+	    auto wg = (*ptr++).first.weapon_group;
+	    if (WeaponGroup[wg] = 0)
+	      WeaponGroup[wg] = ++count;
+	  }
+      }
+      this->start = new int[count];
+      this->lower = new int[count];
+      this->upper = new int[count];
+      for (int i = 0; i < count; i++)
+	{
+	  this->start[i] = this->lower[i] = 0;
+	  this->upper[i] = sheet.prestige.proficiencies_each;
+	}
+      std::string* labels = (std::string)malloc(count * sizeof(std::string));
+      for (WeaponGroup weapongroup : WEAPON_GROUPS)
+	if (proficiencyMap[weapongroup] != 0)
+	  labels[proficiencyMap[weapongroup] - 1] = weapongroup.name;
+      ok = assign(count, sheet.prestige.experience_chart.proficiencies[1], labels, genericPrinter);
+      delete[] this->lower;
+      delete[] this->upper;
+      free(labels);
+      sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
+      for (WeaponGroup weapongroup : WEAPON_GROUPS)
+	if (proficiencyMap[weapongroup] != 0)
+	  sheet.proficiencies[weapongroup] = this->start[proficiencyMap[weapongroup] - 1];
+      delete proficiencyMap;
+      delete[] this->start;
+    }
     
     
   _08:
@@ -408,7 +441,7 @@ namespace tbrpg
    * @param  value  The value of the ability
    * @param  data   Pointer to the 100-part of the strenght
    */
-  void CharacterCreator::abilityPrinter(int index, int value, void* data);
+  void CharacterCreator::abilityPrinter(int index, int value, void* data) const;
   {
     int strength18 = *((char*)data);
     if ((index == 0) && (value == 18) && (strength18 != 0))
@@ -419,6 +452,19 @@ namespace tbrpg
     else if (index == 3)  std::cout << "Intelligence: " << value;
     else if (index == 4)  std::cout << "Wisdom: "       << value;
     else if (index == 5)  std::cout << "Charisma: "     << value;
+  }
+  
+  
+  /**
+   * Generic attribute score printer
+   * 
+   * @param  index  The index of the attribute
+   * @param  value  The value of the attribute
+   * @param  data   The labels of the attributes
+   */
+  void CharacterCreator::genericPrinter(int index, int value, void* data) const;
+  {
+    std::cout << *((std::string*)data + index) << value;
   }
   
   
