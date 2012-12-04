@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Sorcerer::Sorcerer() : Wizard()
   {
+    this->name = "sorcerer";
     this->experience_chart.selectable_wizard = {0, 3};
   }
   

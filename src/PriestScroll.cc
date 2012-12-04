@@ -35,7 +35,7 @@ namespace tbrpg
    */
   PriestScroll::PriestScroll() : Scroll()
   {
-    ////TODO implement constructor
+    this->name = "priest scroll";
   }
   
   /**

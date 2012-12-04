@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Hood::Hood() : Headgear()
   {
-    ////TODO implement constructor
+    this->name = "hood";
   }
   
   /**

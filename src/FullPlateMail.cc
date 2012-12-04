@@ -35,6 +35,7 @@ namespace tbrpg
    */
   FullPlateMail::FullPlateMail() : BodyArmour()
   {
+    this->name = "full plate mail";
     this->armour_class = 1;
     this->armour_class_modifiers[SLASHING] = -4;
     this->armour_class_modifiers[PIERCING] = -3;

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   MediumShield::MediumShield() : Shield()
   {
-    ////TODO implement constructor
+    this->name = "medium shield";
   }
   
   /**

@@ -35,6 +35,8 @@ namespace tbrpg
    */
   ShortSword::ShortSword() : OneHandedMelee()
   {
+    this->name = "short sword";
+    this->weapon_group = SMALL_SWORDS;
     this->speed_factor = 3;
     this->damage_die = 6;
     this->damage_dice = 1;

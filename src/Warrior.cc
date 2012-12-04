@@ -44,6 +44,7 @@ namespace tbrpg
     this->abilities.saving_throws.rod_staff_wand = 16;
     this->abilities.saving_throws.spell = 17;
     this->lower_limits.strength = 9;
+    this->extra_strength = true;
     
     this->can_use[MediumShield()] = true;
     this->can_use[LargeShield()] = true;

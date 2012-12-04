@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ShortBow::ShortBow() : Bow()
   {
+    this->name = "short bow";
     this->speed_factor = 6;
   }
   

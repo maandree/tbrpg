@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Robe::Robe() : BodyArmour()
   {
-    ////TODO implement constructor
+    this->name = "robe";
   }
   
   /**

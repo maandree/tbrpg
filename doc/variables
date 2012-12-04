@@ -171,12 +171,14 @@ ActionSlotChart	                                                           ; Pre
 	std::unordered_map<long long, std::vector<ActionSlot>> slot_map    ; Index combination to action slots map
 
 Class                                                                      ; Prestige class
+	std::string name                                                   ; The name of the class
 	int hit_points                                                     ; Minimum starting hit points
 	int thac0                                                          ; THAC0
 	int lore_bonus                                                     ; Lore bonus per level
 	bool[] alignments                                                  ; Allowed alignments
 	bool learn_from_scroll                                             ; Whether the character can learn wizard spells from scrolls
 	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
+	bool extra_strength                                                ; Whether the extra strength at strength 18 is not fixed to zero
 	ExperienceChart experience_chart                                   ; The class's experience chart
 	SpellProgression spell_progression                                 ; The class's spell progression chart
 	AbilityBonus abilities                                             ; Abilties
@@ -189,8 +191,10 @@ Class                                                                      ; Pre
 	Weapon default_two_hand                                                      ; Weapon used when the character has both his hands free
 
 Race                                                                       ; Race class
+	std::string name                                                   ; The name of the race
 	std::vector<std::vector<Class>> allowed_classes                    ; Allowed classes for the race
 	short dualclass_level                                              ; At which level the dual class is allowed, use 2³¹ − 1 for never
+	std::vector<MagicSchool> specialisations                           ; Allowed magic specialisations
 	AbilityBonus bonuses                                               ; Bonuses for the race
 
 CharacterSheet                                                             ; Character sheet
@@ -209,7 +213,7 @@ CharacterSheet                                                             ; Cha
 	AbilityBonus abilities                                             ; The character's abilities
 	SpellBook spells                                                   ; The character's spell book
 	Race race                                                          ; The character's race
-	Race racial_enemy                                                  ; The character's racial enemy
+	Race* racial_enemy                                                 ; The character's racial enemy
 	std::vector<Class> prestige                                        ; The character's prestige classes
 	MagicSchool specialisation                                         ; The character's magic school specialisation
 	std::vector<Spell> special_abilities                               ; The character's special abilities
@@ -261,7 +265,7 @@ Inventory                                  ; Character inventory class
 	std::vector<Ammunition> quiver     ; Quiver slots
 	std::vector<QuickItem> quick_items ; Quick item slots
 	Headgear headgear                  ; Headgear slots
-	Amulett amulett                    ; Amulette and necklace slot
+	Amulet amulet                      ; Amulet, necklace and locket slot
 	std::vector<Ring> rings            ; Ring slots
 	BodyArmour body                    ; Body armour slot
 	Gauntlets gauntlets                ; Gauntlet and bracer slots
@@ -363,7 +367,7 @@ Gem: Item                                 ; Gem item class
 Key: QuestItem                            ; Key item class
 TextScroll: Item                          ; Text scroll item class
 Ring: Item                                ; Ring item class
-Amulett: Item                             ; Amulett and necklace item class
+Amulet: Item                              ; Amulet, necklace and locket item class
 Girdle: Item                              ; Girdle and belt item class
 Boots: Item                               ; Boot item class
 Gauntlets: Item                           ; Gauntlet and bracer item class

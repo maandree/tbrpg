@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gem::Gem() : Item()
   {
-    ////TODO implement constructor
+    this->name = "gem";
   }
   
   /**

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   QuestItem::QuestItem() : Item()
   {
-    ////TODO implement constructor
+    this->name = "quest item";
     //this->id = 0;
   }
   

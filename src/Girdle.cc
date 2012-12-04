@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Girdle::Girdle() : Item()
   {
-    ////TODO implement constructor
+    this->name = "girdle";
   }
   
   /**

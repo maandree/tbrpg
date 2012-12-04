@@ -35,7 +35,8 @@ namespace tbrpg
    */
   Potion::Potion() : QuickItem()
   {
-    ////TODO implement constructor
+    this->name = "potion";
+    this->quantity_limit = 5;
   }
   
   /**

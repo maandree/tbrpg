@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Ranger::Ranger() : Warrior()
   {
+    this->name = "ranger";
     for (int i = 0; i < 6; i++)
       this->alignments[i] = false;
     

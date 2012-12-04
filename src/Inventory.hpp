@@ -33,7 +33,7 @@
 #include "Ammunition.hpp"
 #include "QuickItem.hpp"
 #include "Headgear.hpp"
-#include "Amulett.hpp"
+#include "Amulet.hpp"
 #include "Ring.hpp"
 #include "BodyArmour.hpp"
 #include "Gauntlets.hpp"
@@ -85,9 +85,9 @@ namespace tbrpg
     Headgear headgear;
     
     /**
-     * Amulette and necklace slot
+     * Amulet, necklace and locket slot
      */
-    Amulett amulett;
+    Amulet amulet;
     
     /**
      * Ring slots

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LightCrossbow::LightCrossbow() : Crossbow()
   {
+    this->name = "light crossbow";
     this->speed_factor = 7;
   }
   

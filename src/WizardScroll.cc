@@ -35,7 +35,7 @@ namespace tbrpg
    */
   WizardScroll::WizardScroll() : Scroll()
   {
-    ////TODO implement constructor
+    this->name = "wizard scroll";
   }
   
   /**

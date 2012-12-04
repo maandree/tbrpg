@@ -35,16 +35,7 @@ namespace tbrpg
    */
   Weapon::Weapon() : RightHandItem()
   {
-    ////TODO implement constructor
-    //this->hands = 0;
-    //this->speed_factor = 0;
-    //this->hit_bonus = 0;
-    //this->damage_die = 0;
-    //this->damage_dice = 0;
-    //this->damage_bonus = 0;
-    //this->melee = false;
-    //this->damage_type = nullptr;
-    //this->weapon_group = nullptr;
+    // do nothing
   }
   
   /**
@@ -111,9 +102,7 @@ namespace tbrpg
    */
   Weapon::~Weapon()
   {
-    ////TODO implement destructor
-    //delete this->damage_type;
-    //delete this->weapon_group;
+    // do nothing
   }
   
   

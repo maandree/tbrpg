@@ -39,6 +39,7 @@ namespace tbrpg
     this->lore_bonus = 1;
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
+    this->extra_strength = false;
     //this->abilities = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
@@ -90,12 +91,14 @@ namespace tbrpg
   Class::Class(const Class& original)
   {
     (void) original;
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
     this->alignments = original.alignments;
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
+    this->extra_strength = original.extra_strength;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -116,12 +119,14 @@ namespace tbrpg
   Class::Class(Class& original)
   {
     (void) original;
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
     this->alignments = original.alignments;
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
+    this->extra_strength = original.extra_strength;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -142,12 +147,14 @@ namespace tbrpg
   Class::Class(Class&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);
     std::swap(this->alignments, original.alignments);
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
+    std::swap(this->extra_strength, original.extra_strength);
     std::swap(this->experience_chart, original.experience_chart);
     std::swap(this->spell_progression, original.spell_progression);
     std::swap(this->abilities, original.abilities);
@@ -192,12 +199,14 @@ namespace tbrpg
   Class& Class::operator =(const Class& original)
   {
     (void) original;
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
     this->alignments = original.alignments;
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
+    this->extra_strength = original.extra_strength;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -220,12 +229,14 @@ namespace tbrpg
   Class& Class::operator =(Class& original)
   {
     (void) original;
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
     this->alignments = original.alignments;
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
+    this->extra_strength = original.extra_strength;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -248,12 +259,14 @@ namespace tbrpg
   Class& Class::operator =(Class&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);
     std::swap(this->alignments, original.alignments);
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
+    std::swap(this->extra_strength, original.extra_strength);
     std::swap(this->experience_chart, original.experience_chart);
     std::swap(this->spell_progression, original.spell_progression);
     std::swap(this->abilities, original.abilities);

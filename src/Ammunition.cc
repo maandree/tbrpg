@@ -35,13 +35,7 @@ namespace tbrpg
    */
   Ammunition::Ammunition() : Item()
   {
-    ////TODO implement constructor
-    //this->hit_bonus = 0;
-    //this->damage_die = 0;
-    //this->damage_dice = 0;
-    //this->damage_bonus = 0;
-    //this->usable_with = nullptr;
-    //this->damage_type = nullptr;
+    this->quantity_limit = 20;
   }
   
   /**

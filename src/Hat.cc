@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Hat::Hat() : Headgear()
   {
-    ////TODO implement constructor
+    this->name = "hat";
   }
   
   /**

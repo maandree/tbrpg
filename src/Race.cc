@@ -36,6 +36,9 @@ namespace tbrpg
   Race::Race()
   {
     this->dualclass_level = 0x7FFF;
+    this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
+			     CONJURATION, DIVINATION, ENCHANTMENT,
+			     ILLUSION, INVOCATION, NECROMANCY};
   }
   
   /**
@@ -46,8 +49,10 @@ namespace tbrpg
   Race::Race(const Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
   }
   
@@ -59,8 +64,10 @@ namespace tbrpg
   Race::Race(Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
   }
   
@@ -72,8 +79,10 @@ namespace tbrpg
   Race::Race(Race&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->bonuses, original.bonuses);
   }
   
@@ -85,7 +94,9 @@ namespace tbrpg
   Race::~Race()
   {
     ////TODO implement destructor
+    //delete this->name;
     //delete this->allowed_classes;
+    //delete this->specialisations;
     //delete this->bonuses;
   }
   
@@ -100,8 +111,10 @@ namespace tbrpg
   Race& Race::operator =(const Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -115,8 +128,10 @@ namespace tbrpg
   Race& Race::operator =(Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
+    this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
     return *this;
   }
@@ -130,8 +145,10 @@ namespace tbrpg
   Race& Race::operator =(Race&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
+    std::swap(this->specialisations, original.specialisations);
     std::swap(this->bonuses, original.bonuses);
     return *this;
   }

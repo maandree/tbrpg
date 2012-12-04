@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gold::Gold() : Gem()
   {
-    ////TODO implement constructor
+    this->name = "gold";
   }
   
   /**

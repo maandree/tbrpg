@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Fist::Fist() : BluntWeapon()
   {
+    this->name = "fist";
     this->speed_factor = 4;
     this->damage_die = 2;
     this->damage_dice = 1;
