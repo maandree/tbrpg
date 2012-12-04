@@ -265,7 +265,7 @@ Inventory                                  ; Character inventory class
 	std::vector<Ammunition> quiver     ; Quiver slots
 	std::vector<QuickItem> quick_items ; Quick item slots
 	Headgear headgear                  ; Headgear slots
-	Amulett amulett                    ; Amulette and necklace slot
+	Amulet amulet                      ; Amulet, necklace and locket slot
 	std::vector<Ring> rings            ; Ring slots
 	BodyArmour body                    ; Body armour slot
 	Gauntlets gauntlets                ; Gauntlet and bracer slots
@@ -367,7 +367,7 @@ Gem: Item                                 ; Gem item class
 Key: QuestItem                            ; Key item class
 TextScroll: Item                          ; Text scroll item class
 Ring: Item                                ; Ring item class
-Amulett: Item                             ; Amulett and necklace item class
+Amulet: Item                              ; Amulet, necklace and locket item class
 Girdle: Item                              ; Girdle and belt item class
 Boots: Item                               ; Boot item class
 Gauntlets: Item                           ; Gauntlet and bracer item class

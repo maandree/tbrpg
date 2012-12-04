@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "Amulett.hpp"
+#include "Amulet.hpp"
 
 
 /**
@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Amulett::Amulett() : Item()
+  Amulet::Amulet() : Item()
   {
     ////TODO implement constructor
   }
@@ -43,7 +43,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(const Amulett& original) : Item(original)
+  Amulet::Amulet(const Amulet& original) : Item(original)
   {
     (void) original;
 
@@ -54,7 +54,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(Amulett& original) : Item(original)
+  Amulet::Amulet(Amulet& original) : Item(original)
   {
     (void) original;
 
@@ -65,7 +65,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Amulett::Amulett(Amulett&& original) : Item(original)
+  Amulet::Amulet(Amulet&& original) : Item(original)
   {
     (void) original;
 
@@ -76,7 +76,7 @@ namespace tbrpg
   /**
    * Destructor
    */
-  Amulett::~Amulett()
+  Amulet::~Amulet()
   {
     ////TODO implement destructor
   }
@@ -89,7 +89,7 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Amulett& Amulett::operator =(const Amulett& original)
+  Amulet& Amulet::operator =(const Amulet& original)
   {
     (void) original;
 
@@ -102,7 +102,7 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Amulett& Amulett::operator =(Amulett& original)
+  Amulet& Amulet::operator =(Amulet& original)
   {
     (void) original;
 
@@ -115,7 +115,7 @@ namespace tbrpg
    * @param   original  The moved object, its resourced will be moved
    * @return            The invoked object
    */
-  Amulett& Amulett::operator =(Amulett&& original)
+  Amulet& Amulet::operator =(Amulet&& original)
   {
     (void) original;
 
@@ -129,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Amulett::operator ==(const Amulett& other) const
+  bool Amulet::operator ==(const Amulet& other) const
   {
     return this == &other;
   }
@@ -140,7 +140,7 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  void Amulett::__copy__(Amulett& self, const Amulett& original)
+  void Amulet::__copy__(Amulet& self, const Amulet& original)
   {
     self = original;
   }
@@ -150,7 +150,7 @@ namespace tbrpg
    * 
    * @return  The object's hash code
    */
-  size_t Amulett::hash() const
+  size_t Amulet::hash() const
   {
     return (size_t)this;
   }

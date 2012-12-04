@@ -41,7 +41,7 @@ namespace tbrpg
     //this->quiver = nullptr;
     //this->quick_items = nullptr;
     //this->headgear = nullptr;
-    //this->amulett = nullptr;
+    //this->amulet = nullptr;
     //this->rings = nullptr;
     //this->body = nullptr;
     //this->gauntlets = nullptr;
@@ -64,7 +64,7 @@ namespace tbrpg
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
     this->headgear = original.headgear;
-    this->amulett = original.amulett;
+    this->amulet = original.amulet;
     this->rings = original.rings;
     this->body = original.body;
     this->gauntlets = original.gauntlets;
@@ -87,7 +87,7 @@ namespace tbrpg
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
     this->headgear = original.headgear;
-    this->amulett = original.amulett;
+    this->amulet = original.amulet;
     this->rings = original.rings;
     this->body = original.body;
     this->gauntlets = original.gauntlets;
@@ -110,7 +110,7 @@ namespace tbrpg
     std::swap(this->quiver, original.quiver);
     std::swap(this->quick_items, original.quick_items);
     std::swap(this->headgear, original.headgear);
-    std::swap(this->amulett, original.amulett);
+    std::swap(this->amulet, original.amulet);
     std::swap(this->rings, original.rings);
     std::swap(this->body, original.body);
     std::swap(this->gauntlets, original.gauntlets);
@@ -133,7 +133,7 @@ namespace tbrpg
     //delete this->quiver;
     //delete this->quick_items;
     //delete this->headgear;
-    //delete this->amulett;
+    //delete this->amulet;
     //delete this->rings;
     //delete this->body;
     //delete this->gauntlets;
@@ -159,7 +159,7 @@ namespace tbrpg
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
     this->headgear = original.headgear;
-    this->amulett = original.amulett;
+    this->amulet = original.amulet;
     this->rings = original.rings;
     this->body = original.body;
     this->gauntlets = original.gauntlets;
@@ -184,7 +184,7 @@ namespace tbrpg
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
     this->headgear = original.headgear;
-    this->amulett = original.amulett;
+    this->amulet = original.amulet;
     this->rings = original.rings;
     this->body = original.body;
     this->gauntlets = original.gauntlets;
@@ -209,7 +209,7 @@ namespace tbrpg
     std::swap(this->quiver, original.quiver);
     std::swap(this->quick_items, original.quick_items);
     std::swap(this->headgear, original.headgear);
-    std::swap(this->amulett, original.amulett);
+    std::swap(this->amulet, original.amulet);
     std::swap(this->rings, original.rings);
     std::swap(this->body, original.body);
     std::swap(this->gauntlets, original.gauntlets);
