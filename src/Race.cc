@@ -36,6 +36,7 @@ namespace tbrpg
   Race::Race()
   {
     ////TODO implement constructor
+    //this->name = nullptr;
     //this->allowed_classes = nullptr;
     //this->dualclass_level = 0;
     //this->specialisations = nullptr;
@@ -50,6 +51,7 @@ namespace tbrpg
   Race::Race(const Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -64,6 +66,7 @@ namespace tbrpg
   Race::Race(Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -78,6 +81,7 @@ namespace tbrpg
   Race::Race(Race&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->specialisations, original.specialisations);
@@ -92,6 +96,7 @@ namespace tbrpg
   Race::~Race()
   {
     ////TODO implement destructor
+    //delete this->name;
     //delete this->allowed_classes;
     //delete this->specialisations;
     //delete this->bonuses;
@@ -108,6 +113,7 @@ namespace tbrpg
   Race& Race::operator =(const Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -124,6 +130,7 @@ namespace tbrpg
   Race& Race::operator =(Race& original)
   {
     (void) original;
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -140,6 +147,7 @@ namespace tbrpg
   Race& Race::operator =(Race&& original)
   {
     (void) original;
+    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->specialisations, original.specialisations);

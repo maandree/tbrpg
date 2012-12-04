@@ -57,6 +57,11 @@ namespace tbrpg
   {
   public:
     /**
+     * The name of the class
+     */
+    std::string name;
+    
+    /**
      * Minimum starting hit points
      */
     int hit_points;
@@ -85,6 +90,11 @@ namespace tbrpg
      * The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
      */
     char proficiencies_each;
+    
+    /**
+     * Whether the extra strength at strength 18 is not fixed to zero
+     */
+    bool extra_strength;
     
     /**
      * The class's experience chart
