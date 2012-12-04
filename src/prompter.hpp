@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <termios.h>
+#include <stropts.h>
 
 
 /**
@@ -205,6 +206,13 @@ namespace tbrpg
    * @return                The selected file, or if loadfile is true, its content
    */
   std::string promptFile(std::string instruction, bool loadfile, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  
+  /**
+   * Print a list in columns
+   * 
+   * @param  items  The items to print
+   */
+  void columnate(std::vector<std::string> items);
   
 }
 
