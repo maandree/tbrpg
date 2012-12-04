@@ -191,9 +191,20 @@ namespace tbrpg
    * @param   alternatives  Alternatives
    * @param   previous      Previous entry hook
    * @param   next          Next entry hook
-   * @return                The select alternative
+   * @return                The selected alternative
    */
   std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
+  
+  /**
+   * Prompt the user for a file
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   loadfile      Whether to load the file
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The selected file, or if loadfile is true, its content
+   */
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)() = prompt_noop, void (*next)() = prompt_noop);
   
 }
 

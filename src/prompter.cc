@@ -928,6 +928,27 @@ namespace tbrpg
     return "";
   }
   
+  /**
+   * Prompt the user for a file
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   loadfile      Whether to load the file
+   * @param   previous      Previous entry hook
+   * @param   next          Next entry hook
+   * @return                The selected file, or if loadfile is true, its content
+   */
+  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(), void (*next)())
+  {
+    std::string input = promptArbitrary(instruction, alternatives, previous, next); // TODO done hook
+    if (input != "")
+      {
+	if (loadfile == false)
+	  return input;
+	; // TODO load file
+      }
+    return "";
+  }
+  
   
   
   #undef __store_tty
