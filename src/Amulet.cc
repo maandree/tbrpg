@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Amulet::Amulet() : Item()
   {
-    this->name = "amulett";
+    this->name = "amulet";
   }
   
   /**

@@ -2826,20 +2826,20 @@ A turn consists of ten rounds. @c TODO  further describe
 @cindex equipment
 
 @menu
-* Personal inventory::         Personal inventory.
-* Quick items::                Quick items.
-* The left hand::              The left hand.
-* The right hand::             The right hand.
-* The quiver::                 The quiver.
-* Body armour slot::           Body armour slot.
-* Gauntlets and bracers slot:: Gauntlets and bracers slot.
-* Headgear slot::              Headgear slot.
-* Amulett and necklace slot::  Amulett and necklace slot.
-* Ring slots::                 Ring slots.
-* Belt and girdle slot::       Belt and girdle slot.
-* Boots slot::                 Boots slot.
-* Cloak slot::                 Cloak slot.
-* Miscellaneous items::        Miscellaneous items.
+* Personal inventory::                Personal inventory.
+* Quick items::                       Quick items.
+* The left hand::                     The left hand.
+* The right hand::                    The right hand.
+* The quiver::                        The quiver.
+* Body armour slot::                  Body armour slot.
+* Gauntlets and bracers slot::        Gauntlets and bracers slot.
+* Headgear slot::                     Headgear slot.
+* Amulet, necklace and locket slot::  Amulet, necklace and locket slot.
+* Ring slots::                        Ring slots.
+* Belt and girdle slot::              Belt and girdle slot.
+* Boots slot::                        Boots slot.
+* Cloak slot::                        Cloak slot.
+* Miscellaneous items::               Miscellaneous items.
 @end menu
 
 
@@ -2986,14 +2986,14 @@ Characters have one slot for headgear.
 See @ref{Headgear} for details.
 
 
-@node Amulett and necklace slot
-@section Amulett and necklace slot
-@cindex amulett
+@node Amulet, necklace and locket slot
+@section Amulet, necklace and locket slot
+@cindex amulet
 @cindex necklace
 
-Characters have one slot for amuletts and necklaces.
+Characters have one slot for amulets, necklaces and locket.
 
-There is no categorisation of amuletts and necklaces, and
+There is no categorisation of amulets, necklaces and locket, and
 they have no natural effect.
 
 
