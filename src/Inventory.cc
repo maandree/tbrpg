@@ -126,24 +126,7 @@ namespace tbrpg
    */
   Inventory::~Inventory()
   {
-<<<<<<< HEAD
     // do nothing
-=======
-    ////TODO implement destructor
-    //delete this->left_hand;
-    //delete this->right_hand;
-    //delete this->quiver;
-    //delete this->quick_items;
-    //delete this->headgear;
-    //delete this->amulet;
-    //delete this->rings;
-    //delete this->body;
-    //delete this->gauntlets;
-    //delete this->girdle;
-    //delete this->boots;
-    //delete this->cloak;
-    //delete this->personal;
->>>>>>> 37a47361f21ce852667de6aa60dfc0d38705eacc
   }
   
   
