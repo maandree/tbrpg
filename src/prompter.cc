@@ -1101,7 +1101,7 @@ namespace tbrpg
     int y = 0, x = 0, i, j = 0, w;
     for (std::string item : items)
       {
-	int i = 0;
+	i = 0;
 	char* cstr =(char*)(item.c_str());
 	while ((*(cstr + i)))
 	  {
