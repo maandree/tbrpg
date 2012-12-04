@@ -2552,9 +2552,9 @@ non-cumulative.
 @section Weapon groups
 @cindex weapon groups
 
-@multitable @columnfractions 0.15 0.15 0.40 0.15 0.15
-@item @b{group}  @tab  @b{weapon}  @tab  {}
-@tab  @b{weapon}  @tab  @b{group}
+@multitable @columnfractions 0.20 0.24 0.12 0.24 0.20
+@item @b{Group}  @tab  @b{weapon}  @tab  {}
+@tab  @b{Weapon}  @tab  @b{group}
 @item Axe  @tab battle axe  @tab {}
 @tab Bastard sword  @tab large swords
 @item Axe  @tab throwing axe  @tab {}
