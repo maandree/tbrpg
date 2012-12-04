@@ -201,6 +201,7 @@ namespace tbrpg
     
   _07:
     {
+      // TODO correct this
       int count = 0;
       std::unordered_map<WeaponGroup, int> proficiencyMap = new std::unordered_map<WeaponGroup, int>();
       {
