@@ -35,6 +35,7 @@ namespace tbrpg
    */
   HalfElf::HalfElf() : Race()
   {
+    this->name = "half-elf";
     this->bonuses.thief_abilities.find_traps = 0;
     this->bonuses.thief_abilities.open_locks = 0;
     this->bonuses.thief_abilities.pick_pockets = 10;

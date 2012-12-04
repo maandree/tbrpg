@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Human::Human() : Race()
   {
+    this->name = "human";
     this->dualclass_level = 4;
     
     this->allowed_classes =
