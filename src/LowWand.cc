@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LowWand::LowWand() : Wand()
   {
-    ////TODO implement constructor
+    this->name = "low wand";
   }
   
   /**

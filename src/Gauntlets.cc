@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gauntlets::Gauntlets() : Item()
   {
-    ////TODO implement constructor
+    this->name = "gauntlets";
   }
   
   /**

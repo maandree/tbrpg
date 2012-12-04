@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Scroll::Scroll() : QuickItem()
   {
-    ////TODO implement constructor
+    this->name = "scroll";
   }
   
   /**

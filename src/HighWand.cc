@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HighWand::HighWand() : Wand()
   {
-    ////TODO implement constructor
+    this->name = "high wand";
   }
   
   /**

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Ring::Ring() : Item()
   {
-    ////TODO implement constructor
+    this->name = "ring";
   }
   
   /**

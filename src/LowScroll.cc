@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LowScroll::LowScroll() : Scroll()
   {
-    ////TODO implement constructor
+    this->name = "low scroll";
   }
   
   /**

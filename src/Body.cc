@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Body::Body() : Item()
   {
+    this->name = "the body of ";
     ////TODO implement constructor
     //this->character = nullptr;
   }
