@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bard::Bard() : Rogue()
   {
+    this->name = "bard";
     this->thac0 = 20;
     this->lore_bonus = 10;
     this->lower_limits.charisma = 9;

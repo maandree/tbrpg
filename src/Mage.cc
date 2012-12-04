@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Mage::Mage() : Wizard()
   {
+    this->name = "mage";
     this->learn_from_scroll = true;
     this->experience_chart.selectable_wizard = {0, 2};
     this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,

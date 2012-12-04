@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Paladin::Paladin() : Warrior()
   {
+    this->name = "paladin";
     this->abilities.saving_throws.breath = 2;
     this->abilities.saving_throws.paralyze_poison_death = 2;
     this->abilities.saving_throws.petrification_polymorph = 2;
