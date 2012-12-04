@@ -54,6 +54,21 @@ namespace tbrpg
      */
     RuleSet ruleset;
     
+    /**
+     * The start values, these are updated by the assign function
+     */
+    int* start;
+    
+    /**
+     * The lower bounds
+     */
+    int* lower;
+    
+    /**
+     * The upper bounds
+     */
+    int* upper;
+    
     
     
   public:
@@ -85,16 +100,13 @@ namespace tbrpg
      * Assign scores
      * 
      * @param   n           Number of printers
-     * @param   start       The start values, these are updated by the function
-     * @param   lower       The lower bounds
-     * @param   upper       The upper bounds
      * @param   unassigned  Unassigned scores
      * @param   extra       Extra data to add as argument to the value printer
      * @param   printer     Value printer, takes arguments: index, value, extra data
      * @param   reroll      Pointer to a reroll function pointer, nullptr if not allowed
      * @return              Whether the assignment was completed
      */
-    virtual bool assign(int n, int* start, int* lower, int* upper, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)() == nullptr) const;
+    virtual bool assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)() == nullptr);
     
     /**
      * Ability score printer
@@ -103,7 +115,12 @@ namespace tbrpg
      * @param  value  The value of the ability
      * @param  data   Pointer to the 100-part of the strenght
      */
-    virtual void abilityPrinter(int index, int value, void* data) const;
+    virtual void abilityPrinter(int index, int value, void* data);
+    
+    /**
+     * Ability score reroll
+     */
+    virtual void abilityReroll();
     
   };
   

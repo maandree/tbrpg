@@ -81,11 +81,6 @@ namespace tbrpg
       alignmentMap[all_alignments[i]] = (char)i;
     
     
-    int* start;
-    int* lower;
-    int* upper;
-    
-    
     Dice abilityDice = Dice(3, 6);
     Dice dice100 = Dice(1, 100);
     
@@ -187,46 +182,21 @@ namespace tbrpg
     
     
   _06:
-    // Abilities abilities.abilities
-    start = new int[6];
-    lower = new int[6];
-    upper = new int[6];
-    sheet.abilities.abilities.strength18 = dice100.roll();
-    lower[0] = sheet.prestige.lower_limits.strength;
-    lower[1] = sheet.prestige.lower_limits.constitution;
-    lower[2] = sheet.prestige.lower_limits.dexterity;
-    lower[3] = sheet.prestige.lower_limits.intelligence;
-    lower[4] = sheet.prestige.lower_limits.wisdom;
-    lower[5] = sheet.prestige.lower_limits.charisma;
-    upper[0] = sheet.race.bonuses.abilities.strength;
-    upper[1] = sheet.race.bonuses.abilities.constitution;
-    upper[2] = sheet.race.bonuses.abilities.dexterity;
-    upper[3] = sheet.race.bonuses.abilities.intelligence;
-    upper[4] = sheet.race.bonuses.abilities.wisdom;
-    upper[5] = sheet.race.bonuses.abilities.charisma;
-    for (i = 0; i < 6; i++)
-      {
-	upper[i] += 18;
-	start[i] = abilityDice.roll();
-	if (start[i] < lower[i])
-	  start[i] = lower[i];
-	lower[i] += upper[i];
-      }
-    ok = assign(6, start, lower, upper, 0,
-		&(sheet.abilities.abilities.strength18),
-		abilityPrinter); // TODO implement reroll
+    abilityReroll();
+    ok = assign(6, 0, &(sheet.abilities.abilities.strength18),
+		abilityPrinter, &(reroll));
     if (ok)
       {
-	sheet.abilities.abilities.strength     = start[0];
-	sheet.abilities.abilities.constitution = start[1];
-	sheet.abilities.abilities.dexterity    = start[2];
-	sheet.abilities.abilities.intelligence = start[3];
-	sheet.abilities.abilities.wisdom       = start[4];
-	sheet.abilities.abilities.charisma     = start[5];
+	sheet.abilities.abilities.strength     = this->start[0];
+	sheet.abilities.abilities.constitution = this->start[1];
+	sheet.abilities.abilities.dexterity    = this->start[2];
+	sheet.abilities.abilities.intelligence = this->start[3];
+	sheet.abilities.abilities.wisdom       = this->start[4];
+	sheet.abilities.abilities.charisma     = this->start[5];
       }
-    delete[] start;
-    delete[] lower;
-    delete[] upper;
+    delete[] this->start;
+    delete[] this->lower;
+    delete[] this->upper;
     if (ok == false)
       goto _05;
     
@@ -279,16 +249,13 @@ namespace tbrpg
    * Assign scores
    * 
    * @param   n           Number of printers
-   * @param   start       The start values, these are updated by the function
-   * @param   lower       The lower bounds
-   * @param   upper       The upper bounds
    * @param   unassigned  Unassigned scores
    * @param   extra       Extra data to add as argument to the value printer
    * @param   printer     Value printer, takes arguments: index, value, extra data
    * @param   reroll      Pointer to a reroll function pointer, nullptr if not allowed
    * @return              Whether the assignment was completed
    */
-  bool CharacterCreator::assign(int n, int* start, int* lower, int* upper, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)()) const
+  bool CharacterCreator::assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)())
   {
     struct termios saved_stty;
     struct termios stty;
@@ -304,7 +271,7 @@ namespace tbrpg
     int* stored = (int*)malloc((n + 1) * sizeof(int));
     
     for (int i = 0; i < n; i++)
-      *(stored + i) = *(start + i);
+      *(stored + i) = *(this->start + i);
     *(stored + n) = leftover;
     
     
@@ -315,7 +282,7 @@ namespace tbrpg
 	  {
 	    if (i == cur)
 	      std::cout << "\033[01;34m";
-	    printer(i, start[i], data);
+	    printer(i, this->start[i], data);
 	    if (i == cur)
 	      std::cout << "\033[21;39m";
 	    std::cout << std::endl;
@@ -341,10 +308,10 @@ namespace tbrpg
 		if (cur == 0)
 		  continue;
 		std::cout << "\033[A\033[K";
-		printer(cur, start[cur], data);
+		printer(cur, this->start[cur], data);
 		cur--;
 		std::cout << "\n\033[2A\033[01;34m\033[K";
-		printer(cur, start[cur], data);
+		printer(cur, this->start[cur], data);
 		std::cout << "\033[21;39m\n";
 	      }
 	    else if (((last == '[') && (c == 'B')) || (c == '\n')) /* down */
@@ -352,15 +319,15 @@ namespace tbrpg
 		if (cur + 1 == n)
 		  continue;
 		std::cout << "\033[A\033[K";
-		printer(cur, start[cur], data);
+		printer(cur, this->start[cur], data);
 		cur++;
 		std::cout << "\n\033[01;34m\033[K";
-		printer(cur, start[cur], data);
+		printer(cur, this->start[cur], data);
 		std::cout << "\033[21;39m\n";
 	      }
 	    else if ((last == '[') && (c == 'C')) /* right */
 	      {
-		if (start[cur] < upper[cur])
+		if (this->start[cur] < this->upper[cur])
 		  {
 		    if (leftover == 0)
 		      std::cout << "\a";
@@ -368,18 +335,18 @@ namespace tbrpg
 		      {
 			leftover--;
 			std::cout << "\033[A\033[01;34m\033[K";
-			printer(cur, ++(start[cur]), data);
+			printer(cur, ++(this->start[cur]), data);
 			std::cout << "\033[21;39m\n";
 		      }
 		  }
 	      }
 	    else if ((last == '[') && (c == 'D')) /* left */
 	      {
-		if (lower[cur] < start[cur])
+		if (this->lower[cur] < this->start[cur])
 		  {
 		    leftover++;
 		    std::cout << "\033[A\033[01;34m\033[K";
-		    printer(cur, --(start[cur]), data);
+		    printer(cur, --(this->start[cur]), data);
 		    std::cout << "\033[21;39m\n";
 		  }
 	      }
@@ -394,13 +361,13 @@ namespace tbrpg
 	      {
 		leftover = *(stored + n);
 		for (int i = 0; i < n; i++)
-		  *(start + i) = *(stored + i);
+		  *(this->start + i) = *(stored + i);
 		break;
 	      }
 	    else if ((c == 's') || (c == 's'))
 	      {
 		for (int i = 0; i < n; i++)
-		  *(stored + i) = *(start + i);
+		  *(stored + i) = *(this->start + i);
 		*(stored + n) = leftover;
 	      }
 	    else if ((reroll != nullptr) && (c == CTRL('R')))
@@ -423,7 +390,7 @@ namespace tbrpg
     std::cout << "\033[H\033[2J";
     for (int i = 0; i < n; i++)
       {
-	printer(i, start[i], data);
+	printer(i, this->start[i], data);
 	std::cout << std::endl;
       }
     std::cout << "\033[?25h" << std::endl; /* show cursor */
@@ -441,22 +408,49 @@ namespace tbrpg
    * @param  value  The value of the ability
    * @param  data   Pointer to the 100-part of the strenght
    */
-  void CharacterCreator::abilityPrinter(int index, int value, void* data) const;
+  void CharacterCreator::abilityPrinter(int index, int value, void* data);
   {
-    if ((index == 0) && (value == 18))
-      std::cout << "Strength: " << value << "/" << *((char*)data);
-    else if (index == 0)
-      std::cout << "Strength: " << value;
-    else if (index == 1)
-      std::cout << "Constitution: " << value;
-    else if (index == 2)
-      std::cout << "Dexterity: " << value;
-    else if (index == 3)
-      std::cout << "Intelligence: " << value;
-    else if (index == 4)
-      std::cout << "Wisdom: " << value;
-    else if (index == 5)
-      std::cout << "Charisma: " << value;
+    int strength18 = *((char*)data);
+    if ((index == 0) && (value == 18) && (strength18 != 0))
+      std::cout << "Strength: " << value << "/" << strength18;
+    else if (index == 0)  std::cout << "Strength: "     << value;
+    else if (index == 1)  std::cout << "Constitution: " << value;
+    else if (index == 2)  std::cout << "Dexterity: "    << value;
+    else if (index == 3)  std::cout << "Intelligence: " << value;
+    else if (index == 4)  std::cout << "Wisdom: "       << value;
+    else if (index == 5)  std::cout << "Charisma: "     << value;
+  }
+  
+  
+  /**
+   * Ability score reroll
+   */
+  virtual void abilityReroll()
+  {
+    this->start = new int[6];
+    this->lower = new int[6];
+    this->upper = new int[6];
+    sheet.abilities.abilities.strength18 = dice100.roll();
+    this->lower[0] = sheet.prestige.lower_limits.strength;
+    this->lower[1] = sheet.prestige.lower_limits.constitution;
+    this->lower[2] = sheet.prestige.lower_limits.dexterity;
+    this->lower[3] = sheet.prestige.lower_limits.intelligence;
+    this->lower[4] = sheet.prestige.lower_limits.wisdom;
+    this->lower[5] = sheet.prestige.lower_limits.charisma;
+    this->upper[0] = sheet.race.bonuses.abilities.strength;
+    this->upper[1] = sheet.race.bonuses.abilities.constitution;
+    this->upper[2] = sheet.race.bonuses.abilities.dexterity;
+    this->upper[3] = sheet.race.bonuses.abilities.intelligence;
+    this->upper[4] = sheet.race.bonuses.abilities.wisdom;
+    this->upper[5] = sheet.race.bonuses.abilities.charisma;
+    for (i = 0; i < 6; i++)
+      {
+	this->upper[i] += 18;
+	this->start[i] = abilityDice.roll();
+	if (this->start[i] < this->lower[i])
+	  this->start[i] = this->lower[i];
+	this->lower[i] += this->upper[i];
+      }
   }
   
 }
