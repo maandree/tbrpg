@@ -171,12 +171,14 @@ ActionSlotChart	                                                           ; Pre
 	std::unordered_map<long long, std::vector<ActionSlot>> slot_map    ; Index combination to action slots map
 
 Class                                                                      ; Prestige class
+	std::string name                                                   ; The name of the class
 	int hit_points                                                     ; Minimum starting hit points
 	int thac0                                                          ; THAC0
 	int lore_bonus                                                     ; Lore bonus per level
 	bool[] alignments                                                  ; Allowed alignments
 	bool learn_from_scroll                                             ; Whether the character can learn wizard spells from scrolls
 	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
+	bool extra_strength                                                ; Whether the extra strength at strength 18 is not fixed to zero
 	ExperienceChart experience_chart                                   ; The class's experience chart
 	SpellProgression spell_progression                                 ; The class's spell progression chart
 	AbilityBonus abilities                                             ; Abilties
@@ -189,6 +191,7 @@ Class                                                                      ; Pre
 	Weapon default_two_hand                                                      ; Weapon used when the character has both his hands free
 
 Race                                                                       ; Race class
+	std::string name                                                   ; The name of the race
 	std::vector<std::vector<Class>> allowed_classes                    ; Allowed classes for the race
 	short dualclass_level                                              ; At which level the dual class is allowed, use 2³¹ − 1 for never
 	std::vector<MagicSchool> specialisations                           ; Allowed magic specialisations
