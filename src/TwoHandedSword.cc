@@ -36,7 +36,7 @@ namespace tbrpg
   TwoHandedSword::TwoHandedSword() : TwoHandedMelee()
   {
     this->name = "two-handed sword";
-    this->weapon_group = LARGE_SWORD;
+    this->weapon_group = LARGE_SWORDS;
     this->speed_factor = 10;
     this->damage_die = 10;
     this->damage_dice = 1;
