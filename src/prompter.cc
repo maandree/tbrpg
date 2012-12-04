@@ -235,17 +235,19 @@ namespace tbrpg
     symbol_decode(prompterdata.tmp, tmp);
     free(prompterdata.tmp);
     std::string str = std::string(tmp);
-    free(tmp);
     
     for (std::string& alternative : prompterdata.alternatives)
       if (str == alternative)
 	{
+	  free(tmp);
 	  prompt_done();
 	  return;
 	}
     
     __bell();
     
+    free(tmp);
+    std::cout << std::endl;
     columnate(prompterdata.alternatives);
     std::flush(std::cout);
   }
@@ -802,7 +804,18 @@ namespace tbrpg
   
 	switch (prompterdata.c)
 	  {
-	  case '\n':                  done();          break;
+	  case '\n':
+	    done();
+	    if (prompterdata.reading)
+	      {
+		std::cout << std::endl << instruction;
+		prompterdata.mark = 0;
+		prompt_print_before(0, prompterdata.before);
+		prompt_print_after(0, prompterdata.after);
+		std::flush(std::cout);
+	      }
+	    break;
+	    
 	  case CTRL('D'):             prompt_done();   break;
 	  case '\b': case 127:        prompt_erase();  break;
           case '\0': case CTRL('C'):  prompt_mark();   break;
@@ -1027,7 +1040,6 @@ namespace tbrpg
     for (int fd = 1; fd <= 3; fd++)
       if (ioctl(fd % 3, TIOCGWINSZ, &termsize) != -1)
 	{
-	  std::cout << "<< " << termsize.ws_row << " " << termsize.ws_col << " " << termsize.ws_xpixel << " " << termsize.ws_ypixel << " >>" << std::endl;
 	  termwidth = termsize.ws_col;
 	  break;
 	}
@@ -1039,7 +1051,6 @@ namespace tbrpg
       {
 	int w = 0, n = 0;
 	char* cstr = (char*)(item.c_str());
-	char* beginning = cstr;
 	char c = 1;
 	symbol sym = 0;
 	while ((c))
@@ -1071,7 +1082,6 @@ namespace tbrpg
 	    else
 	      sym = (sym << 6) | (sym & 0x3F);
 	  }
-	free(beginning);
 	widths.push_back(w);
       }
     for (int w : widths)
@@ -1086,17 +1096,26 @@ namespace tbrpg
     for (int i = 0; i < cols; i++)
       columns.push_back(std::vector<std::string>());
     
-    char* cpad = (char*)malloc(width + 1);
-    for (int i = 0; i < width; i++)
-      *(cpad + i) = ' ';
-    *(cpad + width) = 0;
-    std::string pad = std::string(cpad);
-    free(cpad);
+    char* spaces = (char*)malloc(width * 16 + 1);
     
-    int y = 0, x = 0, j = 0;
+    int y = 0, x = 0, i, j = 0, w;
     for (std::string item : items)
       {
-	std::string cell = item + pad.substr(width - widths[j++]);
+	int i = 0;
+	char* cstr =(char*)(item.c_str());
+	while ((*(cstr + i)))
+	  {
+	    *(spaces + i) = *(cstr + i);
+	    i++;
+	  }
+	w = widths[j++];
+	while (w < width)
+	  {
+	    *(spaces + i++) = ' ';
+	    w++;
+	  }
+	*(spaces + i) = 0;
+	std::string cell = std::string(spaces);
 	columns[x].push_back(cell);
 	if (++y == rows)
 	  {
@@ -1105,8 +1124,10 @@ namespace tbrpg
 	  }
       }
     
+    free(spaces);
+    
     int diff = rows * cols - items.size();
-    if (diff > 2)
+    if ((diff > 2) && (rows > 1))
       {
 	int c = cols - 1;
 	diff--;
@@ -1134,6 +1155,7 @@ namespace tbrpg
     for (int r = 0; r < rows; r++)
       {
 	auto line = lines[r];
+	cols = line.size();
 	for (int c = 0; c < cols; c++)
 	  if (c + 1 == cols)
 	    std::cout << line[c].substr(0, width - 2);
