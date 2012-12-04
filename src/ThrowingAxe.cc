@@ -36,6 +36,7 @@ namespace tbrpg
   ThrowingAxe::ThrowingAxe() : Throwing()
   {
     this->name = "throwing axe";
+    this->weapon_group = AXE;
     this->rate_of_fire = 1;
     this->speed_factor = 4;
     this->damage_die = 6;

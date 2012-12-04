@@ -35,6 +35,8 @@ namespace tbrpg
    */
   Halberd::Halberd() : TwoHandedMelee()
   {
+    this->name = "halberd";
+    this->weapon_group = SPEAR;
     this->speed_factor = 9;
     this->damage_die = 10;
     this->damage_dice = 1;

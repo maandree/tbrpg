@@ -36,6 +36,7 @@ namespace tbrpg
   Fists::Fists() : TwoHandedMelee()
   {
     this->name = "fists";
+    this->weapon_group = BLUNT_WEAPONS;
     this->speed_factor = 2;
     this->damage_die = 2;
     this->damage_dice = 2;

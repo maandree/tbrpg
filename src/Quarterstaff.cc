@@ -36,6 +36,7 @@ namespace tbrpg
   Quarterstaff::Quarterstaff() : TwoHandedMelee()
   {
     this->name = "quarterstaff";
+    this->weapon_group = BLUNT_WEAPONS;
     this->speed_factor = 4;
     this->damage_die = 6;
     this->damage_dice = 1;

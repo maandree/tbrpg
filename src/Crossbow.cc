@@ -36,6 +36,7 @@ namespace tbrpg
   Crossbow::Crossbow() : RangedWeapon()
   {
     this->name = "crossbow";
+    this->weapon_group = MISSILE_WEAPONS;
     this->hands = 2;
     this->rate_of_fire = 1;
   }

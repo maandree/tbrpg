@@ -35,7 +35,8 @@ namespace tbrpg
    */
   LargeSword::LargeSword() : OneHandedMelee()
   {
-    ////TODO implement constructor
+    this->name = "large sword";
+    this->weapon_group = LARGE_SWORD;
   }
   
   /**
