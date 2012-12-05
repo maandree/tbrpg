@@ -26,7 +26,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "NCP.hpp"
+#include "NPC.hpp"
 
 
 
@@ -47,7 +47,7 @@ namespace tbrpg
   /**
    * Store non-player character
    */
-  class Store: public NCP
+  class Store: public NPC
   {
   public:
     /**

@@ -486,7 +486,7 @@ CorpseMaker: Object                       ; Corpse maker class
 	int[] constitution_weight         ; Additional weight for constitution scores
 
 NPC: Creature                             ; Non-player character
-Store: NCP                                ; Store non-player character
+Store: NPC                                ; Store non-player character
 	float cost_multiplier             ; Multipler for the value of the items at which the store sells, it buys at unmodified value
 	int identify_cost                 ; The price at which the stores identifies items, negative if it does not offer identification
 	std::vector<Spell> spells         ; Spells the store (priest) offers to cast
