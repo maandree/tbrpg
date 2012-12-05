@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 
@@ -42,7 +44,7 @@ namespace tbrpg
   /**
    * Used to break circular dependency, all instances must be instances of {@link MapMinor}
    */
-  class _MapMinor
+  class _MapMinor: public Object
   {
   public:
     /**

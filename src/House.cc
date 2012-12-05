@@ -35,6 +35,7 @@ namespace tbrpg
    */
   House::House() : MapMinor()
   {
+    this->class_inheritance.push_back(77);
     ////TODO implement constructor
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   House& House::operator =(const House& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   House& House::operator =(House& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   House& House::operator =(House&& original)
   {
     (void) original;
-
+    std::swap((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   

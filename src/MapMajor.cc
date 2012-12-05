@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MapMajor::MapMajor()
+  MapMajor::MapMajor() : Object()
   {
+    this->class_inheritance.push_back(71);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->visible = false;
@@ -48,7 +49,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMajor::MapMajor(const MapMajor& original)
+  MapMajor::MapMajor(const MapMajor& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -63,7 +64,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMajor::MapMajor(MapMajor& original)
+  MapMajor::MapMajor(MapMajor& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -78,7 +79,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MapMajor::MapMajor(MapMajor&& original)
+  MapMajor::MapMajor(MapMajor&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -110,7 +111,7 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
@@ -127,7 +128,7 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
@@ -144,7 +145,7 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->visible, original.visible);
     std::swap(this->visited, original.visited);
     std::swap(this->visitable, original.visitable);

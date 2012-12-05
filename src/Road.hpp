@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "_MapMinor.hpp"
@@ -44,7 +46,7 @@ namespace tbrpg
   /**
    * A road between major map area
    */
-  class Road
+  class Road: public Object
   {
   public:
     /**

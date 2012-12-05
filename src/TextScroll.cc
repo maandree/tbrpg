@@ -35,6 +35,7 @@ namespace tbrpg
    */
   TextScroll::TextScroll() : Item()
   {
+    this->class_inheritance.push_back(42);
     this->name = "text scroll";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   TextScroll& TextScroll::operator =(const TextScroll& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   TextScroll& TextScroll::operator =(TextScroll& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   TextScroll& TextScroll::operator =(TextScroll&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

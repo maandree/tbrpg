@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  RestInterruption::RestInterruption()
+  RestInterruption::RestInterruption() : Object()
   {
+    this->class_inheritance.push_back(68);
     ////TODO implement constructor
     //this->interrupt_die = 0;
     //this->interrupt_dice = 0;
@@ -47,7 +48,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RestInterruption::RestInterruption(const RestInterruption& original)
+  RestInterruption::RestInterruption(const RestInterruption& original) : Object(original)
   {
     (void) original;
     this->interrupt_die = original.interrupt_die;
@@ -61,7 +62,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RestInterruption::RestInterruption(RestInterruption& original)
+  RestInterruption::RestInterruption(RestInterruption& original) : Object(original)
   {
     (void) original;
     this->interrupt_die = original.interrupt_die;
@@ -75,7 +76,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RestInterruption::RestInterruption(RestInterruption&& original)
+  RestInterruption::RestInterruption(RestInterruption&& original) : Object(original)
   {
     (void) original;
     std::swap(this->interrupt_die, original.interrupt_die);
@@ -106,7 +107,7 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(const RestInterruption& original)
   {
     (void) original;
-    this->interrupt_die = original.interrupt_die;
+    Object::__copy__((Object&)*this, (Object&)original);    this->interrupt_die = original.interrupt_die;
     this->interrupt_dice = original.interrupt_dice;
     this->interrupt_risk = original.interrupt_risk;
     this->creatures = original.creatures;
@@ -122,7 +123,7 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption& original)
   {
     (void) original;
-    this->interrupt_die = original.interrupt_die;
+    Object::__copy__((Object&)*this, (Object&)original);    this->interrupt_die = original.interrupt_die;
     this->interrupt_dice = original.interrupt_dice;
     this->interrupt_risk = original.interrupt_risk;
     this->creatures = original.creatures;
@@ -138,7 +139,7 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption&& original)
   {
     (void) original;
-    std::swap(this->interrupt_die, original.interrupt_die);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->interrupt_die, original.interrupt_die);
     std::swap(this->interrupt_dice, original.interrupt_dice);
     std::swap(this->interrupt_risk, original.interrupt_risk);
     std::swap(this->creatures, original.creatures);

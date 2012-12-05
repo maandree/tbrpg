@@ -94,7 +94,7 @@ namespace tbrpg
   Buckler& Buckler::operator =(const Buckler& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   Buckler& Buckler::operator =(Buckler& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   Buckler& Buckler::operator =(Buckler&& original)
   {
     (void) original;
-
+    std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }
   

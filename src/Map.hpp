@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "MapMinor.hpp"
@@ -45,7 +47,7 @@ namespace tbrpg
   /**
    * The world map
    */
-  class Map
+  class Map: public Object
   {
   public:
     /**

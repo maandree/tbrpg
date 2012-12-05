@@ -94,7 +94,7 @@ namespace tbrpg
   LongBow& LongBow::operator =(const LongBow& original)
   {
     (void) original;
-
+    Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   LongBow& LongBow::operator =(LongBow& original)
   {
     (void) original;
-
+    Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   LongBow& LongBow::operator =(LongBow&& original)
   {
     (void) original;
-
+    std::swap((Bow&)*this, (Bow&)original);
     return *this;
   }
   

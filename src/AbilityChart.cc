@@ -33,8 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  AbilityChart::AbilityChart()
+  AbilityChart::AbilityChart() : Object()
   {
+    this->class_inheritance.push_back(22);
+    
     this->strength     = new AbilityBonus[26];
     this->strength18   = new AbilityBonus[101];
     this->dexterity    = new AbilityBonus[26];
@@ -364,7 +366,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(const AbilityChart& original)
+  AbilityChart::AbilityChart(const AbilityChart& original) : Object(original)
   {
     (void) original;
     this->strength = original.strength;
@@ -381,7 +383,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart& original)
+  AbilityChart::AbilityChart(AbilityChart& original) : Object(original)
   {
     this->strength = original.strength;
     this->strength18 = original.strength18;
@@ -397,7 +399,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart&& original)
+  AbilityChart::AbilityChart(AbilityChart&& original) : Object(original)
   {
     std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
@@ -441,6 +443,8 @@ namespace tbrpg
     delete[] this->intelligence;
     delete[] this->wisdom;
     delete[] this->charisma;
+    (void) original;
+    Object::__copy__((Object&)*this, (Object&)original);
     this->strength = original.strength;
     this->strength18 = original.strength18;
     this->dexterity = original.dexterity;
@@ -466,6 +470,8 @@ namespace tbrpg
     delete[] this->intelligence;
     delete[] this->wisdom;
     delete[] this->charisma;
+    (void) original;
+    Object::__copy__((Object&)*this, (Object&)original);
     this->strength = original.strength;
     this->strength18 = original.strength18;
     this->dexterity = original.dexterity;
@@ -484,6 +490,8 @@ namespace tbrpg
    */
   AbilityChart& AbilityChart::operator =(AbilityChart&& original)
   {
+    (void) original;
+    std::swap((Object&)*this, (Object&)original);
     std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
     std::swap(this->dexterity, original.dexterity);

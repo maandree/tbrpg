@@ -96,7 +96,7 @@ namespace tbrpg
   Sling& Sling::operator =(const Sling& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -109,7 +109,7 @@ namespace tbrpg
   Sling& Sling::operator =(Sling& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -122,7 +122,7 @@ namespace tbrpg
   Sling& Sling::operator =(Sling&& original)
   {
     (void) original;
-
+    std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   

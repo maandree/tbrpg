@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Scroll::Scroll() : QuickItem()
   {
+    this->class_inheritance.push_back(31);
     this->name = "scroll";
     this->quantity_limit = 5;
   }
@@ -93,7 +94,7 @@ namespace tbrpg
   Scroll& Scroll::operator =(const Scroll& original)
   {
     (void) original;
-
+    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   
@@ -106,7 +107,7 @@ namespace tbrpg
   Scroll& Scroll::operator =(Scroll& original)
   {
     (void) original;
-
+    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   
@@ -119,7 +120,7 @@ namespace tbrpg
   Scroll& Scroll::operator =(Scroll&& original)
   {
     (void) original;
-
+    std::swap((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   

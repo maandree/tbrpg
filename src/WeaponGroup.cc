@@ -35,8 +35,9 @@ namespace tbrpg
    * 
    * @param  weaponGroupName  The name of the weapon group
    */
-  WeaponGroup::WeaponGroup(const std::string weaponGroupName)
+  WeaponGroup::WeaponGroup(const std::string weaponGroupName) : Object()
   {
+    this->class_inheritance.push_back(12);
     this->name = weaponGroupName;
   }
   
@@ -45,7 +46,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(const WeaponGroup& original)
+  WeaponGroup::WeaponGroup(const WeaponGroup& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -56,7 +57,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(WeaponGroup& original)
+  WeaponGroup::WeaponGroup(WeaponGroup& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -67,7 +68,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(WeaponGroup&& original)
+  WeaponGroup::WeaponGroup(WeaponGroup&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -95,7 +96,7 @@ namespace tbrpg
   WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -108,7 +109,7 @@ namespace tbrpg
   WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     return *this;
   }
   

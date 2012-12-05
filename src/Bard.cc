@@ -208,7 +208,7 @@ namespace tbrpg
   Bard& Bard::operator =(const Bard& original)
   {
     (void) original;
-
+    Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   
@@ -221,7 +221,7 @@ namespace tbrpg
   Bard& Bard::operator =(Bard& original)
   {
     (void) original;
-
+    Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   
@@ -234,7 +234,7 @@ namespace tbrpg
   Bard& Bard::operator =(Bard&& original)
   {
     (void) original;
-
+    std::swap((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   

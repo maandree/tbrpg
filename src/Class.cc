@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Class::Class()
+  Class::Class() : Object()
   {
+    this->class_inheritance.push_back(16);
     ////TODO implement constructor
     this->lore_bonus = 1;
     this->learn_from_scroll = false;
@@ -104,7 +105,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Class::Class(const Class& original)
+  Class::Class(const Class& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -133,7 +134,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Class::Class(Class& original)
+  Class::Class(Class& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -162,7 +163,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Class::Class(Class&& original)
+  Class::Class(Class&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -218,7 +219,7 @@ namespace tbrpg
   Class& Class::operator =(const Class& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
@@ -249,7 +250,7 @@ namespace tbrpg
   Class& Class::operator =(Class& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
@@ -280,7 +281,7 @@ namespace tbrpg
   Class& Class::operator =(Class&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);

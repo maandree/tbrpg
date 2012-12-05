@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Ring::Ring() : Item()
   {
+    this->class_inheritance.push_back(43);
     this->name = "ring";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Ring& Ring::operator =(const Ring& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Ring& Ring::operator =(Ring& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Ring& Ring::operator =(Ring&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

@@ -35,8 +35,9 @@ namespace tbrpg
    * 
    * @param  damageTypeName  The name of the damage type
    */
-  DamageType::DamageType(std::string damageTypeName)
+  DamageType::DamageType(std::string damageTypeName) : Object()
   {
+    this->class_inheritance.push_back(11);
     this->name = damageTypeName;
   }
   
@@ -45,7 +46,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(const DamageType& original)
+  DamageType::DamageType(const DamageType& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -56,7 +57,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(DamageType& original)
+  DamageType::DamageType(DamageType& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -67,7 +68,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(DamageType&& original)
+  DamageType::DamageType(DamageType&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -94,7 +95,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(const DamageType& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -107,7 +108,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -120,7 +121,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     return *this;
   }
   

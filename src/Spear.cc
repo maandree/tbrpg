@@ -97,7 +97,7 @@ namespace tbrpg
   Spear& Spear::operator =(const Spear& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -110,7 +110,7 @@ namespace tbrpg
   Spear& Spear::operator =(Spear& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -123,7 +123,7 @@ namespace tbrpg
   Spear& Spear::operator =(Spear&& original)
   {
     (void) original;
-
+    std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   

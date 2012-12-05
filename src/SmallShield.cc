@@ -93,7 +93,7 @@ namespace tbrpg
   SmallShield& SmallShield::operator =(const SmallShield& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -106,7 +106,7 @@ namespace tbrpg
   SmallShield& SmallShield::operator =(SmallShield& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -119,7 +119,7 @@ namespace tbrpg
   SmallShield& SmallShield::operator =(SmallShield&& original)
   {
     (void) original;
-
+    std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }
   

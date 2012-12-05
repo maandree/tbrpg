@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Gauntlets::Gauntlets() : Item()
   {
+    this->class_inheritance.push_back(47);
     this->name = "gauntlets";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Gauntlets& Gauntlets::operator =(const Gauntlets& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Gauntlets& Gauntlets::operator =(Gauntlets& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Gauntlets& Gauntlets::operator =(Gauntlets&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

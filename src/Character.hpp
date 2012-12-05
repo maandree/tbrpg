@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "CharacterSheet.hpp"
@@ -44,7 +46,7 @@ namespace tbrpg
   /**
    * Character
    */
-  class Character
+  class Character: public Object
   {
   public:
     /**

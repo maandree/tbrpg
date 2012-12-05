@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_SPELLBOOK_HPP__
-#define __GUARD_SPELLBOOK_HPP__
+#ifndef __GUARD_OBJECT_HPP__
+#define __GUARD_OBJECT_HPP__
 
 
 #include <stdlib.h>
@@ -26,11 +26,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "Object.hpp"
 
-
-
-#include "Spell.hpp"
 
 
 /**
@@ -44,55 +40,50 @@
 namespace tbrpg
 {
   /**
-   * Character spell book
+   * Master super class
    */
-  class SpellBook: public Object
+  class Object
   {
   public:
     /**
-     * Learned spells
+     * Class inheritance vector
      */
-    std::vector<Spell> learned;
-    
-    /**
-     * Memorisations
-     */
-    std::vector<Spell> memorised;
+    std::vector<short> class_inheritance;
     
     
     
     /**
      * Construction
      */
-    SpellBook();
+    Object();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SpellBook(const SpellBook& original);
+    Object(const Object& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    SpellBook(SpellBook& original);
+    Object(Object& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    SpellBook(SpellBook&& original);
+    Object(Object&& original);
     
     
     
     /**
      * Destructor
      */
-    virtual ~SpellBook();
+    virtual ~Object();
     
     
     
@@ -102,7 +93,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual SpellBook& operator =(const SpellBook& original);
+    virtual Object& operator =(const Object& original);
     
     /**
      * Assignment operator
@@ -110,7 +101,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual SpellBook& operator =(SpellBook& original);
+    virtual Object& operator =(Object& original);
     
     /**
      * Move operator
@@ -118,7 +109,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual SpellBook& operator =(SpellBook&& original);
+    virtual Object& operator =(Object&& original);
     
     
     /**
@@ -127,7 +118,25 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operator ==(const SpellBook& other) const;
+    virtual bool operator ==(const Object& other) const;
+    
+    
+    /**
+     * 'Instance of' evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the left comparand is an instance of the right comparand's class
+     */
+    bool operator >=(const Object& other) const;
+    
+    
+    /**
+     * Reversed 'instance of' evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the right comparand is an instance of the left comparand's class
+     */
+    bool operator <=(const Object& other) const;
     
     
   protected:
@@ -137,7 +146,7 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(SpellBook& self, const SpellBook& original);
+    static void __copy__(Object& self, const Object& original);
     
     
   public:
@@ -154,10 +163,10 @@ namespace tbrpg
 namespace std
 {
   template<>
-  class hash<tbrpg::SpellBook>
+  class hash<tbrpg::Object>
   {
   public:
-    size_t operator()(const tbrpg::SpellBook& elem) const
+    size_t operator()(const tbrpg::Object& elem) const
     {
        return elem.hash();
     }
@@ -165,5 +174,5 @@ namespace std
 }
 
 
-#endif//__GUARD_SPELLBOOK_HPP__
+#endif//__GUARD_OBJECT_HPP__
 

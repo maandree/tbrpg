@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  AbilityBonus::AbilityBonus()
+  AbilityBonus::AbilityBonus() : Object()
   {
+    this->class_inheritance.push_back(25);
     ////TODO implement constructor
     //this->bonuses = nullptr;
     //this->thief_abilities = nullptr;
@@ -50,7 +51,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityBonus::AbilityBonus(const AbilityBonus& original)
+  AbilityBonus::AbilityBonus(const AbilityBonus& original) : Object(original)
   {
     (void) original;
     this->bonuses = original.bonuses;
@@ -67,7 +68,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityBonus::AbilityBonus(AbilityBonus& original)
+  AbilityBonus::AbilityBonus(AbilityBonus& original) : Object(original)
   {
     (void) original;
     this->bonuses = original.bonuses;
@@ -84,7 +85,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityBonus::AbilityBonus(AbilityBonus&& original)
+  AbilityBonus::AbilityBonus(AbilityBonus&& original) : Object(original)
   {
     (void) original;
     std::swap(this->bonuses, original.bonuses);
@@ -124,7 +125,7 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(const AbilityBonus& original)
   {
     (void) original;
-    this->bonuses = original.bonuses;
+    Object::__copy__((Object&)*this, (Object&)original);    this->bonuses = original.bonuses;
     this->thief_abilities = original.thief_abilities;
     this->saving_throws = original.saving_throws;
     this->abilities = original.abilities;
@@ -143,7 +144,7 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(AbilityBonus& original)
   {
     (void) original;
-    this->bonuses = original.bonuses;
+    Object::__copy__((Object&)*this, (Object&)original);    this->bonuses = original.bonuses;
     this->thief_abilities = original.thief_abilities;
     this->saving_throws = original.saving_throws;
     this->abilities = original.abilities;
@@ -162,7 +163,7 @@ namespace tbrpg
   AbilityBonus& AbilityBonus::operator =(AbilityBonus&& original)
   {
     (void) original;
-    std::swap(this->bonuses, original.bonuses);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->bonuses, original.bonuses);
     std::swap(this->thief_abilities, original.thief_abilities);
     std::swap(this->saving_throws, original.saving_throws);
     std::swap(this->abilities, original.abilities);

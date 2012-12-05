@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MapMinor::MapMinor() : _MapMinor()
   {
+    this->class_inheritance.push_back(67);
     ////TODO implement constructor
     //this->description = nullptr;
     //this->may_rest = false;
@@ -132,14 +133,6 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(const MapMinor& original)
   {
     (void) original;
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
     _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
@@ -161,14 +154,6 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor& original)
   {
     (void) original;
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
     _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
@@ -190,14 +175,6 @@ namespace tbrpg
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
     (void) original;
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);
     std::swap((_MapMinor&)*this, (_MapMinor&)original);    std::swap(this->description, original.description);
     std::swap(this->may_rest, original.may_rest);
     std::swap(this->area, original.area);

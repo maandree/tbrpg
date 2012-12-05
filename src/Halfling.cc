@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Halfling::Halfling() : Race()
   {
+    this->class_inheritance.push_back(58);
     this->name = "halfling";
     this->bonuses.bonuses.detect_doors = 0.05;
     this->bonuses.bonuses.magic_defence_bonus = 0.75;
@@ -111,7 +112,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(const Halfling& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -124,7 +125,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(Halfling& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -137,7 +138,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(Halfling&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

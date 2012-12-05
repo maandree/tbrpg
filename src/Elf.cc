@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Elf::Elf() : Race()
   {
+    this->class_inheritance.push_back(53);
     this->name = "elf";
     this->bonuses.bonuses.detect_doors = 0.20;
     this->bonuses.abilities.dexterity = 1;
@@ -108,7 +109,7 @@ namespace tbrpg
   Elf& Elf::operator =(const Elf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   Elf& Elf::operator =(Elf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -134,7 +135,7 @@ namespace tbrpg
   Elf& Elf::operator =(Elf&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "Creature.hpp"
@@ -44,7 +46,7 @@ namespace tbrpg
   /**
    * A possible rest interruption
    */
-  class RestInterruption
+  class RestInterruption: public Object
   {
   public:
     /**

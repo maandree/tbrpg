@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Priest::Priest() : Class()
   {
+    this->class_inheritance.push_back(50);
     this->hit_points = 8;
     this->abilities.saving_throws.breath = 16;
     this->abilities.saving_throws.paralyze_poison_death = 10;
@@ -248,7 +249,7 @@ namespace tbrpg
   Priest& Priest::operator =(const Priest& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -261,7 +262,7 @@ namespace tbrpg
   Priest& Priest::operator =(Priest& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -274,7 +275,7 @@ namespace tbrpg
   Priest& Priest::operator =(Priest&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

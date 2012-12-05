@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 
@@ -42,7 +44,7 @@ namespace tbrpg
   /**
    * Weapon proficiency level
    */
-  class Proficiency
+  class Proficiency: public Object
   {
   public:
     /**

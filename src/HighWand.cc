@@ -35,6 +35,7 @@ namespace tbrpg
    */
   HighWand::HighWand() : Wand()
   {
+    this->class_inheritance.push_back(63);
     this->name = "high wand";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   HighWand& HighWand::operator =(const HighWand& original)
   {
     (void) original;
-
+    Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   HighWand& HighWand::operator =(HighWand& original)
   {
     (void) original;
-
+    Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   HighWand& HighWand::operator =(HighWand&& original)
   {
     (void) original;
-
+    std::swap((Wand&)*this, (Wand&)original);
     return *this;
   }
   

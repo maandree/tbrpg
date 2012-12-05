@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Girdle::Girdle() : Item()
   {
+    this->class_inheritance.push_back(45);
     this->name = "girdle";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Girdle& Girdle::operator =(const Girdle& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Girdle& Girdle::operator =(Girdle& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Girdle& Girdle::operator =(Girdle&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

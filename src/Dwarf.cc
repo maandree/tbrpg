@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dwarf::Dwarf() : Race()
   {
+    this->class_inheritance.push_back(57);
     this->name = "dwarf";
     this->bonuses.bonuses.detect_doors = 0.10;
     this->bonuses.bonuses.magic_defence_bonus = 1.00;
@@ -109,7 +110,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(const Dwarf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -122,7 +123,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(Dwarf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -135,7 +136,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(Dwarf&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

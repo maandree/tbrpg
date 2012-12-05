@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Item::Item()
+  Item::Item() : Object()
   {
+    this->class_inheritance.push_back(14);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->description = nullptr;
@@ -56,7 +57,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Item::Item(const Item& original)
+  Item::Item(const Item& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -79,7 +80,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Item::Item(Item& original)
+  Item::Item(Item& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -102,7 +103,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Item::Item(Item&& original)
+  Item::Item(Item&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -145,7 +146,7 @@ namespace tbrpg
   Item& Item::operator =(const Item& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->description = original.description;
     this->armour_class = original.armour_class;
     this->weight = original.weight;
@@ -170,7 +171,7 @@ namespace tbrpg
   Item& Item::operator =(Item& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->description = original.description;
     this->armour_class = original.armour_class;
     this->weight = original.weight;
@@ -195,7 +196,7 @@ namespace tbrpg
   Item& Item::operator =(Item&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->description, original.description);
     std::swap(this->armour_class, original.armour_class);
     std::swap(this->weight, original.weight);

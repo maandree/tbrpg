@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LowScroll::LowScroll() : Scroll()
   {
+    this->class_inheritance.push_back(60);
     this->name = "low scroll";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(const LowScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(LowScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(LowScroll&& original)
   {
     (void) original;
-
+    std::swap((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   

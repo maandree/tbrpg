@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Amulet::Amulet() : Item()
   {
+    this->class_inheritance.push_back(44);
     this->name = "amulet";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Amulet& Amulet::operator =(const Amulet& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Amulet& Amulet::operator =(Amulet& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Amulet& Amulet::operator =(Amulet&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

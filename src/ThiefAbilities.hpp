@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 /**
  * Text based roll playing game
@@ -40,7 +42,7 @@ namespace tbrpg
   /**
    * Thief abilities
    */
-  class ThiefAbilities
+  class ThiefAbilities: public Object
   {
   public:
     /**

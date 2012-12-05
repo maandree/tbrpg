@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Warrior::Warrior() : Class()
   {
+    this->class_inheritance.push_back(52);
     this->proficiencies_each = 2;
     this->hit_points = 10;
     this->thac0 = 22;
@@ -152,7 +153,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(const Warrior& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -165,7 +166,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(Warrior& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -178,7 +179,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(Warrior&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

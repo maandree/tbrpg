@@ -97,7 +97,7 @@ namespace tbrpg
   Dagger& Dagger::operator =(const Dagger& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -110,7 +110,7 @@ namespace tbrpg
   Dagger& Dagger::operator =(Dagger& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -123,7 +123,7 @@ namespace tbrpg
   Dagger& Dagger::operator =(Dagger&& original)
   {
     (void) original;
-
+    std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   

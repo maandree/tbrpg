@@ -35,6 +35,7 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer() : Container(), Lockable()
   {
+    this->class_inheritance.push_back(73);
     this->stuck = true;
   }
   
@@ -92,7 +93,8 @@ namespace tbrpg
   EnvironmentContainer& EnvironmentContainer::operator =(const EnvironmentContainer& original)
   {
     (void) original;
-
+    Container::__copy__((Container&)*this, (Container&)original);
+    Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
   }
   
@@ -105,7 +107,8 @@ namespace tbrpg
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer& original)
   {
     (void) original;
-
+    Container::__copy__((Container&)*this, (Container&)original);
+    Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
   }
   
@@ -118,7 +121,8 @@ namespace tbrpg
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer&& original)
   {
     (void) original;
-
+    std::swap((Container&)*this, (Container&)original);
+    std::swap((Lockable&)*this, (Lockable&)original);
     return *this;
   }
   

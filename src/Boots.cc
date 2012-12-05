@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Boots::Boots() : Item()
   {
+    this->class_inheritance.push_back(46);
     this->name = "warn out boots";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Boots& Boots::operator =(const Boots& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Boots& Boots::operator =(Boots& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Boots& Boots::operator =(Boots&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

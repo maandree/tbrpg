@@ -95,7 +95,7 @@ namespace tbrpg
   Bow& Bow::operator =(const Bow& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -108,7 +108,7 @@ namespace tbrpg
   Bow& Bow::operator =(Bow& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -121,7 +121,7 @@ namespace tbrpg
   Bow& Bow::operator =(Bow&& original)
   {
     (void) original;
-
+    std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour::StuddedLeatherArmour() : BodyArmour()
   {
+    this->class_inheritance.push_back(35);
     this->name = "studded leather armour";
     this->armour_class = 7;
     this->armour_class_modifiers[SLASHING] = -2;
@@ -96,7 +97,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(const StuddedLeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -109,7 +110,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -122,7 +123,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

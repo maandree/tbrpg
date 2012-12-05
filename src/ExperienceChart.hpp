@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 #include "Spell.hpp"
 
@@ -43,7 +45,7 @@ namespace tbrpg
   /**
    * Experience chart
    */
-  class ExperienceChart
+  class ExperienceChart: public Object
   {
   public:
     /**

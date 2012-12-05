@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LeatherArmour::LeatherArmour() : BodyArmour()
   {
+    this->class_inheritance.push_back(34);
     this->name = "leather armour";
     this->armour_class = 8;
     this->armour_class_modifiers[PIERCING] = 2;
@@ -95,7 +96,7 @@ namespace tbrpg
   LeatherArmour& LeatherArmour::operator =(const LeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +109,7 @@ namespace tbrpg
   LeatherArmour& LeatherArmour::operator =(LeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   LeatherArmour& LeatherArmour::operator =(LeatherArmour&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

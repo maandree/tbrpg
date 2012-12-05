@@ -35,6 +35,7 @@ namespace tbrpg
    */
   PlateMail::PlateMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(38);
     this->name = "plate mail";
     this->armour_class = 3;
     this->armour_class_modifiers[SLASHING] = -3;
@@ -94,7 +95,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(const PlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -107,7 +108,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(PlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -120,7 +121,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(PlateMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

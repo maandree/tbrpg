@@ -35,6 +35,7 @@ namespace tbrpg
    */
   HalfElf::HalfElf() : Race()
   {
+    this->class_inheritance.push_back(56);
     this->name = "half-elf";
     this->bonuses.thief_abilities.find_traps = 0;
     this->bonuses.thief_abilities.open_locks = 0;
@@ -105,7 +106,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(const HalfElf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(HalfElf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -131,7 +132,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(HalfElf&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

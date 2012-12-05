@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  RuleSet::RuleSet()
+  RuleSet::RuleSet() : Object()
   {
+    this->class_inheritance.push_back(1);
     ////TODO implement constructor
     this->attack_roll_die = 20;
     this->attack_roll_dice = 1;
@@ -69,7 +70,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RuleSet::RuleSet(const RuleSet& original)
+  RuleSet::RuleSet(const RuleSet& original) : Object(original)
   {
     (void) original;
     this->attack_roll_die = original.attack_roll_die;
@@ -97,7 +98,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RuleSet::RuleSet(RuleSet& original)
+  RuleSet::RuleSet(RuleSet& original) : Object(original)
   {
     (void) original;
     this->attack_roll_die = original.attack_roll_die;
@@ -125,7 +126,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  RuleSet::RuleSet(RuleSet&& original)
+  RuleSet::RuleSet(RuleSet&& original) : Object(original)
   {
     (void) original;
     std::swap(this->attack_roll_die, original.attack_roll_die);
@@ -175,7 +176,7 @@ namespace tbrpg
   RuleSet& RuleSet::operator =(const RuleSet& original)
   {
     (void) original;
-    this->attack_roll_die = original.attack_roll_die;
+    Object::__copy__((Object&)*this, (Object&)original);    this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
     this->critical_miss = original.critical_miss;
@@ -205,7 +206,7 @@ namespace tbrpg
   RuleSet& RuleSet::operator =(RuleSet& original)
   {
     (void) original;
-    this->attack_roll_die = original.attack_roll_die;
+    Object::__copy__((Object&)*this, (Object&)original);    this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
     this->critical_miss = original.critical_miss;
@@ -235,7 +236,7 @@ namespace tbrpg
   RuleSet& RuleSet::operator =(RuleSet&& original)
   {
     (void) original;
-    std::swap(this->attack_roll_die, original.attack_roll_die);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->attack_roll_die, original.attack_roll_die);
     std::swap(this->attack_roll_dice, original.attack_roll_dice);
     std::swap(this->critical_hit, original.critical_hit);
     std::swap(this->critical_miss, original.critical_miss);

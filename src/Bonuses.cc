@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Bonuses::Bonuses()
+  Bonuses::Bonuses() : Object()
   {
+    this->class_inheritance.push_back(3);
     ////TODO implement constructor
     //this->hit_bonus = 0;
     //this->damage_bonus = 0;
@@ -62,7 +63,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bonuses::Bonuses(const Bonuses& original)
+  Bonuses::Bonuses(const Bonuses& original) : Object(original)
   {
     (void) original;
     this->hit_bonus = original.hit_bonus;
@@ -91,7 +92,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bonuses::Bonuses(Bonuses& original)
+  Bonuses::Bonuses(Bonuses& original) : Object(original)
   {
     (void) original;
     this->hit_bonus = original.hit_bonus;
@@ -120,7 +121,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Bonuses::Bonuses(Bonuses&& original)
+  Bonuses::Bonuses(Bonuses&& original) : Object(original)
   {
     (void) original;
     std::swap(this->hit_bonus, original.hit_bonus);
@@ -166,7 +167,7 @@ namespace tbrpg
   Bonuses& Bonuses::operator =(const Bonuses& original)
   {
     (void) original;
-    this->hit_bonus = original.hit_bonus;
+    Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->carry_limit = original.carry_limit;
     this->bashing = original.bashing;
@@ -197,7 +198,7 @@ namespace tbrpg
   Bonuses& Bonuses::operator =(Bonuses& original)
   {
     (void) original;
-    this->hit_bonus = original.hit_bonus;
+    Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->carry_limit = original.carry_limit;
     this->bashing = original.bashing;
@@ -228,7 +229,7 @@ namespace tbrpg
   Bonuses& Bonuses::operator =(Bonuses&& original)
   {
     (void) original;
-    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_bonus, original.damage_bonus);
     std::swap(this->carry_limit, original.carry_limit);
     std::swap(this->bashing, original.bashing);

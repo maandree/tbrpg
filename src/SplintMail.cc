@@ -35,6 +35,7 @@ namespace tbrpg
    */
   SplintMail::SplintMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(37);
     this->name = "splint mail";
     this->armour_class = 4;
     this->armour_class_modifiers[PIERCING] = -1;
@@ -95,7 +96,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(const SplintMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +109,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(SplintMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(SplintMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   PriestScroll::PriestScroll() : Scroll()
   {
+    this->class_inheritance.push_back(61);
     this->name = "priest scroll";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   PriestScroll& PriestScroll::operator =(const PriestScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   PriestScroll& PriestScroll::operator =(PriestScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   PriestScroll& PriestScroll::operator =(PriestScroll&& original)
   {
     (void) original;
-
+    std::swap((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   

@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  SpellBook::SpellBook()
+  SpellBook::SpellBook() : Object()
   {
+    this->class_inheritance.push_back(26);
     ////TODO implement constructor
     //this->learned = nullptr;
     //this->memorised = nullptr;
@@ -45,7 +46,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellBook::SpellBook(const SpellBook& original)
+  SpellBook::SpellBook(const SpellBook& original) : Object(original)
   {
     (void) original;
     this->learned = original.learned;
@@ -57,7 +58,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellBook::SpellBook(SpellBook& original)
+  SpellBook::SpellBook(SpellBook& original) : Object(original)
   {
     (void) original;
     this->learned = original.learned;
@@ -69,7 +70,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellBook::SpellBook(SpellBook&& original)
+  SpellBook::SpellBook(SpellBook&& original) : Object(original)
   {
     (void) original;
     std::swap(this->learned, original.learned);
@@ -99,7 +100,7 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
     (void) original;
-    this->learned = original.learned;
+    Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
   }
@@ -113,7 +114,7 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
     (void) original;
-    this->learned = original.learned;
+    Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
   }
@@ -127,7 +128,7 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
     (void) original;
-    std::swap(this->learned, original.learned);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->learned, original.learned);
     std::swap(this->memorised, original.memorised);
     return *this;
   }

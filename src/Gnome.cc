@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Gnome::Gnome() : Race()
   {
+    this->class_inheritance.push_back(59);
     this->name = "gnome";
     this->bonuses.abilities.intelligence = 1;
     this->bonuses.abilities.wisdom = -1;
@@ -111,7 +112,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(const Gnome& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -124,7 +125,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(Gnome& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -137,7 +138,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(Gnome&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

@@ -106,7 +106,7 @@ namespace tbrpg
   Thief& Thief::operator =(const Thief& original)
   {
     (void) original;
-
+    Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   
@@ -119,7 +119,7 @@ namespace tbrpg
   Thief& Thief::operator =(Thief& original)
   {
     (void) original;
-
+    Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   
@@ -132,7 +132,7 @@ namespace tbrpg
   Thief& Thief::operator =(Thief&& original)
   {
     (void) original;
-
+    std::swap((Rogue&)*this, (Rogue&)original);
     return *this;
   }
   

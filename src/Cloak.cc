@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Cloak::Cloak() : Item()
   {
+    this->class_inheritance.push_back(48);
     this->name = "cloak";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Cloak& Cloak::operator =(const Cloak& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Cloak& Cloak::operator =(Cloak& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Cloak& Cloak::operator =(Cloak&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

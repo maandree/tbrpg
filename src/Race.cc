@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Race::Race()
+  Race::Race() : Object()
   {
+    this->class_inheritance.push_back(17);
     this->dualclass_level = 0x7FFF;
     this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
 			     CONJURATION, DIVINATION, ENCHANTMENT,
@@ -46,7 +47,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Race::Race(const Race& original)
+  Race::Race(const Race& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -61,7 +62,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Race::Race(Race& original)
+  Race::Race(Race& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -76,7 +77,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Race::Race(Race&& original)
+  Race::Race(Race&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -111,7 +112,7 @@ namespace tbrpg
   Race& Race::operator =(const Race& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -128,7 +129,7 @@ namespace tbrpg
   Race& Race::operator =(Race& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -145,7 +146,7 @@ namespace tbrpg
   Race& Race::operator =(Race&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->specialisations, original.specialisations);

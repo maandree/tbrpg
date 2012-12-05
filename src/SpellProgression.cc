@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  SpellProgression::SpellProgression()
+  SpellProgression::SpellProgression() : Object()
   {
+    this->class_inheritance.push_back(10);
     ////TODO implement constructor
     //this->wizard_slots = nullptr;
     //this->priest_slots = nullptr;
@@ -47,7 +48,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellProgression::SpellProgression(const SpellProgression& original)
+  SpellProgression::SpellProgression(const SpellProgression& original) : Object(original)
   {
     (void) original;
     this->wizard_slots = original.wizard_slots;
@@ -61,7 +62,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellProgression::SpellProgression(SpellProgression& original)
+  SpellProgression::SpellProgression(SpellProgression& original) : Object(original)
   {
     (void) original;
     this->wizard_slots = original.wizard_slots;
@@ -75,7 +76,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SpellProgression::SpellProgression(SpellProgression&& original)
+  SpellProgression::SpellProgression(SpellProgression&& original) : Object(original)
   {
     (void) original;
     std::swap(this->wizard_slots, original.wizard_slots);
@@ -109,7 +110,7 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(const SpellProgression& original)
   {
     (void) original;
-    this->wizard_slots = original.wizard_slots;
+    Object::__copy__((Object&)*this, (Object&)original);    this->wizard_slots = original.wizard_slots;
     this->priest_slots = original.priest_slots;
     this->wizard_levels = original.wizard_levels;
     this->priest_levels = original.priest_levels;
@@ -125,7 +126,7 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression& original)
   {
     (void) original;
-    this->wizard_slots = original.wizard_slots;
+    Object::__copy__((Object&)*this, (Object&)original);    this->wizard_slots = original.wizard_slots;
     this->priest_slots = original.priest_slots;
     this->wizard_levels = original.wizard_levels;
     this->priest_levels = original.priest_levels;
@@ -141,7 +142,7 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression&& original)
   {
     (void) original;
-    std::swap(this->wizard_slots, original.wizard_slots);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->wizard_slots, original.wizard_slots);
     std::swap(this->priest_slots, original.priest_slots);
     std::swap(this->wizard_levels, original.wizard_levels);
     std::swap(this->priest_levels, original.priest_levels);

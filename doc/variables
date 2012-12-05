@@ -17,7 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-RuleSet                                  ; Game rules
+Object                                       ; Master super class
+	std::vector<short> class_inheritance ; Class inheritance vector
+
+RuleSet: Object                          ; Game rules
 	char attack_roll_die             ; The number of sides on the dice to roll at the attack roll
 	char attack_roll_dice            ; The number of dice to roll at the attack roll
 	char critical_hit                ; The minimum attack roll needed for a critical hit
@@ -37,7 +40,7 @@ RuleSet                                  ; Game rules
 	std::vector<Race> races          ; Races in the game that new charactes can chooses
 	std::vector<Race> racial_enemies ; Allowed racial enemies
 
-ReputationChart                          ; Reputation chart
+ReputationChart: Object                  ; Reputation chart
 	int[] reaction_adjustment        ; Reaction adjustment for each reputation
 	bool[] wanted                    ; Whether the party is wanted for each reputation
 	int[] killing_innocent           ; Penalty for killing a innocent for each reputation
@@ -51,7 +54,7 @@ ReputationChart                          ; Reputation chart
 	signed char[] evil_reaction      ; Reaction form evil aligned for each reputation
 	char[] alignment_reputation      ; Reputation for each alignment of the protagonist
 
-Bonuses                                  ; Bonuses
+Bonuses: Object                          ; Bonuses
 	int hit_bonus                    ; Hit bonus
 	int damage_bonus                 ; Damage bonus
 	int carry_limit                  ; Weight carry limit in grams
@@ -72,7 +75,7 @@ Bonuses                                  ; Bonuses
 	int luck                         ; Luck bonus
 	float detect_doors               ; Detect secret door bonus
 
-Defence                                  ; Defence class
+Defence: Object                          ; Defence class
 	int melee                        ; Armour class versus melée bonus
 	int missile                      ; Armour class versus missile bonus
 	float fire                       ; Resistance against fire bonus
@@ -82,21 +85,21 @@ Defence                                  ; Defence class
 	float poison                     ; Resistance against poison bonus
 	float physical                   ; Resistance against physical damage bonus
 
-ThiefAbilities                           ; Thief abilities
+ThiefAbilities: Object                   ; Thief abilities
 	int find_traps                   ; Find traps scores
 	int open_locks                   ; Open locks scores
 	int pick_pockets                 ; Pick pockets scores
 	int stealth                      ; Stealth scores
 	int limit                        ; Score limit per abilities bonus
 
-SavingThrows                             ; Saving throws
+SavingThrows: Object                     ; Saving throws
 	int breath                       ; Save versus breath weapons
 	int paralyze_poison_death        ; Save versus paralyzation/poison/death magic
 	int petrification_polymorph      ; Save versus petrification/polymorph
 	int rod_staff_wand               ; Save versus rods/staffs/wands
 	int spell                        ; Save versus spells
 
-Abilities                                ; Ability scores
+Abilities: Object                        ; Ability scores
 	short strength                   ; The strength, excluding extra for 18
 	short strength18                 ; Extra strength for strength 18
 	short constitution               ; The constitution
@@ -105,11 +108,11 @@ Abilities                                ; Ability scores
 	short wisdom                     ; The wisdom
 	short charisma                   ; The charisma
 
-Party                                               ; The players' party
+Party: Object                                       ; The players' party
 	int reputation                              ; The party's reputation
 	std::vector<Character> characters           ; The characters in the party
 
-ExperienceChart                                     ; Experience chart
+ExperienceChart: Object                             ; Experience chart
 	std::vector<int> experience                 ; Required experience for each level
 	std::vector<char> hit_point_die             ; The number of sides of the dice to roll that determines the hit points gained when a level is reached
 	std::vector<char> hit_point_dice            ; The number of dice to roll that determines the hit points gained when a level is reached
@@ -121,7 +124,7 @@ ExperienceChart                                     ; Experience chart
 	std::vector<char> backstabs                 ; The backstab multiplier for each level
 	std::vector<char> thief_abilities           ; Thieg ability scores gained when a level is reached
 
-SpellProgression                                    ; Spell progression chart
+SpellProgression: Object                            ; Spell progression chart
 	std::vector<std::vector<int>> wizard_slots  ; The number of wizard spell slots per character level and spell level
 	std::vector<std::vector<int>> priest_slots  ; The number of priest spell slots per character level and spell level
 	std::vector<int> wizard_levels              ; Wizard castings level for each prestige level
@@ -149,13 +152,13 @@ Weapon: RightHandItem                               ; Weapon item class
 Headgear: Item                           ; Headgear item class
 	bool critical_hit_protection     ; Whether the item protects agains critical hits
 
-DamageType                               ; Damage type
+DamageType: Object                       ; Damage type
 	std::string name                 ; The name of the damage type
 
-WeaponGroup                              ; Weapon group
+WeaponGroup: Object                      ; Weapon group
 	std::string name                 ; The name of the weapon group
 
-Proficiency                              ; Weapon proficiency level
+Proficiency: Object                      ; Weapon proficiency level
 	int hit_bonus                    ; The hit bonus
 	int damage_bonus                 ; The damage bonus
 	char half_attacks                ; the number of half attacks
@@ -163,7 +166,7 @@ Proficiency                              ; Weapon proficiency level
 QuestItem: Item                          ; Quest item class
 	int id                           ; A unique number for the item that the game senario can use for identifying quest items
 
-Item                                                                       ; Item class
+Item: Object                                                               ; Item class
 	std::string name                                                   ; The name of the item
 	std::string description                                            ; Description of the item, text scrolls should use this for their text
 	int armour_class                                                   ; The armour class, use 2³¹ − 1 for none
@@ -178,11 +181,11 @@ Item                                                                       ; Ite
 	AbilityBonus bonuses                                               ; Ability bonuses
 	std::unordered_map<DamageType, int> armour_class_modifiers         ; Armour class modifiers for the damage types
 
-ActionSlotChart	                                                           ; Prestige class–action slot cart
+ActionSlotChart: Object                                                    ; Prestige class–action slot cart
 	std::unordered_map<Class, long long> index_map                     ; Prestige class to OR:able index map
 	std::unordered_map<long long, std::vector<ActionSlot>> slot_map    ; Index combination to action slots map
 
-Class                                                                      ; Prestige class
+Class: Object                                                              ; Prestige class
 	std::string name                                                   ; The name of the class
 	int hit_points                                                     ; Minimum starting hit points
 	int thac0                                                          ; THAC0
@@ -203,14 +206,14 @@ Class                                                                      ; Pre
 	Weapon default_one_hand                                                      ; Weapon used when the character has his left hand free but is holding a shield
 	Weapon default_two_hand                                                      ; Weapon used when the character has both his hands free
 
-Race                                                                       ; Race class
+Race: Object                                                               ; Race class
 	std::string name                                                   ; The name of the race
 	std::vector<std::vector<Class>> allowed_classes                    ; Allowed classes for the race
 	short dualclass_level                                              ; At which level the dual class is allowed, use 2³¹ − 1 for never
 	std::vector<MagicSchool> specialisations                           ; Allowed magic specialisations
 	AbilityBonus bonuses                                               ; Bonuses for the race
 
-CharacterSheet                                                             ; Character sheet
+CharacterSheet: Object                                                     ; Character sheet
 	std::string name                                                   ; The name of the character
 	std::string biography                                              ; The character's biography
 	char colour                                                        ; The character's name colouration
@@ -231,7 +234,7 @@ CharacterSheet                                                             ; Cha
 	MagicSchool specialisation                                         ; The character's magic school specialisation
 	std::vector<Spell> special_abilities                               ; The character's special abilities
 
-Character                                 ; Character
+Character: Object                         ; Character
 	int hit_points                    ; Current hit points
 	char alive                        ; Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
 	int morale                        ; Current morale
@@ -240,13 +243,13 @@ Character                                 ; Character
 	char extra_attacks                ; Extra attacks, increased by one when warriors reach level 7
 	CharacterSheet record             ; The character sheet
 
-MagicSchool                               ; Magic school class
+MagicSchool: Object                       ; Magic school class
 	std::string name                  ; The name of the school
 	std::string coluration            ; The colouration of the magic in the school
 	std::string practicer             ; The name of the practicers of the school
 	std::vector<MagicSchool> opposite ; The opposite schools
 
-Spell                                     ; Spell class
+Spell: Object                             ; Spell class
 	std::string name                  ; Spell name
 	std::string description           ; Spell description
 	bool wizard                       ; Whether the spell is a wizard spell
@@ -263,7 +266,7 @@ Spell                                     ; Spell class
 	signed char offensiveness         ; 1 if offensive, −1 if defensive and 0 if informative
 	MagicSchool school                ; Magic shool
 
-AbilityChart                              ; Ability chart
+AbilityChart: Object                      ; Ability chart
 	AbilityBonus[] strength           ; Strength chart
 	AbilityBonus[] strength18         ; Strength 18/?? chart
 	AbilityBonus[] dexterity          ; Dexterity chart
@@ -272,7 +275,7 @@ AbilityChart                              ; Ability chart
 	AbilityBonus[] wisdom             ; Wisdom chart
 	AbilityBonus[] charisma           ; Charisma chart
 
-Inventory                                  ; Character inventory class
+Inventory: Object                          ; Character inventory class
 	std::vector<Weapon> left_hand      ; Left hand item slots
 	RightHandItem right_hand           ; Right hand item slot
 	std::vector<Ammunition> quiver     ; Quiver slots
@@ -290,7 +293,7 @@ Inventory                                  ; Character inventory class
 Body: Item                                ; Character body item class
 	Character character               ; The dead character
 
-AbilityBonus                              ; Abilities bonus class
+AbilityBonus: Object                      ; Abilities bonus class
 	Bonuses bonuses                   ; Bonuses
 	ThiefAbilities thief_abilities    ; Thief abilities
 	SavingThrows saving_throws        ; Saving throws
@@ -299,7 +302,7 @@ AbilityBonus                              ; Abilities bonus class
 	std::vector<Spell> effects        ; Effects
 	Defence defence                   ; Defences
 
-SpellBook                                 ; Character spell book
+SpellBook: Object                         ; Character spell book
 	std::vector<Spell> learned        ; Learned spells
 	std::vector<Spell> memorised      ; Memorisations
 
@@ -418,13 +421,13 @@ Lockable                                  ; Lockable object
 	bool pickable                     ; Whether the lock is pickable
 	bool bashable                     ; Whether the lock is bashable
 
-Entrance                                  ; Connection between map areas
+Entrance: Object                          ; Connection between map areas
 	bool usable                       ; Whether the entrance can be used
 	std::string description           ; A description of what you see
 	std::string direction             ; The direction to the entrace
 	_MapMinor leads_to                ; The area to which the entrance leads
 
-_MapMinor                                           ; Used to break circular dependency, all instances must be instances of {@link MapMinor}
+_MapMinor: Object                                   ; Used to break circular dependency, all instances must be instances of {@link MapMinor}
 MapMinor: _MapMinor                                 ; Map area
 	std::string description                     ; Descrion of the area
 	bool may_rest                               ; Whether you may rest in the area without renting a room
@@ -436,7 +439,7 @@ MapMinor: _MapMinor                                 ; Map area
 	MapMajor is_in                              ; Which major area to which  the area belongs
 	std::vector<RestInterruption> interruptions ; Possible rest interruptions
 
-RestInterruption                          ; A possible rest interruption
+RestInterruption: Object                  ; A possible rest interruption
 	char interrupt_die                ; The number of sides on the dice to roll to determine whether your sleeps is being interrupted
 	char interrupt_dice               ; The number dice to roll to determine whether your sleeps is being interrupted
 	unsigned char interrupt_risk      ; The highest value for at which your gets interrupted, use 0 for never, and 255 for always
@@ -449,18 +452,18 @@ Creature: Character                       ; A creature in the area
 	bool alive                        ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
 	bool resurrect                    ; Whether the creature is resurrected when the party leaves the area
 
-Map                                       ; The world map
+Map: Object                               ; The world map
 	MapMinor start                    ; The start area of the game senario
 	std::vector<MapMajor> majors      ; All major areas in the world map
 
-MapMajor                                  ; Areas on the world map
+MapMajor: Object                          ; Areas on the world map
 	std::string name                  ; The name of the area
 	bool visible                      ; Whether the area is on the parties map
 	bool visited                      ; Whether the area has been visited
 	bool visitable                    ; Whether the area is visitable
 	bool detectable                   ; Whether the area is detectable
 
-Road                                      ; A road between major map area
+Road: Object                              ; A road between major map area
 	int first_distance                ; Distance to the waylay point in metres
 	int last_distance                 ; Distance from the waylay point in metres
 	char waylay_die                   ; The number of sides on the dice to roll to determine whether you are being waylaid

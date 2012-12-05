@@ -35,6 +35,7 @@ namespace tbrpg
    */
   FullPlateMail::FullPlateMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(39);
     this->name = "full plate mail";
     this->armour_class = 1;
     this->armour_class_modifiers[SLASHING] = -4;
@@ -95,7 +96,7 @@ namespace tbrpg
   FullPlateMail& FullPlateMail::operator =(const FullPlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +109,7 @@ namespace tbrpg
   FullPlateMail& FullPlateMail::operator =(FullPlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   FullPlateMail& FullPlateMail::operator =(FullPlateMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

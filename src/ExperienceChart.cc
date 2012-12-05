@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ExperienceChart::ExperienceChart()
+  ExperienceChart::ExperienceChart() : Object()
   {
+    this->class_inheritance.push_back(9);
     ////TODO implement constructor
     //this->experience = nullptr;
     //this->hit_point_die = nullptr;
@@ -53,7 +54,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ExperienceChart::ExperienceChart(const ExperienceChart& original)
+  ExperienceChart::ExperienceChart(const ExperienceChart& original) : Object(original)
   {
     (void) original;
     this->experience = original.experience;
@@ -73,7 +74,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ExperienceChart::ExperienceChart(ExperienceChart& original)
+  ExperienceChart::ExperienceChart(ExperienceChart& original) : Object(original)
   {
     (void) original;
     this->experience = original.experience;
@@ -93,7 +94,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ExperienceChart::ExperienceChart(ExperienceChart&& original)
+  ExperienceChart::ExperienceChart(ExperienceChart&& original) : Object(original)
   {
     (void) original;
     std::swap(this->experience, original.experience);
@@ -139,7 +140,7 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(const ExperienceChart& original)
   {
     (void) original;
-    this->experience = original.experience;
+    Object::__copy__((Object&)*this, (Object&)original);    this->experience = original.experience;
     this->hit_point_die = original.hit_point_die;
     this->hit_point_dice = original.hit_point_dice;
     this->hit_point_bonus = original.hit_point_bonus;
@@ -161,7 +162,7 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(ExperienceChart& original)
   {
     (void) original;
-    this->experience = original.experience;
+    Object::__copy__((Object&)*this, (Object&)original);    this->experience = original.experience;
     this->hit_point_die = original.hit_point_die;
     this->hit_point_dice = original.hit_point_dice;
     this->hit_point_bonus = original.hit_point_bonus;
@@ -183,7 +184,7 @@ namespace tbrpg
   ExperienceChart& ExperienceChart::operator =(ExperienceChart&& original)
   {
     (void) original;
-    std::swap(this->experience, original.experience);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->experience, original.experience);
     std::swap(this->hit_point_die, original.hit_point_die);
     std::swap(this->hit_point_dice, original.hit_point_dice);
     std::swap(this->hit_point_bonus, original.hit_point_bonus);

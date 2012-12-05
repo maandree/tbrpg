@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "Potion.hpp"
+#include "Object.hpp"
 
 
 /**
@@ -33,11 +33,10 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Potion::Potion() : QuickItem()
+  Object::Object()
   {
-    this->class_inheritance.push_back(30);
-    this->name = "potion";
-    this->quantity_limit = 5;
+    this->class_inheritance = std::vector<short>();
+    this->class_inheritance.push_back(0);
   }
   
   /**
@@ -45,10 +44,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(const Potion& original) : QuickItem(original)
+  Object::Object(const Object& original)
   {
-    (void) original;
-
+    this->class_inheritance = original.class_inheritance;
   }
   
   /**
@@ -56,10 +54,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(Potion& original) : QuickItem(original)
+  Object::Object(Object& original)
   {
-    (void) original;
-
+    this->class_inheritance = original.class_inheritance;
   }
   
   /**
@@ -67,10 +64,9 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Potion::Potion(Potion&& original) : QuickItem(original)
+  Object::Object(Object&& original)
   {
-    (void) original;
-
+    std::swap(this->class_inheritance, original.class_inheritance);
   }
   
   
@@ -78,9 +74,9 @@ namespace tbrpg
   /**
    * Destructor
    */
-  Potion::~Potion()
+  Object::~Object()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -91,10 +87,9 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Potion& Potion::operator =(const Potion& original)
+  Object& Object::operator =(const Object& original)
   {
-    (void) original;
-    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
+    this->class_inheritance = original.class_inheritance;
     return *this;
   }
   
@@ -104,10 +99,9 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Potion& Potion::operator =(Potion& original)
+  Object& Object::operator =(Object& original)
   {
-    (void) original;
-    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
+    this->class_inheritance = original.class_inheritance;
     return *this;
   }
   
@@ -117,10 +111,9 @@ namespace tbrpg
    * @param   original  The moved object, its resourced will be moved
    * @return            The invoked object
    */
-  Potion& Potion::operator =(Potion&& original)
+  Object& Object::operator =(Object&& original)
   {
-    (void) original;
-    std::swap((QuickItem&)*this, (QuickItem&)original);
+    std::swap(this->class_inheritance, original.class_inheritance);
     return *this;
   }
   
@@ -131,10 +124,42 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Potion::operator ==(const Potion& other) const
+  bool Object::operator ==(const Object& other) const
   {
     return this == &other;
   }
+  
+  
+  /**
+   * 'Instance of' evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the left comparand is an instance of the right comparand's class
+   */
+  bool Object::operator >=(const Object& other) const
+  {
+    if (this->class_inheritance.size() < other.class_inheritance.size())
+      return false;
+    
+    for (size_t i = 0, n = other.class_inheritance.size(); i < n; i++)
+      if (this->class_inheritance[i] != other.class_inheritance[i])
+	return false;
+    
+    return true;
+  }
+  
+    
+  /**
+   * Reversed 'instance of' evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the right comparand is an instance of the left comparand's class
+   */
+  bool Object::operator <=(const Object& other) const
+  {
+    return other >= *this;
+  }
+  
   
   /**
    * Copy method
@@ -142,7 +167,7 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  void Potion::__copy__(Potion& self, const Potion& original)
+  void Object::__copy__(Object& self, const Object& original)
   {
     self = original;
   }
@@ -152,7 +177,7 @@ namespace tbrpg
    * 
    * @return  The object's hash code
    */
-  size_t Potion::hash() const
+  size_t Object::hash() const
   {
     return (size_t)this;
   }

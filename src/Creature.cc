@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Creature::Creature() : Character()
   {
+    this->class_inheritance.push_back(69);
     ////TODO implement constructor
     //this->hostile = false;
     //this->x = 0;
@@ -109,10 +110,6 @@ namespace tbrpg
   Creature& Creature::operator =(const Creature& original)
   {
     (void) original;
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
     Character::__copy__((Character&)*this, (Character&)original);    this->hostile = original.hostile;
     this->x = original.x;
     this->y = original.y;
@@ -130,10 +127,6 @@ namespace tbrpg
   Creature& Creature::operator =(Creature& original)
   {
     (void) original;
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
-    Character::__copy__((Character&)*this, (Character&)original);
     Character::__copy__((Character&)*this, (Character&)original);    this->hostile = original.hostile;
     this->x = original.x;
     this->y = original.y;
@@ -151,10 +144,6 @@ namespace tbrpg
   Creature& Creature::operator =(Creature&& original)
   {
     (void) original;
-    std::swap((Character&)*this, (Character&)original);
-    std::swap((Character&)*this, (Character&)original);
-    std::swap((Character&)*this, (Character&)original);
-    std::swap((Character&)*this, (Character&)original);
     std::swap((Character&)*this, (Character&)original);    std::swap(this->hostile, original.hostile);
     std::swap(this->x, original.x);
     std::swap(this->y, original.y);

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Gem::Gem() : Item()
   {
+    this->class_inheritance.push_back(41);
     this->name = "gem";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Gem& Gem::operator =(const Gem& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Gem& Gem::operator =(Gem& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Gem& Gem::operator =(Gem&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

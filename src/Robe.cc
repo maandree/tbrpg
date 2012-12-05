@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Robe::Robe() : BodyArmour()
   {
+    this->class_inheritance.push_back(33);
     this->name = "robe";
   }
   
@@ -92,7 +93,7 @@ namespace tbrpg
   Robe& Robe::operator =(const Robe& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -105,7 +106,7 @@ namespace tbrpg
   Robe& Robe::operator =(Robe& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -118,7 +119,7 @@ namespace tbrpg
   Robe& Robe::operator =(Robe&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ChainMail::ChainMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(36);
     this->name = "chain mail";
     this->armour_class = 5;
     this->armour_class_modifiers[SLASHING] = -2;
@@ -95,7 +96,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(const ChainMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +109,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(ChainMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +122,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(ChainMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

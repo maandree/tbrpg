@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Entrance::Entrance()
+  Entrance::Entrance() : Object()
   {
+    this->class_inheritance.push_back(65);
     ////TODO implement constructor
     //this->usable = false;
     //this->description = nullptr;
@@ -47,7 +48,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Entrance::Entrance(const Entrance& original)
+  Entrance::Entrance(const Entrance& original) : Object(original)
   {
     (void) original;
     this->usable = original.usable;
@@ -61,7 +62,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Entrance::Entrance(Entrance& original)
+  Entrance::Entrance(Entrance& original) : Object(original)
   {
     (void) original;
     this->usable = original.usable;
@@ -75,7 +76,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Entrance::Entrance(Entrance&& original)
+  Entrance::Entrance(Entrance&& original) : Object(original)
   {
     (void) original;
     std::swap(this->usable, original.usable);
@@ -108,7 +109,7 @@ namespace tbrpg
   Entrance& Entrance::operator =(const Entrance& original)
   {
     (void) original;
-    this->usable = original.usable;
+    Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
     this->leads_to = original.leads_to;
@@ -124,7 +125,7 @@ namespace tbrpg
   Entrance& Entrance::operator =(Entrance& original)
   {
     (void) original;
-    this->usable = original.usable;
+    Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
     this->leads_to = original.leads_to;
@@ -140,7 +141,7 @@ namespace tbrpg
   Entrance& Entrance::operator =(Entrance&& original)
   {
     (void) original;
-    std::swap(this->usable, original.usable);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->usable, original.usable);
     std::swap(this->description, original.description);
     std::swap(this->direction, original.direction);
     std::swap(this->leads_to, original.leads_to);
