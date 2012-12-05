@@ -258,12 +258,12 @@ for line in lines:
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long', 'float', 'long float', 'double']
         numericals = ['signed ' + t for t in numericals] + ['unsigned ' + t for t in numericals] + numericals
         (varInit, varCopy, varMove, varFree, classCopy, classMove) = ([], [], [], [], [], [])
+        for superClass in supers:
+            classCopy.append('%s::__copy__((%s&)*this, (%s&)original);' % (superClass, superClass, superClass))
+            classMove.append('std::swap((%s&)*this, (%s&)original);' % (superClass, superClass))
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             space = 0
-            for superClass in supers:
-                classCopy.append('%s::__copy__((%s&)*this, (%s&)original);' % (superClass, superClass, superClass))
-                classMove.append('std::swap((%s&)*this, (%s&)original);' % (superClass, superClass))
             for s in range(0, len(varLine)):
                 if varLine[s] == ' ':
                     space = s
