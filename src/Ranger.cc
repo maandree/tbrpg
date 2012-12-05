@@ -36,7 +36,7 @@ namespace tbrpg
   Ranger::Ranger() : Warrior()
   {
     this->name = "ranger";
-    this->have_racial_enemey = true;
+    this->have_racial_enemy = true;
     for (int i = 0; i < 6; i++)
       this->alignments[i] = false;
     
