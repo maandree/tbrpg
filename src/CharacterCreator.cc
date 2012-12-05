@@ -295,27 +295,32 @@ namespace tbrpg
     start[1] = this->sheet.race.bonuses.thief_abilities.open_locks;
     start[2] = this->sheet.race.bonuses.thief_abilities.pick_pockets;
     start[3] = this->sheet.race.bonuses.thief_abilities.stealth;
+    upper = new int[4];
+    for (int i = 0; i < 4; i++)
+      upper[i] = 0;
     for (Class& c : this->sheet.prestige)
       {
 	start[0] += c.abilities.thief_abilities.find_traps;
 	start[1] += c.abilities.thief_abilities.open_locks;
 	start[2] += c.abilities.thief_abilities.pick_pockets;
 	start[3] += c.abilities.thief_abilities.stealth;
-	assignable += 30; /* TODO get actual value */
+	for (int i = 0; i < 4; i++)
+	  if (start[i] >= 0)
+	    upper[i] += c.abilities.thief_abilities.limit;
+	assignable += c.experience_chart.thief_abilities[1];
       }
     lower = new int[4];
-    upper = new int[4];
     for (int i = 0; i < 4; i++)
-      {
-	upper[i] = 0x7FFFffff;
-	lower[i] = start[i];
-      }
+      lower[i] = start[i];
     labels = (std::string*)malloc(4 * sizeof(std::string));
     *(labels + 0) = "Find traps:   ";
     *(labels + 1) = "Open locks:   ";
     *(labels + 2) = "Pick pockets: ";
     *(labels + 3) = "Stealth:      ";
-    ok = assign(4, assignable, labels, genericPrinter);
+    if ((assignable))
+      ok = assign(4, assignable, labels, genericPrinter);
+    else
+      ok = true;
     free(labels);
     delete[] lower;
     delete[] upper;
