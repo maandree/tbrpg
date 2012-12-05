@@ -236,48 +236,67 @@ namespace tbrpg
     
     
   _07:
-    /*
     {
-      // TODO correct this
+      std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
       int count = 0;
-      std::unordered_map<WeaponGroup, int> proficiencyMap = new std::unordered_map<WeaponGroup, int>();
-      {
-	auto ptr = proficiencyMap.begin();
-	auto end = proficiencyMap.end();
-	while (ptr != end)
-	  {
-	    auto wg = (*ptr++).first.weapon_group;
-	    if (WeaponGroup[wg] = 0)
-	      WeaponGroup[wg] = ++count;
-	  }
-      }
+      Weapon WEAPON_PROTOTYPE = Weapon();
+      
+      int assignScores = 0;
+      int eachScores = 0;
+      for (Class& c : this->sheet.prestige)
+	{
+	  int candidate = c.experience_chart.proficiencies[1];
+	  if (assignScores < candidate)
+	    assignScores = candidate;
+	  candidate = c.proficiencies_each;
+	  if (eachScores < candidate)
+	    eachScores = candidate;
+	  auto ptr = c.can_use.begin();
+	  auto end = c.can_use.end();
+	  while (ptr != end)
+	    {
+	      auto entry = *ptr++;
+	      if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
+		{
+		  WeaponGroup& wg = ((Weapon*)&(entry.first))->weapon_group;
+		  if (proficiencyMap[wg] == 0)
+		    proficiencyMap[wg] = ++count;
+		}
+	    }
+	}
+      
       this->start = new int[count];
       this->lower = new int[count];
       this->upper = new int[count];
       for (int i = 0; i < count; i++)
 	{
 	  this->start[i] = this->lower[i] = 0;
-	  this->upper[i] = this->sheet.prestige.proficiencies_each;
+	  this->upper[i] = eachScores;
 	}
-      labels = (std::string)malloc(count * sizeof(std::string));
-      for (WeaponGroup weapongroup : WEAPON_GROUPS)
+      
+      labels = (std::string*)malloc(count * sizeof(std::string));
+      for (WeaponGroup& weapongroup : WEAPON_GROUPS)
 	if (proficiencyMap[weapongroup] != 0)
 	  labels[proficiencyMap[weapongroup] - 1] = weapongroup.name;
-      ok = assign(count, this->sheet.prestige.experience_chart.proficiencies[1], labels, genericPrinter);
+      
+      ok = assign(count, assignScores, labels, genericPrinter);
+      
       delete[] this->lower;
       delete[] this->upper;
       free(labels);
+      
+      if (ok == false)
+	goto _06;
+      
       this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
-      for (WeaponGroup weapongroup : WEAPON_GROUPS)
+      for (WeaponGroup& weapongroup : WEAPON_GROUPS)
 	if (proficiencyMap[weapongroup] != 0)
 	  this->sheet.proficiencies[weapongroup] = this->start[proficiencyMap[weapongroup] - 1];
-      delete proficiencyMap;
-      delete[] this->start;
     }
-    */
     
     
   _08:
+    /* Racial enemy */
     this->sheet.racial_enemy = nullptr;
     for (Class& c : this->sheet.prestige)
       if (c.have_racial_enemy)
@@ -289,6 +308,7 @@ namespace tbrpg
 	  break;
 	}
     
+    /* Thief abilities */
     assignable = 0;
     start = new int[4];
     start[0] = this->sheet.race.bonuses.thief_abilities.find_traps;
@@ -338,6 +358,7 @@ namespace tbrpg
 	goto _07;
       }
     
+    /* Spells */
     {
       int wizardAssign0 = 0;
       int wizardAssign1 = 0;
