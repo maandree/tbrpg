@@ -180,16 +180,16 @@ namespace tbrpg
   static WeaponGroup MISSILE_WEAPONS = WeaponGroup("missile weapons");
   
   /**
-   * Spear
+   * Pole-arm (pole weapons)
    */
-  static WeaponGroup SPEAR = WeaponGroup("spear");
+  static WeaponGroup POLEARM = WeaponGroup("pole-arm");
   
   
   /**
    * All weapon groups
    */
   static std::vector<WeaponGroup> WEAPON_GROUPS = {BOW, SPIKED_WEAPONS, SMALL_SWORDS, LARGE_SWORDS,
-						   AXE, BLUNT_WEAPONS, MISSILE_WEAPONS, SPEAR};
+						   AXE, BLUNT_WEAPONS, MISSILE_WEAPONS, POLEARM};
   
 }
 
