@@ -36,13 +36,12 @@ namespace tbrpg
   Creature::Creature() : Character()
   {
     this->class_inheritance.push_back(69);
-    ////TODO implement constructor
-    //this->hostile = false;
-    //this->x = 0;
-    //this->y = 0;
-    //this->alive = false;
-    //this->resurrect = false;
-    //this->experience = 0;
+    this->experience = 1;
+    this->hostile = true;
+    this->x = 0;
+    this->y = 0;
+    this->alive = true;
+    this->resurrect = true;
   }
   
   /**
