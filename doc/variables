@@ -33,6 +33,7 @@ RuleSet                                  ; Game rules
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
 	std::vector<Spell> spells        ; All spells, very useful for when new characters selects spells, or to restrict imported characters
 	std::vector<Race> races          ; Races in the game that new charactes can chooses
+	std::vector<Race> racial_enemies ; Allowed racial enemies
 
 ReputationChart                          ; Reputation chart
 	int[] reaction_adjustment        ; Reaction adjustment for each reputation
@@ -185,6 +186,7 @@ Class                                                                      ; Pre
 	bool learn_from_scroll                                             ; Whether the character can learn wizard spells from scrolls
 	char proficiencies_each                                            ; The number of proficiencies scores that may be assigned to each weapon proficiency for new level 1 characters
 	bool extra_strength                                                ; Whether the extra strength at strength 18 is not fixed to zero
+	bool have_racial_enemy                                             ; Whether characters of this class have a racial enemy
 	ExperienceChart experience_chart                                   ; The class's experience chart
 	SpellProgression spell_progression                                 ; The class's spell progression chart
 	AbilityBonus abilities                                             ; Abilties

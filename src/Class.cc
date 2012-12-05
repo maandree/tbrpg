@@ -40,6 +40,7 @@ namespace tbrpg
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
     this->extra_strength = false;
+    this->have_racial_enemey = false;
     //this->abilities = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
@@ -99,6 +100,7 @@ namespace tbrpg
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
+    this->have_racial_enemy = original.have_racial_enemy;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -127,6 +129,7 @@ namespace tbrpg
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
+    this->have_racial_enemy = original.have_racial_enemy;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -155,6 +158,7 @@ namespace tbrpg
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
     std::swap(this->extra_strength, original.extra_strength);
+    std::swap(this->have_racial_enemy, original.have_racial_enemy);
     std::swap(this->experience_chart, original.experience_chart);
     std::swap(this->spell_progression, original.spell_progression);
     std::swap(this->abilities, original.abilities);
@@ -207,6 +211,7 @@ namespace tbrpg
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
+    this->have_racial_enemy = original.have_racial_enemy;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -237,6 +242,7 @@ namespace tbrpg
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
+    this->have_racial_enemy = original.have_racial_enemy;
     this->experience_chart = original.experience_chart;
     this->spell_progression = original.spell_progression;
     this->abilities = original.abilities;
@@ -267,6 +273,7 @@ namespace tbrpg
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
     std::swap(this->extra_strength, original.extra_strength);
+    std::swap(this->have_racial_enemy, original.have_racial_enemy);
     std::swap(this->experience_chart, original.experience_chart);
     std::swap(this->spell_progression, original.spell_progression);
     std::swap(this->abilities, original.abilities);

@@ -124,6 +124,11 @@ namespace tbrpg
      */
     std::vector<Race> races;
     
+    /**
+     * Allowed racial enemies
+     */
+    std::vector<Race> racial_enemies;
+    
     
     
     /**
