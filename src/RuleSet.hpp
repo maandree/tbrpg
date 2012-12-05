@@ -72,6 +72,36 @@ namespace tbrpg
     char critical_miss;
     
     /**
+     * Natural regenation when idle: hit points
+     */
+    int idle_healing;
+    
+    /**
+     * Natural regenation when idle: turn interval
+     */
+    char idle_healing_turns;
+    
+    /**
+     * Natural regenation when in combat: hit points
+     */
+    int combat_healing;
+    
+    /**
+     * Natural regenation when in combat: turn interval
+     */
+    char combat_healing_turns;
+    
+    /**
+     * Natural regenation when resting: hit points
+     */
+    int rest_healing;
+    
+    /**
+     * Natural regenation when resting: turn interval
+     */
+    char rest_healing_turns;
+    
+    /**
      * The reputation chart
      */
     ReputationChart reputation_chart;

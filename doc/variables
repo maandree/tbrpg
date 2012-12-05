@@ -22,6 +22,12 @@ RuleSet                                  ; Game rules
 	char attack_roll_dice            ; The number of dice to roll at the attack roll
 	char critical_hit                ; The minimum attack roll needed for a critical hit
 	char critical_miss               ; The maximum attack roll needed for a critical miss
+	int idle_healing                 ; Natural regenation when idle: hit points
+	char idle_healing_turns          ; Natural regenation when idle: turn interval
+	int combat_healing               ; Natural regenation when in combat: hit points
+	char combat_healing_turns        ; Natural regenation when in combat: turn interval
+	int rest_healing                 ; Natural regenation when resting: hit points
+	char rest_healing_turns          ; Natural regenation when resting: turn interval
 	ReputationChart reputation_chart ; The reputation chart
 	AbilityChart ability_chart       ; The ability chart
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
