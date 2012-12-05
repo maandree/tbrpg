@@ -53,6 +53,7 @@ namespace tbrpg
     (symbol*)malloc((CHARS) * sizeof(symbol))
   
   #define  ESC  "\033"  /* since \e generates a non-ISO-standard warning */
+  #define  CSI  ESC "["
   
   
   /**
@@ -158,11 +159,11 @@ namespace tbrpg
 	*(tmps + end) = 0;
 	symbol_decode(tmps + start, tmpc + start);
 	free(tmps);
-	printf(del ? "%s " ESC "[%liD" : "%s" ESC "[%liD", tmpc + start, end - start + (del ? 1 : 0));
+	printf(del ? "%s " CSI "%liD" : "%s" CSI "%liD", tmpc + start, end - start + (del ? 1 : 0));
 	free(tmpc);
       }
     else if (del)
-      printf(" " ESC "[D");
+      printf(" " CSI "D");
   }
   
   /**
@@ -173,7 +174,7 @@ namespace tbrpg
   void prompt_redraw(long position)
   {
     if (position > 0)
-      printf(ESC "[%liD", position);
+      printf(CSI "%liD", position);
     if (prompterdata.mark <= 0)
       prompt_print_before(0, prompterdata.before);
     else if (prompterdata.mark - 1 >= prompterdata.before)
@@ -181,16 +182,16 @@ namespace tbrpg
     else
       {
 	prompt_print_before(0, prompterdata.mark - 1);
-	printf(ESC "[44m");
+	printf(CSI "44m");
 	prompt_print_before(prompterdata.mark - 1, prompterdata.before);
-	printf(ESC "[49m");
+	printf(CSI "49m");
       }
     prompt_print_after(0, prompterdata.after);
     if (prompterdata.mark - 1 > prompterdata.before)
       {
-	printf(ESC "[44m");
+	printf(CSI "44m");
 	prompt_print_after(0, prompterdata.mark - 1 - prompterdata.before);
-	printf(ESC "[49m");
+	printf(CSI "49m");
       }
   }
   
@@ -327,7 +328,7 @@ namespace tbrpg
     *(prompterdata.bp + prompterdata.before++) = sym;
     
     if ((prompterdata.mark > 0) && (prompterdata.mark < prompterdata.before))
-      printf(ESC "[44m");
+      printf(CSI "44m");
     if (sym > 127)
       {
 	char* chars = (char*)malloc(9);
@@ -343,7 +344,7 @@ namespace tbrpg
     else
       printf("%c", (char)(prompterdata.c));
     if ((prompterdata.mark > 0) && (prompterdata.mark < prompterdata.before))
-      printf(ESC "[49m");
+      printf(CSI "49m");
     
     if (prompterdata.after > 0)
       {
@@ -354,9 +355,9 @@ namespace tbrpg
 	    prompt_print_after(0, prompterdata.after);
 	    if (prompterdata.mark - 1 > prompterdata.before)
 	      {
-		printf(ESC "[44m");
+		printf(CSI "44m");
 		prompt_print_after(0, prompterdata.mark - 1 - prompterdata.before);
-		printf(ESC "[49m");
+		printf(CSI "49m");
 	      }
 	  }
       }
@@ -455,7 +456,7 @@ namespace tbrpg
       {
 	if (prompterdata.mark > 0)
 	  prompt_print_after(0, prompterdata.after);
-	printf(ESC "[%liD", prompterdata.before);
+	printf(CSI "%liD", prompterdata.before);
 	while (prompterdata.before != 0)
 	  {
 	    if (prompterdata.after == prompterdata.apz)
@@ -473,9 +474,9 @@ namespace tbrpg
 	prompterdata.before = 0;
 	if (prompterdata.mark > 0)
 	  {
-	    printf(ESC "[44m");
+	    printf(CSI "44m");
 	    prompt_print_after(0, prompterdata.mark - 1);
-	    printf(ESC "[49m");
+	    printf(CSI "49m");
 	  }
 	prompt_redraw(prompterdata.before);
 	std::flush(std::cout);
@@ -494,7 +495,7 @@ namespace tbrpg
     long i;
     if (prompterdata.after > 0)
       {
-	printf(ESC "[%liC", prompterdata.after);
+	printf(CSI "%liC", prompterdata.after);
 	while (prompterdata.after != 0)
 	  {
 	    if (prompterdata.before == prompterdata.bpz)
@@ -536,7 +537,7 @@ namespace tbrpg
 	prompterdata.mark = -(prompterdata.before + 1);
 	prompt_redraw(cursor);
 	if (prompterdata.after > 0)
-	  printf(ESC "[%liC", prompterdata.after);
+	  printf(CSI "%liC", prompterdata.after);
 	if (del &  1)  printf(" ");
 	if (del &  2)  printf("  ");
 	if (del &  4)  printf("    ");
@@ -544,7 +545,7 @@ namespace tbrpg
 	if (del & 16)  printf("                ");
         for (i = 0; i + 32 <= del; i += 32)
 	  printf("                                ");
-	printf(ESC "[%liD", prompterdata.after + del);
+	printf(CSI "%liD", prompterdata.after + del);
 	std::flush(std::cout);
       }
     else if (store == false)
@@ -580,7 +581,7 @@ namespace tbrpg
     else if (prompterdata.before > 0)
       {
 	prompterdata.before--;
-	printf(ESC "[D");
+	printf(CSI "D");
 	prompt_print_after(0, prompterdata.after, true);
 	std::flush(std::cout);
 	bool neg = prompterdata.mark < 0;
@@ -628,13 +629,13 @@ namespace tbrpg
       }
     else
       {
-	printf(ESC "[D");
+	printf(CSI "D");
 	prompt_left_buffer();
 	if (prompterdata.mark - 1 > prompterdata.before)
 	  {
-	    printf(ESC "[44m");
+	    printf(CSI "44m");
 	    prompt_print_after(0, 1);
-	    printf(ESC "[49m");
+	    printf(CSI "49m");
 	  }
 	else if (prompterdata.mark - 1 <= prompterdata.before)
 	  prompt_print_after(0, 1);
@@ -673,15 +674,15 @@ namespace tbrpg
       {
 	if ((prompterdata.mark - 1 <= prompterdata.before) && (prompterdata.mark > 0))
 	  {
-	    printf(ESC "[44m");
+	    printf(CSI "44m");
 	    prompt_print_after(0, 1);
-	    printf(ESC "[49m");
+	    printf(CSI "49m");
 	  }
-	printf(ESC "[C");
+	printf(CSI "C");
 	prompt_right_buffer();
         if (prompterdata.mark - 1 >= prompterdata.before)
 	  {
-	    printf(ESC "[D");
+	    printf(CSI "D");
 	    prompt_print_before(prompterdata.before - 1, prompterdata.before);
 	  }
 	std::flush(std::cout);
@@ -695,7 +696,7 @@ namespace tbrpg
    */
   void prompt_redraw(std::string instruction)
   {
-    std::cout << ESC "[H" ESC "[2J" << instruction;
+    std::cout << CSI "H" CSI "2J" << instruction;
     prompt_redraw(0);
     std::flush(std::cout);
   }
@@ -717,13 +718,13 @@ namespace tbrpg
     long n, i, b = prompterdata.before;
     if (prompterdata.mark > prompterdata.before)
       {
-	printf(ESC "[%liC", n = prompterdata.mark - prompterdata.before);
+	printf(CSI "%liC", n = prompterdata.mark - prompterdata.before);
 	for (i = 0; i < n; i++)
 	  prompt_right_buffer();
       }
     else
       {
-	printf(ESC "[%liD", n = prompterdata.before - prompterdata.mark);
+	printf(CSI "%liD", n = prompterdata.before - prompterdata.mark);
 	for (i = 0; i < n; i++)
 	  prompt_left_buffer();
       }
@@ -1069,7 +1070,7 @@ namespace tbrpg
 	if (below < 0)
 	  below = 0;
 	
-	std::cout << "\033[?1049h\033[H\033[2J\033[?25l" << instruction << std::endl
+	std::cout << CSI "?1049h" CSI "H" CSI "2J" CSI "?25l" << instruction << std::endl
 		  << "Remaining: " << remaining << std::endl << std::endl;
 	
 	bool sel;
@@ -1077,110 +1078,135 @@ namespace tbrpg
 	  {
 	    j = i + above;
 	    sel = *(selected + (j >> 3)) & (1 << (j & 7));
-	    std::cout << (sel ? "[\033[01;32mX\033[21;39m] " : "[ ] ")
-		      << (i + above == current ? "\033[01;34m" : "")
+	    std::cout << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+		      << (i + above == current ? CSI "01;34m" : "")
 	              << items[i + above]
-		      << (i + above == current ? "\033[21;39m" : "")
+		      << (i + above == current ? CSI "21;39m" : "")
 		      << std::endl;
 	  }
 	
-	std::cout << "\033[" << termheight << ";1H\033[K"
+	std::cout << CSI << termheight << ";1H" CSI "K"
 		  << "(above: " << above << ")(below: " << below << ")";
 	std::flush(std::cout);
-	
-	
-	char c;
-	if (read(STDIN_FILENO, &c, 1) <= 0)
-	  c = '\n';
 	
 	
 	bool readinginner = true;
 	while (reading && readinginner)
 	  {
-	  switch (c)
-	    {
-	    case '\n':
-	    case CTRL('D'):
-	      if (remaining > 0)
-		{
-		  __bell();
-		  break;
-		}
-	      reading = false;
-	      break;
-	      
-	    case CTRL('L'):
-	      readinginner = false;
-	      break;
-	      
-	    case CTRL('G'):
-	      for (size_t i = 0; i < selectedn; i++)
-	        *(selected + i) = 0;
-	      reading = false;
-	      break;
-	      
-	    case ' ':
-	    case 'C':
-	    case 'D':
-	      sel = *(selected + (current >> 3)) & (1 << (current & 7));
-	      if (c == 'C')
-		{
+	    char c;
+	    if (read(STDIN_FILENO, &c, 1) <= 0)
+	      c = '\n';
+	    
+	    switch (c)
+	      {
+	      case '\n':
+	      case CTRL('D'):
+		if (remaining > 0)
+		  {
+		    __bell();
+		    break;
+		  }
+		reading = false;
+		break;
+		
+	      case CTRL('L'):
+		readinginner = false;
+		break;
+		
+	      case CTRL('G'):
+		for (size_t i = 0; i < selectedn; i++)
+		  *(selected + i) = 0;
+		reading = false;
+		break;
+		
+	      case ' ':
+	      case 'C':
+	      case 'D':
+		sel = *(selected + (current >> 3)) & (1 << (current & 7));
+		if (c == 'C')
+		  {
+		    if (sel)
+		      break;
+		  }
+		else if (c == 'D')
 		  if (sel == false)
 		    break;
-		}
-	      else if (c == 'D')
-		if (sel)
-		  break;
-	      sel ^= true;
-	      remaining += sel ? -1 : 1;
-	      if (remaining < 0)
-		{
-		  remaining++;
-		  __bell();
-		  break;
-		}
-	      *(selected + (current >> 3)) ^= 1 << (current & 7);
-	      std::cout << "\033[" << (current - above + 4) <<  ";1H"
-			<< (sel ? "[\033[01;32mX\033[21;39m] " : "[ ] ")
-			<< "\033[01;34m" << items[current] << "\033[21;39m";
-	      std::flush(std::cout);
-	      break;
-	      
-	    case 'A':
-	      current--;
-	      if (current < 0)
-		{
-		  current++;
-		  break;
-		}
-	      if (current < above)
-		{
-		  above -= ((termheight - 5) >> 1) | ((termheight - 5) & 1);
-		  if (above < 0)
-		    above = 0;
-		  readinginner = false;
-		}
-	      break;
-	      
-	    case 'B':
-	      current++;
-	      if (current == (long)(items.size()))
-		{
-		  current--;
-		  break;
-		}
-	      if (current - above >= disp)
-		{
-		  above += ((termheight - 5) >> 1) | ((termheight - 5) & 1);
-		  readinginner = false;
-		}
-	      break;
-	    }
+		sel ^= true;
+		remaining += sel ? -1 : 1;
+		if (remaining < 0)
+		  {
+		    remaining++;
+		    __bell();
+		    break;
+		  }
+		*(selected + (current >> 3)) ^= 1 << (current & 7);
+		std::cout << CSI << (current - above + 4) <<  ";1H"
+			  << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+			  << CSI "01;34m" << items[current] << CSI "21;39m"
+		          << CSI "2;1H" CSI "K"
+			  << "Remaining: " << remaining;
+		std::flush(std::cout);
+		break;
+		
+	      case 'A':
+		current--;
+	        if (current < 0)
+		  {
+		    current++;
+		    break;
+		  }
+		if (current < above)
+		  {
+		    above -= ((termheight - 5) >> 1) | ((termheight - 5) & 1);
+		    if (above < 0)
+		      above = 0;
+		    readinginner = false;
+		  }
+		else
+		  {
+		    sel = *(selected + ((current + 1) >> 3)) & (1 << ((current + 1) & 7));
+		    std::cout << CSI << (current + 1 - above + 4) <<  ";1H"
+			      << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+			      << items[current + 1];
+		    sel = *(selected + (current >> 3)) & (1 << (current & 7));
+		    std::cout << CSI << (current - above + 4) <<  ";1H"
+			      << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+			      << CSI "01;34m" << items[current] << CSI "21;39m";
+		    std::flush(std::cout);
+		  }
+		break;
+		
+	      case 'B':
+		current++;
+		if (current == (long)(items.size()))
+		  {
+		    current--;
+		    break;
+		  }
+		if (current >= disp + above)
+		  {
+		    above += ((termheight - 5) >> 1) | ((termheight - 5) & 1);
+		    readinginner = false;
+		  }
+		else
+		  {
+		    sel = *(selected + ((current - 1) >> 3)) & (1 << ((current - 1) & 7));
+		    std::cout << CSI << (current - 1 - above + 4) <<  ";1H"
+			      << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+			      << items[current - 1];
+		    sel = *(selected + (current >> 3)) & (1 << (current & 7));
+		    std::cout << CSI << (current - above + 4) <<  ";1H"
+			      << (sel ? "[" CSI "01;32mX" CSI "21;39m] " : "[ ] ")
+			      << CSI "01;34m" << items[current] << CSI "21;39m";
+		    std::flush(std::cout);
+		  }
+		break;
+	      }
 	  }
       }
     
     
-    std::cout << "\033[?1049l\033[H\033[2J\033[?25h";
+    std::cout << CSI "?1049l" CSI "H" CSI "2J" CSI "?25h";
     std::flush(std::cout);
     __restore_tty();
     
@@ -1337,6 +1363,8 @@ namespace tbrpg
   #undef __restore_tty
   #undef __bell
   #undef __malloc_string
+  #undef CSI
+  #undef ESC
   
 }
 
