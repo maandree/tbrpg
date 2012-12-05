@@ -87,6 +87,7 @@ ThiefAbilities                           ; Thief abilities
 	int open_locks                   ; Open locks scores
 	int pick_pockets                 ; Pick pockets scores
 	int stealth                      ; Stealth scores
+	int limit                        ; Score limit per abilities bonus
 
 SavingThrows                             ; Saving throws
 	int breath                       ; Save versus breath weapons
@@ -117,6 +118,8 @@ ExperienceChart                                     ; Experience chart
 	std::vector<int> selectable_priest          ; The number of priest spells that can be selected for learning when a level is reached
 	std::vector<std::vector<Spell>> new_spells  ; Spells that are learned to when a level is reached
 	std::vector<int> proficiencies	            ; The number of proficiencies that that can be allocated when a level is reached
+	std::vector<char> backstabs                 ; The backstab multiplier for each level
+	std::vector<char> thief_abilities           ; Thieg ability scores gained when a level is reached
 
 SpellProgression                                    ; Spell progression chart
 	std::vector<std::vector<int>> wizard_slots  ; The number of wizard spell slots per character level and spell level

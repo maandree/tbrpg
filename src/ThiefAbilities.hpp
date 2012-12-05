@@ -63,6 +63,11 @@ namespace tbrpg
      */
     int stealth;
     
+    /**
+     * Score limit per abilities bonus
+     */
+    int limit;
+    
     
     
     /**

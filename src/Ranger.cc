@@ -40,6 +40,11 @@ namespace tbrpg
     for (int i = 0; i < 6; i++)
       this->alignments[i] = false;
     
+    this->abilities.thief_abilities.limit = 99;
+    this->abilities.thief_abilities.stealth = 10;
+    for (long i = 2; i <= 30; i++)
+      this->experience_chart.thief_abilities[i] = 5;
+    
     this->spell_progression.priest_slots = std::vector<std::vector<int>>(17);
     for (int i = 0; i <= 16; i++)
       this->spell_progression.priest_slots[i] = std::vector<int>(4);

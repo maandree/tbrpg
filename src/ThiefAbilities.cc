@@ -35,11 +35,11 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities()
   {
-    ////TODO implement constructor
-    //this->find_traps = 0;
-    //this->open_locks = 0;
-    //this->pick_pockets = 0;
-    //this->stealth = 0;
+    this->find_traps = 0;
+    this->open_locks = 0;
+    this->pick_pockets = 0;
+    this->stealth = 0;
+    this->limit = 0;
   }
   
   /**
@@ -54,6 +54,7 @@ namespace tbrpg
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
+    this->limit = original.limit;
   }
   
   /**
@@ -68,6 +69,7 @@ namespace tbrpg
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
+    this->limit = original.limit;
   }
   
   /**
@@ -82,6 +84,7 @@ namespace tbrpg
     std::swap(this->open_locks, original.open_locks);
     std::swap(this->pick_pockets, original.pick_pockets);
     std::swap(this->stealth, original.stealth);
+    std::swap(this->limit, original.limit);
   }
   
   
@@ -91,7 +94,7 @@ namespace tbrpg
    */
   ThiefAbilities::~ThiefAbilities()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -109,6 +112,7 @@ namespace tbrpg
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
+    this->limit = original.limit;
     return *this;
   }
   
@@ -125,6 +129,7 @@ namespace tbrpg
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
+    this->limit = original.limit;
     return *this;
   }
   
@@ -141,6 +146,7 @@ namespace tbrpg
     std::swap(this->open_locks, original.open_locks);
     std::swap(this->pick_pockets, original.pick_pockets);
     std::swap(this->stealth, original.stealth);
+    std::swap(this->limit, original.limit);
     return *this;
   }
   
