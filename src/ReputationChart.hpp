@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 
@@ -42,7 +44,7 @@ namespace tbrpg
   /**
    * Reputation chart
    */
-  class ReputationChart
+  class ReputationChart: public Object
   {
   public:
     /**

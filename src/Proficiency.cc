@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Proficiency::Proficiency(int hit, int damage, char attacks)
+  Proficiency::Proficiency(int hit, int damage, char attacks) : Object()
   {
     this->hit_bonus = hit;
     this->damage_bonus = damage;
@@ -45,7 +45,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Proficiency::Proficiency(const Proficiency& original)
+  Proficiency::Proficiency(const Proficiency& original) : Object(original)
   {
     (void) original;
     this->hit_bonus = original.hit_bonus;
@@ -58,7 +58,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Proficiency::Proficiency(Proficiency& original)
+  Proficiency::Proficiency(Proficiency& original) : Object(original)
   {
     (void) original;
     this->hit_bonus = original.hit_bonus;
@@ -71,7 +71,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Proficiency::Proficiency(Proficiency&& original)
+  Proficiency::Proficiency(Proficiency&& original) : Object(original)
   {
     (void) original;
     std::swap(this->hit_bonus, original.hit_bonus);
@@ -100,7 +100,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(const Proficiency& original)
   {
     (void) original;
-    this->hit_bonus = original.hit_bonus;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->half_attacks = original.half_attacks;
     return *this;
@@ -115,7 +117,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency& original)
   {
     (void) original;
-    this->hit_bonus = original.hit_bonus;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->half_attacks = original.half_attacks;
     return *this;
@@ -130,7 +134,9 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency&& original)
   {
     (void) original;
-    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_bonus, original.damage_bonus);
     std::swap(this->half_attacks, original.half_attacks);
     return *this;

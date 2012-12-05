@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "MagicSchool.hpp"
@@ -44,7 +46,7 @@ namespace tbrpg
   /**
    * Spell class
    */
-  class Spell
+  class Spell: public Object
   {
   public:
     /**

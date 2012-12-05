@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  _MapMinor::_MapMinor()
+  _MapMinor::_MapMinor() : Object()
   {
     ////TODO implement constructor
   }
@@ -43,7 +43,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  _MapMinor::_MapMinor(const _MapMinor& original)
+  _MapMinor::_MapMinor(const _MapMinor& original) : Object(original)
   {
     (void) original;
 
@@ -54,7 +54,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  _MapMinor::_MapMinor(_MapMinor& original)
+  _MapMinor::_MapMinor(_MapMinor& original) : Object(original)
   {
     (void) original;
 
@@ -65,7 +65,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  _MapMinor::_MapMinor(_MapMinor&& original)
+  _MapMinor::_MapMinor(_MapMinor&& original) : Object(original)
   {
     (void) original;
 

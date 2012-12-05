@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 #include "Class.hpp"
 #include "ActionSlot.hpp"
@@ -53,7 +55,7 @@ namespace tbrpg
   /**
    * Prestige class–action slot cart
    */
-  class ActionSlotChart
+  class ActionSlotChart: public Object
   {
   public:
     /**

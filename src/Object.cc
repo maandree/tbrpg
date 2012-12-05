@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "WeaponGroup.hpp"
+#include "Object.hpp"
 
 
 /**
@@ -32,12 +32,10 @@ namespace tbrpg
 {
   /**
    * Constructor
-   * 
-   * @param  weaponGroupName  The name of the weapon group
    */
-  WeaponGroup::WeaponGroup(const std::string weaponGroupName) : Object()
+  Object::Object()
   {
-    this->name = weaponGroupName;
+    ////TODO implement constructor
   }
   
   /**
@@ -45,10 +43,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(const WeaponGroup& original) : Object(original)
+  Object::Object(const Object& original)
   {
     (void) original;
-    this->name = original.name;
+
   }
   
   /**
@@ -56,10 +54,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(WeaponGroup& original) : Object(original)
+  Object::Object(Object& original)
   {
     (void) original;
-    this->name = original.name;
+
   }
   
   /**
@@ -67,10 +65,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  WeaponGroup::WeaponGroup(WeaponGroup&& original) : Object(original)
+  Object::Object(Object&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+
   }
   
   
@@ -78,10 +76,9 @@ namespace tbrpg
   /**
    * Destructor
    */
-  WeaponGroup::~WeaponGroup()
+  Object::~Object()
   {
     ////TODO implement destructor
-    //delete this->name;
   }
   
   
@@ -92,10 +89,10 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
+  Object& Object::operator =(const Object& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+
     return *this;
   }
   
@@ -105,10 +102,10 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
+  Object& Object::operator =(Object& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+
     return *this;
   }
   
@@ -118,10 +115,10 @@ namespace tbrpg
    * @param   original  The moved object, its resourced will be moved
    * @return            The invoked object
    */
-  WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
+  Object& Object::operator =(Object&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+
     return *this;
   }
   
@@ -132,7 +129,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool WeaponGroup::operator ==(const WeaponGroup& other) const
+  bool Object::operator ==(const Object& other) const
   {
     return this == &other;
   }
@@ -143,7 +140,7 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  void WeaponGroup::__copy__(WeaponGroup& self, const WeaponGroup& original)
+  void Object::__copy__(Object& self, const Object& original)
   {
     self = original;
   }
@@ -153,7 +150,7 @@ namespace tbrpg
    * 
    * @return  The object's hash code
    */
-  size_t WeaponGroup::hash() const
+  size_t Object::hash() const
   {
     return (size_t)this;
   }

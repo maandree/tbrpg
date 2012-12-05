@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Map::Map()
+  Map::Map() : Object()
   {
     ////TODO implement constructor
     //this->start = nullptr;
@@ -45,7 +45,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Map::Map(const Map& original)
+  Map::Map(const Map& original) : Object(original)
   {
     (void) original;
     this->start = original.start;
@@ -57,7 +57,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Map::Map(Map& original)
+  Map::Map(Map& original) : Object(original)
   {
     (void) original;
     this->start = original.start;
@@ -69,7 +69,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Map::Map(Map&& original)
+  Map::Map(Map&& original) : Object(original)
   {
     (void) original;
     std::swap(this->start, original.start);
@@ -99,7 +99,8 @@ namespace tbrpg
   Map& Map::operator =(const Map& original)
   {
     (void) original;
-    this->start = original.start;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
     this->majors = original.majors;
     return *this;
   }
@@ -113,7 +114,8 @@ namespace tbrpg
   Map& Map::operator =(Map& original)
   {
     (void) original;
-    this->start = original.start;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
     this->majors = original.majors;
     return *this;
   }
@@ -127,7 +129,8 @@ namespace tbrpg
   Map& Map::operator =(Map&& original)
   {
     (void) original;
-    std::swap(this->start, original.start);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->start, original.start);
     std::swap(this->majors, original.majors);
     return *this;
   }

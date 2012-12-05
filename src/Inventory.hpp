@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "Weapon.hpp"
@@ -56,7 +58,7 @@ namespace tbrpg
   /**
    * Character inventory class
    */
-  class Inventory
+  class Inventory: public Object
   {
   public:
     /**

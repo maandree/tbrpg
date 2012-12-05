@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ReputationChart::ReputationChart()
+  ReputationChart::ReputationChart() : Object()
   {
     this->reaction_adjustment = new int[21];
     this->wanted = new bool[21];
@@ -125,7 +125,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ReputationChart::ReputationChart(const ReputationChart& original)
+  ReputationChart::ReputationChart(const ReputationChart& original) : Object(original)
   {
     (void) original;
     this->reaction_adjustment = original.reaction_adjustment;
@@ -147,7 +147,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ReputationChart::ReputationChart(ReputationChart& original)
+  ReputationChart::ReputationChart(ReputationChart& original) : Object(original)
   {
     (void) original;
     this->reaction_adjustment = original.reaction_adjustment;
@@ -169,7 +169,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ReputationChart::ReputationChart(ReputationChart&& original)
+  ReputationChart::ReputationChart(ReputationChart&& original) : Object(original)
   {
     (void) original;
     std::swap(this->reaction_adjustment, original.reaction_adjustment);
@@ -218,7 +218,18 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(const ReputationChart& original)
   {
     (void) original;
-    this->reaction_adjustment = original.reaction_adjustment;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
     this->injuring_innocent = original.injuring_innocent;
@@ -242,7 +253,18 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(ReputationChart& original)
   {
     (void) original;
-    this->reaction_adjustment = original.reaction_adjustment;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
     this->injuring_innocent = original.injuring_innocent;
@@ -266,7 +288,18 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(ReputationChart&& original)
   {
     (void) original;
-    std::swap(this->reaction_adjustment, original.reaction_adjustment);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->reaction_adjustment, original.reaction_adjustment);
     std::swap(this->wanted, original.wanted);
     std::swap(this->killing_innocent, original.killing_innocent);
     std::swap(this->injuring_innocent, original.injuring_innocent);

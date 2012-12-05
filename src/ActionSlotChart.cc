@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  ActionSlotChart::ActionSlotChart()
+  ActionSlotChart::ActionSlotChart() : Object()
   {
     #define F  (1LL << 0LL)
     #define R  (1LL << 1LL)
@@ -91,7 +91,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ActionSlotChart::ActionSlotChart(const ActionSlotChart& original)
+  ActionSlotChart::ActionSlotChart(const ActionSlotChart& original) : Object(original)
   {
     (void) original;
     this->index_map = original.index_map;
@@ -103,7 +103,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ActionSlotChart::ActionSlotChart(ActionSlotChart& original)
+  ActionSlotChart::ActionSlotChart(ActionSlotChart& original) : Object(original)
   {
     (void) original;
     this->index_map = original.index_map;
@@ -115,7 +115,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  ActionSlotChart::ActionSlotChart(ActionSlotChart&& original)
+  ActionSlotChart::ActionSlotChart(ActionSlotChart&& original) : Object(original)
   {
     (void) original;
     std::swap(this->index_map, original.index_map);
@@ -145,7 +145,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(const ActionSlotChart& original)
   {
     (void) original;
-    this->index_map = original.index_map;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->index_map = original.index_map;
     this->slot_map = original.slot_map;
     return *this;
   }
@@ -159,7 +160,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart& original)
   {
     (void) original;
-    this->index_map = original.index_map;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->index_map = original.index_map;
     this->slot_map = original.slot_map;
     return *this;
   }
@@ -173,7 +175,8 @@ namespace tbrpg
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart&& original)
   {
     (void) original;
-    std::swap(this->index_map, original.index_map);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->index_map, original.index_map);
     std::swap(this->slot_map, original.slot_map);
     return *this;
   }
