@@ -48,7 +48,7 @@ namespace tbrpg
    */
   class CharacterCreator
   {
-  protected:
+  private:
     /**
      * The game's rules
      */
@@ -69,6 +69,21 @@ namespace tbrpg
      */
     int* upper;
     
+    /**
+     * Ability dice
+     */
+    Dice abilityDice;
+    
+    /**
+     * 1D100 dice
+     */
+    Dice dice100;
+    
+    /**
+     * The character sheet that is being generated
+     */
+    CharacterSheet sheet;
+    
     
     
   public:
@@ -82,7 +97,7 @@ namespace tbrpg
     /**
      * Destructor
      */
-    virtual ~CharacterCreator();
+    ~CharacterCreator();
     
     
     
@@ -91,10 +106,10 @@ namespace tbrpg
      * 
      * @return  A character sheet, nullptr if aborted
      */
-    virtual CharacterSheet* create() const;
+    CharacterSheet* create();
     
     
-  protected:
+  private:
     
     /**
      * Assign scores
@@ -103,10 +118,10 @@ namespace tbrpg
      * @param   unassigned  Unassigned scores
      * @param   extra       Extra data to add as argument to the value printer
      * @param   printer     Value printer, takes arguments: index, value, extra data
-     * @param   reroll      Pointer to a reroll function pointer, nullptr if not allowed
+     * @param   reroll      Reroll function pointer, nullptr if not allowed
      * @return              Whether the assignment was completed
      */
-    virtual bool assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (**reroll)() == nullptr);
+    bool assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (*reroll)(void) = nullptr);
     
     /**
      * Ability score printer
@@ -115,7 +130,7 @@ namespace tbrpg
      * @param  value  The value of the ability
      * @param  data   Pointer to the 100-part of the strenght
      */
-    virtual void abilityPrinter(int index, int value, void* data) const;
+    void abilityPrinter(int index, int value, void* data) const;
     
     /**
      * Generic attribute score printer
@@ -124,12 +139,12 @@ namespace tbrpg
      * @param  value  The value of the attribute
      * @param  data   The labels of the attributes
      */
-    virtual void genericPrinter(int index, int value, void* data) const;
+    void genericPrinter(int index, int value, void* data) const;
     
     /**
      * Ability score reroll
      */
-    virtual void abilityReroll();
+    void abilityReroll();
     
   };
   
