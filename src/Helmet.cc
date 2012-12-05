@@ -93,7 +93,7 @@ namespace tbrpg
   Helmet& Helmet::operator =(const Helmet& original)
   {
     (void) original;
-
+    Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   
@@ -106,7 +106,7 @@ namespace tbrpg
   Helmet& Helmet::operator =(Helmet& original)
   {
     (void) original;
-
+    Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   
@@ -119,7 +119,7 @@ namespace tbrpg
   Helmet& Helmet::operator =(Helmet&& original)
   {
     (void) original;
-
+    std::swap((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   

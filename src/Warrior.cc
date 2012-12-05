@@ -152,7 +152,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(const Warrior& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -165,7 +165,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(Warrior& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -178,7 +178,7 @@ namespace tbrpg
   Warrior& Warrior::operator =(Warrior&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

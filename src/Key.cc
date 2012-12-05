@@ -92,7 +92,7 @@ namespace tbrpg
   Key& Key::operator =(const Key& original)
   {
     (void) original;
-
+    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Key& Key::operator =(Key& original)
   {
     (void) original;
-
+    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Key& Key::operator =(Key&& original)
   {
     (void) original;
-
+    std::swap((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   

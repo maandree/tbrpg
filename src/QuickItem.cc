@@ -92,7 +92,7 @@ namespace tbrpg
   QuickItem& QuickItem::operator =(const QuickItem& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   QuickItem& QuickItem::operator =(QuickItem& original)
   {
     (void) original;
-
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   QuickItem& QuickItem::operator =(QuickItem&& original)
   {
     (void) original;
-
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   

@@ -125,7 +125,7 @@ namespace tbrpg
   Rogue& Rogue::operator =(const Rogue& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -138,7 +138,7 @@ namespace tbrpg
   Rogue& Rogue::operator =(Rogue& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -151,7 +151,7 @@ namespace tbrpg
   Rogue& Rogue::operator =(Rogue&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

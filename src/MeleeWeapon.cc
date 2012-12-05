@@ -92,7 +92,7 @@ namespace tbrpg
   MeleeWeapon& MeleeWeapon::operator =(const MeleeWeapon& original)
   {
     (void) original;
-
+    Weapon::__copy__((Weapon&)*this, (Weapon&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   MeleeWeapon& MeleeWeapon::operator =(MeleeWeapon& original)
   {
     (void) original;
-
+    Weapon::__copy__((Weapon&)*this, (Weapon&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   MeleeWeapon& MeleeWeapon::operator =(MeleeWeapon&& original)
   {
     (void) original;
-
+    std::swap((Weapon&)*this, (Weapon&)original);
     return *this;
   }
   

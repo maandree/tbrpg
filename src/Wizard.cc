@@ -293,7 +293,7 @@ namespace tbrpg
   Wizard& Wizard::operator =(const Wizard& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -306,7 +306,7 @@ namespace tbrpg
   Wizard& Wizard::operator =(Wizard& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -319,7 +319,7 @@ namespace tbrpg
   Wizard& Wizard::operator =(Wizard&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

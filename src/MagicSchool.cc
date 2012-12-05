@@ -111,9 +111,6 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -130,9 +127,6 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -149,9 +143,6 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->coluration, original.coluration);
     std::swap(this->practicer, original.practicer);

@@ -99,7 +99,6 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
@@ -114,7 +113,6 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
@@ -129,7 +127,6 @@ namespace tbrpg
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->learned, original.learned);
     std::swap(this->memorised, original.memorised);
     return *this;

@@ -106,9 +106,6 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(const RestInterruption& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->interrupt_die = original.interrupt_die;
     this->interrupt_dice = original.interrupt_dice;
     this->interrupt_risk = original.interrupt_risk;
@@ -125,9 +122,6 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->interrupt_die = original.interrupt_die;
     this->interrupt_dice = original.interrupt_dice;
     this->interrupt_risk = original.interrupt_risk;
@@ -144,9 +138,6 @@ namespace tbrpg
   RestInterruption& RestInterruption::operator =(RestInterruption&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->interrupt_die, original.interrupt_die);
     std::swap(this->interrupt_dice, original.interrupt_dice);
     std::swap(this->interrupt_risk, original.interrupt_risk);

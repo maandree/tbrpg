@@ -92,7 +92,7 @@ namespace tbrpg
   Gold& Gold::operator =(const Gold& original)
   {
     (void) original;
-
+    Gem::__copy__((Gem&)*this, (Gem&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Gold& Gold::operator =(Gold& original)
   {
     (void) original;
-
+    Gem::__copy__((Gem&)*this, (Gem&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Gold& Gold::operator =(Gold&& original)
   {
     (void) original;
-
+    std::swap((Gem&)*this, (Gem&)original);
     return *this;
   }
   

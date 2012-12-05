@@ -98,7 +98,7 @@ namespace tbrpg
   Dart& Dart::operator =(const Dart& original)
   {
     (void) original;
-
+    Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   
@@ -111,7 +111,7 @@ namespace tbrpg
   Dart& Dart::operator =(Dart& original)
   {
     (void) original;
-
+    Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   
@@ -124,7 +124,7 @@ namespace tbrpg
   Dart& Dart::operator =(Dart&& original)
   {
     (void) original;
-
+    std::swap((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   

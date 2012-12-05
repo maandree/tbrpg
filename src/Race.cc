@@ -111,10 +111,6 @@ namespace tbrpg
   Race& Race::operator =(const Race& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
@@ -132,10 +128,6 @@ namespace tbrpg
   Race& Race::operator =(Race& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
@@ -153,10 +145,6 @@ namespace tbrpg
   Race& Race::operator =(Race&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);

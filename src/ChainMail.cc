@@ -95,7 +95,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(const ChainMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +108,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(ChainMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +121,7 @@ namespace tbrpg
   ChainMail& ChainMail::operator =(ChainMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

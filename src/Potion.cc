@@ -93,7 +93,7 @@ namespace tbrpg
   Potion& Potion::operator =(const Potion& original)
   {
     (void) original;
-
+    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   
@@ -106,7 +106,7 @@ namespace tbrpg
   Potion& Potion::operator =(Potion& original)
   {
     (void) original;
-
+    QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   
@@ -119,7 +119,7 @@ namespace tbrpg
   Potion& Potion::operator =(Potion&& original)
   {
     (void) original;
-
+    std::swap((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
   

@@ -93,7 +93,7 @@ namespace tbrpg
   Sorcerer& Sorcerer::operator =(const Sorcerer& original)
   {
     (void) original;
-
+    Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   
@@ -106,7 +106,7 @@ namespace tbrpg
   Sorcerer& Sorcerer::operator =(Sorcerer& original)
   {
     (void) original;
-
+    Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   
@@ -119,7 +119,7 @@ namespace tbrpg
   Sorcerer& Sorcerer::operator =(Sorcerer&& original)
   {
     (void) original;
-
+    std::swap((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   

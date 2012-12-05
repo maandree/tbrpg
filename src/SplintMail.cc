@@ -95,7 +95,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(const SplintMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -108,7 +108,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(SplintMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -121,7 +121,7 @@ namespace tbrpg
   SplintMail& SplintMail::operator =(SplintMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

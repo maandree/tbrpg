@@ -105,7 +105,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(const HalfElf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(HalfElf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -131,7 +131,7 @@ namespace tbrpg
   HalfElf& HalfElf::operator =(HalfElf&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

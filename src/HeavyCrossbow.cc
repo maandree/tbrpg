@@ -94,7 +94,7 @@ namespace tbrpg
   HeavyCrossbow& HeavyCrossbow::operator =(const HeavyCrossbow& original)
   {
     (void) original;
-
+    Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   HeavyCrossbow& HeavyCrossbow::operator =(HeavyCrossbow& original)
   {
     (void) original;
-
+    Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   HeavyCrossbow& HeavyCrossbow::operator =(HeavyCrossbow&& original)
   {
     (void) original;
-
+    std::swap((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
   

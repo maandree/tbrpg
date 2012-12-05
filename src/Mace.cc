@@ -96,7 +96,7 @@ namespace tbrpg
   Mace& Mace::operator =(const Mace& original)
   {
     (void) original;
-
+    BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   
@@ -109,7 +109,7 @@ namespace tbrpg
   Mace& Mace::operator =(Mace& original)
   {
     (void) original;
-
+    BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   
@@ -122,7 +122,7 @@ namespace tbrpg
   Mace& Mace::operator =(Mace&& original)
   {
     (void) original;
-
+    std::swap((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   

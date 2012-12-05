@@ -92,7 +92,7 @@ namespace tbrpg
   Hat& Hat::operator =(const Hat& original)
   {
     (void) original;
-
+    Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Hat& Hat::operator =(Hat& original)
   {
     (void) original;
-
+    Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Hat& Hat::operator =(Hat&& original)
   {
     (void) original;
-
+    std::swap((Headgear&)*this, (Headgear&)original);
     return *this;
   }
   

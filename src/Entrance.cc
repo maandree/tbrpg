@@ -108,9 +108,6 @@ namespace tbrpg
   Entrance& Entrance::operator =(const Entrance& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
@@ -127,9 +124,6 @@ namespace tbrpg
   Entrance& Entrance::operator =(Entrance& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
@@ -146,9 +140,6 @@ namespace tbrpg
   Entrance& Entrance::operator =(Entrance&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->usable, original.usable);
     std::swap(this->description, original.description);
     std::swap(this->direction, original.direction);

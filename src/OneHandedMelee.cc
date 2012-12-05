@@ -92,7 +92,7 @@ namespace tbrpg
   OneHandedMelee& OneHandedMelee::operator =(const OneHandedMelee& original)
   {
     (void) original;
-
+    MeleeWeapon::__copy__((MeleeWeapon&)*this, (MeleeWeapon&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   OneHandedMelee& OneHandedMelee::operator =(OneHandedMelee& original)
   {
     (void) original;
-
+    MeleeWeapon::__copy__((MeleeWeapon&)*this, (MeleeWeapon&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   OneHandedMelee& OneHandedMelee::operator =(OneHandedMelee&& original)
   {
     (void) original;
-
+    std::swap((MeleeWeapon&)*this, (MeleeWeapon&)original);
     return *this;
   }
   

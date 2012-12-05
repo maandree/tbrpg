@@ -116,12 +116,6 @@ namespace tbrpg
   Abilities& Abilities::operator =(const Abilities& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->constitution = original.constitution;
@@ -141,12 +135,6 @@ namespace tbrpg
   Abilities& Abilities::operator =(Abilities& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->constitution = original.constitution;
@@ -166,12 +154,6 @@ namespace tbrpg
   Abilities& Abilities::operator =(Abilities&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
     std::swap(this->constitution, original.constitution);

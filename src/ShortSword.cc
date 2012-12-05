@@ -97,7 +97,7 @@ namespace tbrpg
   ShortSword& ShortSword::operator =(const ShortSword& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -110,7 +110,7 @@ namespace tbrpg
   ShortSword& ShortSword::operator =(ShortSword& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -123,7 +123,7 @@ namespace tbrpg
   ShortSword& ShortSword::operator =(ShortSword&& original)
   {
     (void) original;
-
+    std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
