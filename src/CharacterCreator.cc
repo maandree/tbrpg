@@ -346,19 +346,19 @@ namespace tbrpg
       for (Class& c : this->sheet.prestige)
 	{
 	  if (c.experience_chart.selectable_wizard.size() > 0)
-	    wizardAssign += c.experience_chart.selectable_wizard[0];
+	    wizardAssign0 += c.experience_chart.selectable_wizard[0];
 	  if (c.experience_chart.selectable_wizard.size() > 1)
-	    wizardAssign += c.experience_chart.selectable_wizard[1];
+	    wizardAssign1 += c.experience_chart.selectable_wizard[1];
 	  if (c.experience_chart.selectable_priest.size() > 1)
-	    priestAssign += c.experience_chart.selectable_priest[1];
+	    priestAssign1 += c.experience_chart.selectable_priest[1];
 	}
       
       std::vector<std::string> wizard0s = std::vector<std::string>();
       std::vector<std::string> wizard1s = std::vector<std::string>();
       std::vector<std::string> priest1s = std::vector<std::string>();
-      std::unordered_map<std::string, Spell>> wizard0Map = std::unordered_map<std::string, Spell>();
-      std::unordered_map<std::string, Spell>> wizard1Map = std::unordered_map<std::string, Spell>();
-      std::unordered_map<std::string, Spell>> priest1Map = std::unordered_map<std::string, Spell>();
+      std::unordered_map<std::string, Spell> wizard0Map = std::unordered_map<std::string, Spell>();
+      std::unordered_map<std::string, Spell> wizard1Map = std::unordered_map<std::string, Spell>();
+      std::unordered_map<std::string, Spell> priest1Map = std::unordered_map<std::string, Spell>();
       
       for (Spell& spell : this->ruleset.spells)
 	if (spell.wizard && (spell.level == 0))
@@ -430,7 +430,6 @@ namespace tbrpg
     this->sheet.colour = (char)(indexInput + 1);
     
     
-  _11:
     input = promptArbitrary("Select name: ");
     if (input == "")
       goto _10;
