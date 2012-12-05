@@ -111,7 +111,7 @@ regen:
 
 info:
 	makeinfo "$(BOOKDIR)$(BOOK).texinfo"
-	gzip -9 "$(BOOK).info"
+	gzip -9f "$(BOOK).info"
 
 pdf:
 	texi2pdf "$(BOOKDIR)$(BOOK).texinfo"
