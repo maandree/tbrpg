@@ -33,8 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Store::Store() : NCP()
+  Store::Store() : NPC()
   {
+    this->class_inheritance.push_back(80);
     ////TODO implement constructor
     //this->cost_multiplier = 0;
     //this->identify_cost = 0;
@@ -50,7 +51,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Store::Store(const Store& original) : NCP(original)
+  Store::Store(const Store& original) : NPC(original)
   {
     (void) original;
     this->cost_multiplier = original.cost_multiplier;
@@ -67,7 +68,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Store::Store(Store& original) : NCP(original)
+  Store::Store(Store& original) : NPC(original)
   {
     (void) original;
     this->cost_multiplier = original.cost_multiplier;
@@ -84,7 +85,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Store::Store(Store&& original) : NCP(original)
+  Store::Store(Store&& original) : NPC(original)
   {
     (void) original;
     std::swap(this->cost_multiplier, original.cost_multiplier);
@@ -122,7 +123,7 @@ namespace tbrpg
   Store& Store::operator =(const Store& original)
   {
     (void) original;
-    NCP::__copy__((NCP&)*this, (NCP&)original);    this->cost_multiplier = original.cost_multiplier;
+    NPC::__copy__((NPC&)*this, (NPC&)original);    this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
     this->spell_costs = original.spell_costs;
@@ -141,7 +142,7 @@ namespace tbrpg
   Store& Store::operator =(Store& original)
   {
     (void) original;
-    NCP::__copy__((NCP&)*this, (NCP&)original);    this->cost_multiplier = original.cost_multiplier;
+    NPC::__copy__((NPC&)*this, (NPC&)original);    this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
     this->spell_costs = original.spell_costs;
@@ -160,7 +161,7 @@ namespace tbrpg
   Store& Store::operator =(Store&& original)
   {
     (void) original;
-    std::swap((NCP&)*this, (NCP&)original);    std::swap(this->cost_multiplier, original.cost_multiplier);
+    std::swap((NPC&)*this, (NPC&)original);    std::swap(this->cost_multiplier, original.cost_multiplier);
     std::swap(this->identify_cost, original.identify_cost);
     std::swap(this->spells, original.spells);
     std::swap(this->spell_costs, original.spell_costs);
