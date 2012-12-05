@@ -87,6 +87,16 @@ namespace tbrpg
      */
     std::vector<int> proficiencies;
     
+    /**
+     * The backstab multiplier for each level
+     */
+    std::vector<char> backstabs;
+    
+    /**
+     * Thieg ability scores gained when a level is reached
+     */
+    std::vector<char> thief_abilities;
+    
     
     
     /**

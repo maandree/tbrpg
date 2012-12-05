@@ -44,6 +44,8 @@ namespace tbrpg
     //this->selectable_priest = nullptr;
     //this->new_spells = nullptr;
     //this->proficiencies = nullptr;
+    //this->backstabs = nullptr;
+    //this->thief_abilities = nullptr;
   }
   
   /**
@@ -62,6 +64,8 @@ namespace tbrpg
     this->selectable_priest = original.selectable_priest;
     this->new_spells = original.new_spells;
     this->proficiencies = original.proficiencies;
+    this->backstabs = original.backstabs;
+    this->thief_abilities = original.thief_abilities;
   }
   
   /**
@@ -80,6 +84,8 @@ namespace tbrpg
     this->selectable_priest = original.selectable_priest;
     this->new_spells = original.new_spells;
     this->proficiencies = original.proficiencies;
+    this->backstabs = original.backstabs;
+    this->thief_abilities = original.thief_abilities;
   }
   
   /**
@@ -98,6 +104,8 @@ namespace tbrpg
     std::swap(this->selectable_priest, original.selectable_priest);
     std::swap(this->new_spells, original.new_spells);
     std::swap(this->proficiencies, original.proficiencies);
+    std::swap(this->backstabs, original.backstabs);
+    std::swap(this->thief_abilities, original.thief_abilities);
   }
   
   
@@ -116,6 +124,8 @@ namespace tbrpg
     //delete this->selectable_priest;
     //delete this->new_spells;
     //delete this->proficiencies;
+    //delete this->backstabs;
+    //delete this->thief_abilities;
   }
   
   
@@ -137,6 +147,8 @@ namespace tbrpg
     this->selectable_priest = original.selectable_priest;
     this->new_spells = original.new_spells;
     this->proficiencies = original.proficiencies;
+    this->backstabs = original.backstabs;
+    this->thief_abilities = original.thief_abilities;
     return *this;
   }
   
@@ -157,6 +169,8 @@ namespace tbrpg
     this->selectable_priest = original.selectable_priest;
     this->new_spells = original.new_spells;
     this->proficiencies = original.proficiencies;
+    this->backstabs = original.backstabs;
+    this->thief_abilities = original.thief_abilities;
     return *this;
   }
   
@@ -177,6 +191,8 @@ namespace tbrpg
     std::swap(this->selectable_priest, original.selectable_priest);
     std::swap(this->new_spells, original.new_spells);
     std::swap(this->proficiencies, original.proficiencies);
+    std::swap(this->backstabs, original.backstabs);
+    std::swap(this->thief_abilities, original.thief_abilities);
     return *this;
   }
   
