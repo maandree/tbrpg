@@ -451,6 +451,7 @@ Creature: Character                       ; A creature in the area
 	float y                           ; The creatures vertical position in metres, the parties starts at 0
 	bool alive                        ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
 	bool resurrect                    ; Whether the creature is resurrected when the party leaves the area
+	int experience                    ; the experience gain for killing the creature
 
 Map: Object                               ; The world map
 	MapMinor start                    ; The start area of the game senario
