@@ -102,6 +102,16 @@ namespace tbrpg
     char rest_healing_turns;
     
     /**
+     * THAC0 bonus when fighting racial enemy
+     */
+    int racial_enemy_bonus;
+    
+    /**
+     * THAC0 penality when not fighting racial enemy
+     */
+    int racial_enemy_penality;
+    
+    /**
      * The reputation chart
      */
     ReputationChart reputation_chart;
