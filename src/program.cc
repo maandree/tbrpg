@@ -54,12 +54,10 @@ namespace tbrpg
     Dice dice = Dice(2, 20);
     std::cout << dice.roll() << std::endl;
     
-    std::string str = promptList("Select race: ", {"human", "half-elf", "half-orc", "elf", "halfling", "dwarf", "gnome"});
-    if (str != "")
-      {
+    std::vector<std::string> strs = promptMulti("Select spells", 2, {"identify", "magic missile", "oakenform", "find familiar"});
+    for (std::string& str : strs)
 	std::cout << str << std::endl;
-	std::flush(std::cout);
-      }
+    std::flush(std::cout);
     
     return 0;
   }
