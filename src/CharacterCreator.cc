@@ -96,6 +96,14 @@ namespace tbrpg
 	races.push_back(r.name);
       }
     
+    std::vector<std::string> racials = std::vector<std::string>();
+    std::unordered_map<std::string, Race> racialMap = std::unordered_map<std::string, Race>();
+    for (const Race& r : this->ruleset.racial_enemies)
+      {
+	racialMap[r.name] = r;
+	racials.push_back(r.name);
+      }
+    
     std::vector<std::string> prestiges;
     std::unordered_map<std::string, std::vector<Class>> prestigeMap;
     
@@ -111,7 +119,9 @@ namespace tbrpg
       alignmentMap[all_alignments[i]] = (char)i;
     
     
+    std::string* labels;
     std::string input;
+    int assignable;
     long indexInput;
     std::string c;
     bool ok;
@@ -249,7 +259,7 @@ namespace tbrpg
 	  this->start[i] = this->lower[i] = 0;
 	  this->upper[i] = this->sheet.prestige.proficiencies_each;
 	}
-      std::string* labels = (std::string)malloc(count * sizeof(std::string));
+      labels = (std::string)malloc(count * sizeof(std::string));
       for (WeaponGroup weapongroup : WEAPON_GROUPS)
 	if (proficiencyMap[weapongroup] != 0)
 	  labels[proficiencyMap[weapongroup] - 1] = weapongroup.name;
@@ -268,9 +278,62 @@ namespace tbrpg
     
     
   _08:
-    // Race* racial_enemy
+    this->sheet.racial_enemy = nullptr;
+    for (Class& c : this->sheet.prestige)
+      if (c.have_racial_enemy)
+	{
+	  input = promptList("Select racial enemy: ", racials);
+	  if (input == "")
+	    goto _07;
+	  this->sheet.racial_enemy = &(racialMap[input]);
+	  break;
+	}
+    
+    assignable = 0;
+    start = new int[4];
+    start[0] = this->sheet.race.bonuses.thief_abilities.find_traps;
+    start[1] = this->sheet.race.bonuses.thief_abilities.open_locks;
+    start[2] = this->sheet.race.bonuses.thief_abilities.pick_pockets;
+    start[3] = this->sheet.race.bonuses.thief_abilities.stealth;
+    for (Class& c : this->sheet.prestige)
+      {
+	start[0] += c.abilities.thief_abilities.find_traps;
+	start[1] += c.abilities.thief_abilities.open_locks;
+	start[2] += c.abilities.thief_abilities.pick_pockets;
+	start[3] += c.abilities.thief_abilities.stealth;
+	assignable += 30; /* TODO get actual value */
+      }
+    lower = new int[4];
+    upper = new int[4];
+    for (int i = 0; i < 4; i++)
+      {
+	upper[i] = 0x7FFFffff;
+	lower[i] = start[i];
+      }
+    labels = (std::string*)malloc(4 * sizeof(std::string));
+    *(labels + 0) = "Find traps:   ";
+    *(labels + 1) = "Open locks:   ";
+    *(labels + 2) = "Pick pockets: ";
+    *(labels + 3) = "Stealth:      ";
+    ok = assign(4, assignable, labels, genericPrinter);
+    free(labels);
+    delete[] lower;
+    delete[] upper;
+    if (ok)
+      {
+	this->sheet.abilities.thief_abilities.find_traps   = start[0];
+	this->sheet.abilities.thief_abilities.open_locks   = start[1];
+	this->sheet.abilities.thief_abilities.pick_pockets = start[2];
+	this->sheet.abilities.thief_abilities.stealth      = start[3];
+	delete[] start;
+      }
+    else
+      {
+	delete[] start;
+	goto _07;
+      }
+    
     // SpellBook abilities.spells
-    // ThiefAbilities abilities.thief_abilities
     
     
   _09:
@@ -532,7 +595,7 @@ namespace tbrpg
    */
   void genericPrinter(int index, int value, void* data)
   {
-    std::cout << *((std::string*)data + index) << (value);
+    std::cout << *((std::string*)data + index) << value;
   }
   
 }

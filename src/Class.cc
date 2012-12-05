@@ -40,7 +40,7 @@ namespace tbrpg
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
     this->extra_strength = false;
-    this->have_racial_enemey = false;
+    this->have_racial_enemy = false;
     //this->abilities = nullptr;
     //this->special_abilities = nullptr;
     //this->can_use = nullptr;
