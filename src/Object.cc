@@ -35,9 +35,8 @@ namespace tbrpg
    */
   Object::Object()
   {
+    this->class_inheritance = new std::vector<short>();
     this->class_inheritance.push_back(0);
-    ////TODO implement constructor
-    //this->class_inheritance = nullptr;
   }
   
   /**
@@ -80,8 +79,7 @@ namespace tbrpg
    */
   Object::~Object()
   {
-    ////TODO implement destructor
-    //delete this->class_inheritance;
+    delete this->class_inheritance;
   }
   
   
