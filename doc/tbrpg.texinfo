@@ -2553,57 +2553,57 @@ non-cumulative.
 @cindex weapon groups
 
 @multitable @columnfractions 0.20 0.24 0.12 0.24 0.20
-@item @b{Group}  @tab  @b{weapon}  @tab  {}
+@item @b{Group}  @tab  @b{weapon}  @tab  
 @tab  @b{Weapon}  @tab  @b{group}
-@item Axe  @tab battle axe  @tab {}
+@item Axe  @tab battle axe  @tab  
 @tab Bastard sword  @tab large swords
-@item Axe  @tab throwing axe  @tab {}
+@item Axe  @tab throwing axe  @tab  
 @tab Battle axe  @tab axe
-@item Blunt weapons  @tab club  @tab {}
+@item Blunt weapons  @tab club  @tab  
 @tab Club  @tab blunt weapons
-@item Blunt weapons  @tab hand-to-hand  @tab {}
+@item Blunt weapons  @tab hand-to-hand  @tab  
 @tab Composite long bow  @tab bow
-@item Blunt weapons  @tab mace  @tab {}
+@item Blunt weapons  @tab mace  @tab  
 @tab Dagger  @tab small swords
-@item Blunt weapons  @tab torch  @tab {}
+@item Blunt weapons  @tab torch  @tab  
 @tab Dart  @tab missile weapons
-@item Blunt weapons  @tab quarterstaff  @tab {}
+@item Blunt weapons  @tab quarterstaff  @tab  
 @tab Flail  @tab spiked weapons
-@item Blunt weapons  @tab war hammer  @tab {}
+@item Blunt weapons  @tab war hammer  @tab  
 @tab Halberd  @tab spear
-@item Bow  @tab composite long bow  @tab {}
+@item Bow  @tab composite long bow  @tab  
 @tab Hand-to-hand  @tab blunt weapons
-@item Bow  @tab long bow  @tab {}
+@item Bow  @tab long bow  @tab  
 @tab Heavy crossbow  @tab missile weapons
-@item Bow  @tab short bow  @tab {}
+@item Bow  @tab short bow  @tab  
 @tab Light crossbow  @tab missile weapons
-@item Large swords  @tab bastard sword  @tab {}
+@item Large swords  @tab bastard sword  @tab  
 @tab Long bow  @tab bow
-@item Large swords  @tab long sword  @tab {}
+@item Large swords  @tab long sword  @tab  
 @tab Long sword  @tab large swords
-@item Large swords  @tab two-handed sword  @tab {}
+@item Large swords  @tab two-handed sword  @tab  
 @tab Mace  @tab blunt weapons
-@item Missile weapons  @tab dart  @tab {}
+@item Missile weapons  @tab dart  @tab  
 @tab Morning star  @tab spiked weapons
-@item Missile weapons  @tab heavy crossbow  @tab {}
+@item Missile weapons  @tab heavy crossbow  @tab  
 @tab Short bow  @tab bow
-@item Missile weapons  @tab light crossbow  @tab {}
+@item Missile weapons  @tab light crossbow  @tab  
 @tab Short sword  @tab small swords
-@item Missile weapons  @tab sling  @tab {}
+@item Missile weapons  @tab sling  @tab  
 @tab Sling  @tab missile weapons
-@item Small swords  @tab dagger  @tab {}
+@item Small swords  @tab dagger  @tab  
 @tab Spear  @tab spear
-@item Small swords  @tab short sword  @tab {}
+@item Small swords  @tab short sword  @tab  
 @tab Throwing axe  @tab axe
-@item Small swords  @tab throwing dagger  @tab {}
+@item Small swords  @tab throwing dagger  @tab  
 @tab Throwing dagger  @tab small swords
-@item Spiked weapons  @tab flail  @tab {}
+@item Spiked weapons  @tab flail  @tab  
 @tab Torch  @tab blunt weapons
-@item Spiked weapons  @tab morning star  @tab {}
+@item Spiked weapons  @tab morning star  @tab  
 @tab Two-handed sword  @tab large swords
-@item Spear  @tab spear  @tab {}
+@item Spear  @tab spear  @tab  
 @tab Quarterstaff  @tab blunt weapons
-@item Spear  @tab halberd  @tab {}
+@item Spear  @tab halberd  @tab  
 @tab War hammer  @tab blunt weapons
 @end multitable
 
@@ -2826,20 +2826,20 @@ A turn consists of ten rounds. @c TODO  further describe
 @cindex equipment
 
 @menu
-* Personal inventory::                Personal inventory.
-* Quick items::                       Quick items.
-* The left hand::                     The left hand.
-* The right hand::                    The right hand.
-* The quiver::                        The quiver.
-* Body armour slot::                  Body armour slot.
-* Gauntlets and bracers slot::        Gauntlets and bracers slot.
-* Headgear slot::                     Headgear slot.
-* Amulet, necklace and locket slot::  Amulet, necklace and locket slot.
-* Ring slots::                        Ring slots.
-* Belt and girdle slot::              Belt and girdle slot.
-* Boots slot::                        Boots slot.
-* Cloak slot::                        Cloak slot.
-* Miscellaneous items::               Miscellaneous items.
+* Personal inventory::         Personal inventory.
+* Quick items::                Quick items.
+* The left hand::              The left hand.
+* The right hand::             The right hand.
+* The quiver::                 The quiver.
+* Body armour slot::           Body armour slot.
+* Gauntlets and bracers slot:: Gauntlets and bracers slot.
+* Headgear slot::              Headgear slot.
+* Amulet and necklace slot::   Amulet and necklace slot.
+* Ring slots::                 Ring slots.
+* Belt and girdle slot::       Belt and girdle slot.
+* Boots slot::                 Boots slot.
+* Cloak slot::                 Cloak slot.
+* Miscellaneous items::        Miscellaneous items.
 @end menu
 
 
@@ -2986,8 +2986,8 @@ Characters have one slot for headgear.
 See @ref{Headgear} for details.
 
 
-@node Amulet, necklace and locket slot
-@section Amulet, necklace and locket slot
+@node Amulet and necklace slot
+@section Amulet and necklace slot
 @cindex amulet
 @cindex necklace
 
