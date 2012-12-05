@@ -128,7 +128,7 @@ namespace tbrpg
      * 
      * @param   other  The other comparand
      * @return         Whether the instances are equal
-     */x
+     */
     virtual bool operator ==(const CorpseMaker& other) const;
     
     
@@ -138,7 +138,7 @@ namespace tbrpg
      * @param   character  The dead character
      * @return             The corpse of the character
      */
-    virtual Body& makeCorpse(const Character& character) const;
+    virtual Body makeCorpse(const Character& character) const;
     
     
   protected:

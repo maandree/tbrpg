@@ -122,7 +122,6 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(const CorpseMaker& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
@@ -137,7 +136,6 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(CorpseMaker& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
@@ -152,7 +150,6 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(CorpseMaker&& original)
   {
-    (void) original;
     std::swap((Object&)*this, (Object&)original);    std::swap(this->strenght_weight, original.strenght_weight);
     std::swap(this->strenght18_weight, original.strenght18_weight);
     std::swap(this->constitution_weight, original.constitution_weight);
@@ -178,7 +175,7 @@ namespace tbrpg
    * @param   character  The dead character
    * @return             The corpse of the character
    */
-  Body& makeCorpse(const Character& character) const
+  Body CorpseMaker::makeCorpse(const Character& character) const
   {
     Body body = Body();
     body.character = character;
