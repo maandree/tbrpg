@@ -220,6 +220,115 @@ namespace tbrpg
   }
   
   /**
+   * Fetch file stat of file with link following, but only if regular file
+   * 
+   * @param   filename  The name of the file
+   * @param   filestat  Stat storage
+   * @return            −1 iff the file does not exist or link to a regular file
+   */
+  int prompt_stat(char* filename, struct stat* filestat)
+  {
+    return stat(filename, filestat);
+    /* TODO implement restriction */
+  }
+  
+  /**
+   * Complete prompting hook for file prompting
+   */
+  void prompt_file()
+  {
+    /* BEGIN drag and drop support */
+    
+    bool start;
+    bool endfar;
+    bool end;
+    
+    if (prompterdata.before == 0)
+      start = *(prompterdata.ap + prompterdata.after - 1) == '\'';
+    else
+      start = *(prompterdata.bp) == '\'';
+    
+    if (prompterdata.after == 0)
+      endfar = *(prompterdata.bp + prompterdata.before - 1) == ' ';
+    else
+      endfar = *(prompterdata.ap) == ' ';
+    
+    if (prompterdata.after == 0)
+      end = *(prompterdata.bp + prompterdata.before - 2) == '\'';
+    else if (prompterdata.after == 1)
+      end = *(prompterdata.bp + prompterdata.before - 1) == '\'';
+    else
+      end = *(prompterdata.ap + 1) == '\'';
+    
+    if (start && endfar && end)
+      {
+	prompterdata.mark = 0;
+	long n = prompterdata.before + prompterdata.after - 3, b = 0;
+	prompterdata.tmp = __malloc_string(n);
+	if (prompterdata.before > 0)
+	  printf(CSI "%liD", prompterdata.before);
+	printf(CSI "K");
+	
+	bool quote = true;
+	bool slash = false;
+	char c;
+	for (long i = 1; i <= n; i++)
+	  {
+	    if (i < prompterdata.before)
+	      c = *(prompterdata.bp + i);
+	    else
+	      c = *(prompterdata.ap + prompterdata.after - 1 + (i - prompterdata.before));
+	    
+	    if (slash)
+	      {
+		*(prompterdata.tmp + b++) = c;
+		slash = false;
+	      }
+	    else if (c == '\'')
+	      quote ^= true;
+	    else if (quote || (c != '\\'))
+	      *(prompterdata.tmp + b++) = c;
+	    else
+	      slash = true;
+	  }
+	
+	prompterdata.before = b;
+	free(prompterdata.bp);
+	prompterdata.bp = prompterdata.tmp;
+	prompterdata.bpz = n;
+	prompterdata.after = 0;
+	prompt_print_before(0, prompterdata.before);
+	std::flush(std::cout);
+      }
+    
+    /* END drag and drop support */
+    
+    prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
+    for (long i = 0; i < prompterdata.before; i++)
+      *(prompterdata.tmp)++ = *(prompterdata.bp + i);
+    free(prompterdata.bp);
+    for (long i = prompterdata.after - 1; i >= 0; i--)
+      *(prompterdata.tmp)++ = *(prompterdata.ap + i);
+    free(prompterdata.ap);
+    *prompterdata.tmp = 0;
+    prompterdata.tmp -= prompterdata.before + prompterdata.after;
+    
+    char* tmp = (char*)malloc((prompterdata.before + prompterdata.after) * 8 + 1);
+    symbol_decode(prompterdata.tmp, tmp);
+    free(prompterdata.tmp);
+    
+    struct stat filestat;
+    if (prompt_stat(tmp, &filestat) == -1)
+      {
+	free(tmp);
+        return;
+      }
+    free(tmp);
+    
+    prompt_done();
+  }
+  
+  /**
    * Complete prompting hook for alternative prompting
    */
   void prompt_alternative()
@@ -986,17 +1095,13 @@ namespace tbrpg
    */
   std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void), void (*next)(void))
   {
-    std::string input = promptArbitrary(instruction, previous, next); // TODO done hook
+    std::string input = promptArbitrary(instruction, previous, next, prompt_file);
     if (input != "")
       {
 	struct stat filestat;
 	char* cstr = (char*)(input.c_str());
-	if (stat(cstr, &filestat) == -1)
-	  {
-	    free(cstr);
-	    return "";
-	  }
-	free(cstr);
+	if (prompt_stat(cstr, &filestat) == -1)
+	  return "";
 	
 	if (loadfile == false)
 	  return input;
