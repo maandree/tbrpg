@@ -121,6 +121,24 @@ namespace tbrpg
     virtual bool operator ==(const Object& other) const;
     
     
+    /**
+     * 'Instance of' evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the left comparand is an instance of the right comparand's class
+     */
+    virtual bool operator >=(const Object& other) const;
+    
+    
+    /**
+     * Reversed 'instance of' evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the right comparand is an instance of the left comparand's class
+     */
+    virtual bool operator <=(const Object& other) const;
+    
+    
   protected:
     /**
      * Copy method

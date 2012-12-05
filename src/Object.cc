@@ -129,6 +129,38 @@ namespace tbrpg
     return this == &other;
   }
   
+  
+  /**
+   * 'Instance of' evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the left comparand is an instance of the right comparand's class
+   */
+  bool Object::operator >=(const Object& other) const
+  {
+    if (this->class_inheritance.size() < other.class_inheritance.size())
+      return false;
+    
+    for (size_t i = 0, n = other.class_inheritance.size(); i < n; i++)
+      if (this->class_inheritance[i] != other.class_inheritance[i])
+	return false;
+    
+    return true;
+  }
+  
+    
+  /**
+   * Reversed 'instance of' evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the right comparand is an instance of the left comparand's class
+   */
+  bool Object::operator <=(const Object& other) const
+  {
+    return other >= *this;
+  }
+  
+  
   /**
    * Copy method
    * 
