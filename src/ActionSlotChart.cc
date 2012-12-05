@@ -35,6 +35,8 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart() : Object()
   {
+    this->class_inheritance.push_back(15);
+    
     #define F  (1LL << 0LL)
     #define R  (1LL << 1LL)
     #define P  (1LL << 2LL)

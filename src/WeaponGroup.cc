@@ -37,6 +37,7 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(const std::string weaponGroupName) : Object()
   {
+    this->class_inheritance.push_back(12);
     this->name = weaponGroupName;
   }
   

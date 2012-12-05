@@ -35,6 +35,7 @@ namespace tbrpg
    */
   SavingThrows::SavingThrows() : Object()
   {
+    this->class_inheritance.push_back(6);
     ////TODO implement constructor
     //this->breath = 0;
     //this->paralyze_poison_death = 0;

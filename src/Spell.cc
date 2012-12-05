@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Spell::Spell() : Object()
   {
+    this->class_inheritance.push_back(21);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->description = nullptr;

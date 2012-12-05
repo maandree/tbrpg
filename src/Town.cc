@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Town::Town() : MapMinor()
   {
+    this->class_inheritance.push_back(76);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Wand::Wand() : QuickItem()
   {
+    this->class_inheritance.push_back(32);
     this->name = "wand";
   }
   

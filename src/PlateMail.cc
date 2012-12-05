@@ -35,6 +35,7 @@ namespace tbrpg
    */
   PlateMail::PlateMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(38);
     this->name = "plate mail";
     this->armour_class = 3;
     this->armour_class_modifiers[SLASHING] = -3;

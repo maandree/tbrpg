@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MapMajor::MapMajor() : Object()
   {
+    this->class_inheritance.push_back(71);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->visible = false;

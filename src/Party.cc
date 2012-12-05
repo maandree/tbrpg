@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Party::Party() : Object()
   {
+    this->class_inheritance.push_back(8);
     ////TODO implement constructor
     //this->reputation = 0;
     //this->characters = nullptr;

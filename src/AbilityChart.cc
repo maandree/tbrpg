@@ -35,6 +35,8 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart() : Object()
   {
+    this->class_inheritance.push_back(22);
+    
     this->strength     = new AbilityBonus[26];
     this->strength18   = new AbilityBonus[101];
     this->dexterity    = new AbilityBonus[26];

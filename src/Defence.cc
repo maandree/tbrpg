@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Defence::Defence() : Object()
   {
+    this->class_inheritance.push_back(4);
     ////TODO implement constructor
     //this->melee = 0;
     //this->missile = 0;

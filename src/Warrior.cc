@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Warrior::Warrior() : Class()
   {
+    this->class_inheritance.push_back(52);
     this->proficiencies_each = 2;
     this->hit_points = 10;
     this->thac0 = 22;

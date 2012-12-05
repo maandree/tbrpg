@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LowScroll::LowScroll() : Scroll()
   {
+    this->class_inheritance.push_back(60);
     this->name = "low scroll";
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Class::Class() : Object()
   {
+    this->class_inheritance.push_back(16);
     ////TODO implement constructor
     this->lore_bonus = 1;
     this->learn_from_scroll = false;

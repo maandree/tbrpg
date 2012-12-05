@@ -46,6 +46,13 @@ namespace tbrpg
   {
   public:
     /**
+     * Class inheritance vector
+     */
+    std::vector<short> class_inheritance;
+    
+    
+    
+    /**
      * Construction
      */
     Object();

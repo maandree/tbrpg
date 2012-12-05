@@ -35,6 +35,7 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression() : Object()
   {
+    this->class_inheritance.push_back(10);
     ////TODO implement constructor
     //this->wizard_slots = nullptr;
     //this->priest_slots = nullptr;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Abilities::Abilities() : Object()
   {
+    this->class_inheritance.push_back(7);
     this->strength = 0;
     this->strength18 = 0;
     this->constitution = 0;

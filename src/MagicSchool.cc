@@ -39,6 +39,7 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(std::string schoolName, std::string effectColuration, std::string practicerName) : Object()
   {
+    this->class_inheritance.push_back(20);
     this->name = schoolName;
     this->coluration = effectColuration;
     this->practicer = practicerName;

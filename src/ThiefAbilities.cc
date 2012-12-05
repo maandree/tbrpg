@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities() : Object()
   {
+    this->class_inheritance.push_back(5);
     this->find_traps = 0;
     this->open_locks = 0;
     this->pick_pockets = 0;

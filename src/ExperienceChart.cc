@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ExperienceChart::ExperienceChart() : Object()
   {
+    this->class_inheritance.push_back(9);
     ////TODO implement constructor
     //this->experience = nullptr;
     //this->hit_point_die = nullptr;

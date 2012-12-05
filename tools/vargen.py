@@ -43,6 +43,9 @@ for line in lines:
     line = line[:line.find(';')] if ';' in line else line
     classes.append(line.strip())
 
+isObject = set()
+idObject = 0
+isObject.add('Object')
 
 for line in lines:
     lineptr += 1
@@ -72,6 +75,9 @@ for line in lines:
             supers = classLine[classLine.index(':') + 2:].replace(',', '').split(' ')
             classLine = classLine.replace(',', ', public').replace(':', ': public')
             superInclude = ['#include "%s.hpp"' % c for c in supers] + ['', ''];
+            for superClass in supers:
+                if (superClass == 'Object') or (superClass in isObject):
+                    isObject.add(className)
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             for s in range(0, len(varLine)):
@@ -308,6 +314,9 @@ for line in lines:
         output += '   */\n'
         output += '  %s::%s()%s\n' % (className, className, superDefault)
         output += '  {\n'
+        if className in isObject:
+            output += '    this->class_inheritance.push_back(%i);\n' % idObject
+            idObject += 1
         output += '%s\n' % varInit
         output += '  }\n'
         output += '  \n'

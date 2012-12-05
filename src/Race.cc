@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Race::Race() : Object()
   {
+    this->class_inheritance.push_back(17);
     this->dualclass_level = 0x7FFF;
     this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
 			     CONJURATION, DIVINATION, ENCHANTMENT,

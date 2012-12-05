@@ -37,6 +37,7 @@ namespace tbrpg
    */
   DamageType::DamageType(std::string damageTypeName) : Object()
   {
+    this->class_inheritance.push_back(11);
     this->name = damageTypeName;
   }
   

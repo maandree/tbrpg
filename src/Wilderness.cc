@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Wilderness::Wilderness() : MapMinor()
   {
+    this->class_inheritance.push_back(75);
     ////TODO implement constructor
   }
   

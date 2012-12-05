@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart() : Object()
   {
+    this->class_inheritance.push_back(2);
     this->reaction_adjustment = new int[21];
     this->wanted = new bool[21];
     this->killing_innocent = new int[21];
