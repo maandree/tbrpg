@@ -211,6 +211,16 @@ namespace tbrpg
   std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
+   * Prompt multiple item selection
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   selectcount   The number of items that can be choosed
+   * @param   items         The items list from which to choose
+   * @return                Selected items
+   */
+  std::vector<std::string> promptMulti(std::string instruction, long selectcount, std::vector<std::string> items);
+  
+  /**
    * Print a list in columns
    * 
    * @param  items  The items to print
