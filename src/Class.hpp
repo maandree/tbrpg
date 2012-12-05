@@ -97,6 +97,11 @@ namespace tbrpg
     bool extra_strength;
     
     /**
+     * Whether characters of this class have a racial enemy
+     */
+    bool have_racial_enemy;
+    
+    /**
      * The class's experience chart
      */
     ExperienceChart experience_chart;

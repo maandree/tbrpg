@@ -51,6 +51,7 @@ namespace tbrpg
     //this->inventory_prototype = nullptr;
     //this->spells = nullptr;
     //this->races = nullptr;
+    //this->racial_enemies = nullptr;
   }
   
   /**
@@ -76,6 +77,7 @@ namespace tbrpg
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
   }
   
   /**
@@ -101,6 +103,7 @@ namespace tbrpg
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
   }
   
   /**
@@ -126,6 +129,7 @@ namespace tbrpg
     std::swap(this->inventory_prototype, original.inventory_prototype);
     std::swap(this->spells, original.spells);
     std::swap(this->races, original.races);
+    std::swap(this->racial_enemies, original.racial_enemies);
   }
   
   
@@ -141,6 +145,7 @@ namespace tbrpg
     //delete this->inventory_prototype;
     //delete this->spells;
     //delete this->races;
+    //delete this->racial_enemies;
   }
   
   
@@ -169,6 +174,7 @@ namespace tbrpg
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
     return *this;
   }
   
@@ -196,6 +202,7 @@ namespace tbrpg
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
     return *this;
   }
   
@@ -223,6 +230,7 @@ namespace tbrpg
     std::swap(this->inventory_prototype, original.inventory_prototype);
     std::swap(this->spells, original.spells);
     std::swap(this->races, original.races);
+    std::swap(this->racial_enemies, original.racial_enemies);
     return *this;
   }
   
