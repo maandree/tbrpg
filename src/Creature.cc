@@ -42,6 +42,7 @@ namespace tbrpg
     //this->y = 0;
     //this->alive = false;
     //this->resurrect = false;
+    //this->experience = 0;
   }
   
   /**
@@ -57,6 +58,7 @@ namespace tbrpg
     this->y = original.y;
     this->alive = original.alive;
     this->resurrect = original.resurrect;
+    this->experience = original.experience;
   }
   
   /**
@@ -72,6 +74,7 @@ namespace tbrpg
     this->y = original.y;
     this->alive = original.alive;
     this->resurrect = original.resurrect;
+    this->experience = original.experience;
   }
   
   /**
@@ -87,6 +90,7 @@ namespace tbrpg
     std::swap(this->y, original.y);
     std::swap(this->alive, original.alive);
     std::swap(this->resurrect, original.resurrect);
+    std::swap(this->experience, original.experience);
   }
   
   
@@ -115,6 +119,7 @@ namespace tbrpg
     this->y = original.y;
     this->alive = original.alive;
     this->resurrect = original.resurrect;
+    this->experience = original.experience;
     return *this;
   }
   
@@ -132,6 +137,7 @@ namespace tbrpg
     this->y = original.y;
     this->alive = original.alive;
     this->resurrect = original.resurrect;
+    this->experience = original.experience;
     return *this;
   }
   
@@ -149,6 +155,7 @@ namespace tbrpg
     std::swap(this->y, original.y);
     std::swap(this->alive, original.alive);
     std::swap(this->resurrect, original.resurrect);
+    std::swap(this->experience, original.experience);
     return *this;
   }
   

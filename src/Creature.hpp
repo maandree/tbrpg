@@ -72,6 +72,11 @@ namespace tbrpg
      */
     bool resurrect;
     
+    /**
+     * the experience gain for killing the creature
+     */
+    int experience;
+    
     
     
     /**
