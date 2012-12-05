@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "Class.hpp"
@@ -46,7 +48,7 @@ namespace tbrpg
   /**
    * Race class
    */
-  class Race
+  class Race: public Object
   {
   public:
     /**

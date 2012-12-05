@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Defence::Defence()
+  Defence::Defence() : Object()
   {
     ////TODO implement constructor
     //this->melee = 0;
@@ -51,7 +51,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Defence::Defence(const Defence& original)
+  Defence::Defence(const Defence& original) : Object(original)
   {
     (void) original;
     this->melee = original.melee;
@@ -69,7 +69,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Defence::Defence(Defence& original)
+  Defence::Defence(Defence& original) : Object(original)
   {
     (void) original;
     this->melee = original.melee;
@@ -87,7 +87,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Defence::Defence(Defence&& original)
+  Defence::Defence(Defence&& original) : Object(original)
   {
     (void) original;
     std::swap(this->melee, original.melee);
@@ -121,7 +121,14 @@ namespace tbrpg
   Defence& Defence::operator =(const Defence& original)
   {
     (void) original;
-    this->melee = original.melee;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->melee = original.melee;
     this->missile = original.missile;
     this->fire = original.fire;
     this->cold = original.cold;
@@ -141,7 +148,14 @@ namespace tbrpg
   Defence& Defence::operator =(Defence& original)
   {
     (void) original;
-    this->melee = original.melee;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->melee = original.melee;
     this->missile = original.missile;
     this->fire = original.fire;
     this->cold = original.cold;
@@ -161,7 +175,14 @@ namespace tbrpg
   Defence& Defence::operator =(Defence&& original)
   {
     (void) original;
-    std::swap(this->melee, original.melee);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->melee, original.melee);
     std::swap(this->missile, original.missile);
     std::swap(this->fire, original.fire);
     std::swap(this->cold, original.cold);

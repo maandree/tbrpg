@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Road::Road()
+  Road::Road() : Object()
   {
     ////TODO implement constructor
     //this->first_distance = 0;
@@ -51,7 +51,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Road::Road(const Road& original)
+  Road::Road(const Road& original) : Object(original)
   {
     (void) original;
     this->first_distance = original.first_distance;
@@ -69,7 +69,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Road::Road(Road& original)
+  Road::Road(Road& original) : Object(original)
   {
     (void) original;
     this->first_distance = original.first_distance;
@@ -87,7 +87,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Road::Road(Road&& original)
+  Road::Road(Road&& original) : Object(original)
   {
     (void) original;
     std::swap(this->first_distance, original.first_distance);
@@ -124,7 +124,14 @@ namespace tbrpg
   Road& Road::operator =(const Road& original)
   {
     (void) original;
-    this->first_distance = original.first_distance;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
     this->waylay_dice = original.waylay_dice;
@@ -144,7 +151,14 @@ namespace tbrpg
   Road& Road::operator =(Road& original)
   {
     (void) original;
-    this->first_distance = original.first_distance;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
     this->waylay_dice = original.waylay_dice;
@@ -164,7 +178,14 @@ namespace tbrpg
   Road& Road::operator =(Road&& original)
   {
     (void) original;
-    std::swap(this->first_distance, original.first_distance);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->first_distance, original.first_distance);
     std::swap(this->last_distance, original.last_distance);
     std::swap(this->waylay_die, original.waylay_die);
     std::swap(this->waylay_dice, original.waylay_dice);

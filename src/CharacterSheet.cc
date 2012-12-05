@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  CharacterSheet::CharacterSheet()
+  CharacterSheet::CharacterSheet() : Object()
   {
     ////TODO implement constructor
     //this->name = nullptr;
@@ -62,7 +62,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CharacterSheet::CharacterSheet(const CharacterSheet& original)
+  CharacterSheet::CharacterSheet(const CharacterSheet& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -91,7 +91,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CharacterSheet::CharacterSheet(CharacterSheet& original)
+  CharacterSheet::CharacterSheet(CharacterSheet& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -120,7 +120,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  CharacterSheet::CharacterSheet(CharacterSheet&& original)
+  CharacterSheet::CharacterSheet(CharacterSheet&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -181,7 +181,25 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
     this->alignment = original.alignment;
@@ -212,7 +230,25 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
     this->alignment = original.alignment;
@@ -243,7 +279,25 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
     std::swap(this->colour, original.colour);
     std::swap(this->alignment, original.alignment);

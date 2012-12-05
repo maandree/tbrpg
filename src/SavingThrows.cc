@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  SavingThrows::SavingThrows()
+  SavingThrows::SavingThrows() : Object()
   {
     ////TODO implement constructor
     //this->breath = 0;
@@ -48,7 +48,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SavingThrows::SavingThrows(const SavingThrows& original)
+  SavingThrows::SavingThrows(const SavingThrows& original) : Object(original)
   {
     (void) original;
     this->breath = original.breath;
@@ -63,7 +63,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SavingThrows::SavingThrows(SavingThrows& original)
+  SavingThrows::SavingThrows(SavingThrows& original) : Object(original)
   {
     (void) original;
     this->breath = original.breath;
@@ -78,7 +78,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  SavingThrows::SavingThrows(SavingThrows&& original)
+  SavingThrows::SavingThrows(SavingThrows&& original) : Object(original)
   {
     (void) original;
     std::swap(this->breath, original.breath);
@@ -109,7 +109,11 @@ namespace tbrpg
   SavingThrows& SavingThrows::operator =(const SavingThrows& original)
   {
     (void) original;
-    this->breath = original.breath;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->breath = original.breath;
     this->paralyze_poison_death = original.paralyze_poison_death;
     this->petrification_polymorph = original.petrification_polymorph;
     this->rod_staff_wand = original.rod_staff_wand;
@@ -126,7 +130,11 @@ namespace tbrpg
   SavingThrows& SavingThrows::operator =(SavingThrows& original)
   {
     (void) original;
-    this->breath = original.breath;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->breath = original.breath;
     this->paralyze_poison_death = original.paralyze_poison_death;
     this->petrification_polymorph = original.petrification_polymorph;
     this->rod_staff_wand = original.rod_staff_wand;
@@ -143,7 +151,11 @@ namespace tbrpg
   SavingThrows& SavingThrows::operator =(SavingThrows&& original)
   {
     (void) original;
-    std::swap(this->breath, original.breath);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->breath, original.breath);
     std::swap(this->paralyze_poison_death, original.paralyze_poison_death);
     std::swap(this->petrification_polymorph, original.petrification_polymorph);
     std::swap(this->rod_staff_wand, original.rod_staff_wand);

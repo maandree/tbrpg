@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "AbilityBonus.hpp"
@@ -44,7 +46,7 @@ namespace tbrpg
   /**
    * Ability chart
    */
-  class AbilityChart
+  class AbilityChart: public Object
   {
   public:
     /**

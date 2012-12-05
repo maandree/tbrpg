@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  AbilityChart::AbilityChart()
+  AbilityChart::AbilityChart() : Object()
   {
     ////TODO implement constructor
     //this->strength = nullptr;
@@ -50,7 +50,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(const AbilityChart& original)
+  AbilityChart::AbilityChart(const AbilityChart& original) : Object(original)
   {
     (void) original;
     this->strength = original.strength;
@@ -67,7 +67,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart& original)
+  AbilityChart::AbilityChart(AbilityChart& original) : Object(original)
   {
     (void) original;
     this->strength = original.strength;
@@ -84,7 +84,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  AbilityChart::AbilityChart(AbilityChart&& original)
+  AbilityChart::AbilityChart(AbilityChart&& original) : Object(original)
   {
     (void) original;
     std::swap(this->strength, original.strength);
@@ -124,7 +124,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(const AbilityChart& original)
   {
     (void) original;
-    this->strength = original.strength;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->dexterity = original.dexterity;
     this->constitution = original.constitution;
@@ -143,7 +149,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(AbilityChart& original)
   {
     (void) original;
-    this->strength = original.strength;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->dexterity = original.dexterity;
     this->constitution = original.constitution;
@@ -162,7 +174,13 @@ namespace tbrpg
   AbilityChart& AbilityChart::operator =(AbilityChart&& original)
   {
     (void) original;
-    std::swap(this->strength, original.strength);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
     std::swap(this->dexterity, original.dexterity);
     std::swap(this->constitution, original.constitution);

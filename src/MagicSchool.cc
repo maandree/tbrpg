@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  MagicSchool::MagicSchool()
+  MagicSchool::MagicSchool() : Object()
   {
     ////TODO implement constructor
     //this->name = nullptr;
@@ -47,7 +47,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MagicSchool::MagicSchool(const MagicSchool& original)
+  MagicSchool::MagicSchool(const MagicSchool& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -61,7 +61,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MagicSchool::MagicSchool(MagicSchool& original)
+  MagicSchool::MagicSchool(MagicSchool& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -75,7 +75,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  MagicSchool::MagicSchool(MagicSchool&& original)
+  MagicSchool::MagicSchool(MagicSchool&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -109,7 +109,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
     this->opposite = original.opposite;
@@ -125,7 +128,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
     this->opposite = original.opposite;
@@ -141,7 +147,10 @@ namespace tbrpg
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->coluration, original.coluration);
     std::swap(this->practicer, original.practicer);
     std::swap(this->opposite, original.opposite);

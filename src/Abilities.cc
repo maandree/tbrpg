@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Abilities::Abilities()
+  Abilities::Abilities() : Object()
   {
     ////TODO implement constructor
     //this->strength = 0;
@@ -50,7 +50,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Abilities::Abilities(const Abilities& original)
+  Abilities::Abilities(const Abilities& original) : Object(original)
   {
     (void) original;
     this->strength = original.strength;
@@ -67,7 +67,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Abilities::Abilities(Abilities& original)
+  Abilities::Abilities(Abilities& original) : Object(original)
   {
     (void) original;
     this->strength = original.strength;
@@ -84,7 +84,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Abilities::Abilities(Abilities&& original)
+  Abilities::Abilities(Abilities&& original) : Object(original)
   {
     (void) original;
     std::swap(this->strength, original.strength);
@@ -117,7 +117,13 @@ namespace tbrpg
   Abilities& Abilities::operator =(const Abilities& original)
   {
     (void) original;
-    this->strength = original.strength;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->constitution = original.constitution;
     this->dexterity = original.dexterity;
@@ -136,7 +142,13 @@ namespace tbrpg
   Abilities& Abilities::operator =(Abilities& original)
   {
     (void) original;
-    this->strength = original.strength;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->strength = original.strength;
     this->strength18 = original.strength18;
     this->constitution = original.constitution;
     this->dexterity = original.dexterity;
@@ -155,7 +167,13 @@ namespace tbrpg
   Abilities& Abilities::operator =(Abilities&& original)
   {
     (void) original;
-    std::swap(this->strength, original.strength);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
     std::swap(this->constitution, original.constitution);
     std::swap(this->dexterity, original.dexterity);

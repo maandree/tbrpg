@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  DamageType::DamageType()
+  DamageType::DamageType() : Object()
   {
     ////TODO implement constructor
     //this->name = nullptr;
@@ -44,7 +44,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(const DamageType& original)
+  DamageType::DamageType(const DamageType& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -55,7 +55,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(DamageType& original)
+  DamageType::DamageType(DamageType& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -66,7 +66,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  DamageType::DamageType(DamageType&& original)
+  DamageType::DamageType(DamageType&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -94,7 +94,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(const DamageType& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -107,7 +107,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
   
@@ -120,7 +120,7 @@ namespace tbrpg
   DamageType& DamageType::operator =(DamageType&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     return *this;
   }
   

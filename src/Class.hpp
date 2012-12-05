@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "ExperienceChart.hpp"
@@ -53,7 +55,7 @@ namespace tbrpg
   /**
    * Prestige class
    */
-  class Class
+  class Class: public Object
   {
   public:
     /**

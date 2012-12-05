@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Spell::Spell()
+  Spell::Spell() : Object()
   {
     ////TODO implement constructor
     //this->name = nullptr;
@@ -58,7 +58,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spell::Spell(const Spell& original)
+  Spell::Spell(const Spell& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -83,7 +83,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spell::Spell(Spell& original)
+  Spell::Spell(Spell& original) : Object(original)
   {
     (void) original;
     this->name = original.name;
@@ -108,7 +108,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Spell::Spell(Spell&& original)
+  Spell::Spell(Spell&& original) : Object(original)
   {
     (void) original;
     std::swap(this->name, original.name);
@@ -153,7 +153,21 @@ namespace tbrpg
   Spell& Spell::operator =(const Spell& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
     this->priest = original.priest;
@@ -180,7 +194,21 @@ namespace tbrpg
   Spell& Spell::operator =(Spell& original)
   {
     (void) original;
-    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
     this->priest = original.priest;
@@ -207,7 +235,21 @@ namespace tbrpg
   Spell& Spell::operator =(Spell&& original)
   {
     (void) original;
-    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->description, original.description);
     std::swap(this->wizard, original.wizard);
     std::swap(this->priest, original.priest);

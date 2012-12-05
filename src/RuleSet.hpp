@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 
 #include "ReputationChart.hpp"
@@ -48,7 +50,7 @@ namespace tbrpg
   /**
    * Game rules
    */
-  class RuleSet
+  class RuleSet: public Object
   {
   public:
     /**
