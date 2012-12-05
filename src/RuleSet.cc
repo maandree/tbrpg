@@ -36,18 +36,18 @@ namespace tbrpg
   RuleSet::RuleSet()
   {
     ////TODO implement constructor
-    //this->attack_roll_die = 0;
-    //this->attack_roll_dice = 0;
-    //this->critical_hit = 0;
-    //this->critical_miss = 0;
-    //this->idle_healing = 0;
-    //this->idle_healing_turns = 0;
-    //this->combat_healing = 0;
-    //this->combat_healing_turns = 0;
-    //this->rest_healing = 0;
-    //this->rest_healing_turns = 0;
-    //this->racial_enemy_bonus = 0;
-    //this->racial_enemy_penality = 0;
+    this->attack_roll_die = 20;
+    this->attack_roll_dice = 1;
+    this->critical_hit = 20;
+    this->critical_miss = 1;
+    this->idle_healing = 1;
+    this->idle_healing_turns = 1;
+    this->combat_healing = 0;
+    this->combat_healing_turns = 1;
+    this->rest_healing = 2;
+    this->rest_healing_turns = 1;
+    this->racial_enemy_bonus = 4;
+    this->racial_enemy_penality = 4;
     //this->reputation_chart = nullptr;
     //this->ability_chart = nullptr;
     //this->inventory_prototype = nullptr;
