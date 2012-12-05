@@ -46,6 +46,21 @@ namespace tbrpg
     //this->can_use = nullptr;
     //this->specialisations = nullptr;
     
+    this->abilities.thief_abilities.find_traps = -1;
+    this->abilities.thief_abilities.open_locks = -1;
+    this->abilities.thief_abilities.pick_pockets = -1;
+    this->abilities.thief_abilities.stealth = -1;
+    
+    this->experience_chart.thief_abilities = std::vector<char>(31);
+    this->experience_chart.backstabs = std::vector<char>(31);
+    char backstabs;
+    for (long i = 0; i <= 30; i++)
+      {
+	this->experience_chart.thief_abilities.push_back(0);
+        backstabs = backstabs >= 13 ? 5 : ((i + 7) >> 2);
+	this->experience_chart.backstabs.push_back(backstabs);
+      }
+    
     this->alignments = new bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;

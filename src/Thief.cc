@@ -45,6 +45,11 @@ namespace tbrpg
     this->abilities.thief_abilities.open_locks = 10;
     this->abilities.thief_abilities.pick_pockets = 15;
     this->abilities.thief_abilities.stealth = 10;
+    this->abilities.thief_abilities.limit = 0x7FFFffff;
+    
+    this->experience_chart.thief_abilities[1] = 30;
+    for (long i = 2; i <= 30; i++)
+      this->experience_chart.thief_abilities[i] = 20;
   }
   
   /**

@@ -35,12 +35,11 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities()
   {
-    ////TODO implement constructor
-    //this->find_traps = 0;
-    //this->open_locks = 0;
-    //this->pick_pockets = 0;
-    //this->stealth = 0;
-    //this->limit = 0;
+    this->find_traps = 0;
+    this->open_locks = 0;
+    this->pick_pockets = 0;
+    this->stealth = 0;
+    this->limit = 0;
   }
   
   /**
@@ -95,7 +94,7 @@ namespace tbrpg
    */
   ThiefAbilities::~ThiefAbilities()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   

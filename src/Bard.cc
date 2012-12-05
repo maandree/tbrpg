@@ -44,6 +44,11 @@ namespace tbrpg
     this->alignments[2] = false;
     this->alignments[0] = false;
     
+    this->abilities.thief_abilities.limit = 99;
+    this->abilities.thief_abilities.stealth = 10;
+    for (long i = 2; i <= 30; i++)
+      this->experience_chart.thief_abilities[i] = 5;
+    
     this->can_use[ChainMail()] = true;
     this->can_use[LongBow()] = true;
     this->can_use[HeavyCrossbow()] = true;
