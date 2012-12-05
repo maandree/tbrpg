@@ -28,6 +28,8 @@ RuleSet                                  ; Game rules
 	char combat_healing_turns        ; Natural regenation when in combat: turn interval
 	int rest_healing                 ; Natural regenation when resting: hit points
 	char rest_healing_turns          ; Natural regenation when resting: turn interval
+	int racial_enemy_bonus           ; THAC0 bonus when fighting racial enemy
+	int racial_enemy_penality        ; THAC0 penality when not fighting racial enemy
 	ReputationChart reputation_chart ; The reputation chart
 	AbilityChart ability_chart       ; The ability chart
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
