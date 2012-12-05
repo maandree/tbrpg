@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Object::Object()
   {
-    this->class_inheritance = new std::vector<short>();
+    this->class_inheritance = std::vector<short>();
     this->class_inheritance.push_back(0);
   }
   
@@ -46,7 +46,6 @@ namespace tbrpg
    */
   Object::Object(const Object& original)
   {
-    (void) original;
     this->class_inheritance = original.class_inheritance;
   }
   
@@ -57,7 +56,6 @@ namespace tbrpg
    */
   Object::Object(Object& original)
   {
-    (void) original;
     this->class_inheritance = original.class_inheritance;
   }
   
@@ -68,7 +66,6 @@ namespace tbrpg
    */
   Object::Object(Object&& original)
   {
-    (void) original;
     std::swap(this->class_inheritance, original.class_inheritance);
   }
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Object::~Object()
   {
-    delete this->class_inheritance;
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Object& Object::operator =(const Object& original)
   {
-    (void) original;
     this->class_inheritance = original.class_inheritance;
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Object& Object::operator =(Object& original)
   {
-    (void) original;
     this->class_inheritance = original.class_inheritance;
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Object& Object::operator =(Object&& original)
   {
-    (void) original;
     std::swap(this->class_inheritance, original.class_inheritance);
     return *this;
   }
