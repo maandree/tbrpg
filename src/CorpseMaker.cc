@@ -33,13 +33,32 @@ namespace tbrpg
   /**
    * Constructor
    */
-  CorpseMaker::CorpseMaker() : Object()
+  CorpseMaker::CorpseMaker() : Object() /* TODO document this chart */
   {
     this->class_inheritance.push_back(78);
-    ////TODO implement constructor
-    //this->strenght_weight = nullptr;
-    //this->strenght18_weight = nullptr;
-    //this->constitution_weight = nullptr;
+    this->strenght_weight = (int*)malloc(26 * sizeof(int));
+    this->strenght18_weight = (int*)malloc(101 * sizeof(int));
+    this->constitution_weight = (int*)malloc(26 * sizeof(int));
+    
+    for (long i = 0; i <= 25; i++)
+	this->constitution_weight[i] = 500 * i;
+    int w = 0;
+    for (long i = 0; i <= 18; i++)
+      {
+	this->strenght_weight[i] = w;
+	w += 500;
+      }
+    for (long i = 0; i <= 100; i++)
+      {
+	this->strenght18_weight[i] = w;
+	w += 50;
+      }
+    for (long i = 19; i <= 25; i++)
+      {
+	this->strenght_weight[i] = w;
+	w += 500;
+      }
+    this->strenght_weight[18] = 0;
   }
   
   /**
@@ -88,10 +107,9 @@ namespace tbrpg
    */
   CorpseMaker::~CorpseMaker()
   {
-    ////TODO implement destructor
-    //delete this->strenght_weight;
-    //delete this->strenght18_weight;
-    //delete this->constitution_weight;
+    free(this->strenght_weight);
+    free(this->strenght18_weight);
+    free(this->constitution_weight);
   }
   
   
@@ -152,6 +170,27 @@ namespace tbrpg
   {
     return this == &other;
   }
+  
+  
+  /**
+   * Makes a corpse for a character
+   * 
+   * @param   character  The dead character
+   * @return             The corpse of the character
+   */
+  Body& makeCorpse(const Character& character) const
+  {
+    Body body = Body();
+    body.character = character;
+    body.name += character.record.name;
+    if (character.record.abilities.abilities.strength != 18)
+      body.weight += this->strenght_weight[character.record.abilities.abilities.strength];
+    if (character.record.abilities.abilities.strength == 18)
+      body.weight += this->strenght18_weight[character.record.abilities.abilities.strength18];
+    body.weight += this->constitution_weight[character.record.abilities.abilities.constitution];
+    return body;
+  }
+  
   
   /**
    * Copy method
