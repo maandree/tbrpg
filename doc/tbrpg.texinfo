@@ -403,7 +403,7 @@ multiplied the 1D20 roll.
 
 During stealth mode a character by be successful in
 performing a backstab when attacking with melée weapons.
-At level 1 to 4 backstab doubles the damaeg taked by the
+At level 1 to 4 backstab doubles the damage taked by the
 target, 3 times at level 5 to 8, 4 times at level 9 to
 12, and 5 times at level 13 and higher.
 
