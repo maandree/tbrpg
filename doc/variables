@@ -479,3 +479,8 @@ Wilderness: MapMinor                      ; Wilderness outdoors environment
 Town: MapMinor                            ; Town outdoors environment
 House: MapMinor                           ; Indoors environment
 
+CorpseMaker: Object                       ; Corpse maker class
+	int[] strenght_weight             ; Additional weight for strenght scores
+	int[] strenght18_weight           ; Additional weight for strenght scores at 18
+	int[] constitution_weight         ; Additional weight for constitution scores
+
