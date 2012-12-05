@@ -338,7 +338,6 @@ namespace tbrpg
 	goto _07;
       }
     
-    // SpellBook abilities.spells
     {
       int wizardAssign0 = 0;
       int wizardAssign1 = 0;
