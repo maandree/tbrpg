@@ -35,6 +35,7 @@ namespace tbrpg
    */
   AbilityBonus::AbilityBonus() : Object()
   {
+    this->class_inheritance.push_back(25);
     ////TODO implement constructor
     //this->bonuses = nullptr;
     //this->thief_abilities = nullptr;

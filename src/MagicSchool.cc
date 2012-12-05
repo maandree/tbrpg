@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool() : Object()
   {
+    this->class_inheritance.push_back(20);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->coluration = nullptr;

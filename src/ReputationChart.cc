@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart() : Object()
   {
+    this->class_inheritance.push_back(2);
     ////TODO implement constructor
     //this->reaction_adjustment = nullptr;
     //this->wanted = nullptr;

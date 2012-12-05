@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Race::Race() : Object()
   {
+    this->class_inheritance.push_back(17);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->allowed_classes = nullptr;

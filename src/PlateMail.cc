@@ -35,6 +35,7 @@ namespace tbrpg
    */
   PlateMail::PlateMail() : BodyArmour()
   {
+    this->class_inheritance.push_back(38);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LowWand::LowWand() : Wand()
   {
+    this->class_inheritance.push_back(64);
     ////TODO implement constructor
   }
   

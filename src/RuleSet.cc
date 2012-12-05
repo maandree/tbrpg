@@ -35,6 +35,7 @@ namespace tbrpg
    */
   RuleSet::RuleSet() : Object()
   {
+    this->class_inheritance.push_back(1);
     ////TODO implement constructor
     //this->attack_roll_die = 0;
     //this->attack_roll_dice = 0;

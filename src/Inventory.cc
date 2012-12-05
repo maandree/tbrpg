@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Inventory::Inventory() : Object()
   {
+    this->class_inheritance.push_back(23);
     ////TODO implement constructor
     //this->left_hand = nullptr;
     //this->right_hand = nullptr;

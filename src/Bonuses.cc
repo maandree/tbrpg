@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bonuses::Bonuses() : Object()
   {
+    this->class_inheritance.push_back(3);
     ////TODO implement constructor
     //this->hit_bonus = 0;
     //this->damage_bonus = 0;

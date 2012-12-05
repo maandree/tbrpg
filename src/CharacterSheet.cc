@@ -35,6 +35,7 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet() : Object()
   {
+    this->class_inheritance.push_back(18);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->biography = nullptr;

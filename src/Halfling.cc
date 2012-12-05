@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Halfling::Halfling() : Race()
   {
+    this->class_inheritance.push_back(58);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Entrance::Entrance() : Object()
   {
+    this->class_inheritance.push_back(65);
     ////TODO implement constructor
     //this->usable = false;
     //this->description = nullptr;

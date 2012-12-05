@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Wizard::Wizard() : Class()
   {
+    this->class_inheritance.push_back(49);
     ////TODO implement constructor
   }
   

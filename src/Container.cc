@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Container::Container() : Item()
   {
+    this->class_inheritance.push_back(27);
     ////TODO implement constructor
     //this->contains = nullptr;
     //this->contain_limit = 0;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Ring::Ring() : Item()
   {
+    this->class_inheritance.push_back(43);
     ////TODO implement constructor
   }
   

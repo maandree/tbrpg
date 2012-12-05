@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Human::Human() : Race()
   {
+    this->class_inheritance.push_back(54);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart() : Object()
   {
+    this->class_inheritance.push_back(15);
     ////TODO implement constructor
     //this->index_map = nullptr;
     //this->slot_map = nullptr;

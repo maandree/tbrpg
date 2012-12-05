@@ -17,7 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-Object                                   ; Master super class
+Object                                       ; Master super class
+	std::vector<short> class_inheritance ; Class inheritance vector
 
 RuleSet: Object                          ; Game rules
 	char attack_roll_die             ; The number of sides on the dice to roll at the attack roll
