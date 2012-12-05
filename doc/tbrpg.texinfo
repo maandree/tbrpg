@@ -2510,7 +2510,8 @@ lock or pick pocket.
 @cindex weapon proficienies
 
 Weapon proficiences depending on class and level,
-non-cumulative.
+non-cumulative. The chart is extended with multiclasses by
+the best value.
 
 @multitable @columnfractions 0.08 0.05 0.05 0.08 0.05 0.08 0.05 0.08 0.05 0.08
 @item @b{Level} @tab @b{F} @tab @b{R} @tab @b{P} @tab @b{T}
