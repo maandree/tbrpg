@@ -31,6 +31,33 @@
 namespace tbrpg
 {
   /**
+   * Ability score printer
+   * 
+   * @param  index  The index of the ability
+   * @param  value  The value of the ability
+   * @param  data   Pointer to the 100-part of the strenght
+   */
+  static void abilityPrinter(int index, int value, void* data);
+  
+  /**
+   * Generic attribute score printer
+   * 
+   * @param  index  The index of the attribute
+   * @param  value  The value of the attribute
+   * @param  data   The labels of the attributes
+   */
+  static void genericPrinter(int index, int value, void* data);
+  
+  /**
+   * Ability score reroll
+   * 
+   * @param  self  The invoking CharacterCreator
+   */
+  static void abilityReroll(CharacterCreator& self);
+  
+  
+  
+  /**
    * Constructor
    * 
    * @param  rules  The game's rules
@@ -180,7 +207,7 @@ namespace tbrpg
     
     
    _06:
-    abilityReroll();
+    abilityReroll(*this);
     ok = assign(6, 0, (void*)&(this->sheet.abilities.abilities.strength18), abilityPrinter, abilityReroll);
     if (ok)
       {
@@ -290,7 +317,7 @@ namespace tbrpg
    * @param   reroll      Reroll function pointer, nullptr if not allowed
    * @return              Whether the assignment was completed
    */
-  bool CharacterCreator::assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (*reroll)(void))
+  bool CharacterCreator::assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (*reroll)(CharacterCreator&))
   {
     struct termios saved_stty;
     struct termios stty;
@@ -407,7 +434,7 @@ namespace tbrpg
 	      }
 	    else if ((reroll != nullptr) && (c == CTRL('R')))
 	      {
-		reroll();
+		reroll(*this);
 		leftover = unassigned;
 		break;
 	      }
@@ -437,13 +464,52 @@ namespace tbrpg
   
   
   /**
+   * Ability score reroll
+   * 
+   * @param  self  The invoking CharacterCreator
+   */
+  static void abilityReroll(CharacterCreator& self)
+  {
+    self.start = new int[6];
+    self.lower = new int[6];
+    self.upper = new int[6];
+    self.sheet.abilities.abilities.strength18 = self.dice100.roll();
+    self.lower[0] = self.lower[1] = self.lower[2] = self.lower[3] = self.lower[4] = self.lower[5] = 0;
+    for (Class& c : self.sheet.prestige)
+      {
+	int _str, _con, _dex, _int, _wis, _chr;
+	self.lower[0] = (_str = c.lower_limits.strength)     < self.lower[0] ? _str : self.lower[0];
+	self.lower[1] = (_con = c.lower_limits.constitution) < self.lower[1] ? _con : self.lower[1];
+	self.lower[2] = (_dex = c.lower_limits.dexterity)    < self.lower[2] ? _dex : self.lower[2];
+	self.lower[3] = (_int = c.lower_limits.intelligence) < self.lower[3] ? _int : self.lower[3];
+	self.lower[4] = (_wis = c.lower_limits.wisdom)       < self.lower[4] ? _wis : self.lower[4];
+	self.lower[5] = (_chr = c.lower_limits.charisma)     < self.lower[5] ? _chr : self.lower[5];
+      }
+    self.upper[0] = self.sheet.race.bonuses.abilities.strength;
+    self.upper[1] = self.sheet.race.bonuses.abilities.constitution;
+    self.upper[2] = self.sheet.race.bonuses.abilities.dexterity;
+    self.upper[3] = self.sheet.race.bonuses.abilities.intelligence;
+    self.upper[4] = self.sheet.race.bonuses.abilities.wisdom;
+    self.upper[5] = self.sheet.race.bonuses.abilities.charisma;
+    for (int i = 0; i < 6; i++)
+      {
+	self.upper[i] += 18;
+	self.start[i] = self.abilityDice.roll();
+	if (self.start[i] < self.lower[i])
+	  self.start[i] = self.lower[i];
+	self.lower[i] += self.upper[i];
+      }
+  }
+  
+  
+  /**
    * Ability score printer
    * 
    * @param  index  The index of the ability
    * @param  value  The value of the ability
    * @param  data   Pointer to the 100-part of the strenght
    */
-  void CharacterCreator::abilityPrinter(int index, int value, void* data) const
+  static void abilityPrinter(int index, int value, void* data)
   {
     int strength18 = *((char*)data);
     if ((index == 0) && (value == 18) && (strength18 != 0))
@@ -464,46 +530,9 @@ namespace tbrpg
    * @param  value  The value of the attribute
    * @param  data   The labels of the attributes
    */
-  void CharacterCreator::genericPrinter(int index, int value, void* data) const
+  void genericPrinter(int index, int value, void* data)
   {
     std::cout << *((std::string*)data + index) << (value);
-  }
-  
-  
-  /**
-   * Ability score reroll
-   */
-  void CharacterCreator::abilityReroll()
-  {
-    this->start = new int[6];
-    this->lower = new int[6];
-    this->upper = new int[6];
-    this->sheet.abilities.abilities.strength18 = this->dice100.roll();
-    this->lower[0] = this->lower[1] = this->lower[2] = this->lower[3] = this->lower[4] = this->lower[5] = 0;
-    for (Class& c : this->sheet.prestige)
-      {
-	int _str, _con, _dex, _int, _wis, _chr;
-	this->lower[0] = (_str = c.lower_limits.strength)     < this->lower[0] ? _str : this->lower[0];
-	this->lower[1] = (_con = c.lower_limits.constitution) < this->lower[1] ? _con : this->lower[1];
-	this->lower[2] = (_dex = c.lower_limits.dexterity)    < this->lower[2] ? _dex : this->lower[2];
-	this->lower[3] = (_int = c.lower_limits.intelligence) < this->lower[3] ? _int : this->lower[3];
-	this->lower[4] = (_wis = c.lower_limits.wisdom)       < this->lower[4] ? _wis : this->lower[4];
-	this->lower[5] = (_chr = c.lower_limits.charisma)     < this->lower[5] ? _chr : this->lower[5];
-      }
-    this->upper[0] = this->sheet.race.bonuses.abilities.strength;
-    this->upper[1] = this->sheet.race.bonuses.abilities.constitution;
-    this->upper[2] = this->sheet.race.bonuses.abilities.dexterity;
-    this->upper[3] = this->sheet.race.bonuses.abilities.intelligence;
-    this->upper[4] = this->sheet.race.bonuses.abilities.wisdom;
-    this->upper[5] = this->sheet.race.bonuses.abilities.charisma;
-    for (int i = 0; i < 6; i++)
-      {
-	this->upper[i] += 18;
-	this->start[i] = this->abilityDice.roll();
-	if (this->start[i] < this->lower[i])
-	  this->start[i] = this->lower[i];
-	this->lower[i] += this->upper[i];
-      }
   }
   
 }

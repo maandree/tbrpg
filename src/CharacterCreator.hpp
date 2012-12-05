@@ -48,7 +48,7 @@ namespace tbrpg
    */
   class CharacterCreator
   {
-  private:
+  public:
     /**
      * The game's rules
      */
@@ -86,7 +86,6 @@ namespace tbrpg
     
     
     
-  public:
     /**
      * Constructor
      * 
@@ -110,7 +109,6 @@ namespace tbrpg
     
     
   private:
-    
     /**
      * Assign scores
      * 
@@ -121,30 +119,7 @@ namespace tbrpg
      * @param   reroll      Reroll function pointer, nullptr if not allowed
      * @return              Whether the assignment was completed
      */
-    bool assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (*reroll)(void) = nullptr);
-    
-    /**
-     * Ability score printer
-     * 
-     * @param  index  The index of the ability
-     * @param  value  The value of the ability
-     * @param  data   Pointer to the 100-part of the strenght
-     */
-    void abilityPrinter(int index, int value, void* data) const;
-    
-    /**
-     * Generic attribute score printer
-     * 
-     * @param  index  The index of the attribute
-     * @param  value  The value of the attribute
-     * @param  data   The labels of the attributes
-     */
-    void genericPrinter(int index, int value, void* data) const;
-    
-    /**
-     * Ability score reroll
-     */
-    void abilityReroll();
+    bool assign(int n, int unassigned, void* data, void (*printer)(int, int, void*), void (*reroll)(CharacterCreator&) = nullptr);
     
   };
   
