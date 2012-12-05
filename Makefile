@@ -58,7 +58,7 @@ all: parallel info pdf
 
 code:
 	if [ ! -d bin ]; then  mkdir bin;  fi
-	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*{,/*}.{cc,hpp}
+	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
 
 %.o: src/%.cc src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
