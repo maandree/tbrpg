@@ -1029,6 +1029,172 @@ namespace tbrpg
   
   
   /**
+   * Prompt multiple item selection
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   selectcount   The number of items that can be choosed
+   * @param   items         The items list from which to choose
+   * @return                Selected items
+   */
+  std::vector<std::string> promptMulti(std::string instruction, long selectcount, std::vector<std::string> items)
+  {
+    long remaining = selectcount;
+    long above = 0, current = 0, below;
+    
+    size_t selectedn = (items.size() + 7) >> 3;
+    char* selected = (char*)malloc(selectedn);
+    for (size_t i = 0; i < selectedn; i++)
+      *(selected + i) = 0;
+    
+    __store_tty();
+    
+    bool reading = true;
+    
+    
+    while (reading)
+      {
+	struct winsize termsize;
+	int termheight = 45;
+	for (int fd = 1; fd <= 3; fd++)
+	  if (ioctl(fd % 3, TIOCGWINSZ, &termsize) != -1)
+	    {
+	      termheight = termsize.ws_row;
+	      break;
+	    }
+	long dispheight = termheight - 5, disp = dispheight;
+	if (disp > (long)(items.size()) - above)
+	  disp = items.size() - above;
+	
+	below = items.size() - above - dispheight;
+	if (below < 0)
+	  below = 0;
+	
+	std::cout << "\033[?1049h\033[H\033[2J\033[?25l" << instruction << std::endl
+		  << "Remaining: " << remaining << std::endl << std::endl;
+	
+	bool sel;
+	for (long i = 0, j; i < disp; i++)
+	  {
+	    j = i + above;
+	    sel = *(selected + (j >> 3)) & (1 << (j & 7));
+	    std::cout << (sel ? "[\033[01;32mX\033[21;39m] " : "[ ] ")
+		      << (i + above == current ? "\033[01;34m" : "")
+	              << items[i + above]
+		      << (i + above == current ? "\033[21;39m" : "")
+		      << std::endl;
+	  }
+	
+	std::cout << "\033[" << termheight << ";1H\033[K"
+		  << "(above: " << above << ")(below: " << below << ")";
+	std::flush(std::cout);
+	
+	
+	char c;
+	if (read(STDIN_FILENO, &c, 1) <= 0)
+	  c = '\n';
+	
+	
+	bool readinginner = true;
+	while (reading && readinginner)
+	  {
+	  switch (c)
+	    {
+	    case '\n':
+	    case CTRL('D'):
+	      if (remaining > 0)
+		{
+		  __bell();
+		  break;
+		}
+	      reading = false;
+	      break;
+	      
+	    case CTRL('L'):
+	      readinginner = false;
+	      break;
+	      
+	    case CTRL('G'):
+	      for (size_t i = 0; i < selectedn; i++)
+	        *(selected + i) = 0;
+	      reading = false;
+	      break;
+	      
+	    case ' ':
+	    case 'C':
+	    case 'D':
+	      sel = *(selected + (current >> 3)) & (1 << (current & 7));
+	      if (c == 'C')
+		{
+		  if (sel == false)
+		    break;
+		}
+	      else if (c == 'D')
+		if (sel)
+		  break;
+	      sel ^= true;
+	      remaining += sel ? -1 : 1;
+	      if (remaining < 0)
+		{
+		  remaining++;
+		  __bell();
+		  break;
+		}
+	      *(selected + (current >> 3)) ^= 1 << (current & 7);
+	      std::cout << "\033[" << (current - above + 4) <<  ";1H"
+			<< (sel ? "[\033[01;32mX\033[21;39m] " : "[ ] ")
+			<< "\033[01;34m" << items[current] << "\033[21;39m";
+	      std::flush(std::cout);
+	      break;
+	      
+	    case 'A':
+	      current--;
+	      if (current < 0)
+		{
+		  current++;
+		  break;
+		}
+	      if (current < above)
+		{
+		  above -= ((termheight - 5) >> 1) | ((termheight - 5) & 1);
+		  if (above < 0)
+		    above = 0;
+		  readinginner = false;
+		}
+	      break;
+	      
+	    case 'B':
+	      current++;
+	      if (current == (long)(items.size()))
+		{
+		  current--;
+		  break;
+		}
+	      if (current - above >= disp)
+		{
+		  above += ((termheight - 5) >> 1) | ((termheight - 5) & 1);
+		  readinginner = false;
+		}
+	      break;
+	    }
+	  }
+      }
+    
+    
+    std::cout << "\033[?1049l\033[H\033[2J\033[?25h";
+    std::flush(std::cout);
+    __restore_tty();
+    
+    std::vector<std::string> rc = std::vector<std::string>();
+    for(size_t i = 0; i < selectedn; i++)
+      if ((*(selected + i)))
+	for (size_t j = 0; j < 8; j++)
+	  if ((*(selected + i) & (1 << j)))
+	    rc.push_back(items[(i << 3) | j]);
+    return rc;
+  }
+  
+  
+  /**
    * Print a list in columns
    * 
    * @param  items  The items to print
