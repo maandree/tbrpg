@@ -92,7 +92,7 @@ namespace tbrpg
   Paladin& Paladin::operator =(const Paladin& original)
   {
     (void) original;
-
+    Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Paladin& Paladin::operator =(Paladin& original)
   {
     (void) original;
-
+    Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Paladin& Paladin::operator =(Paladin&& original)
   {
     (void) original;
-
+    std::swap((Warrior&)*this, (Warrior&)original);
     return *this;
   }
   

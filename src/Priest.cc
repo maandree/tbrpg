@@ -92,7 +92,7 @@ namespace tbrpg
   Priest& Priest::operator =(const Priest& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Priest& Priest::operator =(Priest& original)
   {
     (void) original;
-
+    Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Priest& Priest::operator =(Priest&& original)
   {
     (void) original;
-
+    std::swap((Class&)*this, (Class&)original);
     return *this;
   }
   

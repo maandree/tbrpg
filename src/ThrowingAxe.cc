@@ -92,7 +92,7 @@ namespace tbrpg
   ThrowingAxe& ThrowingAxe::operator =(const ThrowingAxe& original)
   {
     (void) original;
-
+    Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe& original)
   {
     (void) original;
-
+    Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe&& original)
   {
     (void) original;
-
+    std::swap((Throwing&)*this, (Throwing&)original);
     return *this;
   }
   

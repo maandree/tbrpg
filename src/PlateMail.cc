@@ -92,7 +92,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(const PlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(PlateMail& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   PlateMail& PlateMail::operator =(PlateMail&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

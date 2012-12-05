@@ -181,24 +181,6 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
@@ -230,24 +212,6 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
@@ -279,24 +243,6 @@ namespace tbrpg
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
     std::swap(this->colour, original.colour);

@@ -92,7 +92,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(const Dwarf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(Dwarf& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Dwarf& Dwarf::operator =(Dwarf&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

@@ -115,11 +115,6 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(const Ammunition& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
     Item::__copy__((Item&)*this, (Item&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
@@ -138,11 +133,6 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(Ammunition& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
     Item::__copy__((Item&)*this, (Item&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
@@ -161,11 +151,6 @@ namespace tbrpg
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
     (void) original;
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
     std::swap((Item&)*this, (Item&)original);    std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_die, original.damage_die);
     std::swap(this->damage_dice, original.damage_dice);

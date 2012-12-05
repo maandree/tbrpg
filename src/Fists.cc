@@ -92,7 +92,7 @@ namespace tbrpg
   Fists& Fists::operator =(const Fists& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Fists& Fists::operator =(Fists& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Fists& Fists::operator =(Fists&& original)
   {
     (void) original;
-
+    std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   

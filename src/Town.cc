@@ -92,7 +92,7 @@ namespace tbrpg
   Town& Town::operator =(const Town& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Town& Town::operator =(Town& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Town& Town::operator =(Town&& original)
   {
     (void) original;
-
+    std::swap((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   

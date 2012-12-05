@@ -99,7 +99,6 @@ namespace tbrpg
   Map& Map::operator =(const Map& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
     this->majors = original.majors;
     return *this;
@@ -114,7 +113,6 @@ namespace tbrpg
   Map& Map::operator =(Map& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
     this->majors = original.majors;
     return *this;
@@ -129,7 +127,6 @@ namespace tbrpg
   Map& Map::operator =(Map&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->start, original.start);
     std::swap(this->majors, original.majors);
     return *this;

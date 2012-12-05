@@ -92,7 +92,7 @@ namespace tbrpg
   Halberd& Halberd::operator =(const Halberd& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Halberd& Halberd::operator =(Halberd& original)
   {
     (void) original;
-
+    TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Halberd& Halberd::operator =(Halberd&& original)
   {
     (void) original;
-
+    std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
   

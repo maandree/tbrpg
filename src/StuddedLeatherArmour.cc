@@ -92,7 +92,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(const StuddedLeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour& original)
   {
     (void) original;
-
+    BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour&& original)
   {
     (void) original;
-
+    std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
   

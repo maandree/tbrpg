@@ -92,7 +92,7 @@ namespace tbrpg
   Bullet& Bullet::operator =(const Bullet& original)
   {
     (void) original;
-
+    Ammunition::__copy__((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Bullet& Bullet::operator =(Bullet& original)
   {
     (void) original;
-
+    Ammunition::__copy__((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Bullet& Bullet::operator =(Bullet&& original)
   {
     (void) original;
-
+    std::swap((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }
   

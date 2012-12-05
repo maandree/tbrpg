@@ -92,7 +92,7 @@ namespace tbrpg
   Crossbow& Crossbow::operator =(const Crossbow& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Crossbow& Crossbow::operator =(Crossbow& original)
   {
     (void) original;
-
+    RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Crossbow& Crossbow::operator =(Crossbow&& original)
   {
     (void) original;
-
+    std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
   

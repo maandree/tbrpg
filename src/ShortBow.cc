@@ -92,7 +92,7 @@ namespace tbrpg
   ShortBow& ShortBow::operator =(const ShortBow& original)
   {
     (void) original;
-
+    Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   ShortBow& ShortBow::operator =(ShortBow& original)
   {
     (void) original;
-
+    Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   ShortBow& ShortBow::operator =(ShortBow&& original)
   {
     (void) original;
-
+    std::swap((Bow&)*this, (Bow&)original);
     return *this;
   }
   

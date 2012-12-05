@@ -101,8 +101,6 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(const Proficiency& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->half_attacks = original.half_attacks;
@@ -118,8 +116,6 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->hit_bonus = original.hit_bonus;
     this->damage_bonus = original.damage_bonus;
     this->half_attacks = original.half_attacks;
@@ -135,8 +131,6 @@ namespace tbrpg
   Proficiency& Proficiency::operator =(Proficiency&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_bonus, original.damage_bonus);
     std::swap(this->half_attacks, original.half_attacks);

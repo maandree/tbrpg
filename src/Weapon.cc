@@ -127,14 +127,6 @@ namespace tbrpg
   Weapon& Weapon::operator =(const Weapon& original)
   {
     (void) original;
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
     RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    this->hands = original.hands;
     this->speed_factor = original.speed_factor;
     this->hit_bonus = original.hit_bonus;
@@ -156,14 +148,6 @@ namespace tbrpg
   Weapon& Weapon::operator =(Weapon& original)
   {
     (void) original;
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
-    RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);
     RightHandItem::__copy__((RightHandItem&)*this, (RightHandItem&)original);    this->hands = original.hands;
     this->speed_factor = original.speed_factor;
     this->hit_bonus = original.hit_bonus;
@@ -185,14 +169,6 @@ namespace tbrpg
   Weapon& Weapon::operator =(Weapon&& original)
   {
     (void) original;
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
-    std::swap((RightHandItem&)*this, (RightHandItem&)original);
     std::swap((RightHandItem&)*this, (RightHandItem&)original);    std::swap(this->hands, original.hands);
     std::swap(this->speed_factor, original.speed_factor);
     std::swap(this->hit_bonus, original.hit_bonus);

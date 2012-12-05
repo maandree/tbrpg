@@ -92,7 +92,7 @@ namespace tbrpg
   _MapMinor& _MapMinor::operator =(const _MapMinor& original)
   {
     (void) original;
-
+    Object::__copy__((Object&)*this, (Object&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   _MapMinor& _MapMinor::operator =(_MapMinor& original)
   {
     (void) original;
-
+    Object::__copy__((Object&)*this, (Object&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   _MapMinor& _MapMinor::operator =(_MapMinor&& original)
   {
     (void) original;
-
+    std::swap((Object&)*this, (Object&)original);
     return *this;
   }
   

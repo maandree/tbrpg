@@ -92,7 +92,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(const Halfling& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(Halfling& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Halfling& Halfling::operator =(Halfling&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

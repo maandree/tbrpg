@@ -98,7 +98,6 @@ namespace tbrpg
   Party& Party::operator =(const Party& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->reputation = original.reputation;
     this->characters = original.characters;
     return *this;
@@ -113,7 +112,6 @@ namespace tbrpg
   Party& Party::operator =(Party& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->reputation = original.reputation;
     this->characters = original.characters;
     return *this;
@@ -128,7 +126,6 @@ namespace tbrpg
   Party& Party::operator =(Party&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->reputation, original.reputation);
     std::swap(this->characters, original.characters);
     return *this;

@@ -107,9 +107,6 @@ namespace tbrpg
   Container& Container::operator =(const Container& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
     Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
@@ -126,9 +123,6 @@ namespace tbrpg
   Container& Container::operator =(Container& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
-    Item::__copy__((Item&)*this, (Item&)original);
     Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
@@ -145,9 +139,6 @@ namespace tbrpg
   Container& Container::operator =(Container&& original)
   {
     (void) original;
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
-    std::swap((Item&)*this, (Item&)original);
     std::swap((Item&)*this, (Item&)original);    std::swap(this->contains, original.contains);
     std::swap(this->contain_limit, original.contain_limit);
     std::swap(this->weight_modifier, original.weight_modifier);

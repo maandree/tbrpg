@@ -92,7 +92,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(const Gnome& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(Gnome& original)
   {
     (void) original;
-
+    Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Gnome& Gnome::operator =(Gnome&& original)
   {
     (void) original;
-
+    std::swap((Race&)*this, (Race&)original);
     return *this;
   }
   

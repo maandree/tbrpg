@@ -177,24 +177,6 @@ namespace tbrpg
   Class& Class::operator =(const Class& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
@@ -226,24 +208,6 @@ namespace tbrpg
   Class& Class::operator =(Class& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
@@ -275,24 +239,6 @@ namespace tbrpg
   Class& Class::operator =(Class&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);

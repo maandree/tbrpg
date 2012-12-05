@@ -92,7 +92,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(const LowScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(LowScroll& original)
   {
     (void) original;
-
+    Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   LowScroll& LowScroll::operator =(LowScroll&& original)
   {
     (void) original;
-
+    std::swap((Scroll&)*this, (Scroll&)original);
     return *this;
   }
   

@@ -109,9 +109,6 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(const SpellProgression& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->wizard_slots = original.wizard_slots;
     this->priest_slots = original.priest_slots;
     this->wizard_levels = original.wizard_levels;
@@ -128,9 +125,6 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->wizard_slots = original.wizard_slots;
     this->priest_slots = original.priest_slots;
     this->wizard_levels = original.wizard_levels;
@@ -147,9 +141,6 @@ namespace tbrpg
   SpellProgression& SpellProgression::operator =(SpellProgression&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->wizard_slots, original.wizard_slots);
     std::swap(this->priest_slots, original.priest_slots);
     std::swap(this->wizard_levels, original.wizard_levels);

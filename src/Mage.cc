@@ -92,7 +92,7 @@ namespace tbrpg
   Mage& Mage::operator =(const Mage& original)
   {
     (void) original;
-
+    Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Mage& Mage::operator =(Mage& original)
   {
     (void) original;
-
+    Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Mage& Mage::operator =(Mage&& original)
   {
     (void) original;
-
+    std::swap((Wizard&)*this, (Wizard&)original);
     return *this;
   }
   

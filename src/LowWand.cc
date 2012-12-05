@@ -92,7 +92,7 @@ namespace tbrpg
   LowWand& LowWand::operator =(const LowWand& original)
   {
     (void) original;
-
+    Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   LowWand& LowWand::operator =(LowWand& original)
   {
     (void) original;
-
+    Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   LowWand& LowWand::operator =(LowWand&& original)
   {
     (void) original;
-
+    std::swap((Wand&)*this, (Wand&)original);
     return *this;
   }
   

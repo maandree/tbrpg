@@ -92,7 +92,7 @@ namespace tbrpg
   Druid& Druid::operator =(const Druid& original)
   {
     (void) original;
-
+    Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Druid& Druid::operator =(Druid& original)
   {
     (void) original;
-
+    Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Druid& Druid::operator =(Druid&& original)
   {
     (void) original;
-
+    std::swap((Priest&)*this, (Priest&)original);
     return *this;
   }
   

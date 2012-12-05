@@ -110,10 +110,6 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
@@ -131,10 +127,6 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
-    Object::__copy__((Object&)*this, (Object&)original);
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
@@ -152,10 +144,6 @@ namespace tbrpg
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
-    std::swap((Object&)*this, (Object&)original);
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->visible, original.visible);
     std::swap(this->visited, original.visited);

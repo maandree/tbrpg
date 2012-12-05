@@ -92,7 +92,7 @@ namespace tbrpg
   LargeShield& LargeShield::operator =(const LargeShield& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   LargeShield& LargeShield::operator =(LargeShield& original)
   {
     (void) original;
-
+    Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   LargeShield& LargeShield::operator =(LargeShield&& original)
   {
     (void) original;
-
+    std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }
   

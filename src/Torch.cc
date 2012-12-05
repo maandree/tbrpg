@@ -92,7 +92,7 @@ namespace tbrpg
   Torch& Torch::operator =(const Torch& original)
   {
     (void) original;
-
+    BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   Torch& Torch::operator =(Torch& original)
   {
     (void) original;
-
+    BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   Torch& Torch::operator =(Torch&& original)
   {
     (void) original;
-
+    std::swap((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
   

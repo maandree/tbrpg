@@ -92,7 +92,7 @@ namespace tbrpg
   House& House::operator =(const House& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   House& House::operator =(House& original)
   {
     (void) original;
-
+    MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   House& House::operator =(House&& original)
   {
     (void) original;
-
+    std::swap((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
   

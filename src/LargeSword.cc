@@ -92,7 +92,7 @@ namespace tbrpg
   LargeSword& LargeSword::operator =(const LargeSword& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -105,7 +105,7 @@ namespace tbrpg
   LargeSword& LargeSword::operator =(LargeSword& original)
   {
     (void) original;
-
+    OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
@@ -118,7 +118,7 @@ namespace tbrpg
   LargeSword& LargeSword::operator =(LargeSword&& original)
   {
     (void) original;
-
+    std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
   
