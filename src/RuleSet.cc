@@ -36,16 +36,18 @@ namespace tbrpg
   RuleSet::RuleSet()
   {
     ////TODO implement constructor
-    //this->attack_roll_die = 0;
-    //this->attack_roll_dice = 0;
-    //this->critical_hit = 0;
-    //this->critical_miss = 0;
-    //this->idle_healing = 0;
-    //this->idle_healing_turns = 0;
-    //this->combat_healing = 0;
-    //this->combat_healing_turns = 0;
-    //this->rest_healing = 0;
-    //this->rest_healing_turns = 0;
+    this->attack_roll_die = 20;
+    this->attack_roll_dice = 1;
+    this->critical_hit = 20;
+    this->critical_miss = 1;
+    this->idle_healing = 1;
+    this->idle_healing_turns = 1;
+    this->combat_healing = 0;
+    this->combat_healing_turns = 1;
+    this->rest_healing = 2;
+    this->rest_healing_turns = 1;
+    this->racial_enemy_bonus = 4;
+    this->racial_enemy_penality = 4;
     //this->reputation_chart = nullptr;
     //this->ability_chart = nullptr;
     //this->inventory_prototype = nullptr;
@@ -80,11 +82,14 @@ namespace tbrpg
     this->combat_healing_turns = original.combat_healing_turns;
     this->rest_healing = original.rest_healing;
     this->rest_healing_turns = original.rest_healing_turns;
+    this->racial_enemy_bonus = original.racial_enemy_bonus;
+    this->racial_enemy_penality = original.racial_enemy_penality;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
   }
   
   /**
@@ -105,11 +110,14 @@ namespace tbrpg
     this->combat_healing_turns = original.combat_healing_turns;
     this->rest_healing = original.rest_healing;
     this->rest_healing_turns = original.rest_healing_turns;
+    this->racial_enemy_bonus = original.racial_enemy_bonus;
+    this->racial_enemy_penality = original.racial_enemy_penality;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
   }
   
   /**
@@ -130,11 +138,14 @@ namespace tbrpg
     std::swap(this->combat_healing_turns, original.combat_healing_turns);
     std::swap(this->rest_healing, original.rest_healing);
     std::swap(this->rest_healing_turns, original.rest_healing_turns);
+    std::swap(this->racial_enemy_bonus, original.racial_enemy_bonus);
+    std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
     std::swap(this->spells, original.spells);
     std::swap(this->races, original.races);
+    std::swap(this->racial_enemies, original.racial_enemies);
   }
   
   
@@ -150,6 +161,7 @@ namespace tbrpg
     //delete this->inventory_prototype;
     //delete this->spells;
     //delete this->races;
+    //delete this->racial_enemies;
   }
   
   
@@ -173,11 +185,14 @@ namespace tbrpg
     this->combat_healing_turns = original.combat_healing_turns;
     this->rest_healing = original.rest_healing;
     this->rest_healing_turns = original.rest_healing_turns;
+    this->racial_enemy_bonus = original.racial_enemy_bonus;
+    this->racial_enemy_penality = original.racial_enemy_penality;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
     return *this;
   }
   
@@ -200,11 +215,14 @@ namespace tbrpg
     this->combat_healing_turns = original.combat_healing_turns;
     this->rest_healing = original.rest_healing;
     this->rest_healing_turns = original.rest_healing_turns;
+    this->racial_enemy_bonus = original.racial_enemy_bonus;
+    this->racial_enemy_penality = original.racial_enemy_penality;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
     this->spells = original.spells;
     this->races = original.races;
+    this->racial_enemies = original.racial_enemies;
     return *this;
   }
   
@@ -227,11 +245,14 @@ namespace tbrpg
     std::swap(this->combat_healing_turns, original.combat_healing_turns);
     std::swap(this->rest_healing, original.rest_healing);
     std::swap(this->rest_healing_turns, original.rest_healing_turns);
+    std::swap(this->racial_enemy_bonus, original.racial_enemy_bonus);
+    std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
     std::swap(this->spells, original.spells);
     std::swap(this->races, original.races);
+    std::swap(this->racial_enemies, original.racial_enemies);
     return *this;
   }
   
