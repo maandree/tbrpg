@@ -21,6 +21,12 @@
 #define __GUARD_ACTIONSLOT_HPP__
 
 
+#include <stdlib.h>
+#include <algorithm>
+#include <vector>
+#include <unordered_map>
+
+
 /**
  * Text based roll playing game
  * 
@@ -32,52 +38,156 @@
 namespace tbrpg
 {
   /**
-   * Action slot typename
+   * Action slot
    */
-  typedef char ActionSlot;
-  
-  
-  
+  class ActionSlot
+  {
+  protected:
+    /**
+     * The ID of the slot type
+     */
+    char id;
+    
+    
+    
+  public:
+    /**
+     * Construction
+     * 
+     * @param  typeID  The ID of the slot type
+     */
+    ActionSlot(char typeID = 0);
+    
+    /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    ActionSlot(const ActionSlot& original);
+    
+    /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    ActionSlot(ActionSlot& original);
+    
+    /**
+     * Move constructor
+     * 
+     * @param  original  The object to clone
+     */
+    ActionSlot(ActionSlot&& original);
+    
+    
+    
+    /**
+     * Destructor
+     */
+    ~ActionSlot();
+    
+    
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    ActionSlot& operator =(const ActionSlot& original);
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    ActionSlot& operator =(ActionSlot& original);
+    
+    /**
+     * Move operator
+     * 
+     * @param   original  The moved object, its resourced will be moved
+     * @return            The invoked object
+     */
+    ActionSlot& operator =(ActionSlot&& original);
+    
+    
+    /**
+     * Equality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are equal
+     */
+    bool operator ==(const ActionSlot& other) const;
+    
+    
+    
+    /**
+     * Hash method
+     * 
+     * @return  The object's hash code
+     */
+    size_t hash() const;
+    
+  };
+    
+    
   /**
    * Action slot: Quick weapon
    */
-  ActionSlot QUICK_WEAPON = 0;
+  static ActionSlot QUICK_WEAPON = 0;
   
   /**
    * Action slot: Quick spell
    */
-  ActionSlot QUICK_SPELL = 1;
+  static ActionSlot QUICK_SPELL = 1;
   
   /**
    * Action slot: Turn undead
    */
-  ActionSlot TURN_UNDEAD = 2;
+  static ActionSlot TURN_UNDEAD = 2;
   
   /**
    * Action slot: Bard song
    */
-  ActionSlot BARD_SONG = 3;
+  static ActionSlot BARD_SONG = 3;
   
   /**
    * Action slot: Find traps
    */
-  ActionSlot FIND_TRAPS = 4;
+  static ActionSlot FIND_TRAPS = 4;
   
   /**
    * Action slot: Thieving
    */
-  ActionSlot THIEVING = 5;
+  static ActionSlot THIEVING = 5;
   
   /**
    * Action slot: Stealth
    */
-  ActionSlot STEALTH = 6;
+  static ActionSlot STEALTH = 6;
   
   /**
-   * Action slot: Stealth
+   * Action slot: Cast spell
    */
-  ActionSlot CAST_SPELL = 7;
+  static ActionSlot CAST_SPELL = 7;
   
+  
+}
+
+
+namespace std
+{
+  template<>
+  class hash<tbrpg::ActionSlot>
+  {
+  public:
+    size_t operator()(const tbrpg::ActionSlot& elem) const
+    {
+       return elem.hash();
+    }
+  };
 }
 
 

@@ -30,5 +30,117 @@
  */
 namespace tbrpg
 {  
+  /**
+   * Construction
+   * 
+   * @param  typeID  The ID of the slot type
+   */
+  ActionSlot::ActionSlot(char typeID)
+  {
+    this->id = typeID;
+  }
+  
+  /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  ActionSlot::ActionSlot(const ActionSlot& original)
+  {
+    this->id = original.id;
+  }
+  
+  /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  ActionSlot::ActionSlot(ActionSlot& original)
+  {
+    this->id = original.id;
+  }
+  
+  /**
+   * Move constructor
+   * 
+   * @param  original  The object to clone
+   */
+  ActionSlot::ActionSlot(ActionSlot&& original)
+  {
+    std::swap(this->id, original.id);
+  }
+  
+  
+  
+  /**
+   * Destructor
+   */
+  ActionSlot::~ActionSlot()
+  {
+    // do nothing
+  }
+  
+  
+  
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  ActionSlot& ActionSlot::operator =(const ActionSlot& original)
+  {
+    this->id = original.id;
+    return *this;
+  }
+  
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  ActionSlot& ActionSlot::operator =(ActionSlot& original)
+  {
+    this->id = original.id;
+    return *this;
+  }
+  
+  /**
+   * Move operator
+   * 
+   * @param   original  The moved object, its resourced will be moved
+   * @return            The invoked object
+   */
+  ActionSlot& ActionSlot::operator =(ActionSlot&& original)
+  {
+    std::swap(this->id, original.id);
+    return *this;
+  }
+  
+  
+  /**
+   * Equality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are equal
+   */
+  bool ActionSlot::operator ==(const ActionSlot& other) const
+  {
+    return this->id == other.id;
+  }
+  
+  
+  
+  /**
+   * Hash method
+   * 
+   * @return  The object's hash code
+   */
+  size_t ActionSlot::hash() const
+  {
+    return (size_t)(this->id);
+  }
+  
 }
 
