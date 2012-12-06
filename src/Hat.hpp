@@ -29,8 +29,6 @@
 #include "Headgear.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

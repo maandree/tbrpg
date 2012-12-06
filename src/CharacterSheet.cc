@@ -36,26 +36,7 @@ namespace tbrpg
   CharacterSheet::CharacterSheet() : Object()
   {
     this->class_inheritance.push_back(18);
-    ////TODO implement constructor
-    //this->name = nullptr;
-    //this->biography = nullptr;
-    //this->colour = 0;
-    //this->alignment = 0;
-    //this->portrait = nullptr;
-    //this->female = false;
-    //this->experience = nullptr;
-    //this->level = nullptr;
-    //this->class_abondoned = nullptr;
-    //this->proficiencies = nullptr;
-    //this->affected_by = nullptr;
-    //this->inventory = nullptr;
-    //this->abilities = nullptr;
-    //this->spells = nullptr;
-    //this->race = nullptr;
     this->racial_enemy = nullptr;
-    //this->prestige = nullptr;
-    //this->specialisation = nullptr;
-    //this->special_abilities = nullptr;
   }
   
   /**
@@ -65,7 +46,6 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(const CharacterSheet& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
@@ -94,7 +74,6 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
@@ -123,7 +102,6 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet(CharacterSheet&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
     std::swap(this->colour, original.colour);
@@ -152,23 +130,7 @@ namespace tbrpg
    */
   CharacterSheet::~CharacterSheet()
   {
-    ////TODO implement destructor
-    //delete this->name;
-    //delete this->biography;
-    //delete this->portrait;
-    //delete this->experience;
-    //delete this->level;
-    //delete this->class_abondoned;
-    //delete this->proficiencies;
-    //delete this->affected_by;
-    //delete this->inventory;
-    //delete this->abilities;
-    //delete this->spells;
-    //delete this->race;
-    //delete this->racial_enemy;
-    //delete this->prestige;
-    //delete this->specialisation;
-    //delete this->special_abilities;
+    // do nothing
   }
   
   
@@ -181,8 +143,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
     this->alignment = original.alignment;
@@ -212,8 +174,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->biography = original.biography;
     this->colour = original.colour;
     this->alignment = original.alignment;
@@ -243,8 +205,8 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
     std::swap(this->colour, original.colour);
     std::swap(this->alignment, original.alignment);

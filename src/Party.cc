@@ -36,9 +36,6 @@ namespace tbrpg
   Party::Party() : Object()
   {
     this->class_inheritance.push_back(8);
-    ////TODO implement constructor
-    //this->reputation = 0;
-    //this->characters = nullptr;
   }
   
   /**
@@ -48,7 +45,6 @@ namespace tbrpg
    */
   Party::Party(const Party& original) : Object(original)
   {
-    (void) original;
     this->reputation = original.reputation;
     this->characters = original.characters;
   }
@@ -60,7 +56,6 @@ namespace tbrpg
    */
   Party::Party(Party& original) : Object(original)
   {
-    (void) original;
     this->reputation = original.reputation;
     this->characters = original.characters;
   }
@@ -72,7 +67,6 @@ namespace tbrpg
    */
   Party::Party(Party&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->reputation, original.reputation);
     std::swap(this->characters, original.characters);
   }
@@ -84,8 +78,7 @@ namespace tbrpg
    */
   Party::~Party()
   {
-    ////TODO implement destructor
-    //delete this->characters;
+    // do nothing
   }
   
   
@@ -98,8 +91,8 @@ namespace tbrpg
    */
   Party& Party::operator =(const Party& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->reputation = original.reputation;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->reputation = original.reputation;
     this->characters = original.characters;
     return *this;
   }
@@ -112,8 +105,8 @@ namespace tbrpg
    */
   Party& Party::operator =(Party& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->reputation = original.reputation;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->reputation = original.reputation;
     this->characters = original.characters;
     return *this;
   }
@@ -126,8 +119,8 @@ namespace tbrpg
    */
   Party& Party::operator =(Party&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->reputation, original.reputation);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->reputation, original.reputation);
     std::swap(this->characters, original.characters);
     return *this;
   }

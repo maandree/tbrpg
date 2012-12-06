@@ -29,8 +29,6 @@
 #include "Weapon.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

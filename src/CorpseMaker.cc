@@ -68,7 +68,6 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(const CorpseMaker& original) : Object(original)
   {
-    (void) original;
     this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
@@ -81,7 +80,6 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(CorpseMaker& original) : Object(original)
   {
-    (void) original;
     this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
@@ -94,7 +92,6 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(CorpseMaker&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->strenght_weight, original.strenght_weight);
     std::swap(this->strenght18_weight, original.strenght18_weight);
     std::swap(this->constitution_weight, original.constitution_weight);
@@ -122,7 +119,8 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(const CorpseMaker& original)
   {
-    Object::__copy__((Object&)*this, (Object&)original);    this->strenght_weight = original.strenght_weight;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
     return *this;
@@ -136,7 +134,8 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(CorpseMaker& original)
   {
-    Object::__copy__((Object&)*this, (Object&)original);    this->strenght_weight = original.strenght_weight;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->strenght_weight = original.strenght_weight;
     this->strenght18_weight = original.strenght18_weight;
     this->constitution_weight = original.constitution_weight;
     return *this;
@@ -150,7 +149,8 @@ namespace tbrpg
    */
   CorpseMaker& CorpseMaker::operator =(CorpseMaker&& original)
   {
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->strenght_weight, original.strenght_weight);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->strenght_weight, original.strenght_weight);
     std::swap(this->strenght18_weight, original.strenght18_weight);
     std::swap(this->constitution_weight, original.constitution_weight);
     return *this;

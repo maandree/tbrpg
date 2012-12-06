@@ -36,26 +36,24 @@ namespace tbrpg
   Bonuses::Bonuses() : Object()
   {
     this->class_inheritance.push_back(3);
-    ////TODO implement constructor
-    //this->hit_bonus = 0;
-    //this->damage_bonus = 0;
-    //this->carry_limit = 0;
-    //this->bashing = 0;
-    //this->missile_attack_bonus = 0;
-    //this->armour_class_bonus = 0;
-    //this->hit_point_bonus = 0;
-    //this->resurrectability = 0;
-    //this->reaction_bonus = 0;
-    //this->spell_level_limit = 0;
-    //this->spell_learn = 0;
-    //this->max_spells_level = 0;
-    //this->lore_bonus = 0;
-    //this->magic_defence_bonus = 0;
-    //this->spell_failure = 0;
-    //this->bonus_spells = nullptr;
-    //this->morale = 0;
-    //this->luck = 0;
-    //this->detect_doors = 0;
+    this->hit_bonus = 0;
+    this->damage_bonus = 0;
+    this->carry_limit = 0;
+    this->bashing = 0;
+    this->missile_attack_bonus = 0;
+    this->armour_class_bonus = 0;
+    this->hit_point_bonus = 0;
+    this->resurrectability = 0;
+    this->reaction_bonus = 0;
+    this->spell_level_limit = 0;
+    this->spell_learn = 0;
+    this->max_spells_level = 0;
+    this->lore_bonus = 0;
+    this->magic_defence_bonus = 0;
+    this->spell_failure = 0;
+    this->morale = 0;
+    this->luck = 0;
+    this->detect_doors = 0;
   }
   
   /**
@@ -152,8 +150,7 @@ namespace tbrpg
    */
   Bonuses::~Bonuses()
   {
-    ////TODO implement destructor
-    //delete this->bonus_spells;
+    // do nothing
   }
   
   

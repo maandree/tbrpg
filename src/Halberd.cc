@@ -51,7 +51,6 @@ namespace tbrpg
   Halberd::Halberd(const Halberd& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   Halberd::Halberd(Halberd& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   Halberd::Halberd(Halberd&& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   Halberd::~Halberd()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(const Halberd& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(Halberd& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   Halberd& Halberd::operator =(Halberd&& original)
   {
-    (void) original;
     std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }

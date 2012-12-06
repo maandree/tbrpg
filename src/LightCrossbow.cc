@@ -47,7 +47,6 @@ namespace tbrpg
   LightCrossbow::LightCrossbow(const LightCrossbow& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   LightCrossbow::LightCrossbow(LightCrossbow& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   LightCrossbow::LightCrossbow(LightCrossbow&& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   LightCrossbow::~LightCrossbow()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(const LightCrossbow& original)
   {
-    (void) original;
     Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(LightCrossbow& original)
   {
-    (void) original;
     Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   LightCrossbow& LightCrossbow::operator =(LightCrossbow&& original)
   {
-    (void) original;
     std::swap((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }

@@ -30,8 +30,6 @@
 #include "Lockable.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

@@ -48,7 +48,6 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(const WeaponGroup& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
   }
   
@@ -59,7 +58,6 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
   }
   
@@ -70,7 +68,6 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup(WeaponGroup&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
   }
   
@@ -81,8 +78,7 @@ namespace tbrpg
    */
   WeaponGroup::~WeaponGroup()
   {
-    ////TODO implement destructor
-    //delete this->name;
+    // do nothing
   }
   
   
@@ -95,7 +91,6 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
@@ -108,7 +103,6 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     return *this;
   }
@@ -121,7 +115,6 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
-    (void) original;
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     return *this;
   }

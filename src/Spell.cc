@@ -36,22 +36,15 @@ namespace tbrpg
   Spell::Spell() : Object()
   {
     this->class_inheritance.push_back(21);
-    ////TODO implement constructor
-    //this->name = nullptr;
-    //this->description = nullptr;
-    //this->wizard = false;
-    //this->priest = false;
-    //this->level = 0;
-    //this->saving = 0;
-    //this->touch = false;
-    //this->range = 0;
-    //this->casting_time = 0;
-    //this->duration = 0;
-    //this->duration_die = 0;
-    //this->duration_dice = 0;
-    //this->effect_area = nullptr;
-    //this->offensiveness = 0;
-    //this->school = nullptr;
+    this->level = 0;
+    this->saving = 0;
+    this->touch = false;
+    this->range = 0;
+    this->casting_time = 0;
+    this->duration = 0;
+    this->duration_die = 0;
+    this->duration_dice = 0;
+    this->offensiveness = 0;
   }
   
   /**
@@ -61,7 +54,6 @@ namespace tbrpg
    */
   Spell::Spell(const Spell& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
@@ -86,7 +78,6 @@ namespace tbrpg
    */
   Spell::Spell(Spell& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
@@ -111,7 +102,6 @@ namespace tbrpg
    */
   Spell::Spell(Spell&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->description, original.description);
     std::swap(this->wizard, original.wizard);
@@ -136,11 +126,7 @@ namespace tbrpg
    */
   Spell::~Spell()
   {
-    ////TODO implement destructor
-    //delete this->name;
-    //delete this->description;
-    //delete this->effect_area;
-    //delete this->school;
+    // do nothing
   }
   
   
@@ -153,8 +139,8 @@ namespace tbrpg
    */
   Spell& Spell::operator =(const Spell& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
     this->priest = original.priest;
@@ -180,8 +166,8 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->description = original.description;
     this->wizard = original.wizard;
     this->priest = original.priest;
@@ -207,8 +193,8 @@ namespace tbrpg
    */
   Spell& Spell::operator =(Spell&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     std::swap(this->description, original.description);
     std::swap(this->wizard, original.wizard);
     std::swap(this->priest, original.priest);

@@ -47,7 +47,6 @@ namespace tbrpg
   HighWand::HighWand(const HighWand& original) : Wand(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   HighWand::HighWand(HighWand& original) : Wand(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   HighWand::HighWand(HighWand&& original) : Wand(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   HighWand::~HighWand()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   HighWand& HighWand::operator =(const HighWand& original)
   {
-    (void) original;
     Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   HighWand& HighWand::operator =(HighWand& original)
   {
-    (void) original;
     Wand::__copy__((Wand&)*this, (Wand&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   HighWand& HighWand::operator =(HighWand&& original)
   {
-    (void) original;
     std::swap((Wand&)*this, (Wand&)original);
     return *this;
   }

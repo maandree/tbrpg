@@ -51,7 +51,6 @@ namespace tbrpg
   BattleAxe::BattleAxe(const BattleAxe& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   BattleAxe::BattleAxe(BattleAxe& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   BattleAxe::BattleAxe(BattleAxe&& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   BattleAxe::~BattleAxe()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(const BattleAxe& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(BattleAxe& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   BattleAxe& BattleAxe::operator =(BattleAxe&& original)
   {
-    (void) original;
     std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }

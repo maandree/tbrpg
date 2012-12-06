@@ -29,8 +29,6 @@
 #include "Shield.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

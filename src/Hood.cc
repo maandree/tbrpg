@@ -46,7 +46,6 @@ namespace tbrpg
   Hood::Hood(const Hood& original) : Headgear(original)
   {
     (void) original;
-
   }
   
   /**
@@ -57,7 +56,6 @@ namespace tbrpg
   Hood::Hood(Hood& original) : Headgear(original)
   {
     (void) original;
-
   }
   
   /**
@@ -68,7 +66,6 @@ namespace tbrpg
   Hood::Hood(Hood&& original) : Headgear(original)
   {
     (void) original;
-
   }
   
   
@@ -78,7 +75,7 @@ namespace tbrpg
    */
   Hood::~Hood()
   {
-    ////TODO implement destructor
+    //do nothing
   }
   
   
@@ -91,7 +88,6 @@ namespace tbrpg
    */
   Hood& Hood::operator =(const Hood& original)
   {
-    (void) original;
     Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
@@ -104,7 +100,6 @@ namespace tbrpg
    */
   Hood& Hood::operator =(Hood& original)
   {
-    (void) original;
     Headgear::__copy__((Headgear&)*this, (Headgear&)original);
     return *this;
   }
@@ -117,7 +112,6 @@ namespace tbrpg
    */
   Hood& Hood::operator =(Hood&& original)
   {
-    (void) original;
     std::swap((Headgear&)*this, (Headgear&)original);
     return *this;
   }

@@ -36,12 +36,10 @@ namespace tbrpg
   MapMajor::MapMajor() : Object()
   {
     this->class_inheritance.push_back(71);
-    ////TODO implement constructor
-    //this->name = nullptr;
-    //this->visible = false;
-    //this->visited = false;
-    //this->visitable = false;
-    //this->detectable = false;
+    this->visible = false;
+    this->visited = false;
+    this->visitable = true;
+    this->detectable = true;
   }
   
   /**
@@ -96,8 +94,7 @@ namespace tbrpg
    */
   MapMajor::~MapMajor()
   {
-    ////TODO implement destructor
-    //delete this->name;
+    // do nothing
   }
   
   
@@ -110,8 +107,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
@@ -127,8 +124,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
@@ -144,8 +141,8 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     std::swap(this->visible, original.visible);
     std::swap(this->visited, original.visited);
     std::swap(this->visitable, original.visitable);

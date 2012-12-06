@@ -36,9 +36,6 @@ namespace tbrpg
   Map::Map() : Object()
   {
     this->class_inheritance.push_back(70);
-    ////TODO implement constructor
-    //this->start = nullptr;
-    //this->majors = nullptr;
   }
   
   /**
@@ -48,7 +45,6 @@ namespace tbrpg
    */
   Map::Map(const Map& original) : Object(original)
   {
-    (void) original;
     this->start = original.start;
     this->majors = original.majors;
   }
@@ -60,7 +56,6 @@ namespace tbrpg
    */
   Map::Map(Map& original) : Object(original)
   {
-    (void) original;
     this->start = original.start;
     this->majors = original.majors;
   }
@@ -72,7 +67,6 @@ namespace tbrpg
    */
   Map::Map(Map&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->start, original.start);
     std::swap(this->majors, original.majors);
   }
@@ -84,9 +78,7 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    ////TODO implement destructor
-    //delete this->start;
-    //delete this->majors;
+    // do nothing
   }
   
   
@@ -99,8 +91,8 @@ namespace tbrpg
    */
   Map& Map::operator =(const Map& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->start = original.start;
     this->majors = original.majors;
     return *this;
   }
@@ -113,8 +105,8 @@ namespace tbrpg
    */
   Map& Map::operator =(Map& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->start = original.start;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->start = original.start;
     this->majors = original.majors;
     return *this;
   }
@@ -127,8 +119,8 @@ namespace tbrpg
    */
   Map& Map::operator =(Map&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->start, original.start);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->start, original.start);
     std::swap(this->majors, original.majors);
     return *this;
   }

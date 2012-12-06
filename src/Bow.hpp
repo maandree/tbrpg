@@ -29,8 +29,6 @@
 #include "RangedWeapon.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

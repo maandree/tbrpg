@@ -47,7 +47,6 @@ namespace tbrpg
   EnvironmentContainer::EnvironmentContainer(const EnvironmentContainer& original) : Container(original), Lockable(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   EnvironmentContainer::EnvironmentContainer(EnvironmentContainer& original) : Container(original), Lockable(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   EnvironmentContainer::EnvironmentContainer(EnvironmentContainer&& original) : Container(original), Lockable(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   EnvironmentContainer::~EnvironmentContainer()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(const EnvironmentContainer& original)
   {
-    (void) original;
     Container::__copy__((Container&)*this, (Container&)original);
     Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
@@ -106,7 +102,6 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer& original)
   {
-    (void) original;
     Container::__copy__((Container&)*this, (Container&)original);
     Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
@@ -120,7 +115,6 @@ namespace tbrpg
    */
   EnvironmentContainer& EnvironmentContainer::operator =(EnvironmentContainer&& original)
   {
-    (void) original;
     std::swap((Container&)*this, (Container&)original);
     std::swap((Lockable&)*this, (Lockable&)original);
     return *this;

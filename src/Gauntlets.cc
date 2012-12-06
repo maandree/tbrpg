@@ -47,7 +47,6 @@ namespace tbrpg
   Gauntlets::Gauntlets(const Gauntlets& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   Gauntlets::Gauntlets(Gauntlets& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   Gauntlets::Gauntlets(Gauntlets&& original) : Item(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Gauntlets::~Gauntlets()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(const Gauntlets& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(Gauntlets& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Gauntlets& Gauntlets::operator =(Gauntlets&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);
     return *this;
   }

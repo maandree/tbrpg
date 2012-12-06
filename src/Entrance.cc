@@ -36,11 +36,7 @@ namespace tbrpg
   Entrance::Entrance() : Object()
   {
     this->class_inheritance.push_back(65);
-    ////TODO implement constructor
-    //this->usable = false;
-    //this->description = nullptr;
-    //this->direction = nullptr;
-    //this->leads_to = nullptr;
+    this->usable = true;
   }
   
   /**
@@ -50,7 +46,6 @@ namespace tbrpg
    */
   Entrance::Entrance(const Entrance& original) : Object(original)
   {
-    (void) original;
     this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
@@ -64,7 +59,6 @@ namespace tbrpg
    */
   Entrance::Entrance(Entrance& original) : Object(original)
   {
-    (void) original;
     this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
@@ -78,7 +72,6 @@ namespace tbrpg
    */
   Entrance::Entrance(Entrance&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->usable, original.usable);
     std::swap(this->description, original.description);
     std::swap(this->direction, original.direction);
@@ -92,10 +85,7 @@ namespace tbrpg
    */
   Entrance::~Entrance()
   {
-    ////TODO implement destructor
-    //delete this->description;
-    //delete this->direction;
-    //delete this->leads_to;
+    // do nothing
   }
   
   
@@ -108,8 +98,8 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(const Entrance& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
     this->leads_to = original.leads_to;
@@ -124,8 +114,8 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(Entrance& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->usable = original.usable;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->usable = original.usable;
     this->description = original.description;
     this->direction = original.direction;
     this->leads_to = original.leads_to;
@@ -140,8 +130,8 @@ namespace tbrpg
    */
   Entrance& Entrance::operator =(Entrance&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->usable, original.usable);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->usable, original.usable);
     std::swap(this->description, original.description);
     std::swap(this->direction, original.direction);
     std::swap(this->leads_to, original.leads_to);

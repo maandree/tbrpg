@@ -36,7 +36,6 @@ namespace tbrpg
   Door::Door() : Entrance(), Lockable()
   {
     this->class_inheritance.push_back(74);
-    ////TODO implement constructor
   }
   
   /**
@@ -47,7 +46,6 @@ namespace tbrpg
   Door::Door(const Door& original) : Entrance(original), Lockable(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +56,6 @@ namespace tbrpg
   Door::Door(Door& original) : Entrance(original), Lockable(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +66,6 @@ namespace tbrpg
   Door::Door(Door&& original) : Entrance(original), Lockable(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   Door::~Door()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +88,6 @@ namespace tbrpg
    */
   Door& Door::operator =(const Door& original)
   {
-    (void) original;
     Entrance::__copy__((Entrance&)*this, (Entrance&)original);
     Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
@@ -106,7 +101,6 @@ namespace tbrpg
    */
   Door& Door::operator =(Door& original)
   {
-    (void) original;
     Entrance::__copy__((Entrance&)*this, (Entrance&)original);
     Lockable::__copy__((Lockable&)*this, (Lockable&)original);
     return *this;
@@ -120,7 +114,6 @@ namespace tbrpg
    */
   Door& Door::operator =(Door&& original)
   {
-    (void) original;
     std::swap((Entrance&)*this, (Entrance&)original);
     std::swap((Lockable&)*this, (Lockable&)original);
     return *this;

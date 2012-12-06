@@ -52,7 +52,6 @@ namespace tbrpg
   Fists::Fists(const Fists& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -63,7 +62,6 @@ namespace tbrpg
   Fists::Fists(Fists& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -74,7 +72,6 @@ namespace tbrpg
   Fists::Fists(Fists&& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -84,7 +81,7 @@ namespace tbrpg
    */
   Fists::~Fists()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -97,7 +94,6 @@ namespace tbrpg
    */
   Fists& Fists::operator =(const Fists& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -110,7 +106,6 @@ namespace tbrpg
    */
   Fists& Fists::operator =(Fists& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -123,7 +118,6 @@ namespace tbrpg
    */
   Fists& Fists::operator =(Fists&& original)
   {
-    (void) original;
     std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }

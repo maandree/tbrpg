@@ -70,7 +70,6 @@ namespace tbrpg
   Druid::Druid(const Druid& original) : Priest(original)
   {
     (void) original;
-
   }
   
   /**
@@ -81,7 +80,6 @@ namespace tbrpg
   Druid::Druid(Druid& original) : Priest(original)
   {
     (void) original;
-
   }
   
   /**
@@ -92,7 +90,6 @@ namespace tbrpg
   Druid::Druid(Druid&& original) : Priest(original)
   {
     (void) original;
-
   }
   
   
@@ -102,7 +99,7 @@ namespace tbrpg
    */
   Druid::~Druid()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -115,7 +112,6 @@ namespace tbrpg
    */
   Druid& Druid::operator =(const Druid& original)
   {
-    (void) original;
     Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
@@ -128,7 +124,6 @@ namespace tbrpg
    */
   Druid& Druid::operator =(Druid& original)
   {
-    (void) original;
     Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
@@ -141,7 +136,6 @@ namespace tbrpg
    */
   Druid& Druid::operator =(Druid&& original)
   {
-    (void) original;
     std::swap((Priest&)*this, (Priest&)original);
     return *this;
   }

@@ -50,7 +50,6 @@ namespace tbrpg
   MorningStar::MorningStar(const MorningStar& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   MorningStar::MorningStar(MorningStar& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   MorningStar::MorningStar(MorningStar&& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   MorningStar::~MorningStar()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(const MorningStar& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(MorningStar& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   MorningStar& MorningStar::operator =(MorningStar&& original)
   {
-    (void) original;
     std::swap((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }

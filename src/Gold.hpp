@@ -29,8 +29,6 @@
 #include "Gem.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

@@ -51,7 +51,6 @@ namespace tbrpg
   Mage::Mage(const Mage& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   Mage::Mage(Mage& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   Mage::Mage(Mage&& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   Mage::~Mage()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   Mage& Mage::operator =(const Mage& original)
   {
-    (void) original;
     Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   Mage& Mage::operator =(Mage& original)
   {
-    (void) original;
     Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   Mage& Mage::operator =(Mage&& original)
   {
-    (void) original;
     std::swap((Wizard&)*this, (Wizard&)original);
     return *this;
   }

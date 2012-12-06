@@ -36,16 +36,8 @@ namespace tbrpg
   MapMinor::MapMinor() : _MapMinor()
   {
     this->class_inheritance.push_back(67);
-    ////TODO implement constructor
-    //this->description = nullptr;
-    //this->may_rest = false;
-    //this->area = 0;
-    //this->roads = nullptr;
-    //this->connections = nullptr;
-    //this->items = nullptr;
-    //this->creatures = nullptr;
-    //this->is_in = nullptr;
-    //this->interruptions = nullptr;
+    this->may_rest = true;
+    this->area = 100;
   }
   
   /**
@@ -55,7 +47,6 @@ namespace tbrpg
    */
   MapMinor::MapMinor(const MapMinor& original) : _MapMinor(original)
   {
-    (void) original;
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
@@ -74,7 +65,6 @@ namespace tbrpg
    */
   MapMinor::MapMinor(MapMinor& original) : _MapMinor(original)
   {
-    (void) original;
     this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
@@ -93,7 +83,6 @@ namespace tbrpg
    */
   MapMinor::MapMinor(MapMinor&& original) : _MapMinor(original)
   {
-    (void) original;
     std::swap(this->description, original.description);
     std::swap(this->may_rest, original.may_rest);
     std::swap(this->area, original.area);
@@ -112,14 +101,7 @@ namespace tbrpg
    */
   MapMinor::~MapMinor()
   {
-    ////TODO implement destructor
-    //delete this->description;
-    //delete this->roads;
-    //delete this->connections;
-    //delete this->items;
-    //delete this->creatures;
-    //delete this->is_in;
-    //delete this->interruptions;
+    // do nothing
   }
   
   
@@ -132,8 +114,8 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(const MapMinor& original)
   {
-    (void) original;
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
     this->roads = original.roads;
@@ -153,8 +135,8 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(MapMinor& original)
   {
-    (void) original;
-    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);    this->description = original.description;
+    _MapMinor::__copy__((_MapMinor&)*this, (_MapMinor&)original);
+    this->description = original.description;
     this->may_rest = original.may_rest;
     this->area = original.area;
     this->roads = original.roads;
@@ -174,8 +156,8 @@ namespace tbrpg
    */
   MapMinor& MapMinor::operator =(MapMinor&& original)
   {
-    (void) original;
-    std::swap((_MapMinor&)*this, (_MapMinor&)original);    std::swap(this->description, original.description);
+    std::swap((_MapMinor&)*this, (_MapMinor&)original);
+    std::swap(this->description, original.description);
     std::swap(this->may_rest, original.may_rest);
     std::swap(this->area, original.area);
     std::swap(this->roads, original.roads);

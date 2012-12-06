@@ -47,7 +47,6 @@ namespace tbrpg
   Robe::Robe(const Robe& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   Robe::Robe(Robe& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   Robe::Robe(Robe&& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Robe::~Robe()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Robe& Robe::operator =(const Robe& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Robe& Robe::operator =(Robe& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Robe& Robe::operator =(Robe&& original)
   {
-    (void) original;
     std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }

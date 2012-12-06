@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "RightHandItem.hpp"
-
-
-
 #include "DamageType.hpp"
 #include "WeaponGroup.hpp"
 

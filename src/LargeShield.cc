@@ -47,7 +47,6 @@ namespace tbrpg
   LargeShield::LargeShield(const LargeShield& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   LargeShield::LargeShield(LargeShield& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   LargeShield::LargeShield(LargeShield&& original) : Shield(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   LargeShield::~LargeShield()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   LargeShield& LargeShield::operator =(const LargeShield& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   LargeShield& LargeShield::operator =(LargeShield& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   LargeShield& LargeShield::operator =(LargeShield&& original)
   {
-    (void) original;
     std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }

@@ -36,16 +36,11 @@ namespace tbrpg
   Class::Class() : Object()
   {
     this->class_inheritance.push_back(16);
-    ////TODO implement constructor
     this->lore_bonus = 1;
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
     this->extra_strength = false;
     this->have_racial_enemy = false;
-    //this->abilities = nullptr;
-    //this->special_abilities = nullptr;
-    //this->can_use = nullptr;
-    //this->specialisations = nullptr;
     
     this->abilities.thief_abilities.find_traps = -1;
     this->abilities.thief_abilities.open_locks = -1;
@@ -107,7 +102,6 @@ namespace tbrpg
    */
   Class::Class(const Class& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
@@ -136,7 +130,6 @@ namespace tbrpg
    */
   Class::Class(Class& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
@@ -165,7 +158,6 @@ namespace tbrpg
    */
   Class::Class(Class&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
@@ -194,18 +186,7 @@ namespace tbrpg
    */
   Class::~Class()
   {
-    ////TODO implement destructor
     delete[] this->alignments;
-    //delete this->experience_chart;
-    //delete this->spell_progression;
-    //delete this->abilities;
-    //delete this->lower_limits;
-    //delete this->special_abilities;
-    //delete this->can_use;
-    //delete this->specialisations;
-    //delete this->proficiency_chart;
-    //delete this->default_one_hand;
-    //delete this->default_two_hand;
   }
   
   
@@ -218,8 +199,8 @@ namespace tbrpg
    */
   Class& Class::operator =(const Class& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
@@ -249,8 +230,8 @@ namespace tbrpg
    */
   Class& Class::operator =(Class& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
@@ -280,8 +261,8 @@ namespace tbrpg
    */
   Class& Class::operator =(Class&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);

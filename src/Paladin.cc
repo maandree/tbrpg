@@ -110,7 +110,6 @@ namespace tbrpg
   Paladin::Paladin(const Paladin& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   /**
@@ -121,7 +120,6 @@ namespace tbrpg
   Paladin::Paladin(Paladin& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   /**
@@ -132,7 +130,6 @@ namespace tbrpg
   Paladin::Paladin(Paladin&& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   
@@ -142,7 +139,7 @@ namespace tbrpg
    */
   Paladin::~Paladin()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -155,7 +152,6 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(const Paladin& original)
   {
-    (void) original;
     Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
@@ -168,7 +164,6 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(Paladin& original)
   {
-    (void) original;
     Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
@@ -181,7 +176,6 @@ namespace tbrpg
    */
   Paladin& Paladin::operator =(Paladin&& original)
   {
-    (void) original;
     std::swap((Warrior&)*this, (Warrior&)original);
     return *this;
   }

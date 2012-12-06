@@ -27,8 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
 #include "Class.hpp"
 #include "MagicSchool.hpp"
 #include "AbilityBonus.hpp"

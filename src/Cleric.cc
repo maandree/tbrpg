@@ -74,7 +74,6 @@ namespace tbrpg
   Cleric::Cleric(const Cleric& original) : Priest(original)
   {
     (void) original;
-
   }
   
   /**
@@ -85,7 +84,6 @@ namespace tbrpg
   Cleric::Cleric(Cleric& original) : Priest(original)
   {
     (void) original;
-
   }
   
   /**
@@ -96,7 +94,6 @@ namespace tbrpg
   Cleric::Cleric(Cleric&& original) : Priest(original)
   {
     (void) original;
-
   }
   
   
@@ -106,7 +103,7 @@ namespace tbrpg
    */
   Cleric::~Cleric()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -119,7 +116,6 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(const Cleric& original)
   {
-    (void) original;
     Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
@@ -132,7 +128,6 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(Cleric& original)
   {
-    (void) original;
     Priest::__copy__((Priest&)*this, (Priest&)original);
     return *this;
   }
@@ -145,7 +140,6 @@ namespace tbrpg
    */
   Cleric& Cleric::operator =(Cleric&& original)
   {
-    (void) original;
     std::swap((Priest&)*this, (Priest&)original);
     return *this;
   }

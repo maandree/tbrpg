@@ -29,8 +29,6 @@
 #include "Character.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

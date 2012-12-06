@@ -37,8 +37,6 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(24);
     this->name = "the body of ";
-    ////TODO implement constructor
-    //this->character = nullptr;
   }
   
   /**
@@ -48,7 +46,6 @@ namespace tbrpg
    */
   Body::Body(const Body& original) : Item(original)
   {
-    (void) original;
     this->character = original.character;
   }
   
@@ -59,7 +56,6 @@ namespace tbrpg
    */
   Body::Body(Body& original) : Item(original)
   {
-    (void) original;
     this->character = original.character;
   }
   
@@ -70,7 +66,6 @@ namespace tbrpg
    */
   Body::Body(Body&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->character, original.character);
   }
   
@@ -81,8 +76,7 @@ namespace tbrpg
    */
   Body::~Body()
   {
-    ////TODO implement destructor
-    //delete this->character;
+    // do nothing
   }
   
   
@@ -95,7 +89,6 @@ namespace tbrpg
    */
   Body& Body::operator =(const Body& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
     return *this;
   }
@@ -108,7 +101,6 @@ namespace tbrpg
    */
   Body& Body::operator =(Body& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
     return *this;
   }
@@ -121,7 +113,6 @@ namespace tbrpg
    */
   Body& Body::operator =(Body&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);    std::swap(this->character, original.character);
     return *this;
   }

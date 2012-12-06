@@ -50,7 +50,6 @@ namespace tbrpg
   ChainMail::ChainMail(const ChainMail& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   ChainMail::ChainMail(ChainMail& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   ChainMail::ChainMail(ChainMail&& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   ChainMail::~ChainMail()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(const ChainMail& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(ChainMail& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   ChainMail& ChainMail::operator =(ChainMail&& original)
   {
-    (void) original;
     std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }

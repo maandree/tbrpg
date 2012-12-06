@@ -49,7 +49,6 @@ namespace tbrpg
   Bow::Bow(const Bow& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -60,7 +59,6 @@ namespace tbrpg
   Bow::Bow(Bow& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -71,7 +69,6 @@ namespace tbrpg
   Bow::Bow(Bow&& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -81,7 +78,7 @@ namespace tbrpg
    */
   Bow::~Bow()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -94,7 +91,6 @@ namespace tbrpg
    */
   Bow& Bow::operator =(const Bow& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -107,7 +103,6 @@ namespace tbrpg
    */
   Bow& Bow::operator =(Bow& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -120,7 +115,6 @@ namespace tbrpg
    */
   Bow& Bow::operator =(Bow&& original)
   {
-    (void) original;
     std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }

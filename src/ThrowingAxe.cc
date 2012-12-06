@@ -52,7 +52,6 @@ namespace tbrpg
   ThrowingAxe::ThrowingAxe(const ThrowingAxe& original) : Throwing(original)
   {
     (void) original;
-
   }
   
   /**
@@ -63,7 +62,6 @@ namespace tbrpg
   ThrowingAxe::ThrowingAxe(ThrowingAxe& original) : Throwing(original)
   {
     (void) original;
-
   }
   
   /**
@@ -74,7 +72,6 @@ namespace tbrpg
   ThrowingAxe::ThrowingAxe(ThrowingAxe&& original) : Throwing(original)
   {
     (void) original;
-
   }
   
   
@@ -84,7 +81,7 @@ namespace tbrpg
    */
   ThrowingAxe::~ThrowingAxe()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -97,7 +94,6 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(const ThrowingAxe& original)
   {
-    (void) original;
     Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
@@ -110,7 +106,6 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe& original)
   {
-    (void) original;
     Throwing::__copy__((Throwing&)*this, (Throwing&)original);
     return *this;
   }
@@ -123,7 +118,6 @@ namespace tbrpg
    */
   ThrowingAxe& ThrowingAxe::operator =(ThrowingAxe&& original)
   {
-    (void) original;
     std::swap((Throwing&)*this, (Throwing&)original);
     return *this;
   }

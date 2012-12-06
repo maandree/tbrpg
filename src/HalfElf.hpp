@@ -29,8 +29,6 @@
 #include "Race.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

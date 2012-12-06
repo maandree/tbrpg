@@ -39,11 +39,11 @@ namespace tbrpg
     this->record.name = "Store keeper";
     this->cost_multiplier = 1.5;
     this->identify_cost = 100;
-    //this->spells = nullptr;
-    //this->spell_costs = nullptr;
-    //this->inventory = nullptr;
-    //this->room_costs = nullptr;
-    //this->room_quality = nullptr;
+    this->spells = {};
+    this->spell_costs = {};
+    this->inventory = {};
+    this->room_costs = {};
+    this->room_quality = {};
   }
   
   /**
@@ -53,7 +53,6 @@ namespace tbrpg
    */
   Store::Store(const Store& original) : NPC(original)
   {
-    (void) original;
     this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
@@ -70,7 +69,6 @@ namespace tbrpg
    */
   Store::Store(Store& original) : NPC(original)
   {
-    (void) original;
     this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
@@ -87,7 +85,6 @@ namespace tbrpg
    */
   Store::Store(Store&& original) : NPC(original)
   {
-    (void) original;
     std::swap(this->cost_multiplier, original.cost_multiplier);
     std::swap(this->identify_cost, original.identify_cost);
     std::swap(this->spells, original.spells);
@@ -104,12 +101,7 @@ namespace tbrpg
    */
   Store::~Store()
   {
-    ////TODO implement destructor
-    //delete this->spells;
-    //delete this->spell_costs;
-    //delete this->inventory;
-    //delete this->room_costs;
-    //delete this->room_quality;
+    // do nothing
   }
   
   
@@ -122,8 +114,8 @@ namespace tbrpg
    */
   Store& Store::operator =(const Store& original)
   {
-    (void) original;
-    NPC::__copy__((NPC&)*this, (NPC&)original);    this->cost_multiplier = original.cost_multiplier;
+    NPC::__copy__((NPC&)*this, (NPC&)original);
+    this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
     this->spell_costs = original.spell_costs;
@@ -141,8 +133,8 @@ namespace tbrpg
    */
   Store& Store::operator =(Store& original)
   {
-    (void) original;
-    NPC::__copy__((NPC&)*this, (NPC&)original);    this->cost_multiplier = original.cost_multiplier;
+    NPC::__copy__((NPC&)*this, (NPC&)original);
+    this->cost_multiplier = original.cost_multiplier;
     this->identify_cost = original.identify_cost;
     this->spells = original.spells;
     this->spell_costs = original.spell_costs;
@@ -160,8 +152,8 @@ namespace tbrpg
    */
   Store& Store::operator =(Store&& original)
   {
-    (void) original;
-    std::swap((NPC&)*this, (NPC&)original);    std::swap(this->cost_multiplier, original.cost_multiplier);
+    std::swap((NPC&)*this, (NPC&)original);
+    std::swap(this->cost_multiplier, original.cost_multiplier);
     std::swap(this->identify_cost, original.identify_cost);
     std::swap(this->spells, original.spells);
     std::swap(this->spell_costs, original.spell_costs);

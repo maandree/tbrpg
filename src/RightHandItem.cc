@@ -36,7 +36,6 @@ namespace tbrpg
   RightHandItem::RightHandItem() : Item()
   {
     this->class_inheritance.push_back(40);
-    ////TODO implement constructor
   }
   
   /**
@@ -47,7 +46,6 @@ namespace tbrpg
   RightHandItem::RightHandItem(const RightHandItem& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +56,6 @@ namespace tbrpg
   RightHandItem::RightHandItem(RightHandItem& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +66,6 @@ namespace tbrpg
   RightHandItem::RightHandItem(RightHandItem&& original) : Item(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   RightHandItem::~RightHandItem()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +88,6 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(const RightHandItem& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -105,7 +100,6 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(RightHandItem& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -118,7 +112,6 @@ namespace tbrpg
    */
   RightHandItem& RightHandItem::operator =(RightHandItem&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);
     return *this;
   }

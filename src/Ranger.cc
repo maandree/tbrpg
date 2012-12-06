@@ -98,7 +98,6 @@ namespace tbrpg
   Ranger::Ranger(const Ranger& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   /**
@@ -109,7 +108,6 @@ namespace tbrpg
   Ranger::Ranger(Ranger& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   /**
@@ -120,7 +118,6 @@ namespace tbrpg
   Ranger::Ranger(Ranger&& original) : Warrior(original)
   {
     (void) original;
-
   }
   
   
@@ -130,7 +127,7 @@ namespace tbrpg
    */
   Ranger::~Ranger()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -143,7 +140,6 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(const Ranger& original)
   {
-    (void) original;
     Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
@@ -156,7 +152,6 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(Ranger& original)
   {
-    (void) original;
     Warrior::__copy__((Warrior&)*this, (Warrior&)original);
     return *this;
   }
@@ -169,7 +164,6 @@ namespace tbrpg
    */
   Ranger& Ranger::operator =(Ranger&& original)
   {
-    (void) original;
     std::swap((Warrior&)*this, (Warrior&)original);
     return *this;
   }

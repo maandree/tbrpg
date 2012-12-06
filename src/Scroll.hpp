@@ -29,8 +29,6 @@
 #include "QuickItem.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

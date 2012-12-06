@@ -36,7 +36,6 @@ namespace tbrpg
   _MapMinor::_MapMinor() : Object()
   {
     this->class_inheritance.push_back(66);
-    ////TODO implement constructor
   }
   
   /**
@@ -47,7 +46,6 @@ namespace tbrpg
   _MapMinor::_MapMinor(const _MapMinor& original) : Object(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +56,6 @@ namespace tbrpg
   _MapMinor::_MapMinor(_MapMinor& original) : Object(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +66,6 @@ namespace tbrpg
   _MapMinor::_MapMinor(_MapMinor&& original) : Object(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   _MapMinor::~_MapMinor()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +88,6 @@ namespace tbrpg
    */
   _MapMinor& _MapMinor::operator =(const _MapMinor& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
     return *this;
   }
@@ -105,7 +100,6 @@ namespace tbrpg
    */
   _MapMinor& _MapMinor::operator =(_MapMinor& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
     return *this;
   }
@@ -118,7 +112,6 @@ namespace tbrpg
    */
   _MapMinor& _MapMinor::operator =(_MapMinor&& original)
   {
-    (void) original;
     std::swap((Object&)*this, (Object&)original);
     return *this;
   }

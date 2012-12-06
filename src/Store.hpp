@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "NPC.hpp"
-
-
-
 #include "Spell.hpp"
 #include "Item.hpp"
 

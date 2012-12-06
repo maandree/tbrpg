@@ -47,7 +47,6 @@ namespace tbrpg
   Wand::Wand(const Wand& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   Wand::Wand(Wand& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   Wand::Wand(Wand&& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Wand::~Wand()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Wand& Wand::operator =(const Wand& original)
   {
-    (void) original;
     QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Wand& Wand::operator =(Wand& original)
   {
-    (void) original;
     QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Wand& Wand::operator =(Wand&& original)
   {
-    (void) original;
     std::swap((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }

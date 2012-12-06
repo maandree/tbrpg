@@ -36,15 +36,11 @@ namespace tbrpg
   Road::Road() : Object()
   {
     this->class_inheritance.push_back(72);
-    ////TODO implement constructor
-    //this->first_distance = 0;
-    //this->last_distance = 0;
-    //this->waylay_die = 0;
-    //this->waylay_dice = 0;
-    //this->waylay_risk = 0;
-    //this->direction = nullptr;
-    //this->waylay_map = nullptr;
-    //this->leads_to = nullptr;
+    this->first_distance = 5000;
+    this->last_distance = 5000;
+    this->waylay_die = 20;
+    this->waylay_dice = 1;
+    this->waylay_risk = 2;
   }
   
   /**
@@ -54,7 +50,6 @@ namespace tbrpg
    */
   Road::Road(const Road& original) : Object(original)
   {
-    (void) original;
     this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
@@ -72,7 +67,6 @@ namespace tbrpg
    */
   Road::Road(Road& original) : Object(original)
   {
-    (void) original;
     this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
@@ -90,7 +84,6 @@ namespace tbrpg
    */
   Road::Road(Road&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->first_distance, original.first_distance);
     std::swap(this->last_distance, original.last_distance);
     std::swap(this->waylay_die, original.waylay_die);
@@ -108,10 +101,7 @@ namespace tbrpg
    */
   Road::~Road()
   {
-    ////TODO implement destructor
-    //delete this->direction;
-    //delete this->waylay_map;
-    //delete this->leads_to;
+    // do nothing
   }
   
   
@@ -124,8 +114,8 @@ namespace tbrpg
    */
   Road& Road::operator =(const Road& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->first_distance = original.first_distance;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
     this->waylay_dice = original.waylay_dice;
@@ -144,8 +134,8 @@ namespace tbrpg
    */
   Road& Road::operator =(Road& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->first_distance = original.first_distance;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
     this->waylay_die = original.waylay_die;
     this->waylay_dice = original.waylay_dice;
@@ -164,8 +154,8 @@ namespace tbrpg
    */
   Road& Road::operator =(Road&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->first_distance, original.first_distance);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->first_distance, original.first_distance);
     std::swap(this->last_distance, original.last_distance);
     std::swap(this->waylay_die, original.waylay_die);
     std::swap(this->waylay_dice, original.waylay_dice);

@@ -51,7 +51,6 @@ namespace tbrpg
   StuddedLeatherArmour::StuddedLeatherArmour(const StuddedLeatherArmour& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   StuddedLeatherArmour::StuddedLeatherArmour(StuddedLeatherArmour&& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour::~StuddedLeatherArmour()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(const StuddedLeatherArmour& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   StuddedLeatherArmour& StuddedLeatherArmour::operator =(StuddedLeatherArmour&& original)
   {
-    (void) original;
     std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }

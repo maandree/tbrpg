@@ -66,7 +66,6 @@ namespace tbrpg
   Halfling::Halfling(const Halfling& original) : Race(original)
   {
     (void) original;
-
   }
   
   /**
@@ -77,7 +76,6 @@ namespace tbrpg
   Halfling::Halfling(Halfling& original) : Race(original)
   {
     (void) original;
-
   }
   
   /**
@@ -88,7 +86,6 @@ namespace tbrpg
   Halfling::Halfling(Halfling&& original) : Race(original)
   {
     (void) original;
-
   }
   
   
@@ -98,7 +95,7 @@ namespace tbrpg
    */
   Halfling::~Halfling()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -111,7 +108,6 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(const Halfling& original)
   {
-    (void) original;
     Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
@@ -124,7 +120,6 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(Halfling& original)
   {
-    (void) original;
     Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
@@ -137,7 +132,6 @@ namespace tbrpg
    */
   Halfling& Halfling::operator =(Halfling&& original)
   {
-    (void) original;
     std::swap((Race&)*this, (Race&)original);
     return *this;
   }

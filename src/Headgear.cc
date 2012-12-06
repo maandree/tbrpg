@@ -45,7 +45,6 @@ namespace tbrpg
    */
   Headgear::Headgear(const Headgear& original) : Item(original)
   {
-    (void) original;
     this->critical_hit_protection = original.critical_hit_protection;
   }
   
@@ -56,7 +55,6 @@ namespace tbrpg
    */
   Headgear::Headgear(Headgear& original) : Item(original)
   {
-    (void) original;
     this->critical_hit_protection = original.critical_hit_protection;
   }
   
@@ -67,7 +65,6 @@ namespace tbrpg
    */
   Headgear::Headgear(Headgear&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->critical_hit_protection, original.critical_hit_protection);
   }
   
@@ -78,7 +75,7 @@ namespace tbrpg
    */
   Headgear::~Headgear()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -91,8 +88,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(const Headgear& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->critical_hit_protection = original.critical_hit_protection;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -104,8 +101,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->critical_hit_protection = original.critical_hit_protection;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->critical_hit_protection = original.critical_hit_protection;
     return *this;
   }
   
@@ -117,8 +114,8 @@ namespace tbrpg
    */
   Headgear& Headgear::operator =(Headgear&& original)
   {
-    (void) original;
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->critical_hit_protection, original.critical_hit_protection);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->critical_hit_protection, original.critical_hit_protection);
     return *this;
   }
   

@@ -46,7 +46,6 @@ namespace tbrpg
    */
   BodyArmour::BodyArmour(const BodyArmour& original) : Item(original)
   {
-    (void) original;
     this->wizard_magic_use = original.wizard_magic_use;
   }
   
@@ -57,7 +56,6 @@ namespace tbrpg
    */
   BodyArmour::BodyArmour(BodyArmour& original) : Item(original)
   {
-    (void) original;
     this->wizard_magic_use = original.wizard_magic_use;
   }
   
@@ -68,7 +66,6 @@ namespace tbrpg
    */
   BodyArmour::BodyArmour(BodyArmour&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->wizard_magic_use, original.wizard_magic_use);
   }
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   BodyArmour::~BodyArmour()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,8 +89,8 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(const BodyArmour& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->wizard_magic_use = original.wizard_magic_use;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->wizard_magic_use = original.wizard_magic_use;
     return *this;
   }
   
@@ -105,8 +102,8 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(BodyArmour& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->wizard_magic_use = original.wizard_magic_use;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->wizard_magic_use = original.wizard_magic_use;
     return *this;
   }
   
@@ -118,8 +115,8 @@ namespace tbrpg
    */
   BodyArmour& BodyArmour::operator =(BodyArmour&& original)
   {
-    (void) original;
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->wizard_magic_use, original.wizard_magic_use);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->wizard_magic_use, original.wizard_magic_use);
     return *this;
   }
   

@@ -248,7 +248,6 @@ namespace tbrpg
   Wizard::Wizard(const Wizard& original) : Class(original)
   {
     (void) original;
-
   }
   
   /**
@@ -259,7 +258,6 @@ namespace tbrpg
   Wizard::Wizard(Wizard& original) : Class(original)
   {
     (void) original;
-
   }
   
   /**
@@ -270,7 +268,6 @@ namespace tbrpg
   Wizard::Wizard(Wizard&& original) : Class(original)
   {
     (void) original;
-
   }
   
   
@@ -280,7 +277,7 @@ namespace tbrpg
    */
   Wizard::~Wizard()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -293,7 +290,6 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(const Wizard& original)
   {
-    (void) original;
     Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
@@ -306,7 +302,6 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(Wizard& original)
   {
-    (void) original;
     Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
@@ -319,7 +314,6 @@ namespace tbrpg
    */
   Wizard& Wizard::operator =(Wizard&& original)
   {
-    (void) original;
     std::swap((Class&)*this, (Class&)original);
     return *this;
   }

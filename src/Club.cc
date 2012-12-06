@@ -49,7 +49,6 @@ namespace tbrpg
   Club::Club(const Club& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -60,7 +59,6 @@ namespace tbrpg
   Club::Club(Club& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -71,7 +69,6 @@ namespace tbrpg
   Club::Club(Club&& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -81,7 +78,7 @@ namespace tbrpg
    */
   Club::~Club()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -94,7 +91,6 @@ namespace tbrpg
    */
   Club& Club::operator =(const Club& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -107,7 +103,6 @@ namespace tbrpg
    */
   Club& Club::operator =(Club& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -120,7 +115,6 @@ namespace tbrpg
    */
   Club& Club::operator =(Club&& original)
   {
-    (void) original;
     std::swap((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }

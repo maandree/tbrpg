@@ -203,7 +203,6 @@ namespace tbrpg
   Priest::Priest(const Priest& original) : Class(original)
   {
     (void) original;
-
   }
   
   /**
@@ -214,7 +213,6 @@ namespace tbrpg
   Priest::Priest(Priest& original) : Class(original)
   {
     (void) original;
-
   }
   
   /**
@@ -225,7 +223,6 @@ namespace tbrpg
   Priest::Priest(Priest&& original) : Class(original)
   {
     (void) original;
-
   }
   
   
@@ -235,7 +232,7 @@ namespace tbrpg
    */
   Priest::~Priest()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -248,7 +245,6 @@ namespace tbrpg
    */
   Priest& Priest::operator =(const Priest& original)
   {
-    (void) original;
     Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
@@ -261,7 +257,6 @@ namespace tbrpg
    */
   Priest& Priest::operator =(Priest& original)
   {
-    (void) original;
     Class::__copy__((Class&)*this, (Class&)original);
     return *this;
   }
@@ -274,7 +269,6 @@ namespace tbrpg
    */
   Priest& Priest::operator =(Priest&& original)
   {
-    (void) original;
     std::swap((Class&)*this, (Class&)original);
     return *this;
   }

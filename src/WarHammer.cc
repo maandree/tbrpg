@@ -52,7 +52,6 @@ namespace tbrpg
   WarHammer::WarHammer(const WarHammer& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -63,7 +62,6 @@ namespace tbrpg
   WarHammer::WarHammer(WarHammer& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -74,7 +72,6 @@ namespace tbrpg
   WarHammer::WarHammer(WarHammer&& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -84,7 +81,7 @@ namespace tbrpg
    */
   WarHammer::~WarHammer()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -97,7 +94,6 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(const WarHammer& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -110,7 +106,6 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(WarHammer& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -123,7 +118,6 @@ namespace tbrpg
    */
   WarHammer& WarHammer::operator =(WarHammer&& original)
   {
-    (void) original;
     std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }

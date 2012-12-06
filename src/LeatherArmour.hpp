@@ -29,8 +29,6 @@
 #include "BodyArmour.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

@@ -29,8 +29,6 @@
 #include "Object.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

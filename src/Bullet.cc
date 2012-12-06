@@ -51,7 +51,6 @@ namespace tbrpg
   Bullet::Bullet(const Bullet& original) : Ammunition(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   Bullet::Bullet(Bullet& original) : Ammunition(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   Bullet::Bullet(Bullet&& original) : Ammunition(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   Bullet::~Bullet()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(const Bullet& original)
   {
-    (void) original;
     Ammunition::__copy__((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(Bullet& original)
   {
-    (void) original;
     Ammunition::__copy__((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   Bullet& Bullet::operator =(Bullet&& original)
   {
-    (void) original;
     std::swap((Ammunition&)*this, (Ammunition&)original);
     return *this;
   }

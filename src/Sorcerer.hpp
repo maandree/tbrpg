@@ -29,8 +29,6 @@
 #include "Wizard.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

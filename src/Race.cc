@@ -49,7 +49,6 @@ namespace tbrpg
    */
   Race::Race(const Race& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
@@ -64,7 +63,6 @@ namespace tbrpg
    */
   Race::Race(Race& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
@@ -79,7 +77,6 @@ namespace tbrpg
    */
   Race::Race(Race&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
@@ -94,11 +91,7 @@ namespace tbrpg
    */
   Race::~Race()
   {
-    ////TODO implement destructor
-    //delete this->name;
-    //delete this->allowed_classes;
-    //delete this->specialisations;
-    //delete this->bonuses;
+    // do nothing
   }
   
   
@@ -111,8 +104,8 @@ namespace tbrpg
    */
   Race& Race::operator =(const Race& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -128,8 +121,8 @@ namespace tbrpg
    */
   Race& Race::operator =(Race& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     this->allowed_classes = original.allowed_classes;
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
@@ -145,8 +138,8 @@ namespace tbrpg
    */
   Race& Race::operator =(Race&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     std::swap(this->allowed_classes, original.allowed_classes);
     std::swap(this->dualclass_level, original.dualclass_level);
     std::swap(this->specialisations, original.specialisations);

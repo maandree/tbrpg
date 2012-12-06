@@ -29,8 +29,6 @@
 #include "Creature.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

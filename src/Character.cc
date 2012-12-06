@@ -36,14 +36,11 @@ namespace tbrpg
   Character::Character() : Object()
   {
     this->class_inheritance.push_back(19);
-    ////TODO implement constructor
-    //this->hit_points = 0;
-    //this->alive = 0;
-    //this->morale = 0;
-    //this->intoxication = 0;
-    //this->fatigue = 0;
-    //this->extra_attacks = 0;
-    //this->record = nullptr;
+    this->alive = 1;
+    this->morale = 0;
+    this->intoxication = 0;
+    this->fatigue = 0;
+    this->extra_attacks = 0;
   }
   
   /**
@@ -53,7 +50,6 @@ namespace tbrpg
    */
   Character::Character(const Character& original) : Object(original)
   {
-    (void) original;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -70,7 +66,6 @@ namespace tbrpg
    */
   Character::Character(Character& original) : Object(original)
   {
-    (void) original;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -87,7 +82,6 @@ namespace tbrpg
    */
   Character::Character(Character&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->alive, original.alive);
     std::swap(this->morale, original.morale);
@@ -104,8 +98,7 @@ namespace tbrpg
    */
   Character::~Character()
   {
-    ////TODO implement destructor
-    //delete this->record;
+    // do nothing
   }
   
   
@@ -118,8 +111,8 @@ namespace tbrpg
    */
   Character& Character::operator =(const Character& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->hit_points = original.hit_points;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
     this->intoxication = original.intoxication;
@@ -137,8 +130,8 @@ namespace tbrpg
    */
   Character& Character::operator =(Character& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->hit_points = original.hit_points;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
     this->intoxication = original.intoxication;
@@ -156,8 +149,8 @@ namespace tbrpg
    */
   Character& Character::operator =(Character&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->hit_points, original.hit_points);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->hit_points, original.hit_points);
     std::swap(this->alive, original.alive);
     std::swap(this->morale, original.morale);
     std::swap(this->intoxication, original.intoxication);

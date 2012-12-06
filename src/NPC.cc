@@ -50,7 +50,6 @@ namespace tbrpg
   NPC::NPC(const NPC& original) : Creature(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   NPC::NPC(NPC& original) : Creature(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   NPC::NPC(NPC&& original) : Creature(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   NPC::~NPC()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   NPC& NPC::operator =(const NPC& original)
   {
-    (void) original;
     Creature::__copy__((Creature&)*this, (Creature&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   NPC& NPC::operator =(NPC& original)
   {
-    (void) original;
     Creature::__copy__((Creature&)*this, (Creature&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   NPC& NPC::operator =(NPC&& original)
   {
-    (void) original;
     std::swap((Creature&)*this, (Creature&)original);
     return *this;
   }

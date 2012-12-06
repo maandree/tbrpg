@@ -60,7 +60,6 @@ namespace tbrpg
   Thief::Thief(const Thief& original) : Rogue(original)
   {
     (void) original;
-
   }
   
   /**
@@ -71,7 +70,6 @@ namespace tbrpg
   Thief::Thief(Thief& original) : Rogue(original)
   {
     (void) original;
-
   }
   
   /**
@@ -82,7 +80,6 @@ namespace tbrpg
   Thief::Thief(Thief&& original) : Rogue(original)
   {
     (void) original;
-
   }
   
   
@@ -92,7 +89,7 @@ namespace tbrpg
    */
   Thief::~Thief()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -105,7 +102,6 @@ namespace tbrpg
    */
   Thief& Thief::operator =(const Thief& original)
   {
-    (void) original;
     Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
@@ -118,7 +114,6 @@ namespace tbrpg
    */
   Thief& Thief::operator =(Thief& original)
   {
-    (void) original;
     Rogue::__copy__((Rogue&)*this, (Rogue&)original);
     return *this;
   }
@@ -131,7 +126,6 @@ namespace tbrpg
    */
   Thief& Thief::operator =(Thief&& original)
   {
-    (void) original;
     std::swap((Rogue&)*this, (Rogue&)original);
     return *this;
   }

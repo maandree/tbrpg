@@ -36,7 +36,6 @@ namespace tbrpg
   QuestItem::QuestItem() : Item()
   {
     this->name = "quest item";
-    //this->id = 0;
   }
   
   /**
@@ -46,7 +45,6 @@ namespace tbrpg
    */
   QuestItem::QuestItem(const QuestItem& original) : Item(original)
   {
-    (void) original;
     this->id = original.id;
   }
   
@@ -57,7 +55,6 @@ namespace tbrpg
    */
   QuestItem::QuestItem(QuestItem& original) : Item(original)
   {
-    (void) original;
     this->id = original.id;
   }
   
@@ -68,7 +65,6 @@ namespace tbrpg
    */
   QuestItem::QuestItem(QuestItem&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->id, original.id);
   }
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   QuestItem::~QuestItem()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +88,6 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(const QuestItem& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
     return *this;
   }
@@ -105,7 +100,6 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
     return *this;
   }
@@ -118,7 +112,6 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);    std::swap(this->id, original.id);
     return *this;
   }

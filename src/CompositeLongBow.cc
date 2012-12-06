@@ -49,7 +49,6 @@ namespace tbrpg
   CompositeLongBow::CompositeLongBow(const CompositeLongBow& original) : Bow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -60,7 +59,6 @@ namespace tbrpg
   CompositeLongBow::CompositeLongBow(CompositeLongBow& original) : Bow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -71,7 +69,6 @@ namespace tbrpg
   CompositeLongBow::CompositeLongBow(CompositeLongBow&& original) : Bow(original)
   {
     (void) original;
-
   }
   
   
@@ -81,7 +78,7 @@ namespace tbrpg
    */
   CompositeLongBow::~CompositeLongBow()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -94,7 +91,6 @@ namespace tbrpg
    */
   CompositeLongBow& CompositeLongBow::operator =(const CompositeLongBow& original)
   {
-    (void) original;
     Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
@@ -107,7 +103,6 @@ namespace tbrpg
    */
   CompositeLongBow& CompositeLongBow::operator =(CompositeLongBow& original)
   {
-    (void) original;
     Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
@@ -119,7 +114,6 @@ namespace tbrpg
    * @return            The invoked object
    */
   CompositeLongBow& CompositeLongBow::operator =(CompositeLongBow&& original)
-  {
     (void) original;
     std::swap((Bow&)*this, (Bow&)original);
     return *this;

@@ -47,7 +47,6 @@ namespace tbrpg
   TextScroll::TextScroll(const TextScroll& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   TextScroll::TextScroll(TextScroll& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   TextScroll::TextScroll(TextScroll&& original) : Item(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   TextScroll::~TextScroll()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(const TextScroll& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(TextScroll& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   TextScroll& TextScroll::operator =(TextScroll&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);
     return *this;
   }

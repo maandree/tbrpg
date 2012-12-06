@@ -47,7 +47,6 @@ namespace tbrpg
   BluntWeapon::BluntWeapon(const BluntWeapon& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   BluntWeapon::BluntWeapon(BluntWeapon& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   BluntWeapon::BluntWeapon(BluntWeapon&& original) : OneHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   BluntWeapon::~BluntWeapon()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(const BluntWeapon& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(BluntWeapon& original)
   {
-    (void) original;
     OneHandedMelee::__copy__((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   BluntWeapon& BluntWeapon::operator =(BluntWeapon&& original)
   {
-    (void) original;
     std::swap((OneHandedMelee&)*this, (OneHandedMelee&)original);
     return *this;
   }

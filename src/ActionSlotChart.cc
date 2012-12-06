@@ -95,7 +95,6 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(const ActionSlotChart& original) : Object(original)
   {
-    (void) original;
     this->index_map = original.index_map;
     this->slot_map = original.slot_map;
   }
@@ -107,7 +106,6 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(ActionSlotChart& original) : Object(original)
   {
-    (void) original;
     this->index_map = original.index_map;
     this->slot_map = original.slot_map;
   }
@@ -119,7 +117,6 @@ namespace tbrpg
    */
   ActionSlotChart::ActionSlotChart(ActionSlotChart&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->index_map, original.index_map);
     std::swap(this->slot_map, original.slot_map);
   }
@@ -131,9 +128,7 @@ namespace tbrpg
    */
   ActionSlotChart::~ActionSlotChart()
   {
-    ////TODO implement destructor
-    //delete this->index_map;
-    //delete this->slot_map;
+    // do nothing
   }
   
   
@@ -146,8 +141,8 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(const ActionSlotChart& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->index_map = original.index_map;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->index_map = original.index_map;
     this->slot_map = original.slot_map;
     return *this;
   }
@@ -160,8 +155,8 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->index_map = original.index_map;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->index_map = original.index_map;
     this->slot_map = original.slot_map;
     return *this;
   }
@@ -174,8 +169,8 @@ namespace tbrpg
    */
   ActionSlotChart& ActionSlotChart::operator =(ActionSlotChart&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->index_map, original.index_map);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->index_map, original.index_map);
     std::swap(this->slot_map, original.slot_map);
     return *this;
   }

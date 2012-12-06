@@ -35,8 +35,7 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon() : Weapon()
   {
-    ////TODO implement constructor
-    //this->rate_of_fire = 0;
+    this->rate_of_fire = 1;
   }
   
   /**
@@ -46,7 +45,6 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(const RangedWeapon& original) : Weapon(original)
   {
-    (void) original;
     this->rate_of_fire = original.rate_of_fire;
   }
   
@@ -57,7 +55,6 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(RangedWeapon& original) : Weapon(original)
   {
-    (void) original;
     this->rate_of_fire = original.rate_of_fire;
   }
   
@@ -68,7 +65,6 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon(RangedWeapon&& original) : Weapon(original)
   {
-    (void) original;
     std::swap(this->rate_of_fire, original.rate_of_fire);
   }
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   RangedWeapon::~RangedWeapon()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,8 +88,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(const RangedWeapon& original)
   {
-    (void) original;
-    Weapon::__copy__((Weapon&)*this, (Weapon&)original);    this->rate_of_fire = original.rate_of_fire;
+    Weapon::__copy__((Weapon&)*this, (Weapon&)original);
+    this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -105,8 +101,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon& original)
   {
-    (void) original;
-    Weapon::__copy__((Weapon&)*this, (Weapon&)original);    this->rate_of_fire = original.rate_of_fire;
+    Weapon::__copy__((Weapon&)*this, (Weapon&)original);
+    this->rate_of_fire = original.rate_of_fire;
     return *this;
   }
   
@@ -118,8 +114,8 @@ namespace tbrpg
    */
   RangedWeapon& RangedWeapon::operator =(RangedWeapon&& original)
   {
-    (void) original;
-    std::swap((Weapon&)*this, (Weapon&)original);    std::swap(this->rate_of_fire, original.rate_of_fire);
+    std::swap((Weapon&)*this, (Weapon&)original);
+    std::swap(this->rate_of_fire, original.rate_of_fire);
     return *this;
   }
   

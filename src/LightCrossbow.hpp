@@ -29,8 +29,6 @@
 #include "Crossbow.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

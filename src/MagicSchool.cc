@@ -52,7 +52,6 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(const MagicSchool& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -66,7 +65,6 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -80,7 +78,6 @@ namespace tbrpg
    */
   MagicSchool::MagicSchool(MagicSchool&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->coluration, original.coluration);
     std::swap(this->practicer, original.practicer);
@@ -94,11 +91,7 @@ namespace tbrpg
    */
   MagicSchool::~MagicSchool()
   {
-    ////TODO implement destructor
-    //delete this->name;
-    //delete this->coluration;
-    //delete this->practicer;
-    //delete this->opposite;
+    // do nothing
   }
   
   
@@ -111,7 +104,6 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(const MagicSchool& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -127,7 +119,6 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
     this->coluration = original.coluration;
     this->practicer = original.practicer;
@@ -143,7 +134,6 @@ namespace tbrpg
    */
   MagicSchool& MagicSchool::operator =(MagicSchool&& original)
   {
-    (void) original;
     std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
     std::swap(this->coluration, original.coluration);
     std::swap(this->practicer, original.practicer);

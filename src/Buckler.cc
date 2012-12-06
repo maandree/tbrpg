@@ -48,7 +48,6 @@ namespace tbrpg
   Buckler::Buckler(const Buckler& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -59,7 +58,6 @@ namespace tbrpg
   Buckler::Buckler(Buckler& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -70,7 +68,6 @@ namespace tbrpg
   Buckler::Buckler(Buckler&& original) : Shield(original)
   {
     (void) original;
-
   }
   
   
@@ -80,7 +77,7 @@ namespace tbrpg
    */
   Buckler::~Buckler()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -93,7 +90,6 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(const Buckler& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -106,7 +102,6 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(Buckler& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -119,7 +114,6 @@ namespace tbrpg
    */
   Buckler& Buckler::operator =(Buckler&& original)
   {
-    (void) original;
     std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }

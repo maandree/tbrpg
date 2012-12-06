@@ -52,7 +52,6 @@ namespace tbrpg
   Flail::Flail(const Flail& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -63,7 +62,6 @@ namespace tbrpg
   Flail::Flail(Flail& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -74,7 +72,6 @@ namespace tbrpg
   Flail::Flail(Flail&& original) : BluntWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -84,7 +81,7 @@ namespace tbrpg
    */
   Flail::~Flail()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -97,7 +94,6 @@ namespace tbrpg
    */
   Flail& Flail::operator =(const Flail& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -110,7 +106,6 @@ namespace tbrpg
    */
   Flail& Flail::operator =(Flail& original)
   {
-    (void) original;
     BluntWeapon::__copy__((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }
@@ -123,7 +118,6 @@ namespace tbrpg
    */
   Flail& Flail::operator =(Flail&& original)
   {
-    (void) original;
     std::swap((BluntWeapon&)*this, (BluntWeapon&)original);
     return *this;
   }

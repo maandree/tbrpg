@@ -36,7 +36,6 @@ namespace tbrpg
   Wilderness::Wilderness() : MapMinor()
   {
     this->class_inheritance.push_back(75);
-    ////TODO implement constructor
   }
   
   /**
@@ -47,7 +46,6 @@ namespace tbrpg
   Wilderness::Wilderness(const Wilderness& original) : MapMinor(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +56,6 @@ namespace tbrpg
   Wilderness::Wilderness(Wilderness& original) : MapMinor(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +66,6 @@ namespace tbrpg
   Wilderness::Wilderness(Wilderness&& original) : MapMinor(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +75,7 @@ namespace tbrpg
    */
   Wilderness::~Wilderness()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +88,6 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(const Wilderness& original)
   {
-    (void) original;
     MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
@@ -105,7 +100,6 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(Wilderness& original)
   {
-    (void) original;
     MapMinor::__copy__((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }
@@ -118,7 +112,6 @@ namespace tbrpg
    */
   Wilderness& Wilderness::operator =(Wilderness&& original)
   {
-    (void) original;
     std::swap((MapMinor&)*this, (MapMinor&)original);
     return *this;
   }

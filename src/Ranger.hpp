@@ -29,8 +29,6 @@
 #include "Warrior.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

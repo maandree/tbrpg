@@ -37,7 +37,6 @@
 #include "MorningStar.hpp"
 
 
-
 /**
  * Text based roll playing game
  * 

@@ -47,7 +47,6 @@ namespace tbrpg
   WizardScroll::WizardScroll(const WizardScroll& original) : Scroll(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   WizardScroll::WizardScroll(WizardScroll& original) : Scroll(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   WizardScroll::WizardScroll(WizardScroll&& original) : Scroll(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   WizardScroll::~WizardScroll()
   {
-    ////TODO implement destructor
+    //do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   WizardScroll& WizardScroll::operator =(const WizardScroll& original)
   {
-    (void) original;
     Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   WizardScroll& WizardScroll::operator =(WizardScroll& original)
   {
-    (void) original;
     Scroll::__copy__((Scroll&)*this, (Scroll&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   WizardScroll& WizardScroll::operator =(WizardScroll&& original)
   {
-    (void) original;
     std::swap((Scroll&)*this, (Scroll&)original);
     return *this;
   }

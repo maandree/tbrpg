@@ -36,7 +36,6 @@ namespace tbrpg
   RuleSet::RuleSet() : Object()
   {
     this->class_inheritance.push_back(1);
-    ////TODO implement constructor
     this->attack_roll_die = 20;
     this->attack_roll_dice = 1;
     this->critical_hit = 20;
@@ -49,11 +48,6 @@ namespace tbrpg
     this->rest_healing_turns = 1;
     this->racial_enemy_bonus = 4;
     this->racial_enemy_penality = 4;
-    //this->reputation_chart = nullptr;
-    //this->ability_chart = nullptr;
-    //this->inventory_prototype = nullptr;
-    //this->spells = nullptr;
-    //this->races = nullptr;
     
     ABJURATION.opposite = {ALTERATION};
     ALTERATION.opposite = {ABJURATION, NECROMANCY};
@@ -72,7 +66,6 @@ namespace tbrpg
    */
   RuleSet::RuleSet(const RuleSet& original) : Object(original)
   {
-    (void) original;
     this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
@@ -100,7 +93,6 @@ namespace tbrpg
    */
   RuleSet::RuleSet(RuleSet& original) : Object(original)
   {
-    (void) original;
     this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
@@ -128,7 +120,6 @@ namespace tbrpg
    */
   RuleSet::RuleSet(RuleSet&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->attack_roll_die, original.attack_roll_die);
     std::swap(this->attack_roll_dice, original.attack_roll_dice);
     std::swap(this->critical_hit, original.critical_hit);
@@ -156,13 +147,7 @@ namespace tbrpg
    */
   RuleSet::~RuleSet()
   {
-    ////TODO implement destructor
-    //delete this->reputation_chart;
-    //delete this->ability_chart;
-    //delete this->inventory_prototype;
-    //delete this->spells;
-    //delete this->races;
-    //delete this->racial_enemies;
+    // do nothing
   }
   
   
@@ -175,8 +160,8 @@ namespace tbrpg
    */
   RuleSet& RuleSet::operator =(const RuleSet& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->attack_roll_die = original.attack_roll_die;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
     this->critical_miss = original.critical_miss;
@@ -205,8 +190,8 @@ namespace tbrpg
    */
   RuleSet& RuleSet::operator =(RuleSet& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->attack_roll_die = original.attack_roll_die;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
     this->critical_hit = original.critical_hit;
     this->critical_miss = original.critical_miss;
@@ -235,8 +220,8 @@ namespace tbrpg
    */
   RuleSet& RuleSet::operator =(RuleSet&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->attack_roll_die, original.attack_roll_die);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->attack_roll_die, original.attack_roll_die);
     std::swap(this->attack_roll_dice, original.attack_roll_dice);
     std::swap(this->critical_hit, original.critical_hit);
     std::swap(this->critical_miss, original.critical_miss);

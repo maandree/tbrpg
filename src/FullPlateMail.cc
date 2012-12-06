@@ -50,7 +50,6 @@ namespace tbrpg
   FullPlateMail::FullPlateMail(const FullPlateMail& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   FullPlateMail::FullPlateMail(FullPlateMail& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   FullPlateMail::FullPlateMail(FullPlateMail&& original) : BodyArmour(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   FullPlateMail::~FullPlateMail()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(const FullPlateMail& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(FullPlateMail& original)
   {
-    (void) original;
     BodyArmour::__copy__((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   FullPlateMail& FullPlateMail::operator =(FullPlateMail&& original)
   {
-    (void) original;
     std::swap((BodyArmour&)*this, (BodyArmour&)original);
     return *this;
   }

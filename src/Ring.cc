@@ -47,7 +47,6 @@ namespace tbrpg
   Ring::Ring(const Ring& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   Ring::Ring(Ring& original) : Item(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   Ring::Ring(Ring&& original) : Item(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Ring::~Ring()
   {
-    ////TODO implement destructor
+    //do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Ring& Ring::operator =(const Ring& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Ring& Ring::operator =(Ring& original)
   {
-    (void) original;
     Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Ring& Ring::operator =(Ring&& original)
   {
-    (void) original;
     std::swap((Item&)*this, (Item&)original);
     return *this;
   }

@@ -29,8 +29,6 @@
 #include "BluntWeapon.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

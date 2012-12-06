@@ -29,8 +29,6 @@
 #include "Rogue.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

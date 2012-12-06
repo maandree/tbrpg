@@ -54,7 +54,6 @@ namespace tbrpg
   Human::Human(const Human& original) : Race(original)
   {
     (void) original;
-
   }
   
   /**
@@ -65,7 +64,6 @@ namespace tbrpg
   Human::Human(Human& original) : Race(original)
   {
     (void) original;
-
   }
   
   /**
@@ -76,7 +74,6 @@ namespace tbrpg
   Human::Human(Human&& original) : Race(original)
   {
     (void) original;
-
   }
   
   
@@ -86,7 +83,7 @@ namespace tbrpg
    */
   Human::~Human()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -99,7 +96,6 @@ namespace tbrpg
    */
   Human& Human::operator =(const Human& original)
   {
-    (void) original;
     Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
@@ -112,7 +108,6 @@ namespace tbrpg
    */
   Human& Human::operator =(Human& original)
   {
-    (void) original;
     Race::__copy__((Race&)*this, (Race&)original);
     return *this;
   }
@@ -125,7 +120,6 @@ namespace tbrpg
    */
   Human& Human::operator =(Human&& original)
   {
-    (void) original;
     std::swap((Race&)*this, (Race&)original);
     return *this;
   }

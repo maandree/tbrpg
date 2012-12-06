@@ -47,7 +47,6 @@ namespace tbrpg
   ShortBow::ShortBow(const ShortBow& original) : Bow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   ShortBow::ShortBow(ShortBow& original) : Bow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   ShortBow::ShortBow(ShortBow&& original) : Bow(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   ShortBow::~ShortBow()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   ShortBow& ShortBow::operator =(const ShortBow& original)
   {
-    (void) original;
     Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   ShortBow& ShortBow::operator =(ShortBow& original)
   {
-    (void) original;
     Bow::__copy__((Bow&)*this, (Bow&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   ShortBow& ShortBow::operator =(ShortBow&& original)
   {
-    (void) original;
     std::swap((Bow&)*this, (Bow&)original);
     return *this;
   }

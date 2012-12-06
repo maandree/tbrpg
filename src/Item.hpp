@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
-
 #include "AbilityBonus.hpp"
 #include "DamageType.hpp"
 

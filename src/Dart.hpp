@@ -29,8 +29,6 @@
 #include "Throwing.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

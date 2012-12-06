@@ -45,7 +45,6 @@ namespace tbrpg
    */
   Ammunition::Ammunition(const Ammunition& original) : Item(original)
   {
-    (void) original;
     this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
@@ -61,7 +60,6 @@ namespace tbrpg
    */
   Ammunition::Ammunition(Ammunition& original) : Item(original)
   {
-    (void) original;
     this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
@@ -77,7 +75,6 @@ namespace tbrpg
    */
   Ammunition::Ammunition(Ammunition&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_die, original.damage_die);
     std::swap(this->damage_dice, original.damage_dice);
@@ -93,9 +90,7 @@ namespace tbrpg
    */
   Ammunition::~Ammunition()
   {
-    ////TODO implement destructor
-    //delete this->usable_with;
-    //delete this->damage_type;
+    // do nothing
   }
   
   
@@ -108,8 +103,8 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(const Ammunition& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->hit_bonus = original.hit_bonus;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
     this->damage_bonus = original.damage_bonus;
@@ -126,8 +121,8 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->hit_bonus = original.hit_bonus;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->hit_bonus = original.hit_bonus;
     this->damage_die = original.damage_die;
     this->damage_dice = original.damage_dice;
     this->damage_bonus = original.damage_bonus;
@@ -144,8 +139,8 @@ namespace tbrpg
    */
   Ammunition& Ammunition::operator =(Ammunition&& original)
   {
-    (void) original;
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->hit_bonus, original.hit_bonus);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->hit_bonus, original.hit_bonus);
     std::swap(this->damage_die, original.damage_die);
     std::swap(this->damage_dice, original.damage_dice);
     std::swap(this->damage_bonus, original.damage_bonus);

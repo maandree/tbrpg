@@ -36,9 +36,6 @@ namespace tbrpg
   SpellBook::SpellBook() : Object()
   {
     this->class_inheritance.push_back(26);
-    ////TODO implement constructor
-    //this->learned = nullptr;
-    //this->memorised = nullptr;
   }
   
   /**
@@ -48,7 +45,6 @@ namespace tbrpg
    */
   SpellBook::SpellBook(const SpellBook& original) : Object(original)
   {
-    (void) original;
     this->learned = original.learned;
     this->memorised = original.memorised;
   }
@@ -60,7 +56,6 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook& original) : Object(original)
   {
-    (void) original;
     this->learned = original.learned;
     this->memorised = original.memorised;
   }
@@ -72,7 +67,6 @@ namespace tbrpg
    */
   SpellBook::SpellBook(SpellBook&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->learned, original.learned);
     std::swap(this->memorised, original.memorised);
   }
@@ -84,9 +78,7 @@ namespace tbrpg
    */
   SpellBook::~SpellBook()
   {
-    ////TODO implement destructor
-    //delete this->learned;
-    //delete this->memorised;
+    // do nothing
   }
   
   
@@ -99,8 +91,8 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(const SpellBook& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
   }
@@ -113,8 +105,8 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->learned = original.learned;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->learned = original.learned;
     this->memorised = original.memorised;
     return *this;
   }
@@ -127,8 +119,8 @@ namespace tbrpg
    */
   SpellBook& SpellBook::operator =(SpellBook&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->learned, original.learned);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->learned, original.learned);
     std::swap(this->memorised, original.memorised);
     return *this;
   }

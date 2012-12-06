@@ -46,7 +46,6 @@ namespace tbrpg
   MediumShield::MediumShield(const MediumShield& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -57,7 +56,6 @@ namespace tbrpg
   MediumShield::MediumShield(MediumShield& original) : Shield(original)
   {
     (void) original;
-
   }
   
   /**
@@ -68,7 +66,6 @@ namespace tbrpg
   MediumShield::MediumShield(MediumShield&& original) : Shield(original)
   {
     (void) original;
-
   }
   
   
@@ -78,7 +75,7 @@ namespace tbrpg
    */
   MediumShield::~MediumShield()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -91,7 +88,6 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(const MediumShield& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -104,7 +100,6 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(MediumShield& original)
   {
-    (void) original;
     Shield::__copy__((Shield&)*this, (Shield&)original);
     return *this;
   }
@@ -117,7 +112,6 @@ namespace tbrpg
    */
   MediumShield& MediumShield::operator =(MediumShield&& original)
   {
-    (void) original;
     std::swap((Shield&)*this, (Shield&)original);
     return *this;
   }

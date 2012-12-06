@@ -46,7 +46,6 @@ namespace tbrpg
   Throwing::Throwing(const Throwing& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -57,7 +56,6 @@ namespace tbrpg
   Throwing::Throwing(Throwing& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -68,7 +66,6 @@ namespace tbrpg
   Throwing::Throwing(Throwing&& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -78,7 +75,7 @@ namespace tbrpg
    */
   Throwing::~Throwing()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -91,7 +88,6 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(const Throwing& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -104,7 +100,6 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(Throwing& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -117,7 +112,6 @@ namespace tbrpg
    */
   Throwing& Throwing::operator =(Throwing&& original)
   {
-    (void) original;
     std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }

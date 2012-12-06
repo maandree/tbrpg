@@ -50,7 +50,6 @@ namespace tbrpg
   Sling::Sling(const Sling& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   Sling::Sling(Sling& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   Sling::Sling(Sling&& original) : RangedWeapon(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   Sling::~Sling()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   Sling& Sling::operator =(const Sling& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   Sling& Sling::operator =(Sling& original)
   {
-    (void) original;
     RangedWeapon::__copy__((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   Sling& Sling::operator =(Sling&& original)
   {
-    (void) original;
     std::swap((RangedWeapon&)*this, (RangedWeapon&)original);
     return *this;
   }

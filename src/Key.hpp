@@ -29,8 +29,6 @@
 #include "QuestItem.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

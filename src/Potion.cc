@@ -48,7 +48,6 @@ namespace tbrpg
   Potion::Potion(const Potion& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   /**
@@ -59,7 +58,6 @@ namespace tbrpg
   Potion::Potion(Potion& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   /**
@@ -70,7 +68,6 @@ namespace tbrpg
   Potion::Potion(Potion&& original) : QuickItem(original)
   {
     (void) original;
-
   }
   
   
@@ -80,7 +77,7 @@ namespace tbrpg
    */
   Potion::~Potion()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -93,7 +90,6 @@ namespace tbrpg
    */
   Potion& Potion::operator =(const Potion& original)
   {
-    (void) original;
     QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
@@ -106,7 +102,6 @@ namespace tbrpg
    */
   Potion& Potion::operator =(Potion& original)
   {
-    (void) original;
     QuickItem::__copy__((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }
@@ -119,7 +114,6 @@ namespace tbrpg
    */
   Potion& Potion::operator =(Potion&& original)
   {
-    (void) original;
     std::swap((QuickItem&)*this, (QuickItem&)original);
     return *this;
   }

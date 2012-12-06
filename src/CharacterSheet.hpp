@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
-
 #include "WeaponGroup.hpp"
 #include "Spell.hpp"
 #include "Inventory.hpp"

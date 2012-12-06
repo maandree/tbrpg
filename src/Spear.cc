@@ -51,7 +51,6 @@ namespace tbrpg
   Spear::Spear(const Spear& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -62,7 +61,6 @@ namespace tbrpg
   Spear::Spear(Spear& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   /**
@@ -73,7 +71,6 @@ namespace tbrpg
   Spear::Spear(Spear&& original) : TwoHandedMelee(original)
   {
     (void) original;
-
   }
   
   
@@ -83,7 +80,7 @@ namespace tbrpg
    */
   Spear::~Spear()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -96,7 +93,6 @@ namespace tbrpg
    */
   Spear& Spear::operator =(const Spear& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -109,7 +105,6 @@ namespace tbrpg
    */
   Spear& Spear::operator =(Spear& original)
   {
-    (void) original;
     TwoHandedMelee::__copy__((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }
@@ -122,7 +117,6 @@ namespace tbrpg
    */
   Spear& Spear::operator =(Spear&& original)
   {
-    (void) original;
     std::swap((TwoHandedMelee&)*this, (TwoHandedMelee&)original);
     return *this;
   }

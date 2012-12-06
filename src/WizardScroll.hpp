@@ -29,8 +29,6 @@
 #include "Scroll.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

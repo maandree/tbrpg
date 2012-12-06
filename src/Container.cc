@@ -37,11 +37,9 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(27);
     this->name = "container";
-    ////TODO implement constructor
-    //this->contains = nullptr;
-    //this->contain_limit = 0;
-    //this->weight_modifier = 0;
-    //this->can_contain = nullptr;
+    this->contains = {};
+    this->contain_limit = 50;
+    this->weight_modifier = 1;
   }
   
   /**
@@ -51,7 +49,6 @@ namespace tbrpg
    */
   Container::Container(const Container& original) : Item(original)
   {
-    (void) original;
     this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
@@ -65,7 +62,6 @@ namespace tbrpg
    */
   Container::Container(Container& original) : Item(original)
   {
-    (void) original;
     this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
@@ -79,7 +75,6 @@ namespace tbrpg
    */
   Container::Container(Container&& original) : Item(original)
   {
-    (void) original;
     std::swap(this->contains, original.contains);
     std::swap(this->contain_limit, original.contain_limit);
     std::swap(this->weight_modifier, original.weight_modifier);
@@ -93,9 +88,7 @@ namespace tbrpg
    */
   Container::~Container()
   {
-    ////TODO implement destructor
-    //delete this->contains;
-    //delete this->can_contain;
+    // do nothing
   }
   
   
@@ -108,8 +101,8 @@ namespace tbrpg
    */
   Container& Container::operator =(const Container& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
     this->can_contain = original.can_contain;
@@ -124,8 +117,8 @@ namespace tbrpg
    */
   Container& Container::operator =(Container& original)
   {
-    (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->contains = original.contains;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->contains = original.contains;
     this->contain_limit = original.contain_limit;
     this->weight_modifier = original.weight_modifier;
     this->can_contain = original.can_contain;
@@ -140,8 +133,8 @@ namespace tbrpg
    */
   Container& Container::operator =(Container&& original)
   {
-    (void) original;
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->contains, original.contains);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->contains, original.contains);
     std::swap(this->contain_limit, original.contain_limit);
     std::swap(this->weight_modifier, original.weight_modifier);
     std::swap(this->can_contain, original.can_contain);

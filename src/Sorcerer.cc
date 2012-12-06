@@ -47,7 +47,6 @@ namespace tbrpg
   Sorcerer::Sorcerer(const Sorcerer& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
   Sorcerer::Sorcerer(Sorcerer& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   /**
@@ -69,7 +67,6 @@ namespace tbrpg
   Sorcerer::Sorcerer(Sorcerer&& original) : Wizard(original)
   {
     (void) original;
-
   }
   
   
@@ -79,7 +76,7 @@ namespace tbrpg
    */
   Sorcerer::~Sorcerer()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -92,7 +89,6 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(const Sorcerer& original)
   {
-    (void) original;
     Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
@@ -105,7 +101,6 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(Sorcerer& original)
   {
-    (void) original;
     Wizard::__copy__((Wizard&)*this, (Wizard&)original);
     return *this;
   }
@@ -118,7 +113,6 @@ namespace tbrpg
    */
   Sorcerer& Sorcerer::operator =(Sorcerer&& original)
   {
-    (void) original;
     std::swap((Wizard&)*this, (Wizard&)original);
     return *this;
   }

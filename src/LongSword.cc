@@ -50,7 +50,6 @@ namespace tbrpg
   LongSword::LongSword(const LongSword& original) : LargeSword(original)
   {
     (void) original;
-
   }
   
   /**
@@ -61,7 +60,6 @@ namespace tbrpg
   LongSword::LongSword(LongSword& original) : LargeSword(original)
   {
     (void) original;
-
   }
   
   /**
@@ -72,7 +70,6 @@ namespace tbrpg
   LongSword::LongSword(LongSword&& original) : LargeSword(original)
   {
     (void) original;
-
   }
   
   
@@ -82,7 +79,7 @@ namespace tbrpg
    */
   LongSword::~LongSword()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -95,7 +92,6 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(const LongSword& original)
   {
-    (void) original;
     LargeSword::__copy__((LargeSword&)*this, (LargeSword&)original);
     return *this;
   }
@@ -108,7 +104,6 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(LongSword& original)
   {
-    (void) original;
     LargeSword::__copy__((LargeSword&)*this, (LargeSword&)original);
     return *this;
   }
@@ -121,7 +116,6 @@ namespace tbrpg
    */
   LongSword& LongSword::operator =(LongSword&& original)
   {
-    (void) original;
     std::swap((LargeSword&)*this, (LargeSword&)original);
     return *this;
   }

@@ -29,8 +29,6 @@
 #include "MapMinor.hpp"
 
 
-
-
 /**
  * Text based roll playing game
  * 

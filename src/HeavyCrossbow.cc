@@ -48,7 +48,6 @@ namespace tbrpg
   HeavyCrossbow::HeavyCrossbow(const HeavyCrossbow& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -59,7 +58,6 @@ namespace tbrpg
   HeavyCrossbow::HeavyCrossbow(HeavyCrossbow& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   /**
@@ -70,7 +68,6 @@ namespace tbrpg
   HeavyCrossbow::HeavyCrossbow(HeavyCrossbow&& original) : Crossbow(original)
   {
     (void) original;
-
   }
   
   
@@ -80,7 +77,7 @@ namespace tbrpg
    */
   HeavyCrossbow::~HeavyCrossbow()
   {
-    ////TODO implement destructor
+    // do nothing
   }
   
   
@@ -93,7 +90,6 @@ namespace tbrpg
    */
   HeavyCrossbow& HeavyCrossbow::operator =(const HeavyCrossbow& original)
   {
-    (void) original;
     Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
@@ -106,7 +102,6 @@ namespace tbrpg
    */
   HeavyCrossbow& HeavyCrossbow::operator =(HeavyCrossbow& original)
   {
-    (void) original;
     Crossbow::__copy__((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
@@ -119,7 +114,6 @@ namespace tbrpg
    */
   HeavyCrossbow& HeavyCrossbow::operator =(HeavyCrossbow&& original)
   {
-    (void) original;
     std::swap((Crossbow&)*this, (Crossbow&)original);
     return *this;
   }
