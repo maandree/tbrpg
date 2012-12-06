@@ -199,15 +199,15 @@ namespace tbrpg
   size_t ThiefAbilities::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<int>()(find_traps);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<int>()(open_locks);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<int>()(pick_pockets);
-    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(stealth);
-    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<int>()(limit);
     return rc;
   }

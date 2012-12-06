@@ -471,7 +471,7 @@ for line in lines:
             output += '    size_t rc = 0;\n'
             for superClass in supers:
                 if superClass != 'Object':
-                    output += '    rc = (rc * %i) ^ (rc >> (sizeof(size_t) << 2) * %i);\n' % (primes[pi], primes[pi])
+                    output += '    rc = (rc * %i) ^ ((rc >> (sizeof(size_t) << 2)) * %i);\n' % (primes[pi], primes[pi])
                     output += '    rc += std::hash<%s>()(*this);\n' % superClass
                     pi = (pi + 1) & 7;
             for varLine in varLines:
@@ -482,7 +482,7 @@ for line in lines:
                         space = s
                 varType = varLine[:space]
                 varName = varLine[space + 1:]
-                output += '    rc = (rc * %i) ^ (rc >> (sizeof(size_t) << 2) * %i);\n' % (primes[pi], primes[pi])
+                output += '    rc = (rc * %i) ^ ((rc >> (sizeof(size_t) << 2)) * %i);\n' % (primes[pi], primes[pi])
                 output += '    rc += std::hash<%s>()(%s);\n' % (varType, varName)
                 pi = (pi + 1) & 7;
             output += '    return rc;\n'

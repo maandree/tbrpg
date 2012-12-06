@@ -165,7 +165,7 @@ namespace tbrpg
   size_t Druid::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Priest>()(*this);
     return rc;
   }
