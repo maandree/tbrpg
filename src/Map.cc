@@ -142,7 +142,20 @@ namespace tbrpg
    */
   bool Map::operator ==(const Map& other) const
   {
-    return this == &other;
+    if (this->start != other.start)  return false;
+    if (this->majors != other.majors)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Map::operator !=(const Map& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -163,7 +176,12 @@ namespace tbrpg
    */
   size_t Map::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<MapMinor>()(start);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::vector<MapMajor>>()(majors);
+    return rc;
   }
   
 }

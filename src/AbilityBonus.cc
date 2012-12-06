@@ -182,7 +182,25 @@ namespace tbrpg
    */
   bool AbilityBonus::operator ==(const AbilityBonus& other) const
   {
-    return this == &other;
+    if (this->bonuses != other.bonuses)  return false;
+    if (this->thief_abilities != other.thief_abilities)  return false;
+    if (this->saving_throws != other.saving_throws)  return false;
+    if (this->abilities != other.abilities)  return false;
+    if (this->spells != other.spells)  return false;
+    if (this->effects != other.effects)  return false;
+    if (this->defence != other.defence)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool AbilityBonus::operator !=(const AbilityBonus& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -203,7 +221,22 @@ namespace tbrpg
    */
   size_t AbilityBonus::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Bonuses>()(bonuses);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<ThiefAbilities>()(thief_abilities);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<SavingThrows>()(saving_throws);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<Abilities>()(abilities);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<SpellBook>()(spells);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<std::vector<Spell>>()(effects);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<Defence>()(defence);
+    return rc;
   }
   
 }

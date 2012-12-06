@@ -140,7 +140,21 @@ namespace tbrpg
    */
   bool Shield::operator ==(const Shield& other) const
   {
-    return this == &other;
+    if ((RightHandItem&)(*this) != (RightHandItem&)other)  return false;
+    if (this->protect_missile != other.protect_missile)  return false;
+    if (this->protect_melee != other.protect_melee)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Shield::operator !=(const Shield& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -161,7 +175,14 @@ namespace tbrpg
    */
   size_t Shield::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<RightHandItem>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<bool>()(protect_missile);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<std::unordered_map<DamageType, bool>>()(protect_melee);
+    return rc;
   }
   
 }

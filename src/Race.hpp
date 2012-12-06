@@ -146,6 +146,14 @@ namespace tbrpg
      */
     virtual bool operator ==(const Race& other) const;
     
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Race& other) const;
+    
     
   protected:
     /**

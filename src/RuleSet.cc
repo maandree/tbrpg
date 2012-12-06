@@ -258,7 +258,36 @@ namespace tbrpg
    */
   bool RuleSet::operator ==(const RuleSet& other) const
   {
-    return this == &other;
+    if (this->attack_roll_die != other.attack_roll_die)  return false;
+    if (this->attack_roll_dice != other.attack_roll_dice)  return false;
+    if (this->critical_hit != other.critical_hit)  return false;
+    if (this->critical_miss != other.critical_miss)  return false;
+    if (this->idle_healing != other.idle_healing)  return false;
+    if (this->idle_healing_turns != other.idle_healing_turns)  return false;
+    if (this->combat_healing != other.combat_healing)  return false;
+    if (this->combat_healing_turns != other.combat_healing_turns)  return false;
+    if (this->rest_healing != other.rest_healing)  return false;
+    if (this->rest_healing_turns != other.rest_healing_turns)  return false;
+    if (this->racial_enemy_bonus != other.racial_enemy_bonus)  return false;
+    if (this->racial_enemy_penality != other.racial_enemy_penality)  return false;
+    if (this->reputation_chart != other.reputation_chart)  return false;
+    if (this->ability_chart != other.ability_chart)  return false;
+    if (this->inventory_prototype != other.inventory_prototype)  return false;
+    if (this->spells != other.spells)  return false;
+    if (this->races != other.races)  return false;
+    if (this->racial_enemies != other.racial_enemies)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool RuleSet::operator !=(const RuleSet& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -279,7 +308,44 @@ namespace tbrpg
    */
   size_t RuleSet::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<char>()(attack_roll_die);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(attack_roll_dice);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<char>()(critical_hit);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char>()(critical_miss);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(idle_healing);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<char>()(idle_healing_turns);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<int>()(combat_healing);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<char>()(combat_healing_turns);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(rest_healing);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(rest_healing_turns);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(racial_enemy_bonus);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int>()(racial_enemy_penality);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<ReputationChart>()(reputation_chart);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<AbilityChart>()(ability_chart);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<Inventory>()(inventory_prototype);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<std::vector<Spell>>()(spells);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::vector<Race>>()(races);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::vector<Race>>()(racial_enemies);
+    return rc;
   }
   
 }

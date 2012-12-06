@@ -185,7 +185,26 @@ namespace tbrpg
    */
   bool Road::operator ==(const Road& other) const
   {
-    return this == &other;
+    if (this->first_distance != other.first_distance)  return false;
+    if (this->last_distance != other.last_distance)  return false;
+    if (this->waylay_die != other.waylay_die)  return false;
+    if (this->waylay_dice != other.waylay_dice)  return false;
+    if (this->waylay_risk != other.waylay_risk)  return false;
+    if (this->direction != other.direction)  return false;
+    if (this->waylay_map != other.waylay_map)  return false;
+    if (this->leads_to != other.leads_to)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Road::operator !=(const Road& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -206,7 +225,24 @@ namespace tbrpg
    */
   size_t Road::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(first_distance);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(last_distance);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<char>()(waylay_die);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char>()(waylay_dice);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<unsigned char>()(waylay_risk);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<std::string>()(direction);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<_MapMinor>()(waylay_map);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<_MapMinor>()(leads_to);
+    return rc;
   }
   
 }

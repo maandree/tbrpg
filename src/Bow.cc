@@ -131,7 +131,19 @@ namespace tbrpg
    */
   bool Bow::operator ==(const Bow& other) const
   {
-    return this == &other;
+    if ((RangedWeapon&)(*this) != (RangedWeapon&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Bow::operator !=(const Bow& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -152,7 +164,10 @@ namespace tbrpg
    */
   size_t Bow::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<RangedWeapon>()(*this);
+    return rc;
   }
   
 }

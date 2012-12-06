@@ -142,7 +142,20 @@ namespace tbrpg
    */
   bool ActionSlotChart::operator ==(const ActionSlotChart& other) const
   {
-    return this == &other;
+    if (this->index_map != other.index_map)  return false;
+    if (this->slot_map != other.slot_map)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool ActionSlotChart::operator !=(const ActionSlotChart& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -163,7 +176,12 @@ namespace tbrpg
    */
   size_t ActionSlotChart::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::unordered_map<Class, long long>>()(index_map);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::unordered_map<long long, std::vector<ActionSlot>>>()(slot_map);
+    return rc;
   }
   
 }

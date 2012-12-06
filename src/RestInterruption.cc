@@ -155,7 +155,22 @@ namespace tbrpg
    */
   bool RestInterruption::operator ==(const RestInterruption& other) const
   {
-    return this == &other;
+    if (this->interrupt_die != other.interrupt_die)  return false;
+    if (this->interrupt_dice != other.interrupt_dice)  return false;
+    if (this->interrupt_risk != other.interrupt_risk)  return false;
+    if (this->creatures != other.creatures)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool RestInterruption::operator !=(const RestInterruption& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -176,7 +191,16 @@ namespace tbrpg
    */
   size_t RestInterruption::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<char>()(interrupt_die);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(interrupt_dice);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<unsigned char>()(interrupt_risk);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<std::vector<Creature>>()(creatures);
+    return rc;
   }
   
 }

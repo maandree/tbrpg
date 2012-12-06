@@ -196,7 +196,28 @@ namespace tbrpg
    */
   bool MapMinor::operator ==(const MapMinor& other) const
   {
-    return this == &other;
+    if ((_MapMinor&)(*this) != (_MapMinor&)other)  return false;
+    if (this->description != other.description)  return false;
+    if (this->may_rest != other.may_rest)  return false;
+    if (this->area != other.area)  return false;
+    if (this->roads != other.roads)  return false;
+    if (this->connections != other.connections)  return false;
+    if (this->items != other.items)  return false;
+    if (this->creatures != other.creatures)  return false;
+    if (this->is_in != other.is_in)  return false;
+    if (this->interruptions != other.interruptions)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool MapMinor::operator !=(const MapMinor& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -217,7 +238,28 @@ namespace tbrpg
    */
   size_t MapMinor::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<_MapMinor>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::string>()(description);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<bool>()(may_rest);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<float>()(area);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<std::vector<Road>>()(roads);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<std::vector<Entrance>>()(connections);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<std::vector<Item>>()(items);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<std::vector<Creature>>()(creatures);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<MapMajor>()(is_in);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::vector<RestInterruption>>()(interruptions);
+    return rc;
   }
   
 }

@@ -230,7 +230,31 @@ namespace tbrpg
    */
   bool Inventory::operator ==(const Inventory& other) const
   {
-    return this == &other;
+    if (this->left_hand != other.left_hand)  return false;
+    if (this->right_hand != other.right_hand)  return false;
+    if (this->quiver != other.quiver)  return false;
+    if (this->quick_items != other.quick_items)  return false;
+    if (this->headgear != other.headgear)  return false;
+    if (this->amulet != other.amulet)  return false;
+    if (this->rings != other.rings)  return false;
+    if (this->body != other.body)  return false;
+    if (this->gauntlets != other.gauntlets)  return false;
+    if (this->girdle != other.girdle)  return false;
+    if (this->boots != other.boots)  return false;
+    if (this->cloak != other.cloak)  return false;
+    if (this->personal != other.personal)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Inventory::operator !=(const Inventory& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -251,7 +275,34 @@ namespace tbrpg
    */
   size_t Inventory::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::vector<Weapon>>()(left_hand);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<RightHandItem>()(right_hand);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<std::vector<Ammunition>>()(quiver);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<std::vector<QuickItem>>()(quick_items);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<Headgear>()(headgear);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<Amulet>()(amulet);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<std::vector<Ring>>()(rings);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<BodyArmour>()(body);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Gauntlets>()(gauntlets);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<Girdle>()(girdle);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<Boots>()(boots);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<Cloak>()(cloak);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<std::vector<Item>>()(personal);
+    return rc;
   }
   
 }

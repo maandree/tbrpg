@@ -182,7 +182,25 @@ namespace tbrpg
    */
   bool AbilityChart::operator ==(const AbilityChart& other) const
   {
-    return this == &other;
+    if (this->strength != other.strength)  return false;
+    if (this->strength18 != other.strength18)  return false;
+    if (this->dexterity != other.dexterity)  return false;
+    if (this->constitution != other.constitution)  return false;
+    if (this->intelligence != other.intelligence)  return false;
+    if (this->wisdom != other.wisdom)  return false;
+    if (this->charisma != other.charisma)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool AbilityChart::operator !=(const AbilityChart& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -203,7 +221,22 @@ namespace tbrpg
    */
   size_t AbilityChart::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<AbilityBonus[]>()(strength);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<AbilityBonus[]>()(strength18);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<AbilityBonus[]>()(dexterity);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<AbilityBonus[]>()(constitution);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<AbilityBonus[]>()(intelligence);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<AbilityBonus[]>()(wisdom);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<AbilityBonus[]>()(charisma);
+    return rc;
   }
   
 }

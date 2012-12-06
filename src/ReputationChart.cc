@@ -222,7 +222,30 @@ namespace tbrpg
    */
   bool ReputationChart::operator ==(const ReputationChart& other) const
   {
-    return this == &other;
+    if (this->reaction_adjustment != other.reaction_adjustment)  return false;
+    if (this->wanted != other.wanted)  return false;
+    if (this->killing_innocent != other.killing_innocent)  return false;
+    if (this->injuring_innocent != other.injuring_innocent)  return false;
+    if (this->stealing != other.stealing)  return false;
+    if (this->killing_guard != other.killing_guard)  return false;
+    if (this->donation_needed != other.donation_needed)  return false;
+    if (this->price_adjustment != other.price_adjustment)  return false;
+    if (this->good_reaction != other.good_reaction)  return false;
+    if (this->neutral_reaction != other.neutral_reaction)  return false;
+    if (this->evil_reaction != other.evil_reaction)  return false;
+    if (this->alignment_reputation != other.alignment_reputation)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool ReputationChart::operator !=(const ReputationChart& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -243,7 +266,32 @@ namespace tbrpg
    */
   size_t ReputationChart::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int[]>()(reaction_adjustment);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<bool[]>()(wanted);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int[]>()(killing_innocent);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int[]>()(injuring_innocent);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int[]>()(stealing);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<int[]>()(killing_guard);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<int[]>()(donation_needed);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<float[]>()(price_adjustment);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<signed char[]>()(good_reaction);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<signed char[]>()(neutral_reaction);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<signed char[]>()(evil_reaction);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char[]>()(alignment_reputation);
+    return rc;
   }
   
 }

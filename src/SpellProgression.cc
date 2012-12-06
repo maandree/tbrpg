@@ -158,7 +158,22 @@ namespace tbrpg
    */
   bool SpellProgression::operator ==(const SpellProgression& other) const
   {
-    return this == &other;
+    if (this->wizard_slots != other.wizard_slots)  return false;
+    if (this->priest_slots != other.priest_slots)  return false;
+    if (this->wizard_levels != other.wizard_levels)  return false;
+    if (this->priest_levels != other.priest_levels)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool SpellProgression::operator !=(const SpellProgression& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -179,7 +194,16 @@ namespace tbrpg
    */
   size_t SpellProgression::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::vector<std::vector<int>>>()(wizard_slots);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::vector<std::vector<int>>>()(priest_slots);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<std::vector<int>>()(wizard_levels);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<std::vector<int>>()(priest_levels);
+    return rc;
   }
   
 }
