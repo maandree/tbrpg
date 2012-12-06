@@ -209,8 +209,8 @@ namespace tbrpg
 	  alignments.push_back(all_alignments[i]);
       }
     input = promptList("Select alignment: ", alignments.size() == 0
-		                           ? all_alignments /* fail safe */
-		                           : alignments);
+		       ? all_alignments /* fail safe */
+		       : alignments);
     if (input == "")
       goto _04;
     this->sheet.alignment = alignmentMap[input];

@@ -20,8 +20,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "Dice.hpp"
-#include "prompter.hpp"
+#include "CharacterCreator.hpp"
 
 
 /**
@@ -51,12 +50,9 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    Dice dice = Dice(2, 20);
-    std::cout << dice.roll() << std::endl;
-    
-    std::vector<std::string> strs = promptMulti("Select spells", 2, {"identify", "magic missile", "oakenform", "find familiar"});
-    for (std::string& str : strs)
-	std::cout << str << std::endl;
+    /*CharacterCreator creator = CharacterCreator(RuleSet());
+    CharacterSheet* sheet = creator.create();
+    std::cout << (sheet == nullptr ? "null" : "new") << std::endl;*/
     std::flush(std::cout);
     
     return 0;
