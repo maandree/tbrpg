@@ -166,9 +166,13 @@ namespace tbrpg
    */
   bool CorpseMaker::operator ==(const CorpseMaker& other) const
   {
-    if (this->strenght_weight != other.strenght_weight)  return false;
-    if (this->strenght18_weight != other.strenght18_weight)  return false;
-    if (this->constitution_weight != other.constitution_weight)  return false;
+    for (long i = 0; i <= 25; i++)
+      {
+	if (this->strenght_weight[i] != other.strenght_weight[i])  return false;
+	if (this->constitution_weight[i] != other.constitution_weight[i])  return false;
+      }
+    for (long i = 0; i <= 100; i++)
+      if (this->strenght18_weight[i] != other.strenght18_weight[i])  return false;
     return true;
   }
   
@@ -223,12 +227,18 @@ namespace tbrpg
   size_t CorpseMaker::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int*>()(strenght_weight);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int*>()(strenght18_weight);
-    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int*>()(constitution_weight);
+    for (long i = 0; i <= 25; i++)
+      {
+	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+	rc += std::hash<int>()(strenght_weight[i]);
+	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+	rc += std::hash<int*>()(constitution_weight);
+      }
+    for (long i = 0; i <= 100; i++)
+      {
+	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+	rc += std::hash<int>()(strenght18_weight[i]);
+      }
     return rc;
   }
   

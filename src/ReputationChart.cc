@@ -128,7 +128,6 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(const ReputationChart& original) : Object(original)
   {
-    (void) original;
     this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
@@ -150,7 +149,6 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart& original) : Object(original)
   {
-    (void) original;
     this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
@@ -172,7 +170,6 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->reaction_adjustment, original.reaction_adjustment);
     std::swap(this->wanted, original.wanted);
     std::swap(this->killing_innocent, original.killing_innocent);
@@ -218,8 +215,8 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(const ReputationChart& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->reaction_adjustment = original.reaction_adjustment;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
     this->injuring_innocent = original.injuring_innocent;
@@ -242,8 +239,8 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->reaction_adjustment = original.reaction_adjustment;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->reaction_adjustment = original.reaction_adjustment;
     this->wanted = original.wanted;
     this->killing_innocent = original.killing_innocent;
     this->injuring_innocent = original.injuring_innocent;
@@ -266,8 +263,8 @@ namespace tbrpg
    */
   ReputationChart& ReputationChart::operator =(ReputationChart&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->reaction_adjustment, original.reaction_adjustment);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->reaction_adjustment, original.reaction_adjustment);
     std::swap(this->wanted, original.wanted);
     std::swap(this->killing_innocent, original.killing_innocent);
     std::swap(this->injuring_innocent, original.injuring_innocent);
@@ -291,18 +288,35 @@ namespace tbrpg
    */
   bool ReputationChart::operator ==(const ReputationChart& other) const
   {
-    if (this->reaction_adjustment != other.reaction_adjustment)  return false;
-    if (this->wanted != other.wanted)  return false;
-    if (this->killing_innocent != other.killing_innocent)  return false;
-    if (this->injuring_innocent != other.injuring_innocent)  return false;
-    if (this->stealing != other.stealing)  return false;
-    if (this->killing_guard != other.killing_guard)  return false;
-    if (this->donation_needed != other.donation_needed)  return false;
-    if (this->price_adjustment != other.price_adjustment)  return false;
-    if (this->good_reaction != other.good_reaction)  return false;
-    if (this->neutral_reaction != other.neutral_reaction)  return false;
-    if (this->evil_reaction != other.evil_reaction)  return false;
-    if (this->alignment_reputation != other.alignment_reputation)  return false;
+    this->reaction_adjustment = new int[21];
+    this->wanted = new bool[21];
+    this->killing_innocent = new int[21];
+    this->injuring_innocent = new int[21];
+    this->stealing = new int[21];
+    this->killing_guard = new int[21];
+    this->donation_needed = new int[21];
+    this->price_adjustment = new float[21];
+    this->good_reaction = new signed char[21];
+    this->neutral_reaction = new signed char[21];
+    this->evil_reaction = new signed char[21];
+    this->alignment_reputation = new char[9];
+    
+    for (long i = 0; i < 21; i++)
+      {
+	if (this->reaction_adjustment[i] != other.reaction_adjustment[i])  return false;
+	if (this->wanted[i] != other.wanted[i])  return false;
+	if (this->killing_innocent[i] != other.killing_innocent[i])  return false;
+	if (this->injuring_innocent[i] != other.injuring_innocent[i])  return false;
+	if (this->stealing[i] != other.stealing[i])  return false;
+	if (this->killing_guard[i] != other.killing_guard[i])  return false;
+	if (this->donation_needed[i] != other.donation_needed[i])  return false;
+	if (this->price_adjustment[i] != other.price_adjustment[i])  return false;
+	if (this->good_reaction[i] != other.good_reaction[i])  return false;
+	if (this->neutral_reaction[i] != other.neutral_reaction[i])  return false;
+	if (this->evil_reaction[i] != other.evil_reaction[i])  return false;
+      }
+    for (long i = 0; i < 9; i++)
+      if (this->alignment_reputation[i] != other.alignment_reputation[i])  return false;
     return true;
   }
   
@@ -336,30 +350,36 @@ namespace tbrpg
   size_t ReputationChart::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int*>()(reaction_adjustment);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool*>()(wanted);
-    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int*>()(killing_innocent);
-    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int*>()(injuring_innocent);
-    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<int*>()(stealing);
-    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<int*>()(killing_guard);
-    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<int*>()(donation_needed);
-    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<float*>()(price_adjustment);
-    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<signed char*>()(good_reaction);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<signed char*>()(neutral_reaction);
-    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<signed char*>()(evil_reaction);
-    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<char*>()(alignment_reputation);
+    for (long i = 0; i < 21; i++)
+      {
+	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+	rc += std::hash<int>()(reaction_adjustment[i]);
+	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+	rc += std::hash<bool>()(wanted[i]);
+	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+	rc += std::hash<int>()(killing_innocent[i]);
+	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+	rc += std::hash<int>()(injuring_innocent[i]);
+	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+	rc += std::hash<int>()(stealing[i]);
+	rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+	rc += std::hash<int>()(killing_guard[i]);
+	rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+	rc += std::hash<int>()(donation_needed[i]);
+	rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+	rc += std::hash<float>()(price_adjustment[i]);
+	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+	rc += std::hash<signed char>()(good_reaction[i]);
+	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+	rc += std::hash<signed char>()(neutral_reaction[i]);
+	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+	rc += std::hash<signed char>()(evil_reaction[i]);
+      }
+    for (long i = 0; i < 9; i++)
+      {
+	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+	rc += std::hash<char>()(alignment_reputation[i]);
+      }
     return rc;
   }
   

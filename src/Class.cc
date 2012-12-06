@@ -297,7 +297,8 @@ namespace tbrpg
     if (this->hit_points != other.hit_points)  return false;
     if (this->thac0 != other.thac0)  return false;
     if (this->lore_bonus != other.lore_bonus)  return false;
-    if (this->alignments != other.alignments)  return false;
+    for (int i = 0; i < 9; i++)
+      if (this->alignments[i] != other.alignments[i])  return false;
     if (this->learn_from_scroll != other.learn_from_scroll)  return false;
     if (this->proficiencies_each != other.proficiencies_each)  return false;
     if (this->extra_strength != other.extra_strength)  return false;
@@ -353,8 +354,11 @@ namespace tbrpg
     rc += std::hash<int>()(thac0);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(lore_bonus);
-    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<bool*>()(alignments);
+    for (int i = 0; i < 9; i++)
+      {
+	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+	rc += std::hash<bool>()(alignments[i]);
+      }
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<bool>()(learn_from_scroll);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);

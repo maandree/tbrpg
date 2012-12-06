@@ -511,13 +511,17 @@ namespace tbrpg
    */
   bool AbilityChart::operator ==(const AbilityChart& other) const
   {
-    if (this->strength != other.strength)  return false;
-    if (this->strength18 != other.strength18)  return false;
-    if (this->dexterity != other.dexterity)  return false;
-    if (this->constitution != other.constitution)  return false;
-    if (this->intelligence != other.intelligence)  return false;
-    if (this->wisdom != other.wisdom)  return false;
-    if (this->charisma != other.charisma)  return false;
+    for (long i = 0; i < 26; i++)
+      {
+	if (this->strength[i] != other.strength[i])  return false;
+	if (this->dexterity[i] != other.dexterity[i])  return false;
+	if (this->constitution[i] != other.constitution[i])  return false;
+	if (this->intelligence[i] != other.intelligence[i])  return false;
+	if (this->wisdom[i] != other.wisdom[i])  return false;
+	if (this->charisma[i] != other.charisma[i])  return false;
+      }
+    for (long i = 0; i < 101; i++)
+      if (this->strength18[i] != other.strength18[i])  return false;
     return true;
   }
   
@@ -551,20 +555,26 @@ namespace tbrpg
   size_t AbilityChart::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<AbilityBonus*>()(strength);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<AbilityBonus*>()(strength18);
-    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<AbilityBonus*>()(dexterity);
-    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<AbilityBonus*>()(constitution);
-    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<AbilityBonus*>()(intelligence);
-    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<AbilityBonus*>()(wisdom);
-    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<AbilityBonus*>()(charisma);
+    for (long i = 0; i < 26; i++)
+      {
+	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+	rc += std::hash<AbilityBonus>()(strength[i]);
+	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+	rc += std::hash<AbilityBonus>()(dexterity[i]);
+	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+	rc += std::hash<AbilityBonus>()(constitution[i]);
+	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+	rc += std::hash<AbilityBonus>()(intelligence[i]);
+	rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+	rc += std::hash<AbilityBonus>()(wisdom[i]);
+	rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+	rc += std::hash<AbilityBonus>()(charisma[i]);
+      }
+    for (long i = 0; i < 101; i++)
+      {
+	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+	rc += std::hash<AbilityBonus>()(strength18[i]);
+      }
     return rc;
   }
   
