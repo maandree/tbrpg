@@ -552,19 +552,19 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<AbilityBonus[]>()(strength);
+    rc += std::hash<AbilityBonus*>()(strength);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<AbilityBonus[]>()(strength18);
+    rc += std::hash<AbilityBonus*>()(strength18);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<AbilityBonus[]>()(dexterity);
+    rc += std::hash<AbilityBonus*>()(dexterity);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<AbilityBonus[]>()(constitution);
+    rc += std::hash<AbilityBonus*>()(constitution);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<AbilityBonus[]>()(intelligence);
+    rc += std::hash<AbilityBonus*>()(intelligence);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<AbilityBonus[]>()(wisdom);
+    rc += std::hash<AbilityBonus*>()(wisdom);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<AbilityBonus[]>()(charisma);
+    rc += std::hash<AbilityBonus*>()(charisma);
     return rc;
   }
   

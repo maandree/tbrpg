@@ -483,7 +483,7 @@ for line in lines:
                 varType = varLine[:space]
                 varName = varLine[space + 1:]
                 output += '    rc = (rc * %i) ^ ((rc >> (sizeof(size_t) << 2)) * %i);\n' % (primes[pi], primes[pi])
-                output += '    rc += std::hash<%s>()(%s);\n' % (varType, varName)
+                output += '    rc += std::hash<%s>()(%s);\n' % (varType.replace('[]', '*'), varName)
                 pi = (pi + 1) & 7;
             output += '    return rc;\n'
         output += '  }\n'
