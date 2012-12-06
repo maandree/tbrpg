@@ -139,9 +139,9 @@ namespace tbrpg
 	    if (left > 0)
 	      std::cout << CSI << left << "C";
 	    std::cout << CSI "07m" << space60 << CSI "27m" CSI "60D";
-	    printf("-- line %li to %li of %uli -- page %li of %uli --",
-		   line + 1, line + termheight, curpage.size(),
-		   page + 1, pages.size());
+	    printf("-- line %li to %li of %li -- page %li of %li --",
+		   line + 1, line + termheight, (long)((curpage.size()),
+		   page + 1, (long)(pages.size()));
 	  };
 	
 	std::cout << CSI "H" CSI "2J";
