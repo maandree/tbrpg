@@ -163,9 +163,9 @@ namespace tbrpg
   size_t Door::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Entrance>()(*this);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<Lockable>()(*this);
     return rc;
   }

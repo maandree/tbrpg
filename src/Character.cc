@@ -209,19 +209,19 @@ namespace tbrpg
   size_t Character::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<int>()(hit_points);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<char>()(alive);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<int>()(morale);
-    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(intoxication);
-    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<int>()(fatigue);
-    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<char>()(extra_attacks);
-    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<CharacterSheet>()(record);
     return rc;
   }

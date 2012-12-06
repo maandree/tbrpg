@@ -255,31 +255,31 @@ namespace tbrpg
   size_t Item::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::string>()(name);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::string>()(description);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<int>()(armour_class);
-    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(weight);
-    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<bool>()(identified);
-    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<int>()(lore_value);
-    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<bool>()(stuck);
-    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<bool>()(cursed);
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<int>()(quantity);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<int>()(quantity_limit);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<int>()(unit_value);
-    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<AbilityBonus>()(bonuses);
-    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<std::unordered_map<DamageType, int>>()(armour_class_modifiers);
     return rc;
   }

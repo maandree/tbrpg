@@ -165,7 +165,7 @@ namespace tbrpg
   size_t Fists::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<TwoHandedMelee>()(*this);
     return rc;
   }

@@ -177,11 +177,11 @@ namespace tbrpg
   size_t Shield::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<RightHandItem>()(*this);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<bool>()(protect_missile);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::unordered_map<DamageType, bool>>()(protect_melee);
     return rc;
   }

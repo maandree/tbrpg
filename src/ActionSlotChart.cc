@@ -219,9 +219,9 @@ namespace tbrpg
   size_t ActionSlotChart::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::unordered_map<Class, long long>>()(index_map);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::unordered_map<long long, std::vector<ActionSlot>>>()(slot_map);
     return rc;
   }

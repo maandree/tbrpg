@@ -159,7 +159,7 @@ namespace tbrpg
   size_t RightHandItem::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     return rc;
   }

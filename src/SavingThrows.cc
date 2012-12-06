@@ -195,15 +195,15 @@ namespace tbrpg
   size_t SavingThrows::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<int>()(breath);
-    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<int>()(paralyze_poison_death);
-    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<int>()(petrification_polymorph);
-    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(rod_staff_wand);
-    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<int>()(spell);
     return rc;
   }

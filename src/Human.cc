@@ -167,7 +167,7 @@ namespace tbrpg
   size_t Human::hash() const
   {
     size_t rc = 0;
-    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Race>()(*this);
     return rc;
   }
