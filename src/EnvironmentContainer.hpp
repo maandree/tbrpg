@@ -31,6 +31,7 @@
 
 
 
+#include "hash.h"
 
 /**
  * Text based roll playing game

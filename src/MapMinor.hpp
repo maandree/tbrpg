@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "Road.hpp"
 #include "Entrance.hpp"
 #include "Item.hpp"

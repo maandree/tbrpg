@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "RangedWeapon.hpp"
 #include "DamageType.hpp"
 

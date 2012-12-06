@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "Class.hpp"
 
 

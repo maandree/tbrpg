@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "Weapon.hpp"
 #include "RightHandItem.hpp"
 #include "Ammunition.hpp"

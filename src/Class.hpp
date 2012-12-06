@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "ExperienceChart.hpp"
 #include "SpellProgression.hpp"
 #include "AbilityBonus.hpp"

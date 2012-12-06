@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "Bonuses.hpp"
 #include "ThiefAbilities.hpp"
 #include "SavingThrows.hpp"

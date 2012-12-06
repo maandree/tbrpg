@@ -30,6 +30,7 @@
 
 
 
+#include "hash.h"
 #include "_MapMinor.hpp"
 
 
