@@ -30,7 +30,7 @@
 
 
 
-#include "hash.h"
+#include "hash.hpp"
 
 /**
  * Text based roll playing game

@@ -30,7 +30,7 @@
 
 
 
-#include "hash.h"
+#include "hash.hpp"
 #include "Class.hpp"
 #include "MagicSchool.hpp"
 #include "AbilityBonus.hpp"

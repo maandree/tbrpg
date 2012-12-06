@@ -30,7 +30,7 @@
 
 
 
-#include "hash.h"
+#include "hash.hpp"
 #include "MapMinor.hpp"
 #include "MapMajor.hpp"
 

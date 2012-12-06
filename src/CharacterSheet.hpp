@@ -30,7 +30,7 @@
 
 
 
-#include "hash.h"
+#include "hash.hpp"
 #include "WeaponGroup.hpp"
 #include "Spell.hpp"
 #include "Inventory.hpp"
