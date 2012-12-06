@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  CorpseMaker::CorpseMaker() : Object() /* TODO document this chart */
+  CorpseMaker::CorpseMaker() : Object()
   {
     this->class_inheritance.push_back(78);
     this->strenght_weight = (int*)malloc(26 * sizeof(int));
@@ -53,6 +53,7 @@ namespace tbrpg
 	this->strenght18_weight[i] = w;
 	w += 50;
       }
+    w += 500;
     for (long i = 19; i <= 25; i++)
       {
 	this->strenght_weight[i] = w;

@@ -2426,7 +2426,8 @@ at each spell level.
 * Level 1 chart::              Level 1 chart.
 * Actions slots::              Actions slots.
 * Proficienies point chart::   Proficienies point depending on class and level.
-* Weapon groups::              Weapons in the weapon groups
+* Weapon groups::              Weapons in the weapon groups.
+* Corpse weight::              The weight of character corpses.
 @end menu
 
 
@@ -2607,6 +2608,57 @@ the best value.
 @item Pole-arm  @tab halberd  @tab  
 @tab War hammer  @tab blunt weapons
 @end multitable
+
+
+@node Corpse weight
+@section Corpse weight
+@cindex corpse weight
+@cindex body weight
+@cindex strenght
+@cindex constitution
+
+The base weight for a corpse is 90 kg. The additional weight
+depends on the character's strenght and constitution.
+0,5 addition kg per constitution score, the following chart
+maps the addition weight depending on the strenght.
+
+@multitable @columnfractions 0.20 0.40
+@item @b{Strenght}  @tab @b{Addition weight}
+@item  1     @tab 0,5
+@item  2     @tab 1,0
+@item  3     @tab 1,5
+@item  4     @tab 2,0
+@item  5     @tab 2,5
+@item  6     @tab 3,0
+@item  7     @tab 3,5
+@item  8     @tab 4,0
+@item  9     @tab 4,5
+@item 10     @tab 5,0
+@item 11     @tab 5,5
+@item 12     @tab 6,0
+@item 13     @tab 6,5
+@item 14     @tab 7,0
+@item 15     @tab 7,5
+@item 16     @tab 8,0
+@item 17     @tab 8,5
+@item 18     @tab 9,0
+@item 18/01  @tab 9,05
+@item 18/02  @tab 9,10
+@item 18/03  @tab 9,15
+@item ⋮      @tab ⋮
+@item 18/97  @tab 13,85
+@item 18/98  @tab 13,90
+@item 18/99  @tab 13,95
+@item 18/00  @tab 14,0
+@item 19     @tab 14,5
+@item 20     @tab 15,0
+@item 21     @tab 15,5
+@item 22     @tab 16,0
+@item 23     @tab 16,5
+@item 24     @tab 17,0
+@item 25     @tab 17,5
+@end multitable
+
 
 
 @node Combat rules

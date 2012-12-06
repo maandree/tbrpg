@@ -36,6 +36,7 @@ namespace tbrpg
   QuestItem::QuestItem() : Item()
   {
     this->name = "quest item";
+    this->unit_value = -1;
   }
   
   /**

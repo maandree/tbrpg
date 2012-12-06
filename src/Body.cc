@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(24);
     this->name = "the body of ";
+    this->weight = 90000;
+    this->unit_value = -1;
   }
   
   /**
