@@ -80,6 +80,9 @@ program: src/program.cc
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/program.cc *.o
 
+test/%: test/%.cc
+	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o test/$* test/$*.cc *.o
+
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	rm .tmp; \
@@ -188,11 +191,12 @@ uninstall:
 
 clean: clean-gch
 	if [ -d "bin" ]; then  rm -r "bin";  fi
-	find ./ | grep \\.a\$$    | while read file; do  rm "$$file";  done
-	find ./ | grep \\.o\$$    | while read file; do  rm "$$file";  done
-	find ./ | grep \\.out\$$  | while read file; do  rm "$$file";  done
-	find ./ | grep \\.info\$$ | while read file; do  rm "$$file";  done
-	find ./ | grep \\.gz\$$   | while read file; do  rm "$$file";  done
+	find ./     | grep    \\.a\$$    | while read file; do  rm "$$file";  done
+	find ./     | grep    \\.o\$$    | while read file; do  rm "$$file";  done
+	find ./     | grep    \\.out\$$  | while read file; do  rm "$$file";  done
+	find ./     | grep    \\.info\$$ | while read file; do  rm "$$file";  done
+	find ./     | grep    \\.gz\$$   | while read file; do  rm "$$file";  done
+	find ./test | grep -v \\.cc\$$   | while read file; do  rm "$$file";  done
 	if [ -f .tmp  ]; then  rm .tmp ;  fi
 	if [ -f .tmp1 ]; then  rm .tmp1;  fi
 	if [ -f .tmp2 ]; then  rm .tmp2;  fi
