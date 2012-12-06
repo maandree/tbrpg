@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "RightHandItem.hpp"
+#include "hash.hpp"
 #include "DamageType.hpp"
 #include "WeaponGroup.hpp"
 
@@ -161,6 +162,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Weapon& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Weapon& other) const;
     
     
   protected:

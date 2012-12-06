@@ -162,6 +162,17 @@ namespace tbrpg
   
   
   /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Object::operator !=(const Object& other) const
+  {
+    return (*this == other) == false;
+  }
+  
+  /**
    * Copy method
    * 
    * @param  self      The object to modify

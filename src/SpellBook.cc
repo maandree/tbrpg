@@ -134,7 +134,20 @@ namespace tbrpg
    */
   bool SpellBook::operator ==(const SpellBook& other) const
   {
-    return this == &other;
+    if (this->learned != other.learned)  return false;
+    if (this->memorised != other.memorised)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool SpellBook::operator !=(const SpellBook& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -155,7 +168,12 @@ namespace tbrpg
    */
   size_t SpellBook::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::vector<Spell>>()(learned);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::vector<Spell>>()(memorised);
+    return rc;
   }
   
 }

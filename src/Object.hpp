@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "hash.hpp"
+
 
 /**
  * Text based roll playing game
@@ -117,6 +119,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Object& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Object& other) const;
     
     
     /**

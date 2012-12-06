@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "NPC.hpp"
+#include "hash.hpp"
 #include "Spell.hpp"
 #include "Item.hpp"
 
@@ -151,6 +152,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Store& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Store& other) const;
     
     
   protected:

@@ -31,6 +31,7 @@
 #include "Robe.hpp"
 #include "HighWand.hpp"
 #include "WizardScroll.hpp"
+#include "hash.hpp"
 
 
 /**
@@ -116,6 +117,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Wizard& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Wizard& other) const;
     
     
   protected:

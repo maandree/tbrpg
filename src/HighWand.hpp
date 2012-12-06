@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Wand.hpp"
+#include "hash.hpp"
 
 
 /**
@@ -112,6 +113,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const HighWand& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const HighWand& other) const;
     
     
   protected:

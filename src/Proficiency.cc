@@ -146,7 +146,21 @@ namespace tbrpg
    */
   bool Proficiency::operator ==(const Proficiency& other) const
   {
-    return this == &other;
+    if (this->hit_bonus != other.hit_bonus)  return false;
+    if (this->damage_bonus != other.damage_bonus)  return false;
+    if (this->half_attacks != other.half_attacks)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Proficiency::operator !=(const Proficiency& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -167,7 +181,14 @@ namespace tbrpg
    */
   size_t Proficiency::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<int>()(hit_bonus);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<int>()(damage_bonus);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<char>()(half_attacks);
+    return rc;
   }
   
 }

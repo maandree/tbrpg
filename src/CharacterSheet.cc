@@ -237,7 +237,37 @@ namespace tbrpg
    */
   bool CharacterSheet::operator ==(const CharacterSheet& other) const
   {
-    return this == &other;
+    if (this->name != other.name)  return false;
+    if (this->biography != other.biography)  return false;
+    if (this->colour != other.colour)  return false;
+    if (this->alignment != other.alignment)  return false;
+    if (this->portrait != other.portrait)  return false;
+    if (this->female != other.female)  return false;
+    if (this->experience != other.experience)  return false;
+    if (this->level != other.level)  return false;
+    if (this->class_abondoned != other.class_abondoned)  return false;
+    if (this->proficiencies != other.proficiencies)  return false;
+    if (this->affected_by != other.affected_by)  return false;
+    if (this->inventory != other.inventory)  return false;
+    if (this->abilities != other.abilities)  return false;
+    if (this->spells != other.spells)  return false;
+    if (this->race != other.race)  return false;
+    if (this->racial_enemy != other.racial_enemy)  return false;
+    if (this->prestige != other.prestige)  return false;
+    if (this->specialisation != other.specialisation)  return false;
+    if (this->special_abilities != other.special_abilities)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool CharacterSheet::operator !=(const CharacterSheet& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -258,7 +288,46 @@ namespace tbrpg
    */
   size_t CharacterSheet::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::string>()(name);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::string>()(biography);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<char>()(colour);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<char>()(alignment);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc += std::hash<std::string>()(portrait);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<bool>()(female);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<std::vector<int>>()(experience);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<std::vector<char>>()(level);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::vector<bool>>()(class_abondoned);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::unordered_map<WeaponGroup, int>>()(proficiencies);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<std::vector<Spell>>()(affected_by);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<Inventory>()(inventory);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc += std::hash<AbilityBonus>()(abilities);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<SpellBook>()(spells);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<Race>()(race);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<Race*>()(racial_enemy);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::vector<Class>>()(prestige);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<MagicSchool>()(specialisation);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<std::vector<Spell>>()(special_abilities);
+    return rc;
   }
   
 }

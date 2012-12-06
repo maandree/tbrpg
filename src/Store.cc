@@ -172,7 +172,26 @@ namespace tbrpg
    */
   bool Store::operator ==(const Store& other) const
   {
-    return this == &other;
+    if ((NPC&)(*this) != (NPC&)other)  return false;
+    if (this->cost_multiplier != other.cost_multiplier)  return false;
+    if (this->identify_cost != other.identify_cost)  return false;
+    if (this->spells != other.spells)  return false;
+    if (this->spell_costs != other.spell_costs)  return false;
+    if (this->inventory != other.inventory)  return false;
+    if (this->room_costs != other.room_costs)  return false;
+    if (this->room_quality != other.room_quality)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Store::operator !=(const Store& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -193,7 +212,24 @@ namespace tbrpg
    */
   size_t Store::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<NPC>()(*this);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<float>()(cost_multiplier);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<int>()(identify_cost);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<std::vector<Spell>>()(spells);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc += std::hash<std::vector<int>>()(spell_costs);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<std::vector<Item>>()(inventory);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<std::vector<int>>()(room_costs);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<std::vector<float>>()(room_quality);
+    return rc;
   }
   
 }

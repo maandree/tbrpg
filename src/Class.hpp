@@ -29,6 +29,7 @@
 #include "Object.hpp"
 #include "Fist.hpp"
 #include "Fists.hpp"
+#include "hash.hpp"
 #include "ExperienceChart.hpp"
 #include "SpellProgression.hpp"
 #include "AbilityBonus.hpp"
@@ -238,6 +239,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Class& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Class& other) const;
     
     
   protected:

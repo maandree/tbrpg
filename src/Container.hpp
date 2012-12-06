@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Item.hpp"
+#include "hash.hpp"
 
 
 /**
@@ -134,6 +135,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Container& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Container& other) const;
     
     
   protected:

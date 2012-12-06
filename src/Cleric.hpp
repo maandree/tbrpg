@@ -35,6 +35,7 @@
 #include "Flail.hpp"
 #include "Mace.hpp"
 #include "MorningStar.hpp"
+#include "hash.hpp"
 
 
 /**
@@ -120,6 +121,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const Cleric& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const Cleric& other) const;
     
     
   protected:

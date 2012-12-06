@@ -181,7 +181,28 @@ namespace tbrpg
    */
   bool ExperienceChart::operator ==(const ExperienceChart& other) const
   {
-    return this == &other;
+    if (this->experience != other.experience)  return false;
+    if (this->hit_point_die != other.hit_point_die)  return false;
+    if (this->hit_point_dice != other.hit_point_dice)  return false;
+    if (this->hit_point_bonus != other.hit_point_bonus)  return false;
+    if (this->selectable_wizard != other.selectable_wizard)  return false;
+    if (this->selectable_priest != other.selectable_priest)  return false;
+    if (this->new_spells != other.new_spells)  return false;
+    if (this->proficiencies != other.proficiencies)  return false;
+    if (this->backstabs != other.backstabs)  return false;
+    if (this->thief_abilities != other.thief_abilities)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool ExperienceChart::operator !=(const ExperienceChart& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -202,7 +223,28 @@ namespace tbrpg
    */
   size_t ExperienceChart::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::vector<int>>()(experience);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::vector<char>>()(hit_point_die);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<std::vector<char>>()(hit_point_dice);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<std::vector<int>>()(hit_point_bonus);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc += std::hash<std::vector<int>>()(selectable_wizard);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<std::vector<int>>()(selectable_priest);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<std::vector<std::vector<Spell>>>()(new_spells);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<std::vector<int>>()(proficiencies);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::vector<char>>()(backstabs);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::vector<char>>()(thief_abilities);
+    return rc;
   }
   
 }

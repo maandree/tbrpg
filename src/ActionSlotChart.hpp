@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Object.hpp"
+#include "hash.hpp"
 #include "Class.hpp"
 #include "ActionSlot.hpp"
 #include "Fighter.hpp"
@@ -135,6 +136,14 @@ namespace tbrpg
      * @return         Whether the instances are equal
      */
     virtual bool operator ==(const ActionSlotChart& other) const;
+    
+    /**
+     * Inequality evaluator
+     * 
+     * @param   other  The other comparand
+     * @return         Whether the instances are not equal
+     */
+    virtual bool operator !=(const ActionSlotChart& other) const;
     
     
   protected:

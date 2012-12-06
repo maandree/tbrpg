@@ -293,7 +293,38 @@ namespace tbrpg
    */
   bool Class::operator ==(const Class& other) const
   {
-    return this == &other;
+    if (this->name != other.name)  return false;
+    if (this->hit_points != other.hit_points)  return false;
+    if (this->thac0 != other.thac0)  return false;
+    if (this->lore_bonus != other.lore_bonus)  return false;
+    for (int i = 0; i < 9; i++)
+      if (this->alignments[i] != other.alignments[i])  return false;
+    if (this->learn_from_scroll != other.learn_from_scroll)  return false;
+    if (this->proficiencies_each != other.proficiencies_each)  return false;
+    if (this->extra_strength != other.extra_strength)  return false;
+    if (this->have_racial_enemy != other.have_racial_enemy)  return false;
+    if (this->experience_chart != other.experience_chart)  return false;
+    if (this->spell_progression != other.spell_progression)  return false;
+    if (this->abilities != other.abilities)  return false;
+    if (this->lower_limits != other.lower_limits)  return false;
+    if (this->special_abilities != other.special_abilities)  return false;
+    if (this->can_use != other.can_use)  return false;
+    if (this->specialisations != other.specialisations)  return false;
+    if (this->proficiency_chart != other.proficiency_chart)  return false;
+    if (this->default_one_hand != other.default_one_hand)  return false;
+    if (this->default_two_hand != other.default_two_hand)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Class::operator !=(const Class& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -314,7 +345,49 @@ namespace tbrpg
    */
   size_t Class::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::string>()(name);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<int>()(hit_points);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<int>()(thac0);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<int>()(lore_bonus);
+    for (int i = 0; i < 9; i++)
+      {
+	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+	rc += std::hash<bool>()(alignments[i]);
+      }
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<bool>()(learn_from_scroll);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<char>()(proficiencies_each);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<bool>()(extra_strength);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<bool>()(have_racial_enemy);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<ExperienceChart>()(experience_chart);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<SpellProgression>()(spell_progression);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<AbilityBonus>()(abilities);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc += std::hash<Abilities>()(lower_limits);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<std::vector<Spell>>()(special_abilities);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<std::unordered_map<Item, bool>>()(can_use);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<std::vector<MagicSchool>>()(specialisations);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<std::unordered_map<WeaponGroup, std::vector<Proficiency>>>()(proficiency_chart);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<Weapon>()(default_one_hand);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<Weapon>()(default_two_hand);
+    return rc;
   }
   
 }

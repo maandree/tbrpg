@@ -116,6 +116,7 @@ for line in lines:
         output += '\n'
         output += '%s\n' % '\n'.join(superInclude)
         output += '\n'
+        output += '#include "hash.hpp"\n'
         output += '%s\n' % '\n'.join(useIncludes)
         output += '/**\n'
         output += ' * Text based roll playing game\n'
@@ -211,6 +212,14 @@ for line in lines:
         output += '     */\n'
         output += '    virtual bool operator ==(const %s& other) const;\n' % className
         output += '    \n'
+        output += '    /**\n'
+        output += '     * Inequality evaluator\n'
+        output += '     * \n'
+        output += '     * @param   other  The other comparand\n'
+        output += '     * @return         Whether the instances are not equal\n'
+        output += '     */\n'
+        output += '    virtual bool operator !=(const %s& other) const;\n' % className
+        output += '    \n'
         output += '    \n'
         output += '  protected:\n'
         output += '    /**\n'
@@ -267,6 +276,7 @@ for line in lines:
         for superClass in supers:
             classCopy.append('%s::__copy__((%s&)*this, (%s&)original);' % (superClass, superClass, superClass))
             classMove.append('std::swap((%s&)*this, (%s&)original);' % (superClass, superClass))
+        varNames = []
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             space = 0
@@ -275,6 +285,7 @@ for line in lines:
                     space = s
             varType = varLine[:space]
             varName = varLine[space + 1:]
+            varNames.append(varName)
             if varType == 'bool':
                 varInit.append('this->' + varName + ' = false;')
             elif varType in numericals:
@@ -413,7 +424,26 @@ for line in lines:
         output += '   */\n'
         output += '  bool %s::operator ==(const %s& other) const\n' % (className, className)
         output += '  {\n'
-        output += '    return this == &other;\n'
+        if className == 'Object':
+            output += '    return this == &other;\n'
+        else:
+            for superClass in supers:
+                if superClass != 'Object':
+                    output += '    if ((%s&)(*this) != (%s&)other)  return false;\n' % (superClass, superClass)
+            for varName in varNames:
+                output += '    if (this->%s != other.%s)  return false;\n' % (varName, varName)
+            output += '    return true;\n'
+        output += '  }\n'
+        output += '  \n'
+        output += '  /**\n'
+        output += '   * Inequality evaluator\n'
+        output += '   * \n'
+        output += '   * @param   other  The other comparand\n'
+        output += '   * @return         Whether the instances are not equal\n'
+        output += '   */\n'
+        output += '  bool %s::operator !=(const %s& other) const\n' % (className, className)
+        output += '  {\n'
+        output += '    return (*this == other) == false;\n'
         output += '  }\n'
         output += '  \n'
         output += '  /**\n'
@@ -434,7 +464,29 @@ for line in lines:
         output += '   */\n'
         output += '  size_t %s::hash() const\n' % className
         output += '  {\n'
-        output += '    return (size_t)this;\n'
+        if className == 'Object':
+            output += '    return (size_t)this;\n'
+        else:
+            primes = (3, 5, 7, 9, 11, 13, 17, 19)
+            pi = 0
+            output += '    size_t rc = 0;\n'
+            for superClass in supers:
+                if superClass != 'Object':
+                    output += '    rc = (rc * %i) ^ ((rc >> (sizeof(size_t) << 2)) * %i);\n' % (primes[pi], primes[pi])
+                    output += '    rc += std::hash<%s>()(*this);\n' % superClass
+                    pi = (pi + 1) & 7;
+            for varLine in varLines:
+                varLine = varLine[:varLine.index(';')].strip()
+                space = 0
+                for s in range(0, len(varLine)):
+                    if varLine[s] == ' ':
+                        space = s
+                varType = varLine[:space]
+                varName = varLine[space + 1:]
+                output += '    rc = (rc * %i) ^ ((rc >> (sizeof(size_t) << 2)) * %i);\n' % (primes[pi], primes[pi])
+                output += '    rc += std::hash<%s>()(%s);\n' % (varType.replace('[]', '*'), varName)
+                pi = (pi + 1) & 7;
+            output += '    return rc;\n'
         output += '  }\n'
         output += '  \n'
         output += '}\n'

@@ -129,7 +129,19 @@ namespace tbrpg
    */
   bool MorningStar::operator ==(const MorningStar& other) const
   {
-    return this == &other;
+    if ((BluntWeapon&)(*this) != (BluntWeapon&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool MorningStar::operator !=(const MorningStar& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -150,7 +162,10 @@ namespace tbrpg
    */
   size_t MorningStar::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<BluntWeapon>()(*this);
+    return rc;
   }
   
 }
