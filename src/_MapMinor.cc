@@ -125,6 +125,7 @@ namespace tbrpg
    */
   bool _MapMinor::operator ==(const _MapMinor& other) const
   {
+    (void) other;
     return true;
   }
   

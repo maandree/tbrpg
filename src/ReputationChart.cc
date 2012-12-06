@@ -288,19 +288,6 @@ namespace tbrpg
    */
   bool ReputationChart::operator ==(const ReputationChart& other) const
   {
-    this->reaction_adjustment = new int[21];
-    this->wanted = new bool[21];
-    this->killing_innocent = new int[21];
-    this->injuring_innocent = new int[21];
-    this->stealing = new int[21];
-    this->killing_guard = new int[21];
-    this->donation_needed = new int[21];
-    this->price_adjustment = new float[21];
-    this->good_reaction = new signed char[21];
-    this->neutral_reaction = new signed char[21];
-    this->evil_reaction = new signed char[21];
-    this->alignment_reputation = new char[9];
-    
     for (long i = 0; i < 21; i++)
       {
 	if (this->reaction_adjustment[i] != other.reaction_adjustment[i])  return false;
