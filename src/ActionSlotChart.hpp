@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-#include "hash.h"
+#include "hash.hpp"
 #include "Class.hpp"
 #include "ActionSlot.hpp"
 #include "Fighter.hpp"

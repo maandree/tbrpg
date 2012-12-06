@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-#include "hash.h"
+#include "hash.hpp"
 #include "ReputationChart.hpp"
 #include "AbilityChart.hpp"
 #include "Inventory.hpp"

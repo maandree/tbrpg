@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Scroll.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

@@ -28,7 +28,7 @@
 
 #include "Bow.hpp"
 #include "Ammunition.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

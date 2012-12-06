@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "MapMinor.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

@@ -31,8 +31,8 @@
 #include "LongSword.hpp"
 #include "ShortSword.hpp"
 #include "ShortBow.hpp"
+#include "hash.hpp"
 
-#include "hash.h"
 
 /**
  * Text based roll playing game

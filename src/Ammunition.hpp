@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Item.hpp"
-#include "hash.h"
+#include "hash.hpp"
 #include "RangedWeapon.hpp"
 #include "DamageType.hpp"
 

@@ -28,8 +28,8 @@
 
 #include "Object.hpp"
 #include "Body.hpp"
+#include "hash.hpp"
 
-#include "hash.h"
 
 /**
  * Text based roll playing game

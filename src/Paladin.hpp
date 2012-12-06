@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Warrior.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

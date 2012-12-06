@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "BodyArmour.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

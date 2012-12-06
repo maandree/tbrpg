@@ -31,8 +31,8 @@
 #include "Robe.hpp"
 #include "HighWand.hpp"
 #include "WizardScroll.hpp"
+#include "hash.hpp"
 
-#include "hash.h"
 
 /**
  * Text based roll playing game

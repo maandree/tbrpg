@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Gem.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

@@ -26,7 +26,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

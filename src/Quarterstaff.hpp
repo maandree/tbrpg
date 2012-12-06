@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "TwoHandedMelee.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

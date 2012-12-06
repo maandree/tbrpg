@@ -52,8 +52,8 @@
 #include "MorningStar.hpp"
 #include "ShortSword.hpp"
 #include "Spear.hpp"
+#include "hash.hpp"
 
-#include "hash.h"
 
 /**
  * Text based roll playing game

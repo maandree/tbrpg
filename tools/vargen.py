@@ -116,7 +116,7 @@ for line in lines:
         output += '\n'
         output += '%s\n' % '\n'.join(superInclude)
         output += '\n'
-        output += '#include "hash.h"\n'
+        output += '#include "hash.hpp"\n'
         output += '%s\n' % '\n'.join(useIncludes)
         output += '/**\n'
         output += ' * Text based roll playing game\n'

@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "Crossbow.hpp"
-#include "hash.h"
+#include "hash.hpp"
 
 
 /**

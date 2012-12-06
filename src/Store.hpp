@@ -27,7 +27,7 @@
 #include <unordered_map>
 
 #include "NPC.hpp"
-#include "hash.h"
+#include "hash.hpp"
 #include "Spell.hpp"
 #include "Item.hpp"
 

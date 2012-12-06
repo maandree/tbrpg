@@ -35,8 +35,8 @@
 #include "Flail.hpp"
 #include "Mace.hpp"
 #include "MorningStar.hpp"
+#include "hash.hpp"
 
-#include "hash.h"
 
 /**
  * Text based roll playing game
