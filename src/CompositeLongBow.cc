@@ -114,7 +114,7 @@ namespace tbrpg
    * @return            The invoked object
    */
   CompositeLongBow& CompositeLongBow::operator =(CompositeLongBow&& original)
-    (void) original;
+  {
     std::swap((Bow&)*this, (Bow&)original);
     return *this;
   }
