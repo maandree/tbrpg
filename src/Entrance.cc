@@ -147,7 +147,22 @@ namespace tbrpg
    */
   bool Entrance::operator ==(const Entrance& other) const
   {
-    return this == &other;
+    if (this->usable != other.usable)  return false;
+    if (this->description != other.description)  return false;
+    if (this->direction != other.direction)  return false;
+    if (this->leads_to != other.leads_to)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Entrance::operator !=(const Entrance& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -168,7 +183,16 @@ namespace tbrpg
    */
   size_t Entrance::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<bool>()(usable);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::string>()(description);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<std::string>()(direction);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<_MapMinor>()(leads_to);
+    return rc;
   }
   
 }

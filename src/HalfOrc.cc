@@ -136,7 +136,19 @@ namespace tbrpg
    */
   bool HalfOrc::operator ==(const HalfOrc& other) const
   {
-    return this == &other;
+    if ((Race&)(*this) != (Race&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool HalfOrc::operator !=(const HalfOrc& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -157,7 +169,10 @@ namespace tbrpg
    */
   size_t HalfOrc::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Race>()(*this);
+    return rc;
   }
   
 }

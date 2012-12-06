@@ -126,7 +126,19 @@ namespace tbrpg
    */
   bool LowWand::operator ==(const LowWand& other) const
   {
-    return this == &other;
+    if ((Wand&)(*this) != (Wand&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool LowWand::operator !=(const LowWand& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -147,7 +159,10 @@ namespace tbrpg
    */
   size_t LowWand::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Wand>()(*this);
+    return rc;
   }
   
 }

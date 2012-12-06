@@ -134,7 +134,20 @@ namespace tbrpg
    */
   bool Party::operator ==(const Party& other) const
   {
-    return this == &other;
+    if (this->reputation != other.reputation)  return false;
+    if (this->characters != other.characters)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Party::operator !=(const Party& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -155,7 +168,12 @@ namespace tbrpg
    */
   size_t Party::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(reputation);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::vector<Character>>()(characters);
+    return rc;
   }
   
 }

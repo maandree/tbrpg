@@ -169,7 +169,25 @@ namespace tbrpg
    */
   bool Character::operator ==(const Character& other) const
   {
-    return this == &other;
+    if (this->hit_points != other.hit_points)  return false;
+    if (this->alive != other.alive)  return false;
+    if (this->morale != other.morale)  return false;
+    if (this->intoxication != other.intoxication)  return false;
+    if (this->fatigue != other.fatigue)  return false;
+    if (this->extra_attacks != other.extra_attacks)  return false;
+    if (this->record != other.record)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Character::operator !=(const Character& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -190,7 +208,22 @@ namespace tbrpg
    */
   size_t Character::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(hit_points);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(alive);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(morale);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int>()(intoxication);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(fatigue);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<char>()(extra_attacks);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<CharacterSheet>()(record);
+    return rc;
   }
   
 }

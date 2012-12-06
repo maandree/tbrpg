@@ -159,7 +159,23 @@ namespace tbrpg
    */
   bool MapMajor::operator ==(const MapMajor& other) const
   {
-    return this == &other;
+    if (this->name != other.name)  return false;
+    if (this->visible != other.visible)  return false;
+    if (this->visited != other.visited)  return false;
+    if (this->visitable != other.visitable)  return false;
+    if (this->detectable != other.detectable)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool MapMajor::operator !=(const MapMajor& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -180,7 +196,18 @@ namespace tbrpg
    */
   size_t MapMajor::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::string>()(name);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<bool>()(visible);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<bool>()(visited);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<bool>()(visitable);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<bool>()(detectable);
+    return rc;
   }
   
 }

@@ -130,7 +130,19 @@ namespace tbrpg
    */
   bool Bolt::operator ==(const Bolt& other) const
   {
-    return this == &other;
+    if ((Ammunition&)(*this) != (Ammunition&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Bolt::operator !=(const Bolt& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -151,7 +163,10 @@ namespace tbrpg
    */
   size_t Bolt::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Ammunition>()(*this);
+    return rc;
   }
   
 }

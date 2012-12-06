@@ -128,7 +128,20 @@ namespace tbrpg
    */
   bool Door::operator ==(const Door& other) const
   {
-    return this == &other;
+    if ((Entrance&)(*this) != (Entrance&)other)  return false;
+    if ((Lockable&)(*this) != (Lockable&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Door::operator !=(const Door& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -149,7 +162,12 @@ namespace tbrpg
    */
   size_t Door::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Entrance>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<Lockable>()(*this);
+    return rc;
   }
   
 }

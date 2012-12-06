@@ -221,7 +221,33 @@ namespace tbrpg
    */
   bool Spell::operator ==(const Spell& other) const
   {
-    return this == &other;
+    if (this->name != other.name)  return false;
+    if (this->description != other.description)  return false;
+    if (this->wizard != other.wizard)  return false;
+    if (this->priest != other.priest)  return false;
+    if (this->level != other.level)  return false;
+    if (this->saving != other.saving)  return false;
+    if (this->touch != other.touch)  return false;
+    if (this->range != other.range)  return false;
+    if (this->casting_time != other.casting_time)  return false;
+    if (this->duration != other.duration)  return false;
+    if (this->duration_die != other.duration_die)  return false;
+    if (this->duration_dice != other.duration_dice)  return false;
+    if (this->effect_area != other.effect_area)  return false;
+    if (this->offensiveness != other.offensiveness)  return false;
+    if (this->school != other.school)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Spell::operator !=(const Spell& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -242,7 +268,38 @@ namespace tbrpg
    */
   size_t Spell::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::string>()(name);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::string>()(description);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<bool>()(wizard);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<bool>()(priest);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<char>()(level);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<char>()(saving);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<bool>()(touch);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<float>()(range);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<char>()(casting_time);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(duration);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<char>()(duration_die);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char>()(duration_dice);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<std::string>()(effect_area);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<signed char>()(offensiveness);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<MagicSchool>()(school);
+    return rc;
   }
   
 }

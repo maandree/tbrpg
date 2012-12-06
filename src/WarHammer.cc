@@ -131,7 +131,19 @@ namespace tbrpg
    */
   bool WarHammer::operator ==(const WarHammer& other) const
   {
-    return this == &other;
+    if ((OneHandedMelee&)(*this) != (OneHandedMelee&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool WarHammer::operator !=(const WarHammer& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -152,7 +164,10 @@ namespace tbrpg
    */
   size_t WarHammer::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<OneHandedMelee>()(*this);
+    return rc;
   }
   
 }

@@ -157,7 +157,23 @@ namespace tbrpg
    */
   bool SavingThrows::operator ==(const SavingThrows& other) const
   {
-    return this == &other;
+    if (this->breath != other.breath)  return false;
+    if (this->paralyze_poison_death != other.paralyze_poison_death)  return false;
+    if (this->petrification_polymorph != other.petrification_polymorph)  return false;
+    if (this->rod_staff_wand != other.rod_staff_wand)  return false;
+    if (this->spell != other.spell)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool SavingThrows::operator !=(const SavingThrows& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -178,7 +194,18 @@ namespace tbrpg
    */
   size_t SavingThrows::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(breath);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(paralyze_poison_death);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(petrification_polymorph);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int>()(rod_staff_wand);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(spell);
+    return rc;
   }
   
 }

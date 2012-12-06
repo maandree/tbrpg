@@ -150,7 +150,22 @@ namespace tbrpg
    */
   bool MagicSchool::operator ==(const MagicSchool& other) const
   {
-    return this == &other;
+    if (this->name != other.name)  return false;
+    if (this->coluration != other.coluration)  return false;
+    if (this->practicer != other.practicer)  return false;
+    if (this->opposite != other.opposite)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool MagicSchool::operator !=(const MagicSchool& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -171,7 +186,16 @@ namespace tbrpg
    */
   size_t MagicSchool::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::string>()(name);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<std::string>()(coluration);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<std::string>()(practicer);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<std::vector<MagicSchool>>()(opposite);
+    return rc;
   }
   
 }

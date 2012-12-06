@@ -257,7 +257,37 @@ namespace tbrpg
    */
   bool Bonuses::operator ==(const Bonuses& other) const
   {
-    return this == &other;
+    if (this->hit_bonus != other.hit_bonus)  return false;
+    if (this->damage_bonus != other.damage_bonus)  return false;
+    if (this->carry_limit != other.carry_limit)  return false;
+    if (this->bashing != other.bashing)  return false;
+    if (this->missile_attack_bonus != other.missile_attack_bonus)  return false;
+    if (this->armour_class_bonus != other.armour_class_bonus)  return false;
+    if (this->hit_point_bonus != other.hit_point_bonus)  return false;
+    if (this->resurrectability != other.resurrectability)  return false;
+    if (this->reaction_bonus != other.reaction_bonus)  return false;
+    if (this->spell_level_limit != other.spell_level_limit)  return false;
+    if (this->spell_learn != other.spell_learn)  return false;
+    if (this->max_spells_level != other.max_spells_level)  return false;
+    if (this->lore_bonus != other.lore_bonus)  return false;
+    if (this->magic_defence_bonus != other.magic_defence_bonus)  return false;
+    if (this->spell_failure != other.spell_failure)  return false;
+    if (this->bonus_spells != other.bonus_spells)  return false;
+    if (this->morale != other.morale)  return false;
+    if (this->luck != other.luck)  return false;
+    if (this->detect_doors != other.detect_doors)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Bonuses::operator !=(const Bonuses& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -278,7 +308,46 @@ namespace tbrpg
    */
   size_t Bonuses::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(hit_bonus);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(damage_bonus);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(carry_limit);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<float>()(bashing);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(missile_attack_bonus);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<int>()(armour_class_bonus);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<int>()(hit_point_bonus);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<float>()(resurrectability);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(reaction_bonus);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(spell_level_limit);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<float>()(spell_learn);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char>()(max_spells_level);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(lore_bonus);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<float>()(magic_defence_bonus);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<float>()(spell_failure);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<std::vector<int>>()(bonus_spells);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(morale);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(luck);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<float>()(detect_doors);
+    return rc;
   }
   
 }

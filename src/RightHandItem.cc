@@ -125,7 +125,19 @@ namespace tbrpg
    */
   bool RightHandItem::operator ==(const RightHandItem& other) const
   {
-    return this == &other;
+    if ((Item&)(*this) != (Item&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool RightHandItem::operator !=(const RightHandItem& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -146,7 +158,10 @@ namespace tbrpg
    */
   size_t RightHandItem::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Item>()(*this);
+    return rc;
   }
   
 }

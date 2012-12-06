@@ -160,7 +160,23 @@ namespace tbrpg
    */
   bool ThiefAbilities::operator ==(const ThiefAbilities& other) const
   {
-    return this == &other;
+    if (this->find_traps != other.find_traps)  return false;
+    if (this->open_locks != other.open_locks)  return false;
+    if (this->pick_pockets != other.pick_pockets)  return false;
+    if (this->stealth != other.stealth)  return false;
+    if (this->limit != other.limit)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool ThiefAbilities::operator !=(const ThiefAbilities& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -181,7 +197,18 @@ namespace tbrpg
    */
   size_t ThiefAbilities::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int>()(find_traps);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(open_locks);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(pick_pockets);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int>()(stealth);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(limit);
+    return rc;
   }
   
 }

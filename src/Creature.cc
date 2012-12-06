@@ -164,7 +164,25 @@ namespace tbrpg
    */
   bool Creature::operator ==(const Creature& other) const
   {
-    return this == &other;
+    if ((Character&)(*this) != (Character&)other)  return false;
+    if (this->hostile != other.hostile)  return false;
+    if (this->x != other.x)  return false;
+    if (this->y != other.y)  return false;
+    if (this->alive != other.alive)  return false;
+    if (this->resurrect != other.resurrect)  return false;
+    if (this->experience != other.experience)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Creature::operator !=(const Creature& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -185,7 +203,22 @@ namespace tbrpg
    */
   size_t Creature::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Character>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<bool>()(hostile);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<float>()(x);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<float>()(y);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<bool>()(alive);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<bool>()(resurrect);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<int>()(experience);
+    return rc;
   }
   
 }

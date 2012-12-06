@@ -153,7 +153,23 @@ namespace tbrpg
    */
   bool Lockable::operator ==(const Lockable& other) const
   {
-    return this == &other;
+    if (this->locked != other.locked)  return false;
+    if (this->pick_level != other.pick_level)  return false;
+    if (this->bash_level != other.bash_level)  return false;
+    if (this->pickable != other.pickable)  return false;
+    if (this->bashable != other.bashable)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Lockable::operator !=(const Lockable& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -174,7 +190,18 @@ namespace tbrpg
    */
   size_t Lockable::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<bool>()(locked);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(pick_level);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int>()(bash_level);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<bool>()(pickable);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<bool>()(bashable);
+    return rc;
   }
   
 }

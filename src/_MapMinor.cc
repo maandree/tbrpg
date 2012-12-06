@@ -125,7 +125,18 @@ namespace tbrpg
    */
   bool _MapMinor::operator ==(const _MapMinor& other) const
   {
-    return this == &other;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool _MapMinor::operator !=(const _MapMinor& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -146,7 +157,8 @@ namespace tbrpg
    */
   size_t _MapMinor::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    return rc;
   }
   
 }

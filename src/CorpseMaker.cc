@@ -166,7 +166,21 @@ namespace tbrpg
    */
   bool CorpseMaker::operator ==(const CorpseMaker& other) const
   {
-    return this == &other;
+    if (this->strenght_weight != other.strenght_weight)  return false;
+    if (this->strenght18_weight != other.strenght18_weight)  return false;
+    if (this->constitution_weight != other.constitution_weight)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool CorpseMaker::operator !=(const CorpseMaker& other) const
+  {
+    return (*this == other) == false;
   }
   
   
@@ -208,7 +222,14 @@ namespace tbrpg
    */
   size_t CorpseMaker::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<int[]>()(strenght_weight);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int[]>()(strenght18_weight);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<int[]>()(constitution_weight);
+    return rc;
   }
   
 }

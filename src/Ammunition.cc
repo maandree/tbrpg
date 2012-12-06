@@ -158,7 +158,25 @@ namespace tbrpg
    */
   bool Ammunition::operator ==(const Ammunition& other) const
   {
-    return this == &other;
+    if ((Item&)(*this) != (Item&)other)  return false;
+    if (this->hit_bonus != other.hit_bonus)  return false;
+    if (this->damage_die != other.damage_die)  return false;
+    if (this->damage_dice != other.damage_dice)  return false;
+    if (this->damage_bonus != other.damage_bonus)  return false;
+    if (this->usable_with != other.usable_with)  return false;
+    if (this->damage_type != other.damage_type)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Ammunition::operator !=(const Ammunition& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -179,7 +197,22 @@ namespace tbrpg
    */
   size_t Ammunition::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Item>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<int>()(hit_bonus);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<char>()(damage_die);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<char>()(damage_dice);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<int>()(damage_bonus);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<RangedWeapon>()(usable_with);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<DamageType>()(damage_type);
+    return rc;
   }
   
 }

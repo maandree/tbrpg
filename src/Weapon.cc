@@ -179,7 +179,28 @@ namespace tbrpg
    */
   bool Weapon::operator ==(const Weapon& other) const
   {
-    return this == &other;
+    if ((RightHandItem&)(*this) != (RightHandItem&)other)  return false;
+    if (this->hands != other.hands)  return false;
+    if (this->speed_factor != other.speed_factor)  return false;
+    if (this->hit_bonus != other.hit_bonus)  return false;
+    if (this->damage_die != other.damage_die)  return false;
+    if (this->damage_dice != other.damage_dice)  return false;
+    if (this->damage_bonus != other.damage_bonus)  return false;
+    if (this->melee != other.melee)  return false;
+    if (this->damage_type != other.damage_type)  return false;
+    if (this->weapon_group != other.weapon_group)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Weapon::operator !=(const Weapon& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -200,7 +221,28 @@ namespace tbrpg
    */
   size_t Weapon::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<RightHandItem>()(*this);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<char>()(hands);
+    rc = (rc * 7) ^ (rc >> (sizeof(size_t) << 2) * 7);
+    rc += std::hash<char>()(speed_factor);
+    rc = (rc * 9) ^ (rc >> (sizeof(size_t) << 2) * 9);
+    rc += std::hash<int>()(hit_bonus);
+    rc = (rc * 11) ^ (rc >> (sizeof(size_t) << 2) * 11);
+    rc += std::hash<char>()(damage_die);
+    rc = (rc * 13) ^ (rc >> (sizeof(size_t) << 2) * 13);
+    rc += std::hash<char>()(damage_dice);
+    rc = (rc * 17) ^ (rc >> (sizeof(size_t) << 2) * 17);
+    rc += std::hash<int>()(damage_bonus);
+    rc = (rc * 19) ^ (rc >> (sizeof(size_t) << 2) * 19);
+    rc += std::hash<bool>()(melee);
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<std::vector<DamageType>>()(damage_type);
+    rc = (rc * 5) ^ (rc >> (sizeof(size_t) << 2) * 5);
+    rc += std::hash<WeaponGroup>()(weapon_group);
+    return rc;
   }
   
 }

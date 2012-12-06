@@ -129,7 +129,19 @@ namespace tbrpg
    */
   bool FullPlateMail::operator ==(const FullPlateMail& other) const
   {
-    return this == &other;
+    if ((BodyArmour&)(*this) != (BodyArmour&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool FullPlateMail::operator !=(const FullPlateMail& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -150,7 +162,10 @@ namespace tbrpg
    */
   size_t FullPlateMail::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<BodyArmour>()(*this);
+    return rc;
   }
   
 }

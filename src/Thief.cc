@@ -139,7 +139,19 @@ namespace tbrpg
    */
   bool Thief::operator ==(const Thief& other) const
   {
-    return this == &other;
+    if ((Rogue&)(*this) != (Rogue&)other)  return false;
+    return true;
+  }
+  
+  /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Thief::operator !=(const Thief& other) const
+  {
+    return (*this == other) == false;
   }
   
   /**
@@ -160,7 +172,10 @@ namespace tbrpg
    */
   size_t Thief::hash() const
   {
-    return (size_t)this;
+    size_t rc = 0;
+    rc = (rc * 3) ^ (rc >> (sizeof(size_t) << 2) * 3);
+    rc += std::hash<Rogue>()(*this);
+    return rc;
   }
   
 }
