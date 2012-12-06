@@ -332,7 +332,7 @@ namespace tbrpg
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(lore_bonus);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<bool[]>()(alignments);
+    rc += std::hash<bool*>()(alignments);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<bool>()(learn_from_scroll);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);

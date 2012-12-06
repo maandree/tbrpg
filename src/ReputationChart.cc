@@ -268,29 +268,29 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int[]>()(reaction_adjustment);
+    rc += std::hash<int*>()(reaction_adjustment);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool[]>()(wanted);
+    rc += std::hash<bool*>()(wanted);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int[]>()(killing_innocent);
+    rc += std::hash<int*>()(killing_innocent);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int[]>()(injuring_innocent);
+    rc += std::hash<int*>()(injuring_innocent);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<int[]>()(stealing);
+    rc += std::hash<int*>()(stealing);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<int[]>()(killing_guard);
+    rc += std::hash<int*>()(killing_guard);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<int[]>()(donation_needed);
+    rc += std::hash<int*>()(donation_needed);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<float[]>()(price_adjustment);
+    rc += std::hash<float*>()(price_adjustment);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<signed char[]>()(good_reaction);
+    rc += std::hash<signed char*>()(good_reaction);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<signed char[]>()(neutral_reaction);
+    rc += std::hash<signed char*>()(neutral_reaction);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<signed char[]>()(evil_reaction);
+    rc += std::hash<signed char*>()(evil_reaction);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<char[]>()(alignment_reputation);
+    rc += std::hash<char*>()(alignment_reputation);
     return rc;
   }
   
