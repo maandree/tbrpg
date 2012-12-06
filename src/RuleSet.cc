@@ -48,6 +48,7 @@ namespace tbrpg
     this->rest_healing_turns = 1;
     this->racial_enemy_bonus = 4;
     this->racial_enemy_penality = 4;
+    this->inventory_prototype = Inventory();
     
     ABJURATION.opposite = {ALTERATION};
     ALTERATION.opposite = {ABJURATION, NECROMANCY};

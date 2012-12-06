@@ -58,7 +58,6 @@ namespace tbrpg
    */
   Inventory::Inventory(const Inventory& original) : Object(original)
   {
-    (void) original;
     this->left_hand = original.left_hand;
     this->right_hand = original.right_hand;
     this->quiver = original.quiver;
@@ -81,7 +80,6 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory& original) : Object(original)
   {
-    (void) original;
     this->left_hand = original.left_hand;
     this->right_hand = original.right_hand;
     this->quiver = original.quiver;
@@ -104,7 +102,6 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->left_hand, original.left_hand);
     std::swap(this->right_hand, original.right_hand);
     std::swap(this->quiver, original.quiver);
@@ -140,8 +137,8 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(const Inventory& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->left_hand = original.left_hand;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->left_hand = original.left_hand;
     this->right_hand = original.right_hand;
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
@@ -165,8 +162,8 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->left_hand = original.left_hand;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->left_hand = original.left_hand;
     this->right_hand = original.right_hand;
     this->quiver = original.quiver;
     this->quick_items = original.quick_items;
@@ -190,8 +187,8 @@ namespace tbrpg
    */
   Inventory& Inventory::operator =(Inventory&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->left_hand, original.left_hand);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->left_hand, original.left_hand);
     std::swap(this->right_hand, original.right_hand);
     std::swap(this->quiver, original.quiver);
     std::swap(this->quick_items, original.quick_items);

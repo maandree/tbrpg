@@ -101,4 +101,5 @@ ActionSlotChart Mage
 ActionSlotChart Sorcerer
 CharacterCreator CharacterSheet
 CharacterCreator prompter
+CharacterCreator ActionSlotChart
 CorpseMaker Body

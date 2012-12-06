@@ -30,6 +30,7 @@
 #include "CharacterSheet.hpp"
 #include "RuleSet.hpp"
 #include "Dice.hpp"
+#include "ActionSlotChart.hpp"
 #include "prompter.hpp"
 
 

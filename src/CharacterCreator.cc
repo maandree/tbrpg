@@ -456,6 +456,18 @@ namespace tbrpg
     this->sheet.name = input;
     
     
+    this->sheet.inventory = Inventory(this->ruleset.inventory_prototype);
+    long long prestige = 0;
+    ActionSlotChart slotchart = ActionSlotChart();
+    for (Class& c : this->sheet.prestige)
+      prestige |= slotchart.index_map[c];
+    std::vector<ActionSlot>& slots = slotchart.slot_map[prestige];
+    size_t weapons = this->sheet.inventory.left_hand.size();
+    for (ActionSlot slot : slots)
+      if (slot == QUICK_WEAPON)
+	weapons++;
+    this->sheet.inventory.left_hand = std::vector<Weapon>(weapons);
+    
     
     return &(this->sheet);
   }
