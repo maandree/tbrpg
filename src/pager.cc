@@ -140,7 +140,7 @@ namespace tbrpg
 	      std::cout << CSI << left << "C";
 	    std::cout << CSI "07m" << space60 << CSI "27m" CSI "60D";
 	    printf("-- line %li to %li of %li -- page %li of %li --",
-		   line + 1, line + termheight, (long)((curpage.size()),
+		   line + 1, line + termheight, (long)(curpage.size()),
 		   page + 1, (long)(pages.size()));
 	  };
 	
