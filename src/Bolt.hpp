@@ -28,6 +28,7 @@
 
 #include "Crossbow.hpp"
 #include "Ammunition.hpp"
+#include "hash.h"
 
 
 /**

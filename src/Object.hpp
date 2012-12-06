@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "hash.h"
+
 
 /**
  * Text based roll playing game

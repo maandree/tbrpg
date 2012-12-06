@@ -28,6 +28,7 @@
 
 #include "Entrance.hpp"
 #include "Lockable.hpp"
+#include "hash.h"
 
 
 /**

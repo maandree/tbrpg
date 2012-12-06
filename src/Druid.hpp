@@ -29,6 +29,7 @@
 #include "Priest.hpp"
 #include "Spear.hpp"
 
+#include "hash.h"
 
 /**
  * Text based roll playing game

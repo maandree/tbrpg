@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Headgear.hpp"
+#include "hash.h"
 
 
 /**

@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Race.hpp"
+#include "hash.h"
 
 
 /**

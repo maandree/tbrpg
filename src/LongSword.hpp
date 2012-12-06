@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "LargeSword.hpp"
+#include "hash.h"
 
 
 /**

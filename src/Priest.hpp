@@ -30,6 +30,7 @@
 #include "HighWand.hpp"
 #include "PriestScroll.hpp"
 
+#include "hash.h"
 
 /**
  * Text based roll playing game

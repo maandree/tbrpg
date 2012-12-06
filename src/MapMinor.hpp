@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "_MapMinor.hpp"
+#include "hash.h"
 #include "Road.hpp"
 #include "Entrance.hpp"
 #include "Item.hpp"

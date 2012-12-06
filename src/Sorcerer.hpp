@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Wizard.hpp"
+#include "hash.h"
 
 
 /**

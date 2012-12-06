@@ -28,6 +28,7 @@
 
 #include "Sling.hpp"
 #include "Ammunition.hpp"
+#include "hash.h"
 
 
 /**

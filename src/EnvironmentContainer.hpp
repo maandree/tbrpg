@@ -28,6 +28,7 @@
 
 #include "Container.hpp"
 #include "Lockable.hpp"
+#include "hash.h"
 
 
 /**

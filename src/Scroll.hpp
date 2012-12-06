@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "QuickItem.hpp"
+#include "hash.h"
 
 
 /**

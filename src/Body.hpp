@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Item.hpp"
+#include "hash.h"
 #include "Character.hpp"
 
 

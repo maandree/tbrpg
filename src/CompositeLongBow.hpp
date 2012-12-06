@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Bow.hpp"
+#include "hash.h"
 
 
 /**

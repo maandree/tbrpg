@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Wand.hpp"
+#include "hash.h"
 
 
 /**

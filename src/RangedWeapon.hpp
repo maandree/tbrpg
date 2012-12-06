@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Weapon.hpp"
+#include "hash.h"
 
 
 /**

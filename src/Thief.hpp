@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Rogue.hpp"
+#include "hash.h"
 
 
 /**

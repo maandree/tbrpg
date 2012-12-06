@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "QuestItem.hpp"
+#include "hash.h"
 
 
 /**
