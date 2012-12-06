@@ -17,10 +17,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_ACTIONSLOT_HPP__
-#define __GUARD_ACTIONSLOT_HPP__
-
-
+#include "ActionSlot.hpp"
+  
+  
 /**
  * Text based roll playing game
  * 
@@ -30,55 +29,6 @@
  * @author  Mattias Andrée <maandree@kth.se>
  */
 namespace tbrpg
-{
-  /**
-   * Action slot typename
-   */
-  typedef char ActionSlot;
-  
-  
-  
-  /**
-   * Action slot: Quick weapon
-   */
-  ActionSlot QUICK_WEAPON = 0;
-  
-  /**
-   * Action slot: Quick spell
-   */
-  ActionSlot QUICK_SPELL = 1;
-  
-  /**
-   * Action slot: Turn undead
-   */
-  ActionSlot TURN_UNDEAD = 2;
-  
-  /**
-   * Action slot: Bard song
-   */
-  ActionSlot BARD_SONG = 3;
-  
-  /**
-   * Action slot: Find traps
-   */
-  ActionSlot FIND_TRAPS = 4;
-  
-  /**
-   * Action slot: Thieving
-   */
-  ActionSlot THIEVING = 5;
-  
-  /**
-   * Action slot: Stealth
-   */
-  ActionSlot STEALTH = 6;
-  
-  /**
-   * Action slot: Stealth
-   */
-  ActionSlot CAST_SPELL = 7;
-  
+{  
 }
 
-
-#endif//__GUARD_ACTIONSLOT_HPP__
