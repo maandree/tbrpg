@@ -37,6 +37,24 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(18);
     this->racial_enemy = nullptr;
+    this->name = "the nameless one";
+    this->biography = "";
+    this->colour = 5;
+    this->alignment = 6;
+    this->portrait = "";
+    this->female = false;
+    this->experience = {};
+    this->level = {};
+    this->class_abondoned = {};
+    this->proficiencies = std::unordered_map<WeaponGroup, int>();
+    this->affected_by = {};
+    this->inventory = Inventory();
+    this->abilities = AbilityBonus();
+    this->spells = SpellBook();
+    this->race = Race();
+    this->prestige = {};
+    this->specialisation = GENERAL_MAGE;
+    this->special_abilities = {};
   }
   
   /**

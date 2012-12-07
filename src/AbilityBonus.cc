@@ -36,6 +36,13 @@ namespace tbrpg
   AbilityBonus::AbilityBonus() : Object()
   {
     this->class_inheritance.push_back(25);
+    this->bonuses = Bonuses();
+    this->thief_abilities = ThiefAbilities();
+    this->saving_throws = SavingThrows();
+    this->abilities = Abilities();
+    this->spells = SpellBook();
+    this->effects = {};
+    this->defence = Defence();
   }
   
   /**

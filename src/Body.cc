@@ -39,6 +39,7 @@ namespace tbrpg
     this->name = "the body of ";
     this->weight = 90000;
     this->unit_value = -1;
+    this->character = nullptr;
   }
   
   /**
@@ -91,7 +92,8 @@ namespace tbrpg
    */
   Body& Body::operator =(const Body& original)
   {
-    Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->character = original.character;
     return *this;
   }
   
@@ -103,7 +105,8 @@ namespace tbrpg
    */
   Body& Body::operator =(Body& original)
   {
-    Item::__copy__((Item&)*this, (Item&)original);    this->character = original.character;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->character = original.character;
     return *this;
   }
   
@@ -115,7 +118,8 @@ namespace tbrpg
    */
   Body& Body::operator =(Body&& original)
   {
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->character, original.character);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->character, original.character);
     return *this;
   }
   
@@ -166,7 +170,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Character>()(character);
+    rc += std::hash<Character>()(*character);
     return rc;
   }
   

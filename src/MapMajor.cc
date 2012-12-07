@@ -36,6 +36,7 @@ namespace tbrpg
   MapMajor::MapMajor() : Object()
   {
     this->class_inheritance.push_back(71);
+    this->name = "";
     this->visible = false;
     this->visited = false;
     this->visitable = true;
@@ -49,7 +50,6 @@ namespace tbrpg
    */
   MapMajor::MapMajor(const MapMajor& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
@@ -64,7 +64,6 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
@@ -79,7 +78,6 @@ namespace tbrpg
    */
   MapMajor::MapMajor(MapMajor&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
     std::swap(this->visible, original.visible);
     std::swap(this->visited, original.visited);

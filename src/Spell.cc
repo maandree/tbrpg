@@ -36,6 +36,10 @@ namespace tbrpg
   Spell::Spell() : Object()
   {
     this->class_inheritance.push_back(21);
+    this->name = "unnamed spell";
+    this->description = "";
+    this->wizard = false;
+    this->priest = false;
     this->level = 0;
     this->saving = 0;
     this->touch = false;
@@ -44,7 +48,9 @@ namespace tbrpg
     this->duration = 0;
     this->duration_die = 0;
     this->duration_dice = 0;
+    this->effect_area = "area";
     this->offensiveness = 0;
+    this->school = GENERAL_MAGE;
   }
   
   /**

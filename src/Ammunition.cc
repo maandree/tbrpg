@@ -36,6 +36,12 @@ namespace tbrpg
   Ammunition::Ammunition() : Item()
   {
     this->quantity_limit = 20;
+    this->hit_bonus = 0;
+    this->damage_die = 2;
+    this->damage_dice = 1;
+    this->damage_bonus = 0;
+    this->usable_with = RangedWeapon();
+    this->damage_type = PIERCING;
   }
   
   /**

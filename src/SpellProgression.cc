@@ -36,6 +36,10 @@ namespace tbrpg
   SpellProgression::SpellProgression() : Object()
   {
     this->class_inheritance.push_back(10);
+    wizard_slots = {};
+    priest_slots = {};
+    wizard_levels = {};
+    priest_levels = {};
   }
   
   /**

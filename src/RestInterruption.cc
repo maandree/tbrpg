@@ -39,6 +39,7 @@ namespace tbrpg
     this->interrupt_die = 20;
     this->interrupt_dice = 1;
     this->interrupt_risk = 2;
+    this->creatures = {};
   }
   
   /**

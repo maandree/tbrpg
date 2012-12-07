@@ -51,6 +51,7 @@ namespace tbrpg
     this->lore_bonus = 0;
     this->magic_defence_bonus = 0;
     this->spell_failure = 0;
+    this->bonus_spells = {};
     this->morale = 0;
     this->luck = 0;
     this->detect_doors = 0;

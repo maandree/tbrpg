@@ -35,18 +35,23 @@ namespace tbrpg
    */
   Class::Class() : Object()
   {
+    this->name = "?";
     this->class_inheritance.push_back(16);
+    this->hit_points = 8;
+    this->thac0 = 10;
     this->lore_bonus = 1;
     this->learn_from_scroll = false;
     this->proficiencies_each = 1;
     this->extra_strength = false;
     this->have_racial_enemy = false;
     
+    this->abilities = AbilityBonus();
     this->abilities.thief_abilities.find_traps = -1;
     this->abilities.thief_abilities.open_locks = -1;
     this->abilities.thief_abilities.pick_pockets = -1;
     this->abilities.thief_abilities.stealth = -1;
     
+    this->experience_chart = ExperienceChart();
     this->experience_chart.thief_abilities = std::vector<char>(31);
     this->experience_chart.backstabs = std::vector<char>(31);
     char backstabs;
@@ -57,10 +62,13 @@ namespace tbrpg
 	this->experience_chart.backstabs.push_back(backstabs);
       }
     
+    this->spell_progression = SpellProgression();
+    
     this->alignments = new bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
+    this->can_use = std::unordered_map<Item, bool>();
     this->can_use[Hood()] = true;
     this->can_use[Helmet()] = true;
     this->can_use[Buckler()] = true;
@@ -81,6 +89,7 @@ namespace tbrpg
     this->can_use[LowScroll()] = true;
     this->can_use[LowWand()] = true;
     
+    this->lower_limits = Abilities();
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
     this->lower_limits.constitution = 3;
@@ -91,6 +100,10 @@ namespace tbrpg
     this->default_one_hand = Fist();
     this->default_two_hand = Fists();
     
+    this->special_abilities = {};
+    this->specialisations = {};
+    
+    this->proficiency_chart = std::unordered_map<WeaponGroup, std::vector<Proficiency>>();
     for (WeaponGroup weapongroup : WEAPON_GROUPS)
       this->proficiency_chart[weapongroup] = {Proficiency(0, -1, 2), Proficiency(0, 1, 2), Proficiency(1, 3, 3)};
   }

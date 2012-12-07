@@ -36,6 +36,16 @@ namespace tbrpg
   ExperienceChart::ExperienceChart() : Object()
   {
     this->class_inheritance.push_back(9);
+    this->experience = {};
+    this->hit_point_die = {};
+    this->hit_point_dice = {};
+    this->hit_point_bonus = {};
+    this->selectable_wizard = {};
+    this->selectable_priest = {};
+    this->new_spells = {};
+    this->proficiencies = {};
+    this->backstabs = {};
+    this->thief_abilities = {};
   }
   
   /**

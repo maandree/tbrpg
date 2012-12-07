@@ -194,10 +194,10 @@ namespace tbrpg
    * @param   character  The dead character
    * @return             The corpse of the character
    */
-  Body CorpseMaker::makeCorpse(const Character& character) const
+  Body CorpseMaker::makeCorpse(Character& character) const
   {
     Body body = Body();
-    body.character = character;
+    body.character = &character;
     body.name += character.record.name;
     if (character.record.abilities.abilities.strength != 18)
       body.weight += this->strenght_weight[character.record.abilities.abilities.strength];

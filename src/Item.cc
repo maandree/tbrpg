@@ -36,6 +36,8 @@ namespace tbrpg
   Item::Item() : Object()
   {
     this->class_inheritance.push_back(14);
+    this->name = "some weird item";
+    this->description = "You have no idea what this is…";
     this->armour_class = 0x7FFFffff;
     this->weight = 0;
     this->identified = true;
@@ -45,6 +47,8 @@ namespace tbrpg
     this->quantity = 1;
     this->quantity_limit = 1;
     this->unit_value = -1;
+    this->bonuses = AbilityBonus();
+    this->armour_class_modifiers = std::unordered_map<DamageType, int>();
   }
   
   /**

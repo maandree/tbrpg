@@ -37,6 +37,7 @@ namespace tbrpg
   {
     this->name = "quest item";
     this->unit_value = -1;
+    this->id = 0;
   }
   
   /**
@@ -89,7 +90,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(const QuestItem& original)
   {
-    Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->id = original.id;
     return *this;
   }
   
@@ -101,7 +103,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem& original)
   {
-    Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
+    Item::__copy__((Item&)*this, (Item&)original);
+    this->id = original.id;
     return *this;
   }
   
@@ -113,7 +116,8 @@ namespace tbrpg
    */
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->id, original.id);
+    std::swap((Item&)*this, (Item&)original);
+    std::swap(this->id, original.id);
     return *this;
   }
   

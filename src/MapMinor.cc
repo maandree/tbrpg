@@ -38,6 +38,13 @@ namespace tbrpg
     this->class_inheritance.push_back(67);
     this->may_rest = true;
     this->area = 100;
+    this->description = "";
+    this->is_in = MapMajor();
+    this->roads = {};
+    this->connections = {};
+    this->items = {};
+    this->creatures = {};
+    this->interruptions = {};
   }
   
   /**

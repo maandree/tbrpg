@@ -41,6 +41,9 @@ namespace tbrpg
     this->waylay_die = 20;
     this->waylay_dice = 1;
     this->waylay_risk = 2;
+    this->direction = "?";
+    this->waylay_map = _MapMinor();
+    this->leads_to = _MapMinor();
   }
   
   /**

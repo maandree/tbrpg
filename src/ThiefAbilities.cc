@@ -50,7 +50,6 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(const ThiefAbilities& original) : Object(original)
   {
-    (void) original;
     this->find_traps = original.find_traps;
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
@@ -65,7 +64,6 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(ThiefAbilities& original) : Object(original)
   {
-    (void) original;
     this->find_traps = original.find_traps;
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
@@ -80,7 +78,6 @@ namespace tbrpg
    */
   ThiefAbilities::ThiefAbilities(ThiefAbilities&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->find_traps, original.find_traps);
     std::swap(this->open_locks, original.open_locks);
     std::swap(this->pick_pockets, original.pick_pockets);
@@ -108,8 +105,8 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(const ThiefAbilities& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->find_traps = original.find_traps;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->find_traps = original.find_traps;
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
@@ -125,8 +122,8 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(ThiefAbilities& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->find_traps = original.find_traps;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->find_traps = original.find_traps;
     this->open_locks = original.open_locks;
     this->pick_pockets = original.pick_pockets;
     this->stealth = original.stealth;
@@ -142,8 +139,8 @@ namespace tbrpg
    */
   ThiefAbilities& ThiefAbilities::operator =(ThiefAbilities&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->find_traps, original.find_traps);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->find_traps, original.find_traps);
     std::swap(this->open_locks, original.open_locks);
     std::swap(this->pick_pockets, original.pick_pockets);
     std::swap(this->stealth, original.stealth);

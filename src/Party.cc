@@ -36,6 +36,8 @@ namespace tbrpg
   Party::Party() : Object()
   {
     this->class_inheritance.push_back(8);
+    this->reputation = 12;
+    this->characters = {};
   }
   
   /**

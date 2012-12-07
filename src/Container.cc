@@ -38,6 +38,7 @@ namespace tbrpg
     this->class_inheritance.push_back(27);
     this->name = "container";
     this->contains = {};
+    this->can_contain = {};
     this->contain_limit = 50;
     this->weight_modifier = 1;
   }

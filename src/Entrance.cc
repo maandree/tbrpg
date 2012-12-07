@@ -37,6 +37,9 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(65);
     this->usable = true;
+    this->description = "";
+    this->direction = "";
+    this->leads_to = _MapMinor();
   }
   
   /**

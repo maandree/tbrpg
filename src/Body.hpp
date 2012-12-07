@@ -50,7 +50,7 @@ namespace tbrpg
     /**
      * The dead character
      */
-    Character character;
+    Character* character;
     
     
     

@@ -147,7 +147,7 @@ namespace tbrpg
      * @param   character  The dead character
      * @return             The corpse of the character
      */
-    virtual Body makeCorpse(const Character& character) const;
+    virtual Body makeCorpse(Character& character) const;
     
     
   protected:

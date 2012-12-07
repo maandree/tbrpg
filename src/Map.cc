@@ -36,6 +36,8 @@ namespace tbrpg
   Map::Map() : Object()
   {
     this->class_inheritance.push_back(70);
+    this->start = MapMinor();
+    this->majors = {};
   }
   
   /**

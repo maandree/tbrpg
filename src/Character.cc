@@ -36,11 +36,13 @@ namespace tbrpg
   Character::Character() : Object()
   {
     this->class_inheritance.push_back(19);
+    this->hit_points = 8;
     this->alive = 1;
     this->morale = 0;
     this->intoxication = 0;
     this->fatigue = 0;
     this->extra_attacks = 0;
+    this->record = CharacterSheet();
   }
   
   /**

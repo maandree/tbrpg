@@ -47,7 +47,7 @@ namespace tbrpg
     #define M  (1LL << 7LL)
     #define S  (1LL << 8LL)
     
-    this->index_map[Fighter()] = F;/*
+    this->index_map[Fighter()] = F;
     this->index_map[Ranger()] = R;
     this->index_map[Paladin()] = P;
     this->index_map[Thief()] = T;
@@ -55,7 +55,7 @@ namespace tbrpg
     this->index_map[Cleric()] = C;
     this->index_map[Druid()] = D;
     this->index_map[Mage()] = M;
-    this->index_map[Sorcerer()] = S;*/
+    this->index_map[Sorcerer()] = S;
     
     this->slot_map[F]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON};
     this->slot_map[P]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, CAST_SPELL};
