@@ -75,7 +75,7 @@ namespace tbrpg
      * @param  effectColuration  The colouration of the magic in the school
      * @param  practicerName     The name of the practicers of the school
      */
-    MagicSchool(std::string schoolName = nullptr, std::string effectColuration = nullptr, std::string practicerName = nullptr);
+    MagicSchool(std::string schoolName = "", std::string effectColuration = "", std::string practicerName = "");
     
     /**
      * Copy constructor
@@ -174,7 +174,7 @@ namespace tbrpg
   /**
    * Magic school: none
    */
-  static MagicSchool GENERAL_MAGE = MagicSchool("general", "", "general mage");
+  static const MagicSchool GENERAL_MAGE = MagicSchool("general", "", "general mage");
   
   /**
    * Magic school: abjuration

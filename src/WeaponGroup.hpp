@@ -58,7 +58,7 @@ namespace tbrpg
      * 
      * @param  weaponGroupName  The name of the weapon group
      */
-    WeaponGroup(const std::string weaponGroupName = nullptr);
+    WeaponGroup(const std::string weaponGroupName = "");
     
     /**
      * Copy constructor

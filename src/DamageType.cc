@@ -94,8 +94,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(const DamageType& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     return *this;
   }
   
@@ -107,8 +107,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     return *this;
   }
   
@@ -120,8 +120,8 @@ namespace tbrpg
    */
   DamageType& DamageType::operator =(DamageType&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     return *this;
   }
   

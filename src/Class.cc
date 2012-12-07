@@ -53,7 +53,7 @@ namespace tbrpg
     for (long i = 0; i <= 30; i++)
       {
 	this->experience_chart.thief_abilities.push_back(0);
-        backstabs = backstabs >= 13 ? 5 : ((i + 7) >> 2);
+        backstabs = i >= 13 ? 5 : ((i + 7) >> 2);
 	this->experience_chart.backstabs.push_back(backstabs);
       }
     

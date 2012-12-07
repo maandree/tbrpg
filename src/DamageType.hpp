@@ -58,7 +58,7 @@ namespace tbrpg
      * 
      * @param  damageTypeName The name of the damage type
      */
-    DamageType(std::string damageTypeName = nullptr);
+    DamageType(std::string damageTypeName = "");
     
     /**
      * Copy constructor
@@ -157,17 +157,17 @@ namespace tbrpg
   /**
    * Damage type: slashing
    */
-  static DamageType SLASHING = DamageType("slashing");
+  static const DamageType SLASHING = DamageType("slashing");
   
   /**
    * Damage type: piercing
    */
-  static DamageType PIERCING = DamageType("piercing");
+  static const DamageType PIERCING = DamageType("piercing");
   
   /**
    * Damage type: bludgeoning
    */
-  static DamageType BLUDGEONING = DamageType("bludgeoning");
+  static const DamageType BLUDGEONING = DamageType("bludgeoning");
     
 }
 

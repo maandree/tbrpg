@@ -275,7 +275,7 @@ namespace tbrpg
 	}
       
       labels = (std::string*)malloc(count * sizeof(std::string));
-      for (WeaponGroup& weapongroup : WEAPON_GROUPS)
+      for (const WeaponGroup& weapongroup : WEAPON_GROUPS)
 	if (proficiencyMap[weapongroup] != 0)
 	  labels[proficiencyMap[weapongroup] - 1] = weapongroup.name;
       
@@ -289,7 +289,7 @@ namespace tbrpg
 	goto _06;
       
       this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
-      for (WeaponGroup& weapongroup : WEAPON_GROUPS)
+      for (const WeaponGroup& weapongroup : WEAPON_GROUPS)
 	if (proficiencyMap[weapongroup] != 0)
 	  this->sheet.proficiencies[weapongroup] = this->start[proficiencyMap[weapongroup] - 1];
     }
