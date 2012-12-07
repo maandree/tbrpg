@@ -429,7 +429,7 @@ Entrance: Object                          ; Connection between map areas
 
 _MapMinor: Object                                   ; Used to break circular dependency, all instances must be instances of {@link MapMinor}
 MapMinor: _MapMinor                                 ; Map area
-	std::string description                     ; Descrion of the area
+	std::string description                     ; Description of the area
 	bool may_rest                               ; Whether you may rest in the area without renting a room
 	float area                                  ; The radius of the area, in metres, the party starts at origo
 	std::vector<Road> roads                     ; Roads to other major areas in the area
