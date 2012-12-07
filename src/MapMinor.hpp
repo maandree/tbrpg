@@ -56,7 +56,7 @@ namespace tbrpg
   {
   public:
     /**
-     * Descrion of the area
+     * Description of the area
      */
     std::string description;
     
