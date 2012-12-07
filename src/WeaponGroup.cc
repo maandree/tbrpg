@@ -91,7 +91,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(const WeaponGroup& original)
   {
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     return *this;
   }
   
@@ -103,7 +104,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup& original)
   {
-    Object::__copy__((Object&)*this, (Object&)original);    this->name = original.name;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->name = original.name;
     return *this;
   }
   
@@ -115,7 +117,8 @@ namespace tbrpg
    */
   WeaponGroup& WeaponGroup::operator =(WeaponGroup&& original)
   {
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->name, original.name);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->name, original.name);
     return *this;
   }
   
