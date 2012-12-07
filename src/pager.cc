@@ -56,8 +56,7 @@ namespace tbrpg
     char* curline = (char*)malloc(size);
     char* cstr = (char*)(text.c_str());
     char* tmp;
-    char c;
-    
+    char c, last = '\n';
     bool reading = true;
     while (reading)
       {
@@ -80,10 +79,11 @@ namespace tbrpg
 	  {
 	  case '\n':
 	  case CTRL('L'):
-	    *(curline + ptr) = 0;
-	    ptr = 0;
-	    curpage.push_back(std::string(curline));
-	    
+	    if ((last != '\n') && (last != CTRL('L')))
+	      {
+		ptr = *(curline + ptr) = 0;
+		curpage.push_back(std::string(curline));
+	      }
 	    if (c == CTRL('L'))
 	      {
 		pages.push_back(curpage);
@@ -95,8 +95,11 @@ namespace tbrpg
 	    *(curline + ptr++) = c;
 	    break;
 	}
+	
+	last = c;
       }
     
+    free(curline);
     
     struct termios saved_stty;
     struct termios stty;
@@ -138,9 +141,9 @@ namespace tbrpg
 	    std::cout << CSI << termheight << ";1H";
 	    if (left > 0)
 	      std::cout << CSI << left << "C";
-	    std::cout << CSI "07m" << space60 << CSI "27m" CSI "60D";
-	    printf("-- line %li to %li of %li -- page %li of %li --",
-		   line + 1, line + termheight, (long)(curpage.size()),
+	    std::cout << CSI "07m" << space60 << CSI "60D";
+	    printf("(line %li to %li of %li)(page %li of %li)" CSI "27m",
+		   line + 1, line + termheight - 1, (long)(curpage.size()),
 		   page + 1, (long)(pages.size()));
 	  };
 	
@@ -152,12 +155,12 @@ namespace tbrpg
 	    if (i - s == (size_t)(termheight - 1))
 	      break;
 	    std::cout << CSI << (i - s + 1) << ";" << (left + 1) << "H";
-	    std::cout << curpage[line];
+	    std::cout << curpage[i];
 	  }
 	
 	std::flush(std::cout);
 	
-	bool readinginner = false;
+	bool readinginner = true;
 	while (readinginner)
 	  {
 	    if (read(STDIN_FILENO, &c, 1) <= 0)
@@ -170,10 +173,8 @@ namespace tbrpg
 	      case 'W':
 	      case CTRL('C'):
 	      case CTRL('D'):
-	      case CTRL('G'):
-		reading = false;
-	      case CTRL('L'):
-		readinginner = false;
+	      case CTRL('G'):  reading = false;
+	      case CTRL('L'):  readinginner = false;
 		break;
 		
 	      case 'A':
@@ -187,23 +188,28 @@ namespace tbrpg
 	      case 'B':
 		if (line + termheight >= (long)(curpage.size()))
 		  break;
-		std::cout << CSI << termheight << ";1H" CSI "K" << curpage[line + termheight];
+		std::cout << CSI << termheight << ";" << (left + 1) << "H" CSI "K" << curpage[line + termheight] << std::endl;
 		line++;
 		status();
 		std::flush(std::cout);
 		break;
 		
 	      case 'C':
-		if (page + 1 == (long)(pages.size()))
-		  break;
-		page++;
-		readinginner = false;
-		break;
-		
 	      case 'D':
-		if (page == 0)
-		  break;
-		page--;
+		if (c == 'C')
+		  {
+		    if (page + 1 == (long)(pages.size()))
+		      break;
+		    page++;
+		  }
+		else
+		  {
+		    if (page == 0)
+		      break;
+		    page--;
+		  }
+		curpage = pages[page];
+		line = 0;
 		readinginner = false;
 		break;
 		
