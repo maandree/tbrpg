@@ -203,7 +203,7 @@ clean: clean-gch
 	find ./     | grep    \\.out\$$  | while read file; do  rm "$$file";  done
 	find ./     | grep    \\.info\$$ | while read file; do  rm "$$file";  done
 	find ./     | grep    \\.gz\$$   | while read file; do  rm "$$file";  done
-	find ./test | grep -v \\.cc\$$   | while read file; do  rm "$$file";  done
+	find ./test | grep -v \\.cc\$$   | grep -v \\.text\$$   | while read file; do  rm "$$file";  done
 	if [ -f .tmp  ]; then  rm .tmp ;  fi
 	if [ -f .tmp1 ]; then  rm .tmp1;  fi
 	if [ -f .tmp2 ]; then  rm .tmp2;  fi
