@@ -52,7 +52,7 @@ GAMEDIR=/bin
 
 
 
-all: parallel info pdf
+all: parallel tests info pdf
 
 
 
@@ -82,6 +82,13 @@ program: src/program.cc
 
 test/%: test/%.cc
 	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o test/$* test/$*.cc *.o
+
+tests:
+	ls -1 --color=no test | grep '\.cc$$' | sed -e 's/\.cc$$//g' |  \
+	while read test; do                                             \
+	    echo -e "\e[01;34mtest/$$test\e[0m";                        \
+	    make test/"$$test";                                         \
+	done
 
 parallel:
 	if [ ! -d bin ]; then  mkdir bin;  fi
@@ -243,5 +250,5 @@ jfbview:
 
 .PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
 	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey view atril evince xpdf okular gs jfbview all regen parallel
+	valgrind-lackey view atril evince xpdf okular gs jfbview all regen parallel tests
 
