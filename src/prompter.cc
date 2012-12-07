@@ -306,10 +306,10 @@ namespace tbrpg
     prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
     for (long i = 0; i < prompterdata.before; i++)
       *(prompterdata.tmp)++ = *(prompterdata.bp + i);
-    free(prompterdata.bp);
+    //free(prompterdata.bp);
     for (long i = prompterdata.after - 1; i >= 0; i--)
       *(prompterdata.tmp)++ = *(prompterdata.ap + i);
-    free(prompterdata.ap);
+    //free(prompterdata.ap);
     *prompterdata.tmp = 0;
     prompterdata.tmp -= prompterdata.before + prompterdata.after;
     
@@ -324,7 +324,7 @@ namespace tbrpg
         return;
       }
     free(tmp);
-    
+
     prompt_done();
   }
   
@@ -1106,26 +1106,33 @@ namespace tbrpg
 	if (loadfile == false)
 	  return input;
 	
-	char* filename = (char*)(input.c_str());
-	FILE* file = fopen(filename, "r");
-	free(filename);
 	long blocksize = (long)(filestat.st_blksize);
         long filesize = (long)(filestat.st_size);
-	long ptr = 0, n, i;
-	char* data = (char*)malloc(filesize);
+	char* data = (char*)malloc(filesize + 1);
 	char* buf = (char*)malloc(blocksize);
+	char* filename = (char*)(input.c_str());
+	FILE* file = fopen(filename, "r");
+	if (file == nullptr)
+	  {
+	    std::flush(std::cout << "Unable to read file" << std::endl);
+	    free(buf);
+	    free(data);
+	    return "";
+	  }
+	long ptr = 0, n, i, nul = 0;
 	
 	while (ptr < filesize)
 	  {
-	    n = ptr + blocksize <= filesize ? blocksize : (filesize - ptr);
-	    n = (long)(fread(buf, n, 1, file));
+	    n = (ptr + blocksize <= filesize) ? blocksize : (filesize - ptr);
+	    fread(buf, 1, n, file); // =: n
 	    for (i = 0; i < n; i++)
-	      if ((*(data + ptr++) = *(buf + i)) != 0)
-		i--;
+	      if ((*(data + ptr++ - nul) = *(buf + i)) == 0)
+		nul++;
 	  }
 	
 	fclose(file);
 	free(buf);
+	*(data + ptr) = 0;
 	std::string rc = std::string(data);
 	free(data);
 	return rc;
@@ -1321,6 +1328,8 @@ namespace tbrpg
 	for (size_t j = 0; j < 8; j++)
 	  if ((*(selected + i) & (1 << j)))
 	    rc.push_back(items[(i << 3) | j]);
+    
+    free(selected);
     return rc;
   }
   

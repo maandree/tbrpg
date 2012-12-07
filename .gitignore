@@ -16,6 +16,11 @@
 *.a
 *.out
 *.gch
+test/*
+!test/*.cc
+!test/*.c
+!test/*.h
+!test/*.hpp
 
 *-cache
 cachegrind.out.*
