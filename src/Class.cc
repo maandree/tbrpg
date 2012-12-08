@@ -52,14 +52,12 @@ namespace tbrpg
     this->abilities.thief_abilities.stealth = -1;
     
     this->experience_chart = ExperienceChart();
-    this->experience_chart.thief_abilities = std::vector<char>(31);
-    this->experience_chart.backstabs = std::vector<char>(31);
     char backstabs;
     for (long i = 0; i <= 30; i++)
       {
-	this->experience_chart.thief_abilities.push_back(0);
+	this->experience_chart.thief_abilities[i] = 0;
         backstabs = i >= 13 ? 5 : ((i + 7) >> 2);
-	this->experience_chart.backstabs.push_back(backstabs);
+	this->experience_chart.backstabs[i] = backstabs;
       }
     
     this->spell_progression = SpellProgression();
@@ -119,7 +117,9 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = original.alignments;
+    this->alignments = new bool[9];
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
@@ -147,7 +147,9 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = original.alignments;
+    this->alignments = new bool[9];
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
@@ -175,6 +177,9 @@ namespace tbrpg
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);
+    this->alignments = new bool[9];
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = 0;
     std::swap(this->alignments, original.alignments);
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
@@ -217,7 +222,8 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = original.alignments;
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
@@ -248,7 +254,8 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = original.alignments;
+    for (int i = 0; i < 9; i++)
+      this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;

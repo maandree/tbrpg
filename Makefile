@@ -115,8 +115,15 @@ $(EXEC) program: src/program.cc $(OBJS)
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^
 
+program.sa: src/program.cc
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^ $(OBJS)
+
 test/%: test/%.cc $(OBJS)
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
+
+test/%.sa: test/%.cc
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o test/$* $^ $(OBJS)
 
 .PHONY: tests
 tests:

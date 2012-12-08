@@ -128,18 +128,34 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(const ReputationChart& original) : Object(original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    this->reaction_adjustment = new int[21];
+    this->wanted = new bool[21];
+    this->killing_innocent = new int[21];
+    this->injuring_innocent = new int[21];
+    this->stealing = new int[21];
+    this->killing_guard = new int[21];
+    this->donation_needed = new int[21];
+    this->price_adjustment = new float[21];
+    this->good_reaction = new signed char[21];
+    this->neutral_reaction = new signed char[21];
+    this->evil_reaction = new signed char[21];
+    this->alignment_reputation = new char[9];
+    for (long i = 0; i < 21; i++)
+      {
+	this->reaction_adjustment[i] = original.reaction_adjustment[i];
+	this->wanted[i] = original.wanted[i];
+	this->killing_innocent[i] = original.killing_innocent[i];
+	this->injuring_innocent[i] = original.injuring_innocent[i];
+	this->stealing[i] = original.stealing[i];
+	this->killing_guard[i] = original.killing_guard[i];
+	this->donation_needed[i] = original.donation_needed[i];
+	this->price_adjustment[i] = original.price_adjustment[i];
+	this->good_reaction[i] = original.good_reaction[i];
+	this->neutral_reaction[i] = original.neutral_reaction[i];
+	this->evil_reaction[i] = original.evil_reaction[i];
+      }
+    for (long i = 0; i < 9; i++)
+      this->alignment_reputation[i] = original.alignment_reputation[i];
   }
   
   /**
@@ -149,18 +165,34 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart& original) : Object(original)
   {
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    this->reaction_adjustment = new int[21];
+    this->wanted = new bool[21];
+    this->killing_innocent = new int[21];
+    this->injuring_innocent = new int[21];
+    this->stealing = new int[21];
+    this->killing_guard = new int[21];
+    this->donation_needed = new int[21];
+    this->price_adjustment = new float[21];
+    this->good_reaction = new signed char[21];
+    this->neutral_reaction = new signed char[21];
+    this->evil_reaction = new signed char[21];
+    this->alignment_reputation = new char[9];
+    for (long i = 0; i < 21; i++)
+      {
+	this->reaction_adjustment[i] = original.reaction_adjustment[i];
+	this->wanted[i] = original.wanted[i];
+	this->killing_innocent[i] = original.killing_innocent[i];
+	this->injuring_innocent[i] = original.injuring_innocent[i];
+	this->stealing[i] = original.stealing[i];
+	this->killing_guard[i] = original.killing_guard[i];
+	this->donation_needed[i] = original.donation_needed[i];
+	this->price_adjustment[i] = original.price_adjustment[i];
+	this->good_reaction[i] = original.good_reaction[i];
+	this->neutral_reaction[i] = original.neutral_reaction[i];
+	this->evil_reaction[i] = original.evil_reaction[i];
+      }
+    for (long i = 0; i < 9; i++)
+      this->alignment_reputation[i] = original.alignment_reputation[i];
   }
   
   /**
@@ -170,6 +202,18 @@ namespace tbrpg
    */
   ReputationChart::ReputationChart(ReputationChart&& original) : Object(original)
   {
+    this->reaction_adjustment = new int[21];
+    this->wanted = new bool[21];
+    this->killing_innocent = new int[21];
+    this->injuring_innocent = new int[21];
+    this->stealing = new int[21];
+    this->killing_guard = new int[21];
+    this->donation_needed = new int[21];
+    this->price_adjustment = new float[21];
+    this->good_reaction = new signed char[21];
+    this->neutral_reaction = new signed char[21];
+    this->evil_reaction = new signed char[21];
+    this->alignment_reputation = new char[9];
     std::swap(this->reaction_adjustment, original.reaction_adjustment);
     std::swap(this->wanted, original.wanted);
     std::swap(this->killing_innocent, original.killing_innocent);
@@ -216,18 +260,22 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(const ReputationChart& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    for (long i = 0; i < 21; i++)
+      {
+	this->reaction_adjustment[i] = original.reaction_adjustment[i];
+	this->wanted[i] = original.wanted[i];
+	this->killing_innocent[i] = original.killing_innocent[i];
+	this->injuring_innocent[i] = original.injuring_innocent[i];
+	this->stealing[i] = original.stealing[i];
+	this->killing_guard[i] = original.killing_guard[i];
+	this->donation_needed[i] = original.donation_needed[i];
+	this->price_adjustment[i] = original.price_adjustment[i];
+	this->good_reaction[i] = original.good_reaction[i];
+	this->neutral_reaction[i] = original.neutral_reaction[i];
+	this->evil_reaction[i] = original.evil_reaction[i];
+      }
+    for (long i = 0; i < 9; i++)
+      this->alignment_reputation[i] = original.alignment_reputation[i];
     return *this;
   }
   
@@ -240,18 +288,22 @@ namespace tbrpg
   ReputationChart& ReputationChart::operator =(ReputationChart& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->reaction_adjustment = original.reaction_adjustment;
-    this->wanted = original.wanted;
-    this->killing_innocent = original.killing_innocent;
-    this->injuring_innocent = original.injuring_innocent;
-    this->stealing = original.stealing;
-    this->killing_guard = original.killing_guard;
-    this->donation_needed = original.donation_needed;
-    this->price_adjustment = original.price_adjustment;
-    this->good_reaction = original.good_reaction;
-    this->neutral_reaction = original.neutral_reaction;
-    this->evil_reaction = original.evil_reaction;
-    this->alignment_reputation = original.alignment_reputation;
+    for (long i = 0; i < 21; i++)
+      {
+	this->reaction_adjustment[i] = original.reaction_adjustment[i];
+	this->wanted[i] = original.wanted[i];
+	this->killing_innocent[i] = original.killing_innocent[i];
+	this->injuring_innocent[i] = original.injuring_innocent[i];
+	this->stealing[i] = original.stealing[i];
+	this->killing_guard[i] = original.killing_guard[i];
+	this->donation_needed[i] = original.donation_needed[i];
+	this->price_adjustment[i] = original.price_adjustment[i];
+	this->good_reaction[i] = original.good_reaction[i];
+	this->neutral_reaction[i] = original.neutral_reaction[i];
+	this->evil_reaction[i] = original.evil_reaction[i];
+      }
+    for (long i = 0; i < 9; i++)
+      this->alignment_reputation[i] = original.alignment_reputation[i];
     return *this;
   }
   

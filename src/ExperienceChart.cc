@@ -36,16 +36,16 @@ namespace tbrpg
   ExperienceChart::ExperienceChart() : Object()
   {
     this->class_inheritance.push_back(9);
-    this->experience = {};
-    this->hit_point_die = {};
-    this->hit_point_dice = {};
-    this->hit_point_bonus = {};
-    this->selectable_wizard = {};
-    this->selectable_priest = {};
-    this->new_spells = {};
-    this->proficiencies = {};
-    this->backstabs = {};
-    this->thief_abilities = {};
+    this->experience = std::vector<int>(31);
+    this->hit_point_die = std::vector<char>(31);
+    this->hit_point_dice = std::vector<char>(31);
+    this->hit_point_bonus = std::vector<int>(31);
+    this->selectable_wizard = std::vector<int>(31);
+    this->selectable_priest = std::vector<int>(31);
+    this->new_spells =std::vector<std::vector<Spell>>(31);
+    this->proficiencies = std::vector<int>(31);
+    this->backstabs = std::vector<char>(31);
+    this->thief_abilities = std::vector<char>(31);
   }
   
   /**
@@ -125,7 +125,8 @@ namespace tbrpg
    */
   ExperienceChart& ExperienceChart::operator =(const ExperienceChart& original)
   {
-    Object::__copy__((Object&)*this, (Object&)original);    this->experience = original.experience;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->experience = original.experience;
     this->hit_point_die = original.hit_point_die;
     this->hit_point_dice = original.hit_point_dice;
     this->hit_point_bonus = original.hit_point_bonus;

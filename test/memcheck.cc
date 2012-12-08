@@ -266,28 +266,28 @@ namespace tbrpg
     {auto x = new Wilderness(); delete x;}
     {auto x = new WizardScroll(); delete x;}
     {auto x = new ActionSlotChart(); delete x;}
-    //{auto x = new Body(); delete x;}
-    //{auto x = new CharacterCreator(); delete x;}
-    //{auto x = new Character(); delete x;}
-    //{auto x = new CharacterSheet(); delete x;}
-    //{auto x = new Creature(); delete x;}
+    {auto x = new Body(); delete x;}
+    {auto x = new CharacterCreator(RuleSet()); delete x;}
+    {auto x = new Character(); delete x;}
+    {auto x = new CharacterSheet(); delete x;}
+    {auto x = new Creature(); delete x;}
     {auto x = new DamageType(); delete x;}
     {auto x = new Inventory(); delete x;}
-    //{auto x = new MagicSchool(); delete x;}
-    //{auto x = new NPC(); delete x;}
-    //{auto x = new RuleSet(); delete x;}
-    //{auto x = new Spell(); delete x;}
-    //{auto x = new Store(); delete x;}
+    {auto x = new MagicSchool(); delete x;}
+    {auto x = new NPC(); delete x;}
+    {auto x = new RuleSet(); delete x;}
+    {auto x = new Spell(); delete x;}
+    {auto x = new Store(); delete x;}
     {auto x = new WeaponGroup(); delete x;}
     
     /* races */
-    //{auto x = new Dwarf(); delete x;}
-    //{auto x = new Elf(); delete x;}
-    //{auto x = new Gnome(); delete x;}
-    //{auto x = new Human(); delete x;}
-    //{auto x = new HalfElf(); delete x;}
-    //{auto x = new Halfling(); delete x;}
-    //{auto x = new HalfOrc(); delete x;}
+    {auto x = new Dwarf(); delete x;}
+    {auto x = new Elf(); delete x;}
+    {auto x = new Gnome(); delete x;}
+    {auto x = new Human(); delete x;}
+    {auto x = new HalfElf(); delete x;}
+    {auto x = new Halfling(); delete x;}
+    {auto x = new HalfOrc(); delete x;}
     {auto x = new Race(); delete x;}
     
     /* prestiges */
