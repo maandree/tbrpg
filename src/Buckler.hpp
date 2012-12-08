@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Buckler>
+  class hash<tbrpg::Buckler*>
   {
   public:
     size_t operator()(tbrpg::Buckler* elem) const

@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::HighWand>
+  class hash<tbrpg::HighWand*>
   {
   public:
     size_t operator()(tbrpg::HighWand* elem) const

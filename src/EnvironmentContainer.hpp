@@ -160,7 +160,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::EnvironmentContainer>
+  class hash<tbrpg::EnvironmentContainer*>
   {
   public:
     size_t operator()(tbrpg::EnvironmentContainer* elem) const

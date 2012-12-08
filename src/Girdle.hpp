@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Girdle>
+  class hash<tbrpg::Girdle*>
   {
   public:
     size_t operator()(tbrpg::Girdle* elem) const

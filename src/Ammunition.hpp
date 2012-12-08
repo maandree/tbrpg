@@ -194,7 +194,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Ammunition>
+  class hash<tbrpg::Ammunition*>
   {
   public:
     size_t operator()(tbrpg::Ammunition* elem) const

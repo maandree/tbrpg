@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Torch>
+  class hash<tbrpg::Torch*>
   {
   public:
     size_t operator()(tbrpg::Torch* elem) const

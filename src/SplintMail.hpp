@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::SplintMail>
+  class hash<tbrpg::SplintMail*>
   {
   public:
     size_t operator()(tbrpg::SplintMail* elem) const

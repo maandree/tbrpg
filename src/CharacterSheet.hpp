@@ -265,7 +265,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::CharacterSheet>
+  class hash<tbrpg::CharacterSheet*>
   {
   public:
     size_t operator()(tbrpg::CharacterSheet* elem) const

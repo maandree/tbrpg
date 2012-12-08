@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::LongBow>
+  class hash<tbrpg::LongBow*>
   {
   public:
     size_t operator()(tbrpg::LongBow* elem) const

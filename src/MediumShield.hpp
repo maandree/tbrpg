@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::MediumShield>
+  class hash<tbrpg::MediumShield*>
   {
   public:
     size_t operator()(tbrpg::MediumShield* elem) const

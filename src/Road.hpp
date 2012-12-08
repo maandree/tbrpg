@@ -203,7 +203,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Road>
+  class hash<tbrpg::Road*>
   {
   public:
     size_t operator()(tbrpg::Road* elem) const

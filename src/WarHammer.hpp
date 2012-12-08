@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::WarHammer>
+  class hash<tbrpg::WarHammer*>
   {
   public:
     size_t operator()(tbrpg::WarHammer* elem) const

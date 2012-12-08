@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Cloak>
+  class hash<tbrpg::Cloak*>
   {
   public:
     size_t operator()(tbrpg::Cloak* elem) const

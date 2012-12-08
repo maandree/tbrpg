@@ -176,7 +176,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Proficiency>
+  class hash<tbrpg::Proficiency*>
   {
   public:
     size_t operator()(tbrpg::Proficiency* elem) const

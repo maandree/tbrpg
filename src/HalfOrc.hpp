@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::HalfOrc>
+  class hash<tbrpg::HalfOrc*>
   {
   public:
     size_t operator()(tbrpg::HalfOrc* elem) const

@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Dwarf>
+  class hash<tbrpg::Dwarf*>
   {
   public:
     size_t operator()(tbrpg::Dwarf* elem) const

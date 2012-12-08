@@ -159,7 +159,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::HeavyCrossbow>
+  class hash<tbrpg::HeavyCrossbow*>
   {
   public:
     size_t operator()(tbrpg::HeavyCrossbow* elem) const
