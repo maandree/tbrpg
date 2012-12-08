@@ -63,6 +63,14 @@ namespace tbrpg
     ILLUSION.opposite = {NECROMANCY};
     INVOCATION.opposite = {ENCHANTMENT, CONJURATION};
     NECROMANCY.opposite = {ILLUSION};
+    
+    this->races.push_back(Human());
+    this->races.push_back(HalfOrc());
+    this->races.push_back(HalfElf());
+    this->races.push_back(Elf());
+    this->races.push_back(Dwarf());
+    this->races.push_back(Gnome());
+    this->races.push_back(Halfling());
   }
   
   /**

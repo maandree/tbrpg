@@ -125,6 +125,8 @@ namespace tbrpg
     long indexInput;
     std::string c;
     bool ok;
+    bool hasSpecialisation;
+    bool hasExtra;
     
     
   _01:
@@ -168,6 +170,7 @@ namespace tbrpg
 	this->sheet.experience.push_back(0);
 	this->sheet.level.push_back(1);
       }
+    hasSpecialisation = false;
     
     
   _04:
@@ -189,6 +192,7 @@ namespace tbrpg
 	    this->sheet.specialisation = specialisationMap[specialisations[0]];
 	  else if (specialisations.size() > 1)
 	    {
+	      hasSpecialisation = true;
 	      input = promptList("Select mage specialisation: ", specialisations);
 	      if (input == "")
 		goto _03;
@@ -204,19 +208,28 @@ namespace tbrpg
       {
 	ok = true;
 	for (Class& c : this->sheet.prestige)
-	  ok &= *(c.alignments + i);
+	  ok &= c.alignments[i];
 	if (ok)
-	  alignments.push_back(all_alignments[i]);
+	  {
+	    alignments.push_back(all_alignments[i]);
+	    alignmentMap[all_alignments[i]] = i;
+	  }
       }
-    input = promptList("Select alignment: ", alignments.size() == 0
-		       ? all_alignments /* fail safe */
-		       : alignments);
+    input = promptList("Select alignment: ", alignments);
     if (input == "")
-      goto _04;
+      {
+	if (hasSpecialisation)
+	  goto _04;
+	else
+	  goto _03;
+      }
     this->sheet.alignment = alignmentMap[input];
     
     
    _06:
+    this->start = new int[6];
+    this->lower = new int[6];
+    this->upper = new int[6];
     abilityReroll(*this);
     ok = assign(6, 0, (void*)&(this->sheet.abilities.abilities.strength18), abilityPrinter, abilityReroll);
     if (ok)
@@ -238,6 +251,8 @@ namespace tbrpg
   _07:
     {
       std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
+      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+	proficiencyMap[*weapongroup] = 0;
       int count = 0;
       Weapon WEAPON_PROTOTYPE = Weapon();
       
@@ -258,9 +273,11 @@ namespace tbrpg
 	      auto entry = *ptr++;
 	      if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
 		{
-		  WeaponGroup& wg = ((Weapon*)&(entry.first))->weapon_group;
-		  if (proficiencyMap[wg] == 0)
-		    proficiencyMap[wg] = ++count;
+		  const WeaponGroup* wg = ((Weapon*)&(entry.first))->weapon_group;
+		  std::flush(std::cout << ((Weapon*)&(entry.first))->name << " :: ");
+		  std::flush(std::cout << wg->name << " = ?" << std::endl);
+		  if (proficiencyMap[*wg] == 0)
+		    proficiencyMap[*wg] = ++count;
 		}
 	    }
 	}
@@ -274,25 +291,26 @@ namespace tbrpg
 	  this->upper[i] = eachScores;
 	}
       
-      labels = (std::string*)malloc(count * sizeof(std::string));
-      for (const WeaponGroup& weapongroup : WEAPON_GROUPS)
-	if (proficiencyMap[weapongroup] != 0)
-	  labels[proficiencyMap[weapongroup] - 1] = weapongroup.name;
+      labels = new std::string[count];
+      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+	if (proficiencyMap[*weapongroup] != 0)
+	  labels[proficiencyMap[*weapongroup] - 1] = weapongroup->name;
       
       ok = assign(count, assignScores, labels, genericPrinter);
       
       delete[] this->lower;
       delete[] this->upper;
-      free(labels);
+      delete[] labels;
       
       if (ok == false)
 	goto _06;
       
       this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
-      for (const WeaponGroup& weapongroup : WEAPON_GROUPS)
-	if (proficiencyMap[weapongroup] != 0)
-	  this->sheet.proficiencies[weapongroup] = this->start[proficiencyMap[weapongroup] - 1];
+      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+	if (proficiencyMap[*weapongroup] != 0)
+	  this->sheet.proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
     }
+    hasExtra = false;
     
     
   _08:
@@ -301,6 +319,7 @@ namespace tbrpg
     for (Class& c : this->sheet.prestige)
       if (c.have_racial_enemy)
 	{
+	  hasExtra = true;
 	  input = promptList("Select racial enemy: ", racials);
 	  if (input == "")
 	    goto _07;
@@ -337,7 +356,8 @@ namespace tbrpg
     *(labels + 1) = "Open locks:   ";
     *(labels + 2) = "Pick pockets: ";
     *(labels + 3) = "Stealth:      ";
-    if ((assignable))
+    hasExtra = assignable;
+    if (assignable)
       ok = assign(4, assignable, labels, genericPrinter);
     else
       ok = true;
@@ -401,6 +421,7 @@ namespace tbrpg
       
       if ((wizardAssign0 > 0) && (wizard0s.size() > 0))
 	{
+	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 0 wizard spells", wizardAssign0, wizard0s);
 	  if (selected.size() == 0)
 	    goto _08;
@@ -410,6 +431,7 @@ namespace tbrpg
       
       if ((wizardAssign1 > 0) && (wizard1s.size() > 0))
 	{
+	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 1 wizard spells", wizardAssign1, wizard1s);
 	  if (selected.size() == 0)
 	    goto _08;
@@ -419,6 +441,7 @@ namespace tbrpg
       
       if ((priestAssign1 > 0) && (priest1s.size() > 0))
 	{
+	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 1 priest spells", priestAssign1, priest1s);
 	  if (selected.size() == 0)
 	    goto _08;
@@ -431,14 +454,24 @@ namespace tbrpg
   _09:
     input = promptList("Do you have a portrait: ", {"yes", "no"});
     if (input == "")
-      goto _08;
+      {
+	if (hasExtra)
+	  goto _08;
+	else
+	  goto _07;
+      }
     if (input == "no")
       this->sheet.portrait = "";
     else
       {
 	input = promptFile("Select portrait: ", true);
 	if (input == "")
-	  goto _08;
+	  {
+	    if (hasExtra)
+	      goto _08;
+	    else
+	      goto _07;
+	  }
 	this->sheet.portrait = input;
       }
     
@@ -580,7 +613,7 @@ namespace tbrpg
 	      }
 	    else if (c == CTRL('L'))
 	      break;
-	    else if ((c == 'd') || (c == 'D'))
+	    else if ((c == 'd') || ((c == 'D') && ! ((last <= '0') && (last <= '9'))))
 	      {
 		reading = false;
 		break;
@@ -608,7 +641,7 @@ namespace tbrpg
 	    if (leftover != tmp)
 	      {
 		tmp = cur + 3;
-		printf("\033[%iARemaining: %i\n\033[%iB", tmp, leftover, tmp - 1);
+		printf("\033[%iARemaining: \033[K%i\n\033[%iB", tmp, leftover, tmp - 1);
 	      }
 	    std::flush(std::cout);
 	  }
@@ -636,20 +669,17 @@ namespace tbrpg
    */
   static void abilityReroll(CharacterCreator& self)
   {
-    self.start = new int[6];
-    self.lower = new int[6];
-    self.upper = new int[6];
     self.sheet.abilities.abilities.strength18 = self.dice100.roll();
     self.lower[0] = self.lower[1] = self.lower[2] = self.lower[3] = self.lower[4] = self.lower[5] = 0;
     for (Class& c : self.sheet.prestige)
       {
 	int _str, _con, _dex, _int, _wis, _chr;
-	self.lower[0] = (_str = c.lower_limits.strength)     < self.lower[0] ? _str : self.lower[0];
-	self.lower[1] = (_con = c.lower_limits.constitution) < self.lower[1] ? _con : self.lower[1];
-	self.lower[2] = (_dex = c.lower_limits.dexterity)    < self.lower[2] ? _dex : self.lower[2];
-	self.lower[3] = (_int = c.lower_limits.intelligence) < self.lower[3] ? _int : self.lower[3];
-	self.lower[4] = (_wis = c.lower_limits.wisdom)       < self.lower[4] ? _wis : self.lower[4];
-	self.lower[5] = (_chr = c.lower_limits.charisma)     < self.lower[5] ? _chr : self.lower[5];
+	self.lower[0] = (_str = c.lower_limits.strength)     > self.lower[0] ? _str : self.lower[0];
+	self.lower[1] = (_con = c.lower_limits.constitution) > self.lower[1] ? _con : self.lower[1];
+	self.lower[2] = (_dex = c.lower_limits.dexterity)    > self.lower[2] ? _dex : self.lower[2];
+	self.lower[3] = (_int = c.lower_limits.intelligence) > self.lower[3] ? _int : self.lower[3];
+	self.lower[4] = (_wis = c.lower_limits.wisdom)       > self.lower[4] ? _wis : self.lower[4];
+	self.lower[5] = (_chr = c.lower_limits.charisma)     > self.lower[5] ? _chr : self.lower[5];
       }
     self.upper[0] = self.sheet.race.bonuses.abilities.strength;
     self.upper[1] = self.sheet.race.bonuses.abilities.constitution;
@@ -659,11 +689,11 @@ namespace tbrpg
     self.upper[5] = self.sheet.race.bonuses.abilities.charisma;
     for (int i = 0; i < 6; i++)
       {
-	self.upper[i] += 18;
 	self.start[i] = self.abilityDice.roll();
 	if (self.start[i] < self.lower[i])
 	  self.start[i] = self.lower[i];
 	self.lower[i] += self.upper[i];
+	self.upper[i] += 18;
       }
   }
   
@@ -679,7 +709,7 @@ namespace tbrpg
   {
     int strength18 = *((char*)data);
     if ((index == 0) && (value == 18) && (strength18 != 0))
-      std::cout << "Strength: " << value << "/" << strength18;
+      std::cout << "Strength: " << value << "/" << ((strength18 % 100) < 10 ? "0" : "") << (strength18 % 100);
     else if (index == 0)  std::cout << "Strength: "     << value;
     else if (index == 1)  std::cout << "Constitution: " << value;
     else if (index == 2)  std::cout << "Dexterity: "    << value;

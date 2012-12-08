@@ -175,7 +175,7 @@ namespace tbrpg
    * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop, void (*done)(void) = prompt_done);
+  std::string promptArbitrary(const std::string& instruction, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop, void (*done)(void) = prompt_done);
   
   /**
    * Prompt the user for an alternative and return the index
@@ -186,7 +186,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  long promptIndex(const std::string& instruction, const std::vector<std::string>& alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Prompt the user for an alternative
@@ -197,7 +197,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected alternative
    */
-  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  std::string promptList(const std::string& instruction, const std::vector<std::string>& alternatives, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Prompt the user for a file
@@ -208,7 +208,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected file, or if loadfile is true, its content
    */
-  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
+  std::string promptFile(const std::string& instruction, bool loadfile, void (*previous)(void) = prompt_noop, void (*next)(void) = prompt_noop);
   
   /**
    * Prompt multiple item selection
@@ -218,14 +218,14 @@ namespace tbrpg
    * @param   items         The items list from which to choose
    * @return                Selected items
    */
-  std::vector<std::string> promptMulti(std::string instruction, long selectcount, std::vector<std::string> items);
+  std::vector<std::string> promptMulti(const std::string& instruction, long selectcount, const std::vector<std::string>& items);
   
   /**
    * Print a list in columns
    * 
    * @param  items  The items to print
    */
-  void columnate(std::vector<std::string> items);
+  void columnate(const std::vector<std::string>& items);
   
 }
 

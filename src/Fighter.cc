@@ -38,10 +38,10 @@ namespace tbrpg
     this->name = "fighter";
     this->abilities.bonuses.detect_doors = 0.10;
     
-    for (WeaponGroup weapongroup : WEAPON_GROUPS)
+    for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       {
-	this->proficiency_chart[weapongroup].push_back(Proficiency(3, 5, 3));
-	this->proficiency_chart[weapongroup].push_back(Proficiency(3, 6, 4));
+	this->proficiency_chart[*weapongroup].push_back(Proficiency(3, 5, 3));
+	this->proficiency_chart[*weapongroup].push_back(Proficiency(3, 6, 4));
       }
   }
   

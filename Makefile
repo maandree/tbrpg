@@ -140,12 +140,12 @@ tests:
 parallel: parallel.o program
 parallel.o:
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@rm .tmp;                                                                                               \
-	((time ((echo $(NODES) ; cat compiledependencies __order) |                                             \
-	        (tools/paramake.py OPTIMISE=$(OPTIMISE) ; echo $$? > .tmp))) |&                                 \
-	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                            \
-	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                                   \
-	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'                         \
+	@rm .tmp;                                                                                           \
+	((time ((echo $(NODES) ; cat compiledependencies __order) |                                         \
+	        (tools/paramake.py OPTIMISE=$(OPTIMISE) ; echo $$? > .tmp))) |&                             \
+	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                        \
+	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                               \
+	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'                     \
 	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g') ; exit $$(cat .tmp)
 
 .PHONY: sequencial
@@ -180,7 +180,7 @@ regen:
 info: $(BOOK).info.gz
 %.info: $(BOOKDIR)%.texinfo
 	$(MAKEINFO) $^
-%.info.gz: %.info #implies rm $^
+%.info.gz: %.info #implies $(RM) $^
 	gzip -9c < $^ > $@
 
 
@@ -373,6 +373,13 @@ clean.%:
 	    if [ -f "$$file" ]; then $(RM)    "$$file"; fi;                       \
 	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi;                       \
 	done
+
+.PHONY: clean/%
+clean/%:
+	@echo -e 'Cleaning \e[36m$*\e[m'
+	@if [ -f     "$*.o"        ]; then  $(RM)     "$*.o"       ;  fi
+	@if [ -f "src/$*.h.gch"    ]; then  $(RM) "src/$*.h.gch"   ;  fi
+	@if [ -f "src/$*.hpp.gch"  ]; then  $(RM) "src/$*.hpp.gch" ;  fi
 
 
 

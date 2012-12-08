@@ -193,7 +193,7 @@ namespace tbrpg
     if (this->damage_bonus != other.damage_bonus)  return false;
     if (this->melee != other.melee)  return false;
     if (this->damage_type != other.damage_type)  return false;
-    if (this->weapon_group != other.weapon_group)  return false;
+    if (*(this->weapon_group) != *(other.weapon_group))  return false;
     return true;
   }
   
@@ -246,7 +246,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::vector<DamageType>>()(damage_type);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<WeaponGroup>()(weapon_group);
+    rc += std::hash<WeaponGroup>()(*weapon_group);
     return rc;
   }
   

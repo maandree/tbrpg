@@ -33,6 +33,13 @@
 #include "Inventory.hpp"
 #include "Spell.hpp"
 #include "Race.hpp"
+#include "Human.hpp"
+#include "HalfOrc.hpp"
+#include "HalfElf.hpp"
+#include "Elf.hpp"
+#include "Dwarf.hpp"
+#include "Gnome.hpp"
+#include "Halfling.hpp"
 
 
 /**

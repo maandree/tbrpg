@@ -156,49 +156,49 @@ namespace tbrpg
   /**
    * Bows
    */
-  static const WeaponGroup BOW = WeaponGroup("bow");
+  static const WeaponGroup* BOW = new WeaponGroup("bow");
   
   /**
    * Spiked weapons
    */
-  static const WeaponGroup SPIKED_WEAPONS = WeaponGroup("spiked weapons");
+  static const WeaponGroup* SPIKED_WEAPONS = new WeaponGroup("spiked weapons");
   
   /**
    * Small swords
    */
-  static const WeaponGroup SMALL_SWORDS = WeaponGroup("small swords");
+  static const WeaponGroup* SMALL_SWORDS = new WeaponGroup("small swords");
   
   /**
    * Large swords
    */
-  static const WeaponGroup LARGE_SWORDS = WeaponGroup("large swords");
+  static const WeaponGroup* LARGE_SWORDS = new WeaponGroup("large swords");
   
   /**
    * Axe
    */
-  static const WeaponGroup AXE = WeaponGroup("axe");
+  static const WeaponGroup* AXE = new WeaponGroup("axe");
   
   /**
    * Blunt weapons
    */
-  static const WeaponGroup BLUNT_WEAPONS = WeaponGroup("blunt weapons");
+  static const WeaponGroup* BLUNT_WEAPONS = new WeaponGroup("blunt weapons");
   
   /**
    * Missile weapons
    */
-  static const WeaponGroup MISSILE_WEAPONS = WeaponGroup("missile weapons");
+  static const WeaponGroup* MISSILE_WEAPONS = new WeaponGroup("missile weapons");
   
   /**
    * Pole-arm (pole weapons)
    */
-  static const WeaponGroup POLEARM = WeaponGroup("pole-arm");
+  static const WeaponGroup* POLEARM = new WeaponGroup("pole-arm");
   
   
   /**
    * All weapon groups
    */
-  static const std::vector<WeaponGroup> WEAPON_GROUPS = {BOW, SPIKED_WEAPONS, SMALL_SWORDS, LARGE_SWORDS,
-							 AXE, BLUNT_WEAPONS, MISSILE_WEAPONS, POLEARM};
+  static const std::vector<const WeaponGroup*> WEAPON_GROUPS = {BOW, SPIKED_WEAPONS, SMALL_SWORDS, LARGE_SWORDS,
+								AXE, BLUNT_WEAPONS, MISSILE_WEAPONS, POLEARM};
   
 }
 

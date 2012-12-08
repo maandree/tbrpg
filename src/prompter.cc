@@ -803,7 +803,7 @@ namespace tbrpg
    * 
    * @param  instruction  Instruction for the user
    */
-  void prompt_redraw(std::string instruction)
+  void prompt_redraw(const std::string& instruction)
   {
     std::cout << CSI "H" CSI "2J" << instruction;
     prompt_redraw(0);
@@ -865,7 +865,7 @@ namespace tbrpg
    * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(std::string instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* TODO colouring hooks and more editing command */
+  std::string promptArbitrary(const std::string& instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* TODO colouring hooks and more editing command */
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -1050,7 +1050,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
+  long promptIndex(const std::string& instruction, const std::vector<std::string>& alternatives, void (*previous)(void), void (*next)(void))
   {
     std::string input = promptList(instruction, alternatives, previous, next);
     if (input == "")
@@ -1071,13 +1071,13 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The select alternative
    */
-  std::string promptList(std::string instruction, std::vector<std::string> alternatives, void (*previous)(void), void (*next)(void))
+  std::string promptList(const std::string& instruction, const std::vector<std::string>& alternatives, void (*previous)(void), void (*next)(void))
   {
     prompterdata.alternatives = alternatives;
     std::sort(prompterdata.alternatives.begin(), prompterdata.alternatives.end());
     std::string input = promptArbitrary(instruction, previous, next, prompt_alternative);
     if (input != "")
-      for (std::string& alternative : alternatives)
+      for (const std::string& alternative : alternatives)
 	if (input == alternative)
 	  return alternative;
     return "";
@@ -1093,7 +1093,7 @@ namespace tbrpg
    * @param   next          Next entry hook
    * @return                The selected file, or if loadfile is true, its content
    */
-  std::string promptFile(std::string instruction, bool loadfile, void (*previous)(void), void (*next)(void))
+  std::string promptFile(const std::string& instruction, bool loadfile, void (*previous)(void), void (*next)(void))
   {
     std::string input = promptArbitrary(instruction, previous, next, prompt_file);
     if (input != "")
@@ -1149,7 +1149,7 @@ namespace tbrpg
    * @param   items         The items list from which to choose
    * @return                Selected items
    */
-  std::vector<std::string> promptMulti(std::string instruction, long selectcount, std::vector<std::string> items)
+  std::vector<std::string> promptMulti(const std::string& instruction, long selectcount, const std::vector<std::string>& items)
   {
     long remaining = selectcount;
     long above = 0, current = 0, below;
@@ -1339,7 +1339,7 @@ namespace tbrpg
    * 
    * @param  items  The items to print
    */
-  void columnate(std::vector<std::string> items)
+  void columnate(const std::vector<std::string>& items)
   {
     struct winsize termsize;
     int termwidth = 120;
@@ -1353,7 +1353,7 @@ namespace tbrpg
     
     int width = 0;
     std::vector<int> widths = std::vector<int>();
-    for (std::string item : items)
+    for (const std::string& item : items)
       {
 	int w = 0, n = 0;
 	char* cstr = (char*)(item.c_str());
@@ -1405,7 +1405,7 @@ namespace tbrpg
     char* spaces = (char*)malloc(width * 16 + 1);
     
     int y = 0, x = 0, i, j = 0, w;
-    for (std::string item : items)
+    for (const std::string& item : items)
       {
 	i = 0;
 	char* cstr =(char*)(item.c_str());
@@ -1441,6 +1441,8 @@ namespace tbrpg
 	  {
 	    for (int i = 0; i < diff; i++)
 	      {
+		if (columns[c - 1].size() == 0)
+		  break;
 		columns[c].insert(columns[c].begin(), columns[c - 1][columns[c - 1].size() - 1]);
 		columns[c - 1].pop_back();
 	      }

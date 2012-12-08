@@ -91,7 +91,7 @@ namespace tbrpg
     /**
      * The weapon group
      */
-    WeaponGroup weapon_group;
+    const WeaponGroup* weapon_group;
     
     
     

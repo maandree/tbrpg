@@ -102,8 +102,8 @@ namespace tbrpg
     this->specialisations = {};
     
     this->proficiency_chart = std::unordered_map<WeaponGroup, std::vector<Proficiency>>();
-    for (WeaponGroup weapongroup : WEAPON_GROUPS)
-      this->proficiency_chart[weapongroup] = {Proficiency(0, -1, 2), Proficiency(0, 1, 2), Proficiency(1, 3, 3)};
+    for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+      this->proficiency_chart[*weapongroup] = {Proficiency(0, -1, 2), Proficiency(0, 1, 2), Proficiency(1, 3, 3)};
   }
   
   /**

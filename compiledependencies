@@ -103,3 +103,10 @@ CharacterCreator CharacterSheet
 CharacterCreator prompter
 CharacterCreator ActionSlotChart
 CorpseMaker Body
+RuleSet Human
+RuleSet HalfOrc
+RuleSet HalfElf
+RuleSet Elf
+RuleSet Dwarf
+RuleSet Gnome
+RuleSet Halfling
