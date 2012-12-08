@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Gold>
+  {
+  public:
+    size_t operator()(tbrpg::Gold* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Paladin>
+  {
+  public:
+    size_t operator()(tbrpg::Paladin* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

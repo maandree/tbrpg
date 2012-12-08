@@ -236,6 +236,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Spell>
+  {
+  public:
+    size_t operator()(tbrpg::Spell* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

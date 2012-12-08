@@ -171,6 +171,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::ActionSlotChart>
+  {
+  public:
+    size_t operator()(tbrpg::ActionSlotChart* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

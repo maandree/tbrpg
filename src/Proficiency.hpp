@@ -174,6 +174,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Proficiency>
+  {
+  public:
+    size_t operator()(tbrpg::Proficiency* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

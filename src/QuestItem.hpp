@@ -164,6 +164,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::QuestItem>
+  {
+  public:
+    size_t operator()(tbrpg::QuestItem* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

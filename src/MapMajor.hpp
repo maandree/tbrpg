@@ -184,6 +184,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::MapMajor>
+  {
+  public:
+    size_t operator()(tbrpg::MapMajor* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

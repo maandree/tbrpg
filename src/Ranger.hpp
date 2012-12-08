@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Ranger>
+  {
+  public:
+    size_t operator()(tbrpg::Ranger* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

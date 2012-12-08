@@ -196,6 +196,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::AbilityChart>
+  {
+  public:
+    size_t operator()(tbrpg::AbilityChart* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

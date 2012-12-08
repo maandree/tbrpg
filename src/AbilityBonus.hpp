@@ -202,6 +202,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::AbilityBonus>
+  {
+  public:
+    size_t operator()(tbrpg::AbilityBonus* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Cloak>
+  {
+  public:
+    size_t operator()(tbrpg::Cloak* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

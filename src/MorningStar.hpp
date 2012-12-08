@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::MorningStar>
+  {
+  public:
+    size_t operator()(tbrpg::MorningStar* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

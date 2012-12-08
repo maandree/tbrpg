@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::PriestScroll>
+  {
+  public:
+    size_t operator()(tbrpg::PriestScroll* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

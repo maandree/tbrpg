@@ -192,6 +192,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Ammunition>
+  {
+  public:
+    size_t operator()(tbrpg::Ammunition* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

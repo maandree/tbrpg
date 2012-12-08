@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::ChainMail>
+  {
+  public:
+    size_t operator()(tbrpg::ChainMail* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

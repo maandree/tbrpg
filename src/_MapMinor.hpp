@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::_MapMinor>
+  {
+  public:
+    size_t operator()(tbrpg::_MapMinor* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

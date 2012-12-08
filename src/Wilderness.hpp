@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Wilderness>
+  {
+  public:
+    size_t operator()(tbrpg::Wilderness* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

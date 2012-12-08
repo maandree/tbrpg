@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Girdle>
+  {
+  public:
+    size_t operator()(tbrpg::Girdle* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

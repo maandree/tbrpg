@@ -188,6 +188,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Race>
+  {
+  public:
+    size_t operator()(tbrpg::Race* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

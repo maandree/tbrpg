@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::HalfOrc>
+  {
+  public:
+    size_t operator()(tbrpg::HalfOrc* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

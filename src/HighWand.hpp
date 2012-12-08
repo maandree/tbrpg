@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::HighWand>
+  {
+  public:
+    size_t operator()(tbrpg::HighWand* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

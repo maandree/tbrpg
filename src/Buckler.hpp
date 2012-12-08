@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Buckler>
+  {
+  public:
+    size_t operator()(tbrpg::Buckler* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

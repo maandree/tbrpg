@@ -199,6 +199,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Defence>
+  {
+  public:
+    size_t operator()(tbrpg::Defence* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

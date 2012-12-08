@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::ShortBow>
+  {
+  public:
+    size_t operator()(tbrpg::ShortBow* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

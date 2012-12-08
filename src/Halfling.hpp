@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Halfling>
+  {
+  public:
+    size_t operator()(tbrpg::Halfling* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

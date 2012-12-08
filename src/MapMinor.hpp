@@ -211,6 +211,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::MapMinor>
+  {
+  public:
+    size_t operator()(tbrpg::MapMinor* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

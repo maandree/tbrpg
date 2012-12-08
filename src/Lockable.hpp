@@ -182,6 +182,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Lockable>
+  {
+  public:
+    size_t operator()(tbrpg::Lockable* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

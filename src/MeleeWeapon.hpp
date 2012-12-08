@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::MeleeWeapon>
+  {
+  public:
+    size_t operator()(tbrpg::MeleeWeapon* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

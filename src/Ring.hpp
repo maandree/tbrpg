@@ -157,6 +157,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Ring>
+  {
+  public:
+    size_t operator()(tbrpg::Ring* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 
