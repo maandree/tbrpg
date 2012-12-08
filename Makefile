@@ -51,92 +51,107 @@ PREFIX=/usr
 GAMEDIR=/bin
 
 SOURCE :=
-SOURCE += $(shell find src | grep \\.cc\$$ | sort)
-SOURCE += $(shell find src | grep \\.c\$$ | sort)
-SOURCE += $(shell find src | grep \\.h\$$ | sort)
+SOURCE += $(shell find src | grep \\.cc\$$  | sort)
+SOURCE += $(shell find src | grep \\.c\$$   | sort)
+SOURCE += $(shell find src | grep \\.h\$$   | sort)
 SOURCE += $(shell find src | grep \\.hpp\$$ | sort)
 
 TEST :=
-TEST += $(shell find test | grep \\.cc\$$ | sort)
-TEST += $(shell find test | grep \\.c\$$ | sort)
-TEST += $(shell find test | grep \\.h\$$ | sort)
-TEST += $(shell find test | grep \\.hpp\$$ | sort)
+TEST += $(shell find test | grep \\.cc\$$   | sort)
+TEST += $(shell find test | grep \\.c\$$    | sort)
+TEST += $(shell find test | grep \\.h\$$    | sort)
+TEST += $(shell find test | grep \\.hpp\$$  | sort)
 TEST += $(shell find test | grep \\.text\$$ | sort)
 
-OBJS :=
-OBJS += $(shell find src | grep \\.cc\$$ | sort)
-OBJS += $(shell find src | grep \\.c\$$ | sort)
-OBJS += $(OBJS:.cc=.o)
-OBJS += $(OBJS:.c=.o)
+OBJS := $(shell (diff                                                                                                             \
+	<(      find  src | grep -v '~$$'                     | grep '\.c' | sed -e 's/\.c$$//g' | sed -e 's/\.cc$$//g'  | sort)  \
+	<(diff <(find src | grep -v '~$$'                     | grep '\.c' | sed -e 's/\.c$$//g' | sed -e 's/\.cc$$//g'  | sort)  \
+	       <(find src | grep -v '~$$' | grep -v '\.gch$$' | grep '\.h' | sed -e 's/\.h$$//g' | sed -e 's/\.hpp$$//g' | sort)  \
+	       | sed -e 's/>/</g' | grep '^< ' | sed -e 's/< //g' | sort)                                                         \
+	| grep '^< ' | sed -e 's/^< //g' | sed -e 's/^src\///g' -e 's/$$/\.o/g') || echo -n)
+
+GCHS :=
+GCHS += $(shell find src | grep '\.hpp$$' | sort | sed -e 's/$$/\.gch/g')
+GCHS += $(shell find src | grep '\.h$$'   | sort | sed -e 's/$$/\.gch/g')
 
 
+
+## BUILD BINARIES ##
+
+# DEFAULT
 all: parallel tests info pdf
 .PHONY: all
 
-
-echo-src:
-	@echo "$(SOURCE)"
 
 all-at-once: $(SOURCE)
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^
 
-%.o %.gch: src/%.cc src/%.hpp
+%.o src/%.hpp.gch: src/%.cc src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-%.gch: src/%.hpp
+%.o: src/%.cc
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-%.o %.gch: src/%.c src/%.h
+src/%.hpp.gch: src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-%.gch: src/%.h
+%.o src/%.h.gch: src/%.c src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-program: $(EXEC)
-$(EXEC): src/%.cc $(OBJS)
+%.o: src/%.c
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(OBJS)
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+
+src/%.h.gch: src/%.h
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+
+$(EXEC) program: src/program.cc $(OBJS)
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^
 
 test/%: test/%.cc $(OBJS)
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(OBJS)
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
 
 .PHONY: tests
 tests:
-	ls -1 --color=no test | grep '\.cc$$' | sed -e 's/\.cc$$//g' |  \
-	while read test; do                                             \
-	    echo -e "\e[01;34mtest/$$test\e[0m";                        \
-	    make test/"$$test";                                         \
+	@ls -1 --color=no test | grep '\.cc$$' | sed -e 's/\.cc$$//g' |  \
+	while read test; do                                              \
+	    echo -e "\e[01;34mtest/$$test\e[0m";                         \
+	    make test/"$$test";                                          \
 	done
 
 .PHONY: parallel
-parallel $(OBJS): $(SOURCE)
-	if [ ! -d bin ]; then  mkdir bin;  fi
-	rm .tmp; \
-	((time ((echo $(NODES) ; cat compiledependencies __order) | (tools/paramake.py ; echo $$? > .tmp))) |&  \
+parallel: parallel.o program
+parallel.o:
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@rm .tmp;                                                                                               \
+	((time ((echo $(NODES) ; cat compiledependencies __order) |                                             \
+	        (tools/paramake.py OPTIMISE=$(OPTIMISE) ; echo $$? > .tmp))) |&                                 \
 	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                            \
 	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                                   \
 	-e 's/^make\[1\]: Entering directory /\x1b\[2mmake\[1\]: Entering directory /g'                         \
 	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g') ; exit $$(cat .tmp)
-	make program
 
 .PHONY: sequencial
-sequencial $(OBJS): $(SOURCE)
-	if [ ! -d bin ]; then  mkdir bin;  fi
-	cat compiledependencies __order | sort | uniq | tsort | tac > .tmp1
-	ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
-	$(SHELL) -c 'diff <(sort < .tmp1 | uniq) .tmp > .tmp2 || echo -n'
-	((grep '> ' < .tmp2 | sed -e 's/> //g') ; cat .tmp1) > .tmp
-	time (count=$$(cat .tmp | wc -l);                                    \
+sequencial: sequencial.o program
+sequencial.o:
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@cat compiledependencies __order | sort | uniq | tsort | tac > .tmp1
+	@ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
+	@$(SHELL) -c 'diff <(sort < .tmp1 | uniq) .tmp > .tmp2 || echo -n'
+	@((grep '> ' < .tmp2 | sed -e 's/> //g') ; cat .tmp1) > .tmp
+	@time (count=$$(cat .tmp | wc -l);                                   \
 	index=0;                                                             \
 	cat .tmp | while read file; do                                       \
 	    index=$$(( $$index + 1 ));                                       \
 	    echo -e '\033[01;34m'$$file' ('$$index'/'$$count')\033[21;39m';  \
-	    make $$file.o || exit 100;                                       \
+	    make OPTIMISE=$(OPTIMISE) $$file.o || exit 100;                  \
 	done)
 
 
@@ -146,28 +161,27 @@ sequencial $(OBJS): $(SOURCE)
 .PHONY: regen
 regen:
 	[ "$$(git branch | grep \*)" = "* variables" ]
-	cd src; ../tools/vargen.py < ../doc/variables 2> ../__order
+	@cd src; ../tools/vargen.py < ../doc/variables 2> ../__order
 
 
 
 ## MAKE DOCUMENTATION ##
 
 info: $(BOOK).info.gz
-%.info: $(BOOKDIR)/%.texinfo
+%.info: $(BOOKDIR)%.texinfo
 	$(MAKEINFO) $^
-
-%.info.gz: %.info
-	gzip -9c $^ > $@
+%.info.gz: %.info #implies rm $^
+	gzip -9c < $^ > $@
 
 
 pdf: $(BOOK).pdf
-%.pdf: $(BOOKDIR)/%.texinfo 
+%.pdf: $(BOOKDIR)%.texinfo 
 	texi2pdf $^
 	make clean-tex clean.bak
 
 pdf.gz: $(BOOK).pdf.gz
 %.pdf.gz: %.pdf
-	gzip -9c $^ > $@
+	gzip -9c < $^ > $@
 
 pdf.xz: $(BOOK).pdf.xz
 %.pdf.xz: %.pdf
@@ -175,13 +189,13 @@ pdf.xz: $(BOOK).pdf.xz
 
 
 dvi: $(BOOK).dvi
-%.dvi: $(BOOKDIR)/%.texinfo 
+%.dvi: $(BOOKDIR)%.texinfo 
 	$(TEXI2DVI) $^
 	make clean-tex clean.bak
 
 dvi.gz: $(BOOK).dvi.gz
 %.dvi.gz: %.dvi
-	gzip -9c $^ > $@
+	gzip -9c < $^ > $@
 
 dvi.xz: $(BOOK).dvi.xz
 %.dvi.xz: %.dvi
@@ -322,16 +336,18 @@ clean: mostlyclean clean-bin
 
 .PHONY: clean-bin
 clean-bin: clean.a clean.o clean.gch clean.out
-	if [ -d "bin" ]; then  rm -r "bin";  fi
-	find ./test | grep -v \\.cc\$$ | grep -v \\.text\$$ | while read file; do  \
-	    if [ -f "$$file" ]; then $(RM) "$$file"; fi                            \
+	@echo -e 'Cleaning \e[35mbin\e[m'
+	@if [ -d "bin" ]; then  rm -r "bin";  fi
+	@find ./test | grep -v \\.cc\$$ | grep -v \\.text\$$ | while read file; do  \
+	    if [ -f "$$file" ]; then $(RM) "$$file"; fi                             \
 	done
 
 .PHONY: clean-tmp
 clean-doc:
-	if [ -f .tmp  ]; then  $(RM) .tmp ;  fi
-	if [ -f .tmp1 ]; then  $(RM) .tmp1;  fi
-	if [ -f .tmp2 ]; then  $(RM) .tmp2;  fi
+	@echo -e 'Cleaning \e[35mtmp\e[m'
+	@if [ -f .tmp  ]; then  $(RM) .tmp ;  fi
+	@if [ -f .tmp1 ]; then  $(RM) .tmp1;  fi
+	@if [ -f .tmp2 ]; then  $(RM) .tmp2;  fi
 
 .PHONY: clean-doc
 clean-doc: clean.ps clean.pdf clean.dvi clean.info
@@ -342,9 +358,10 @@ clean-tex: clean.t2d clean.aux clean.cp clean.cps clean.fn clean.ky clean.log cl
 
 .PHONY: clean.%
 clean.%:
-	find ./ | grep '\.$*$$' | grep -v '^./lab3.pdf$$' | while read file; do  \
-	    if [ -f "$$file" ]; then $(RM) "$$file"; fi                          \
-	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi                       \
+	@echo -e 'Cleaning \e[34m.$*\e[m'
+	@find ./ | grep '\.$*$$' | grep -v '^./lab3.pdf$$' | while read file; do  \
+	    if [ -f "$$file" ]; then $(RM)    "$$file"; fi;                       \
+	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi;                       \
 	done
 
 
@@ -383,6 +400,22 @@ jfbview: $(BOOK).pdf
 
 ## OTHER STUFF ##
 
+.PHONY: echo-src
+echo-src:
+	@echo "$(SOURCE)"
+
+.PHONY: echo-test
+echo-test:
+	@echo "$(TEST)"
+
+.PHONY: echo-obj
+echo-obj:
+	@echo "$(OBJS)"
+
+.PHONY: echo-gch
+echo-gch:
+	@echo "$(GCHS)"
+
 .PHONY: print
 print: $(SOURCE)
 	@for file in $?; do echo "$$file"; done
@@ -399,7 +432,8 @@ shar($(SOURCE) $(TEST)):
 dist($(SOURCE) $(TEST)):
 	@echo 'Not yet implemented'
 
+.PHONY: test check
 check: test
-test: check
+test:
 	@echo 'Not yet implemented'
 
