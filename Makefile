@@ -112,24 +112,27 @@ src/%.h.gch: src/%.h
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
 $(EXEC) program: src/program.cc $(OBJS)
+	@echo -e "\e[01;35m$(EXEC)\e[0m";
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^
 
 program.sa: src/program.cc
+	@echo -e "\e[01;35m$(EXEC)\e[0m";
 	@if [ ! -d bin ]; then  mkdir bin;  fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^ $(OBJS)
 
 test/%: test/%.cc $(OBJS)
+	@echo -e "\e[01;34m$@\e[0m";
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
 
 test/%.sa: test/%.cc
+	@echo -e "\e[01;34mtest/$*\e[0m";
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o test/$* $^ $(OBJS)
 
 .PHONY: tests
 tests:
 	@ls -1 --color=no test | grep '\.cc$$' | sed -e 's/\.cc$$//g' |  \
 	while read test; do                                              \
-	    echo -e "\e[01;34mtest/$$test\e[0m";                         \
 	    make test/"$$test";                                          \
 	done
 

@@ -50,9 +50,9 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    /*CharacterCreator creator = CharacterCreator(RuleSet());
+    CharacterCreator creator = CharacterCreator(RuleSet());
     CharacterSheet* sheet = creator.create();
-    std::cout << (sheet == nullptr ? "null" : "new") << std::endl;*/
+    std::cout << (sheet == nullptr ? "null" : "new") << std::endl;
     std::flush(std::cout);
     
     return 0;

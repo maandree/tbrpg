@@ -152,12 +152,12 @@ class MakeThread(Thread):
             self.monitor.release()
     
     def compile(self, file):
-        (pre, ext) = ('', '.o')
         (pre, ext) = ('src/', '.hpp.gch')
-        if os.path.isfile(file + '.cc') or os.path.isfile(file + '.c'):
+        if os.path.isfile(pre + file + '.cc') or os.path.isfile(pre + file + '.c'):
             (pre, ext) = ('', '.o')
-        elif os.path.isfile(file + '.h'):
+        elif os.path.isfile(pre + file + '.h'):
             (pre, ext) = ('src/', '.h.gch')
+        #print('\033[35mmake ' + ' '.join(sys.argv[1:]) + (' ' if len(sys.argv) > 1 else '') + pre + file + ext);
         return Popen(['make'] + sys.argv[1:] + [pre + file + ext], stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr).wait()
 
 for i in range(0, nodes):
