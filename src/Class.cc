@@ -66,26 +66,26 @@ namespace tbrpg
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
-    this->can_use = std::unordered_map<Item, bool>();
-    this->can_use[Hood()] = true;
-    this->can_use[Helmet()] = true;
-    this->can_use[Buckler()] = true;
-    this->can_use[SmallShield()] = true;
-    this->can_use[LeatherArmour()] = true;
-    this->can_use[StuddedLeatherArmour()] = true;
-    this->can_use[Dart()] = true;
-    this->can_use[Sling()] = true;
-    this->can_use[ThrowingDagger()] = true;
-    this->can_use[Fist()] = true;
-    this->can_use[Fists()] = true;
-    this->can_use[Bullet()] = true;
-    this->can_use[Torch()] = true;
-    this->can_use[Quarterstaff()] = true;
-    this->can_use[Dagger()] = true;
-    this->can_use[Club()] = true;
-    this->can_use[Potion()] = true;
-    this->can_use[LowScroll()] = true;
-    this->can_use[LowWand()] = true;
+    this->can_use = std::unordered_map<Item*, bool>();
+    this->can_use[new Hood()] = true;
+    this->can_use[new Helmet()] = true;
+    this->can_use[new Buckler()] = true;
+    this->can_use[new SmallShield()] = true;
+    this->can_use[new LeatherArmour()] = true;
+    this->can_use[new StuddedLeatherArmour()] = true;
+    this->can_use[new Dart()] = true;
+    this->can_use[new Sling()] = true;
+    this->can_use[new ThrowingDagger()] = true;
+    this->can_use[new Fist()] = true;
+    this->can_use[new Fists()] = true;
+    this->can_use[new Bullet()] = true;
+    this->can_use[new Torch()] = true;
+    this->can_use[new Quarterstaff()] = true;
+    this->can_use[new Dagger()] = true;
+    this->can_use[new Club()] = true;
+    this->can_use[new Potion()] = true;
+    this->can_use[new LowScroll()] = true;
+    this->can_use[new LowWand()] = true;
     
     this->lower_limits = Abilities();
     this->lower_limits.strength = 3;
@@ -204,6 +204,10 @@ namespace tbrpg
    */
   Class::~Class()
   {
+    auto ptr = this->can_use.begin();
+    auto end = this->can_use.end();
+    while (ptr != end)
+      delete (*ptr++).first;
     delete[] this->alignments;
   }
   

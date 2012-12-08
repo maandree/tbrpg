@@ -118,6 +118,11 @@ namespace tbrpg
     for (size_t i = 0; i < all_alignments.size(); i++)
       alignmentMap[all_alignments[i]] = (char)i;
     
+    std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
+    Weapon WEAPON_PROTOTYPE = Weapon();
+    int count;
+    int assignScores;
+    int eachScores;
     
     std::string* labels;
     std::string input;
@@ -248,70 +253,61 @@ namespace tbrpg
       goto _05;
     
     
-  _07:/* TODO not working */
-    goto _08;
-    {
-      std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
-      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
-	proficiencyMap[*weapongroup] = 0;
-      int count = 0;
-      Weapon WEAPON_PROTOTYPE = Weapon();
-      
-      int assignScores = 0;
-      int eachScores = 0;
-      for (Class& c : this->sheet.prestige)
-	{
-	  int candidate = c.experience_chart.proficiencies[1];
-	  if (assignScores < candidate)
-	    assignScores = candidate;
-	  candidate = c.proficiencies_each;
-	  if (eachScores < candidate)
-	    eachScores = candidate;
-	  auto ptr = c.can_use.begin();
-	  auto end = c.can_use.end();
-	  while (ptr != end)
-	    {
-	      auto entry = *ptr++;
-	      if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
-		{
-		  const WeaponGroup* wg = ((Weapon*)&(entry.first))->weapon_group;
-		  std::flush(std::cout << (wg == nullptr) << " :: ");
-		  std::flush(std::cout << ((Weapon*)&(entry.first))->name << " :: ");
-		  std::flush(std::cout << wg->name << " = ?" << std::endl);
-		  if (proficiencyMap[*wg] == 0)
-		    proficiencyMap[*wg] = ++count;
-		}
-	    }
-	}
-      
-      this->start = new int[count];
-      this->lower = new int[count];
-      this->upper = new int[count];
-      for (int i = 0; i < count; i++)
-	{
-	  this->start[i] = this->lower[i] = 0;
-	  this->upper[i] = eachScores;
-	}
-      
-      labels = new std::string[count];
-      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
-	if (proficiencyMap[*weapongroup] != 0)
-	  labels[proficiencyMap[*weapongroup] - 1] = weapongroup->name;
-      
-      ok = assign(count, assignScores, labels, genericPrinter);
-      
-      delete[] this->lower;
-      delete[] this->upper;
-      delete[] labels;
-      
-      if (ok == false)
-	goto _06;
-      
-      this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
-      for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
-	if (proficiencyMap[*weapongroup] != 0)
-	  this->sheet.proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
-    }
+  _07:
+    for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+      proficiencyMap[*weapongroup] = 0;
+    
+    count = assignScores = eachScores = 0;
+    for (Class& c : this->sheet.prestige)
+      {
+	int candidate = c.experience_chart.proficiencies[1];
+	if (assignScores < candidate)
+	  assignScores = candidate;
+	candidate = c.proficiencies_each;
+	if (eachScores < candidate)
+	  eachScores = candidate;
+	auto ptr = c.can_use.begin();
+	auto end = c.can_use.end();
+	while (ptr != end)
+	  {
+	    auto entry = *ptr++;
+	    if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
+	      {
+		const WeaponGroup* wg = ((const Weapon&)(entry.first)).weapon_group;
+		if (proficiencyMap[*wg] == 0)
+		  proficiencyMap[*wg] = ++count;
+	      }
+	  }
+      }
+    
+    this->start = new int[count];
+    this->lower = new int[count];
+    this->upper = new int[count];
+    for (int i = 0; i < count; i++)
+      {
+	this->start[i] = this->lower[i] = 0;
+	this->upper[i] = eachScores;
+      }
+    
+    labels = new std::string[count];
+    for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+      if (proficiencyMap[*weapongroup] != 0)
+	labels[proficiencyMap[*weapongroup] - 1] = weapongroup->name;
+    
+    ok = assign(count, assignScores, labels, genericPrinter);
+    
+    delete[] this->lower;
+    delete[] this->upper;
+    delete[] labels;
+    
+    if (ok == false)
+      goto _06;
+    
+    this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
+    for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
+      if (proficiencyMap[*weapongroup] != 0)
+	this->sheet.proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
+    
     hasExtra = false;
     
     

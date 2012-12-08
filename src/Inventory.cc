@@ -36,19 +36,19 @@ namespace tbrpg
   Inventory::Inventory() : Object() /* FIXME allow null */
   {
     this->class_inheritance.push_back(23);
-    this->left_hand = std::vector<Weapon>(1);
-    this->right_hand = RightHandItem();
-    this->quiver = std::vector<Ammunition>(3);
-    this->quick_items = std::vector<QuickItem>(3);
-    this->headgear = Headgear();
-    this->amulet = Amulet();
-    this->rings = std::vector<Ring>(2);
-    this->body = BodyArmour();
-    this->gauntlets = Gauntlets();
-    this->girdle = Girdle();
-    this->boots = Boots();
-    this->cloak = Cloak();
-    this->personal = std::vector<Item>(16);
+    this->left_hand = std::vector<Weapon*>(1);
+    this->right_hand = nullptr;
+    this->quiver = std::vector<Ammunition*>(3);
+    this->quick_items = std::vector<QuickItem*>(3);
+    this->headgear = nullptr;
+    this->amulet = nullptr;
+    this->rings = std::vector<Ring*>(2);
+    this->body = nullptr;
+    this->gauntlets = nullptr;
+    this->girdle = nullptr;
+    this->boots = nullptr;
+    this->cloak = nullptr;
+    this->personal = std::vector<Item*>(16);
   }
   
   /**

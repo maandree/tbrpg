@@ -49,20 +49,20 @@ namespace tbrpg
     for (long i = 2; i <= 30; i++)
       this->experience_chart.thief_abilities[i] = 5;
     
-    this->can_use[ChainMail()] = true;
-    this->can_use[LongBow()] = true;
-    this->can_use[HeavyCrossbow()] = true;
-    this->can_use[LightCrossbow()] = true;
-    this->can_use[Flail()] = true;
-    this->can_use[Halberd()] = true;
-    this->can_use[TwoHandedSword()] = true;
-    this->can_use[WarHammer()] = true;
-    this->can_use[BastardSword()] = true;
-    this->can_use[BattleAxe()] = true;
-    this->can_use[Bolt()] = true;
-    this->can_use[Mace()] = true;
-    this->can_use[MorningStar()] = true;
-    this->can_use[Spear()] = true;
+    this->can_use[new ChainMail()] = true;
+    this->can_use[new LongBow()] = true;
+    this->can_use[new HeavyCrossbow()] = true;
+    this->can_use[new LightCrossbow()] = true;
+    this->can_use[new Flail()] = true;
+    this->can_use[new Halberd()] = true;
+    this->can_use[new TwoHandedSword()] = true;
+    this->can_use[new WarHammer()] = true;
+    this->can_use[new BastardSword()] = true;
+    this->can_use[new BattleAxe()] = true;
+    this->can_use[new Bolt()] = true;
+    this->can_use[new Mace()] = true;
+    this->can_use[new MorningStar()] = true;
+    this->can_use[new Spear()] = true;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
     for (int i = 0; i <= 23; i++)

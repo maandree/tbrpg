@@ -47,17 +47,17 @@ namespace tbrpg
     this->lower_limits.intelligence = 9;
     this->abilities.bonuses.detect_doors = 0.05;
     
-    this->can_use[Hat()] = true;
-    this->can_use[Hood()] = false;
-    this->can_use[Helmet()] = false;
-    this->can_use[Buckler()] = false;
-    this->can_use[SmallShield()] = false;
-    this->can_use[LeatherArmour()] = false;
-    this->can_use[StuddedLeatherArmour()] = false;
-    this->can_use[Robe()] = true;
-    this->can_use[Club()] = false;
-    this->can_use[HighWand()] = true;
-    this->can_use[WizardScroll()] = true;
+    this->can_use[new Hat()] = true;
+    this->can_use[new Hood()] = false;
+    this->can_use[new Helmet()] = false;
+    this->can_use[new Buckler()] = false;
+    this->can_use[new SmallShield()] = false;
+    this->can_use[new LeatherArmour()] = false;
+    this->can_use[new StuddedLeatherArmour()] = false;
+    this->can_use[new Robe()] = true;
+    this->can_use[new Club()] = false;
+    this->can_use[new HighWand()] = true;
+    this->can_use[new WizardScroll()] = true;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(31);
     for (int i = 0; i <= 30; i++)

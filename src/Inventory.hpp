@@ -62,67 +62,67 @@ namespace tbrpg
     /**
      * Left hand item slots
      */
-    std::vector<Weapon> left_hand;
+    std::vector<Weapon*> left_hand;
     
     /**
      * Right hand item slot
      */
-    RightHandItem right_hand;
+    RightHandItem* right_hand;
     
     /**
      * Quiver slots
      */
-    std::vector<Ammunition> quiver;
+    std::vector<Ammunition*> quiver;
     
     /**
      * Quick item slots
      */
-    std::vector<QuickItem> quick_items;
+    std::vector<QuickItem*> quick_items;
     
     /**
      * Headgear slots
      */
-    Headgear headgear;
+    Headgear* headgear;
     
     /**
      * Amulet, necklace and locket slot
      */
-    Amulet amulet;
+    Amulet* amulet;
     
     /**
      * Ring slots
      */
-    std::vector<Ring> rings;
+    std::vector<Ring*> rings;
     
     /**
      * Body armour slot
      */
-    BodyArmour body;
+    BodyArmour* body;
     
     /**
      * Gauntlet and bracer slots
      */
-    Gauntlets gauntlets;
+    Gauntlets* gauntlets;
     
     /**
      * Girdle and belt slot
      */
-    Girdle girdle;
+    Girdle* girdle;
     
     /**
      * Boot slot
      */
-    Boots boots;
+    Boots* boots;
     
     /**
      * Cloak slot
      */
-    Cloak cloak;
+    Cloak* cloak;
     
     /**
      * Personal inventory slots
      */
-    std::vector<Item> personal;
+    std::vector<Item*> personal;
     
     
     
