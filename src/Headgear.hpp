@@ -164,7 +164,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Headgear>
+  class hash<tbrpg::Headgear*>
   {
   public:
     size_t operator()(tbrpg::Headgear* elem) const

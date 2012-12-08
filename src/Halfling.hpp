@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Halfling>
+  class hash<tbrpg::Halfling*>
   {
   public:
     size_t operator()(tbrpg::Halfling* elem) const

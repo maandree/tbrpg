@@ -210,7 +210,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::MapMinor>
+  class hash<tbrpg::MapMinor*>
   {
   public:
     size_t operator()(tbrpg::MapMinor* elem) const

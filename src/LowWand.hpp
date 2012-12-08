@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::LowWand>
+  class hash<tbrpg::LowWand*>
   {
   public:
     size_t operator()(tbrpg::LowWand* elem) const

@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ThrowingDagger>
+  class hash<tbrpg::ThrowingDagger*>
   {
   public:
     size_t operator()(tbrpg::ThrowingDagger* elem) const

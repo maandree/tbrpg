@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Paladin>
+  class hash<tbrpg::Paladin*>
   {
   public:
     size_t operator()(tbrpg::Paladin* elem) const

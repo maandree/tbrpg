@@ -170,7 +170,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Shield>
+  class hash<tbrpg::Shield*>
   {
   public:
     size_t operator()(tbrpg::Shield* elem) const

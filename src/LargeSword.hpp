@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::LargeSword>
+  class hash<tbrpg::LargeSword*>
   {
   public:
     size_t operator()(tbrpg::LargeSword* elem) const

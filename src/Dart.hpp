@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Dart>
+  class hash<tbrpg::Dart*>
   {
   public:
     size_t operator()(tbrpg::Dart* elem) const

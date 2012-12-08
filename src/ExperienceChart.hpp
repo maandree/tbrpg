@@ -210,7 +210,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ExperienceChart>
+  class hash<tbrpg::ExperienceChart*>
   {
   public:
     size_t operator()(tbrpg::ExperienceChart* elem) const

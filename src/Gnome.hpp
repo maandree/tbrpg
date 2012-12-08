@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Gnome>
+  class hash<tbrpg::Gnome*>
   {
   public:
     size_t operator()(tbrpg::Gnome* elem) const

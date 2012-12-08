@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::LeatherArmour>
+  class hash<tbrpg::LeatherArmour*>
   {
   public:
     size_t operator()(tbrpg::LeatherArmour* elem) const

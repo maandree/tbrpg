@@ -180,7 +180,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::RestInterruption>
+  class hash<tbrpg::RestInterruption*>
   {
   public:
     size_t operator()(tbrpg::RestInterruption* elem) const
