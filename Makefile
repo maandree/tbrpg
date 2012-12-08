@@ -9,11 +9,12 @@ SHELL=bash
 
 NODES=3
 OPTIMISE=-O0
-#OPTIMISE=-O3
+all: OPTIMISE = -O3
 CPPFLAGS=-DDEBUG
 CXXFLAGS=$(OPTIMISE) -g --std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS=
 
+EXEC=bin/tbrpg
 BOOK=tbrpg
 BOOKDIR=doc/
 LANG=en_GB-ise-w_accents-only
@@ -46,43 +47,65 @@ USE_SGCHECK=0
 X_LACKEY=
 USE_LACKEY=0
 
-
 PREFIX=/usr
 GAMEDIR=/bin
 
+SOURCE :=
+SOURCE += $(shell find src | grep \\.cc\$$ | sort)
+SOURCE += $(shell find src | grep \\.c\$$ | sort)
+SOURCE += $(shell find src | grep \\.h\$$ | sort)
+SOURCE += $(shell find src | grep \\.hpp\$$ | sort)
+
+TEST :=
+TEST += $(shell find test | grep \\.cc\$$ | sort)
+TEST += $(shell find test | grep \\.c\$$ | sort)
+TEST += $(shell find test | grep \\.h\$$ | sort)
+TEST += $(shell find test | grep \\.hpp\$$ | sort)
+TEST += $(shell find test | grep \\.text\$$ | sort)
+
+OBJS :=
+OBJS += $(shell find src | grep \\.cc\$$ | sort)
+OBJS += $(shell find src | grep \\.c\$$ | sort)
+OBJS += $(OBJS:.cc=.o)
+OBJS += $(OBJS:.c=.o)
 
 
 all: parallel tests info pdf
+.PHONY: all
 
 
+echo-src:
+	@echo "$(SOURCE)"
 
-code:
-	if [ ! -d bin ]; then  mkdir bin;  fi
-	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/*.{cc,hpp}
-
-%.o: src/%.cc src/%.hpp
+all-at-once: $(SOURCE)
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{cc,hpp}
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $(EXEC) $^
 
-%.o: src/%.hpp
+%.o %.gch: src/%.cc src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.hpp
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-%.o: src/%.c src/%.h
+%.gch: src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.{c,h}
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-%.o: src/%.h
+%.o %.gch: src/%.c src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c src/$*.h
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-program: src/program.cc
+%.gch: src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o bin/tbrpg src/program.cc *.o
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
-test/%: test/%.cc
-	time g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o test/$* test/$*.cc *.o
+program: $(EXEC)
+$(EXEC): src/%.cc $(OBJS)
+	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(OBJS)
 
+test/%: test/%.cc $(OBJS)
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(OBJS)
+
+.PHONY: tests
 tests:
 	ls -1 --color=no test | grep '\.cc$$' | sed -e 's/\.cc$$//g' |  \
 	while read test; do                                             \
@@ -90,7 +113,8 @@ tests:
 	    make test/"$$test";                                         \
 	done
 
-parallel:
+.PHONY: parallel
+parallel $(OBJS): $(SOURCE)
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	rm .tmp; \
 	((time ((echo $(NODES) ; cat compiledependencies __order) | (tools/paramake.py ; echo $$? > .tmp))) |&  \
@@ -100,7 +124,8 @@ parallel:
 	-e 's/^make\[1\]: Leaving directory /\x1b\[2mmake\[1\]: Leaving directory /g') ; exit $$(cat .tmp)
 	make program
 
-sequecial:
+.PHONY: sequencial
+sequencial $(OBJS): $(SOURCE)
 	if [ ! -d bin ]; then  mkdir bin;  fi
 	cat compiledependencies __order | sort | uniq | tsort | tac > .tmp1
 	ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
@@ -115,140 +140,266 @@ sequecial:
 	done)
 
 
+
+## GENERATE CODE ##
+
+.PHONY: regen
 regen:
+	[ "$$(git branch | grep \*)" = "* variables" ]
 	cd src; ../tools/vargen.py < ../doc/variables 2> ../__order
 
 
-info:
-	makeinfo "$(BOOKDIR)$(BOOK).texinfo"
-	gzip -9f "$(BOOK).info"
 
-pdf:
-	texi2pdf "$(BOOKDIR)$(BOOK).texinfo"
-	for ext in `echo aux cp cps fn ky log pg toc tp vr op ops pgs vrs`; do  \
-	    if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi            \
-	done
-	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
+## MAKE DOCUMENTATION ##
 
-soft:
-	pdfjam --pagecolor 249,249,249 -o "$(BOOK).pdf" "$(BOOK).pdf"
+info: $(BOOK).info.gz
+%.info: $(BOOKDIR)/%.texinfo
+	$(MAKEINFO) $^
 
-softer:
-	pdfjam --pagecolor 249,246,240 -o "$(BOOK).pdf" "$(BOOK).pdf"
-
-spell:
-	aspell --lang="$(LANG)" check "$(BOOKDIR)$(BOOK).texinfo"
-
-grammar:
-	link-parser < "$(BOOK)".texinfo 2>&1 | sed -e  \
-	    s/'No complete linkages found'/'\x1b[1;31mNo complete linkage found\x1b[m'/g | less -r
+%.info.gz: %.info
+	gzip -9c $^ > $@
 
 
+pdf: $(BOOK).pdf
+%.pdf: $(BOOKDIR)/%.texinfo 
+	texi2pdf $^
+	make clean-tex clean.bak
 
-valgrind: valgrind-memcheck valgrind-cachegrind valgrind-callgrind valgrind-helgrind valgrind-drd  \
-	  valgrind-massif valgrind-sgcheck valgrind-lackey
+pdf.gz: $(BOOK).pdf.gz
+%.pdf.gz: %.pdf
+	gzip -9c $^ > $@
 
-valgrind-memcheck:
-	if [ $(USE_MEMCHECK) = 1 ]; then  \
-	valgrind --tool=memcheck --leak-check=$(LEAKS) --show-possibly-lost=$(LOST)  \
-	         --leak-resolution=$(RESOLUTION) --show-reachable=$(REACHABLE)       \
-	         --undef-value-errors=$(UNDEF) --track-origins=$(ORIGINS)            \
-	         --partial-loads-ok=$(PARTIAL_OK) $(X_MEMCHECK) bin/tbrpg; fi
-
-valgrind-cachegrind:
-	if [ $(USE_CACHEGRIND) = 1 ]; then  \
-	valgrind --tool=cachegrind --cache-sim=$(CACHE) --branch-sim=$(BRANCH) $(X_CACHEGRIND) bin/tbrpg; fi
-
-valgrind-callgrind:
-	if [ $(USE_CALLGRIND) = 1 ]; then  \
-	valgrind --tool=callgrind $(X_CALLGRIND) bin/tbrpg; fi
-
-valgrind-helgrind:
-	if [ $(USE_HELGRIND) = 1 ]; then  \
-	valgrind --tool=helgrind $(X_HELGRIND) bin/tbrpg; fi
-
-valgrind-drd:
-	if [ $(USE_DRD) = 1 ]; then  \
-	valgrind --tool=drd $(X_DRD) bin/tbrpg; fi
-
-valgrind-massif:
-	if [ $(USE_MASSIF) = 1 ]; then  \
-	valgrind --tool=massif $(X_MASSIF) bin/tbrpg; fi
-
-valgrind-sgcheck:
-	if [ $(USE_SGCHECK) = 1 ]; then  \
-	valgrind --tool=sgcheck $(X_SGCHECK) bin/tbrpg; fi
-
-valgrind-lackey:
-	if [ $(USE_LACKEY) = 1 ]; then  \
-	valgrind --tool=lackey $(X_LACKEY) bin/tbrpg; fi
+pdf.xz: $(BOOK).pdf.xz
+%.pdf.xz: %.pdf
+	xz -e9 < $^ > $@
 
 
-run:
-	bin/tbrpg
+dvi: $(BOOK).dvi
+%.dvi: $(BOOKDIR)/%.texinfo 
+	$(TEXI2DVI) $^
+	make clean-tex clean.bak
+
+dvi.gz: $(BOOK).dvi.gz
+%.dvi.gz: %.dvi
+	gzip -9c $^ > $@
+
+dvi.xz: $(BOOK).dvi.xz
+%.dvi.xz: %.dvi
+	xz -e9 < $^ > $@
 
 
 
+## INSTALLING AND UNINSTALLING ##
+
+.PHONY: install
 install:
 	@echo Not implemented
 
+.PHONY: install-bin
+install-bin:
+	@echo Not implemented
+
+.PHONY: install-strip
+install-strip:
+	@echo Not implemented
+
+.PHONY: install-html
+install-html:
+	@echo Not implemented
+
+.PHONY: install-dvi
+install-dvi:
+	@echo Not implemented
+
+.PHONY: install-ps
+install-ps:
+	@echo Not implemented
+
+.PHONY: install-pdf
+install-pdf:
+	@echo Not implemented
+
+.PHONY: installcheck
+installcheck:
+	@echo Not implemented
+
+.PHONY: installdirs
+installdirs:
+	@echo Not implemented
+
+.PHONY: uninstall
 uninstall:
 	@echo Not implemented
 
 
-clean: clean-gch
+
+## MODIFY DOCUMENTATION ##
+
+.PHONY: soft
+soft: ; pdfjam --pagecolor 249,249,249 -o "$(BOOK).pdf" "$(BOOK).pdf"
+
+.PHONY: softer
+softer: ; pdfjam --pagecolor 249,246,240 -o "$(BOOK).pdf" "$(BOOK).pdf"
+
+.PHONY: spell
+spell: ; aspell --lang="$(LANG)" check "$(BOOKDIR)$(BOOK).texinfo"
+
+.PHONY: grammar
+grammar: ; link-parser < "$(BOOK)".texinfo 2>&1 | sed -e  \
+	   s/'No complete linkages found'/'\x1b[1;31mNo complete linkage found\x1b[m'/g | less -r
+
+
+
+## TESTING ##
+
+.PHONY: run
+run: $(EXEC) ; $(EXEC)
+
+.PHONY: valgrind
+valgrind: valgrind-memcheck valgrind-cachegrind valgrind-callgrind valgrind-helgrind valgrind-drd  \
+	  valgrind-massif valgrind-sgcheck valgrind-lackey
+
+.PHONY: valgrind-memcheck
+valgrind-memcheck: $(EXEC)
+	if [ $(USE_MEMCHECK) = 1 ]; then  \
+	valgrind --tool=memcheck --leak-check=$(LEAKS) --show-possibly-lost=$(LOST)  \
+	         --leak-resolution=$(RESOLUTION) --show-reachable=$(REACHABLE)       \
+	         --undef-value-errors=$(UNDEF) --track-origins=$(ORIGINS)            \
+	         --partial-loads-ok=$(PARTIAL_OK) $(X_MEMCHECK) $(EXEC); fi
+
+.PHONY: valgrind-cachegrind
+valgrind-cachegrind: $(EXEC)
+	if [ $(USE_CACHEGRIND) = 1 ]; then  \
+	valgrind --tool=cachegrind --cache-sim=$(CACHE) --branch-sim=$(BRANCH) $(X_CACHEGRIND) $(EXEC); fi
+
+.PHONY: valgrind-callgrind
+valgrind-callgrind: $(EXEC)
+	if [ $(USE_CALLGRIND) = 1 ]; then  \
+	valgrind --tool=callgrind $(X_CALLGRIND) $(EXEC); fi
+
+.PHONY: valgrind-helgrind
+valgrind-helgrind: $(EXEC)
+	if [ $(USE_HELGRIND) = 1 ]; then  \
+	valgrind --tool=helgrind $(X_HELGRIND) $(EXEC); fi
+
+.PHONY: valgrind-drd
+valgrind-drd: $(EXEC)
+	if [ $(USE_DRD) = 1 ]; then  \
+	valgrind --tool=drd $(X_DRD) $(EXEC); fi
+
+.PHONY: valgrind-massif
+valgrind-massif: $(EXEC)
+	if [ $(USE_MASSIF) = 1 ]; then  \
+	valgrind --tool=massif $(X_MASSIF) $(EXEC); fi
+
+.PHONY: valgrind-sgcheck
+valgrind-sgcheck: $(EXEC)
+	if [ $(USE_SGCHECK) = 1 ]; then  \
+	valgrind --tool=sgcheck $(X_SGCHECK) $(EXEC); fi
+
+.PHONY: valgrind-lackey
+valgrind-lackey: $(EXEC)
+	if [ $(USE_LACKEY) = 1 ]; then  \
+	valgrind --tool=lackey $(X_LACKEY) $(EXEC); fi
+
+
+
+## CLEAN ##
+
+.PHONY: maintainer-clean
+maintainer-clean: clean
+
+.PHONY: distclean realclean clobber
+distclean: realclean
+realclean: clobber
+clobber: clean
+
+.PHONY: mostlyclean
+mostlyclean: clean.gz clean.xz clean.bak clean-doc clean-tex clean-doc
+
+.PHONY: clean
+clean: mostlyclean clean-bin
+
+.PHONY: clean-bin
+clean-bin: clean.a clean.o clean.gch clean.out
 	if [ -d "bin" ]; then  rm -r "bin";  fi
-	find ./     | grep    \\.a\$$    | while read file; do  rm "$$file";  done
-	find ./     | grep    \\.o\$$    | while read file; do  rm "$$file";  done
-	find ./     | grep    \\.out\$$  | while read file; do  rm "$$file";  done
-	find ./     | grep    \\.info\$$ | while read file; do  rm "$$file";  done
-	find ./     | grep    \\.gz\$$   | while read file; do  rm "$$file";  done
-	find ./test | grep -v \\.cc\$$   | grep -v \\.text\$$   | while read file; do  rm "$$file";  done
-	if [ -f .tmp  ]; then  rm .tmp ;  fi
-	if [ -f .tmp1 ]; then  rm .tmp1;  fi
-	if [ -f .tmp2 ]; then  rm .tmp2;  fi
-	for ext in `echo aux cp cps fn ky log pg toc tp vr bak op ops pgs vrs`; do  \
-		if [ -f "$(BOOK).$$ext" ]; then  rm "$(BOOK).$$ext";  fi            \
+	find ./test | grep -v \\.cc\$$ | grep -v \\.text\$$ | while read file; do  \
+	    if [ -f "$$file" ]; then $(RM) "$$file"; fi                            \
 	done
-	if [ -d "$(BOOK).t2d" ]; then  rm -r "$(BOOK).t2d";  fi
-	if [ -f "$(BOOK).texinfo.bak" ]; then  rm "$(BOOK).texinfo.bak";  fi
-	if [ -f "$(BOOK).info" ]; then  rm "$(BOOK).info";  fi
-	if [ -f "$(BOOK).info.gz" ]; then  rm "$(BOOK).info.gz";  fi
 
-clean-gch:
-	find ./ | grep \\.gch\$$ | while read file; do  rm "$$file";  done
+.PHONY: clean-tmp
+clean-doc:
+	if [ -f .tmp  ]; then  $(RM) .tmp ;  fi
+	if [ -f .tmp1 ]; then  $(RM) .tmp1;  fi
+	if [ -f .tmp2 ]; then  $(RM) .tmp2;  fi
+
+.PHONY: clean-doc
+clean-doc: clean.ps clean.pdf clean.dvi clean.info
+
+.PHONY: clean-tex
+clean-tex: clean.t2d clean.aux clean.cp clean.cps clean.fn clean.ky clean.log clean.pg  \
+	   clean.pgs clean.toc clean.tp clean.vr clean.vrs clean.op clean.ops
+
+.PHONY: clean.%
+clean.%:
+	find ./ | grep '\.$*$$' | grep -v '^./lab3.pdf$$' | while read file; do  \
+	    if [ -f "$$file" ]; then $(RM) "$$file"; fi                          \
+	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi                       \
+	done
 
 
 
-view:
+## VIEW PDF DOCUMENT ##
+
+.PHONY: view
+view: $(BOOK).pdf
 	if [ ! $$PDF_VIEWER = '' ]; then  \
-	    $$PDF_VIEWER "$(BOOK).pdf";   \
+	    $$PDF_VIEWER $^;              \
 	else                              \
-	    xpdf "$(BOOK).pdf";           \
+	    xpdf $^;                      \
 	fi
 
-atril:
-	atril "$(BOOK).pdf"
+.PHONY: atril
+atril: $(BOOK).pdf ; atril $^
 
-evince:
-	evince "$(BOOK).pdf"
+.PHONY: evince
+evince: $(BOOK).pdf ; evince $^
 
-xpdf:
-	xpdf "$(BOOK).pdf"
+.PHONY: xpdf
+xpdf: $(BOOK).pdf ; xpdf $^
 
-okular:
-	okular "$(BOOK).pdf"
+.PHONY: okular
+okular: $(BOOK).pdf ; okular $^
 
-gs:
-	gs "$(BOOK).pdf"
+.PHONY: gs
+gs: $(BOOK).pdf ; gs $^
 
-jfbview:
-	jfbview "$(BOOK).pdf"
+.PHONY: clean
+jfbview: $(BOOK).pdf
+	jfbview $^
 	echo -en '\e[H\e[2J'
 
 
 
-.PHONY: clean clean-gch install uninstall run valgrind valgrind-memcheck valgrind-cachegrind \
-	valgrind-callgrind valgrind-helgrind valgrind-drd valgrind-massif valgrind-sgcheck \
-	valgrind-lackey view atril evince xpdf okular gs jfbview all regen parallel tests
+## OTHER STUFF ##
+
+.PHONY: print
+print: $(SOURCE)
+	@for file in $?; do echo "$$file"; done
+
+tar($(SOURCE) $(TEST)):
+	@echo 'Not yet implemented'
+
+tar.xz: tar
+	@echo 'Not yet implemented'
+
+shar($(SOURCE) $(TEST)):
+	@echo 'Not yet implemented'
+
+dist($(SOURCE) $(TEST)):
+	@echo 'Not yet implemented'
+
+check: test
+test: check
+	@echo 'Not yet implemented'
 

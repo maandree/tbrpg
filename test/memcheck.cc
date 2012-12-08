@@ -265,7 +265,7 @@ namespace tbrpg
     {auto x = new Wand(); delete x;}
     {auto x = new Wilderness(); delete x;}
     {auto x = new WizardScroll(); delete x;}
-    //{auto x = new ActionSlotChart(); delete x;}
+    {auto x = new ActionSlotChart(); delete x;}
     //{auto x = new Body(); delete x;}
     //{auto x = new CharacterCreator(); delete x;}
     //{auto x = new Character(); delete x;}

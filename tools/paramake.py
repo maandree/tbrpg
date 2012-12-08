@@ -152,7 +152,10 @@ class MakeThread(Thread):
             self.monitor.release()
     
     def compile(self, file):
-        return Popen(['make', file + '.o'], stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr).wait()
+        ext = '.gch'
+        if os.path.isfile(file + '.cc') or os.path.isfile(file + '.c'):
+            ext = '.o'
+        return Popen(['make', file + ext], stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr).wait()
 
 for i in range(0, nodes):
     thread = MakeThread(i)
