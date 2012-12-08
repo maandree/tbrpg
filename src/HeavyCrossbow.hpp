@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::HeavyCrossbow>
+  {
+  public:
+    size_t operator()(tbrpg::HeavyCrossbow* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

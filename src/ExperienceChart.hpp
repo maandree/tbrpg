@@ -208,6 +208,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::ExperienceChart>
+  {
+  public:
+    size_t operator()(tbrpg::ExperienceChart* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

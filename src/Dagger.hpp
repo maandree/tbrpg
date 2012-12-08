@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Dagger>
+  {
+  public:
+    size_t operator()(tbrpg::Dagger* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

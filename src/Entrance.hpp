@@ -178,6 +178,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Entrance>
+  {
+  public:
+    size_t operator()(tbrpg::Entrance* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

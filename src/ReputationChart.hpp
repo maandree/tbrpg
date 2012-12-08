@@ -217,6 +217,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::ReputationChart>
+  {
+  public:
+    size_t operator()(tbrpg::ReputationChart* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

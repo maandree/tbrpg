@@ -213,6 +213,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::WeaponGroup>
+  {
+  public:
+    size_t operator()(tbrpg::WeaponGroup* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

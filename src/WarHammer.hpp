@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::WarHammer>
+  {
+  public:
+    size_t operator()(tbrpg::WarHammer* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

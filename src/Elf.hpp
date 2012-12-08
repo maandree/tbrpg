@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Elf>
+  {
+  public:
+    size_t operator()(tbrpg::Elf* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

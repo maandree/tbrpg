@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Potion>
+  {
+  public:
+    size_t operator()(tbrpg::Potion* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

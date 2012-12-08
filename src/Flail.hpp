@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Flail>
+  {
+  public:
+    size_t operator()(tbrpg::Flail* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

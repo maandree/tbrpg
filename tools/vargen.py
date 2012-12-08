@@ -253,6 +253,16 @@ for line in lines:
         output += '       return elem.hash();\n'
         output += '    }\n'
         output += '  };\n'
+        output += '  \n'
+        output += '  template<>\n'
+        output += '  class hash<tbrpg::%s>\n' % className
+        output += '  {\n'
+        output += '  public:\n'
+        output += '    size_t operator()(tbrpg::%s* elem) const\n' % className
+        output += '    {\n'
+        output += '       return elem->hash();\n'
+        output += '    }\n'
+        output += '  };\n'
         output += '}\n'
         output += '\n'
         output += '\n'

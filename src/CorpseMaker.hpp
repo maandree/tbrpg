@@ -182,6 +182,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::CorpseMaker>
+  {
+  public:
+    size_t operator()(tbrpg::CorpseMaker* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

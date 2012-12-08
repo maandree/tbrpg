@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::BastardSword>
+  {
+  public:
+    size_t operator()(tbrpg::BastardSword* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

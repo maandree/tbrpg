@@ -182,6 +182,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::DamageType>
+  {
+  public:
+    size_t operator()(tbrpg::DamageType* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

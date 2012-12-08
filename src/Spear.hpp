@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Spear>
+  {
+  public:
+    size_t operator()(tbrpg::Spear* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 
