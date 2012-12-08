@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::LargeShield>
+  {
+  public:
+    size_t operator()(tbrpg::LargeShield* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

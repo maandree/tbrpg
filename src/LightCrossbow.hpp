@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::LightCrossbow>
+  {
+  public:
+    size_t operator()(tbrpg::LightCrossbow* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

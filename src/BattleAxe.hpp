@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::BattleAxe>
+  {
+  public:
+    size_t operator()(tbrpg::BattleAxe* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

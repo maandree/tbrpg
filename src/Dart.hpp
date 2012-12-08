@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Dart>
+  {
+  public:
+    size_t operator()(tbrpg::Dart* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -168,6 +168,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::SpellBook>
+  {
+  public:
+    size_t operator()(tbrpg::SpellBook* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -162,6 +162,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::BodyArmour>
+  {
+  public:
+    size_t operator()(tbrpg::BodyArmour* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

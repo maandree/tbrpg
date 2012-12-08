@@ -198,6 +198,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Road>
+  {
+  public:
+    size_t operator()(tbrpg::Road* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

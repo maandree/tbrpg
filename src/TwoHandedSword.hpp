@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::TwoHandedSword>
+  {
+  public:
+    size_t operator()(tbrpg::TwoHandedSword* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

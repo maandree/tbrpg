@@ -260,6 +260,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::CharacterSheet>
+  {
+  public:
+    size_t operator()(tbrpg::CharacterSheet* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

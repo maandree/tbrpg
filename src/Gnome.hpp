@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Gnome>
+  {
+  public:
+    size_t operator()(tbrpg::Gnome* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

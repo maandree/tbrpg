@@ -156,6 +156,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Druid>
+  {
+  public:
+    size_t operator()(tbrpg::Druid* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

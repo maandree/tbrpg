@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::MediumShield>
+  {
+  public:
+    size_t operator()(tbrpg::MediumShield* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

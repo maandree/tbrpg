@@ -162,6 +162,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::RangedWeapon>
+  {
+  public:
+    size_t operator()(tbrpg::RangedWeapon* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Sorcerer>
+  {
+  public:
+    size_t operator()(tbrpg::Sorcerer* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

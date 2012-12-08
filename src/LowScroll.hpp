@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::LowScroll>
+  {
+  public:
+    size_t operator()(tbrpg::LowScroll* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

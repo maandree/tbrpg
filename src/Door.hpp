@@ -156,6 +156,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::Door>
+  {
+  public:
+    size_t operator()(tbrpg::Door* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

@@ -177,6 +177,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::SpellProgression>
+  {
+  public:
+    size_t operator()(tbrpg::SpellProgression* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 

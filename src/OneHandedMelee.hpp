@@ -155,6 +155,16 @@ namespace std
        return elem.hash();
     }
   };
+  
+  template<>
+  class hash<tbrpg::OneHandedMelee>
+  {
+  public:
+    size_t operator()(tbrpg::OneHandedMelee* elem) const
+    {
+       return elem->hash();
+    }
+  };
 }
 
 
