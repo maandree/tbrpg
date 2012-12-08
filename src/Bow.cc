@@ -36,7 +36,7 @@ namespace tbrpg
   Bow::Bow() : RangedWeapon()
   {
     this->name = "bow";
-    this->weapon_group = BOW;
+    this->weapon_group = &BOW;
     this->hands = 2;
     this->rate_of_fire = 2;
   }

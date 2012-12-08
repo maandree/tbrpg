@@ -43,7 +43,7 @@ namespace tbrpg
     this->damage_bonus = 0;
     this->melee = true;
     this->damage_type = {};
-    this->weapon_group = BLUNT_WEAPONS;
+    this->weapon_group = &BLUNT_WEAPONS;
   }
   
   /**

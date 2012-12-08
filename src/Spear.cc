@@ -36,7 +36,7 @@ namespace tbrpg
   Spear::Spear() : TwoHandedMelee()
   {
     this->name = "spear";
-    this->weapon_group = POLEARM;
+    this->weapon_group = &POLEARM;
     this->speed_factor = 6;
     this->damage_die = 4;
     this->damage_dice = 1;

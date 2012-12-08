@@ -36,7 +36,7 @@ namespace tbrpg
   Dart::Dart() : Throwing()
   {
     this->name = "dart";
-    this->weapon_group = MISSILE_WEAPONS;
+    this->weapon_group = &MISSILE_WEAPONS;
     this->rate_of_fire = 3;
     this->speed_factor = 2;
     this->damage_die = 3;
