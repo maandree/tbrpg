@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::WizardScroll>
+  class hash<tbrpg::WizardScroll*>
   {
   public:
     size_t operator()(tbrpg::WizardScroll* elem) const

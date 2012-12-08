@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ShortBow>
+  class hash<tbrpg::ShortBow*>
   {
   public:
     size_t operator()(tbrpg::ShortBow* elem) const

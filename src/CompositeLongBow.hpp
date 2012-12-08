@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::CompositeLongBow>
+  class hash<tbrpg::CompositeLongBow*>
   {
   public:
     size_t operator()(tbrpg::CompositeLongBow* elem) const

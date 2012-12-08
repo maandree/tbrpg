@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ThrowingAxe>
+  class hash<tbrpg::ThrowingAxe*>
   {
   public:
     size_t operator()(tbrpg::ThrowingAxe* elem) const

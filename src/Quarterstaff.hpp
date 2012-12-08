@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Quarterstaff>
+  class hash<tbrpg::Quarterstaff*>
   {
   public:
     size_t operator()(tbrpg::Quarterstaff* elem) const

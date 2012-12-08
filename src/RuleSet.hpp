@@ -261,7 +261,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::RuleSet>
+  class hash<tbrpg::RuleSet*>
   {
   public:
     size_t operator()(tbrpg::RuleSet* elem) const

@@ -180,7 +180,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ActionSlotChart>
+  class hash<tbrpg::ActionSlotChart*>
   {
   public:
     size_t operator()(tbrpg::ActionSlotChart* elem) const

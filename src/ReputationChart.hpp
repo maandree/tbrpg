@@ -219,7 +219,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::ReputationChart>
+  class hash<tbrpg::ReputationChart*>
   {
   public:
     size_t operator()(tbrpg::ReputationChart* elem) const

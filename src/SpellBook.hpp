@@ -170,7 +170,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::SpellBook>
+  class hash<tbrpg::SpellBook*>
   {
   public:
     size_t operator()(tbrpg::SpellBook* elem) const

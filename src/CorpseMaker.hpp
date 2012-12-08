@@ -184,7 +184,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::CorpseMaker>
+  class hash<tbrpg::CorpseMaker*>
   {
   public:
     size_t operator()(tbrpg::CorpseMaker* elem) const

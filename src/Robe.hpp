@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Robe>
+  class hash<tbrpg::Robe*>
   {
   public:
     size_t operator()(tbrpg::Robe* elem) const

@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::LowScroll>
+  class hash<tbrpg::LowScroll*>
   {
   public:
     size_t operator()(tbrpg::LowScroll* elem) const

@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Sling>
+  class hash<tbrpg::Sling*>
   {
   public:
     size_t operator()(tbrpg::Sling* elem) const

@@ -158,7 +158,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Door>
+  class hash<tbrpg::Door*>
   {
   public:
     size_t operator()(tbrpg::Door* elem) const

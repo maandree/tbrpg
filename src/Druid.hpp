@@ -158,7 +158,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Druid>
+  class hash<tbrpg::Druid*>
   {
   public:
     size_t operator()(tbrpg::Druid* elem) const

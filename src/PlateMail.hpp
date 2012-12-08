@@ -157,7 +157,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::PlateMail>
+  class hash<tbrpg::PlateMail*>
   {
   public:
     size_t operator()(tbrpg::PlateMail* elem) const

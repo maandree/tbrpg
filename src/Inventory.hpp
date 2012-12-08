@@ -237,7 +237,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Inventory>
+  class hash<tbrpg::Inventory*>
   {
   public:
     size_t operator()(tbrpg::Inventory* elem) const

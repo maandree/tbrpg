@@ -183,7 +183,7 @@ namespace std
   };
   
   template<>
-  class hash<tbrpg::Lockable>
+  class hash<tbrpg::Lockable*>
   {
   public:
     size_t operator()(tbrpg::Lockable* elem) const
