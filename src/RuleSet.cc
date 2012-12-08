@@ -71,6 +71,14 @@ namespace tbrpg
     this->races.push_back(Dwarf());
     this->races.push_back(Gnome());
     this->races.push_back(Halfling());
+    
+    this->racial_enemies.push_back(Human());
+    this->racial_enemies.push_back(HalfOrc());
+    this->racial_enemies.push_back(HalfElf());
+    this->racial_enemies.push_back(Elf());
+    this->racial_enemies.push_back(Dwarf());
+    this->racial_enemies.push_back(Gnome());
+    this->racial_enemies.push_back(Halfling());
   }
   
   /**

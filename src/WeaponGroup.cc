@@ -35,7 +35,7 @@ namespace tbrpg
    * 
    * @param  weaponGroupName  The name of the weapon group
    */
-  WeaponGroup::WeaponGroup(const std::string weaponGroupName) : Object()
+  WeaponGroup::WeaponGroup(const std::string& weaponGroupName) : Object()
   {
     this->class_inheritance.push_back(12);
     this->name = weaponGroupName;

@@ -248,7 +248,8 @@ namespace tbrpg
       goto _05;
     
     
-  _07:
+  _07:/* TODO not working */
+    goto _08;
     {
       std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
       for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
@@ -274,6 +275,7 @@ namespace tbrpg
 	      if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
 		{
 		  const WeaponGroup* wg = ((Weapon*)&(entry.first))->weapon_group;
+		  std::flush(std::cout << (wg == nullptr) << " :: ");
 		  std::flush(std::cout << ((Weapon*)&(entry.first))->name << " :: ");
 		  std::flush(std::cout << wg->name << " = ?" << std::endl);
 		  if (proficiencyMap[*wg] == 0)
@@ -351,17 +353,17 @@ namespace tbrpg
     lower = new int[4];
     for (int i = 0; i < 4; i++)
       lower[i] = start[i];
-    labels = (std::string*)malloc(4 * sizeof(std::string));
+    labels = new std::string[4];
     *(labels + 0) = "Find traps:   ";
     *(labels + 1) = "Open locks:   ";
     *(labels + 2) = "Pick pockets: ";
     *(labels + 3) = "Stealth:      ";
     hasExtra = assignable;
-    if (assignable)
+    if ((assignable))
       ok = assign(4, assignable, labels, genericPrinter);
     else
       ok = true;
-    free(labels);
+    delete[] labels;
     delete[] lower;
     delete[] upper;
     if (ok)
@@ -375,10 +377,11 @@ namespace tbrpg
     else
       {
 	delete[] start;
-	goto _07;
+	if ((assignable))
+	  goto _07;
       }
     
-    /* Spells */
+    /* Spells *//* TODO not tested */
     {
       int wizardAssign0 = 0;
       int wizardAssign1 = 0;
@@ -424,7 +427,7 @@ namespace tbrpg
 	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 0 wizard spells", wizardAssign0, wizard0s);
 	  if (selected.size() == 0)
-	    goto _08;
+	    goto _07;
 	  for (std::string& spell : selected)
 	    this->sheet.spells.learned.push_back(wizard0Map[spell]);
 	}
@@ -434,7 +437,7 @@ namespace tbrpg
 	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 1 wizard spells", wizardAssign1, wizard1s);
 	  if (selected.size() == 0)
-	    goto _08;
+	    goto _07;
 	  for (std::string& spell : selected)
 	    this->sheet.spells.learned.push_back(wizard1Map[spell]);
 	}
@@ -444,7 +447,7 @@ namespace tbrpg
 	  hasExtra = true;
 	  std::vector<std::string> selected = promptMulti("Select level 1 priest spells", priestAssign1, priest1s);
 	  if (selected.size() == 0)
-	    goto _08;
+	    goto _07;
 	  for (std::string& spell : selected)
 	    this->sheet.spells.learned.push_back(priest1Map[spell]);
 	}
@@ -615,8 +618,11 @@ namespace tbrpg
 	      break;
 	    else if ((c == 'd') || ((c == 'D') && ! ((last <= '0') && (last <= '9'))))
 	      {
-		reading = false;
-		break;
+		if (leftover == 0)
+		  {
+		    reading = false;
+		    break;
+		  }
 	      }
 	    else if ((c == 'r') || (c == 'R'))
 	      {
