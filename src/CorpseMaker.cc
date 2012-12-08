@@ -36,9 +36,9 @@ namespace tbrpg
   CorpseMaker::CorpseMaker() : Object()
   {
     this->class_inheritance.push_back(78);
-    this->strenght_weight = (int*)malloc(26 * sizeof(int));
-    this->strenght18_weight = (int*)malloc(101 * sizeof(int));
-    this->constitution_weight = (int*)malloc(26 * sizeof(int));
+    this->strenght_weight = new int[26];
+    this->strenght18_weight = new int[101];
+    this->constitution_weight = new int[26];
     
     for (long i = 0; i <= 25; i++)
 	this->constitution_weight[i] = 500 * i;
@@ -69,9 +69,16 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(const CorpseMaker& original) : Object(original)
   {
-    this->strenght_weight = original.strenght_weight;
-    this->strenght18_weight = original.strenght18_weight;
-    this->constitution_weight = original.constitution_weight;
+    this->strenght_weight = new int[26];
+    this->strenght18_weight = new int[101];
+    this->constitution_weight = new int[26];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strenght_weight[i] = original.strenght_weight[i];
+	this->constitution_weight[i] = original.constitution_weight[i];
+      }
+    for (long i = 0; i < 101; i++)
+      this->strenght18_weight[i] = original.strenght18_weight[i];
   }
   
   /**
@@ -81,9 +88,16 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(CorpseMaker& original) : Object(original)
   {
-    this->strenght_weight = original.strenght_weight;
-    this->strenght18_weight = original.strenght18_weight;
-    this->constitution_weight = original.constitution_weight;
+    this->strenght_weight = new int[26];
+    this->strenght18_weight = new int[101];
+    this->constitution_weight = new int[26];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strenght_weight[i] = original.strenght_weight[i];
+	this->constitution_weight[i] = original.constitution_weight[i];
+      }
+    for (long i = 0; i < 101; i++)
+      this->strenght18_weight[i] = original.strenght18_weight[i];
   }
   
   /**
@@ -93,6 +107,9 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker(CorpseMaker&& original) : Object(original)
   {
+    this->strenght_weight = new int[26];
+    this->strenght18_weight = new int[101];
+    this->constitution_weight = new int[26];
     std::swap(this->strenght_weight, original.strenght_weight);
     std::swap(this->strenght18_weight, original.strenght18_weight);
     std::swap(this->constitution_weight, original.constitution_weight);
@@ -105,9 +122,9 @@ namespace tbrpg
    */
   CorpseMaker::~CorpseMaker()
   {
-    free(this->strenght_weight);
-    free(this->strenght18_weight);
-    free(this->constitution_weight);
+    delete[] this->strenght_weight;
+    delete[] this->strenght18_weight;
+    delete[] this->constitution_weight;
   }
   
   
@@ -121,9 +138,13 @@ namespace tbrpg
   CorpseMaker& CorpseMaker::operator =(const CorpseMaker& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->strenght_weight = original.strenght_weight;
-    this->strenght18_weight = original.strenght18_weight;
-    this->constitution_weight = original.constitution_weight;
+    for (long i = 0; i < 26; i++)
+      {
+	this->strenght_weight[i] = original.strenght_weight[i];
+	this->constitution_weight[i] = original.constitution_weight[i];
+      }
+    for (long i = 0; i < 101; i++)
+      this->strenght18_weight[i] = original.strenght18_weight[i];
     return *this;
   }
   
@@ -136,9 +157,13 @@ namespace tbrpg
   CorpseMaker& CorpseMaker::operator =(CorpseMaker& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->strenght_weight = original.strenght_weight;
-    this->strenght18_weight = original.strenght18_weight;
-    this->constitution_weight = original.constitution_weight;
+    for (long i = 0; i < 26; i++)
+      {
+	this->strenght_weight[i] = original.strenght_weight[i];
+	this->constitution_weight[i] = original.constitution_weight[i];
+      }
+    for (long i = 0; i < 101; i++)
+      this->strenght18_weight[i] = original.strenght18_weight[i];
     return *this;
   }
   
