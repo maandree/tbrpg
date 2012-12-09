@@ -44,6 +44,12 @@ namespace tbrpg
    */
   class Object
   {
+  private:
+    /**
+     * The actual instance of this object
+     */
+    void* actual_instance;
+    
   public:
     /**
      * Class inheritance vector
@@ -145,6 +151,14 @@ namespace tbrpg
      * @return         Whether the right comparand is an instance of the left comparand's class
      */
     bool operator <=(const Object& other) const;
+    
+    
+    /**
+     * Gets the actual instance of this object
+     * 
+     * @return  The actual instance of this object
+     */
+    void* getActional();
     
     
   protected:
