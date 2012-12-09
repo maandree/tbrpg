@@ -3226,6 +3226,7 @@ uniform stocastic distribution: D10 and D24.
 * Score assignment menus::     Using score assignment menus.
 * Multiselection menus::       Using multiselection menus.
 * Line input::                 Line input.
+* Dialogues::                  Dialogue.
 @end menu
 
 
@@ -3367,6 +3368,28 @@ Remove the selected portion of the input.
 Redraw the prompt, useful if printk or something else have
 printed over the input.
 @end table
+
+
+@node Dialogues
+@section Dialogues
+@cindex dialogues
+@cindex input, dialogues
+
+Dialogues are one of the major parts of the game. Caution,
+depending on the game senario low intelligence, may cause
+a character to not be able to speak properly.
+
+You can walk a ways from a dialog by pressing @kbd{C-g},
+otherwise you press @kbd{enter} or @kbd{spacebar}.
+Often, but not always, you can reply, in this case, you
+select a reply and press @kbd{enter} or @kbd{spacebar}.
+Use the @kbd{up} and @kbd{down} arrow keys to navigate,
+or use the number in front of the reply to select it
+directly without having to press @kbd{enter} or
+@kbd{spacebar}.
+
+If the dialogue have been obstructed by printk or something
+similar, you can press @kbd{C-l} to redraw the dialogue.
 
 
 
