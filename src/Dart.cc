@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dart::Dart() : Throwing()
   {
+    this->class_inheritance.push_back(59);
     this->name = "dart";
     this->weapon_group = MISSILE_WEAPONS;
     this->rate_of_fire = 3;

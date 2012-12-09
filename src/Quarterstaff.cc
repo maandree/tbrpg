@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Quarterstaff::Quarterstaff() : TwoHandedMelee()
   {
+    this->class_inheritance.push_back(56);
     this->name = "quarterstaff";
     this->weapon_group = BLUNT_WEAPONS;
     this->speed_factor = 4;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   QuestItem::QuestItem() : Item()
   {
+    this->class_inheritance.push_back(17);
     this->name = "quest item";
     this->unit_value = -1;
     this->id = 0;

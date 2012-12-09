@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ShortSword::ShortSword() : OneHandedMelee()
   {
+    this->class_inheritance.push_back(45);
     this->name = "short sword";
     this->weapon_group = SMALL_SWORDS;
     this->speed_factor = 3;

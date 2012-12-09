@@ -35,7 +35,7 @@ namespace tbrpg
    */
   SpellBook::SpellBook() : Object()
   {
-    this->class_inheritance.push_back(26);
+    this->class_inheritance.push_back(30);
     this->learned = {};
     this->memorised = {};
   }

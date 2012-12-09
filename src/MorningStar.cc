@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MorningStar::MorningStar() : BluntWeapon()
   {
+    this->class_inheritance.push_back(40);
     this->name = "morning star";
     this->weapon_group = SPIKED_WEAPONS;
     this->speed_factor = 7;

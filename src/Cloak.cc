@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Cloak::Cloak() : Item()
   {
-    this->class_inheritance.push_back(48);
+    this->class_inheritance.push_back(100);
     this->name = "cloak";
   }
   

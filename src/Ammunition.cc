@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Ammunition::Ammunition() : Item()
   {
+    this->class_inheritance.push_back(11);
     this->quantity_limit = 20;
     this->hit_bonus = 0;
     this->damage_die = 2;

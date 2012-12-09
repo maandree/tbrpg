@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Wizard::Wizard() : Class()
   {
-    this->class_inheritance.push_back(49);
+    this->class_inheritance.push_back(110);
     this->hit_points = 4;
     this->thac0 = 25;
     this->lore_bonus = 3;

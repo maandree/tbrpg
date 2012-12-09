@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Ranger::Ranger() : Warrior()
   {
+    this->class_inheritance.push_back(108);
     this->name = "ranger";
     this->have_racial_enemy = true;
     for (int i = 0; i < 6; i++)

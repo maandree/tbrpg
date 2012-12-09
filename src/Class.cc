@@ -35,8 +35,8 @@ namespace tbrpg
    */
   Class::Class() : Object()
   {
+    this->class_inheritance.push_back(20);
     this->name = "?";
-    this->class_inheritance.push_back(16);
     this->hit_points = 8;
     this->thac0 = 10;
     this->lore_bonus = 1;

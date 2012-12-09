@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Sorcerer::Sorcerer() : Wizard()
   {
+    this->class_inheritance.push_back(102);
     this->name = "sorcerer";
     this->experience_chart.selectable_wizard = {0, 3};
   }

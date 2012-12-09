@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Dwarf::Dwarf() : Race()
   {
-    this->class_inheritance.push_back(57);
+    this->class_inheritance.push_back(118);
     this->name = "dwarf";
     this->bonuses.bonuses.detect_doors = 0.10;
     this->bonuses.bonuses.magic_defence_bonus = 1.00;

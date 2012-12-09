@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LeatherArmour::LeatherArmour() : BodyArmour()
   {
-    this->class_inheritance.push_back(34);
+    this->class_inheritance.push_back(84);
     this->name = "leather armour";
     this->armour_class = 8;
     this->armour_class_modifiers[PIERCING] = 2;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Weapon::Weapon() : RightHandItem()
   {
+    this->class_inheritance.push_back(12);
     this->hands = 1;
     this->speed_factor = 5;
     this->hit_bonus = 0;

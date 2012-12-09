@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Halberd::Halberd() : TwoHandedMelee()
   {
+    this->class_inheritance.push_back(53);
     this->name = "halberd";
     this->weapon_group = POLEARM;
     this->speed_factor = 9;

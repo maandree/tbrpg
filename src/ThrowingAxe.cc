@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ThrowingAxe::ThrowingAxe() : Throwing()
   {
+    this->class_inheritance.push_back(57);
     this->name = "throwing axe";
     this->weapon_group = AXE;
     this->rate_of_fire = 1;

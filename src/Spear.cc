@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Spear::Spear() : TwoHandedMelee()
   {
+    this->class_inheritance.push_back(55);
     this->name = "spear";
     this->weapon_group = POLEARM;
     this->speed_factor = 6;

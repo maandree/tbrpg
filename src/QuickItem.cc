@@ -35,7 +35,7 @@ namespace tbrpg
    */
   QuickItem::QuickItem() : Item()
   {
-    this->class_inheritance.push_back(29);
+    this->class_inheritance.push_back(76);
     this->name = "quick item";
   }
   

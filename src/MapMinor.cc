@@ -35,7 +35,7 @@ namespace tbrpg
    */
   MapMinor::MapMinor() : _MapMinor()
   {
-    this->class_inheritance.push_back(67);
+    this->class_inheritance.push_back(128);
     this->may_rest = true;
     this->area = 100;
     this->description = "";

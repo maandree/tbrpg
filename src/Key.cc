@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Key::Key() : QuestItem()
   {
+    this->class_inheritance.push_back(93);
     this->name = "key";
   }
   

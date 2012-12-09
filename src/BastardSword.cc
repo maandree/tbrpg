@@ -35,6 +35,7 @@ namespace tbrpg
    */
   BastardSword::BastardSword() : LargeSword()
   {
+    this->class_inheritance.push_back(48);
     this->name = "bastard sword";
     this->speed_factor = 8;
     this->damage_die = 4;

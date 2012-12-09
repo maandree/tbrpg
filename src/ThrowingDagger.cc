@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ThrowingDagger::ThrowingDagger() : Throwing()
   {
+    this->class_inheritance.push_back(58);
     this->name = "throwing dagger";
     this->weapon_group = SMALL_SWORDS;
     this->rate_of_fire = 2;

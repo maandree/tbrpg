@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Amulet::Amulet() : Item()
   {
-    this->class_inheritance.push_back(44);
+    this->class_inheritance.push_back(96);
     this->name = "amulet";
   }
   

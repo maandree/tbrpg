@@ -37,7 +37,7 @@ namespace tbrpg
    */
   DamageType::DamageType(std::string damageTypeName) : Object()
   {
-    this->class_inheritance.push_back(11);
+    this->class_inheritance.push_back(14);
     this->name = damageTypeName;
   }
   
@@ -48,7 +48,6 @@ namespace tbrpg
    */
   DamageType::DamageType(const DamageType& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
   }
   
@@ -59,7 +58,6 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType& original) : Object(original)
   {
-    (void) original;
     this->name = original.name;
   }
   
@@ -70,7 +68,6 @@ namespace tbrpg
    */
   DamageType::DamageType(DamageType&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->name, original.name);
   }
   

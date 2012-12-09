@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Inventory::Inventory() : Object() /* FIXME allow null */
   {
-    this->class_inheritance.push_back(23);
+    this->class_inheritance.push_back(27);
     this->left_hand = std::vector<Weapon>(1);
     this->right_hand = RightHandItem();
     this->quiver = std::vector<Ammunition>(3);

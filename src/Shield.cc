@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Shield::Shield() : RightHandItem()
   {
+    this->class_inheritance.push_back(33);
     this->name = "shield";
     this->armour_class_modifiers[SLASHING] = -1;
     this->armour_class_modifiers[PIERCING] = -1;

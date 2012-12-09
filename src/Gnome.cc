@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gnome::Gnome() : Race()
   {
-    this->class_inheritance.push_back(59);
+    this->class_inheritance.push_back(120);
     this->name = "gnome";
     this->bonuses.abilities.intelligence = 1;
     this->bonuses.abilities.wisdom = -1;
