@@ -37,6 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance = std::vector<short>();
     this->class_inheritance.push_back(0);
+    this->actual_instance = (void*)this;
   }
   
   /**
@@ -47,6 +48,7 @@ namespace tbrpg
   Object::Object(const Object& original)
   {
     this->class_inheritance = original.class_inheritance;
+    this->actual_instance = original.actual_instance;
   }
   
   /**
@@ -57,6 +59,7 @@ namespace tbrpg
   Object::Object(Object& original)
   {
     this->class_inheritance = original.class_inheritance;
+    this->actual_instance = original.actual_instance;
   }
   
   /**
@@ -67,6 +70,7 @@ namespace tbrpg
   Object::Object(Object&& original)
   {
     std::swap(this->class_inheritance, original.class_inheritance);
+    std::swap(this->actual_instance, original.actual_instance);
   }
   
   
@@ -90,6 +94,7 @@ namespace tbrpg
   Object& Object::operator =(const Object& original)
   {
     this->class_inheritance = original.class_inheritance;
+    this->actual_instance = original.actual_instance;
     return *this;
   }
   
@@ -102,6 +107,7 @@ namespace tbrpg
   Object& Object::operator =(Object& original)
   {
     this->class_inheritance = original.class_inheritance;
+    this->actual_instance = original.actual_instance;
     return *this;
   }
   
@@ -114,6 +120,7 @@ namespace tbrpg
   Object& Object::operator =(Object&& original)
   {
     std::swap(this->class_inheritance, original.class_inheritance);
+    std::swap(this->actual_instance, original.actual_instance);
     return *this;
   }
   
@@ -171,6 +178,18 @@ namespace tbrpg
   {
     return (*this == other) == false;
   }
+  
+  
+  /**
+   * Gets the actual instance of this object
+   * 
+   * @return  The actual instance of this object
+   */
+  void* Object::getActional()
+  {
+    return this->actual_instance;
+  }
+  
   
   /**
    * Copy method
