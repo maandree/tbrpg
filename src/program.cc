@@ -21,7 +21,7 @@
 #include <stdlib.h>
 
 #include "cleaner.hpp"
-#include "CharacterCreator.hpp"
+#include "prompter.hpp"
 
 
 /**
@@ -51,10 +51,8 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    CharacterCreator creator = CharacterCreator(RuleSet());
-    CharacterSheet* sheet = creator.create();
-    std::cout << (sheet == nullptr ? "null" : "new") << std::endl;
-    std::flush(std::cout);
+    if (promptDialogue(2, "Tutor", "This is just\na simple\ndialogue.", {}) != -1)
+      std::flush(std::cout << promptDialogue(2, "Tutor", "Now you can select a reply.", {"one line", "two\nlines", "three\n\nlines"}) << std::endl);
     
     cleaner::clean();
     

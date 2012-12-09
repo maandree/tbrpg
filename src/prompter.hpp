@@ -221,6 +221,17 @@ namespace tbrpg
   std::vector<std::string> promptMulti(const std::string& instruction, long selectcount, const std::vector<std::string>& items);
   
   /**
+   * Prompt the user with a dialogue
+   * 
+   * @param   colour        The colour of the person with whom you are speaking
+   * @param   name          The name of the person with whom you are speaking
+   * @param   message       The received message
+   * @param   alternatives  Alternatives
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives);
+  
+  /**
    * Print a list in columns
    * 
    * @param  items  The items to print

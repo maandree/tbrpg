@@ -306,10 +306,8 @@ namespace tbrpg
     prompterdata.tmp = __malloc_string(prompterdata.before + prompterdata.after + 1);
     for (long i = 0; i < prompterdata.before; i++)
       *(prompterdata.tmp)++ = *(prompterdata.bp + i);
-    //free(prompterdata.bp);
     for (long i = prompterdata.after - 1; i >= 0; i--)
       *(prompterdata.tmp)++ = *(prompterdata.ap + i);
-    //free(prompterdata.ap);
     *prompterdata.tmp = 0;
     prompterdata.tmp -= prompterdata.before + prompterdata.after;
     
@@ -1341,6 +1339,185 @@ namespace tbrpg
 	    rc.push_back(items[(i << 3) | j]);
     
     free(selected);
+    return rc;
+  }
+  
+  
+  /**
+   * Prompt the user with a dialogue
+   * 
+   * @param   colour        The colour of the person with whom you are speaking
+   * @param   name          The name of the person with whom you are speaking
+   * @param   message       The received message
+   * @param   alternatives  Alternatives
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives)
+  {
+    __store_tty();
+    long selected = 0;
+    long rc = 0;
+    
+  _redo:
+    std::cout << CSI "?25l" CSI "H" CSI "2J" CSI "01;3" << (int)colour << "m" << name << CSI "21;39m" << std::endl
+	      << std::endl
+	      << message << std::endl
+	      << std::endl;
+    
+    if (alternatives.size() == 0)
+      {
+	std::cout << CSI "01m  [ Press enter or spacebar to continue ]" CSI "21m" << std::endl << std::endl;
+	std::flush(std::cout);
+	
+	for (;;)
+	  {
+	    char c;
+	    if (read(STDIN_FILENO, &c, 1) <= 0)
+	      c = '\n';
+	    
+	    if ((c == ' ') || (c == '\n'))
+	      break;
+	    if (c == CTRL('G'))
+	      {
+		rc = -1;
+		break;
+	      }
+	    if (c == CTRL('L'))
+	      goto _redo;
+	  }
+      }
+    else
+      {
+	#define __index(i)  ((char)((((i) + 1) <= 10) ? ('0' + (((i) + 1) % 10)) : ('a' + (((i) + 1) - 11))))
+	
+	long* linemap = new long[alternatives.size() + 1];
+	long totallines = 0;
+	long last = alternatives.size() - 1;
+	
+	std::vector<std::string> alts = {};
+	
+        #define __printdialogue(alt, i)						     \
+	  std::cout << CSI "01m" CSI "31m" << __index(i) << CSI "39m." CSI "21m  ";  \
+	  if (i == selected)							     \
+	    std::cout << CSI "01;34m";						     \
+	  std::cout << (alt);							     \
+	  if (i == selected)							     \
+	    std::cout << CSI "21;39m";						     \
+	  std::cout << std::endl << std::endl
+	
+	
+	long index = 0;
+	for (const std::string& alternative : alternatives)
+	  {
+	    int lines = 0;
+	    const char* cstr = alternative.c_str();
+	    while ((*cstr))
+	      if (*cstr++ == '\n')
+		lines++;
+	    cstr = alternative.c_str();
+	    char* str = (char*)malloc(lines * 4 + 1 + alternative.size());
+	    char* _str = str;
+	    char chr;
+	    while ((chr = *str++ = *cstr++))
+	      if (chr == '\n')
+		{
+		  *str++ = ' ';
+		  *str++ = ' ';
+		  *str++ = ' ';
+		  *str++ = ' ';
+		}
+	    alts.push_back(std::string(_str));
+	    free(_str);
+	    __printdialogue(alts[index], index);
+	    linemap[index++] = totallines;
+	    totallines += lines + 2;
+	  }
+	linemap[alternatives.size()] = totallines + 1;
+	
+	
+	std::flush(std::cout);
+	
+	#define __printdialogue2(i, j)				       \
+	  std::cout << CSI << (totallines - linemap[i]) << "A";	       \
+	  __printdialogue(alts[i], i);				       \
+	  if (totallines - linemap[i + 1] > 0)			       \
+	    std::cout << CSI << (totallines - linemap[i + 1]) << "B";  \
+	  std::cout << CSI << (totallines - linemap[j]) << "A";	       \
+	  __printdialogue(alts[j], j);				       \
+	  if (totallines - linemap[j + 1] > 0)			       \
+	    std::cout << CSI << (totallines - linemap[j + 1]) << "B"
+	
+	char lastc = 0, c = 0;
+	for (;;)
+	  {
+	    lastc = c;
+	    if (read(STDIN_FILENO, &c, 1) <= 0)
+	      c = CTRL('G');
+	    
+	    if ((c == ' ') || (c == '\n') || ((lastc == '[') && (c == 'C')))
+	      {
+		rc = selected;
+		break;
+	      }
+	    if (c == CTRL('G'))
+	      {
+		rc = -1;
+		break;
+	      }
+	    if (c == CTRL('L'))
+	      {
+		delete[] linemap;
+		goto _redo;
+	      }
+	    
+	    if ((lastc == '[') && (c == 'A'))
+	      {
+		if (selected == 0)
+		  continue;
+		selected--;
+		__printdialogue2(selected + 1, selected);
+		std::flush(std::cout);
+	      }
+	    else if ((lastc == '[') && (c == 'B'))
+	      {
+		if ((size_t)(selected + 1) == alts.size())
+		  continue;
+		selected++;
+		__printdialogue2(selected - 1, selected);
+		std::flush(std::cout);
+	      }
+	    
+	    if (lastc == '[')
+	      continue;
+	    
+	    long newsel = -1;
+	    if (('1' <= c) && (c <= '9') && (c <= __index(last)))
+	      newsel = (long)(c - '1');
+	    else if ((c == '0') && (alts.size() >= 10))
+	      newsel = 9;
+	    else if (('a' <= c) && (c <= __index(last)))
+	      newsel = (long)(c - 'a' + 10);
+	    
+	    if (newsel >= 0)
+	      {
+		long oldsel = selected;
+		__printdialogue2(oldsel, newsel);
+		std::flush(std::cout);
+		selected = newsel;
+		break;
+	      }
+	  }
+	
+	delete[] linemap;
+	
+	#undef __printdialogue2
+	#undef __printdialogue
+	#undef __index
+      }
+    
+    std::flush(std::cout << CSI "H" CSI "2J" CSI "?25h");
+    __restore_tty();
+    
     return rc;
   }
   

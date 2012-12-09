@@ -3318,7 +3318,7 @@ the selection portion of the input.
 @item C-spacebar
 @itemx C-@@
 @itemx C-c
-Set or deactive mark.
+Set or deactivate mark.
 @item home
 @itemx C-a
 Go to the beginning of the input.
