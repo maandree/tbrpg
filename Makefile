@@ -89,6 +89,11 @@ all-at-once: $(SOURCE)
 
 %.o src/%.hpp.gch: src/%.cc src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@if [ ! -d /dev/shm/tbrpg ]; then  mkdir /dev/shm/tbrpg;  fi
+	@if [ ! -L "src/$*.hpp.gch" ]; then                                  \
+	     if [ -e "src/$*.hpp.gch" ]; then  $(RM) "src/$*.hpp.gch";  fi;  \
+	     ln -s "/dev/shm/tbrpg/$*.hpp.gch" "src/$*.hpp.gch";             \
+	 fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
 %.o: src/%.cc
@@ -97,10 +102,20 @@ all-at-once: $(SOURCE)
 
 src/%.hpp.gch: src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@if [ ! -d /dev/shm/tbrpg ]; then  mkdir /dev/shm/tbrpg;  fi
+	@if [ ! -L "$@" ]; then                       \
+	     if [ -e "$@" ]; then  $(RM) "$@";  fi;   \
+	     ln -s "/dev/shm/tbrpg/$*.hpp.gch" "$@";  \
+	 fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
 %.o src/%.h.gch: src/%.c src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@if [ ! -d /dev/shm/tbrpg ]; then  mkdir /dev/shm/tbrpg;  fi
+	@if [ ! -L "src/$*.h.gch" ]; then                                \
+	     if [ -e "src/$*.h.gch" ]; then  $(RM) "src/$*.h.gch";  fi;  \
+	     ln -s "/dev/shm/tbrpg/$*.h.gch" "src/$*.h.gch";             \
+	 fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
 %.o: src/%.c
@@ -109,6 +124,11 @@ src/%.hpp.gch: src/%.hpp
 
 src/%.h.gch: src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
+	@if [ ! -d /dev/shm/tbrpg ]; then  mkdir /dev/shm/tbrpg;  fi
+	@if [ ! -L "$@" ]; then                      \
+	     if [ -e "$@" ]; then  $(RM) "$@";  fi;  \
+	     ln -s "/dev/shm/tbrpg/$*.h.gch" "$@";   \
+	 fi
 	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
 
 $(EXEC) program: src/program.cc $(OBJS)
@@ -380,6 +400,8 @@ clean/%:
 	@if [ -f     "$*.o"        ]; then  $(RM)     "$*.o"       ;  fi
 	@if [ -f "src/$*.h.gch"    ]; then  $(RM) "src/$*.h.gch"   ;  fi
 	@if [ -f "src/$*.hpp.gch"  ]; then  $(RM) "src/$*.hpp.gch" ;  fi
+	@if [ -f "/dev/shm/tbrpg/$*.h.gch"    ]; then  $(RM) "/dev/shm/tbrpg/$*.h.gch"   ;  fi
+	@if [ -f "/dev/shm/tbrpg/$*.hpp.gch"  ]; then  $(RM) "/dev/shm/tbrpg/$*.hpp.gch" ;  fi
 
 
 

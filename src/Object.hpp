@@ -158,7 +158,7 @@ namespace tbrpg
      * 
      * @return  The actual instance of this object
      */
-    void* getActional();
+    void* getActual() const;
     
     
   protected:

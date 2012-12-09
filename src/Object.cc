@@ -185,7 +185,7 @@ namespace tbrpg
    * 
    * @return  The actual instance of this object
    */
-  void* Object::getActional()
+  void* Object::getActual() const
   {
     return this->actual_instance;
   }

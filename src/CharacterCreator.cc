@@ -87,6 +87,42 @@ namespace tbrpg
    */
   CharacterSheet* CharacterCreator::create()
   {
+    std::flush(std::cout << (PROTOTYPE(Item) >= PROTOTYPE(Object)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(RightHandItem) >= PROTOTYPE(Item)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(Weapon) >= PROTOTYPE(RightHandItem)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(Shield) >= PROTOTYPE(Weapon)) << std::endl);
+    
+    std::flush(std::cout << std::endl);
+    
+    std::flush(std::cout << (PROTOTYPE(Item) >= PROTOTYPE(Object)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(RightHandItem) >= PROTOTYPE(Item)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(Shield) >= PROTOTYPE(RightHandItem)) << std::endl);
+    std::flush(std::cout << (PROTOTYPE(Weapon) >= PROTOTYPE(Shield)) << std::endl);
+    
+    std::flush(std::cout << std::endl);
+    
+    for (short t : PROTOTYPE(Object).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(Item).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(RightHandItem).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(Weapon).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(Shield).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(Sling).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    for (short t : PROTOTYPE(Buckler).class_inheritance)
+      std::cout << t << "  ";
+    std::flush(std::cout << std::endl);
+    
     std::vector<std::string> genders = {"male", "female"};
     
     std::vector<std::string> races = std::vector<std::string>();
@@ -120,7 +156,7 @@ namespace tbrpg
       alignmentMap[all_alignments[i]] = (char)i;
     
     std::unordered_map<WeaponGroup, int> proficiencyMap = std::unordered_map<WeaponGroup, int>();
-    Weapon WEAPON_PROTOTYPE = Weapon();
+    Weapon WEAPON_PROTOTYPE = PROTOTYPE(Weapon);
     int count;
     int assignScores;
     int eachScores;
@@ -274,7 +310,11 @@ namespace tbrpg
 	    auto entry = *ptr++;
 	    if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
 	      {
-		const WeaponGroup* wg = ((const Weapon&)(entry.first)).weapon_group;
+		std::flush(std::cout << entry.first.name << "  ");
+		std::flush(std::cout << ((Weapon&)*(Item*)(entry.first.getActual())).weapon_group->name << std::endl);
+		
+		Weapon* w = static_cast<Weapon*>(entry.first.getActual());
+		const WeaponGroup* wg = w->weapon_group;
 		if (proficiencyMap[*wg] == 0)
 		  proficiencyMap[*wg] = ++count;
 	      }
