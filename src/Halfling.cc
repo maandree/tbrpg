@@ -48,14 +48,18 @@ namespace tbrpg
     this->bonuses.thief_abilities.stealth = 15;
     
     this->allowed_classes =
-      {{Fighter()},
-       {Thief()},
-       {Cleric()},
-       {Mage()}, {Sorcerer()},
-       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
-       {Mage(), Cleric()},
-       {Fighter(), Mage(), Thief()},
-       {Fighter(), Mage(), Cleric()}};
+      {{PROTOTYPE(Fighter)},
+       {PROTOTYPE(Thief)},
+       {PROTOTYPE(Cleric)},
+       {PROTOTYPE(Mage)},
+       {PROTOTYPE(Sorcerer)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Thief)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Cleric)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Druid)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage)},
+       {PROTOTYPE(Mage), PROTOTYPE(Cleric)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Thief)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Cleric)}};
   }
   
   /**

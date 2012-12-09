@@ -43,10 +43,10 @@ namespace tbrpg
     this->bonuses.abilities.charisma = -1;
     
     this->allowed_classes =
-      {{Fighter()},
-       {Cleric()},
-       {Mage()}, {Sorcerer()},
-       {Fighter(), Cleric()}};
+      {{PROTOTYPE(Fighter)},
+       {PROTOTYPE(Cleric)},
+       {PROTOTYPE(Mage)}, {PROTOTYPE(Sorcerer)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Cleric)}};
   }
   
   /**

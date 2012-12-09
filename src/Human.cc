@@ -40,10 +40,10 @@ namespace tbrpg
     this->dualclass_level = 4;
     
     this->allowed_classes =
-      {{Fighter()}, {Ranger()}, {Paladin()},
-       {Cleric()}, {Druid()},
-       {Mage()}, {Sorcerer()},
-       {Thief()}, {Bard()}};
+      {{PROTOTYPE(Fighter)}, {PROTOTYPE(Ranger)}, {PROTOTYPE(Paladin)},
+       {PROTOTYPE(Cleric)}, {PROTOTYPE(Druid)},
+       {PROTOTYPE(Mage)}, {PROTOTYPE(Sorcerer)},
+       {PROTOTYPE(Thief)}, {PROTOTYPE(Bard)}};
   }
   
   /**

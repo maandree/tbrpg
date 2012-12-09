@@ -42,14 +42,17 @@ namespace tbrpg
     this->bonuses.thief_abilities.pick_pockets = 10;
     this->bonuses.thief_abilities.stealth = 5;
     this->allowed_classes =
-      {{Fighter()}, {Ranger()},
-       {Thief()}, {Bard()},
-       {Cleric()}, {Druid()},
-       {Mage()}, {Sorcerer()},
-       {Fighter(), Thief()}, {Fighter(), Cleric()}, {Fighter(), Druid()}, {Fighter(), Mage()},
-       {Mage(), Cleric()},
-       {Fighter(), Mage(), Thief()},
-       {Fighter(), Mage(), Cleric()}};
+      {{PROTOTYPE(Fighter)}, {PROTOTYPE(Ranger)},
+       {PROTOTYPE(Thief)}, {PROTOTYPE(Bard)},
+       {PROTOTYPE(Cleric)}, {PROTOTYPE(Druid)},
+       {PROTOTYPE(Mage)}, {PROTOTYPE(Sorcerer)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Thief)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Cleric)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Druid)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage)},
+       {PROTOTYPE(Mage), PROTOTYPE(Cleric)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Thief)},
+       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Cleric)}};
   }
   
   /**
