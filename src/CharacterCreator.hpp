@@ -32,6 +32,7 @@
 #include "Dice.hpp"
 #include "ActionSlotChart.hpp"
 #include "prompter.hpp"
+#include "caser.hpp"
 
 
 /**

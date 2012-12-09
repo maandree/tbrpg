@@ -294,22 +294,7 @@ namespace tbrpg
     labels = new std::string[count];
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       if (proficiencyMap[*weapongroup] != 0)
-	{
-	  int index = proficiencyMap[*weapongroup] - 1;
-	  const char* str = weapongroup->name.c_str();
-	  if (('a' <= *str) && (*str <= 'z'))
-	    {
-	      char* _str = (char*)malloc(weapongroup->name.size() + 1);
-	      while ((*_str++ = *str++))
-		;
-	      _str -= weapongroup->name.size() + 1;
-	      *_str ^= 32;
-	      labels[index] = std::string(_str);
-	      free(_str);
-	    }
-	  else
-	    labels[index] = std::string(str);
-	}
+	labels[proficiencyMap[*weapongroup] - 1] = changeCase(weapongroup->name, CAMEL_CASE);
     
     ok = assign(count, assignScores, labels, genericPrinter);
     

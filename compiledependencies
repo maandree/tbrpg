@@ -110,3 +110,5 @@ RuleSet Elf
 RuleSet Dwarf
 RuleSet Gnome
 RuleSet Halfling
+CharacterCreator caser
+Object prototype
