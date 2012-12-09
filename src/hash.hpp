@@ -58,7 +58,7 @@ namespace std
     
   template<>
   template<typename E>
-  __hash_vector(E, auto&);
+  __hash_vector(E, auto);
   
   
   

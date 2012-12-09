@@ -66,26 +66,26 @@ namespace tbrpg
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
-    this->can_use = std::unordered_map<Item*, bool>();
-    this->can_use[new Hood()] = true;
-    this->can_use[new Helmet()] = true;
-    this->can_use[new Buckler()] = true;
-    this->can_use[new SmallShield()] = true;
-    this->can_use[new LeatherArmour()] = true;
-    this->can_use[new StuddedLeatherArmour()] = true;
-    this->can_use[new Dart()] = true;
-    this->can_use[new Sling()] = true;
-    this->can_use[new ThrowingDagger()] = true;
-    this->can_use[new Fist()] = true;
-    this->can_use[new Fists()] = true;
-    this->can_use[new Bullet()] = true;
-    this->can_use[new Torch()] = true;
-    this->can_use[new Quarterstaff()] = true;
-    this->can_use[new Dagger()] = true;
-    this->can_use[new Club()] = true;
-    this->can_use[new Potion()] = true;
-    this->can_use[new LowScroll()] = true;
-    this->can_use[new LowWand()] = true;
+    this->can_use = std::unordered_map<Item, bool>();
+    this->can_use[PROTOTYPE(Hood)] = true;
+    this->can_use[PROTOTYPE(Helmet)] = true;
+    this->can_use[PROTOTYPE(Buckler)] = true;
+    this->can_use[PROTOTYPE(SmallShield)] = true;
+    this->can_use[PROTOTYPE(LeatherArmour)] = true;
+    this->can_use[PROTOTYPE(StuddedLeatherArmour)] = true;
+    this->can_use[PROTOTYPE(Dart)] = true;
+    this->can_use[PROTOTYPE(Sling)] = true;
+    this->can_use[PROTOTYPE(ThrowingDagger)] = true;
+    this->can_use[PROTOTYPE(Fist)] = true;
+    this->can_use[PROTOTYPE(Fists)] = true;
+    this->can_use[PROTOTYPE(Bullet)] = true;
+    this->can_use[PROTOTYPE(Torch)] = true;
+    this->can_use[PROTOTYPE(Quarterstaff)] = true;
+    this->can_use[PROTOTYPE(Dagger)] = true;
+    this->can_use[PROTOTYPE(Club)] = true;
+    this->can_use[PROTOTYPE(Potion)] = true;
+    this->can_use[PROTOTYPE(LowScroll)] = true;
+    this->can_use[PROTOTYPE(LowWand)] = true;
     
     this->lower_limits = Abilities();
     this->lower_limits.strength = 3;
@@ -204,10 +204,6 @@ namespace tbrpg
    */
   Class::~Class()
   {
-    auto ptr = this->can_use.begin();
-    auto end = this->can_use.end();
-    while (ptr != end)
-      delete (*ptr++).first;
     delete[] this->alignments;
   }
   
@@ -402,7 +398,7 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<std::vector<Spell>>()(special_abilities);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::unordered_map<Item, bool>>()(can_use);
+    rc += std::hash<std::unordered_map<Item*, bool>>()(can_use);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<MagicSchool>>()(specialisations);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);

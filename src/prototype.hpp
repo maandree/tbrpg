@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++, coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -17,11 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <iostream>
-#include <stdlib.h>
+#ifndef __GUARD_PROTOTYPE_HPP__
+#define __GUARD_PROTOTYPE_HPP__
 
-#include "cleaner.hpp"
-#include "CharacterCreator.hpp"
+
+#include <stdlib.h>
+#include <unordered_map>
+
+
+/**
+ * Get the prototype for a class
+ * 
+ * @param   C  The class
+ * @return     The prototype for a class
+ */
+#define PROTOTYPE(C)  (prototype<C>::get())
 
 
 /**
@@ -35,35 +45,28 @@
 namespace tbrpg
 {
   /**
-   * This the main entry point of the program
+   * Class prototypes
    * 
-   * @param   argc  The number of elements in `argv`
-   * @param   argv  Command line arguments, including the execute file
-   * @return        Exit value, 0 if successful
+   * @param  <C>  The class
    */
-  int __main__(int argc, char** argv)
+  template<class C>
+  class prototype
   {
-    (void) argc;
-    (void) argv;
+  public:
+    /**
+     * Get the prototype for a class
+     * 
+     * @return  The prototype for a class
+     */
+    static C& get()
+    {
+      static C instance;
+      return instance;
+    }
     
-    unsigned a, d;
-    asm("cpuid");
-    asm volatile("rdtsc" : "=a" (a), "=d" (d));
-    srand(((long long)a) | (((long long)d) << 32LL));
-    
-    CharacterCreator creator = CharacterCreator(RuleSet());
-    CharacterSheet* sheet = creator.create();
-    std::cout << (sheet == nullptr ? "null" : "new") << std::endl;
-    std::flush(std::cout);
-    
-    cleaner::clean();
-    
-    return 0;
-  }
+  };
 }
 
-int main(int argc, char** argv)
-{
-  return tbrpg::__main__(argc, argv);
-}
+
+#endif//__GUARD_PROTOTYPE_HPP__
 

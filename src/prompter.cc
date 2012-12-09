@@ -926,9 +926,20 @@ namespace tbrpg
 	      }
 	    break;
 	    
-	  case CTRL('D'):             prompt_done();   break;
-	  case '\b': case 127:        prompt_erase();  break;
-          case '\0': case CTRL('C'):  prompt_mark();   break;
+	  case CTRL('D'):
+	    prompt_done();
+	    break;
+	    
+	  case '\b': case 127:
+	    prompt_erase();
+	    break;
+	    
+          case '\0':
+	    if (prompterdata.ignoreNUL)
+	      break;
+	  case CTRL('C'):
+	    prompt_mark();
+	    break;
 	    
 	  case '\033': /* \e */
 	    {

@@ -139,9 +139,9 @@ tests:
 .PHONY: parallel
 parallel: parallel.o program
 parallel.o:
-	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@rm .tmp;                                                                                           \
-	((time ((echo $(NODES) ; cat compiledependencies __order) |                                         \
+	@if [ ! -d  bin ]; then  mkdir bin;  fi
+	@if [   -f .tmp ]; then  rm   .tmp;  fi
+	@((time ((echo $(NODES) ; cat compiledependencies __order) |                                        \
 	        (tools/paramake.py OPTIMISE=$(OPTIMISE) ; echo $$? > .tmp))) |&                             \
 	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                        \
 	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                               \

@@ -73,6 +73,7 @@ Texts. A copy of the license is included in the section entitled
 * Inventory and equipment::           The inventory and equipment.
 * Map and environment::               The map and environments.
 * Dice and modifiers::                Dice and modifiers.
+* Menus and line input::              Menus and line input
 * License of tbrpg::                  tbrpg's License.
 * GNU General Public License::        GNU General Public License
 * GNU Free Documentation License::    GNU Free Documentation License
@@ -3214,6 +3215,161 @@ uniform stocastic distribution: D10 and D24.
 
 
 
+@node Menus and line input
+@chapter Menus and line input
+@cindex menus
+@cindex line input
+@cindex input, menus
+@cindex input, line
+
+@menu
+* Score assignment menus::     Using score assignment menus.
+* Multiselection menus::       Using multiselection menus.
+* Line input::                 Line input.
+@end menu
+
+
+@node Score assignment menus
+@section Score assignment menus
+@cindex score assignment menus
+@cindex assignment menus
+@cindex menus, score assignment
+
+We you assign score to abilities you will have a number of
+score points to assign. There will always be a lower limit
+for each abilities, and sometimes there is a maximum.
+
+You can use the @kbd{up} and @kbd{down} arrows, or
+@kbd{enter} instead of the @kbd{down} arrows, to navigate,
+the curreny line is marked in bright blue. Use the
+@kbd{left} and @kbd{right} arrows to remove and add score
+points, respectively.
+
+At any time you can use the @kbd{S} key to store the current
+assignment and @kbd{R} to restore the last stored
+assignments. When you assign strenght, constitution, et
+cetera, the points are decided by rolling dices, meaning
+that the number of assignable points (that are automatically
+pre-assigned) is random. In this can use @kbd{C-r}
+@footnote{@kbd{C-} means that Control is held down.}
+to reroll can get new scores.
+
+When you are done, press @kbd{D}, if you want to abort and
+redo the last action you can press @kbd{C-g}.
+
+
+@node Multiselection menus
+@section Multiselection menus
+@cindex multiselection menus
+@cindex menus, multiselection
+
+Multiselection menus are menu where you can check which
+attributes want, and have a fixed number of attributes
+that most be selected. Each attributes can be selected once,
+when selected, a bright green `X' is visible left of it.
+
+You can use the @kbd{up} and @kbd{down} arrows, or
+@kbd{enter} instead of the @kbd{down} arrows, to navigate,
+the curreny line is marked in bright blue. Use the
+@kbd{left} and @kbd{right} arrows to unselect and select,
+respectively. @kbd{spacebar} can used to toggle selection.
+
+When you are done, press @kbd{D}, if you want to abort and
+redo the last action you can press @kbd{C-g}.
+
+
+@node Line input
+@section Line input
+@cindex line input
+@cindex input line
+
+When you are prompted for a line input there are three
+possibilies, arbitrary non-empty string, single choice, and
+file selection.
+
+Pressing @kbd{C-g} will abort and go to the last action;
+if you are prompted for an arbitrary non-empty string,
+pressing @kbd{enter} when the line is empty will have the
+same effect. Otherwise @kbd{enter} will continue to the
+next action if the input is valid, or, if the input is
+invalid, list valid inputs.
+
+If you are prompted for a file, you can drag and drop a file
+input your terminal emulator and press enter, as long as
+your terminal emulator handles file drag and drop in the
+standard way --- quoted with single quotes and with a
+tailing blank space --- or if as the filename in raw format.
+
+This table lists available key bindings, other than
+@kbd{C-g} and @kbd{enter}.
+
+@table @kbd
+@item C-x C-x
+Swap the mark and the point.
+@item C-x C-c
+Disable, or enable, @kbd{C-spacebar} and @kbd{C-@@}.
+@c @item C-x C-u
+@item C-d
+@kbd{Enter} if the input is valid, @kbd{C-g} if invalid.
+@item C-?
+@itemx backspace
+Remove previous character, of if a selection is set, remove
+the selection portion of the input.
+@item C-spacebar
+@itemx C-@@
+@itemx C-c
+Set or deactive mark.
+@item home
+@itemx C-a
+Go to the beginning of the input.
+@item end
+@itemx C-e
+Go to the end of the input.
+@item delete
+Remove current character, of if a selection is set, remove
+the selection portion of the input.
+@c @item C-delete
+@c @item prior
+@c @item next
+@c @item up
+@c @itemx C-p
+@c @item down
+@c @itemx C-n
+@item left
+@itemx C-b
+Go to the previous character.
+@item right
+@itemx C-f
+Go to the next character.
+@item S-left@footnote{@kbd{S-} means that Shift is held down.}
+Go to the previous character and set mark if none is active.
+@item S-right
+Go to the next character and set mark if none is active.
+@c @item C-left
+@c @item C-right
+@c @item C-S-left
+@c @item C-S-right
+@c @item backtab
+@c @item M-y@footnote{@kbd{M-} means that Meta is held down.}
+@c @item M-x
+@c @item M-f
+@c @item M-b
+@c @item tab
+@c @item C-y
+@c @item C-_
+@c @itemx C-¿
+@c @item C-O
+@item C-k
+Remove current character and all following.
+@item C-w
+Remove the selected portion of the input.
+@item C-l
+Redraw the prompt, useful if printk or something else have
+printed over the input.
+@end table
+
+
+
 @node License of tbrpg
 @appendix License of tbrpg
 
@@ -3254,11 +3410,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 @bye
-
-
-Game play
-Spell list
-Item list
-Bestiary
-multiclass proficiencies
 

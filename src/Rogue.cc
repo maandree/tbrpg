@@ -43,11 +43,11 @@ namespace tbrpg
     this->abilities.saving_throws.rod_staff_wand = 14;
     this->abilities.saving_throws.spell = 15;
     
-    this->can_use[new Hood()] = false;
-    this->can_use[new Arrow()] = true;
-    this->can_use[new LongSword()] = true;
-    this->can_use[new ShortSword()] = true;
-    this->can_use[new ShortBow()] = true;
+    this->can_use[PROTOTYPE(Hood)] = false;
+    this->can_use[PROTOTYPE(Arrow)] = true;
+    this->can_use[PROTOTYPE(LongSword)] = true;
+    this->can_use[PROTOTYPE(ShortSword)] = true;
+    this->can_use[PROTOTYPE(ShortBow)] = true;
     
     this->experience_chart.experience = std::vector<int>(31);
     this->experience_chart.hit_point_die = std::vector<char>(31);

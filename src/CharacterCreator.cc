@@ -75,6 +75,7 @@ namespace tbrpg
    */
   CharacterCreator::~CharacterCreator()
   {
+    // do nothing
   }
   
   
@@ -111,9 +112,9 @@ namespace tbrpg
     std::unordered_map<std::string, MagicSchool> specialisationMap = std::unordered_map<std::string, MagicSchool>();
     
     std::vector<std::string> alignments;
-    std::vector<std::string> all_alignments = {"chaotic evil", "neutral evil", "lawful evil",
+    std::vector<std::string> all_alignments = {"chaotic evil",    "neutral evil", "lawful evil",
 					       "chaotic neutral", "true neutral", "lawful neutral",
-					       "chaotic good", "neutral good", "lawful good"};
+					       "chaotic good",    "neutral good", "lawful good"};
     std::unordered_map<std::string, char> alignmentMap = std::unordered_map<std::string, char>();
     for (size_t i = 0; i < all_alignments.size(); i++)
       alignmentMap[all_alignments[i]] = (char)i;
@@ -271,9 +272,9 @@ namespace tbrpg
 	while (ptr != end)
 	  {
 	    auto entry = *ptr++;
-	    if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
+	    if (entry.second && (*(entry.first) >= WEAPON_PROTOTYPE))
 	      {
-		const WeaponGroup* wg = ((const Weapon&)(entry.first)).weapon_group;
+		const WeaponGroup* wg = ((const Weapon*)(void*)(entry.first))->weapon_group;
 		if (proficiencyMap[*wg] == 0)
 		  proficiencyMap[*wg] = ++count;
 	      }
@@ -498,7 +499,7 @@ namespace tbrpg
     for (ActionSlot slot : slots)
       if (slot == QUICK_WEAPON)
 	weapons++;
-    this->sheet.inventory.left_hand = std::vector<Weapon>(weapons);
+    this->sheet.inventory.left_hand = std::vector<Weapon*>(weapons);
     
     
     return &(this->sheet);

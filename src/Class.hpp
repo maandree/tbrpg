@@ -57,6 +57,7 @@
 #include "Potion.hpp"
 #include "LowScroll.hpp"
 #include "LowWand.hpp"
+#include "prototype.hpp"
 
 
 /**
@@ -148,7 +149,7 @@ namespace tbrpg
     /**
      * Usable items
      */
-    std::unordered_map<Item*, bool> can_use;
+    std::unordered_map<Item, bool> can_use;
     
     /**
      * Availiable specialisations for the class
