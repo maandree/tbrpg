@@ -272,9 +272,9 @@ namespace tbrpg
 	while (ptr != end)
 	  {
 	    auto entry = *ptr++;
-	    if (entry.second && (*(entry.first) >= WEAPON_PROTOTYPE))
+	    if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
 	      {
-		const WeaponGroup* wg = ((const Weapon*)(void*)(entry.first))->weapon_group;
+		const WeaponGroup* wg = ((const Weapon&)(entry.first)).weapon_group;
 		if (proficiencyMap[*wg] == 0)
 		  proficiencyMap[*wg] = ++count;
 	      }

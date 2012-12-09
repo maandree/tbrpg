@@ -257,7 +257,7 @@ namespace tbrpg
 	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
 	rc += std::hash<int>()(this->strenght_weight[i]);
 	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-	rc += std::hash<int*>()(this->constitution_weight[i]);
+	rc += std::hash<int>()(this->constitution_weight[i]);
       }
     for (long i = 0; i <= 100; i++)
       {

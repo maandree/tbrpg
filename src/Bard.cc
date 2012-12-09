@@ -49,20 +49,20 @@ namespace tbrpg
     for (long i = 2; i <= 30; i++)
       this->experience_chart.thief_abilities[i] = 5;
     
-    this->can_use[new ChainMail()] = true;
-    this->can_use[new LongBow()] = true;
-    this->can_use[new HeavyCrossbow()] = true;
-    this->can_use[new LightCrossbow()] = true;
-    this->can_use[new Flail()] = true;
-    this->can_use[new Halberd()] = true;
-    this->can_use[new TwoHandedSword()] = true;
-    this->can_use[new WarHammer()] = true;
-    this->can_use[new BastardSword()] = true;
-    this->can_use[new BattleAxe()] = true;
-    this->can_use[new Bolt()] = true;
-    this->can_use[new Mace()] = true;
-    this->can_use[new MorningStar()] = true;
-    this->can_use[new Spear()] = true;
+    this->can_use[PROTOTYPE(ChainMail)] = true;
+    this->can_use[PROTOTYPE(LongBow)] = true;
+    this->can_use[PROTOTYPE(HeavyCrossbow)] = true;
+    this->can_use[PROTOTYPE(LightCrossbow)] = true;
+    this->can_use[PROTOTYPE(Flail)] = true;
+    this->can_use[PROTOTYPE(Halberd)] = true;
+    this->can_use[PROTOTYPE(TwoHandedSword)] = true;
+    this->can_use[PROTOTYPE(WarHammer)] = true;
+    this->can_use[PROTOTYPE(BastardSword)] = true;
+    this->can_use[PROTOTYPE(BattleAxe)] = true;
+    this->can_use[PROTOTYPE(Bolt)] = true;
+    this->can_use[PROTOTYPE(Mace)] = true;
+    this->can_use[PROTOTYPE(MorningStar)] = true;
+    this->can_use[PROTOTYPE(Spear)] = true;
     
     this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
     for (int i = 0; i <= 23; i++)
