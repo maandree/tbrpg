@@ -192,15 +192,15 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<bool>()(locked);
+    rc += std::hash<bool>()(this->locked);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(pick_level);
+    rc += std::hash<int>()(this->pick_level);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int>()(bash_level);
+    rc += std::hash<int>()(this->bash_level);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<bool>()(pickable);
+    rc += std::hash<bool>()(this->pickable);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<bool>()(bashable);
+    rc += std::hash<bool>()(this->bashable);
     return rc;
   }
   

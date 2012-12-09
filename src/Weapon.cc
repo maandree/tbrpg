@@ -230,23 +230,23 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<RightHandItem>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<char>()(hands);
+    rc += std::hash<char>()(this->hands);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<char>()(speed_factor);
+    rc += std::hash<char>()(this->speed_factor);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int>()(hit_bonus);
+    rc += std::hash<int>()(this->hit_bonus);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<char>()(damage_die);
+    rc += std::hash<char>()(this->damage_die);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<char>()(damage_dice);
+    rc += std::hash<char>()(this->damage_dice);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<int>()(damage_bonus);
+    rc += std::hash<int>()(this->damage_bonus);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<bool>()(melee);
+    rc += std::hash<bool>()(this->melee);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<DamageType>>()(damage_type);
+    rc += std::hash<std::vector<DamageType>>()(this->damage_type);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<WeaponGroup>()(weapon_group);
+    rc += std::hash<WeaponGroup>()(this->weapon_group);
     return rc;
   }
   

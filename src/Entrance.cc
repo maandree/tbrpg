@@ -188,13 +188,13 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<bool>()(usable);
+    rc += std::hash<bool>()(this->usable);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::string>()(description);
+    rc += std::hash<std::string>()(this->description);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::string>()(direction);
+    rc += std::hash<std::string>()(this->direction);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<_MapMinor>()(leads_to);
+    rc += std::hash<_MapMinor>()(this->leads_to);
     return rc;
   }
   

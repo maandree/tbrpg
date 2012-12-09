@@ -392,32 +392,32 @@ namespace tbrpg
     for (long i = 0; i < 21; i++)
       {
 	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-	rc += std::hash<int>()(reaction_adjustment[i]);
+	rc += std::hash<int>()(this->reaction_adjustment[i]);
 	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-	rc += std::hash<bool>()(wanted[i]);
+	rc += std::hash<bool>()(this->wanted[i]);
 	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-	rc += std::hash<int>()(killing_innocent[i]);
+	rc += std::hash<int>()(this->killing_innocent[i]);
 	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-	rc += std::hash<int>()(injuring_innocent[i]);
+	rc += std::hash<int>()(this->injuring_innocent[i]);
 	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-	rc += std::hash<int>()(stealing[i]);
+	rc += std::hash<int>()(this->stealing[i]);
 	rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-	rc += std::hash<int>()(killing_guard[i]);
+	rc += std::hash<int>()(this->killing_guard[i]);
 	rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-	rc += std::hash<int>()(donation_needed[i]);
+	rc += std::hash<int>()(this->donation_needed[i]);
 	rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-	rc += std::hash<float>()(price_adjustment[i]);
+	rc += std::hash<float>()(this->price_adjustment[i]);
 	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-	rc += std::hash<signed char>()(good_reaction[i]);
+	rc += std::hash<signed char>()(this->good_reaction[i]);
 	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-	rc += std::hash<signed char>()(neutral_reaction[i]);
+	rc += std::hash<signed char>()(this->neutral_reaction[i]);
 	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-	rc += std::hash<signed char>()(evil_reaction[i]);
+	rc += std::hash<signed char>()(this->evil_reaction[i]);
       }
     for (long i = 0; i < 9; i++)
       {
 	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-	rc += std::hash<char>()(alignment_reputation[i]);
+	rc += std::hash<char>()(this->alignment_reputation[i]);
       }
     return rc;
   }
