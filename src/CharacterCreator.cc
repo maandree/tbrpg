@@ -87,42 +87,6 @@ namespace tbrpg
    */
   CharacterSheet* CharacterCreator::create()
   {
-    std::flush(std::cout << (PROTOTYPE(Item) >= PROTOTYPE(Object)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(RightHandItem) >= PROTOTYPE(Item)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(Weapon) >= PROTOTYPE(RightHandItem)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(Shield) >= PROTOTYPE(Weapon)) << std::endl);
-    
-    std::flush(std::cout << std::endl);
-    
-    std::flush(std::cout << (PROTOTYPE(Item) >= PROTOTYPE(Object)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(RightHandItem) >= PROTOTYPE(Item)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(Shield) >= PROTOTYPE(RightHandItem)) << std::endl);
-    std::flush(std::cout << (PROTOTYPE(Weapon) >= PROTOTYPE(Shield)) << std::endl);
-    
-    std::flush(std::cout << std::endl);
-    
-    for (short t : PROTOTYPE(Object).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(Item).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(RightHandItem).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(Weapon).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(Shield).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(Sling).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    for (short t : PROTOTYPE(Buckler).class_inheritance)
-      std::cout << t << "  ";
-    std::flush(std::cout << std::endl);
-    
     std::vector<std::string> genders = {"male", "female"};
     
     std::vector<std::string> races = std::vector<std::string>();
@@ -310,9 +274,6 @@ namespace tbrpg
 	    auto entry = *ptr++;
 	    if (entry.second && (entry.first >= WEAPON_PROTOTYPE))
 	      {
-		std::flush(std::cout << entry.first.name << "  ");
-		std::flush(std::cout << ((Weapon&)*(Item*)(entry.first.getActual())).weapon_group->name << std::endl);
-		
 		Weapon* w = static_cast<Weapon*>(entry.first.getActual());
 		const WeaponGroup* wg = w->weapon_group;
 		if (proficiencyMap[*wg] == 0)
@@ -333,7 +294,22 @@ namespace tbrpg
     labels = new std::string[count];
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       if (proficiencyMap[*weapongroup] != 0)
-	labels[proficiencyMap[*weapongroup] - 1] = weapongroup->name;
+	{
+	  int index = proficiencyMap[*weapongroup] - 1;
+	  const char* str = weapongroup->name.c_str();
+	  if (('a' <= *str) && (*str <= 'z'))
+	    {
+	      char* _str = (char*)malloc(weapongroup->name.size() + 1);
+	      while ((*_str++ = *str++))
+		;
+	      _str -= weapongroup->name.size() + 1;
+	      *_str ^= 32;
+	      labels[index] = std::string(_str);
+	      free(_str);
+	    }
+	  else
+	    labels[index] = std::string(str);
+	}
     
     ok = assign(count, assignScores, labels, genericPrinter);
     
@@ -771,7 +747,7 @@ namespace tbrpg
    */
   void genericPrinter(int index, int value, void* data)
   {
-    std::cout << *((std::string*)data + index) << value;
+    std::cout << *((std::string*)data + index) << ": " << value;
   }
   
 }
