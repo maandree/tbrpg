@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Thief::Thief() : Rogue()
   {
+    this->class_inheritance.push_back(106);
     ////TODO implement constructor
   }
   

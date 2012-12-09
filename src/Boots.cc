@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Boots::Boots() : Item()
   {
-    this->class_inheritance.push_back(46);
+    this->class_inheritance.push_back(98);
     ////TODO implement constructor
   }
   

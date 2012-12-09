@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Road::Road() : Object()
   {
-    this->class_inheritance.push_back(72);
+    this->class_inheritance.push_back(133);
     ////TODO implement constructor
     //this->first_distance = 0;
     //this->last_distance = 0;

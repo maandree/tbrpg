@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Potion::Potion() : QuickItem()
   {
-    this->class_inheritance.push_back(30);
+    this->class_inheritance.push_back(77);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dagger::Dagger() : OneHandedMelee()
   {
+    this->class_inheritance.push_back(43);
     ////TODO implement constructor
   }
   

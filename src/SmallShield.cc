@@ -35,6 +35,7 @@ namespace tbrpg
    */
   SmallShield::SmallShield() : Shield()
   {
+    this->class_inheritance.push_back(70);
     ////TODO implement constructor
   }
   

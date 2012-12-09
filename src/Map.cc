@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Map::Map() : Object()
   {
-    this->class_inheritance.push_back(70);
+    this->class_inheritance.push_back(131);
     ////TODO implement constructor
     //this->start = nullptr;
     //this->majors = nullptr;

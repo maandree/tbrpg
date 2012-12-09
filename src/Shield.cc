@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Shield::Shield() : RightHandItem()
   {
+    this->class_inheritance.push_back(33);
     ////TODO implement constructor
     //this->protect_missile = false;
     //this->protect_melee = nullptr;

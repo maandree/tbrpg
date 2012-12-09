@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MediumShield::MediumShield() : Shield()
   {
+    this->class_inheritance.push_back(71);
     ////TODO implement constructor
   }
   

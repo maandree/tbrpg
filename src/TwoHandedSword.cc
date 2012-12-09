@@ -35,6 +35,7 @@ namespace tbrpg
    */
   TwoHandedSword::TwoHandedSword() : TwoHandedMelee()
   {
+    this->class_inheritance.push_back(52);
     ////TODO implement constructor
   }
   

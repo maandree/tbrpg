@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LongBow::LongBow() : Bow()
   {
+    this->class_inheritance.push_back(67);
     ////TODO implement constructor
   }
   

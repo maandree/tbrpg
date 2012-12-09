@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Priest::Priest() : Class()
   {
-    this->class_inheritance.push_back(50);
+    this->class_inheritance.push_back(111);
     ////TODO implement constructor
   }
   

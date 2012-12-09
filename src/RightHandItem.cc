@@ -35,7 +35,7 @@ namespace tbrpg
    */
   RightHandItem::RightHandItem() : Item()
   {
-    this->class_inheritance.push_back(40);
+    this->class_inheritance.push_back(90);
     ////TODO implement constructor
   }
   

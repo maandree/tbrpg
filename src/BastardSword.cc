@@ -35,6 +35,7 @@ namespace tbrpg
    */
   BastardSword::BastardSword() : LargeSword()
   {
+    this->class_inheritance.push_back(48);
     ////TODO implement constructor
   }
   

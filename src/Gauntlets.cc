@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gauntlets::Gauntlets() : Item()
   {
-    this->class_inheritance.push_back(47);
+    this->class_inheritance.push_back(99);
     ////TODO implement constructor
   }
   

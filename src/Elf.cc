@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Elf::Elf() : Race()
   {
-    this->class_inheritance.push_back(53);
+    this->class_inheritance.push_back(114);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Sling::Sling() : RangedWeapon()
   {
+    this->class_inheritance.push_back(62);
     ////TODO implement constructor
   }
   

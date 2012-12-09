@@ -35,7 +35,7 @@ namespace tbrpg
    */
   DamageType::DamageType() : Object()
   {
-    this->class_inheritance.push_back(11);
+    this->class_inheritance.push_back(14);
     ////TODO implement constructor
     //this->name = nullptr;
   }

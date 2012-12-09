@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HighWand::HighWand() : Wand()
   {
-    this->class_inheritance.push_back(63);
+    this->class_inheritance.push_back(124);
     ////TODO implement constructor
   }
   

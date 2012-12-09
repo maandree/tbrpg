@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Cleric::Cleric() : Priest()
   {
+    this->class_inheritance.push_back(103);
     ////TODO implement constructor
   }
   

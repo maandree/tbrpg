@@ -35,7 +35,7 @@ namespace tbrpg
    */
   WizardScroll::WizardScroll() : Scroll()
   {
-    this->class_inheritance.push_back(62);
+    this->class_inheritance.push_back(123);
     ////TODO implement constructor
   }
   

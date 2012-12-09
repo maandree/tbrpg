@@ -35,7 +35,7 @@ namespace tbrpg
    */
   NPC::NPC() : Creature()
   {
-    this->class_inheritance.push_back(79);
+    this->class_inheritance.push_back(140);
     ////TODO implement constructor
   }
   

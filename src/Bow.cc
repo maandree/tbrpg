@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bow::Bow() : RangedWeapon()
   {
+    this->class_inheritance.push_back(61);
     ////TODO implement constructor
   }
   

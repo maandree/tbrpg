@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Item::Item() : Object()
   {
-    this->class_inheritance.push_back(14);
+    this->class_inheritance.push_back(18);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->description = nullptr;

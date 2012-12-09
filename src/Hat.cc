@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Hat::Hat() : Headgear()
   {
+    this->class_inheritance.push_back(80);
     ////TODO implement constructor
   }
   

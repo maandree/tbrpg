@@ -35,10 +35,15 @@ lines = lines[lineptr:] + ['EOF;']
 classLine = None
 varLines = None
 
+objpairs = []
 classes = []
 for line in lines:
     if (len(line) == 0) or (line[0] == '\t'):
         continue
+    if ':' in line:
+        className = line[:line.index(':')]
+        supers = line[line.index(':') + 2:].replace(',', '').split(' ')
+        objpairs.append((className, supers))
     line = line[:line.find(':')] if ':' in line else line
     line = line[:line.find(';')] if ';' in line else line
     classes.append(line.strip())
@@ -46,6 +51,17 @@ for line in lines:
 isObject = set()
 idObject = 0
 isObject.add('Object')
+
+addedObject = True
+while addedObject:
+    addedObject = False
+    for pair in objpairs:
+        if pair[0] not in isObject:
+            for superClass in pair[1]:
+                if superClass not in isObject:
+                    isObject.add(pair[0])
+                    addedObject = True
+                    break
 
 for line in lines:
     lineptr += 1
@@ -74,10 +90,11 @@ for line in lines:
             superCopy = ' ' + classLine[classLine.index(':'):].replace(', ', '(original), ') + '(original)'
             supers = classLine[classLine.index(':') + 2:].replace(',', '').split(' ')
             classLine = classLine.replace(',', ', public').replace(':', ': public')
-            superInclude = ['#include "%s.hpp"' % c for c in supers] + ['', ''];
-            for superClass in supers:
-                if (superClass == 'Object') or (superClass in isObject):
-                    isObject.add(className)
+            superInclude = ['#include "%s.hpp"' % c for c in supers] + ['', '']
+            #for superClass in supers:
+            #    if (superClass == 'Object') or (superClass in isObject):
+            #        isObject.add(className)
+            #        break
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             for s in range(0, len(varLine)):

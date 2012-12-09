@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Store::Store() : NPC()
   {
-    this->class_inheritance.push_back(80);
+    this->class_inheritance.push_back(141);
     ////TODO implement constructor
     //this->cost_multiplier = 0;
     //this->identify_cost = 0;

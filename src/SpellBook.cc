@@ -35,7 +35,7 @@ namespace tbrpg
    */
   SpellBook::SpellBook() : Object()
   {
-    this->class_inheritance.push_back(26);
+    this->class_inheritance.push_back(30);
     ////TODO implement constructor
     //this->learned = nullptr;
     //this->memorised = nullptr;

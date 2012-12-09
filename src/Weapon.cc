@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Weapon::Weapon() : RightHandItem()
   {
+    this->class_inheritance.push_back(12);
     ////TODO implement constructor
     //this->hands = 0;
     //this->speed_factor = 0;

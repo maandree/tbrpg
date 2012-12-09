@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Creature::Creature() : Character()
   {
-    this->class_inheritance.push_back(69);
+    this->class_inheritance.push_back(130);
     ////TODO implement constructor
     //this->hostile = false;
     //this->x = 0;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   LargeSword::LargeSword() : OneHandedMelee()
   {
+    this->class_inheritance.push_back(46);
     ////TODO implement constructor
   }
   

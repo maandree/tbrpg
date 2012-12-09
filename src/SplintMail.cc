@@ -35,7 +35,7 @@ namespace tbrpg
    */
   SplintMail::SplintMail() : BodyArmour()
   {
-    this->class_inheritance.push_back(37);
+    this->class_inheritance.push_back(87);
     ////TODO implement constructor
   }
   

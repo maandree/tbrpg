@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LeatherArmour::LeatherArmour() : BodyArmour()
   {
-    this->class_inheritance.push_back(34);
+    this->class_inheritance.push_back(84);
     ////TODO implement constructor
   }
   

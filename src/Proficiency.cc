@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Proficiency::Proficiency() : Object()
   {
-    this->class_inheritance.push_back(13);
+    this->class_inheritance.push_back(16);
     ////TODO implement constructor
     //this->hit_bonus = 0;
     //this->damage_bonus = 0;

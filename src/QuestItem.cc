@@ -35,6 +35,7 @@ namespace tbrpg
    */
   QuestItem::QuestItem() : Item()
   {
+    this->class_inheritance.push_back(17);
     ////TODO implement constructor
     //this->id = 0;
   }

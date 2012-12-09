@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MorningStar::MorningStar() : BluntWeapon()
   {
+    this->class_inheritance.push_back(40);
     ////TODO implement constructor
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   ShortBow::ShortBow() : Bow()
   {
+    this->class_inheritance.push_back(68);
     ////TODO implement constructor
   }
   

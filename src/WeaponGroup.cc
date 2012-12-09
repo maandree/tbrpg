@@ -35,7 +35,7 @@ namespace tbrpg
    */
   WeaponGroup::WeaponGroup() : Object()
   {
-    this->class_inheritance.push_back(12);
+    this->class_inheritance.push_back(15);
     ////TODO implement constructor
     //this->name = nullptr;
   }
