@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Proficiency::Proficiency(int hit, int damage, char attacks) : Object()
   {
-    this->class_inheritance.push_back(13);
+    this->class_inheritance.push_back(16);
     this->hit_bonus = hit;
     this->damage_bonus = damage;
     this->half_attacks = attacks;

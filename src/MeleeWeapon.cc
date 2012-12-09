@@ -35,6 +35,7 @@ namespace tbrpg
    */
   MeleeWeapon::MeleeWeapon() : Weapon()
   {
+    this->class_inheritance.push_back(51);
     this->bonuses.defence.melee = 1;
   }
   

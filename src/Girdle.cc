@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Girdle::Girdle() : Item()
   {
-    this->class_inheritance.push_back(45);
+    this->class_inheritance.push_back(97);
     this->name = "girdle";
   }
   

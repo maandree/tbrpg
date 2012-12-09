@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Bard::Bard() : Rogue()
   {
+    this->class_inheritance.push_back(105);
     this->name = "bard";
     this->thac0 = 20;
     this->lore_bonus = 10;

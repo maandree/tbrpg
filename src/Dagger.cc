@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Dagger::Dagger() : OneHandedMelee()
   {
+    this->class_inheritance.push_back(43);
     this->name = "dagger";
     this->speed_factor = 2;
     this->damage_die = 4;

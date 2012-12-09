@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Halfling::Halfling() : Race()
   {
-    this->class_inheritance.push_back(58);
+    this->class_inheritance.push_back(119);
     this->name = "halfling";
     this->bonuses.bonuses.detect_doors = 0.05;
     this->bonuses.bonuses.magic_defence_bonus = 0.75;

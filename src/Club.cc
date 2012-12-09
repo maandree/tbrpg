@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Club::Club() : BluntWeapon()
   {
+    this->class_inheritance.push_back(37);
     this->name = "club";
     this->speed_factor = 4;
     this->damage_die = 6;

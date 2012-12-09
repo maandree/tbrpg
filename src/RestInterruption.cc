@@ -35,7 +35,7 @@ namespace tbrpg
    */
   RestInterruption::RestInterruption() : Object()
   {
-    this->class_inheritance.push_back(68);
+    this->class_inheritance.push_back(129);
     this->interrupt_die = 20;
     this->interrupt_dice = 1;
     this->interrupt_risk = 2;

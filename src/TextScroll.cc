@@ -35,7 +35,7 @@ namespace tbrpg
    */
   TextScroll::TextScroll() : Item()
   {
-    this->class_inheritance.push_back(42);
+    this->class_inheritance.push_back(94);
     this->name = "text scroll";
   }
   

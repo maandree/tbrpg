@@ -35,7 +35,7 @@ namespace tbrpg
    */
   MapMajor::MapMajor() : Object()
   {
-    this->class_inheritance.push_back(71);
+    this->class_inheritance.push_back(132);
     this->name = "";
     this->visible = false;
     this->visited = false;

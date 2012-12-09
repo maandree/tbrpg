@@ -35,7 +35,7 @@ namespace tbrpg
    */
   FullPlateMail::FullPlateMail() : BodyArmour()
   {
-    this->class_inheritance.push_back(39);
+    this->class_inheritance.push_back(89);
     this->name = "full plate mail";
     this->armour_class = 1;
     this->armour_class_modifiers[SLASHING] = -4;

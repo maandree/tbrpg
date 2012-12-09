@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Druid::Druid() : Priest()
   {
+    this->class_inheritance.push_back(104);
     this->name = "druid";
     this->thac0 = 23;
     this->lower_limits.charisma = 9;

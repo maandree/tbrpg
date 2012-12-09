@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Throwing::Throwing() : RangedWeapon()
   {
+    this->class_inheritance.push_back(60);
     this->hands = 1;
   }
   

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Headgear::Headgear() : Item()
   {
+    this->class_inheritance.push_back(13);
     this->critical_hit_protection = false;
   }
   

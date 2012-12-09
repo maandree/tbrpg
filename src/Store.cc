@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Store::Store() : NPC()
   {
-    this->class_inheritance.push_back(80);
+    this->class_inheritance.push_back(141);
     this->record.name = "Store keeper";
     this->cost_multiplier = 1.5;
     this->identify_cost = 100;

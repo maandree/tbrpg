@@ -35,7 +35,7 @@ namespace tbrpg
    */
   StuddedLeatherArmour::StuddedLeatherArmour() : BodyArmour()
   {
-    this->class_inheritance.push_back(35);
+    this->class_inheritance.push_back(85);
     this->name = "studded leather armour";
     this->armour_class = 7;
     this->armour_class_modifiers[SLASHING] = -2;

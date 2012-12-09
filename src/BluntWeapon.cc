@@ -35,6 +35,7 @@ namespace tbrpg
    */
   BluntWeapon::BluntWeapon() : OneHandedMelee()
   {
+    this->class_inheritance.push_back(41);
     this->weapon_group = &BLUNT_WEAPONS;
     this->damage_type = {BLUDGEONING};
   }

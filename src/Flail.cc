@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Flail::Flail() : BluntWeapon()
   {
+    this->class_inheritance.push_back(38);
     this->name = "flail";
     this->weapon_group = &SPIKED_WEAPONS;
     this->speed_factor = 7;

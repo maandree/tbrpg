@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Road::Road() : Object()
   {
-    this->class_inheritance.push_back(72);
+    this->class_inheritance.push_back(133);
     this->first_distance = 5000;
     this->last_distance = 5000;
     this->waylay_die = 20;

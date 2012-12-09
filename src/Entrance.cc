@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Entrance::Entrance() : Object()
   {
-    this->class_inheritance.push_back(65);
+    this->class_inheritance.push_back(126);
     this->usable = true;
     this->description = "";
     this->direction = "";

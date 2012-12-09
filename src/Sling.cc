@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Sling::Sling() : RangedWeapon()
   {
+    this->class_inheritance.push_back(62);
     this->name = "sling";
     this->weapon_group = &MISSILE_WEAPONS;
     this->hands = 1;

@@ -35,6 +35,7 @@ namespace tbrpg
    */
   Fighter::Fighter() : Warrior()
   {
+    this->class_inheritance.push_back(107);
     this->name = "fighter";
     this->abilities.bonuses.detect_doors = 0.10;
     

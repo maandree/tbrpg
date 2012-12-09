@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Creature::Creature() : Character()
   {
-    this->class_inheritance.push_back(69);
+    this->class_inheritance.push_back(130);
     this->experience = 1;
     this->hostile = true;
     this->x = 0;
