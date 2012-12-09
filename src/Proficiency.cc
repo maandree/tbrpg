@@ -180,11 +180,11 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(hit_bonus);
+    rc += std::hash<int>()(this->hit_bonus);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(damage_bonus);
+    rc += std::hash<int>()(this->damage_bonus);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<char>()(half_attacks);
+    rc += std::hash<char>()(this->half_attacks);
     return rc;
   }
   

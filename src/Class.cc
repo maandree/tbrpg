@@ -367,46 +367,46 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::string>()(name);
+    rc += std::hash<std::string>()(this->name);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(hit_points);
+    rc += std::hash<int>()(this->hit_points);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int>()(thac0);
+    rc += std::hash<int>()(this->thac0);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int>()(lore_bonus);
+    rc += std::hash<int>()(this->lore_bonus);
     for (int i = 0; i < 9; i++)
       {
 	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-	rc += std::hash<bool>()(alignments[i]);
+	rc += std::hash<bool>()(this->alignments[i]);
       }
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<bool>()(learn_from_scroll);
+    rc += std::hash<bool>()(this->learn_from_scroll);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<char>()(proficiencies_each);
+    rc += std::hash<char>()(this->proficiencies_each);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<bool>()(extra_strength);
+    rc += std::hash<bool>()(this->extra_strength);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<bool>()(have_racial_enemy);
+    rc += std::hash<bool>()(this->have_racial_enemy);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<ExperienceChart>()(experience_chart);
+    rc += std::hash<ExperienceChart>()(this->experience_chart);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<SpellProgression>()(spell_progression);
+    rc += std::hash<SpellProgression>()(this->spell_progression);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<AbilityBonus>()(abilities);
+    rc += std::hash<AbilityBonus>()(this->abilities);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<Abilities>()(lower_limits);
+    rc += std::hash<Abilities>()(this->lower_limits);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<Spell>>()(special_abilities);
+    rc += std::hash<std::vector<Spell>>()(this->special_abilities);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::unordered_map<Item*, bool>>()(can_use);
+    rc += std::hash<std::unordered_map<Item, bool>>()(this->can_use);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<std::vector<MagicSchool>>()(specialisations);
+    rc += std::hash<std::vector<MagicSchool>>()(this->specialisations);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::unordered_map<WeaponGroup, std::vector<Proficiency>>>()(proficiency_chart);
+    rc += std::hash<std::unordered_map<WeaponGroup, std::vector<Proficiency>>>()(this->proficiency_chart);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Weapon>()(default_one_hand);
+    rc += std::hash<Weapon>()(this->default_one_hand);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<Weapon>()(default_two_hand);
+    rc += std::hash<Weapon>()(this->default_two_hand);
     return rc;
   }
   

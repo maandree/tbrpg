@@ -212,19 +212,19 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<Bonuses>()(bonuses);
+    rc += std::hash<Bonuses>()(this->bonuses);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<ThiefAbilities>()(thief_abilities);
+    rc += std::hash<ThiefAbilities>()(this->thief_abilities);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<SavingThrows>()(saving_throws);
+    rc += std::hash<SavingThrows>()(this->saving_throws);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<Abilities>()(abilities);
+    rc += std::hash<Abilities>()(this->abilities);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<SpellBook>()(spells);
+    rc += std::hash<SpellBook>()(this->spells);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<Spell>>()(effects);
+    rc += std::hash<std::vector<Spell>>()(this->effects);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<Defence>()(defence);
+    rc += std::hash<Defence>()(this->defence);
     return rc;
   }
   

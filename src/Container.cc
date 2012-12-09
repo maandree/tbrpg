@@ -192,13 +192,13 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Item>>()(contains);
+    rc += std::hash<std::vector<Item>>()(this->contains);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int>()(contain_limit);
+    rc += std::hash<int>()(this->contain_limit);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<float>()(weight_modifier);
+    rc += std::hash<float>()(this->weight_modifier);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<std::vector<Item>>()(can_contain);
+    rc += std::hash<std::vector<Item>>()(this->can_contain);
     return rc;
   }
   

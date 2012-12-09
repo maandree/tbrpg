@@ -180,9 +180,9 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<RightHandItem>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool>()(protect_missile);
+    rc += std::hash<bool>()(this->protect_missile);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::unordered_map<DamageType, bool>>()(protect_melee);
+    rc += std::hash<std::unordered_map<DamageType, bool>>()(this->protect_melee);
     return rc;
   }
   

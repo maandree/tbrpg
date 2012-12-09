@@ -167,7 +167,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool>()(wizard_magic_use);
+    rc += std::hash<bool>()(this->wizard_magic_use);
     return rc;
   }
   
