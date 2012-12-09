@@ -170,7 +170,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Weapon>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<char>()(rate_of_fire);
+    rc += std::hash<char>()(this->rate_of_fire);
     return rc;
   }
   

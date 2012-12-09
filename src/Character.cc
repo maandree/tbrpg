@@ -217,19 +217,19 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(hit_points);
+    rc += std::hash<int>()(this->hit_points);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<char>()(alive);
+    rc += std::hash<char>()(this->alive);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int>()(morale);
+    rc += std::hash<int>()(this->morale);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int>()(intoxication);
+    rc += std::hash<int>()(this->intoxication);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<int>()(fatigue);
+    rc += std::hash<int>()(this->fatigue);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<char>()(extra_attacks);
+    rc += std::hash<char>()(this->extra_attacks);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<CharacterSheet>()(record);
+    rc += std::hash<CharacterSheet>()(this->record);
     return rc;
   }
   

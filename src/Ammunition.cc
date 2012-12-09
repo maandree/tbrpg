@@ -212,17 +212,17 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(hit_bonus);
+    rc += std::hash<int>()(this->hit_bonus);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<char>()(damage_die);
+    rc += std::hash<char>()(this->damage_die);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<char>()(damage_dice);
+    rc += std::hash<char>()(this->damage_dice);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<int>()(damage_bonus);
+    rc += std::hash<int>()(this->damage_bonus);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<RangedWeapon>()(usable_with);
+    rc += std::hash<RangedWeapon>()(this->usable_with);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<DamageType>()(damage_type);
+    rc += std::hash<DamageType>()(this->damage_type);
     return rc;
   }
   

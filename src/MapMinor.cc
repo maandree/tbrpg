@@ -242,23 +242,23 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<_MapMinor>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::string>()(description);
+    rc += std::hash<std::string>()(this->description);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<bool>()(may_rest);
+    rc += std::hash<bool>()(this->may_rest);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<float>()(area);
+    rc += std::hash<float>()(this->area);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<std::vector<Road>>()(roads);
+    rc += std::hash<std::vector<Road>>()(this->roads);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<Entrance>>()(connections);
+    rc += std::hash<std::vector<Entrance>>()(this->connections);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::vector<Item>>()(items);
+    rc += std::hash<std::vector<Item>>()(this->items);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<std::vector<Creature>>()(creatures);
+    rc += std::hash<std::vector<Creature>>()(this->creatures);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<MapMajor>()(is_in);
+    rc += std::hash<MapMajor>()(this->is_in);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<RestInterruption>>()(interruptions);
+    rc += std::hash<std::vector<RestInterruption>>()(this->interruptions);
     return rc;
   }
   

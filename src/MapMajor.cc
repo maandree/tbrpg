@@ -201,15 +201,15 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::string>()(name);
+    rc += std::hash<std::string>()(this->name);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool>()(visible);
+    rc += std::hash<bool>()(this->visible);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<bool>()(visited);
+    rc += std::hash<bool>()(this->visited);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<bool>()(visitable);
+    rc += std::hash<bool>()(this->visitable);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<bool>()(detectable);
+    rc += std::hash<bool>()(this->detectable);
     return rc;
   }
   

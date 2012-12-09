@@ -224,21 +224,21 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(melee);
+    rc += std::hash<int>()(this->melee);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(missile);
+    rc += std::hash<int>()(this->missile);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<float>()(fire);
+    rc += std::hash<float>()(this->fire);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<float>()(cold);
+    rc += std::hash<float>()(this->cold);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<float>()(lightning);
+    rc += std::hash<float>()(this->lightning);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<float>()(acid);
+    rc += std::hash<float>()(this->acid);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<float>()(poison);
+    rc += std::hash<float>()(this->poison);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<float>()(physical);
+    rc += std::hash<float>()(this->physical);
     return rc;
   }
   

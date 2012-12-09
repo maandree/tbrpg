@@ -178,9 +178,9 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<MapMinor>()(start);
+    rc += std::hash<MapMinor>()(this->start);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<MapMajor>>()(majors);
+    rc += std::hash<std::vector<MapMajor>>()(this->majors);
     return rc;
   }
   

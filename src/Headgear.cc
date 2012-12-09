@@ -170,7 +170,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<bool>()(critical_hit_protection);
+    rc += std::hash<bool>()(this->critical_hit_protection);
     return rc;
   }
   

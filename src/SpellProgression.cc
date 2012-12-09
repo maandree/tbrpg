@@ -196,13 +196,13 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<std::vector<int>>>()(wizard_slots);
+    rc += std::hash<std::vector<std::vector<int>>>()(this->wizard_slots);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<std::vector<int>>>()(priest_slots);
+    rc += std::hash<std::vector<std::vector<int>>>()(this->priest_slots);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<int>>()(wizard_levels);
+    rc += std::hash<std::vector<int>>()(this->wizard_levels);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<int>>()(priest_levels);
+    rc += std::hash<std::vector<int>>()(this->priest_levels);
     return rc;
   }
   

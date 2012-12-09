@@ -227,21 +227,21 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(first_distance);
+    rc += std::hash<int>()(this->first_distance);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<int>()(last_distance);
+    rc += std::hash<int>()(this->last_distance);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<char>()(waylay_die);
+    rc += std::hash<char>()(this->waylay_die);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<char>()(waylay_dice);
+    rc += std::hash<char>()(this->waylay_dice);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<unsigned char>()(waylay_risk);
+    rc += std::hash<unsigned char>()(this->waylay_risk);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::string>()(direction);
+    rc += std::hash<std::string>()(this->direction);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<_MapMinor>()(waylay_map);
+    rc += std::hash<_MapMinor>()(this->waylay_map);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<_MapMinor>()(leads_to);
+    rc += std::hash<_MapMinor>()(this->leads_to);
     return rc;
   }
   
