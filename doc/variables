@@ -33,6 +33,8 @@ RuleSet: Object                          ; Game rules
 	char rest_healing_turns          ; Natural regenation when resting: turn interval
 	int racial_enemy_bonus           ; THAC0 bonus when fighting racial enemy
 	int racial_enemy_penality        ; THAC0 penality when not fighting racial enemy
+	char party_size                  ; The maximum size of the party
+	char party_start_size            ; The maximum size of the party when the game is starting
 	ReputationChart reputation_chart ; The reputation chart
 	AbilityChart ability_chart       ; The ability chart
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
@@ -494,4 +496,7 @@ Store: NPC                                ; Store non-player character
 	std::vector<Item> inventory       ; The store's inventory, negative quantity if unlimited, zero does selling and not buying
 	std::vector<int> room_costs       ; The cost of the available rooms
 	std::vector<float> room_quality   ; The natural healing multiplier for the available rooms
+
+Senario: Object                           ; Game senario class
+	RuleSet rules                     ; The rules of the game
 
