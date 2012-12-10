@@ -41,7 +41,7 @@ namespace tbrpg
     this->damage_die = 10;
     this->damage_dice = 1;
     this->damage_bonus = 0;
-    this->usable_with = Bow();
+    this->usable_with = PROTOTYPE(Bow);
   }
   
   /**

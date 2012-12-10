@@ -41,7 +41,7 @@ namespace tbrpg
     this->damage_die = 4;
     this->damage_dice = 1;
     this->damage_bonus = 1;
-    this->usable_with = Sling();
+    this->usable_with = PROTOTYPE(Sling);
   }
   
   /**

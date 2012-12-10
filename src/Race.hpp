@@ -26,7 +26,6 @@
 #include <vector>
 #include <unordered_map>
 
-#include "prototype.hpp"
 #include "Object.hpp"
 #include "hash.hpp"
 #include "Class.hpp"
