@@ -3257,6 +3257,7 @@ Protagonists cannot be removed from the party.
 * Line input::                 Line input.
 * Dialogues::                  Dialogue.
 * Starting the game::          Starting the game.
+* Creating your party::        Creating your party.
 @end menu
 
 
@@ -3445,6 +3446,28 @@ or @kbd{w}.
 
 If the text have been obstructed by printk or something
 similar, you can press @kbd{C-l} to redraw the text.
+
+
+@node Creating your party
+@section Creating your party
+@cindex creating your party
+@cindex party, creating
+@cindex input, party
+
+When you start a senario the first thing you do is to create
+your party. The number of characters you can have depends on
+the senario, but you will always need atleast one character.
+
+Use the @kbd{up} and @kbd{down} arrow keys to navigate, and
+@kbd{enter}, @kbd{spacebar} or the @kbd{right} arrow key
+to create a new charcter, this will overwrite an existing
+character if not aborted.
+
+To remove a character press @kbd{r}, @kbd{C-g} to abort, and
+@kbd{C-d} to complete and start playing.
+
+If the form have been obstructed by printk or something
+similar, you can press @kbd{C-l} to redraw the form.
 
 
 

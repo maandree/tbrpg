@@ -261,13 +261,13 @@ namespace tbrpg
    * 
    * @param   <T>          The class of the assigned item
    * @param   <Fc>         T* () function  (implicit)
-   * @param   <Fp>         std::string (T* item, bool selected) function  (implicit)
+   * @param   <Fp>         void (T* item, bool selected) function  (implicit)
    * @param   instruction  Instructions for the user, can be multilined
    * @param   newitems     Whether the items returned by `creator` should be destructed when removed
    * @param   min          The minimum number items needed
    * @param   solts        Vector with slots
    * @param   creator      Function used to create items to put in the slots
-   * @param   printer      Function that returns the singleline string that represents a slot
+   * @param   printer      Function prints a single line string that represents a slot
    * @return               Whether the assignment was completed
    */
   template<class T, class Fc, class Fp>
@@ -289,17 +289,15 @@ namespace tbrpg
       if (item != nullptr)
 	assigneditems++;
     
-    std::cout << CSI "?1049h";
-    
     bool reading = true;
     while (reading)
       {
 	std::cout << CSI "H" CSI "2J" CSI "?25l" << instruction << std::endl << std::endl;
 	for (size_t i = 0, n = slots.size(); i < n; i++)
 	  {
-	    std::cout << (i == current ? CSI "01;34m> " CSI "21;39m" : "  ")
-		      << printer(slots[i], i == current)
-		      << std::endl;
+	    std::cout << (i == current ? CSI "01;34m> " CSI "21;39m" : "  ");
+	    printer(slots[i], i == current);
+	    std::cout << std::endl;
 	  }
 	std::flush(std::cout);
 	
@@ -333,41 +331,28 @@ namespace tbrpg
 		  delete slots[current];
 		assigneditems--;
 		slots[current] = nullptr;
-		std::flush(std::cout
-			   << CSI << (current + firstline) << ";1H" CSI "K"
-			      CSI "01;34m> " CSI "21;39m"
-			   << printer(slots[current], true));
+		std::cout << CSI << (current + firstline) << ";1H" CSI "K" CSI "01;34m> " CSI "21;39m";
+		printer(slots[current], true);
+		std::flush(std::cout);
 		break;
 		
 	      case 'A':
-		if (current == 0)
-		  break;
-		std::cout << CSI << (current + firstline) << ";1H" CSI "K"
-			     CSI "01;34m> " CSI "21;39m"
-			  << printer(slots[current], false);
-		current--;
-		std::flush(std::cout
-			   << CSI << (current + firstline) << ";1H" CSI "K"
-			      CSI "01;34m> " CSI "21;39m"
-			   << printer(slots[current], true));
-		break;
-		
 	      case 'B':
-		if (current + 1 == slots.size())
+		if (current == (c == 'A' ? 0 : (slots.size() - 1)))
 		  break;
-		std::cout << CSI << (current + firstline) << ";1H" CSI "K"
-			     CSI "01;34m> " CSI "21;39m"
-			  << printer(slots[current], false);
-		current--;
-		std::flush(std::cout
-			   << CSI << (current + firstline) << ";1H" CSI "K"
-			      CSI "01;34m> " CSI "21;39m"
-			   << printer(slots[current], true));
+		std::cout << CSI << (current + firstline) << ";1H" CSI "K  ";
+		printer(slots[current], false);
+		current += c == 'A' ? -1 : 1;
+		std::cout << CSI << (current + firstline) << ";1H" CSI "K" CSI "01;34m> " CSI "21;39m";
+		printer(slots[current], true);
+		std::flush(std::cout);
 		break;
 		
 	      case ' ':
 	      case 'C':
 	      case '\n':
+		readinginner = false;
+		std::flush(std::cout << CSI "H" CSI "2J" CSI "?25h");
 		T* newitem = creator();
 		if (newitem == nullptr)
 		  break;
@@ -377,16 +362,12 @@ namespace tbrpg
 		  if (newitems)
 		    delete slots[current];
 		slots[current] = newitem;
-		std::flush(std::cout
-			   << CSI << (current + firstline) << ";1H" CSI "K"
-			      CSI "01;34m> " CSI "21;39m"
-			   << printer(slots[current], true));
 		break;
 	      }
 	  }
       }
     
-    std::flush(std::cout << CSI "?1049l" CSI "H" CSI "2J" CSI "?25h");
+    std::flush(std::cout << CSI "H" CSI "2J" CSI "?25h");
     __restore_tty();
     
     if (newitems && (assigneditems < min))
@@ -394,15 +375,17 @@ namespace tbrpg
 	if (slot != nullptr)
 	  delete slot;
     
-    return assigneditems >= min;
+    return (ssize_t)(assigneditems) >= (ssize_t)(min);
   }
   
   
-  
+
+  /*  
   #undef __store_tty
   #undef __restore_tty
   #undef CSI
   #undef ESC
+  */
   
 }
 

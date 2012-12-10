@@ -94,13 +94,14 @@ namespace tbrpg
     bool partyCreated = promptSlots<CharacterSheet>("Create your party, you need at least one character.",
                                                     true, 1, sheets,
 						    [&] () -> CharacterSheet* { return characterCreator.create(); },
-						    [] (CharacterSheet* sheet, bool selected) -> std::string {
+						    [] (CharacterSheet* sheet, bool selected) -> void {
 						      if (sheet == nullptr)
-							return selected ? "\033[01m(empty)\033[21m" : "(empty)";
-						      std::stringstream ss;
-						      ss << (selected ? "\033[01;3" : "\033[3") << sheet->colour
-							 << "m" << sheet->name << "\033[21;39m";
-						      return ss.str();
+							std::cout << (selected ? "\033[01m(empty)\033[21m" : "(empty)");
+						      else
+							{
+							  std::cout << (selected ? "\033[01;3" : "\033[3") << (int)(sheet->colour) << "m";
+							  std::cout << sheet->name << "\033[21;39m";
+							}
 						    });
     
     if (partyCreated == false)
