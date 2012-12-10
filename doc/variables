@@ -218,6 +218,7 @@ Race: Object                                                               ; Rac
 CharacterSheet: Object                                                     ; Character sheet
 	std::string name                                                   ; The name of the character
 	std::string biography                                              ; The character's biography
+	int hit_points                                                     ; The maximum number of hit points for the current level without modifers
 	char colour                                                        ; The character's name colouration
 	char alignment                                                     ; The character's alignment
 	std::string portrait                                               ; The character's portrait in printable data

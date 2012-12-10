@@ -65,6 +65,11 @@ namespace tbrpg
     std::string biography;
     
     /**
+     * The maximum number of hit points for the current level without modifers
+     */
+    int hit_points;
+    
+    /**
      * The character's name colouration
      */
     char colour;

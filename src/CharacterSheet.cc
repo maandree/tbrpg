@@ -39,6 +39,7 @@ namespace tbrpg
     this->racial_enemy = nullptr;
     this->name = "the nameless one";
     this->biography = "";
+    this->hit_points = 8;
     this->colour = 5;
     this->alignment = 6;
     this->portrait = "";
@@ -66,6 +67,7 @@ namespace tbrpg
   {
     this->name = original.name;
     this->biography = original.biography;
+    this->hit_points = original.hit_points;
     this->colour = original.colour;
     this->alignment = original.alignment;
     this->portrait = original.portrait;
@@ -94,6 +96,7 @@ namespace tbrpg
   {
     this->name = original.name;
     this->biography = original.biography;
+    this->hit_points = original.hit_points;
     this->colour = original.colour;
     this->alignment = original.alignment;
     this->portrait = original.portrait;
@@ -122,6 +125,7 @@ namespace tbrpg
   {
     std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
+    std::swap(this->hit_points, original.hit_points);
     std::swap(this->colour, original.colour);
     std::swap(this->alignment, original.alignment);
     std::swap(this->portrait, original.portrait);
@@ -164,6 +168,7 @@ namespace tbrpg
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->biography = original.biography;
+    this->hit_points = original.hit_points;
     this->colour = original.colour;
     this->alignment = original.alignment;
     this->portrait = original.portrait;
@@ -195,6 +200,7 @@ namespace tbrpg
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->biography = original.biography;
+    this->hit_points = original.hit_points;
     this->colour = original.colour;
     this->alignment = original.alignment;
     this->portrait = original.portrait;
@@ -226,6 +232,7 @@ namespace tbrpg
     std::swap((Object&)*this, (Object&)original);
     std::swap(this->name, original.name);
     std::swap(this->biography, original.biography);
+    std::swap(this->hit_points, original.hit_points);
     std::swap(this->colour, original.colour);
     std::swap(this->alignment, original.alignment);
     std::swap(this->portrait, original.portrait);
@@ -257,6 +264,7 @@ namespace tbrpg
   {
     if (this->name != other.name)  return false;
     if (this->biography != other.biography)  return false;
+    if (this->hit_points != other.hit_points)  return false;
     if (this->colour != other.colour)  return false;
     if (this->alignment != other.alignment)  return false;
     if (this->portrait != other.portrait)  return false;
@@ -312,38 +320,40 @@ namespace tbrpg
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::string>()(this->biography);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<int>()(this->hit_points);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<char>()(this->colour);
-    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<char>()(this->alignment);
-    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<std::string>()(this->portrait);
-    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<bool>()(this->female);
-    rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<int>>()(this->experience);
-    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::vector<char>>()(this->level);
-    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::vector<bool>>()(this->class_abondoned);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::unordered_map<WeaponGroup, int>>()(this->proficiencies);
-    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<Spell>>()(this->affected_by);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<Inventory>()(this->inventory);
+    rc += std::hash<std::vector<Spell>>()(this->affected_by);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<AbilityBonus>()(this->abilities);
+    rc += std::hash<Inventory>()(this->inventory);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<SpellBook>()(this->spells);
+    rc += std::hash<AbilityBonus>()(this->abilities);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<Race>()(this->race);
+    rc += std::hash<SpellBook>()(this->spells);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<Race*>()(this->racial_enemy);
+    rc += std::hash<Race>()(this->race);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<Class>>()(this->prestige);
+    rc += std::hash<Race*>()(this->racial_enemy);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<MagicSchool>()(this->specialisation);
+    rc += std::hash<std::vector<Class>>()(this->prestige);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<MagicSchool>()(this->specialisation);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<std::vector<Spell>>()(this->special_abilities);
     return rc;
   }
