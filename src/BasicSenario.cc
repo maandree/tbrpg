@@ -35,8 +35,8 @@ namespace tbrpg
    */
   BasicSenario::BasicSenario()
   {
-    this->rules.partySize = 6;
-    this->rules.partyStartSize = 6;
+    this->rules.partySize = 2;
+    this->rules.partyStartSize = 2;
   }
   
   /**
