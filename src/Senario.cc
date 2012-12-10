@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(142);
     this->rules = RuleSet();
+    this->party = Party();
+    this->map = Map();
   }
   
   /**
@@ -68,6 +70,16 @@ namespace tbrpg
   Senario::Senario(Senario&& original) : Object(original)
   {
     std::swap(this->rules, original.rules);
+  }
+  
+  
+  
+  /**
+   * This in invoked when a party is formed
+   */
+  virtual void partyFormed()
+  {
+    // do nothing
   }
   
   

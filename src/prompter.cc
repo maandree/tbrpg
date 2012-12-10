@@ -1350,9 +1350,10 @@ namespace tbrpg
    * @param   name          The name of the person with whom you are speaking
    * @param   message       The received message
    * @param   alternatives  Alternatives
+   * @parm    spacing       The number of lines between alternatives
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives)
+  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives, char spacing)
   {
     __store_tty();
     long selected = 0;
@@ -1369,13 +1370,14 @@ namespace tbrpg
 	std::cout << CSI "01m  [ Press enter or spacebar to continue ]" CSI "21m" << std::endl << std::endl;
 	std::flush(std::cout);
 	
+	char lastc, c = 0;
 	for (;;)
 	  {
-	    char c;
+	    lastc = c;
 	    if (read(STDIN_FILENO, &c, 1) <= 0)
 	      c = '\n';
 	    
-	    if ((c == ' ') || (c == '\n'))
+	    if ((c == ' ') || (c == '\n') || ((c == 'C') && (lastc == '[')))
 	      break;
 	    if (c == CTRL('G'))
 	      {
@@ -1403,7 +1405,8 @@ namespace tbrpg
 	  std::cout << (alt);							     \
 	  if (i == selected)							     \
 	    std::cout << CSI "21;39m";						     \
-	  std::cout << std::endl << std::endl
+	  for (char _i_ = 0; _i_ <= spacing; _i_++)				     \
+	    std::cout << std::endl
 	
 	
 	long index = 0;
@@ -1430,9 +1433,9 @@ namespace tbrpg
 	    free(_str);
 	    __printdialogue(alts[index], index);
 	    linemap[index++] = totallines;
-	    totallines += lines + 2;
+	    totallines += lines + spacing + 1;
 	  }
-	linemap[alternatives.size()] = totallines + 1;
+	linemap[alternatives.size()] = totallines + spacing;
 	
 	
 	std::flush(std::cout);

@@ -30,6 +30,8 @@
 #include "hash.hpp"
 #include "Object.hpp"
 #include "RuleSet.hpp"
+#include "Party.hpp"
+#include "Map.hpp"
 
 
 /**
@@ -52,6 +54,16 @@ namespace tbrpg
      * The rules of the game
      */
     RuleSet rules;
+    
+    /**
+     * The party
+     */
+    Party party;
+    
+    /**
+     * The map
+     */
+    Map map;
     
     
     
@@ -130,6 +142,14 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const Senario& other) const;
+    
+    
+    
+    /**
+     * This in invoked when a party is formed
+     */
+    virtual void partyFormed();
+    
     
     
   protected:

@@ -227,9 +227,10 @@ namespace tbrpg
    * @param   name          The name of the person with whom you are speaking
    * @param   message       The received message
    * @param   alternatives  Alternatives
+   * @parm    spacing       The number of lines between alternatives
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives);
+  long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives, char spacing = 1);
   
   /**
    * Print a list in columns

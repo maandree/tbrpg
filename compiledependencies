@@ -112,3 +112,4 @@ RuleSet Gnome
 RuleSet Halfling
 CharacterCreator caser
 Object prototype
+BasicSenario Senario

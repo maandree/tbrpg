@@ -43,7 +43,7 @@ namespace tbrpg
     /**
      * Constructor
      */
-    BasicSenario() : Senario();
+    BasicSenario();
     
     /**
      * Destructor
@@ -55,7 +55,7 @@ namespace tbrpg
     /**
      * The name of the game senario
      */
-    static const std::string = "Basic Game Senario";
+    static std::string senarioTitle = std::string("Basic Game Senario");
     
   };
 }

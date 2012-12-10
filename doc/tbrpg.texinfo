@@ -3256,6 +3256,7 @@ Protagonists cannot be removed from the party.
 * Multiselection menus::       Using multiselection menus.
 * Line input::                 Line input.
 * Dialogues::                  Dialogue.
+* Starting the game::          Starting the game.
 @end menu
 
 
@@ -3409,16 +3410,31 @@ depending on the game senario low intelligence, may cause
 a character to not be able to speak properly.
 
 You can walk a ways from a dialog by pressing @kbd{C-g},
-otherwise you press @kbd{enter} or @kbd{spacebar}.
-Often, but not always, you can reply, in this case, you
-select a reply and press @kbd{enter} or @kbd{spacebar}.
+otherwise you press @kbd{enter}, @kbd{spacebar} or the
+@kbd{right} arrow key. Often, but not always, you can
+reply, in this case, you select a reply and press
+@kbd{enter}, @kbd{spacebar} or the @kbd{right} arrow key.
 Use the @kbd{up} and @kbd{down} arrow keys to navigate,
 or use the number in front of the reply to select it
-directly without having to press @kbd{enter} or
-@kbd{spacebar}.
+directly without having to press @kbd{enter},
+@kbd{spacebar} or the @kbd{right} arrow key.
 
 If the dialogue have been obstructed by printk or something
 similar, you can press @kbd{C-l} to redraw the dialogue.
+
+
+@node Starting the game
+@section Starting the game
+@cindex starting the game
+@cindex input, starting the game
+
+When you start the game will are asked for a game senario.
+Use the @kbd{up} and @kbd{down} arrow keys to navigate and
+press @kbd{enter}, @kbd{spacebar} or the @kbd{right} arrow
+key. You can also the number, or letter, in front of the
+senario you want to play.
+
+You can press @kbd{C-g} to exit.
 
 
 
