@@ -73,6 +73,16 @@ namespace tbrpg
     std::swap(this->actual_instance, original.actual_instance);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Object::fork() const
+  {
+    return new Object(*this);
+  }
+  
   
   
   /**

@@ -197,6 +197,16 @@ namespace tbrpg
     std::swap(this->default_two_hand, original.default_two_hand);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Class::fork() const
+  {
+    return new Class(*this);
+  }
+  
   
   
   /**

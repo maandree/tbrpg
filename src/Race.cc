@@ -87,6 +87,16 @@ namespace tbrpg
     std::swap(this->bonuses, original.bonuses);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Race::fork() const
+  {
+    return new Race(*this);
+  }
+  
   
   
   /**

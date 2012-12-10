@@ -69,6 +69,16 @@ namespace tbrpg
     std::swap(this->critical_hit_protection, original.critical_hit_protection);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Headgear::fork() const
+  {
+    return new Headgear(*this);
+  }
+  
   
   
   /**

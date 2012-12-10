@@ -129,6 +129,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Warrior::fork() const
+  {
+    return new Warrior(*this);
+  }
+  
   
   
   /**

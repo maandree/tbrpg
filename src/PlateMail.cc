@@ -71,6 +71,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* PlateMail::fork() const
+  {
+    return new PlateMail(*this);
+  }
+  
   
   
   /**

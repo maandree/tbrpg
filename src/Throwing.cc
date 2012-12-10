@@ -69,6 +69,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Throwing::fork() const
+  {
+    return new Throwing(*this);
+  }
+  
   
   
   /**

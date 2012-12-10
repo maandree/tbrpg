@@ -79,6 +79,16 @@ namespace tbrpg
     std::swap(this->protect_melee, original.protect_melee);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Shield::fork() const
+  {
+    return new Shield(*this);
+  }
+  
   
   
   /**

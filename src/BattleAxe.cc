@@ -74,6 +74,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* BattleAxe::fork() const
+  {
+    return new BattleAxe(*this);
+  }
+  
   
   
   /**

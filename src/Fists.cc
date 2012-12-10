@@ -75,6 +75,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Fists::fork() const
+  {
+    return new Fists(*this);
+  }
+  
   
   
   /**

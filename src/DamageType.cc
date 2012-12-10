@@ -71,6 +71,16 @@ namespace tbrpg
     std::swap(this->name, original.name);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* DamageType::fork() const
+  {
+    return new DamageType(*this);
+  }
+  
   
   
   /**

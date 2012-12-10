@@ -72,6 +72,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Bow::fork() const
+  {
+    return new Bow(*this);
+  }
+  
   
   
   /**

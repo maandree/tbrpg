@@ -170,6 +170,16 @@ namespace tbrpg
     std::swap(this->racial_enemies, original.racial_enemies);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* RuleSet::fork() const
+  {
+    return new RuleSet(*this);
+  }
+  
   
   
   /**

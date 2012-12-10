@@ -270,6 +270,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Wizard::fork() const
+  {
+    return new Wizard(*this);
+  }
+  
   
   
   /**

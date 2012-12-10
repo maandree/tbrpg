@@ -73,6 +73,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* BastardSword::fork() const
+  {
+    return new BastardSword(*this);
+  }
+  
   
   
   /**

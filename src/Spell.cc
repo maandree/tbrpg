@@ -126,6 +126,16 @@ namespace tbrpg
     std::swap(this->school, original.school);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Spell::fork() const
+  {
+    return new Spell(*this);
+  }
+  
   
   
   /**
