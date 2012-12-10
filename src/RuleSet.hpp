@@ -115,6 +115,16 @@ namespace tbrpg
     int racial_enemy_penality;
     
     /**
+     * The maximum size of the party
+     */
+    char party_size;
+    
+    /**
+     * The maximum size of the party when the game is starting
+     */
+    char party_start_size;
+    
+    /**
      * The reputation chart
      */
     ReputationChart reputation_chart;

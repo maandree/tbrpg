@@ -49,6 +49,8 @@ namespace tbrpg
     //this->rest_healing_turns = 0;
     //this->racial_enemy_bonus = 0;
     //this->racial_enemy_penality = 0;
+    //this->party_size = 0;
+    //this->party_start_size = 0;
     //this->reputation_chart = nullptr;
     //this->ability_chart = nullptr;
     //this->inventory_prototype = nullptr;
@@ -77,6 +79,8 @@ namespace tbrpg
     this->rest_healing_turns = original.rest_healing_turns;
     this->racial_enemy_bonus = original.racial_enemy_bonus;
     this->racial_enemy_penality = original.racial_enemy_penality;
+    this->party_size = original.party_size;
+    this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
@@ -105,6 +109,8 @@ namespace tbrpg
     this->rest_healing_turns = original.rest_healing_turns;
     this->racial_enemy_bonus = original.racial_enemy_bonus;
     this->racial_enemy_penality = original.racial_enemy_penality;
+    this->party_size = original.party_size;
+    this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
@@ -133,6 +139,8 @@ namespace tbrpg
     std::swap(this->rest_healing_turns, original.rest_healing_turns);
     std::swap(this->racial_enemy_bonus, original.racial_enemy_bonus);
     std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
+    std::swap(this->party_size, original.party_size);
+    std::swap(this->party_start_size, original.party_start_size);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
@@ -180,6 +188,8 @@ namespace tbrpg
     this->rest_healing_turns = original.rest_healing_turns;
     this->racial_enemy_bonus = original.racial_enemy_bonus;
     this->racial_enemy_penality = original.racial_enemy_penality;
+    this->party_size = original.party_size;
+    this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
@@ -210,6 +220,8 @@ namespace tbrpg
     this->rest_healing_turns = original.rest_healing_turns;
     this->racial_enemy_bonus = original.racial_enemy_bonus;
     this->racial_enemy_penality = original.racial_enemy_penality;
+    this->party_size = original.party_size;
+    this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = original.inventory_prototype;
@@ -240,6 +252,8 @@ namespace tbrpg
     std::swap(this->rest_healing_turns, original.rest_healing_turns);
     std::swap(this->racial_enemy_bonus, original.racial_enemy_bonus);
     std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
+    std::swap(this->party_size, original.party_size);
+    std::swap(this->party_start_size, original.party_start_size);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
@@ -270,6 +284,8 @@ namespace tbrpg
     if (this->rest_healing_turns != other.rest_healing_turns)  return false;
     if (this->racial_enemy_bonus != other.racial_enemy_bonus)  return false;
     if (this->racial_enemy_penality != other.racial_enemy_penality)  return false;
+    if (this->party_size != other.party_size)  return false;
+    if (this->party_start_size != other.party_start_size)  return false;
     if (this->reputation_chart != other.reputation_chart)  return false;
     if (this->ability_chart != other.ability_chart)  return false;
     if (this->inventory_prototype != other.inventory_prototype)  return false;
@@ -334,16 +350,20 @@ namespace tbrpg
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<int>()(this->racial_enemy_penality);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<ReputationChart>()(this->reputation_chart);
+    rc += std::hash<char>()(this->party_size);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<AbilityChart>()(this->ability_chart);
+    rc += std::hash<char>()(this->party_start_size);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<Inventory>()(this->inventory_prototype);
+    rc += std::hash<ReputationChart>()(this->reputation_chart);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<std::vector<Spell>>()(this->spells);
+    rc += std::hash<AbilityChart>()(this->ability_chart);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<Race>>()(this->races);
+    rc += std::hash<Inventory>()(this->inventory_prototype);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::vector<Spell>>()(this->spells);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<std::vector<Race>>()(this->races);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<std::vector<Race>>()(this->racial_enemies);
     return rc;
   }
