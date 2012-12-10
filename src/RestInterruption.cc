@@ -85,6 +85,16 @@ namespace tbrpg
     std::swap(this->creatures, original.creatures);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* RestInterruption::fork() const
+  {
+    return new RestInterruption(*this);
+  }
+  
   
   
   /**

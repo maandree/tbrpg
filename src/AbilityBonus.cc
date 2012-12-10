@@ -97,6 +97,16 @@ namespace tbrpg
     std::swap(this->defence, original.defence);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* AbilityBonus::fork() const
+  {
+    return new AbilityBonus(*this);
+  }
+  
   
   
   /**

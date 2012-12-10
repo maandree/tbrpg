@@ -106,6 +106,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Halfling& operator =(Halfling&& original);
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+  
     
     
     /**

@@ -121,6 +121,16 @@ namespace tbrpg
     std::swap(this->armour_class_modifiers, original.armour_class_modifiers);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Item::fork() const
+  {
+    return new Item(*this);
+  }
+  
   
   
   /**

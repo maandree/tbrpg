@@ -97,6 +97,16 @@ namespace tbrpg
     std::swap(this->room_quality, original.room_quality);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Store::fork() const
+  {
+    return new Store(*this);
+  }
+  
   
   
   /**

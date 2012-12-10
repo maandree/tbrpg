@@ -81,6 +81,16 @@ namespace tbrpg
     std::swap(this->map, original.map);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Senario::fork() const
+  {
+    return new Senario(*this);
+  }
+  
   
   
   /**

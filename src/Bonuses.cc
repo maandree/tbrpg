@@ -145,6 +145,16 @@ namespace tbrpg
     std::swap(this->detect_doors, original.detect_doors);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Bonuses::fork() const
+  {
+    return new Bonuses(*this);
+  }
+  
   
   
   /**

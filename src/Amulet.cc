@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Amulet::fork() const
+  {
+    return new Amulet(*this);
+  }
+  
   
   
   /**

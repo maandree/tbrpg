@@ -93,6 +93,16 @@ namespace tbrpg
     std::swap(this->damage_type, original.damage_type);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Ammunition::fork() const
+  {
+    return new Ammunition(*this);
+  }
+  
   
   
   /**

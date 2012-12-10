@@ -81,6 +81,16 @@ namespace tbrpg
     std::swap(this->constitution_weight, original.constitution_weight);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* CorpseMaker::fork() const
+  {
+    return new CorpseMaker(*this);
+  }
+  
   
   
   /**

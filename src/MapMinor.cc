@@ -105,6 +105,16 @@ namespace tbrpg
     std::swap(this->interruptions, original.interruptions);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* MapMinor::fork() const
+  {
+    return new MapMinor(*this);
+  }
+  
   
   
   /**

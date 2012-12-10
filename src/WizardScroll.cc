@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* WizardScroll::fork() const
+  {
+    return new WizardScroll(*this);
+  }
+  
   
   
   /**

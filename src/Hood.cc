@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Hood::fork() const
+  {
+    return new Hood(*this);
+  }
+  
   
   
   /**

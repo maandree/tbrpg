@@ -81,6 +81,16 @@ namespace tbrpg
     std::swap(this->half_attacks, original.half_attacks);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Proficiency::fork() const
+  {
+    return new Proficiency(*this);
+  }
+  
   
   
   /**

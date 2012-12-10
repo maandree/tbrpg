@@ -128,6 +128,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Container& operator =(Container&& original);
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+  
     
     
     /**

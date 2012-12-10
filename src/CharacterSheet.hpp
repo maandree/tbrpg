@@ -217,6 +217,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual CharacterSheet& operator =(CharacterSheet&& original);
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+  
     
     
     /**

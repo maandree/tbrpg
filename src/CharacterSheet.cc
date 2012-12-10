@@ -149,6 +149,16 @@ namespace tbrpg
     std::swap(this->special_abilities, original.special_abilities);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* CharacterSheet::fork() const
+  {
+    return new CharacterSheet(*this);
+  }
+  
   
   
   /**

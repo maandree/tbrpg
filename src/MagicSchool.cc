@@ -85,6 +85,16 @@ namespace tbrpg
     std::swap(this->opposite, original.opposite);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* MagicSchool::fork() const
+  {
+    return new MagicSchool(*this);
+  }
+  
   
   
   /**

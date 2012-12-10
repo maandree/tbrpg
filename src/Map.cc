@@ -77,6 +77,16 @@ namespace tbrpg
     std::swap(this->majors, original.majors);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Map::fork() const
+  {
+    return new Map(*this);
+  }
+  
   
   
   /**

@@ -121,6 +121,16 @@ namespace tbrpg
     std::swap(this->personal, original.personal);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Inventory::fork() const
+  {
+    return new Inventory(*this);
+  }
+  
   
   
   /**

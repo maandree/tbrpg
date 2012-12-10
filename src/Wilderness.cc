@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Wilderness::fork() const
+  {
+    return new Wilderness(*this);
+  }
+  
   
   
   /**

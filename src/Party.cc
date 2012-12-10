@@ -77,6 +77,16 @@ namespace tbrpg
     std::swap(this->characters, original.characters);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Party::fork() const
+  {
+    return new Party(*this);
+  }
+  
   
   
   /**

@@ -117,6 +117,16 @@ namespace tbrpg
     std::swap(this->alignment_reputation, original.alignment_reputation);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* ReputationChart::fork() const
+  {
+    return new ReputationChart(*this);
+  }
+  
   
   
   /**

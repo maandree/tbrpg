@@ -73,6 +73,16 @@ namespace tbrpg
     std::swap(this->character, original.character);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Body::fork() const
+  {
+    return new Body(*this);
+  }
+  
   
   
   /**

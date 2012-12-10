@@ -73,6 +73,16 @@ namespace tbrpg
     std::swap(this->wizard_magic_use, original.wizard_magic_use);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* BodyArmour::fork() const
+  {
+    return new BodyArmour(*this);
+  }
+  
   
   
   /**

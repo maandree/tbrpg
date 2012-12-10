@@ -85,6 +85,16 @@ namespace tbrpg
     std::swap(this->can_contain, original.can_contain);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Container::fork() const
+  {
+    return new Container(*this);
+  }
+  
   
   
   /**

@@ -77,6 +77,16 @@ namespace tbrpg
     std::swap(this->memorised, original.memorised);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* SpellBook::fork() const
+  {
+    return new SpellBook(*this);
+  }
+  
   
   
   /**

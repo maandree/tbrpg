@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* SplintMail::fork() const
+  {
+    return new SplintMail(*this);
+  }
+  
   
   
   /**

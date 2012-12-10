@@ -72,6 +72,16 @@ namespace tbrpg
 
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Cloak::fork() const
+  {
+    return new Cloak(*this);
+  }
+  
   
   
   /**

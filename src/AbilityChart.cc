@@ -97,6 +97,16 @@ namespace tbrpg
     std::swap(this->charisma, original.charisma);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* AbilityChart::fork() const
+  {
+    return new AbilityChart(*this);
+  }
+  
   
   
   /**

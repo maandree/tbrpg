@@ -89,6 +89,16 @@ namespace tbrpg
     std::swap(this->spell, original.spell);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* SavingThrows::fork() const
+  {
+    return new SavingThrows(*this);
+  }
+  
   
   
   /**
