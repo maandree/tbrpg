@@ -26,11 +26,9 @@
 #include <vector>
 #include <unordered_map>
 
-#include "Object.hpp"
-
-
-
+#include "prototype.hpp"
 #include "hash.hpp"
+#include "Object.hpp"
 #include "RuleSet.hpp"
 
 

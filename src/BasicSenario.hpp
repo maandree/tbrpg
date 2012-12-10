@@ -21,13 +21,7 @@
 #define __GUARD_BASICSENARIO_H__
 
 
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <unordered_map>
-#include <stdlib.h>
-
-#include "RuleSet.hpp"
+#include "Senario.hpp"
 
 
 /**
@@ -43,20 +37,13 @@ namespace tbrpg
   /**
    * A basic game senario
    */
-  class BasicSenario
+  class BasicSenario : public Senario
   {
   public:
     /**
-     * The game's rules
-     */
-    RuleSet rules;
-    
-    
-    
-    /**
      * Constructor
      */
-    BasicSenario();
+    BasicSenario() : Senario();
     
     /**
      * Destructor

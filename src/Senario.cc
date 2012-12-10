@@ -36,8 +36,7 @@ namespace tbrpg
   Senario::Senario() : Object()
   {
     this->class_inheritance.push_back(142);
-    ////TODO implement constructor
-    //this->rules = nullptr;
+    this->rules = RuleSet();
   }
   
   /**
@@ -58,7 +57,6 @@ namespace tbrpg
    */
   Senario::Senario(Senario& original) : Object(original)
   {
-    (void) original;
     this->rules = original.rules;
   }
   
@@ -69,7 +67,6 @@ namespace tbrpg
    */
   Senario::Senario(Senario&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->rules, original.rules);
   }
   
@@ -80,8 +77,7 @@ namespace tbrpg
    */
   Senario::~Senario()
   {
-    ////TODO implement destructor
-    //delete this->rules;
+    // do nothing
   }
   
   
@@ -95,7 +91,8 @@ namespace tbrpg
   Senario& Senario::operator =(const Senario& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->rules = original.rules;
     return *this;
   }
   
@@ -107,8 +104,8 @@ namespace tbrpg
    */
   Senario& Senario::operator =(Senario& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->rules = original.rules;
     return *this;
   }
   
@@ -120,8 +117,8 @@ namespace tbrpg
    */
   Senario& Senario::operator =(Senario&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->rules, original.rules);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->rules, original.rules);
     return *this;
   }
   
