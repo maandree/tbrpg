@@ -104,6 +104,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual MediumShield& operator =(MediumShield&& original);
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+  
     
     
     /**

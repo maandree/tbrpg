@@ -85,6 +85,16 @@ namespace tbrpg
     std::swap(this->limit, original.limit);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* ThiefAbilities::fork() const
+  {
+    return new ThiefAbilities(*this);
+  }
+  
   
   
   /**

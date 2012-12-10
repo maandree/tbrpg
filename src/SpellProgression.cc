@@ -81,6 +81,16 @@ namespace tbrpg
     std::swap(this->priest_levels, original.priest_levels);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* SpellProgression::fork() const
+  {
+    return new SpellProgression(*this);
+  }
+  
   
   
   /**

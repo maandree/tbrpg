@@ -74,6 +74,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Quarterstaff::fork() const
+  {
+    return new Quarterstaff(*this);
+  }
+  
   
   
   /**

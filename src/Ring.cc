@@ -69,6 +69,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Ring::fork() const
+  {
+    return new Ring(*this);
+  }
+  
   
   
   /**

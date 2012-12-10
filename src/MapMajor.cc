@@ -85,6 +85,16 @@ namespace tbrpg
     std::swap(this->detectable, original.detectable);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* MapMajor::fork() const
+  {
+    return new MapMajor(*this);
+  }
+  
   
   
   /**

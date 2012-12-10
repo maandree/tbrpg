@@ -69,6 +69,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* TextScroll::fork() const
+  {
+    return new TextScroll(*this);
+  }
+  
   
   
   /**

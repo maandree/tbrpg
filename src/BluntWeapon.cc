@@ -70,6 +70,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* BluntWeapon::fork() const
+  {
+    return new BluntWeapon(*this);
+  }
+  
   
   
   /**

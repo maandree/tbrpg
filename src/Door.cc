@@ -68,6 +68,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Door::fork() const
+  {
+    return new Door(*this);
+  }
+  
   
   
   /**

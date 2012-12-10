@@ -81,6 +81,16 @@ namespace tbrpg
     std::swap(this->leads_to, original.leads_to);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Entrance::fork() const
+  {
+    return new Entrance(*this);
+  }
+  
   
   
   /**

@@ -101,6 +101,16 @@ namespace tbrpg
     std::swap(this->weapon_group, original.weapon_group);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Weapon::fork() const
+  {
+    return new Weapon(*this);
+  }
+  
   
   
   /**

@@ -71,6 +71,16 @@ namespace tbrpg
     std::swap(this->id, original.id);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* QuestItem::fork() const
+  {
+    return new QuestItem(*this);
+  }
+  
   
   
   /**

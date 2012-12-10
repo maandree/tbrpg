@@ -68,6 +68,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* RightHandItem::fork() const
+  {
+    return new RightHandItem(*this);
+  }
+  
   
   
   /**

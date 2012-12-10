@@ -89,6 +89,16 @@ namespace tbrpg
     std::swap(this->experience, original.experience);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Creature::fork() const
+  {
+    return new Creature(*this);
+  }
+  
   
   
   /**

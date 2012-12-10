@@ -121,6 +121,16 @@ namespace tbrpg
     std::swap(this->slot_map, original.slot_map);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* ActionSlotChart::fork() const
+  {
+    return new ActionSlotChart(*this);
+  }
+  
   
   
   /**
