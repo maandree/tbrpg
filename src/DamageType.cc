@@ -78,7 +78,7 @@ namespace tbrpg
    */
   Object* DamageType::fork() const
   {
-    return new DamageType(*this);
+    return (Object*)(new DamageType(*this));
   }
   
   

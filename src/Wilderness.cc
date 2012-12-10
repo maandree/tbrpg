@@ -75,7 +75,7 @@ namespace tbrpg
    */
   Object* Wilderness::fork() const
   {
-    return new Wilderness(*this);
+    return (Object*)(new Wilderness(*this));
   }
   
   

@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* Bolt::fork() const
   {
-    return new Bolt(*this);
+    return (Object*)(new Bolt(*this));
   }
   
   

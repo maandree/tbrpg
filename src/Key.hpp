@@ -72,6 +72,13 @@ namespace tbrpg
      */
     Key(Key&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -104,13 +111,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Key& operator =(Key&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

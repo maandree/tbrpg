@@ -80,7 +80,7 @@ namespace tbrpg
    */
   Object* Object::fork() const
   {
-    return new Object(*this);
+    return (Object*)(new Object(*this));
   }
   
   

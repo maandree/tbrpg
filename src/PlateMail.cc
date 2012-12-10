@@ -78,7 +78,7 @@ namespace tbrpg
    */
   Object* PlateMail::fork() const
   {
-    return new PlateMail(*this);
+    return (Object*)(new PlateMail(*this));
   }
   
   

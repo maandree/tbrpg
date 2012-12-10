@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* ChainMail::fork() const
   {
-    return new ChainMail(*this);
+    return (Object*)(new ChainMail(*this));
   }
   
   

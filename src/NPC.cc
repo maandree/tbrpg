@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* NPC::fork() const
   {
-    return new NPC(*this);
+    return (Object*)(new NPC(*this));
   }
   
   

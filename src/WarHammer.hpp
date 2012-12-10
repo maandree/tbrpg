@@ -72,6 +72,13 @@ namespace tbrpg
      */
     WarHammer(WarHammer&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -104,13 +111,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual WarHammer& operator =(WarHammer&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

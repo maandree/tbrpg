@@ -88,7 +88,7 @@ namespace tbrpg
    */
   Object* SpellProgression::fork() const
   {
-    return new SpellProgression(*this);
+    return (Object*)(new SpellProgression(*this));
   }
   
   

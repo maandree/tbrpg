@@ -106,6 +106,13 @@ namespace tbrpg
      */
     Ammunition(Ammunition&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -138,13 +145,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Ammunition& operator =(Ammunition&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

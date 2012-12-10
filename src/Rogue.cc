@@ -109,7 +109,7 @@ namespace tbrpg
    */
   Object* Rogue::fork() const
   {
-    return new Rogue(*this);
+    return (Object*)(new Rogue(*this));
   }
   
   

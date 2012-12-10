@@ -94,7 +94,7 @@ namespace tbrpg
    */
   Object* Race::fork() const
   {
-    return new Race(*this);
+    return (Object*)(new Race(*this));
   }
   
   

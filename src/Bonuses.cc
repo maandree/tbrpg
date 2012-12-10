@@ -148,7 +148,7 @@ namespace tbrpg
    */
   Object* Bonuses::fork() const
   {
-    return new Bonuses(*this);
+    return (Object*)(new Bonuses(*this));
   }
   
   

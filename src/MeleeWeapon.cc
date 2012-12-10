@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* MeleeWeapon::fork() const
   {
-    return new MeleeWeapon(*this);
+    return (Object*)(new MeleeWeapon(*this));
   }
   
   

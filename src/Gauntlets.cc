@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* Gauntlets::fork() const
   {
-    return new Gauntlets(*this);
+    return (Object*)(new Gauntlets(*this));
   }
   
   

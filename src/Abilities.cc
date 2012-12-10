@@ -103,7 +103,7 @@ namespace tbrpg
    */
   Object* Abilities::fork() const
   {
-    return new Abilities(*this);
+    return (Object*)(new Abilities(*this));
   }
   
   

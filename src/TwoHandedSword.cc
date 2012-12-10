@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* TwoHandedSword::fork() const
   {
-    return new TwoHandedSword(*this);
+    return (Object*)(new TwoHandedSword(*this));
   }
   
   

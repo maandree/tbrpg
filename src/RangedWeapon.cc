@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* RangedWeapon::fork() const
   {
-    return new RangedWeapon(*this);
+    return (Object*)(new RangedWeapon(*this));
   }
   
   

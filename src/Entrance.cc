@@ -88,7 +88,7 @@ namespace tbrpg
    */
   Object* Entrance::fork() const
   {
-    return new Entrance(*this);
+    return (Object*)(new Entrance(*this));
   }
   
   

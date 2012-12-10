@@ -122,7 +122,7 @@ namespace tbrpg
    */
   Object* CorpseMaker::fork() const
   {
-    return new CorpseMaker(*this);
+    return (Object*)(new CorpseMaker(*this));
   }
   
   

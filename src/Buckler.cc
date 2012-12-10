@@ -78,7 +78,7 @@ namespace tbrpg
    */
   Object* Buckler::fork() const
   {
-    return new Buckler(*this);
+    return (Object*)(new Buckler(*this));
   }
   
   

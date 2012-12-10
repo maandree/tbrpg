@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* Headgear::fork() const
   {
-    return new Headgear(*this);
+    return (Object*)(new Headgear(*this));
   }
   
   

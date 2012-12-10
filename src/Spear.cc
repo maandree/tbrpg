@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* Spear::fork() const
   {
-    return new Spear(*this);
+    return (Object*)(new Spear(*this));
   }
   
   

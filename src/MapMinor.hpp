@@ -125,6 +125,13 @@ namespace tbrpg
      */
     MapMinor(MapMinor&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -157,13 +164,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual MapMinor& operator =(MapMinor&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

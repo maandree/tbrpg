@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* Boots::fork() const
   {
-    return new Boots(*this);
+    return (Object*)(new Boots(*this));
   }
   
   

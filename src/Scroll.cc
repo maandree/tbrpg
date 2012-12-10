@@ -77,7 +77,7 @@ namespace tbrpg
    */
   Object* Scroll::fork() const
   {
-    return new Scroll(*this);
+    return (Object*)(new Scroll(*this));
   }
   
   
