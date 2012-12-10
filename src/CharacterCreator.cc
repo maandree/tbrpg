@@ -503,29 +503,29 @@ namespace tbrpg
     this->sheet.inventory.left_hand = std::vector<Weapon*>(weapons);
     
     
-    int minHP = 0, bestHP = 0;
-    int hpDie = 0, hpDice = 0, hpBonus = 0;
+    int minHP = 0, bestHP = 0, hpBonus = 0;
+    char hpDie = 0, hpDice = 0;
     for (Class& c : this->sheet.prestige)
       {
 	if (minHP < c.hit_points)
 	  minHP = c.hit_points;
 	
-	int hp = c.experience_chart.hit_point_die
-	       * c.experience_chart.hit_point_dice
-	       + c.experience_chart.hit_point_bonus;
+	int hp = c.experience_chart.hit_point_die[1]
+	       * c.experience_chart.hit_point_dice[1]
+	       + c.experience_chart.hit_point_bonus[1];
 	if (bestHP < hp)
 	  {
 	    bestHP = hp;
-	    hpDie = c.experience_chart.hit_point_die;
-	    hpDice = c.experience_chart.hit_point_dice;
-	    hpBonus = c.experience_chart.hit_point_bonus;
+	    hpDie = c.experience_chart.hit_point_die[1];
+	    hpDice = c.experience_chart.hit_point_dice[1];
+	    hpBonus = c.experience_chart.hit_point_bonus[1];
 	  }
       }
     
     bestHP = Dice(hpDice, hpDie).roll() + hpBonus;
     if (bestHP < minHP)
       bestHP = minHP;
-    this->sheet.experience_chart = bestHP;
+    this->sheet.hit_points = bestHP;
     
     
     return &(this->sheet);

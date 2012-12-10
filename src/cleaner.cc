@@ -35,7 +35,17 @@ namespace tbrpg
    */
   void cleaner::clean()
   {
-    /* do nothing */
+    for (void* item : this->clean_list_free)
+      free(item);
+    this->clean_list_free = std::vector<void*>();
+    
+    for (Object* item : this->clean_list_delete)
+      delete item;
+    this->clean_list_delete = std::vector<Object*>();
+    
+    for (Object* item : this->clean_list_array)
+      delete[] item;
+    this->clean_list_array = std::vector<Object*>();
   }
   
   /**
@@ -45,9 +55,7 @@ namespace tbrpg
    */
   void cleaner::enqueueFree(void* object)
   {
-    for (void* item : clean_list_free)
-      free(item);
-    clean_list_free = std::vector<void*>();
+    this->clean_list_free.push_back(object);
   }
   
   /**
@@ -55,11 +63,9 @@ namespace tbrpg
    * 
    * @param  obj  The object
    */
-  void cleaner::enqueueDelete(void* object)
+  void cleaner::enqueueDelete(Object* object)
   {
-    for (void* item : clean_list_delete)
-      delete item;
-    clean_list_delete = std::vector<void*>();
+    this->clean_list_delete.push_back(object);
   }
   
   /**
@@ -67,11 +73,9 @@ namespace tbrpg
    * 
    * @param  obj  The object
    */
-  void cleaner::enqueueDeleteArray(void* object)
+  void cleaner::enqueueDeleteArray(Object* object)
   {
-    for (void* item : clean_list_delete_array)
-      delete[] item;
-    clean_list_delete_array = std::vector<void*>();
+    this->clean_list_array.push_back(object);
   }
   
 }

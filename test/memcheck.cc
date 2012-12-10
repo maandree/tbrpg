@@ -22,7 +22,6 @@
 #include <algorithm>
 #include <stdlib.h>
 
-#include "../src/cleaner.hpp"
 #include "../src/Abilities.hpp"
 #include "../src/AbilityBonus.hpp"
 #include "../src/AbilityChart.hpp"
@@ -498,8 +497,6 @@ namespace tbrpg
     {auto x = Wilderness(), y = Wilderness(); x = y;}
     {auto x = Wizard(), y = Wizard(); x = y;}
     {auto x = WizardScroll(), y = WizardScroll(); x = y;}
-    
-    cleaner::clean();
     
     return 0;
   }

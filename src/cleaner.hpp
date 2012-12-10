@@ -26,6 +26,8 @@
 #include <vector>
 #include <unordered_map>
 
+#include "Object.hpp"
+
 
 /**
  * Text based roll playing game
@@ -42,50 +44,48 @@ namespace tbrpg
    */
   class cleaner
   {
-  private:
-    /**
-     * Objects to free
-     */
-    static std::vector<void*> clean_list_free;
-    
-    /**
-     * Objects to delete
-     */
-    static std::vector<void*> clean_list_delete;
-    
-    /**
-     * Objects to delete[]
-     */
-    static std::vector<void*> clean_list_array;
-    
-    
   public:
+    /**
+     * Objects to `free()`
+     */
+    std::vector<void*> clean_list_free;
+    
+    /**
+     * Objects to `delete`
+     */
+    std::vector<Object*> clean_list_delete;
+    
+    /**
+     * Objects to `delete[]`
+     */
+    std::vector<Object*> clean_list_array;
+    
+    
     /**
      * Clean system
      */
-    static void clean();
+    void clean();
     
     /**
      * Add instance that that should be cleaned using `free()`
      * 
      * @param  obj  The object
      */
-    static void enqueueFree(void* object);
+    void enqueueFree(void* object);
     
     /**
      * Add instance that that should be cleaned using `delete`
      * 
      * @param  obj  The object
      */
-    static void enqueueDelete(void* object);
+    void enqueueDelete(Object* object);
     
     /**
      * Add instance that that should be cleaned using `delete[]`
      * 
      * @param  obj  The object
      */
-    static void enqueueDeleteArray(void* object);
-    
+    void enqueueDeleteArray(Object* object);
     
   };
 }
