@@ -174,7 +174,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<int>()(this->reputation);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Character>>()(this->characters);
+    rc += std::hash<std::vector<Character*>>()(this->characters);
     return rc;
   }
   
