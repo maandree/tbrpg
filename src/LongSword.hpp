@@ -74,6 +74,13 @@ namespace tbrpg
      */
     LongSword(LongSword&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -106,13 +113,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual LongSword& operator =(LongSword&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

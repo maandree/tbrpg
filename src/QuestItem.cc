@@ -80,7 +80,7 @@ namespace tbrpg
    */
   Object* QuestItem::fork() const
   {
-    return new QuestItem(*this);
+    return (Object*)(new QuestItem(*this));
   }
   
   

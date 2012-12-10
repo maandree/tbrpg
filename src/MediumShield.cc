@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* MediumShield::fork() const
   {
-    return new MediumShield(*this);
+    return (Object*)(new MediumShield(*this));
   }
   
   

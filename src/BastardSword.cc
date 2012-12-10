@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* BastardSword::fork() const
   {
-    return new BastardSword(*this);
+    return (Object*)(new BastardSword(*this));
   }
   
   

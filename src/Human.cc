@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Human::fork() const
   {
-    return new Human(*this);
+    return (Object*)(new Human(*this));
   }
   
   

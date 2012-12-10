@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* HalfOrc::fork() const
   {
-    return new HalfOrc(*this);
+    return (Object*)(new HalfOrc(*this));
   }
   
   

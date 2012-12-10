@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* LowScroll::fork() const
   {
-    return new LowScroll(*this);
+    return (Object*)(new LowScroll(*this));
   }
   
   

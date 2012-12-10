@@ -84,7 +84,7 @@ namespace tbrpg
    */
   Object* SpellBook::fork() const
   {
-    return new SpellBook(*this);
+    return (Object*)(new SpellBook(*this));
   }
   
   

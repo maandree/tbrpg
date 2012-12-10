@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Bow::fork() const
   {
-    return new Bow(*this);
+    return (Object*)(new Bow(*this));
   }
   
   

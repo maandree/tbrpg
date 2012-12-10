@@ -100,7 +100,7 @@ namespace tbrpg
    */
   Object* Creature::fork() const
   {
-    return new Creature(*this);
+    return (Object*)(new Creature(*this));
   }
   
   

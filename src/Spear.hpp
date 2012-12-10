@@ -74,6 +74,13 @@ namespace tbrpg
      */
     Spear(Spear&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -106,13 +113,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Spear& operator =(Spear&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

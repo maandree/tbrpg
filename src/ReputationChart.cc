@@ -124,7 +124,7 @@ namespace tbrpg
    */
   Object* ReputationChart::fork() const
   {
-    return new ReputationChart(*this);
+    return (Object*)(new ReputationChart(*this));
   }
   
   

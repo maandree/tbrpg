@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* LightCrossbow::fork() const
   {
-    return new LightCrossbow(*this);
+    return (Object*)(new LightCrossbow(*this));
   }
   
   

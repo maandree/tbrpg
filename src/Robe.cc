@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Robe::fork() const
   {
-    return new Robe(*this);
+    return (Object*)(new Robe(*this));
   }
   
   

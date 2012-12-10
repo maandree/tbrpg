@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* BluntWeapon::fork() const
   {
-    return new BluntWeapon(*this);
+    return (Object*)(new BluntWeapon(*this));
   }
   
   

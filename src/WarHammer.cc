@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* WarHammer::fork() const
   {
-    return new WarHammer(*this);
+    return (Object*)(new WarHammer(*this));
   }
   
   

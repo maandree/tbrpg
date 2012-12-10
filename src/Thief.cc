@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Thief::fork() const
   {
-    return new Thief(*this);
+    return (Object*)(new Thief(*this));
   }
   
   

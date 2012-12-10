@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Key::fork() const
   {
-    return new Key(*this);
+    return (Object*)(new Key(*this));
   }
   
   

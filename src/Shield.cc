@@ -84,7 +84,7 @@ namespace tbrpg
    */
   Object* Shield::fork() const
   {
-    return new Shield(*this);
+    return (Object*)(new Shield(*this));
   }
   
   

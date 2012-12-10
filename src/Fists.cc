@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Fists::fork() const
   {
-    return new Fists(*this);
+    return (Object*)(new Fists(*this));
   }
   
   

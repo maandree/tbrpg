@@ -156,7 +156,7 @@ namespace tbrpg
    */
   Object* RuleSet::fork() const
   {
-    return new RuleSet(*this);
+    return (Object*)(new RuleSet(*this));
   }
   
   

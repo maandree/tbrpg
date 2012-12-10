@@ -74,6 +74,13 @@ namespace tbrpg
      */
     ShortSword(ShortSword&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -106,13 +113,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual ShortSword& operator =(ShortSword&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

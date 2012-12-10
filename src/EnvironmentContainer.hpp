@@ -75,6 +75,13 @@ namespace tbrpg
      */
     EnvironmentContainer(EnvironmentContainer&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -107,13 +114,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual EnvironmentContainer& operator =(EnvironmentContainer&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

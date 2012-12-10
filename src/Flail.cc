@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Flail::fork() const
   {
-    return new Flail(*this);
+    return (Object*)(new Flail(*this));
   }
   
   

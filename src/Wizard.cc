@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Wizard::fork() const
   {
-    return new Wizard(*this);
+    return (Object*)(new Wizard(*this));
   }
   
   

@@ -89,6 +89,13 @@ namespace tbrpg
      */
     Map(Map&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -121,13 +128,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Map& operator =(Map&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

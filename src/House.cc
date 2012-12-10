@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* House::fork() const
   {
-    return new House(*this);
+    return (Object*)(new House(*this));
   }
   
   

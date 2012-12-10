@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Girdle::fork() const
   {
-    return new Girdle(*this);
+    return (Object*)(new Girdle(*this));
   }
   
   

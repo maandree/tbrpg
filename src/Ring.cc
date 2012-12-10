@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Ring::fork() const
   {
-    return new Ring(*this);
+    return (Object*)(new Ring(*this));
   }
   
   

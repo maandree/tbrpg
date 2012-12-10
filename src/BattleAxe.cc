@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* BattleAxe::fork() const
   {
-    return new BattleAxe(*this);
+    return (Object*)(new BattleAxe(*this));
   }
   
   

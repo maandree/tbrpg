@@ -96,7 +96,7 @@ namespace tbrpg
    */
   Object* MapMajor::fork() const
   {
-    return new MapMajor(*this);
+    return (Object*)(new MapMajor(*this));
   }
   
   

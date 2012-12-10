@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* LongSword::fork() const
   {
-    return new LongSword(*this);
+    return (Object*)(new LongSword(*this));
   }
   
   

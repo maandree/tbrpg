@@ -108,7 +108,7 @@ namespace tbrpg
    */
   Object* Defence::fork() const
   {
-    return new Defence(*this);
+    return (Object*)(new Defence(*this));
   }
   
   

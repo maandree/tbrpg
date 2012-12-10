@@ -112,7 +112,7 @@ namespace tbrpg
    */
   Object* MapMinor::fork() const
   {
-    return new MapMinor(*this);
+    return (Object*)(new MapMinor(*this));
   }
   
   

@@ -108,7 +108,7 @@ namespace tbrpg
    */
   Object* Road::fork() const
   {
-    return new Road(*this);
+    return (Object*)(new Road(*this));
   }
   
   

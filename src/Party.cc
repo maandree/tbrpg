@@ -84,7 +84,7 @@ namespace tbrpg
    */
   Object* Party::fork() const
   {
-    return new Party(*this);
+    return (Object*)(new Party(*this));
   }
   
   

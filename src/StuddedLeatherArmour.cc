@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* StuddedLeatherArmour::fork() const
   {
-    return new StuddedLeatherArmour(*this);
+    return (Object*)(new StuddedLeatherArmour(*this));
   }
   
   

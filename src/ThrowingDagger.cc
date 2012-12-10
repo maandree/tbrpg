@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* ThrowingDagger::fork() const
   {
-    return new ThrowingDagger(*this);
+    return (Object*)(new ThrowingDagger(*this));
   }
   
   

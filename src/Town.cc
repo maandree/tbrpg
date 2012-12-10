@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Town::fork() const
   {
-    return new Town(*this);
+    return (Object*)(new Town(*this));
   }
   
   

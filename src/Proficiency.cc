@@ -88,7 +88,7 @@ namespace tbrpg
    */
   Object* Proficiency::fork() const
   {
-    return new Proficiency(*this);
+    return (Object*)(new Proficiency(*this));
   }
   
   

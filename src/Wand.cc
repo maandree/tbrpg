@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Wand::fork() const
   {
-    return new Wand(*this);
+    return (Object*)(new Wand(*this));
   }
   
   

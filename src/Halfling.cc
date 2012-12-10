@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Halfling::fork() const
   {
-    return new Halfling(*this);
+    return (Object*)(new Halfling(*this));
   }
   
   

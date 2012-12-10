@@ -92,7 +92,7 @@ namespace tbrpg
    */
   Object* Container::fork() const
   {
-    return new Container(*this);
+    return (Object*)(new Container(*this));
   }
   
   

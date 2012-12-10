@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Mace::fork() const
   {
-    return new Mace(*this);
+    return (Object*)(new Mace(*this));
   }
   
   

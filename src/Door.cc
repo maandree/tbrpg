@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Door::fork() const
   {
-    return new Door(*this);
+    return (Object*)(new Door(*this));
   }
   
   

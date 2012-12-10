@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Cleric::fork() const
   {
-    return new Cleric(*this);
+    return (Object*)(new Cleric(*this));
   }
   
   

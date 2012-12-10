@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Druid::fork() const
   {
-    return new Druid(*this);
+    return (Object*)(new Druid(*this));
   }
   
   

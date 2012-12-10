@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* HighWand::fork() const
   {
-    return new HighWand(*this);
+    return (Object*)(new HighWand(*this));
   }
   
   

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Cloak::fork() const
   {
-    return new Cloak(*this);
+    return (Object*)(new Cloak(*this));
   }
   
   

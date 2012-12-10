@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Paladin::fork() const
   {
-    return new Paladin(*this);
+    return (Object*)(new Paladin(*this));
   }
   
   

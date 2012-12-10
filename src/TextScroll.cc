@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* TextScroll::fork() const
   {
-    return new TextScroll(*this);
+    return (Object*)(new TextScroll(*this));
   }
   
   

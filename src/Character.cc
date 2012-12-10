@@ -108,7 +108,7 @@ namespace tbrpg
    */
   Object* Character::fork() const
   {
-    return new Character(*this);
+    return (Object*)(new Character(*this));
   }
   
   

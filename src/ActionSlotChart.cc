@@ -84,7 +84,7 @@ namespace tbrpg
    */
   Object* ActionSlotChart::fork() const
   {
-    return new ActionSlotChart(*this);
+    return (Object*)(new ActionSlotChart(*this));
   }
   
   

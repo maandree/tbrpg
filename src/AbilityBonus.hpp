@@ -119,6 +119,13 @@ namespace tbrpg
      */
     AbilityBonus(AbilityBonus&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -151,13 +158,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual AbilityBonus& operator =(AbilityBonus&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

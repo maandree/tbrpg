@@ -96,7 +96,7 @@ namespace tbrpg
    */
   Object* ThiefAbilities::fork() const
   {
-    return new ThiefAbilities(*this);
+    return (Object*)(new ThiefAbilities(*this));
   }
   
   

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Warrior::fork() const
   {
-    return new Warrior(*this);
+    return (Object*)(new Warrior(*this));
   }
   
   

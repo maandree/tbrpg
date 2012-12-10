@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Mage::fork() const
   {
-    return new Mage(*this);
+    return (Object*)(new Mage(*this));
   }
   
   

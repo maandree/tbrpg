@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Club::fork() const
   {
-    return new Club(*this);
+    return (Object*)(new Club(*this));
   }
   
   

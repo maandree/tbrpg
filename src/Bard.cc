@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Bard::fork() const
   {
-    return new Bard(*this);
+    return (Object*)(new Bard(*this));
   }
   
   

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Gold::fork() const
   {
-    return new Gold(*this);
+    return (Object*)(new Gold(*this));
   }
   
   

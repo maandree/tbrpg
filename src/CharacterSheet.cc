@@ -156,7 +156,7 @@ namespace tbrpg
    */
   Object* CharacterSheet::fork() const
   {
-    return new CharacterSheet(*this);
+    return (Object*)(new CharacterSheet(*this));
   }
   
   

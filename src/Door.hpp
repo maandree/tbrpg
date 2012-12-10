@@ -75,6 +75,13 @@ namespace tbrpg
      */
     Door(Door&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -107,13 +114,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Door& operator =(Door&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     /**

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Hood::fork() const
   {
-    return new Hood(*this);
+    return (Object*)(new Hood(*this));
   }
   
   

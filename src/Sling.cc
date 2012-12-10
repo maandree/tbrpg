@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Sling::fork() const
   {
-    return new Sling(*this);
+    return (Object*)(new Sling(*this));
   }
   
   

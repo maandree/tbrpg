@@ -92,7 +92,7 @@ namespace tbrpg
    */
   Object* MagicSchool::fork() const
   {
-    return new MagicSchool(*this);
+    return (Object*)(new MagicSchool(*this));
   }
   
   

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* SmallShield::fork() const
   {
-    return new SmallShield(*this);
+    return (Object*)(new SmallShield(*this));
   }
   
   

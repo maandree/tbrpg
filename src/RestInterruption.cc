@@ -92,7 +92,7 @@ namespace tbrpg
    */
   Object* RestInterruption::fork() const
   {
-    return new RestInterruption(*this);
+    return (Object*)(new RestInterruption(*this));
   }
   
   
