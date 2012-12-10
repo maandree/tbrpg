@@ -46,10 +46,26 @@ namespace tbrpg
   /* Enhanced command line prompter */
   
   
+  #define  __store_tty()		       \
+    struct termios saved_stty;                 \
+    struct termios stty;                       \
+    tcgetattr(STDIN_FILENO, &saved_stty);      \
+    tcgetattr(STDIN_FILENO, &stty);            \
+    stty.c_lflag &= ~(ICANON | ECHO | ISIG);   \
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &stty)
+    
+  #define __restore_tty()  \
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved_stty)
+  
+  #define  ESC  "\033"  /* since \e generates a non-ISO-standard warning */
+  #define  CSI  ESC "["
+  
+  
+  
   /**
    * UCS character type
    */
-  typedef signed int /* sic */  symbol;
+  typedef signed int symbol; /* sic, signed */
   
   
   /**
@@ -238,6 +254,155 @@ namespace tbrpg
    * @param  items  The items to print
    */
   void columnate(const std::vector<std::string>& items);
+  
+  
+  /**
+   * Lets the user assign items to slots, maybe even create the items
+   * 
+   * @param   <T>          The class of the assigned item
+   * @param   <Fc>         T* () function  (implicit)
+   * @param   <Fp>         std::string (T* item, bool selected) function  (implicit)
+   * @param   instruction  Instructions for the user, can be multilined
+   * @param   newitems     Whether the items returned by `creator` should be destructed when removed
+   * @param   min          The minimum number items needed
+   * @param   solts        Vector with slots
+   * @param   creator      Function used to create items to put in the slots
+   * @param   printer      Function that returns the singleline string that represents a slot
+   * @return               Whether the assignment was completed
+   */
+  template<class T, class Fc, class Fp>
+  bool promptSlots(std::string instruction, bool newitems, size_t min, std::vector<T*> slots, Fc creator, Fp printer)
+  {
+    __store_tty();
+    
+    size_t current = 0;
+    char c;
+    
+    const char* cstr = instruction.c_str();
+    int firstline = 3;
+    while ((c = *cstr++))
+      if (c == '\n')
+	firstline++;
+    
+    size_t assigneditems = 0;
+    for (T* item : slots)
+      if (item != nullptr)
+	assigneditems++;
+    
+    std::cout << CSI "?1049h";
+    
+    bool reading = true;
+    while (reading)
+      {
+	std::cout << CSI "H" CSI "2J" CSI "?25l" << instruction << std::endl << std::endl;
+	for (size_t i = 0, n = slots.size(); i < n; i++)
+	  {
+	    std::cout << (i == current ? CSI "01;34m> " CSI "21;39m" : "  ")
+		      << printer(slots[i], i == current)
+		      << std::endl;
+	  }
+	std::flush(std::cout);
+	
+	bool readinginner = true;
+	while (readinginner)
+	  {
+	    if (read(STDIN_FILENO, &c, 1) <= 0)
+	      c = CTRL('G');
+	    
+	    switch (c)
+	      {
+	      case CTRL('L'):
+		readinginner = false;
+		break;
+		
+	      case CTRL('D'):
+		if (assigneditems >= min)
+		  readinginner = reading = false;
+		break;
+		
+	      case CTRL('G'):
+		assigneditems = -1;
+		readinginner = reading = false;
+		break;
+		
+	      case 'r':
+	      case 'R':
+		if (slots[current] == nullptr)
+		  break;
+		if (newitems)
+		  delete slots[current];
+		assigneditems--;
+		slots[current] = nullptr;
+		std::flush(std::cout
+			   << CSI << (current + firstline) << ";1H" CSI "K"
+			      CSI "01;34m> " CSI "21;39m"
+			   << printer(slots[current], true));
+		break;
+		
+	      case 'A':
+		if (current == 0)
+		  break;
+		std::cout << CSI << (current + firstline) << ";1H" CSI "K"
+			     CSI "01;34m> " CSI "21;39m"
+			  << printer(slots[current], false);
+		current--;
+		std::flush(std::cout
+			   << CSI << (current + firstline) << ";1H" CSI "K"
+			      CSI "01;34m> " CSI "21;39m"
+			   << printer(slots[current], true));
+		break;
+		
+	      case 'B':
+		if (current + 1 == slots.size())
+		  break;
+		std::cout << CSI << (current + firstline) << ";1H" CSI "K"
+			     CSI "01;34m> " CSI "21;39m"
+			  << printer(slots[current], false);
+		current--;
+		std::flush(std::cout
+			   << CSI << (current + firstline) << ";1H" CSI "K"
+			      CSI "01;34m> " CSI "21;39m"
+			   << printer(slots[current], true));
+		break;
+		
+	      case ' ':
+	      case 'C':
+	      case '\n':
+		T* newitem = creator();
+		if (newitem == nullptr)
+		  break;
+		if (slots[current] == nullptr)
+		    assigneditems++;
+		else
+		  if (newitems)
+		    delete slots[current];
+		slots[current] = newitem;
+		std::flush(std::cout
+			   << CSI << (current + firstline) << ";1H" CSI "K"
+			      CSI "01;34m> " CSI "21;39m"
+			   << printer(slots[current], true));
+		break;
+	      }
+	  }
+      }
+    
+    std::flush(std::cout << CSI "?1049l" CSI "H" CSI "2J" CSI "?25h");
+    __restore_tty();
+    
+    if (newitems && (assigneditems < min))
+      for (T* slot : slots)
+	if (slot != nullptr)
+	  delete slot;
+    
+    return assigneditems >= min;
+  }
+  
+  
+  
+  #undef __store_tty
+  #undef __restore_tty
+  #undef CSI
+  #undef ESC
   
 }
 

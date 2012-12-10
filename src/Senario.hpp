@@ -146,9 +146,16 @@ namespace tbrpg
     
     
     /**
-     * This in invoked when a party is formed
+     * This is invoked when a party is formed
      */
     virtual void partyFormed();
+    
+    /**
+     * This is invoked when the senario starts.
+     * The prologue, and perhaps a short tutorial,
+     * should be displayed.
+     */
+    virtual void start() = 0;
     
     
     

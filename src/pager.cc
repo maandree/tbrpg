@@ -79,7 +79,7 @@ namespace tbrpg
 	  {
 	  case '\n':
 	  case CTRL('L'):
-	    if ((last != '\n') && (last != CTRL('L')))
+	    if (((last != '\n') && (last != CTRL('L'))) || ((c == '\n') && (last != CTRL('L'))))
 	      {
 		ptr = *(curline + ptr) = 0;
 		curpage.push_back(std::string(curline));
@@ -142,7 +142,7 @@ namespace tbrpg
 	    if (left > 0)
 	      std::cout << CSI << left << "C";
 	    std::cout << CSI "07m" << space60 << CSI "60D";
-	    printf("(line %li to %li of %li)(page %li of %li)" CSI "27m",
+	    printf("(line %li to %li of %li)(page %li of %li)(Press C-d to continue)" CSI "27m",
 		   line + 1, line + termheight - 1, (long)(curpage.size()),
 		   page + 1, (long)(pages.size()));
 	  };
@@ -186,9 +186,9 @@ namespace tbrpg
 		
 	      case '\n':
 	      case 'B':
-		if (line + termheight >= (long)(curpage.size()))
+		if (line + termheight > (long)(curpage.size()))
 		  break;
-		std::cout << CSI << termheight << ";" << (left + 1) << "H" CSI "K" << curpage[line + termheight] << std::endl;
+		std::cout << CSI << termheight << ";" << (left + 1) << "H" CSI "K" << curpage[line + termheight - 1] << std::endl;
 		line++;
 		status();
 		std::flush(std::cout);
@@ -222,8 +222,8 @@ namespace tbrpg
 		
 	      case '6':
 		line += termheight - 1;
-		if (line + termheight >= (long)(curpage.size()))
-		  line = curpage.size() - termheight;
+		if (line + termheight > (long)(curpage.size()))
+		  line = curpage.size() - termheight + 1;
 		if (line < 0)
 		  line = 0;
 		readinginner = false;

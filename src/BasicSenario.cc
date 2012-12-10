@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->rules.party_size = 2;
     this->rules.party_start_size = 2;
+    this->rules.inventory_prototype.personal[0] = new Gold();
+    this->rules.inventory_prototype.personal[0]->quantity = 400;
   }
   
   /**
@@ -45,6 +47,36 @@ namespace tbrpg
   BasicSenario::~BasicSenario()
   {
     // do nothing
+  }
+  
+  
+  
+  /**
+   * This is invoked when the senario starts.
+   * The prologue, and perhaps a short tutorial,
+   * should be displayed.
+   */
+  void BasicSenario::start()
+  {
+    page("This is a simple demo senario.\n"
+	 "\n"
+	 "You stand outside an inn, where you purchase items\n"
+	 "such as armour and weapons that your need in your\n"
+	 "quest. You mission is to the legendary sword known\n"
+	 "as Sword of Legends.");
+    
+    promptDialogue(2, "Tutor", "", {});
+  }
+  
+  
+  /**
+   * Gets the name of the game senario
+   * 
+   * @return  The name of the game senario
+   */
+  std::string BasicSenario::getTitle()
+  {
+    return "Basic game senario demo";
   }
   
 }

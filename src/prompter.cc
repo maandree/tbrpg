@@ -33,18 +33,6 @@ namespace tbrpg
   /* Enhanced command line prompter */
   
   
-  
-  #define  __store_tty()		       \
-    struct termios saved_stty;                 \
-    struct termios stty;                       \
-    tcgetattr(STDIN_FILENO, &saved_stty);      \
-    tcgetattr(STDIN_FILENO, &stty);            \
-    stty.c_lflag &= ~(ICANON | ECHO | ISIG);   \
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, &stty)
-    
-  #define __restore_tty()					\
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved_stty)
-  
   #define __bell()						\
     printf("\a"); /* bell, some people have bell enabled */	\
     std::flush(std::cout)
@@ -52,8 +40,6 @@ namespace tbrpg
   #define __malloc_string(CHARS)  \
     (symbol*)malloc((CHARS) * sizeof(symbol))
   
-  #define  ESC  "\033"  /* since \e generates a non-ISO-standard warning */
-  #define  CSI  ESC "["
   
   
   /**
@@ -1666,12 +1652,8 @@ namespace tbrpg
   
   
   
-  #undef __store_tty
-  #undef __restore_tty
   #undef __bell
   #undef __malloc_string
-  #undef CSI
-  #undef ESC
   
 }
 

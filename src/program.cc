@@ -19,11 +19,13 @@
  */
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 #include "cleaner.hpp"
 #include "prompter.hpp"
 #include "Senario.hpp"
+#include "CharacterCreator.hpp"
 
 #include "BasicSenario.hpp"
 
@@ -58,31 +60,74 @@ namespace tbrpg
     
     std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
-    long senarioIndex = promptDialogue(4,
-		 "Welcome to tbrpg!",
-		 "Select a game senario.\n"
-		 "\n"
-		 "Use the up and down arrow keys to nagivate,\n"
-		 "and press enter, spacebar or the right arrow\n"
-		 "key to start the select senario. You can\n"
-		 "also use the letter in front of the senario.\n"
-		 "\n"
-		 "If you want to exit, press <control>g.",
+    long senarioIndex = promptDialogue(4, "Welcome to tbrpg!",
+		 "Select a game senario."                        "\n"
+		                                                 "\n"
+		 "Use the up and down arrow keys to nagivate,"   "\n"
+		 "and press enter, spacebar or the right arrow"  "\n"
+		 "key to start the select senario. You can"      "\n"
+		 "also use the letter in front of the senario."  "\n"
+		                                                 "\n"
+		 "You should play with the manual by your side," "\n"
+		 "run `info tbrpg` or open a graphical if you"   "\n"
+		 "have one installed, jfbview can view them in"  "\n"
+		 "the TTY."                                      "\n"
+		                                                 "\n"
+		 "If you want to exit, press <control>g."        "\n",
 		 senarioTitles, 0);
     
-    if (senarioIndex < 0)
+    Senario* _senario = nullptr;
+    
+    if (senarioIndex == 0)
+      _senario = new BasicSenario();
+    
+    if (_senario == nullptr)
       {
 	cleaner::clean();
 	return 0;
       }
     
-    std::flush(std::cout << "You have selected game senario #" << senarioIndex << std::endl);
+    Senario& senario = *_senario;
+    CharacterCreator characterCreator = CharacterCreator(senario.rules);
     
+    std::vector<CharacterSheet*> sheets = std::vector<CharacterSheet*>(senario.rules.party_start_size);
+    bool partyCreated = promptSlots<CharacterSheet>("Create your party, you need at least one character.",
+                                                    true, 1, sheets,
+						    [&] () -> CharacterSheet* { return characterCreator.create(); },
+						    [] (CharacterSheet* sheet, bool selected) -> std::string {
+						      if (sheet == nullptr)
+							return selected ? "\033[01m(empty)\033[21m" : "(empty)";
+						      std::stringstream ss;
+						      ss << (selected ? "\033[01;3" : "\033[3") << sheet->colour
+							 << "m" << sheet->name << "\033[21;39m";
+						      return ss.str();
+						    });
+    
+    if (partyCreated == false)
+      {
+	cleaner::clean();
+	return 0;
+      }
+    
+    senario.partyFormed();
+    senario.start();
+    
+    
+    delete _senario;
     cleaner::clean();
     return 0;
   }
 }
 
+
+
+/**
+ * This the main entry point of the program
+ * 
+ * @param   argc  The number of elements in `argv`
+ * @param   argv  Command line arguments, including the execute file
+ * @return        Exit value, 0 if successful
+ */
 int main(int argc, char** argv)
 {
   return tbrpg::__main__(argc, argv);

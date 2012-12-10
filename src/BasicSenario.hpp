@@ -22,6 +22,9 @@
 
 
 #include "Senario.hpp"
+#include "pager.hpp"
+#include "prompter.hpp"
+#include "Gold.hpp"
 
 
 /**
@@ -53,14 +56,20 @@ namespace tbrpg
     
     
     /**
+     * This is invoked when the senario starts.
+     * The prologue, and perhaps a short tutorial,
+     * should be displayed.
+     */
+    virtual void start();
+    
+    
+    
+    /**
      * Gets the name of the game senario
      * 
      * @return  The name of the game senario
      */
-    static std::string getTitle()
-    {
-      return "Basic game senario demo";
-    }
+    static std::string getTitle();
     
   };
 }

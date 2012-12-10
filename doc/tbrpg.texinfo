@@ -3436,6 +3436,16 @@ senario you want to play.
 
 You can press @kbd{C-g} to exit.
 
+When you start playing you are, unless you play a weird
+senario, welcomed by a prologue, these are, like chapter
+introductions and books, navigated with the arrow keys,
+@kbd{page up}(@kbd{prior}) and @kbd{page down}(@kbd{next}).
+To continue, press @kbd{C-c}, @kbd{C-d}, @kbd{C-g}, @kbd{q}
+or @kbd{w}.
+
+If the text have been obstructed by printk or something
+similar, you can press @kbd{C-l} to redraw the text.
+
 
 
 @node License of tbrpg
