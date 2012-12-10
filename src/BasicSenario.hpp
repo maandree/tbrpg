@@ -53,9 +53,14 @@ namespace tbrpg
     
     
     /**
-     * The name of the game senario
+     * Gets the name of the game senario
+     * 
+     * @return  The name of the game senario
      */
-    static std::string senarioTitle = std::string("Basic Game Senario");
+    static std::string getTitle()
+    {
+      return "Basic game senario demo";
+    }
     
   };
 }

@@ -23,6 +23,9 @@
 
 #include "cleaner.hpp"
 #include "prompter.hpp"
+#include "Senario.hpp"
+
+#include "BasicSenario.hpp"
 
 
 /**
@@ -53,9 +56,9 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    std::vector<std::string> senarioTitles = {BasicSenario::senarioTitle};
+    std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
-    long senarioIndex = promptDialog(4,
+    long senarioIndex = promptDialogue(4,
 		 "Welcome to tbrpg!",
 		 "Select a game senario.\n"
 		 "\n"
@@ -67,8 +70,9 @@ namespace tbrpg
 		 "If you want to exit, press <control>g.",
 		 senarioTitles, 0);
     
-    cleaner::clean();
+    std::flush(std::cout << "You have selected game senario #" << senarioIndex << std::endl);
     
+    cleaner::clean();
     return 0;
   }
 }

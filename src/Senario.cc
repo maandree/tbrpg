@@ -83,7 +83,7 @@ namespace tbrpg
   /**
    * This in invoked when a party is formed
    */
-  virtual void partyFormed()
+  void Senario::partyFormed()
   {
     // do nothing
   }

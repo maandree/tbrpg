@@ -79,7 +79,7 @@ namespace tbrpg
     std::string document = std::string(data);
     free(data);
     
-    pager(document);
+    page(document);
     
     return 0;
   }
