@@ -36,6 +36,7 @@ namespace tbrpg
   Character::Character() : Object()
   {
     this->class_inheritance.push_back(23);
+    this->protagonist = false;
     this->hit_points = 8;
     this->alive = 1;
     this->morale = 0;
@@ -52,6 +53,7 @@ namespace tbrpg
    */
   Character::Character(const Character& original) : Object(original)
   {
+    this->protagonist = original.protagonist;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -68,6 +70,7 @@ namespace tbrpg
    */
   Character::Character(Character& original) : Object(original)
   {
+    this->protagonist = original.protagonist;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -84,6 +87,7 @@ namespace tbrpg
    */
   Character::Character(Character&& original) : Object(original)
   {
+    std::swap(this->protagonist, original.protagonist);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->alive, original.alive);
     std::swap(this->morale, original.morale);
@@ -114,6 +118,7 @@ namespace tbrpg
   Character& Character::operator =(const Character& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
+    this->protagonist = original.protagonist;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -133,6 +138,7 @@ namespace tbrpg
   Character& Character::operator =(Character& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
+    this->protagonist = original.protagonist;
     this->hit_points = original.hit_points;
     this->alive = original.alive;
     this->morale = original.morale;
@@ -152,6 +158,7 @@ namespace tbrpg
   Character& Character::operator =(Character&& original)
   {
     std::swap((Object&)*this, (Object&)original);
+    std::swap(this->protagonist, original.protagonist);
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->alive, original.alive);
     std::swap(this->morale, original.morale);
@@ -171,6 +178,7 @@ namespace tbrpg
    */
   bool Character::operator ==(const Character& other) const
   {
+    if (this->protagonist != other.protagonist)  return false;
     if (this->hit_points != other.hit_points)  return false;
     if (this->alive != other.alive)  return false;
     if (this->morale != other.morale)  return false;
@@ -212,18 +220,20 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(this->hit_points);
+    rc += std::hash<bool>()(this->protagonist);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<char>()(this->alive);
+    rc += std::hash<int>()(this->hit_points);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<int>()(this->morale);
+    rc += std::hash<char>()(this->alive);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<int>()(this->intoxication);
+    rc += std::hash<int>()(this->morale);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<int>()(this->fatigue);
+    rc += std::hash<int>()(this->intoxication);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<char>()(this->extra_attacks);
+    rc += std::hash<int>()(this->fatigue);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
+    rc += std::hash<char>()(this->extra_attacks);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<CharacterSheet>()(this->record);
     return rc;
   }
