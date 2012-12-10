@@ -76,6 +76,7 @@ TAGSFLAGS_PY=
 TAGSFLAGS_JAVA=
 TAGSFLAGS_PL=
 TAGSFLAGS_SH=
+TAGSFLAGS_LUA=
 TAGSFLAGS_MAKE=
 
 SOURCE :=
@@ -565,9 +566,16 @@ TAGS:
 	find ./ | grep    '\.jav$$'    | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_JAVA) --language=java
 	find ./ | grep    '\.java$$'   | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_JAVA) --language=java
 	find ./ | grep    '\.pl$$'     | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_PL)   --language=perl
+	find ./ | grep    '\.lua$$'    | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_PL)   --language=lua
 	find ./ | grep    '\.sh$$'     | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_SH)   --language=shell-script
 	find ./ | grep -i 'makefile$$' | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_MAKE) --language=gnumakefile
 
+.PHONY: LINES
+LINES:
+	(find ./src ; find ./tools) | \
+	egrep '\.(cc|hpp|c|h|py|jav|sh|java|lua)$' | \
+	xargs cat Makefile doc/variables doc/tbrpg.texinfo | \
+	wc -l
 
 .PHONY: echo-src
 echo-src:
