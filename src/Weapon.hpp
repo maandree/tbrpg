@@ -153,13 +153,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Weapon& operator =(Weapon&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**

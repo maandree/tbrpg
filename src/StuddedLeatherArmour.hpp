@@ -104,13 +104,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual StuddedLeatherArmour& operator =(StuddedLeatherArmour&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**

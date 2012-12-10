@@ -112,13 +112,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Cleric& operator =(Cleric&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**

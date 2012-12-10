@@ -104,13 +104,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual BluntWeapon& operator =(BluntWeapon&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**

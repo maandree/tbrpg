@@ -215,6 +215,7 @@ for line in lines:
         output += '     * @return            The invoked object\n'
         output += '     */\n'
         output += '    virtual %s& operator =(%s&& original);\n' % (className, className)
+        output += '    \n'
         if className in isObject:
             output += '    /**\n'
             output += '     * Fork the object\n'
@@ -222,8 +223,7 @@ for line in lines:
             output += '     * @return  A fork of the object\n'
             output += '     */\n'
             output += '    virtual Object* fork() const;\n'
-            output += '  \n'
-        output += '    \n'
+            output += '    \n'
         output += '    \n'
         output += '    /**\n'
         output += '     * Equality evaluator\n'
