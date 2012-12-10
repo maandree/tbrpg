@@ -64,21 +64,21 @@ namespace tbrpg
     INVOCATION.opposite = {ENCHANTMENT, CONJURATION};
     NECROMANCY.opposite = {ILLUSION};
     
-    this->races.push_back(Human());
-    this->races.push_back(HalfOrc());
-    this->races.push_back(HalfElf());
-    this->races.push_back(Elf());
-    this->races.push_back(Dwarf());
-    this->races.push_back(Gnome());
-    this->races.push_back(Halfling());
+    this->races.push_back(PROTOTYPE(Human));
+    this->races.push_back(PROTOTYPE(HalfOrc));
+    this->races.push_back(PROTOTYPE(HalfElf));
+    this->races.push_back(PROTOTYPE(Elf));
+    this->races.push_back(PROTOTYPE(Dwarf));
+    this->races.push_back(PROTOTYPE(Gnome));
+    this->races.push_back(PROTOTYPE(Halfling));
     
-    this->racial_enemies.push_back(Human());
-    this->racial_enemies.push_back(HalfOrc());
-    this->racial_enemies.push_back(HalfElf());
-    this->racial_enemies.push_back(Elf());
-    this->racial_enemies.push_back(Dwarf());
-    this->racial_enemies.push_back(Gnome());
-    this->racial_enemies.push_back(Halfling());
+    this->racial_enemies.push_back(PROTOTYPE(Human));
+    this->racial_enemies.push_back(PROTOTYPE(HalfOrc));
+    this->racial_enemies.push_back(PROTOTYPE(HalfElf));
+    this->racial_enemies.push_back(PROTOTYPE(Elf));
+    this->racial_enemies.push_back(PROTOTYPE(Dwarf));
+    this->racial_enemies.push_back(PROTOTYPE(Gnome));
+    this->racial_enemies.push_back(PROTOTYPE(Halfling));
   }
   
   /**
