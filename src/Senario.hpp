@@ -30,6 +30,8 @@
 #include "hash.hpp"
 #include "Object.hpp"
 #include "RuleSet.hpp"
+#include "Party.hpp"
+#include "Map.hpp"
 
 
 /**
@@ -52,6 +54,16 @@ namespace tbrpg
      * The rules of the game
      */
     RuleSet rules;
+    
+    /**
+     * The party
+     */
+    Party party;
+    
+    /**
+     * The map
+     */
+    Map map;
     
     
     

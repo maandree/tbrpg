@@ -48,6 +48,8 @@ namespace tbrpg
   {
     (void) original;
     this->rules = original.rules;
+    this->party = original.party;
+    this->map = original.map;
   }
   
   /**
@@ -58,6 +60,8 @@ namespace tbrpg
   Senario::Senario(Senario& original) : Object(original)
   {
     this->rules = original.rules;
+    this->party = original.party;
+    this->map = original.map;
   }
   
   /**
@@ -68,6 +72,8 @@ namespace tbrpg
   Senario::Senario(Senario&& original) : Object(original)
   {
     std::swap(this->rules, original.rules);
+    std::swap(this->party, original.party);
+    std::swap(this->map, original.map);
   }
   
   
@@ -93,6 +99,8 @@ namespace tbrpg
     (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
     this->rules = original.rules;
+    this->party = original.party;
+    this->map = original.map;
     return *this;
   }
   
@@ -106,6 +114,8 @@ namespace tbrpg
   {
     Object::__copy__((Object&)*this, (Object&)original);
     this->rules = original.rules;
+    this->party = original.party;
+    this->map = original.map;
     return *this;
   }
   
@@ -119,6 +129,8 @@ namespace tbrpg
   {
     std::swap((Object&)*this, (Object&)original);
     std::swap(this->rules, original.rules);
+    std::swap(this->party, original.party);
+    std::swap(this->map, original.map);
     return *this;
   }
   
@@ -132,6 +144,8 @@ namespace tbrpg
   bool Senario::operator ==(const Senario& other) const
   {
     if (this->rules != other.rules)  return false;
+    if (this->party != other.party)  return false;
+    if (this->map != other.map)  return false;
     return true;
   }
   
@@ -167,6 +181,10 @@ namespace tbrpg
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<RuleSet>()(this->rules);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<Party>()(this->party);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<Map>()(this->map);
     return rc;
   }
   
