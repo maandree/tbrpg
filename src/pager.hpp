@@ -51,7 +51,7 @@ namespace tbrpg
    * 
    * @param  text  The text, wrapped to 60 columns, may contain form feeds on otherwise empty lines
    */
-  void pager(std::string text);
+  void page(std::string text);
   
 }
 
