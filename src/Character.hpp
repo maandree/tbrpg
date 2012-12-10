@@ -51,6 +51,11 @@ namespace tbrpg
   {
   public:
     /**
+     * Whether the character is a protagonist
+     */
+    bool protagonist;
+    
+    /**
      * Current hit points
      */
     int hit_points;
