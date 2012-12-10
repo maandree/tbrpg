@@ -69,6 +69,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* TwoHandedMelee::fork() const
+  {
+    return new TwoHandedMelee(*this);
+  }
+  
   
   
   /**

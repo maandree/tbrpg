@@ -86,6 +86,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Dwarf::fork() const
+  {
+    return new Dwarf(*this);
+  }
+  
   
   
   /**

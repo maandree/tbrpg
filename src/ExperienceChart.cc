@@ -105,6 +105,16 @@ namespace tbrpg
     std::swap(this->thief_abilities, original.thief_abilities);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* ExperienceChart::fork() const
+  {
+    return new ExperienceChart(*this);
+  }
+  
   
   
   /**

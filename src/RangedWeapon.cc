@@ -69,6 +69,16 @@ namespace tbrpg
     std::swap(this->rate_of_fire, original.rate_of_fire);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* RangedWeapon::fork() const
+  {
+    return new RangedWeapon(*this);
+  }
+  
   
   
   /**

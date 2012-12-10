@@ -73,6 +73,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* StuddedLeatherArmour::fork() const
+  {
+    return new StuddedLeatherArmour(*this);
+  }
+  
   
   
   /**

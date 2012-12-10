@@ -76,6 +76,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Human::fork() const
+  {
+    return new Human(*this);
+  }
+  
   
   
   /**

@@ -97,6 +97,16 @@ namespace tbrpg
     std::swap(this->physical, original.physical);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Defence::fork() const
+  {
+    return new Defence(*this);
+  }
+  
   
   
   /**

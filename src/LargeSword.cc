@@ -70,6 +70,16 @@ namespace tbrpg
     (void) original;
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* LargeSword::fork() const
+  {
+    return new LargeSword(*this);
+  }
+  
   
   
   /**

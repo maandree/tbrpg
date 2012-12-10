@@ -97,6 +97,16 @@ namespace tbrpg
     std::swap(this->record, original.record);
   }
   
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* Character::fork() const
+  {
+    return new Character(*this);
+  }
+  
   
   
   /**
