@@ -17,8 +17,9 @@ CPPFLAGS ?= -DDEBUG
 CXXFLAGS ?= $(OPTIMISE) -g --std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS ?=
 
-EXEC=bin/tbrpg
-BOOK=tbrpg
+PROGRAM=tbrpg
+EXEC=bin/$(PROGRAM)
+BOOK=$(PROGRAM)
 BOOKDIR=doc/
 LANG=en_GB-ise-w_accents-only
 
@@ -50,8 +51,21 @@ USE_SGCHECK=0
 X_LACKEY=
 USE_LACKEY=0
 
-PREFIX=/usr
-GAMEDIR=/bin
+STRIP=
+install-strip: STRIP = -s
+
+DESTDIR=
+prefix=/usr
+gamedir=/game
+datadir=/share/$(PROGRAM)
+docdir=/doc/$(PROGRAM)
+
+OS-KERNEL=$(shell uname --kernel-release | cut -d - -f 3)
+
+ifeq ($(OS-KERNEL),ARCH)
+  gamedir=/bin
+  docdir=/share/doc/$(PROGRAM)
+endif
 
 TAGSFLAGS=
 TAGSFLAGS_C=
@@ -262,45 +276,97 @@ dvi.xz: $(BOOK).dvi.xz
 ## INSTALLING AND UNINSTALLING ##
 
 .PHONY: install
-install:
-	@echo Not implemented
+install: install-bin
 
 .PHONY: install-bin
-install-bin:
-	@echo Not implemented
+install-bin: $(EXEC) installdirs install-pdf.gz install-info
+	install -m 755 $(STRIP) "$(EXEC)" "$(DESTDIR)$(prefix)$(gamedir)"
 
 .PHONY: install-strip
-install-strip:
-	@echo Not implemented
+install-strip: install-bin
 
 .PHONY: install-html
 install-html:
-	@echo Not implemented
+	@echo Not implemented  FIXME
+
+.PHONY: install-info
+install-info: $(BOOK).info
+	@echo Not implemented  FIXME
+
 
 .PHONY: install-dvi
-install-dvi:
-	@echo Not implemented
+install-dvi: $(BOOK).dvi
+	install -m 644 "$<" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
 
 .PHONY: install-ps
-install-ps:
-	@echo Not implemented
+install-ps: $(BOOK).ps
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
 
 .PHONY: install-pdf
-install-pdf:
-	@echo Not implemented
+install-pdf: $(BOOK).pdf
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-dvi.gz
+install-dvi.gz: $(BOOK).dvi.gz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-ps.gz
+install-ps.gz: $(BOOK).ps.gz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-pdf.gz
+install-pdf.gz: $(BOOK).pdf.gz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-dvi.xz
+install-dvi.xz: $(BOOK).dvi.xz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-ps.xz
+install-ps.xz: $(BOOK).ps.xz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: install-pdf.xz
+install-pdf.xz: $(BOOK).pdf.xz
+	install -m 644 "$^" "$(EXEC)" "$(DESTDIR)$(prefix)$(docdir)"
+
+
+.PHONY: uninstall
+uninstall: uninstalldirs                                \
+	uninstall/$(prefix)$(gamedir)/$(PROGRAM)        \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).dvi     \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).ps      \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).pdf     \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).dvi.gz  \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).ps.gz   \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).pdf.gz  \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).dvi.xz  \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).ps.xz   \
+	uninstall/$(prefix)$(docdir)/$(PROGRAM).pdf.xz
+
+uninstall/%:
+	if [ -f "$*" ]; then  $(RM) "$(DESTDIR)$*";  fi
+
+.PHONY: installdirs
+installdirs:
+	if [ ! "$(DESTDIR)" = "" ]; then  install -d "$(DESTDIR)";  fi
+	install -d "$(DESTDIR)$(prefix)"
+	install -d "$(DESTDIR)$(prefix)$(gamedir)"
+	install -d "$(DESTDIR)$(prefix)$(docdir)"
+
+.PHONY: uninstalldirs
+uninstalldirs: uninstalldir/$(prefix)$(gamedir)  \
+	       uninstalldir/$(prefix)$(docdir)
+
+uninstalldir/%:
+	if [ -d "$*" ]; then                        \
+	  if [ $$(ls -A1 "$*" | wc -l) = 0 ]; then  \
+	    rmdir "$*";  fi;  fi
+
 
 .PHONY: installcheck
 installcheck:
 	@echo Not implemented
-
-.PHONY: installdirs
-installdirs:
-	@echo Not implemented
-
-.PHONY: uninstall
-uninstall:
-	@echo Not implemented
-
 
 
 ## MODIFY DOCUMENTATION ##
