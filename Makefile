@@ -573,7 +573,7 @@ TAGS:
 .PHONY: LINES
 LINES:
 	(find ./src ; find ./tools) | \
-	egrep '\.(cc|hpp|c|h|py|jav|sh|java|lua)$' | \
+	egrep '\.(cc|hpp|c|h|py|jav|sh|java|lua)$$' | \
 	xargs cat Makefile doc/variables doc/tbrpg.texinfo | \
 	wc -l
 
