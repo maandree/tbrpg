@@ -70,6 +70,12 @@ namespace tbrpg
 		 "If you want to exit, press <control>g.",
 		 senarioTitles, 0);
     
+    if (senarioIndex < 0)
+      {
+	cleaner::clean();
+	return 0;
+      }
+    
     std::flush(std::cout << "You have selected game senario #" << senarioIndex << std::endl);
     
     cleaner::clean();
