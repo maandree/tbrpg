@@ -73,6 +73,7 @@ Texts. A copy of the license is included in the section entitled
 * Inventory and equipment::           The inventory and equipment.
 * Map and environment::               The map and environments.
 * Dice and modifiers::                Dice and modifiers.
+* Miscellaneous rules::               Miscellaneous rules.
 * Menus and line input::              Menus and line input
 * License of tbrpg::                  tbrpg's License.
 * GNU General Public License::        GNU General Public License
@@ -3212,6 +3213,34 @@ roll with a modulo 10 agument determines the outcome of a
 D100 roll. Then there are five plutonic solids, D4, D6, D8,
 D12 and D20. Finally there are two non-plutonic solids with
 uniform stocastic distribution: D10 and D24.
+
+
+
+@node Miscellaneous rules
+@chapter Miscellaneous rules
+@cindex miscellaneous rules
+
+@menu
+* Protagonists::               Protagonists.
+@end menu
+
+
+@node Protagonists
+@section Protagonists
+@cindex protagonists
+@cindex party
+
+When you create start a new game you create new characters,
+to play with, at least one, but the maximum depends on the
+game senario. Unless changed my the game senario the
+characters you create a protagonists.
+
+Provided that the game actually has any protagonists, the
+game is lost when all protagonists are dead, even if that
+are resurrectable. Otherwise, the game is lost when all
+characters in the party are dead.
+
+Protagonists cannot be removed from the party.
 
 
 
