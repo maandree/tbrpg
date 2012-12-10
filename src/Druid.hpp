@@ -106,13 +106,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Druid& operator =(Druid&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**

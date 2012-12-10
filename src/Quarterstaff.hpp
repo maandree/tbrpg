@@ -106,13 +106,13 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Quarterstaff& operator =(Quarterstaff&& original);
+    
     /**
      * Fork the object
      * 
      * @return  A fork of the object
      */
     virtual Object* fork() const;
-  
     
     
     /**
