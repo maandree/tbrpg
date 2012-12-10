@@ -303,13 +303,17 @@ namespace tbrpg
     delete[] labels;
     
     if (ok == false)
-      goto _06;
+      {
+	delete[] this->start;
+	goto _06;
+      }
     
     this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       if (proficiencyMap[*weapongroup] != 0)
 	this->sheet.proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
     
+    delete[] this->start;
     hasExtra = false;
     
     
@@ -490,7 +494,9 @@ namespace tbrpg
     this->sheet.name = input;
     
     
-    this->sheet.inventory = Inventory(this->ruleset.inventory_prototype);
+    Inventory* inventory = (Inventory*)(this->ruleset.inventory_prototype.fork());
+    cleaner::getInstance().enqueueDelete(inventory);
+    this->sheet.inventory = (Inventory&)*inventory;
     long long prestige = 0;
     ActionSlotChart slotchart = ActionSlotChart();
     for (Class& c : this->sheet.prestige)

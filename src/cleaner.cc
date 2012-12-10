@@ -31,6 +31,28 @@
 namespace tbrpg
 {
   /**
+   * Singleton constructor
+   */
+  cleaner::cleaner()
+  {
+    this->clean_list_free = std::vector<void*>();
+    this->clean_list_delete = std::vector<Object*>();
+    this->clean_list_array = std::vector<Object*>();
+  }
+  
+  /**
+   * Get the only instance of this class
+   * 
+   * @return  The only instance of this class
+   */
+  cleaner& cleaner::getInstance()
+  {
+    static cleaner instance;
+    return instance;
+  }
+  
+  
+  /**
    * Clean system
    */
   void cleaner::clean()

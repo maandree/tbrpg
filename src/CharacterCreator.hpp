@@ -33,6 +33,7 @@
 #include "ActionSlotChart.hpp"
 #include "prompter.hpp"
 #include "caser.hpp"
+#include "cleaner.hpp"
 
 
 /**

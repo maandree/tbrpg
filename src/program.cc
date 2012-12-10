@@ -58,8 +58,6 @@ namespace tbrpg
     srand(((long long)a) | (((long long)d) << 32LL));
     /** END initialise random **/
     
-    cleaner clean = cleaner();
-    
     std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
     long senarioIndex = promptDialogue(4, "Welcome to tbrpg!",
@@ -83,7 +81,7 @@ namespace tbrpg
       _senario = new BasicSenario();
     if (_senario == nullptr)
       {
-	clean.clean();
+	cleaner::getInstance().clean();
 	return 0;
       }
     
@@ -105,7 +103,7 @@ namespace tbrpg
 						    });
     if (partyCreated == false)
       {
-	clean.clean();
+        cleaner::getInstance().clean();
 	return 0;
       }
     
@@ -123,15 +121,15 @@ namespace tbrpg
 		character->extra_attacks++;
 	  
 	  senario.party.characters.push_back(character);
-	  clean.enqueueDelete(sheet);
-	  clean.enqueueDelete(character);
+	  cleaner::getInstance().enqueueDelete(sheet);
+	  cleaner::getInstance().enqueueDelete(character);
 	}
     
     senario.partyFormed();
     senario.start();
     
     delete _senario;
-    clean.clean();
+    cleaner::getInstance().clean();
     return 0;
   }
 }

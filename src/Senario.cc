@@ -77,7 +77,7 @@ namespace tbrpg
     std::swap(this->party, original.party);
     std::swap(this->map, original.map);
   }
-  
+    
   /**
    * Fork the object
    * 
@@ -94,6 +94,16 @@ namespace tbrpg
    * This is invoked when a party is formed
    */
   void Senario::partyFormed()
+  {
+    // do nothing
+  }
+  
+  /**
+   * This is invoked when the senario starts.
+   * The prologue, and perhaps a short tutorial,
+   * should be displayed.
+   */
+  void Senario::start()
   {
     // do nothing
   }

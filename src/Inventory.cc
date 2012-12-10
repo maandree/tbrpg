@@ -66,7 +66,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Inventory::Inventory() : Object() /* FIXME allow null */
+  Inventory::Inventory() : Object()
   {
     this->class_inheritance.push_back(27);
     this->left_hand = std::vector<Weapon*>(1);
@@ -251,26 +251,26 @@ namespace tbrpg
     self.personal = std::vector<Item*>(original.personal.size());
     
     #define __copy(slot, T)  \
-      self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot.fork());
+      self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());
     
     __copy(right_hand, RightHandItem);
     __copy(headgear, Headgear);
     __copy(amulet, Amulet);
-    __copy(body, Body);
+    __copy(body, BodyArmour);
     __copy(gauntlets, Gauntlets);
     __copy(girdle, Girdle);
     __copy(boots, Boots);
     __copy(cloak, Cloak);
     
-    for (size_t i = 0, n = self.left_hand.size(); i < n, i++)
+    for (size_t i = 0, n = self.left_hand.size(); i < n; i++)
       __copy(left_hand[i], Weapon);
-    for (size_t i = 0, n = self.quiver.size(); i < n, i++)
+    for (size_t i = 0, n = self.quiver.size(); i < n; i++)
       __copy(quiver[i], Ammunition);
-    for (size_t i = 0, n = self.quick_items.size(); i < n, i++)
+    for (size_t i = 0, n = self.quick_items.size(); i < n; i++)
       __copy(quick_items[i], QuickItem);
-    for (size_t i = 0, n = self.rings.size(); i < n, i++)
+    for (size_t i = 0, n = self.rings.size(); i < n; i++)
       __copy(rings[i], Ring);
-    for (size_t i = 0, n = self.personal.size(); i < n, i++)
+    for (size_t i = 0, n = self.personal.size(); i < n; i++)
       __copy(personal[i], Item);
   }
   

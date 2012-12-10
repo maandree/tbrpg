@@ -44,7 +44,7 @@ namespace tbrpg
    */
   class cleaner
   {
-  public:
+  private:
     /**
      * Objects to `free()`
      */
@@ -59,6 +59,21 @@ namespace tbrpg
      * Objects to `delete[]`
      */
     std::vector<Object*> clean_list_array;
+    
+    
+    /**
+     * Singleton constructor
+     */
+    cleaner();
+    
+    
+  public:
+    /**
+     * Get the only instance of this class
+     * 
+     * @return  The only instance of this class
+     */
+    static cleaner& getInstance();
     
     
     /**

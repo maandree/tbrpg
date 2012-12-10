@@ -162,7 +162,7 @@ namespace tbrpg
      * The prologue, and perhaps a short tutorial,
      * should be displayed.
      */
-    virtual void start() = 0;
+    virtual void start();
     
     
     

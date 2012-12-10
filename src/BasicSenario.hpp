@@ -24,6 +24,7 @@
 #include "Senario.hpp"
 #include "pager.hpp"
 #include "prompter.hpp"
+#include "cleaner.hpp"
 #include "Gold.hpp"
 
 

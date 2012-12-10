@@ -113,4 +113,6 @@ RuleSet Halfling
 CharacterCreator caser
 Object prototype
 BasicSenario Senario
+BasicSenario cleaner
+CharacterCreator cleaner
 cleaner Object
