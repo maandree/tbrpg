@@ -30,6 +30,39 @@
  */
 namespace tbrpg
 {
+  #define __delete()				\
+    for (auto* item : this->left_hand)		\
+      if (item != nullptr)			\
+	delete item;				\
+    if (this->right_hand != nullptr)		\
+      delete this->right_hand;			\
+    for (auto* item : this->quiver)		\
+      if (item != nullptr)			\
+	delete item;				\
+    for (auto* item : this->quick_items)	\
+      if (item != nullptr)			\
+	delete item;				\
+    if (this->headgear != nullptr)		\
+      delete this->headgear;			\
+    if (this->amulet != nullptr)		\
+      delete this->amulet;			\
+    for (auto* item : this->rings)		\
+      if (item != nullptr)			\
+	delete item;				\
+    if (this->body != nullptr)			\
+      delete this->body;			\
+    if (this->gauntlets != nullptr)		\
+      delete this->gauntlets;			\
+    if (this->girdle != nullptr)		\
+      delete this->girdle;			\
+    if (this->boots != nullptr)			\
+      delete this->boots;			\
+    if (this->cloak != nullptr)			\
+      delete this->cloak;			\
+    for (auto* item : this->personal)		\
+      if (item != nullptr)			\
+	delete item
+  
   /**
    * Constructor
    */
@@ -58,19 +91,7 @@ namespace tbrpg
    */
   Inventory::Inventory(const Inventory& original) : Object(original)
   {
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulet = original.amulet;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    __copy__(*this, original);
   }
   
   /**
@@ -80,19 +101,7 @@ namespace tbrpg
    */
   Inventory::Inventory(Inventory& original) : Object(original)
   {
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulet = original.amulet;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    __copy__(*this, original);
   }
   
   /**
@@ -124,7 +133,6 @@ namespace tbrpg
    */
   Inventory::~Inventory()
   {
-    // do nothing
   }
   
   
@@ -138,19 +146,8 @@ namespace tbrpg
   Inventory& Inventory::operator =(const Inventory& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulet = original.amulet;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    __delete();
+    __copy__(*this, original);
     return *this;
   }
   
@@ -163,19 +160,8 @@ namespace tbrpg
   Inventory& Inventory::operator =(Inventory& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->left_hand = original.left_hand;
-    this->right_hand = original.right_hand;
-    this->quiver = original.quiver;
-    this->quick_items = original.quick_items;
-    this->headgear = original.headgear;
-    this->amulet = original.amulet;
-    this->rings = original.rings;
-    this->body = original.body;
-    this->gauntlets = original.gauntlets;
-    this->girdle = original.girdle;
-    this->boots = original.boots;
-    this->cloak = original.cloak;
-    this->personal = original.personal;
+    __delete();
+    __copy__(*this, original);
     return *this;
   }
   
@@ -248,7 +234,34 @@ namespace tbrpg
    */
   void Inventory::__copy__(Inventory& self, const Inventory& original)
   {
-    self = original;
+    self.left_hand = std::vector<Weapon*>(original.left_hand.size());
+    self.quiver = std::vector<Ammunition*>(original.quiver.size());
+    self.quick_items = std::vector<QuickItem*>(original.quick_items.size());
+    self.rings = std::vector<Ring*>(original.rings.size());
+    self.personal = std::vector<Item*>(original.personal.size());
+    
+    #define __copy(slot, T)  \
+      self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot.fork());
+    
+    __copy(right_hand, RightHandItem);
+    __copy(headgear, Headgear);
+    __copy(amulet, Amulet);
+    __copy(body, Body);
+    __copy(gauntlets, Gauntlets);
+    __copy(girdle, Girdle);
+    __copy(boots, Boots);
+    __copy(cloak, Cloak);
+    
+    for (size_t i = 0, n = self.left_hand.size(); i < n, i++)
+      __copy(left_hand[i], Weapon);
+    for (size_t i = 0, n = self.quiver.size(); i < n, i++)
+      __copy(quiver[i], Ammunition);
+    for (size_t i = 0, n = self.quick_items.size(); i < n, i++)
+      __copy(quick_items[i], QuickItem);
+    for (size_t i = 0, n = self.rings.size(); i < n, i++)
+      __copy(rings[i], Ring);
+    for (size_t i = 0, n = self.personal.size(); i < n, i++)
+      __copy(personal[i], Item);
   }
   
   /**
@@ -287,6 +300,10 @@ namespace tbrpg
     rc += std::hash<std::vector<Item*>>()(this->personal);
     return rc;
   }
+  
+  
+  
+  #undef __delete
   
 }
 
