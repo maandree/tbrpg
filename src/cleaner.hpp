@@ -38,15 +38,55 @@
 namespace tbrpg
 {
   /**
-   * Item class
+   * Cleaner class
    */
   class cleaner
   {
+  private:
+    /**
+     * Objects to free
+     */
+    static std::vector<void*> clean_list_free;
+    
+    /**
+     * Objects to delete
+     */
+    static std::vector<void*> clean_list_delete;
+    
+    /**
+     * Objects to delete[]
+     */
+    static std::vector<void*> clean_list_array;
+    
+    
   public:
     /**
-     * Clean items
+     * Clean system
      */
     static void clean();
+    
+    /**
+     * Add instance that that should be cleaned using `free()`
+     * 
+     * @param  obj  The object
+     */
+    static void enqueueFree(void* object);
+    
+    /**
+     * Add instance that that should be cleaned using `delete`
+     * 
+     * @param  obj  The object
+     */
+    static void enqueueDelete(void* object);
+    
+    /**
+     * Add instance that that should be cleaned using `delete[]`
+     * 
+     * @param  obj  The object
+     */
+    static void enqueueDeleteArray(void* object);
+    
+    
   };
 }
 

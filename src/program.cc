@@ -19,7 +19,6 @@
  */
 #include <stdlib.h>
 #include <iostream>
-#include <sstream>
 #include <vector>
 
 #include "cleaner.hpp"
@@ -52,11 +51,12 @@ namespace tbrpg
     (void) argc;
     (void) argv;
     
-    /** Initialise random **/
+    /** BEGIN initialise random **/
     unsigned a, d;
     asm("cpuid");
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
+    /** END initialise random **/
     
     std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
@@ -77,10 +77,8 @@ namespace tbrpg
 		 senarioTitles, 0);
     
     Senario* _senario = nullptr;
-    
     if (senarioIndex == 0)
       _senario = new BasicSenario();
-    
     if (_senario == nullptr)
       {
 	cleaner::clean();
@@ -88,8 +86,8 @@ namespace tbrpg
       }
     
     Senario& senario = *_senario;
-    CharacterCreator characterCreator = CharacterCreator(senario.rules);
     
+    CharacterCreator characterCreator = CharacterCreator(senario.rules);
     std::vector<CharacterSheet*> sheets = std::vector<CharacterSheet*>(senario.rules.party_start_size);
     bool partyCreated = promptSlots<CharacterSheet>("Create your party, you need at least one character.",
                                                     true, 1, sheets,
@@ -103,16 +101,32 @@ namespace tbrpg
 							  std::cout << sheet->name << "\033[21;39m";
 							}
 						    });
-    
     if (partyCreated == false)
       {
 	cleaner::clean();
 	return 0;
       }
     
+    for (CharacterSheet* sheet : sheets)
+      if (sheet != nullptr)
+	{
+	  Character* character = new Character();
+	  character->record = (CharacterSheet&)*sheet;
+	  character->protagonist = true;
+	  character->hit_points = sheet->hit_points;
+	  
+	  for (long i = 0, n = prestige.size(); i < n; i++)
+	    if (sheet->prestige[i] >= PROTOTYPE(Warrior))
+	      if (sheet->level[i] >= 7)
+		character->extra_attacks++;
+	  
+	  senario.party.characters.push_back(character);
+	  cleaner::enqueueDelete(sheet);
+	  cleaner::enqueueDelete(character);
+	}
+    
     senario.partyFormed();
     senario.start();
-    
     
     delete _senario;
     cleaner::clean();

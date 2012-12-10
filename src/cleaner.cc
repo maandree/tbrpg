@@ -31,11 +31,47 @@
 namespace tbrpg
 {
   /**
-   * Clean items
+   * Clean system
    */
   void cleaner::clean()
   {
     /* do nothing */
+  }
+  
+  /**
+   * Add instance that that should be cleaned using `free()`
+   * 
+   * @param  obj  The object
+   */
+  void cleaner::enqueueFree(void* object)
+  {
+    for (void* item : clean_list_free)
+      free(item);
+    clean_list_free = std::vector<void*>();
+  }
+  
+  /**
+   * Add instance that that should be cleaned using `delete`
+   * 
+   * @param  obj  The object
+   */
+  void cleaner::enqueueDelete(void* object)
+  {
+    for (void* item : clean_list_delete)
+      delete item;
+    clean_list_delete = std::vector<void*>();
+  }
+  
+  /**
+   * Add instance that that should be cleaned using `delete[]`
+   * 
+   * @param  obj  The object
+   */
+  void cleaner::enqueueDeleteArray(void* object)
+  {
+    for (void* item : clean_list_delete_array)
+      delete[] item;
+    clean_list_delete_array = std::vector<void*>();
   }
   
 }
