@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* EnvironmentContainer::fork() const
   {
-    return new EnvironmentContainer(*this);
+    return (Object*)(new EnvironmentContainer(*this));
   }
   
   

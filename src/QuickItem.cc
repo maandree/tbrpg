@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* QuickItem::fork() const
   {
-    return new QuickItem(*this);
+    return (Object*)(new QuickItem(*this));
   }
   
   

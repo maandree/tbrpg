@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* Gem::fork() const
   {
-    return new Gem(*this);
+    return (Object*)(new Gem(*this));
   }
   
   

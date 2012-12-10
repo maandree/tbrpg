@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* Bullet::fork() const
   {
-    return new Bullet(*this);
+    return (Object*)(new Bullet(*this));
   }
   
   

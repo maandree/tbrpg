@@ -112,7 +112,7 @@ namespace tbrpg
    */
   Object* ExperienceChart::fork() const
   {
-    return new ExperienceChart(*this);
+    return (Object*)(new ExperienceChart(*this));
   }
   
   

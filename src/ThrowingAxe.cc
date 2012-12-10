@@ -82,7 +82,7 @@ namespace tbrpg
    */
   Object* ThrowingAxe::fork() const
   {
-    return new ThrowingAxe(*this);
+    return (Object*)(new ThrowingAxe(*this));
   }
   
   

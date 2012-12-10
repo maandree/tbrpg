@@ -77,7 +77,7 @@ namespace tbrpg
    */
   Object* ShortBow::fork() const
   {
-    return new ShortBow(*this);
+    return (Object*)(new ShortBow(*this));
   }
   
   

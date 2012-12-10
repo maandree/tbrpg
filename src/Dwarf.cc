@@ -93,7 +93,7 @@ namespace tbrpg
    */
   Object* Dwarf::fork() const
   {
-    return new Dwarf(*this);
+    return (Object*)(new Dwarf(*this));
   }
   
   

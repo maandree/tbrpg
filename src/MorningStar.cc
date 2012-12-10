@@ -80,7 +80,7 @@ namespace tbrpg
    */
   Object* MorningStar::fork() const
   {
-    return new MorningStar(*this);
+    return (Object*)(new MorningStar(*this));
   }
   
   

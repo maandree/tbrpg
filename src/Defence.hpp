@@ -114,6 +114,13 @@ namespace tbrpg
      */
     Defence(Defence&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -146,13 +153,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Defence& operator =(Defence&& original);
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
-  
     
     
     /**

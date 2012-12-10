@@ -101,7 +101,7 @@ namespace tbrpg
    */
   Object* Store::fork() const
   {
-    return new Store(*this);
+    return (Object*)(new Store(*this));
   }
   
   

@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* Arrow::fork() const
   {
-    return new Arrow(*this);
+    return (Object*)(new Arrow(*this));
   }
   
   

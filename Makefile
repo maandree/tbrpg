@@ -468,12 +468,16 @@ clean-bin: clean.a clean.a.gz clean.a.xz clean.a.bz2 clean.o clean.gch clean.out
 	@echo -e 'Cleaning \e[35mbin\e[m'
 	@if [ -d "bin" ]; then  rm -r "bin";  fi
 	@find ./test | grep -v '\.cc$$' | grep -v '\.text$$' | while read file; do  \
-	    if [ -f "$$file" ];  then $(RM) "$$file";  fi                           \
+	    if [ -L "$$file" ]; then  file=$$(readlink "$$file");  fi;              \
+	    if [ -f "$$file" ]; then  $(RM) "$$file";  fi;                          \
 	done
 
 .PHONY: clean-tmp
 clean-doc:
 	@echo -e 'Cleaning \e[35mtmp\e[m'
+	@if [ -L ".tmp"  ]; then  if [ -f "$$(readlink ".tmp")"  ]; then  $(RM) "$$(readlink ".tmp")" ;  fi;  fi
+	@if [ -L ".tmp1" ]; then  if [ -f "$$(readlink ".tmp1")" ]; then  $(RM) "$$(readlink ".tmp1")";  fi;  fi
+	@if [ -L ".tmp2" ]; then  if [ -f "$$(readlink ".tmp2")" ]; then  $(RM) "$$(readlink ".tmp2")";  fi;  fi
 	@if [ -f ".tmp"  ]; then  $(RM) ".tmp" ;  fi
 	@if [ -f ".tmp1" ]; then  $(RM) ".tmp1";  fi
 	@if [ -f ".tmp2" ]; then  $(RM) ".tmp2";  fi
@@ -491,24 +495,27 @@ clean-tex: clean.t2d clean.aux clean.cp clean.cps clean.fn clean.ky clean.log cl
 clean.%:
 	@echo -e 'Cleaning \e[34m.$*\e[m'
 	@find ./ | grep '\.$*$$' | grep -v '^./lab3.pdf$$' | while read file; do  \
-	    if [ -f "$$file" ]; then $(RM)    "$$file"; fi;                       \
-	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi;                       \
+	    if [ -L "$$file" ]; then  file=$$(readlink "$$file");  fi;            \
+	    if [ -f "$$file" ]; then  $(RM)    "$$file";  fi;                     \
+	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;                     \
 	done
 
 .PHONY: clean.%.gz
 clean.%.gz:
 	@echo -e 'Cleaning \e[34m.$*.gz\e[m'
-	@find ./ | grep '\.$*.gz$$' | while read file; do    \
-	    if [ -f "$$file" ]; then $(RM)    "$$file"; fi;  \
-	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi;  \
+	@find ./ | grep '\.$*.gz$$' | while read file; do               \
+	    if [ -L "$$file" ]; then  file=$$(readlink "$$file");  fi;  \
+	    if [ -f "$$file" ]; then  $(RM)    "$$file";  fi;           \
+	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;           \
 	done
 
 .PHONY: clean.%.xz
 clean.%.xz:
 	@echo -e 'Cleaning \e[34m.$*.xz\e[m'
-	@find ./ | grep '\.$*.xz$$' | while read file; do    \
-	    if [ -f "$$file" ]; then $(RM)    "$$file"; fi;  \
-	    if [ -d "$$file" ]; then $(RM) -r "$$file"; fi;  \
+	@find ./ | grep '\.$*.xz$$' | while read file; do                 \
+	    if [ -L "$$file" ]; then  file="$$(readlink "$$file")";  fi;  \
+	    if [ -f "$$file" ]; then  $(RM)    "$$file";  fi;             \
+	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;             \
 	done
 
 .PHONY: clean/%
@@ -517,8 +524,8 @@ clean/%:
 	@if [ -f     "$*.o"        ]; then  $(RM)     "$*.o"       ;  fi
 	@if [ -f "src/$*.h.gch"    ]; then  $(RM) "src/$*.h.gch"   ;  fi
 	@if [ -f "src/$*.hpp.gch"  ]; then  $(RM) "src/$*.hpp.gch" ;  fi
-	@if [ -f "/dev/shm/tbrpg/$*.h.gch"    ]; then  $(RM) "/dev/shm/tbrpg/$*.h.gch"   ;  fi
-	@if [ -f "/dev/shm/tbrpg/$*.hpp.gch"  ]; then  $(RM) "/dev/shm/tbrpg/$*.hpp.gch" ;  fi
+	@if [ -e "/dev/shm/tbrpg/$*.h.gch"    ]; then  $(RM) "/dev/shm/tbrpg/$*.h.gch"   ;  fi
+	@if [ -e "/dev/shm/tbrpg/$*.hpp.gch"  ]; then  $(RM) "/dev/shm/tbrpg/$*.hpp.gch" ;  fi
 
 
 

@@ -93,7 +93,7 @@ namespace tbrpg
    */
   Object* Elf::fork() const
   {
-    return new Elf(*this);
+    return (Object*)(new Elf(*this));
   }
   
   

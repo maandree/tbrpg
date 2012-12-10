@@ -232,7 +232,7 @@ namespace tbrpg
    */
   Object* Priest::fork() const
   {
-    return new Priest(*this);
+    return (Object*)(new Priest(*this));
   }
   
   

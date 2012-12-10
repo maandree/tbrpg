@@ -204,7 +204,7 @@ namespace tbrpg
    */
   Object* Class::fork() const
   {
-    return new Class(*this);
+    return (Object*)(new Class(*this));
   }
   
   

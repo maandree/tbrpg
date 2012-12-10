@@ -93,6 +93,13 @@ namespace tbrpg
      */
     Proficiency(Proficiency&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -125,13 +132,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Proficiency& operator =(Proficiency&& original);
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
-  
     
     
     /**

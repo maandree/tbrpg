@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* LowWand::fork() const
   {
-    return new LowWand(*this);
+    return (Object*)(new LowWand(*this));
   }
   
   

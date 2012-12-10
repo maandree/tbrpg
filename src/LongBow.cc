@@ -78,7 +78,7 @@ namespace tbrpg
    */
   Object* LongBow::fork() const
   {
-    return new LongBow(*this);
+    return (Object*)(new LongBow(*this));
   }
   
   

@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* CompositeLongBow::fork() const
   {
-    return new CompositeLongBow(*this);
+    return (Object*)(new CompositeLongBow(*this));
   }
   
   

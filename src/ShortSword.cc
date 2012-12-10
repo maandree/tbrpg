@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* ShortSword::fork() const
   {
-    return new ShortSword(*this);
+    return (Object*)(new ShortSword(*this));
   }
   
   

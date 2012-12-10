@@ -133,7 +133,7 @@ namespace tbrpg
    */
   Object* Inventory::fork() const
   {
-    return new Inventory(*this);
+    return (Object*)(new Inventory(*this));
   }
   
   
