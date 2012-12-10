@@ -500,4 +500,6 @@ Store: NPC                                ; Store non-player character
 
 Senario: Object                           ; Game senario class
 	RuleSet rules                     ; The rules of the game
+	Party party                       ; The party
+	Map map                           ; The map
 
