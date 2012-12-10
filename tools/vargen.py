@@ -91,10 +91,6 @@ for line in lines:
             supers = classLine[classLine.index(':') + 2:].replace(',', '').split(' ')
             classLine = classLine.replace(',', ', public').replace(':', ': public')
             superInclude = ['#include "%s.hpp"' % c for c in supers] + ['', '']
-            #for superClass in supers:
-            #    if (superClass == 'Object') or (superClass in isObject):
-            #        isObject.add(className)
-            #        break
         for varLine in varLines:
             varLine = varLine[:varLine.index(';')].strip()
             for s in range(0, len(varLine)):
