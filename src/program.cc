@@ -51,9 +51,6 @@ namespace tbrpg
     asm volatile("rdtsc" : "=a" (a), "=d" (d));
     srand(((long long)a) | (((long long)d) << 32LL));
     
-    if (promptDialogue(2, "Tutor", "This is just\na simple\ndialogue.", {}) != -1)
-      std::flush(std::cout << promptDialogue(2, "Tutor", "Now you can select a reply.", {"one line", "two\nlines", "three\n\nlines"}) << std::endl);
-    
     cleaner::clean();
     
     return 0;

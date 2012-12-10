@@ -74,6 +74,9 @@ namespace tbrpg
     std::cout << promptArbitrary("promptArbitrary: ");
     std::flush(std::cout << std::endl);
     
+    if (promptDialogue(2, "Tutor", "This is just\na simple\ndialogue.", {}) != -1)
+      std::flush(std::cout << promptDialogue(2, "Tutor", "Now you can select a reply.", {"one line", "two\nlines", "three\n\nlines"}) << std::endl);
+    
     return 0;
   }
 }
