@@ -198,6 +198,13 @@ namespace tbrpg
      */
     Class(Class&& original);
     
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
     
     
     /**
@@ -230,13 +237,6 @@ namespace tbrpg
      * @return            The invoked object
      */
     virtual Class& operator =(Class&& original);
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
-  
     
     
     /**

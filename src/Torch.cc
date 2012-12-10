@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Torch::fork() const
   {
-    return new Torch(*this);
+    return (Object*)(new Torch(*this));
   }
   
   

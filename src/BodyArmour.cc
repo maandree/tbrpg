@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* BodyArmour::fork() const
   {
-    return new BodyArmour(*this);
+    return (Object*)(new BodyArmour(*this));
   }
   
   

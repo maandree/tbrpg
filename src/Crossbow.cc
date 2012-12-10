@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* Crossbow::fork() const
   {
-    return new Crossbow(*this);
+    return (Object*)(new Crossbow(*this));
   }
   
   

@@ -81,7 +81,7 @@ namespace tbrpg
    */
   Object* Halberd::fork() const
   {
-    return new Halberd(*this);
+    return (Object*)(new Halberd(*this));
   }
   
   

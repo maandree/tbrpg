@@ -77,7 +77,7 @@ namespace tbrpg
    */
   Object* Helmet::fork() const
   {
-    return new Helmet(*this);
+    return (Object*)(new Helmet(*this));
   }
   
   

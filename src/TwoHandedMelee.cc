@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* TwoHandedMelee::fork() const
   {
-    return new TwoHandedMelee(*this);
+    return (Object*)(new TwoHandedMelee(*this));
   }
   
   

@@ -92,7 +92,7 @@ namespace tbrpg
    */
   Object* SavingThrows::fork() const
   {
-    return new SavingThrows(*this);
+    return (Object*)(new SavingThrows(*this));
   }
   
   

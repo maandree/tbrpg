@@ -124,7 +124,7 @@ namespace tbrpg
    */
   Object* Item::fork() const
   {
-    return new Item(*this);
+    return (Object*)(new Item(*this));
   }
   
   

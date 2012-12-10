@@ -80,7 +80,7 @@ namespace tbrpg
    */
   Object* Map::fork() const
   {
-    return new Map(*this);
+    return (Object*)(new Map(*this));
   }
   
   

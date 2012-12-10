@@ -83,7 +83,7 @@ namespace tbrpg
    */
   Object* Fighter::fork() const
   {
-    return new Fighter(*this);
+    return (Object*)(new Fighter(*this));
   }
   
   

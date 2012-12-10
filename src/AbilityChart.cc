@@ -461,7 +461,7 @@ namespace tbrpg
    */
   Object* AbilityChart::fork() const
   {
-    return new AbilityChart(*this);
+    return (Object*)(new AbilityChart(*this));
   }
   
   

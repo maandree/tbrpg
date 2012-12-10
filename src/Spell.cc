@@ -133,7 +133,7 @@ namespace tbrpg
    */
   Object* Spell::fork() const
   {
-    return new Spell(*this);
+    return (Object*)(new Spell(*this));
   }
   
   

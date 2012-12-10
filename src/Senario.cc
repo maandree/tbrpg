@@ -85,7 +85,7 @@ namespace tbrpg
    */
   Object* Senario::fork() const
   {
-    return new Senario(*this);
+    return (Object*)(new Senario(*this));
   }
   
   

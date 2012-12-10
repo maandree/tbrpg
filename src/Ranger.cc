@@ -128,7 +128,7 @@ namespace tbrpg
    */
   Object* Ranger::fork() const
   {
-    return new Ranger(*this);
+    return (Object*)(new Ranger(*this));
   }
   
   

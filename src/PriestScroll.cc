@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* PriestScroll::fork() const
   {
-    return new PriestScroll(*this);
+    return (Object*)(new PriestScroll(*this));
   }
   
   

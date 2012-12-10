@@ -76,7 +76,7 @@ namespace tbrpg
    */
   Object* Hat::fork() const
   {
-    return new Hat(*this);
+    return (Object*)(new Hat(*this));
   }
   
   

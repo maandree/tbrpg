@@ -100,7 +100,7 @@ namespace tbrpg
    */
   Object* AbilityBonus::fork() const
   {
-    return new AbilityBonus(*this);
+    return (Object*)(new AbilityBonus(*this));
   }
   
   

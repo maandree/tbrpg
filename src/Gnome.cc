@@ -98,7 +98,7 @@ namespace tbrpg
    */
   Object* Gnome::fork() const
   {
-    return new Gnome(*this);
+    return (Object*)(new Gnome(*this));
   }
   
   

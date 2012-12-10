@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* SplintMail::fork() const
   {
-    return new SplintMail(*this);
+    return (Object*)(new SplintMail(*this));
   }
   
   

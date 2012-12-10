@@ -79,7 +79,7 @@ namespace tbrpg
    */
   Object* FullPlateMail::fork() const
   {
-    return new FullPlateMail(*this);
+    return (Object*)(new FullPlateMail(*this));
   }
   
   

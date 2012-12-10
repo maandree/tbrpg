@@ -77,7 +77,7 @@ namespace tbrpg
    */
   Object* Potion::fork() const
   {
-    return new Potion(*this);
+    return (Object*)(new Potion(*this));
   }
   
   

@@ -82,7 +82,7 @@ namespace tbrpg
    */
   Object* Dart::fork() const
   {
-    return new Dart(*this);
+    return (Object*)(new Dart(*this));
   }
   
   

@@ -77,7 +77,7 @@ namespace tbrpg
    */
   Object* Sorcerer::fork() const
   {
-    return new Sorcerer(*this);
+    return (Object*)(new Sorcerer(*this));
   }
   
   
