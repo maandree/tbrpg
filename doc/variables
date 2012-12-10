@@ -237,6 +237,7 @@ CharacterSheet: Object                                                     ; Cha
 	std::vector<Spell> special_abilities                               ; The character's special abilities
 
 Character: Object                         ; Character
+	bool protagonist                  ; Whether the character is a protagonist
 	int hit_points                    ; Current hit points
 	char alive                        ; Alive status, 0 for dead, 1 for alive, −1 for beyond ressurection
 	int morale                        ; Current morale
