@@ -121,3 +121,5 @@ BasicSenario House
 BasicSenario Town
 BasicSenario Wilderness
 BasicSenario Gold
+BasicSenario Door
+BasicSenario Store

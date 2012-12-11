@@ -125,6 +125,12 @@ namespace tbrpg
     prev.description = "the open roads";
     next.leads_to = area_goal;
     prev.leads_to = area_wilds;
+    
+    area_inn.creatures.push_back(Store());
+    
+    this->map.start = (MapMinor&)area_town;
+    this->map.majors.push_back(map_town);
+    this->map.majors.push_back(map_wilds);
   }
   
   /**

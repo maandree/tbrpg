@@ -29,6 +29,8 @@
 #include "House.hpp"
 #include "Wilderness.hpp"
 #include "Gold.hpp"
+#include "Door.hpp"
+#include "Store.hpp"
 
 
 /**
