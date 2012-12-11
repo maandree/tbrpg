@@ -13,7 +13,7 @@ VERSION := 0.999
 
 all: OPTIMISE ?= -O3
 OPTIMISE ?= -O0
-#CPPFLAGS ?= -DDEBUG
+CPPFLAGS ?= -DDEBUG
 CXXFLAGS ?= $(OPTIMISE) -g -std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS ?=
 
