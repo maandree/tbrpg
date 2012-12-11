@@ -151,6 +151,20 @@ namespace tbrpg
     
     for (Item& item : store.inventory)
       item.quantity = -1;
+    
+    Key questkey = new Key();
+    questkey.id = 0;
+    
+    Creature gibberling = Creature();
+    gibberling.x = 50;
+    gibberling.y = 50;
+    gibberling.alive = true;
+    gibberling.resurrect = false;
+    gibberling.experience = 10;
+    gibberling.record.name = "gibberling";
+    gibberling.record.colour = 2;
+    gibberling.record.alignment = 4;
+    gibberling.record.inventory.personal.push_back(questkey);
   }
   
   /**
