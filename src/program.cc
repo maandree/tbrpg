@@ -103,6 +103,7 @@ namespace tbrpg
 						    });
     if (partyCreated == false)
       {
+	delete _senario;
         cleaner::getInstance().clean();
 	return 0;
       }
@@ -121,8 +122,8 @@ namespace tbrpg
 		character->extra_attacks++;
 	  
 	  senario.party.characters.push_back(character);
-	  cleaner::getInstance().enqueueDelete(sheet);
-	  cleaner::getInstance().enqueueDelete(character);
+	  //cleaner::getInstance().enqueueDelete(sheet);
+	  //cleaner::getInstance().enqueueDelete(character);
 	}
     
     senario.partyFormed();

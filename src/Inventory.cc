@@ -30,39 +30,6 @@
  */
 namespace tbrpg
 {
-  #define __delete()				\
-    for (auto* item : this->left_hand)		\
-      if (item != nullptr)			\
-	delete item;				\
-    if (this->right_hand != nullptr)		\
-      delete this->right_hand;			\
-    for (auto* item : this->quiver)		\
-      if (item != nullptr)			\
-	delete item;				\
-    for (auto* item : this->quick_items)	\
-      if (item != nullptr)			\
-	delete item;				\
-    if (this->headgear != nullptr)		\
-      delete this->headgear;			\
-    if (this->amulet != nullptr)		\
-      delete this->amulet;			\
-    for (auto* item : this->rings)		\
-      if (item != nullptr)			\
-	delete item;				\
-    if (this->body != nullptr)			\
-      delete this->body;			\
-    if (this->gauntlets != nullptr)		\
-      delete this->gauntlets;			\
-    if (this->girdle != nullptr)		\
-      delete this->girdle;			\
-    if (this->boots != nullptr)			\
-      delete this->boots;			\
-    if (this->cloak != nullptr)			\
-      delete this->cloak;			\
-    for (auto* item : this->personal)		\
-      if (item != nullptr)			\
-	delete item
-  
   /**
    * Constructor
    */
@@ -143,6 +110,7 @@ namespace tbrpg
    */
   Inventory::~Inventory()
   {
+    __delete__();
   }
   
   
@@ -156,7 +124,7 @@ namespace tbrpg
   Inventory& Inventory::operator =(const Inventory& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    __delete();
+    __delete__();
     __copy__(*this, original);
     return *this;
   }
@@ -170,7 +138,7 @@ namespace tbrpg
   Inventory& Inventory::operator =(Inventory& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    __delete();
+    __delete__();
     __copy__(*this, original);
     return *this;
   }
@@ -275,6 +243,37 @@ namespace tbrpg
   }
   
   /**
+   * Internal cleaning
+   */
+  void Inventory::__delete__()
+  {
+    #define __delete(slot)		\
+      if (this->slot != nullptr)	\
+	{				\
+	  delete this->slot;		\
+	  this->slot = nullptr;		\
+	}
+    
+    #define ___delete(slots)					\
+      for (size_t i = 0, n = this->slots.size(); i < n; i++)	\
+        __delete(slots[i])
+    
+    ___delete(left_hand)
+    __delete(right_hand)
+    ___delete(quiver)
+    ___delete(quick_items)
+    __delete(headgear)
+    __delete(amulet)
+    ___delete(rings)
+    __delete(body)
+    __delete(gauntlets)
+    __delete(girdle)
+    __delete(boots)
+    __delete(cloak)
+    ___delete(personal)
+  }
+  
+  /**
    * Hash method
    * 
    * @return  The object's hash code
@@ -310,10 +309,6 @@ namespace tbrpg
     rc += std::hash<std::vector<Item*>>()(this->personal);
     return rc;
   }
-  
-  
-  
-  #undef __delete
   
 }
 

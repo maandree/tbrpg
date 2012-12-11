@@ -162,7 +162,7 @@ namespace tbrpg
    */
   CharacterSheet::~CharacterSheet()
   {
-    // do nothing
+    delete &(this->inventory);
   }
   
   

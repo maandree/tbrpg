@@ -219,6 +219,11 @@ namespace tbrpg
      */
     static void __copy__(Inventory& self, const Inventory& original);
     
+    /**
+     * Internal cleaning
+     */
+    void __delete__();
+    
     
   public:
     /**

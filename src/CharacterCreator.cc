@@ -495,7 +495,6 @@ namespace tbrpg
     
     
     Inventory* inventory = (Inventory*)(this->ruleset.inventory_prototype.fork());
-    cleaner::getInstance().enqueueDelete(inventory);
     this->sheet.inventory = (Inventory&)*inventory;
     long long prestige = 0;
     ActionSlotChart slotchart = ActionSlotChart();
