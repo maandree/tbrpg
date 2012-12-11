@@ -195,6 +195,22 @@ namespace tbrpg
     return (*this == other) == false;
   }
   
+  
+  /**
+   * Interact, but do not fight, with the creature
+   * 
+   * @parm  nearby  Party members nearby
+   */
+  void Creature::interact(std::vector<Character*>& nearby)
+  {
+    (void) nearby;
+    std::flush(std::cout
+	       << "\033[01;3" << this->record.colour << "m"
+	       << this->record.name << "\033[21;39m"
+	       << " has nothing to say.");
+  }
+  
+  
   /**
    * Copy method
    * 

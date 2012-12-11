@@ -49,7 +49,7 @@ namespace tbrpg
     this->class_abondoned = {};
     this->proficiencies = std::unordered_map<WeaponGroup, int>();
     this->affected_by = {};
-    this->inventory = Inventory();
+    this->inventory = new Inventory();
     this->abilities = AbilityBonus();
     this->spells = SpellBook();
     this->race = Race();
@@ -77,7 +77,7 @@ namespace tbrpg
     this->class_abondoned = original.class_abondoned;
     this->proficiencies = original.proficiencies;
     this->affected_by = original.affected_by;
-    this->inventory = original.inventory;
+    this->inventory = new Inventory(*(original.inventory));
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->race = original.race;
@@ -106,7 +106,7 @@ namespace tbrpg
     this->class_abondoned = original.class_abondoned;
     this->proficiencies = original.proficiencies;
     this->affected_by = original.affected_by;
-    this->inventory = original.inventory;
+    this->inventory = new Inventory(*(original.inventory));
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->race = original.race;
@@ -162,7 +162,7 @@ namespace tbrpg
    */
   CharacterSheet::~CharacterSheet()
   {
-    delete &(this->inventory);
+    delete this->inventory;
   }
   
   
@@ -175,6 +175,7 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(const CharacterSheet& original)
   {
+    delete this->inventory;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->biography = original.biography;
@@ -188,7 +189,7 @@ namespace tbrpg
     this->class_abondoned = original.class_abondoned;
     this->proficiencies = original.proficiencies;
     this->affected_by = original.affected_by;
-    this->inventory = original.inventory;
+    this->inventory = new Inventory(*(original.inventory));
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->race = original.race;
@@ -207,6 +208,7 @@ namespace tbrpg
    */
   CharacterSheet& CharacterSheet::operator =(CharacterSheet& original)
   {
+    delete this->inventory;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->biography = original.biography;
@@ -220,7 +222,7 @@ namespace tbrpg
     this->class_abondoned = original.class_abondoned;
     this->proficiencies = original.proficiencies;
     this->affected_by = original.affected_by;
-    this->inventory = original.inventory;
+    this->inventory = new Inventory(*(original.inventory));
     this->abilities = original.abilities;
     this->spells = original.spells;
     this->race = original.race;
@@ -350,7 +352,7 @@ namespace tbrpg
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<std::vector<Spell>>()(this->affected_by);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<Inventory>()(this->inventory);
+    rc += std::hash<Inventory*>()(this->inventory);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<AbilityBonus>()(this->abilities);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);

@@ -106,7 +106,7 @@ namespace tbrpg
     this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
+    this->inventory_prototype = Inventory(original.inventory_prototype);
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -135,7 +135,7 @@ namespace tbrpg
     this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
+    this->inventory_prototype = Inventory(original.inventory_prototype);
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -217,7 +217,7 @@ namespace tbrpg
     this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
+    this->inventory_prototype = Inventory(original.inventory_prototype);
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -249,7 +249,7 @@ namespace tbrpg
     this->party_start_size = original.party_start_size;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
-    this->inventory_prototype = original.inventory_prototype;
+    this->inventory_prototype = Inventory(original.inventory_prototype);
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;

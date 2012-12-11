@@ -247,6 +247,8 @@ namespace tbrpg
    */
   void Inventory::__delete__()
   {
+    #ifdef DELETE_INVENTORY
+    
     #define __delete(slot)		\
       if (this->slot != nullptr)	\
 	{				\
@@ -271,6 +273,11 @@ namespace tbrpg
     __delete(boots)
     __delete(cloak)
     ___delete(personal)
+    
+    #undef __delete
+    #undef ___delete
+    
+    #endif
   }
   
   /**

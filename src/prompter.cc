@@ -982,13 +982,13 @@ namespace tbrpg
 		;
 	      else if ((prompterdata.ansi == "b") || prompterdata.ansi == "B") /* M-b */
 		;
-	      #ifdef DEBUG
-	        else
-		  {
+	      else
+		{
+	          #ifdef DEBUG
 		    std::cerr << prompterdata.ansi << std::endl;
 		    std::flush(std::cerr);
-		  }
-	      #endif
+	          #endif
+		}
 	    }
 	    break;
           

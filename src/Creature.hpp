@@ -22,6 +22,7 @@
 
 
 #include <stdlib.h>
+#include <iostream>
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
@@ -160,6 +161,15 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const Creature& other) const;
+    
+    
+    /**
+     * Interact, but do not fight, with the creature
+     * 
+     * @parm  nearby  Party members nearby
+     */
+    virtual void interact(std::vector<Character*>& nearby);
+    
     
     
   protected:

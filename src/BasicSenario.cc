@@ -37,11 +37,8 @@ namespace tbrpg
   {
     this->rules.party_size = 2;
     this->rules.party_start_size = 2;
-    //Inventory* inventory = (Inventory*)(this->rules.inventory_prototype.fork());
-    //this->rules.inventory_prototype = (Inventory&)*inventory;
     //this->rules.inventory_prototype.personal[0] = new Gold();
     //this->rules.inventory_prototype.personal[0]->quantity = 400;
-    //cleaner::getInstance().enqueueDelete(inventory);
   }
   
   /**
