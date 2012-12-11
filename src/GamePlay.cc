@@ -38,6 +38,7 @@ namespace tbrpg
   GamePlay::GamePlay(Senario& senario)
   {
     this->game = senario;
+    this->position = (MapMinor&)(senario.start);
   }
   
   /**
@@ -46,6 +47,7 @@ namespace tbrpg
   GamePlay::GamePlay(const GamePlay& original)
   {
     this->game = original.game;
+    this->position = original.position;
   }
   
   /**
@@ -62,6 +64,7 @@ namespace tbrpg
   GamePlay& GamePlay::operator =(const GamePlay& original)
   {
     this->game = original.game;
+    this->position = original.position;
     return *this;
   }
   
@@ -200,7 +203,9 @@ namespace tbrpg
    */
   char GamePlay::action_attack()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    for (Creature& creature : this->position.creatures)
+      if ((creature.hostile) && (creature.alive) && (((Character&)creature).alive == 1))
+	;
     return 2;
   }
   
@@ -233,7 +238,7 @@ namespace tbrpg
    */
   char GamePlay::action_specials()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::flush(std::cout << "You have no special abilties." << std::endl);
     return 2;
   }
   
@@ -387,7 +392,29 @@ namespace tbrpg
    */
   char GamePlay::action_area()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << this->position.description << std::endl << std::endl;
+    
+    for (Road& road : this->position.roads)
+      std::cout << road.direction << " → " << road.description << std::endl;
+    if (this->position.roads.size() > 0)
+      std::cout << std::endl;
+    
+    for (Entrance& connection : this->position.connections)
+      std::cout << connection.direction << " → " << connection.description << std::endl;
+    if (this->position.connections.size() > 0)
+      std::cout << std::endl;
+    
+    for (Item& item : this->position.items)
+      std::cout << item.name << std::endl;
+    if (this->position.items.size() > 0)
+      std::cout << std::endl;
+    
+    for (Creatures& creature : this->position.creatures)
+      std::cout << creature.record.name << std::endl;
+    if (this->position.creatures.size() > 0)
+      std::cout << std::endl;
+    
+    std::flush(std::cout);
     return 2;
   }
   

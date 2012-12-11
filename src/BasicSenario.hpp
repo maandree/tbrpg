@@ -38,6 +38,7 @@
 #include "Sling.hpp"
 #include "ChainMail.hpp"
 #include "Helmet.hpp"
+#include "Key.hpp"
 
 
 /**

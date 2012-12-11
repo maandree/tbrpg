@@ -35,8 +35,8 @@ namespace tbrpg
    */
   BasicSenario::BasicSenario() : Senario()
   {
-    this->rules.party_size = 2;
-    this->rules.party_start_size = 2;
+    this->rules.party_size = 1;
+    this->rules.party_start_size = 1;
     this->rules.inventory_prototype.personal[0] = new Gold();
     this->rules.inventory_prototype.personal[0]->quantity = 400;
     
@@ -152,8 +152,9 @@ namespace tbrpg
     for (Item& item : store.inventory)
       item.quantity = -1;
     
-    Key questkey = new Key();
-    questkey.id = 0;
+    Key* questkey = new Key();
+    questkey->id = 0;
+    cleaner::getInstance().enqueueDelete(questkey);
     
     Creature gibberling = Creature();
     gibberling.x = 50;
