@@ -1,1 +1,11 @@
 My all too big game for a homework in a course in C++.
+
+
+This repository has one special thing about it, it has
+a branch, namned ‘variables’, that should never pull
+any other branch. It is used to generate parts of the
+code that is then pulled into the other branches.
+
+For each tagged version ¤, there will a tagged version
+of the branch ‘variables’ named ‘¤+var’.
+
