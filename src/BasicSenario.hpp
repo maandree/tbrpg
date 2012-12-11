@@ -25,6 +25,9 @@
 #include "pager.hpp"
 #include "prompter.hpp"
 #include "cleaner.hpp"
+#include "Town.hpp"
+#include "House.hpp"
+#include "Wilderness.hpp"
 #include "Gold.hpp"
 
 

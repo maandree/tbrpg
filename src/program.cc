@@ -120,7 +120,7 @@ namespace tbrpg
     senario.start();
     
     GamePlay game = GamePlay(senario);
-    while (game.play())
+    while (game.next())
       ;
     
     cleaner::getInstance().clean();

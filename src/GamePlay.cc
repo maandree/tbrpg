@@ -77,7 +77,7 @@ namespace tbrpg
     std::vector<char (GamePlay::*)()> functions = {};
     
     #define __add(cmd, f)      		 \
-      actions.push_back("examine map");  \
+      actions.push_back(cmd);            \
       functions.push_back(&GamePlay::f)
     
     __add("examine map", action_map);

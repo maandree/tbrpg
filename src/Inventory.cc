@@ -218,8 +218,17 @@ namespace tbrpg
     self.rings = std::vector<Ring*>(original.rings.size());
     self.personal = std::vector<Item*>(original.personal.size());
     
-    #define __copy(slot, T)  \
-      self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());
+    #ifdef DELETE_INVENTORY
+      #define __copy(slot, T)  \
+	self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());
+    #else
+      #define __copy(slot, T)								\
+        {										\
+	  self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());	\
+	  if (self.slot != nullptr)							\
+	    cleaner::getInstance().enqueueDelete(self.slot);				\
+	}//
+    #endif
     
     __copy(right_hand, RightHandItem);
     __copy(headgear, Headgear);

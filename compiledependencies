@@ -116,3 +116,8 @@ BasicSenario Senario
 BasicSenario cleaner
 CharacterCreator cleaner
 cleaner Object
+Inventory cleaner
+BasicSenario House
+BasicSenario Town
+BasicSenario Wilderness
+BasicSenario Gold
