@@ -32,6 +32,13 @@
 #include "Door.hpp"
 #include "Store.hpp"
 
+#include "ShortSword.hpp"
+#include "LongSword.hpp"
+#include "Bullet.hpp"
+#include "Sling.hpp"
+#include "ChainMail.hpp"
+#include "Helmet.hpp"
+
 
 /**
  * Text based roll playing game

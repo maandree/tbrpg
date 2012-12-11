@@ -122,4 +122,9 @@ BasicSenario Town
 BasicSenario Wilderness
 BasicSenario Gold
 BasicSenario Door
-BasicSenario Store
+BasicSenario ShortSword
+BasicSenario LongSword
+BasicSenario Bullet
+BasicSenario Sling
+BasicSenario ChainMail
+BasicSenario Helmet

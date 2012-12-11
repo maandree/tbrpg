@@ -126,11 +126,31 @@ namespace tbrpg
     next.leads_to = area_goal;
     prev.leads_to = area_wilds;
     
-    area_inn.creatures.push_back(Store());
+    Store store = Store();
+    area_inn.creatures.push_back(store);
     
     this->map.start = (MapMinor&)area_town;
     this->map.majors.push_back(map_town);
     this->map.majors.push_back(map_wilds);
+    
+    store.room_costs.push_back(1);
+    store.room_quality.push_back(2);
+    store.room_costs.push_back(2);
+    store.room_quality.push_back(4);
+    store.room_costs.push_back(4);
+    store.room_quality.push_back(8);
+    store.room_costs.push_back(8);
+    store.room_quality.push_back(16);
+    
+    store.inventory.push_back(PROTOTYPE(ShortSword));
+    store.inventory.push_back(PROTOTYPE(LongSword));
+    store.inventory.push_back(PROTOTYPE(Bullet));
+    store.inventory.push_back(PROTOTYPE(Sling));
+    store.inventory.push_back(PROTOTYPE(ChainMail));
+    store.inventory.push_back(PROTOTYPE(Helmet));
+    
+    for (Item& item : store.inventory)
+      item.quantity = -1;
   }
   
   /**
