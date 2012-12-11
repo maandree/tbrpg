@@ -25,6 +25,7 @@
 #include "prompter.hpp"
 #include "Senario.hpp"
 #include "CharacterCreator.hpp"
+#include "GamePlay.hpp"
 
 #include "BasicSenario.hpp"
 
@@ -106,7 +107,6 @@ namespace tbrpg
     
     cleaner::getInstance().enqueueDelete(_senario);
     Senario& senario = *_senario;
-    
     std::vector<CharacterSheet*> sheets = std::vector<CharacterSheet*>(senario.rules.party_start_size);
     
     if (createParty(senario, sheets) == false)
@@ -119,7 +119,9 @@ namespace tbrpg
     senario.partyFormed();
     senario.start();
     
-    
+    GamePlay game = GamePlay(senario);
+    while (game.play())
+      ;
     
     cleaner::getInstance().clean();
     return 0;

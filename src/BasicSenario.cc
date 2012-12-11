@@ -86,7 +86,8 @@ namespace tbrpg
 		   "quiver            :: Change the ammunition to use from you quiver"      "\n"
 		   "rest              :: Rest, you party must be gathered"                  "\n"
 		   "!                 :: Redo the last action that was not a wait action"   "\n"
-		   ".                 :: Wait a turn", {});
+		   ".                 :: Wait a turn"                                       "\n"
+		   "quit              :: Stop playing", {});
   }
   
   
