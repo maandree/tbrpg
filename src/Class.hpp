@@ -279,7 +279,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Class* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

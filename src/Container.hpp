@@ -193,7 +193,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Container* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

@@ -210,7 +210,7 @@ namespace std
   public:
     size_t operator()(tbrpg::AbilityChart* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

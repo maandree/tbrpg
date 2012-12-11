@@ -178,7 +178,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Headgear* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }
