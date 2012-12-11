@@ -40,6 +40,25 @@
 namespace tbrpg
 {
   /**
+   * Create a party
+   * 
+   * @param   senario  The game senario
+   * @param   sheets   Solts for the character sheets of the party
+   * @return           Whether the party creation was completed
+   */
+  bool createParty(const Senario& senario, std::vector<CharacterSheet*>& sheets);
+  
+  /**
+   * Fixes character attributes and add them to the party member list
+   * 
+   * @param  senario  The game senario
+   * @param  sheets   The character sheets of the party
+   */
+  void fixCharacters(const Senario& senario, std::vector<CharacterSheet*>& sheets);
+  
+  
+  
+  /**
    * This the main entry point of the program
    * 
    * @param   argc  The number of elements in `argv`
@@ -85,29 +104,60 @@ namespace tbrpg
 	return 0;
       }
     
+    cleaner::getInstance().enqueueDelete(_senario);
     Senario& senario = *_senario;
     
-    CharacterCreator characterCreator = CharacterCreator(senario.rules);
     std::vector<CharacterSheet*> sheets = std::vector<CharacterSheet*>(senario.rules.party_start_size);
-    bool partyCreated = promptSlots<CharacterSheet>("Create your party, you need at least one character.",
-                                                    true, 1, sheets,
-						    [&] () -> CharacterSheet* { return characterCreator.create(); },
-						    [] (CharacterSheet* sheet, bool selected) -> void {
-						      if (sheet == nullptr)
-							std::cout << (selected ? "\033[01m(empty)\033[21m" : "(empty)");
-						      else
-							{
-							  std::cout << (selected ? "\033[01;3" : "\033[3") << (int)(sheet->colour) << "m";
-							  std::cout << sheet->name << "\033[21;39m";
-							}
-						    });
-    if (partyCreated == false)
+    
+    if (createParty(senario, sheets) == false)
       {
-	delete _senario;
         cleaner::getInstance().clean();
 	return 0;
       }
     
+    fixCharacters(senario, sheets);
+    senario.partyFormed();
+    senario.start();
+    
+    
+    
+    cleaner::getInstance().clean();
+    return 0;
+  }
+  
+  
+  /**
+   * Create a party
+   * 
+   * @param   senario  The game senario
+   * @param   sheets   Solts for the character sheets of the party
+   * @return           Whether the party creation was completed
+   */
+  bool createParty(const Senario& senario, std::vector<CharacterSheet*>& sheets)
+  {
+    CharacterCreator characterCreator = CharacterCreator(senario.rules);
+    return promptSlots<CharacterSheet>("Create your party, you need at least one character.",
+				       true, 1, sheets,
+				       [&] () -> CharacterSheet* { return characterCreator.create(); },
+				       [] (CharacterSheet* sheet, bool selected) -> void {
+					 if (sheet == nullptr)
+					   std::cout << (selected ? "\033[01m(empty)\033[21m" : "(empty)");
+					 else
+					   {
+					     std::cout << (selected ? "\033[01;3" : "\033[3") << (int)(sheet->colour) << "m";
+					     std::cout << sheet->name << "\033[21;39m";
+					   }
+				       });
+  }
+  
+  /**
+   * Fixes character attributes and add them to the party member list
+   * 
+   * @param  senario  The game senario
+   * @param  sheets   The character sheets of the party
+   */
+  void fixCharacters(const Senario& senario, std::vector<CharacterSheet*>& sheets)
+  {
     for (CharacterSheet* sheet : sheets)
       if (sheet != nullptr)
 	{
@@ -122,17 +172,9 @@ namespace tbrpg
 		character->extra_attacks++;
 	  
 	  senario.party.characters.push_back(character);
-	  //cleaner::getInstance().enqueueDelete(sheet);
-	  //cleaner::getInstance().enqueueDelete(character);
 	}
-    
-    senario.partyFormed();
-    senario.start();
-    
-    delete _senario;
-    cleaner::getInstance().clean();
-    return 0;
   }
+  
 }
 
 

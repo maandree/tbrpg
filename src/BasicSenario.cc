@@ -60,12 +60,33 @@ namespace tbrpg
   {
     page("This is a simple demo senario.\n"
 	 "\n"
-	 "You stand outside an inn, where you purchase items\n"
-	 "such as armour and weapons that your need in your\n"
-	 "quest. You mission is to the legendary sword known\n"
-	 "as Sword of Legends.");
+	 "You stand outside an inn, where you purchase items such as"   "\n"
+	 "armour and weapons that your need in your quest. You mission" "\n"
+	 "is to the legendary sword known as Sword of Legends.");
     
-    promptDialogue(2, "Tutor", "", {});
+    promptDialogue(2, "Tutor",
+		   "examine map       :: Examine you world map"                             "\n"
+		   "examine area      :: Examine the area"                                  "\n"
+		   "examine party     :: Examine your character's abilities and spellbooks" "\n"
+		   "examine inventory :: Open your inventorty, and pick up items"           "\n"
+		   "turn undead [off] :: Turn on or off Turn Undead (special ability)"      "\n"
+		   "find traps [off]  :: Turn on or off Find Traps (special ability)"       "\n"
+		   "stealth [off]     :: Turn on or off Stealth Mode (special ability)"     "\n"
+		   "pick pocket       :: Pick pocket a NPC (special ability)"               "\n"
+		   "disarm            :: Disarm a found trap (special ability)"             "\n"
+		   "unlock            :: Unlock a door or chest (special ability)"          "\n"
+		   "bash              :: Bash a door or chest"                              "\n"
+		   "specials          :: List other special ability commands you can use"   "\n"
+		   "talk              :: Talk to a NPC"                                     "\n"
+		   "go ***            :: Go in the direction ***"                           "\n"
+		   "cast ***          :: Cast a *** spell"                                  "\n"
+		   "cast              :: Cast a non-quick spell"                            "\n"
+		   "attack            :: Attack with you current weapon"                    "\n"
+		   "weapon            :: Change your current weapon"                        "\n"
+		   "quiver            :: Change the ammunition to use from you quiver"      "\n"
+		   "rest              :: Rest, you party must be gathered"                  "\n"
+		   "!                 :: Redo the last action that was not a wait action"   "\n"
+		   ".                 :: Wait a turn", {});
   }
   
   
