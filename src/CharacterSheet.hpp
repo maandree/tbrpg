@@ -117,7 +117,7 @@ namespace tbrpg
     /**
      * The character's inventory
      */
-    Inventory* inventory;
+    Inventory inventory;
     
     /**
      * The character's abilities
