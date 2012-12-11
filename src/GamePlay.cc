@@ -38,7 +38,7 @@ namespace tbrpg
   GamePlay::GamePlay(Senario& senario)
   {
     this->game = senario;
-    this->position = (MapMinor&)(senario.start);
+    this->position = &(senario.map.start);
   }
   
   /**
@@ -203,7 +203,7 @@ namespace tbrpg
    */
   char GamePlay::action_attack()
   {
-    for (Creature& creature : this->position.creatures)
+    for (Creature& creature : this->position->creatures)
       if ((creature.hostile) && (creature.alive) && (((Character&)creature).alive == 1))
 	;
     return 2;
@@ -392,26 +392,26 @@ namespace tbrpg
    */
   char GamePlay::action_area()
   {
-    std::cout << this->position.description << std::endl << std::endl;
+    std::cout << this->position->description << std::endl << std::endl;
     
-    for (Road& road : this->position.roads)
-      std::cout << road.direction << " → " << road.description << std::endl;
-    if (this->position.roads.size() > 0)
-      std::cout << std::endl;
-    
-    for (Entrance& connection : this->position.connections)
+    for (Entrance& connection : this->position->connections)
       std::cout << connection.direction << " → " << connection.description << std::endl;
-    if (this->position.connections.size() > 0)
+    if (this->position->connections.size() > 0)
       std::cout << std::endl;
     
-    for (Item& item : this->position.items)
+    for (Road& road : this->position->roads)
+      std::cout << road.direction << std::endl;
+    if (this->position->roads.size() > 0)
+      std::cout << std::endl;
+    
+    for (Item& item : this->position->items)
       std::cout << item.name << std::endl;
-    if (this->position.items.size() > 0)
+    if (this->position->items.size() > 0)
       std::cout << std::endl;
     
-    for (Creatures& creature : this->position.creatures)
+    for (Creature& creature : this->position->creatures)
       std::cout << creature.record.name << std::endl;
-    if (this->position.creatures.size() > 0)
+    if (this->position->creatures.size() > 0)
       std::cout << std::endl;
     
     std::flush(std::cout);

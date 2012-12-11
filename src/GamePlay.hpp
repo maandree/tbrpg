@@ -51,6 +51,11 @@ namespace tbrpg
      */
     Senario game;
     
+    /**
+     * The player's position
+     */
+    MapMinor* position;
+    
     
   public:
     /**
