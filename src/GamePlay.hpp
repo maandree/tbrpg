@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++, coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -17,15 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_BASICSENARIO_HPP__
-#define __GUARD_BASICSENARIO_HPP__
+#ifndef __GUARD_GAMEPLAY_HPP__
+#define __GUARD_GAMEPLAY_HPP__
 
+
+#include <stdlib.h>
+#include <algorithm>
+#include <vector>
+#include <unordered_map>
 
 #include "Senario.hpp"
-#include "pager.hpp"
 #include "prompter.hpp"
-#include "cleaner.hpp"
-#include "Gold.hpp"
 
 
 /**
@@ -39,42 +41,41 @@
 namespace tbrpg
 {
   /**
-   * A basic game senario
+   * Game play class
    */
-  class BasicSenario : public Senario
+  class GamePlay
   {
+  protected:
+    /**
+     * The game senario
+     */
+    Senario& game
+    
+    
   public:
     /**
-     * Constructor
+     * Construction
+     * 
+     * @param  senario  The game senario
      */
-    BasicSenario();
+    GamePlay(Senario& senario);
     
     /**
      * Destructor
      */
-    ~BasicSenario();
-    
-    
-    
-    /**
-     * This is invoked when the senario starts.
-     * The prologue, and perhaps a short tutorial,
-     * should be displayed.
-     */
-    virtual void start();
-    
+    virtual ~GamePlay();
     
     
     /**
-     * Gets the name of the game senario
+     * Play the next round, it may be an AI's turn
      * 
-     * @return  The name of the game senario
+     * @return  Whether there is a next turn
      */
-    static std::string getTitle();
+    bool next();
     
   };
 }
 
 
-#endif//__GUARD_BASICSENARIO_HPP__
+#endif//__GUARD_GAMEPLAY_HPP__
 
