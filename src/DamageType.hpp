@@ -196,7 +196,7 @@ namespace std
   public:
     size_t operator()(tbrpg::DamageType* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

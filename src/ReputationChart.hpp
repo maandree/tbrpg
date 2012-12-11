@@ -231,7 +231,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ReputationChart* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

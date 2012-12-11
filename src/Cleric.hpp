@@ -177,7 +177,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Cleric* elem) const
     {
-       return elem->hash();
+       return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

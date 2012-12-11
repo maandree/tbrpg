@@ -281,7 +281,7 @@ for line in lines:
         output += '  public:\n'
         output += '    size_t operator()(tbrpg::%s* elem) const\n' % className
         output += '    {\n'
-        output += '       return elem->hash();\n'
+        output += '       return elem == nullptr ? 0 : elem->hash();\n'
         output += '    }\n'
         output += '  };\n'
         output += '}\n'
