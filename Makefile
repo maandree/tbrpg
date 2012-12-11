@@ -14,7 +14,7 @@ VERSION := 0.999
 all: OPTIMISE ?= -O3
 OPTIMISE ?= -O0
 #CPPFLAGS ?= -DDEBUG
-CXXFLAGS ?= $(OPTIMISE) -g --std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
+CXXFLAGS ?= $(OPTIMISE) -g -std=gnu++11 -pedantic -W{all,extra} -iquotedir=src/
 LDFLAGS ?=
 
 PROGRAM=tbrpg
@@ -248,7 +248,7 @@ info: $(BOOK).info.gz
 pdf: $(BOOK).pdf
 %.pdf: $(BOOKDIR)%.texinfo 
 	texi2pdf "$<"
-	make clean-tex clean.bak
+	make clean-tex clean.bak-
 
 pdf.gz: $(BOOK).pdf.gz
 %.pdf.gz: %.pdf
@@ -262,7 +262,7 @@ pdf.xz: $(BOOK).pdf.xz
 dvi: $(BOOK).dvi
 %.dvi: $(BOOKDIR)%.texinfo 
 	$(TEXI2DVI) "$<"
-	make clean-tex clean.bak
+	make clean-tex clean.bak-
 
 dvi.gz: $(BOOK).dvi.gz
 %.dvi.gz: %.dvi
@@ -452,19 +452,19 @@ realclean: clobber
 clobber: clean
 
 .PHONY: mostlyclean
-mostlyclean: clean-bak clean.bak clean-doc clean-tex clean-doc
+mostlyclean: clean-bak clean.bak- clean-doc clean-tex clean-doc
 
 .PHONY: clean
 clean: mostlyclean clean-bin
 
 .PHONY: clean-bak
-clean-bak: clean.cpio clean.cpio.gz clean.cpio.xz clean.cpio.bz2  \
-	   clean.shar clean.shar.gz clean.shar.xz clean.shar.bz2  \
-	   clean.tar  clean.tar.gz  clean.tar.xz  clean.tar.bz2   \
-	   clean.ar   clean.ar.gz   clean.ar.xz   clean.ar.bz2
+clean-bak: clean.cpio- clean.cpio.gz- clean.cpio.xz- clean.cpio.bz2-  \
+	   clean.shar- clean.shar.gz- clean.shar.xz- clean.shar.bz2-  \
+	   clean.tar-  clean.tar.gz-  clean.tar.xz-  clean.tar.bz2-   \
+	   clean.ar-   clean.ar.gz-   clean.ar.xz-   clean.ar.bz2-
 
 .PHONY: clean-bin
-clean-bin: clean.a clean.a.gz clean.a.xz clean.a.bz2 clean.o clean.gch clean.out
+clean-bin: clean.a- clean.a.gz- clean.a.xz- clean.a.bz2- clean.o- clean.gch- clean.out-
 	@echo -e 'Cleaning \e[35mbin\e[m'
 	@if [ -d "bin" ]; then  rm -r "bin";  fi
 	@find ./test | grep -v '\.cc$$' | grep -v '\.text$$' | while read file; do  \
@@ -483,16 +483,16 @@ clean-doc:
 	@if [ -f ".tmp2" ]; then  $(RM) ".tmp2";  fi
 
 .PHONY: clean-doc
-clean-doc: clean.ps clean.pdf clean.dvi clean.info              \
-	   clean.ps.gz clean.pdf.gz clean.dvi.gz clean.info.gz  \
-	   clean.ps.xz clean.pdf.xz clean.dvi.xz clean.info.xz
+clean-doc: clean.ps- clean.pdf- clean.dvi- clean.info-              \
+	   clean.ps.gz- clean.pdf.gz- clean.dvi.gz- clean.info.gz-  \
+	   clean.ps.xz- clean.pdf.xz- clean.dvi.xz- clean.info.xz-
 
 .PHONY: clean-tex
-clean-tex: clean.t2d clean.aux clean.cp clean.cps clean.fn clean.ky clean.log clean.pg  \
-	   clean.pgs clean.toc clean.tp clean.vr clean.vrs clean.op clean.ops
+clean-tex: clean.t2d- clean.aux- clean.cp- clean.cps- clean.fn- clean.ky- clean.log- clean.pg-  \
+	   clean.pgs- clean.toc- clean.tp- clean.vr- clean.vrs- clean.op- clean.ops-
 
-.PHONY: clean.%
-clean.%:
+.PHONY: clean.%-
+clean.%-:
 	@echo -e 'Cleaning \e[34m.$*\e[m'
 	@find ./ | grep '\.$*$$' | grep -v '^./lab3.pdf$$' | while read file; do  \
 	    if [ -L "$$file" ]; then  file=$$(readlink "$$file");  fi;            \
@@ -500,23 +500,8 @@ clean.%:
 	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;                     \
 	done
 
-.PHONY: clean.%.gz
-clean.%.gz:
-	@echo -e 'Cleaning \e[34m.$*.gz\e[m'
-	@find ./ | grep '\.$*.gz$$' | while read file; do               \
-	    if [ -L "$$file" ]; then  file=$$(readlink "$$file");  fi;  \
-	    if [ -f "$$file" ]; then  $(RM)    "$$file";  fi;           \
-	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;           \
-	done
-
-.PHONY: clean.%.xz
-clean.%.xz:
-	@echo -e 'Cleaning \e[34m.$*.xz\e[m'
-	@find ./ | grep '\.$*.xz$$' | while read file; do                 \
-	    if [ -L "$$file" ]; then  file="$$(readlink "$$file")";  fi;  \
-	    if [ -f "$$file" ]; then  $(RM)    "$$file";  fi;             \
-	    if [ -d "$$file" ]; then  $(RM) -r "$$file";  fi;             \
-	done
+.PHONY: clean.%
+clean.%: clean.%-
 
 .PHONY: clean/%
 clean/%:
