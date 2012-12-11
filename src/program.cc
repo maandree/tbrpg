@@ -54,7 +54,7 @@ namespace tbrpg
    * @param  senario  The game senario
    * @param  sheets   The character sheets of the party
    */
-  void fixCharacters(const Senario& senario, std::vector<CharacterSheet*>& sheets);
+  void fixCharacters(Senario& senario, std::vector<CharacterSheet*>& sheets);
   
   
   
@@ -156,7 +156,7 @@ namespace tbrpg
    * @param  senario  The game senario
    * @param  sheets   The character sheets of the party
    */
-  void fixCharacters(const Senario& senario, std::vector<CharacterSheet*>& sheets)
+  void fixCharacters(Senario& senario, std::vector<CharacterSheet*>& sheets)
   {
     for (CharacterSheet* sheet : sheets)
       if (sheet != nullptr)
@@ -166,7 +166,7 @@ namespace tbrpg
 	  character->protagonist = true;
 	  character->hit_points = sheet->hit_points;
 	  
-	  for (long i = 0, n = sheet->prestige.size(); i < n; i++)
+	  for (size_t i = 0, n = sheet->prestige.size(); i < n; i++)
 	    if (sheet->prestige[i] >= PROTOTYPE(Warrior))
 	      if (sheet->level[i] >= 7)
 		character->extra_attacks++;
