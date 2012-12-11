@@ -204,8 +204,17 @@ namespace tbrpg
   char GamePlay::action_attack()
   {
     for (Creature& creature : this->position->creatures)
-      if ((creature.hostile) && (creature.alive) && (((Character&)creature).alive == 1))
-	;
+      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
+	{
+          for (Item* item : creature.record.inventory.personal)
+	    if (item != nullptr)
+	      this->position->items.push_back((Item&)*item);
+	  creature.alive = false;
+	  std::flush(std::cout << "You have killed \033[3" << creature.record.colour << "m" << creature.record.name << "\033[39m." << std::endl);
+          return 1;
+	}
+    
+    std::flush(std::cout << "There is no hostile nearby." << std::endl);
     return 2;
   }
   
