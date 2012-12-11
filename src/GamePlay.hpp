@@ -49,7 +49,7 @@ namespace tbrpg
     /**
      * The game senario
      */
-    Senario& game
+    Senario game;
     
     
   public:
@@ -61,9 +61,19 @@ namespace tbrpg
     GamePlay(Senario& senario);
     
     /**
+     * Copy construction
+     */
+    GamePlay(const GamePlay& original);
+    
+    /**
      * Destructor
      */
     virtual ~GamePlay();
+    
+    /**
+     * Copy operator
+     */
+    virtual GamePlay& operator =(const GamePlay& original);
     
     
     /**
@@ -115,7 +125,7 @@ namespace tbrpg
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
      */
-    char action_weapons();
+    char action_weapon();
     
     /**
      * Action: attack
@@ -206,14 +216,14 @@ namespace tbrpg
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
      */
-    char action_trun_undead();
+    char action_turn_undead();
     
     /**
      * Action: turn off turn undead mode
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
      */
-    char action_trun_undead_off();
+    char action_turn_undead_off();
     
     /**
      * Action: examine inventory

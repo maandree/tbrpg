@@ -41,11 +41,28 @@ namespace tbrpg
   }
   
   /**
+   * Copy construction
+   */
+  GamePlay::GamePlay(const GamePlay& original)
+  {
+    this->game = original.game;
+  }
+  
+  /**
    * Destructor
    */
   GamePlay::~GamePlay()
   {
     // do nothing
+  }
+  
+  /**
+   * Copy operator
+   */
+  GamePlay& GamePlay::operator =(const GamePlay& original)
+  {
+    this->game = original.game;
+    return *this;
   }
   
   
@@ -57,11 +74,11 @@ namespace tbrpg
   bool GamePlay::next()
   {
     std::vector<std::string> actions = {};
-    std::vector<char (*)(void)> functions = {};
+    std::vector<char (GamePlay::*)()> functions = {};
     
     #define __add(cmd, f)      		 \
       actions.push_back("examine map");  \
-      functions.push_back(this->*f)
+      functions.push_back(&GamePlay::f)
     
     __add("examine map", action_map);
     __add("examine area", action_area);
@@ -93,16 +110,17 @@ namespace tbrpg
     
     #undef __add
     
-    while (;;)
+    for (;;)
       {
 	int index = promptIndex(":: ", actions);
 	if (index >= 0)
 	  {
-	    char r = functions[index](this);
+	    char r = (this->*functions[index])();
 	    if (r == 2)
 	      continue;
 	    if (r == 0)
 	      return false;
+	  }
 	else
 	  std::flush(std::cout << "Type . to wait one turn" << std::endl);
       }
@@ -168,7 +186,7 @@ namespace tbrpg
    *
    * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
    */
-  char GamePlay::action_weapons()
+  char GamePlay::action_weapon()
   {
     std::flush(std::cout << "Not implement..." << std::endl);
     return 2;
@@ -311,7 +329,7 @@ namespace tbrpg
    *
    * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
    */
-  char GamePlay::action_trun_undead()
+  char GamePlay::action_turn_undead()
   {
     std::flush(std::cout << "Not implement..." << std::endl);
     return 2;
@@ -322,7 +340,7 @@ namespace tbrpg
    *
    * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
    */
-  char GamePlay::action_trun_undead_off()
+  char GamePlay::action_turn_undead_off()
   {
     std::flush(std::cout << "Not implement..." << std::endl);
     return 2;
