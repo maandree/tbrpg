@@ -106,7 +106,7 @@ namespace tbrpg
     __add("quit", action_quit);
     
     // TODO special abilities
-    // TODO quick magic
+    // TODO quick spells
     
     #undef __add
     
@@ -156,6 +156,7 @@ namespace tbrpg
    */
   char GamePlay::action_redo()
   {
+    std::flush(std::cout << "Not implement..." << std::endl);
     return 2;
   }
   
