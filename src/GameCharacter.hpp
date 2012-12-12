@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
-
 #include "hash.hpp"
 #include "Action.hpp"
 #include "Character.hpp"
@@ -84,12 +81,12 @@ namespace tbrpg
     /**
      * The current action
      */
-    Action action;
+    Action* action;
     
     /**
      * The character
      */
-    Character character;
+    Character* character;
     
     
     
