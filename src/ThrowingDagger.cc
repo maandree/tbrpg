@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ThrowingDagger::ThrowingDagger() : Throwing()
   {
-    this->class_inheritance.push_back(58);
+    this->class_inheritance.push_back(57);
     ////TODO implement constructor
   }
   

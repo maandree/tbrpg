@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Scroll::Scroll() : QuickItem()
   {
-    this->class_inheritance.push_back(78);
+    this->class_inheritance.push_back(77);
     ////TODO implement constructor
   }
   

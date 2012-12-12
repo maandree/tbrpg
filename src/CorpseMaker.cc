@@ -35,7 +35,7 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker() : Object()
   {
-    this->class_inheritance.push_back(139);
+    this->class_inheritance.push_back(138);
     ////TODO implement constructor
     //this->strenght_weight = nullptr;
     //this->strenght18_weight = nullptr;

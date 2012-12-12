@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Helmet::Helmet() : Headgear()
   {
-    this->class_inheritance.push_back(82);
+    this->class_inheritance.push_back(81);
     ////TODO implement constructor
   }
   

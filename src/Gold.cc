@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gold::Gold() : Gem()
   {
-    this->class_inheritance.push_back(91);
+    this->class_inheritance.push_back(90);
     ////TODO implement constructor
   }
   

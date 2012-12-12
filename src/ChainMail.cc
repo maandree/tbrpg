@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ChainMail::ChainMail() : BodyArmour()
   {
-    this->class_inheritance.push_back(86);
+    this->class_inheritance.push_back(85);
     ////TODO implement constructor
   }
   

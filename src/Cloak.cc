@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Cloak::Cloak() : Item()
   {
-    this->class_inheritance.push_back(100);
+    this->class_inheritance.push_back(99);
     ////TODO implement constructor
   }
   

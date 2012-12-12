@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Bard::Bard() : Rogue()
   {
-    this->class_inheritance.push_back(105);
+    this->class_inheritance.push_back(104);
     ////TODO implement constructor
   }
   

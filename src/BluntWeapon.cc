@@ -35,7 +35,7 @@ namespace tbrpg
    */
   BluntWeapon::BluntWeapon() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(41);
+    this->class_inheritance.push_back(40);
     ////TODO implement constructor
   }
   

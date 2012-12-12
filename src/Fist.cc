@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Fist::Fist() : BluntWeapon()
   {
-    this->class_inheritance.push_back(36);
+    this->class_inheritance.push_back(35);
     ////TODO implement constructor
   }
   

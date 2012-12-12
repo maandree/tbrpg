@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Halberd::Halberd() : TwoHandedMelee()
   {
-    this->class_inheritance.push_back(53);
+    this->class_inheritance.push_back(52);
     ////TODO implement constructor
   }
   

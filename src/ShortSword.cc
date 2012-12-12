@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ShortSword::ShortSword() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(45);
+    this->class_inheritance.push_back(44);
     ////TODO implement constructor
   }
   

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Warrior::Warrior() : Class()
   {
-    this->class_inheritance.push_back(113);
+    this->class_inheritance.push_back(112);
     ////TODO implement constructor
   }
   

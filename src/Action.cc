@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Action::Action() : Object()
   {
-    this->class_inheritance.push_back(144);
+    this->class_inheritance.push_back(143);
     ////TODO implement constructor
     //this->target = nullptr;
     //this->spell = nullptr;

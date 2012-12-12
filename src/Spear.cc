@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Spear::Spear() : TwoHandedMelee()
   {
-    this->class_inheritance.push_back(55);
+    this->class_inheritance.push_back(54);
     ////TODO implement constructor
   }
   

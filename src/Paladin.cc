@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Paladin::Paladin() : Warrior()
   {
-    this->class_inheritance.push_back(109);
+    this->class_inheritance.push_back(108);
     ////TODO implement constructor
   }
   

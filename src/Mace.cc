@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Mace::Mace() : BluntWeapon()
   {
-    this->class_inheritance.push_back(35);
+    this->class_inheritance.push_back(34);
     ////TODO implement constructor
   }
   

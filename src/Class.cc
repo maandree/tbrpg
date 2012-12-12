@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Class::Class() : Object()
   {
-    this->class_inheritance.push_back(20);
+    this->class_inheritance.push_back(19);
     ////TODO implement constructor
     //this->name = nullptr;
     //this->hit_points = 0;

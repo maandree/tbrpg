@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Druid::Druid() : Priest()
   {
-    this->class_inheritance.push_back(104);
+    this->class_inheritance.push_back(103);
     ////TODO implement constructor
   }
   

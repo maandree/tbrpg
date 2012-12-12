@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Senario::Senario() : Object()
   {
-    this->class_inheritance.push_back(142);
+    this->class_inheritance.push_back(141);
     ////TODO implement constructor
     //this->rules = nullptr;
     //this->party = nullptr;

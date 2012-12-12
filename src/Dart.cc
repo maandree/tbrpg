@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Dart::Dart() : Throwing()
   {
-    this->class_inheritance.push_back(59);
+    this->class_inheritance.push_back(58);
     ////TODO implement constructor
   }
   

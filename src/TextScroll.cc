@@ -35,7 +35,7 @@ namespace tbrpg
    */
   TextScroll::TextScroll() : Item()
   {
-    this->class_inheritance.push_back(94);
+    this->class_inheritance.push_back(93);
     ////TODO implement constructor
   }
   

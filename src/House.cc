@@ -35,7 +35,7 @@ namespace tbrpg
    */
   House::House() : MapMinor()
   {
-    this->class_inheritance.push_back(138);
+    this->class_inheritance.push_back(137);
     ////TODO implement constructor
   }
   

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   MeleeWeapon::MeleeWeapon() : Weapon()
   {
-    this->class_inheritance.push_back(51);
+    this->class_inheritance.push_back(50);
     ////TODO implement constructor
   }
   

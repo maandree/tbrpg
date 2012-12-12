@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LargeShield::LargeShield() : Shield()
   {
-    this->class_inheritance.push_back(72);
+    this->class_inheritance.push_back(71);
     ////TODO implement constructor
   }
   

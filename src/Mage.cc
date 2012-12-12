@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Mage::Mage() : Wizard()
   {
-    this->class_inheritance.push_back(101);
+    this->class_inheritance.push_back(100);
     ////TODO implement constructor
   }
   

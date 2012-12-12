@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HeavyCrossbow::HeavyCrossbow() : Crossbow()
   {
-    this->class_inheritance.push_back(64);
+    this->class_inheritance.push_back(63);
     ////TODO implement constructor
   }
   

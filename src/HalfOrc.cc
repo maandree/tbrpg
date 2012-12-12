@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HalfOrc::HalfOrc() : Race()
   {
-    this->class_inheritance.push_back(116);
+    this->class_inheritance.push_back(115);
     ////TODO implement constructor
   }
   

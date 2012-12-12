@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Arrow::Arrow() : Ammunition()
   {
-    this->class_inheritance.push_back(73);
+    this->class_inheritance.push_back(72);
     ////TODO implement constructor
   }
   

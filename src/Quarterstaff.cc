@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Quarterstaff::Quarterstaff() : TwoHandedMelee()
   {
-    this->class_inheritance.push_back(56);
+    this->class_inheritance.push_back(55);
     ////TODO implement constructor
   }
   

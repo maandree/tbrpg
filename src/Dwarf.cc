@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Dwarf::Dwarf() : Race()
   {
-    this->class_inheritance.push_back(118);
+    this->class_inheritance.push_back(117);
     ////TODO implement constructor
   }
   

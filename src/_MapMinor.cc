@@ -35,7 +35,7 @@ namespace tbrpg
    */
   _MapMinor::_MapMinor() : Object()
   {
-    this->class_inheritance.push_back(127);
+    this->class_inheritance.push_back(126);
     ////TODO implement constructor
   }
   

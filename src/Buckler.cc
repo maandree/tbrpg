@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Buckler::Buckler() : Shield()
   {
-    this->class_inheritance.push_back(69);
+    this->class_inheritance.push_back(68);
     ////TODO implement constructor
   }
   

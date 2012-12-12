@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Fists::Fists() : TwoHandedMelee()
   {
-    this->class_inheritance.push_back(54);
+    this->class_inheritance.push_back(53);
     ////TODO implement constructor
   }
   

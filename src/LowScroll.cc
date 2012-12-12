@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LowScroll::LowScroll() : Scroll()
   {
-    this->class_inheritance.push_back(121);
+    this->class_inheritance.push_back(120);
     ////TODO implement constructor
   }
   

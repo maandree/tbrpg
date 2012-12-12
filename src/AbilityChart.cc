@@ -35,7 +35,7 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart() : Object()
   {
-    this->class_inheritance.push_back(26);
+    this->class_inheritance.push_back(25);
     ////TODO implement constructor
     //this->strength = nullptr;
     //this->strength18 = nullptr;

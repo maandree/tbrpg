@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Body::Body() : Item()
   {
-    this->class_inheritance.push_back(28);
+    this->class_inheritance.push_back(27);
     ////TODO implement constructor
     //this->character = nullptr;
   }

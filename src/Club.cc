@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Club::Club() : BluntWeapon()
   {
-    this->class_inheritance.push_back(37);
+    this->class_inheritance.push_back(36);
     ////TODO implement constructor
   }
   

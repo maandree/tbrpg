@@ -35,7 +35,7 @@ namespace tbrpg
    */
   EnvironmentContainer::EnvironmentContainer() : Container(), Lockable()
   {
-    this->class_inheritance.push_back(134);
+    this->class_inheritance.push_back(133);
     ////TODO implement constructor
   }
   

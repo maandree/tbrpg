@@ -33,9 +33,8 @@ namespace tbrpg
   /**
    * Constructor
    */
-  QuestItem::QuestItem() : Item()
+  QuestItem::QuestItem()
   {
-    this->class_inheritance.push_back(17);
     ////TODO implement constructor
     //this->id = 0;
   }
@@ -45,7 +44,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(const QuestItem& original) : Item(original)
+  QuestItem::QuestItem(const QuestItem& original)
   {
     (void) original;
     this->id = original.id;
@@ -56,7 +55,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(QuestItem& original) : Item(original)
+  QuestItem::QuestItem(QuestItem& original)
   {
     (void) original;
     this->id = original.id;
@@ -67,20 +66,10 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  QuestItem::QuestItem(QuestItem&& original) : Item(original)
+  QuestItem::QuestItem(QuestItem&& original)
   {
     (void) original;
     std::swap(this->id, original.id);
-  }
-  
-  /**
-   * Fork the object
-   * 
-   * @return  A fork of the object
-   */
-  Object* QuestItem::fork() const
-  {
-    return (Object*)(new QuestItem(*this));
   }
   
   
@@ -104,7 +93,7 @@ namespace tbrpg
   QuestItem& QuestItem::operator =(const QuestItem& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
+    this->id = original.id;
     return *this;
   }
   
@@ -117,7 +106,7 @@ namespace tbrpg
   QuestItem& QuestItem::operator =(QuestItem& original)
   {
     (void) original;
-    Item::__copy__((Item&)*this, (Item&)original);    this->id = original.id;
+    this->id = original.id;
     return *this;
   }
   
@@ -130,7 +119,7 @@ namespace tbrpg
   QuestItem& QuestItem::operator =(QuestItem&& original)
   {
     (void) original;
-    std::swap((Item&)*this, (Item&)original);    std::swap(this->id, original.id);
+    std::swap(this->id, original.id);
     return *this;
   }
   
@@ -143,7 +132,6 @@ namespace tbrpg
    */
   bool QuestItem::operator ==(const QuestItem& other) const
   {
-    if ((Item&)(*this) != (Item&)other)  return false;
     if (this->id != other.id)  return false;
     return true;
   }
@@ -179,8 +167,6 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<Item>()(*this);
-    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<int>()(this->id);
     return rc;
   }

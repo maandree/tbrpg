@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LightCrossbow::LightCrossbow() : Crossbow()
   {
-    this->class_inheritance.push_back(65);
+    this->class_inheritance.push_back(64);
     ////TODO implement constructor
   }
   

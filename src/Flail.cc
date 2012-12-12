@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Flail::Flail() : BluntWeapon()
   {
-    this->class_inheritance.push_back(38);
+    this->class_inheritance.push_back(37);
     ////TODO implement constructor
   }
   

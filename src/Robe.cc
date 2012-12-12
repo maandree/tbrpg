@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Robe::Robe() : BodyArmour()
   {
-    this->class_inheritance.push_back(83);
+    this->class_inheritance.push_back(82);
     ////TODO implement constructor
   }
   

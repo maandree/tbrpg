@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gnome::Gnome() : Race()
   {
-    this->class_inheritance.push_back(120);
+    this->class_inheritance.push_back(119);
     ////TODO implement constructor
   }
   

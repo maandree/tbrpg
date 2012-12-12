@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ThrowingAxe::ThrowingAxe() : Throwing()
   {
-    this->class_inheritance.push_back(57);
+    this->class_inheritance.push_back(56);
     ////TODO implement constructor
   }
   

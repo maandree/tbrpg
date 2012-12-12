@@ -35,7 +35,7 @@ namespace tbrpg
    */
   WarHammer::WarHammer() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(42);
+    this->class_inheritance.push_back(41);
     ////TODO implement constructor
   }
   

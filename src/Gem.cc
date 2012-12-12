@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gem::Gem() : Item()
   {
-    this->class_inheritance.push_back(92);
+    this->class_inheritance.push_back(91);
     ////TODO implement constructor
   }
   

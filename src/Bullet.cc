@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Bullet::Bullet() : Ammunition()
   {
-    this->class_inheritance.push_back(74);
+    this->class_inheritance.push_back(73);
     ////TODO implement constructor
   }
   
