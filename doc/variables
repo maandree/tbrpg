@@ -513,6 +513,7 @@ GameCharacter: Object                     ; Game play wrapper for characters
 	char turns                        ; The number of turns until the current action is performed
 	Action action                     ; The current action
 	Character character               ; The character
+	MapMinor area                     ; The area where teh character currently is located
 
 Action: Object                            ; Player action
 	Character target                  ; The target of the action

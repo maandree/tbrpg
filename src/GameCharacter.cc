@@ -44,6 +44,7 @@ namespace tbrpg
     this->turns = 0;
     this->action = nullptr;
     this->character = nullptr;
+    this->area = nullptr;
   }
   
   /**
@@ -61,6 +62,7 @@ namespace tbrpg
     this->turns = original.turns;
     this->action = original.action;
     this->character = original.character;
+    this->area = original.area;
   }
   
   /**
@@ -78,6 +80,7 @@ namespace tbrpg
     this->turns = original.turns;
     this->action = original.action;
     this->character = original.character;
+    this->area = original.area;
   }
   
   /**
@@ -95,6 +98,7 @@ namespace tbrpg
     std::swap(this->turns, original.turns);
     std::swap(this->action, original.action);
     std::swap(this->character, original.character);
+    std::swap(this->area, original.area);
   }
   
   /**
@@ -136,6 +140,7 @@ namespace tbrpg
     this->turns = original.turns;
     this->action = original.action;
     this->character = original.character;
+    this->area = original.area;
     return *this;
   }
   
@@ -156,6 +161,7 @@ namespace tbrpg
     this->turns = original.turns;
     this->action = original.action;
     this->character = original.character;
+    this->area = original.area;
     return *this;
   }
   
@@ -176,6 +182,7 @@ namespace tbrpg
     std::swap(this->turns, original.turns);
     std::swap(this->action, original.action);
     std::swap(this->character, original.character);
+    std::swap(this->area, original.area);
     return *this;
   }
   
@@ -196,6 +203,7 @@ namespace tbrpg
     if (this->turns != other.turns)  return false;
     if (this->action != other.action)  return false;
     if (this->character != other.character)  return false;
+    if (this->area != other.area)  return false;
     return true;
   }
   
@@ -245,6 +253,8 @@ namespace tbrpg
     rc += std::hash<Action*>()(this->action);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<Character*>()(this->character);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<MapMinor*>()(this->area);
     return rc;
   }
   
