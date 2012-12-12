@@ -168,7 +168,7 @@ namespace tbrpg
       if (sheet != nullptr)
 	{
 	  Character* character = new Character();
-	  //character->record = *sheet;
+	  character->record = *sheet;
 	  delete sheet;
 	  character->protagonist = true;
 	  character->hit_points = character->record.hit_points;
