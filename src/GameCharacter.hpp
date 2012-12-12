@@ -33,6 +33,7 @@
 #include "hash.hpp"
 #include "Action.hpp"
 #include "Character.hpp"
+#include "MapMinor.hpp"
 
 
 /**
@@ -90,6 +91,11 @@ namespace tbrpg
      * The character
      */
     Character character;
+    
+    /**
+     * The area where teh character currently is located
+     */
+    MapMinor area;
     
     
     
