@@ -251,7 +251,7 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<std::vector<Entrance>>()(this->connections);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::vector<Item>>()(this->items);
+    rc += std::hash<std::vector<Item*>>()(this->items);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<Creature>>()(this->creatures);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);

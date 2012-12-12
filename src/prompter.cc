@@ -1001,6 +1001,8 @@ namespace tbrpg
             break;
 	  case CTRL('O'):
             break;
+	  case CTRL('T'):
+            break;
           
 	  case CTRL('K'):  prompterdata.mark = prompterdata.before + prompterdata.after + 1; /* fall-through */
 	  case CTRL('W'):  prompt_delete(true);           break;
@@ -1585,7 +1587,7 @@ namespace tbrpg
     for (const std::string& item : items)
       {
 	i = 0;
-	char* cstr =(char*)(item.c_str());
+	char* cstr = (char*)(item.c_str());
 	while ((*(cstr + i)))
 	  {
 	    *(spaces + i) = *(cstr + i);

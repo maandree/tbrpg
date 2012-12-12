@@ -271,7 +271,7 @@ namespace tbrpg
    * @return               Whether the assignment was completed
    */
   template<class T, class Fc, class Fp>
-  bool promptSlots(std::string instruction, bool newitems, size_t min, std::vector<T*> slots, Fc creator, Fp printer)
+  bool promptSlots(std::string instruction, bool newitems, size_t min, std::vector<T*>* slots, Fc creator, Fp printer)
   {
     __store_tty();
     
@@ -285,7 +285,7 @@ namespace tbrpg
 	firstline++;
     
     size_t assigneditems = 0;
-    for (T* item : slots)
+    for (T* item : *slots)
       if (item != nullptr)
 	assigneditems++;
     
@@ -293,10 +293,10 @@ namespace tbrpg
     while (reading)
       {
 	std::cout << CSI "H" CSI "2J" CSI "?25l" << instruction << std::endl << std::endl;
-	for (size_t i = 0, n = slots.size(); i < n; i++)
+	for (size_t i = 0, n = slots->size(); i < n; i++)
 	  {
 	    std::cout << (i == current ? CSI "01;34m> " CSI "21;39m" : "  ");
-	    printer(slots[i], i == current);
+	    printer((*slots)[i], i == current);
 	    std::cout << std::endl;
 	  }
 	std::flush(std::cout);
@@ -325,26 +325,26 @@ namespace tbrpg
 		
 	      case 'r':
 	      case 'R':
-		if (slots[current] == nullptr)
+		if ((*slots)[current] == nullptr)
 		  break;
 		if (newitems)
-		  delete slots[current];
+		  delete (*slots)[current];
 		assigneditems--;
-		slots[current] = nullptr;
+		(*slots)[current] = nullptr;
 		std::cout << CSI << (current + firstline) << ";1H" CSI "K" CSI "01;34m> " CSI "21;39m";
-		printer(slots[current], true);
+		printer((*slots)[current], true);
 		std::flush(std::cout);
 		break;
 		
 	      case 'A':
 	      case 'B':
-		if (current == (c == 'A' ? 0 : (slots.size() - 1)))
+		if (current == (c == 'A' ? 0 : (slots->size() - 1)))
 		  break;
 		std::cout << CSI << (current + firstline) << ";1H" CSI "K  ";
-		printer(slots[current], false);
+		printer((*slots)[current], false);
 		current += c == 'A' ? -1 : 1;
 		std::cout << CSI << (current + firstline) << ";1H" CSI "K" CSI "01;34m> " CSI "21;39m";
-		printer(slots[current], true);
+		printer((*slots)[current], true);
 		std::flush(std::cout);
 		break;
 		
@@ -356,12 +356,12 @@ namespace tbrpg
 		T* newitem = creator();
 		if (newitem == nullptr)
 		  break;
-		if (slots[current] == nullptr)
+		if ((*slots)[current] == nullptr)
 		    assigneditems++;
 		else
 		  if (newitems)
-		    delete slots[current];
-		slots[current] = newitem;
+		    delete (*slots)[current];
+		(*slots)[current] = newitem;
 		break;
 	      }
 	  }
@@ -370,12 +370,16 @@ namespace tbrpg
     std::flush(std::cout << CSI "H" CSI "2J" CSI "?25h");
     __restore_tty();
     
-    if (newitems && (assigneditems < min))
-      for (T* slot : slots)
-	if (slot != nullptr)
-	  delete slot;
+    bool rc = (ssize_t)(assigneditems) >= (ssize_t)(min);
+    if (newitems && ! rc)
+      for (size_t i = 0, n = slots->size(); i < n; i++)
+	if ((*slots)[i] != nullptr)
+	  {
+	    delete (*slots)[i];
+	    (*slots)[i] = nullptr;
+	  }
     
-    return (ssize_t)(assigneditems) >= (ssize_t)(min);
+    return rc;
   }
   
   

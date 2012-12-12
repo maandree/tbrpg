@@ -25,9 +25,11 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
+#include <sstream>
 
 #include "Senario.hpp"
 #include "prompter.hpp"
+#include "GameCharacter.hpp"
 
 
 /**
@@ -52,9 +54,14 @@ namespace tbrpg
     Senario game;
     
     /**
-     * The player's position
+     * The players
      */
-    MapMinor* position;
+    std::vector<GameCharacter*> players;
+    
+    /**
+     * The next in the game loop
+     */
+    char next_player;
     
     
   public:
@@ -66,19 +73,9 @@ namespace tbrpg
     GamePlay(Senario& senario);
     
     /**
-     * Copy construction
-     */
-    GamePlay(const GamePlay& original);
-    
-    /**
      * Destructor
      */
     virtual ~GamePlay();
-    
-    /**
-     * Copy operator
-     */
-    virtual GamePlay& operator =(const GamePlay& original);
     
     
     /**

@@ -80,7 +80,7 @@ namespace tbrpg
     /**
      * Items in the area
      */
-    std::vector<Item> items;
+    std::vector<Item*> items;
     
     /**
      * Creatures in the area
