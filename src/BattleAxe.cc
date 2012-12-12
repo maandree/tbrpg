@@ -35,7 +35,7 @@ namespace tbrpg
    */
   BattleAxe::BattleAxe() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(44);
+    this->class_inheritance.push_back(43);
     this->name = "battle axe";
     this->weapon_group = &AXE;
     this->speed_factor = 7;

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   BodyArmour::BodyArmour() : Item()
   {
-    this->class_inheritance.push_back(34);
+    this->class_inheritance.push_back(33);
     this->wizard_magic_use = false;
   }
   

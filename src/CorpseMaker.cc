@@ -35,7 +35,7 @@ namespace tbrpg
    */
   CorpseMaker::CorpseMaker() : Object()
   {
-    this->class_inheritance.push_back(139);
+    this->class_inheritance.push_back(138);
     this->strenght_weight = new int[26];
     this->strenght18_weight = new int[101];
     this->constitution_weight = new int[26];

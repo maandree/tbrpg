@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Bow::Bow() : RangedWeapon()
   {
-    this->class_inheritance.push_back(61);
+    this->class_inheritance.push_back(60);
     this->name = "bow";
     this->weapon_group = &BOW;
     this->hands = 2;

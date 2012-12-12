@@ -26,7 +26,6 @@
 #include <vector>
 #include <unordered_map>
 
-#include "Item.hpp"
 #include "hash.hpp"
 
 
@@ -43,7 +42,7 @@ namespace tbrpg
   /**
    * Quest item class
    */
-  class QuestItem: public Item
+  class QuestItem
   {
   public:
     /**
@@ -78,13 +77,6 @@ namespace tbrpg
      * @param  original  The object to clone
      */
     QuestItem(QuestItem&& original);
-    
-    /**
-     * Fork the object
-     * 
-     * @return  A fork of the object
-     */
-    virtual Object* fork() const;
     
     
     

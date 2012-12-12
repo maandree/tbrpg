@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Elf::Elf() : Race()
   {
-    this->class_inheritance.push_back(114);
+    this->class_inheritance.push_back(113);
     this->name = "elf";
     this->bonuses.bonuses.detect_doors = 0.20;
     this->bonuses.abilities.dexterity = 1;

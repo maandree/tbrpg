@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Crossbow::Crossbow() : RangedWeapon()
   {
-    this->class_inheritance.push_back(63);
+    this->class_inheritance.push_back(62);
     this->name = "crossbow";
     this->weapon_group = &MISSILE_WEAPONS;
     this->hands = 2;

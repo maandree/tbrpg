@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Buckler::Buckler() : Shield()
   {
-    this->class_inheritance.push_back(69);
+    this->class_inheritance.push_back(68);
     this->name = "buckler";
     this->protect_melee[PIERCING] = false;
     this->protect_missile = false;

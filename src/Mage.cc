@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Mage::Mage() : Wizard()
   {
-    this->class_inheritance.push_back(101);
+    this->class_inheritance.push_back(100);
     this->name = "mage";
     this->learn_from_scroll = true;
     this->experience_chart.selectable_wizard = {0, 2};

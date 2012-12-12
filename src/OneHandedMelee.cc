@@ -35,7 +35,7 @@ namespace tbrpg
    */
   OneHandedMelee::OneHandedMelee() : MeleeWeapon()
   {
-    this->class_inheritance.push_back(49);
+    this->class_inheritance.push_back(48);
     this->hands = 1;
   }
   

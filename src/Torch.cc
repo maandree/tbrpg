@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Torch::Torch() : BluntWeapon()
   {
-    this->class_inheritance.push_back(39);
+    this->class_inheritance.push_back(38);
     this->name = "torch";
     this->speed_factor = 4;
     this->damage_die = 6;

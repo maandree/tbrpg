@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Mace::Mace() : BluntWeapon()
   {
-    this->class_inheritance.push_back(35);
+    this->class_inheritance.push_back(34);
     this->name = "mace";
     this->speed_factor = 7;
     this->damage_die = 6;

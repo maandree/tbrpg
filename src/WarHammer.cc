@@ -35,7 +35,7 @@ namespace tbrpg
    */
   WarHammer::WarHammer() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(42);
+    this->class_inheritance.push_back(41);
     this->name = "war hammer";
     this->weapon_group = &BLUNT_WEAPONS;
     this->speed_factor = 4;

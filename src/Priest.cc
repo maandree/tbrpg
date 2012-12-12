@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Priest::Priest() : Class()
   {
-    this->class_inheritance.push_back(111);
+    this->class_inheritance.push_back(110);
     this->hit_points = 8;
     this->abilities.saving_throws.breath = 16;
     this->abilities.saving_throws.paralyze_poison_death = 10;

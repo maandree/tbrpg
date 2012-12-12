@@ -35,7 +35,7 @@ namespace tbrpg
    */
   SmallShield::SmallShield() : Shield()
   {
-    this->class_inheritance.push_back(70);
+    this->class_inheritance.push_back(69);
     this->name = "small shield";
     this->protect_missile = false;
   }

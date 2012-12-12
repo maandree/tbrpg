@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Body::Body() : Item()
   {
-    this->class_inheritance.push_back(28);
+    this->class_inheritance.push_back(27);
     this->name = "the body of ";
     this->weight = 90000;
     this->unit_value = -1;

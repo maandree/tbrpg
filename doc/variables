@@ -165,7 +165,7 @@ Proficiency: Object                      ; Weapon proficiency level
 	int damage_bonus                 ; The damage bonus
 	char half_attacks                ; the number of half attacks
 
-QuestItem: Item                          ; Quest item class
+QuestItem                                ; Quest item class
 	int id                           ; A unique number for the item that the game senario can use for identifying quest items
 
 Item: Object                                                               ; Item class
@@ -384,7 +384,7 @@ FullPlateMail: BodyArmour                 ; Full plate mail item clss
 RightHandItem: Item                       ; Item that can be placed in the right hand
 Gold: Gem                                 ; Gold item class
 Gem: Item                                 ; Gem item class
-Key: QuestItem                            ; Key item class
+Key: Item                                 ; Key item class
 TextScroll: Item                          ; Text scroll item class
 Ring: Item                                ; Ring item class
 Amulet: Item                              ; Amulet, necklace and locket item class

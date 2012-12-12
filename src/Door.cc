@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Door::Door() : Entrance(), Lockable()
   {
-    this->class_inheritance.push_back(135);
+    this->class_inheritance.push_back(134);
   }
   
   /**

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   PriestScroll::PriestScroll() : Scroll()
   {
-    this->class_inheritance.push_back(122);
+    this->class_inheritance.push_back(121);
     this->name = "priest scroll";
   }
   

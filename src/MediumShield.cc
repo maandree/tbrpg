@@ -35,7 +35,7 @@ namespace tbrpg
    */
   MediumShield::MediumShield() : Shield()
   {
-    this->class_inheritance.push_back(71);
+    this->class_inheritance.push_back(70);
     this->name = "medium shield";
   }
   

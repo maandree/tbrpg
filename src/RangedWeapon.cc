@@ -35,7 +35,7 @@ namespace tbrpg
    */
   RangedWeapon::RangedWeapon() : Weapon()
   {
-    this->class_inheritance.push_back(32);
+    this->class_inheritance.push_back(31);
     this->rate_of_fire = 1;
   }
   

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Gauntlets::Gauntlets() : Item()
   {
-    this->class_inheritance.push_back(99);
+    this->class_inheritance.push_back(98);
     this->name = "gauntlets";
   }
   

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Cleric::Cleric() : Priest()
   {
-    this->class_inheritance.push_back(103);
+    this->class_inheritance.push_back(102);
     this->name = "cleric";
     this->thac0 = 20;
     this->abilities.bonuses.detect_doors = 0.10;

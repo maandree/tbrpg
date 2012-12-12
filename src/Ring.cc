@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Ring::Ring() : Item()
   {
-    this->class_inheritance.push_back(95);
+    this->class_inheritance.push_back(94);
     this->name = "ring";
   }
   

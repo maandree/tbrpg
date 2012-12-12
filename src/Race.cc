@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Race::Race() : Object()
   {
-    this->class_inheritance.push_back(21);
+    this->class_inheritance.push_back(20);
     this->name = "?";
     this->allowed_classes = {};
     this->bonuses = AbilityBonus();

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   LargeSword::LargeSword() : OneHandedMelee()
   {
-    this->class_inheritance.push_back(46);
+    this->class_inheritance.push_back(45);
     this->name = "large sword";
     this->weapon_group = &LARGE_SWORDS;
   }

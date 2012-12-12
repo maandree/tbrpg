@@ -35,8 +35,7 @@ namespace tbrpg
    */
   Spell::Spell() : Object()
   {
-    this->class_inheritance.push_back(25);
-    this->class_inheritance.push_back(21);
+    this->class_inheritance.push_back(24);
     this->name = "unnamed spell";
     this->description = "";
     this->wizard = false;

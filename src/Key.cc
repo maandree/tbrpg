@@ -33,9 +33,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Key::Key() : QuestItem()
+  Key::Key() : Item()
   {
-    this->class_inheritance.push_back(93);
+    this->class_inheritance.push_back(92);
     this->name = "key";
   }
   
@@ -44,7 +44,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(const Key& original) : QuestItem(original)
+  Key::Key(const Key& original) : Item(original)
   {
     (void) original;
   }
@@ -54,7 +54,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key& original) : QuestItem(original)
+  Key::Key(Key& original) : Item(original)
   {
     (void) original;
   }
@@ -64,7 +64,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key&& original) : QuestItem(original)
+  Key::Key(Key&& original) : Item(original)
   {
     (void) original;
   }
@@ -99,7 +99,7 @@ namespace tbrpg
    */
   Key& Key::operator =(const Key& original)
   {
-    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -111,7 +111,7 @@ namespace tbrpg
    */
   Key& Key::operator =(Key& original)
   {
-    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
+    Item::__copy__((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -123,7 +123,7 @@ namespace tbrpg
    */
   Key& Key::operator =(Key&& original)
   {
-    std::swap((QuestItem&)*this, (QuestItem&)original);
+    std::swap((Item&)*this, (Item&)original);
     return *this;
   }
   
@@ -136,7 +136,7 @@ namespace tbrpg
    */
   bool Key::operator ==(const Key& other) const
   {
-    if ((QuestItem&)(*this) != (QuestItem&)other)  return false;
+    if ((Item&)(*this) != (Item&)other)  return false;
     return true;
   }
   
@@ -171,7 +171,7 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<QuestItem>()(*this);
+    rc += std::hash<Item>()(*this);
     return rc;
   }
   

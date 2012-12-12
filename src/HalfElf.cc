@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HalfElf::HalfElf() : Race()
   {
-    this->class_inheritance.push_back(117);
+    this->class_inheritance.push_back(116);
     this->name = "half-elf";
     this->bonuses.thief_abilities.find_traps = 0;
     this->bonuses.thief_abilities.open_locks = 0;

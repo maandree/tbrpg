@@ -35,7 +35,7 @@ namespace tbrpg
    */
   ChainMail::ChainMail() : BodyArmour()
   {
-    this->class_inheritance.push_back(86);
+    this->class_inheritance.push_back(85);
     this->name = "chain mail";
     this->armour_class = 5;
     this->armour_class_modifiers[SLASHING] = -2;

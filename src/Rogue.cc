@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Rogue::Rogue() : Class()
   {
-    this->class_inheritance.push_back(112);
+    this->class_inheritance.push_back(111);
     this->hit_points = 6;
     this->abilities.saving_throws.breath = 16;
     this->abilities.saving_throws.paralyze_poison_death = 13;

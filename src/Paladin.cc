@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Paladin::Paladin() : Warrior()
   {
-    this->class_inheritance.push_back(109);
+    this->class_inheritance.push_back(108);
     this->name = "paladin";
     this->abilities.saving_throws.breath = 2;
     this->abilities.saving_throws.paralyze_poison_death = 2;

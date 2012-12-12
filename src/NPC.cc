@@ -35,7 +35,7 @@ namespace tbrpg
    */
   NPC::NPC() : Creature()
   {
-    this->class_inheritance.push_back(140);
+    this->class_inheritance.push_back(139);
     this->record.name = "Commoner";
     this->hostile = false;
     this->alive = true;

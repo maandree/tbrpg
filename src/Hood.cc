@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Hood::Hood() : Headgear()
   {
-    this->class_inheritance.push_back(81);
+    this->class_inheritance.push_back(80);
     this->name = "hood";
   }
   

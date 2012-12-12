@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Item::Item() : Object()
   {
-    this->class_inheritance.push_back(18);
+    this->class_inheritance.push_back(17);
     this->name = "some weird item";
     this->description = "You have no idea what this is…";
     this->armour_class = 0x7FFFffff;

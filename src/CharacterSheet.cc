@@ -35,7 +35,7 @@ namespace tbrpg
    */
   CharacterSheet::CharacterSheet() : Object()
   {
-    this->class_inheritance.push_back(22);
+    this->class_inheritance.push_back(21);
     this->racial_enemy = nullptr;
     this->name = "the nameless one";
     this->biography = "";

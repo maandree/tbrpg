@@ -35,7 +35,7 @@ namespace tbrpg
    */
   HalfOrc::HalfOrc() : Race()
   {
-    this->class_inheritance.push_back(116);
+    this->class_inheritance.push_back(115);
     this->name = "half-orc";
     this->bonuses.abilities.strength = 1;
     this->bonuses.abilities.constitution = 1;

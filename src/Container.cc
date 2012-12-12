@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Container::Container() : Item()
   {
-    this->class_inheritance.push_back(31);
+    this->class_inheritance.push_back(30);
     this->name = "container";
     this->contains = {};
     this->can_contain = {};

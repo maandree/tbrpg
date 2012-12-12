@@ -35,7 +35,7 @@ namespace tbrpg
    */
   GameCharacter::GameCharacter() : Object()
   {
-    this->class_inheritance.push_back(143);
+    this->class_inheritance.push_back(142);
     this->turn_undead_on = false;
     this->find_traps_on = false;
     this->stealth_on = false;

@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Hat::Hat() : Headgear()
   {
-    this->class_inheritance.push_back(80);
+    this->class_inheritance.push_back(79);
     this->name = "hat";
   }
   

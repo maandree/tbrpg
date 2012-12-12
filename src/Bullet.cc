@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Bullet::Bullet() : Ammunition()
   {
-    this->class_inheritance.push_back(74);
+    this->class_inheritance.push_back(73);
     this->name = "bullet";
     this->damage_type = BLUDGEONING;
     this->damage_die = 4;

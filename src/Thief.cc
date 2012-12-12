@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Thief::Thief() : Rogue()
   {
-    this->class_inheritance.push_back(106);
+    this->class_inheritance.push_back(105);
     this->name = "thief";
     this->thac0 = 23;
     this->lore_bonus = 3;

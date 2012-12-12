@@ -35,7 +35,7 @@ namespace tbrpg
    */
   Human::Human() : Race()
   {
-    this->class_inheritance.push_back(115);
+    this->class_inheritance.push_back(114);
     this->name = "human";
     this->dualclass_level = 4;
     

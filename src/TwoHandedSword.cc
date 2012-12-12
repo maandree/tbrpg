@@ -35,7 +35,7 @@ namespace tbrpg
    */
   TwoHandedSword::TwoHandedSword() : TwoHandedMelee()
   {
-    this->class_inheritance.push_back(52);
+    this->class_inheritance.push_back(51);
     this->name = "two-handed sword";
     this->weapon_group = &LARGE_SWORDS;
     this->speed_factor = 10;
