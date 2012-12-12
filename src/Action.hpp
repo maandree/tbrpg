@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
-
 #include "hash.hpp"
 #include "Character.hpp"
 #include "Spell.hpp"
