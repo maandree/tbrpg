@@ -218,17 +218,18 @@ namespace tbrpg
     self.rings = std::vector<Ring*>(original.rings.size());
     self.personal = std::vector<Item*>(original.personal.size());
     
-    #ifdef DELETE_INVENTORY
-      #define __copy(slot, T)  \
-	self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());
-    #else
-      #define __copy(slot, T)								\
-        {										\
-	  self.slot = original.slot == nullptr ? nullptr : (T*)(original.slot->fork());	\
-	  if (self.slot != nullptr)							\
-	    cleaner::getInstance().enqueueDelete(self.slot);				\
-	}//
-    #endif
+    #define __copy(slot, T)					\
+      {								\
+	if (original.slot == nullptr)				\
+	  self.slot = nullptr;					\
+	else if (original.slot->quantity_limit == 1)		\
+	  self.slot = original.slot;				\
+	else							\
+	  {							\
+	    self.slot = (T*)(original.slot->fork());		\
+	    cleaner::getInstance().enqueueDelete(self.slot);	\
+	  }							\
+      }//
     
     __copy(right_hand, RightHandItem);
     __copy(headgear, Headgear);
@@ -256,37 +257,7 @@ namespace tbrpg
    */
   void Inventory::__delete__()
   {
-    #ifdef DELETE_INVENTORY
-    
-    #define __delete(slot)		\
-      if (this->slot != nullptr)	\
-	{				\
-	  delete this->slot;		\
-	  this->slot = nullptr;		\
-	}
-    
-    #define ___delete(slots)					\
-      for (size_t i = 0, n = this->slots.size(); i < n; i++)	\
-        __delete(slots[i])
-    
-    ___delete(left_hand)
-    __delete(right_hand)
-    ___delete(quiver)
-    ___delete(quick_items)
-    __delete(headgear)
-    __delete(amulet)
-    ___delete(rings)
-    __delete(body)
-    __delete(gauntlets)
-    __delete(girdle)
-    __delete(boots)
-    __delete(cloak)
-    ___delete(personal)
-    
-    #undef __delete
-    #undef ___delete
-    
-    #endif
+    // do nothing
   }
   
   /**

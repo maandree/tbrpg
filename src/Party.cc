@@ -90,7 +90,8 @@ namespace tbrpg
    */
   Party::~Party()
   {
-    // do nothing
+    //for (Character* c : this->characters)
+    //  delete c;
   }
   
   

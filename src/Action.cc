@@ -36,10 +36,9 @@ namespace tbrpg
   Action::Action() : Object()
   {
     this->class_inheritance.push_back(144);
-    ////TODO implement constructor
-    //this->target = nullptr;
-    //this->spell = nullptr;
-    //this->item = nullptr;
+    this->target = nullptr;
+    this->spell = nullptr;
+    this->item = nullptr;
   }
   
   /**
@@ -49,7 +48,6 @@ namespace tbrpg
    */
   Action::Action(const Action& original) : Object(original)
   {
-    (void) original;
     this->target = original.target;
     this->spell = original.spell;
     this->item = original.item;
@@ -62,7 +60,6 @@ namespace tbrpg
    */
   Action::Action(Action& original) : Object(original)
   {
-    (void) original;
     this->target = original.target;
     this->spell = original.spell;
     this->item = original.item;
@@ -75,7 +72,6 @@ namespace tbrpg
    */
   Action::Action(Action&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->target, original.target);
     std::swap(this->spell, original.spell);
     std::swap(this->item, original.item);
@@ -98,10 +94,7 @@ namespace tbrpg
    */
   Action::~Action()
   {
-    ////TODO implement destructor
-    //delete this->target;
-    //delete this->spell;
-    //delete this->item;
+    // do nothing
   }
   
   
@@ -114,8 +107,8 @@ namespace tbrpg
    */
   Action& Action::operator =(const Action& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->target = original.target;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->target = original.target;
     this->spell = original.spell;
     this->item = original.item;
     return *this;
@@ -129,8 +122,8 @@ namespace tbrpg
    */
   Action& Action::operator =(Action& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->target = original.target;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->target = original.target;
     this->spell = original.spell;
     this->item = original.item;
     return *this;
@@ -144,8 +137,8 @@ namespace tbrpg
    */
   Action& Action::operator =(Action&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->target, original.target);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->target, original.target);
     std::swap(this->spell, original.spell);
     std::swap(this->item, original.item);
     return *this;
@@ -197,11 +190,11 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<Character>()(this->target);
+    rc += std::hash<Character*>()(this->target);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Spell>()(this->spell);
+    rc += std::hash<Spell*>()(this->spell);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<QuickItem>()(this->item);
+    rc += std::hash<QuickItem*>()(this->item);
     return rc;
   }
   

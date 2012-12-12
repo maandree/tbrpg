@@ -67,7 +67,7 @@ namespace tbrpg
     this->ruleset = rules;
     this->abilityDice = Dice(3, 6);
     this->dice100 = Dice(1, 100);
-    this->sheet = CharacterSheet();
+    this->sheet = new CharacterSheet();
   }
   
   /**
@@ -75,7 +75,8 @@ namespace tbrpg
    */
   CharacterCreator::~CharacterCreator()
   {
-    // do nothing
+    if (this->sheet != nullptr)
+      delete this->sheet;
   }
   
   
@@ -139,20 +140,20 @@ namespace tbrpg
     input = promptList("Select gender: ", genders);
     if (input == "")
       return nullptr;
-    this->sheet.female = input == "female";
+    this->sheet->female = input == "female";
     
     
   _02:
     input = promptList("Select race: ", races);
     if (input == "")
       goto _01;
-    this->sheet.race = raceMap[input];
+    this->sheet->race = raceMap[input];
     
     
   _03:
     prestiges = std::vector<std::string>();
     prestigeMap = std::unordered_map<std::string, std::vector<Class>>();
-    for (std::vector<Class>& p : this->sheet.race.allowed_classes)
+    for (std::vector<Class>& p : this->sheet->race.allowed_classes)
       {
 	std::string ac = "";
 	for (Class& c : p)
@@ -166,28 +167,28 @@ namespace tbrpg
     input = promptList("Select class: ", prestiges);
     if (input == "")
       goto _02;
-    this->sheet.prestige = prestigeMap[input];
-    this->sheet.class_abondoned = {};
-    this->sheet.experience = {};
-    this->sheet.level = {};
-    for (long i = 0, n = this->sheet.prestige.size(); i < n; i++)
+    this->sheet->prestige = prestigeMap[input];
+    this->sheet->class_abondoned = {};
+    this->sheet->experience = {};
+    this->sheet->level = {};
+    for (long i = 0, n = this->sheet->prestige.size(); i < n; i++)
       {
-	this->sheet.class_abondoned.push_back(false);
-	this->sheet.experience.push_back(0);
-	this->sheet.level.push_back(1);
+	this->sheet->class_abondoned.push_back(false);
+	this->sheet->experience.push_back(0);
+	this->sheet->level.push_back(1);
       }
     hasSpecialisation = false;
     
     
   _04:
-    this->sheet.specialisation = GENERAL_MAGE;
-    for (Class& c : this->sheet.prestige)
+    this->sheet->specialisation = GENERAL_MAGE;
+    for (Class& c : this->sheet->prestige)
       if (c.specialisations.size() > 0)
 	{
 	  specialisations = std::vector<std::string>();
 	  specialisationMap = std::unordered_map<std::string, MagicSchool>();
 	  for (MagicSchool& s : c.specialisations)
-	    for (MagicSchool& z : this->sheet.race.specialisations)
+	    for (MagicSchool& z : this->sheet->race.specialisations)
 	      if (s == z)
 		{
 		  specialisationMap[s.practicer] = s;
@@ -195,14 +196,14 @@ namespace tbrpg
 		  break;
 		}
 	  if (specialisations.size() == 1)
-	    this->sheet.specialisation = specialisationMap[specialisations[0]];
+	    this->sheet->specialisation = specialisationMap[specialisations[0]];
 	  else if (specialisations.size() > 1)
 	    {
 	      hasSpecialisation = true;
 	      input = promptList("Select mage specialisation: ", specialisations);
 	      if (input == "")
 		goto _03;
-	      this->sheet.specialisation = specialisationMap[input];
+	      this->sheet->specialisation = specialisationMap[input];
 	    }
 	  break;
 	}
@@ -213,7 +214,7 @@ namespace tbrpg
     for (long i = 0; i < (long)(all_alignments.size()); i++)
       {
 	ok = true;
-	for (Class& c : this->sheet.prestige)
+	for (Class& c : this->sheet->prestige)
 	  ok &= c.alignments[i];
 	if (ok)
 	  {
@@ -229,7 +230,7 @@ namespace tbrpg
 	else
 	  goto _03;
       }
-    this->sheet.alignment = alignmentMap[input];
+    this->sheet->alignment = alignmentMap[input];
     
     
    _06:
@@ -237,15 +238,15 @@ namespace tbrpg
     this->lower = new int[6];
     this->upper = new int[6];
     abilityReroll(*this);
-    ok = assign(6, 0, (void*)&(this->sheet.abilities.abilities.strength18), abilityPrinter, abilityReroll);
+    ok = assign(6, 0, (void*)&(this->sheet->abilities.abilities.strength18), abilityPrinter, abilityReroll);
     if (ok)
       {
-	this->sheet.abilities.abilities.strength     = this->start[0];
-	this->sheet.abilities.abilities.constitution = this->start[1];
-	this->sheet.abilities.abilities.dexterity    = this->start[2];
-	this->sheet.abilities.abilities.intelligence = this->start[3];
-	this->sheet.abilities.abilities.wisdom       = this->start[4];
-	this->sheet.abilities.abilities.charisma     = this->start[5];
+	this->sheet->abilities.abilities.strength     = this->start[0];
+	this->sheet->abilities.abilities.constitution = this->start[1];
+	this->sheet->abilities.abilities.dexterity    = this->start[2];
+	this->sheet->abilities.abilities.intelligence = this->start[3];
+	this->sheet->abilities.abilities.wisdom       = this->start[4];
+	this->sheet->abilities.abilities.charisma     = this->start[5];
       }
     delete[] this->start;
     delete[] this->lower;
@@ -259,7 +260,7 @@ namespace tbrpg
       proficiencyMap[*weapongroup] = 0;
     
     count = assignScores = eachScores = 0;
-    for (Class& c : this->sheet.prestige)
+    for (Class& c : this->sheet->prestige)
       {
 	int candidate = c.experience_chart.proficiencies[1];
 	if (assignScores < candidate)
@@ -308,10 +309,10 @@ namespace tbrpg
 	goto _06;
       }
     
-    this->sheet.proficiencies = std::unordered_map<WeaponGroup, int>();
+    this->sheet->proficiencies = std::unordered_map<WeaponGroup, int>();
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       if (proficiencyMap[*weapongroup] != 0)
-	this->sheet.proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
+	this->sheet->proficiencies[*weapongroup] = this->start[proficiencyMap[*weapongroup] - 1];
     
     delete[] this->start;
     hasExtra = false;
@@ -319,29 +320,29 @@ namespace tbrpg
     
   _08:
     /* Racial enemy */
-    this->sheet.racial_enemy = nullptr;
-    for (Class& c : this->sheet.prestige)
+    this->sheet->racial_enemy = nullptr;
+    for (Class& c : this->sheet->prestige)
       if (c.have_racial_enemy)
 	{
 	  hasExtra = true;
 	  input = promptList("Select racial enemy: ", racials);
 	  if (input == "")
 	    goto _07;
-	  this->sheet.racial_enemy = &(racialMap[input]);
+	  this->sheet->racial_enemy = &(racialMap[input]);
 	  break;
 	}
     
     /* Thief abilities */
     assignable = 0;
     start = new int[4];
-    start[0] = this->sheet.race.bonuses.thief_abilities.find_traps;
-    start[1] = this->sheet.race.bonuses.thief_abilities.open_locks;
-    start[2] = this->sheet.race.bonuses.thief_abilities.pick_pockets;
-    start[3] = this->sheet.race.bonuses.thief_abilities.stealth;
+    start[0] = this->sheet->race.bonuses.thief_abilities.find_traps;
+    start[1] = this->sheet->race.bonuses.thief_abilities.open_locks;
+    start[2] = this->sheet->race.bonuses.thief_abilities.pick_pockets;
+    start[3] = this->sheet->race.bonuses.thief_abilities.stealth;
     upper = new int[4];
     for (int i = 0; i < 4; i++)
       upper[i] = 0;
-    for (Class& c : this->sheet.prestige)
+    for (Class& c : this->sheet->prestige)
       {
 	start[0] += c.abilities.thief_abilities.find_traps;
 	start[1] += c.abilities.thief_abilities.open_locks;
@@ -370,10 +371,10 @@ namespace tbrpg
     delete[] upper;
     if (ok)
       {
-	this->sheet.abilities.thief_abilities.find_traps   = start[0];
-	this->sheet.abilities.thief_abilities.open_locks   = start[1];
-	this->sheet.abilities.thief_abilities.pick_pockets = start[2];
-	this->sheet.abilities.thief_abilities.stealth      = start[3];
+	this->sheet->abilities.thief_abilities.find_traps   = start[0];
+	this->sheet->abilities.thief_abilities.open_locks   = start[1];
+	this->sheet->abilities.thief_abilities.pick_pockets = start[2];
+	this->sheet->abilities.thief_abilities.stealth      = start[3];
 	delete[] start;
       }
     else
@@ -388,7 +389,7 @@ namespace tbrpg
       int wizardAssign0 = 0;
       int wizardAssign1 = 0;
       int priestAssign1 = 0;
-      for (Class& c : this->sheet.prestige)
+      for (Class& c : this->sheet->prestige)
 	{
 	  if (c.experience_chart.selectable_wizard.size() > 0)
 	    wizardAssign0 += c.experience_chart.selectable_wizard[0];
@@ -422,7 +423,7 @@ namespace tbrpg
 	    priest1Map[spell.name] = spell;
 	  }
       
-      this->sheet.spells.learned = std::vector<Spell>();
+      this->sheet->spells.learned = std::vector<Spell>();
       
       if ((wizardAssign0 > 0) && (wizard0s.size() > 0))
 	{
@@ -431,7 +432,7 @@ namespace tbrpg
 	  if (selected.size() == 0)
 	    goto _07;
 	  for (std::string& spell : selected)
-	    this->sheet.spells.learned.push_back(wizard0Map[spell]);
+	    this->sheet->spells.learned.push_back(wizard0Map[spell]);
 	}
       
       if ((wizardAssign1 > 0) && (wizard1s.size() > 0))
@@ -441,7 +442,7 @@ namespace tbrpg
 	  if (selected.size() == 0)
 	    goto _07;
 	  for (std::string& spell : selected)
-	    this->sheet.spells.learned.push_back(wizard1Map[spell]);
+	    this->sheet->spells.learned.push_back(wizard1Map[spell]);
 	}
       
       if ((priestAssign1 > 0) && (priest1s.size() > 0))
@@ -451,7 +452,7 @@ namespace tbrpg
 	  if (selected.size() == 0)
 	    goto _07;
 	  for (std::string& spell : selected)
-	    this->sheet.spells.learned.push_back(priest1Map[spell]);
+	    this->sheet->spells.learned.push_back(priest1Map[spell]);
 	}
     }
     
@@ -466,7 +467,7 @@ namespace tbrpg
 	  goto _07;
       }
     if (input == "no")
-      this->sheet.portrait = "";
+      this->sheet->portrait = "";
     else
       {
 	input = promptFile("Select portrait: ", true);
@@ -477,7 +478,7 @@ namespace tbrpg
 	    else
 	      goto _07;
 	  }
-	this->sheet.portrait = input;
+	this->sheet->portrait = input;
       }
     
     
@@ -485,33 +486,34 @@ namespace tbrpg
     indexInput = promptIndex("Select colour: ", {"red", "green", "yellow", "blue", "magenta", "cyan"});
     if (indexInput < 0)
       goto _09;
-    this->sheet.colour = (char)(indexInput + 1);
+    this->sheet->colour = (char)(indexInput + 1);
     
     
     input = promptArbitrary("Select name: ");
     if (input == "")
       goto _10;
-    this->sheet.name = input;
+    this->sheet->name = input;
     
     
     Inventory* inventory = (Inventory*)(this->ruleset.inventory_prototype.fork());
-    this->sheet.inventory = *inventory;
-    cleaner::getInstance().enqueueDelete(inventory);
+    this->sheet->inventory = *inventory;
+    delete inventory;
+    //cleaner::getInstance().enqueueDelete(inventory);
     long long prestige = 0;
     ActionSlotChart slotchart = ActionSlotChart();
-    for (Class& c : this->sheet.prestige)
+    for (Class& c : this->sheet->prestige)
       prestige |= slotchart.index_map[c];
     std::vector<ActionSlot>& slots = slotchart.slot_map[prestige];
-    size_t weapons = this->sheet.inventory.left_hand.size();
+    size_t weapons = this->sheet->inventory.left_hand.size();
     for (ActionSlot slot : slots)
       if (slot == QUICK_WEAPON)
 	weapons++;
-    this->sheet.inventory.left_hand = std::vector<Weapon*>(weapons);
+    this->sheet->inventory.left_hand = std::vector<Weapon*>(weapons);
     
     
     int minHP = 0, bestHP = 0, hpBonus = 0;
     char hpDie = 0, hpDice = 0;
-    for (Class& c : this->sheet.prestige)
+    for (Class& c : this->sheet->prestige)
       {
 	if (minHP < c.hit_points)
 	  minHP = c.hit_points;
@@ -531,10 +533,12 @@ namespace tbrpg
     bestHP = Dice(hpDice, hpDie).roll() + hpBonus;
     if (bestHP < minHP)
       bestHP = minHP;
-    this->sheet.hit_points = bestHP;
+    this->sheet->hit_points = bestHP;
     
     
-    return &(this->sheet);
+    CharacterSheet* rc = this->sheet;
+    this->sheet = nullptr;
+    return rc;
   }
   
   
@@ -704,9 +708,9 @@ namespace tbrpg
    */
   static void abilityReroll(CharacterCreator& self)
   {
-    self.sheet.abilities.abilities.strength18 = self.dice100.roll();
+    self.sheet->abilities.abilities.strength18 = self.dice100.roll();
     self.lower[0] = self.lower[1] = self.lower[2] = self.lower[3] = self.lower[4] = self.lower[5] = 0;
-    for (Class& c : self.sheet.prestige)
+    for (Class& c : self.sheet->prestige)
       {
 	int _str, _con, _dex, _int, _wis, _chr;
 	self.lower[0] = (_str = c.lower_limits.strength)     > self.lower[0] ? _str : self.lower[0];
@@ -716,12 +720,12 @@ namespace tbrpg
 	self.lower[4] = (_wis = c.lower_limits.wisdom)       > self.lower[4] ? _wis : self.lower[4];
 	self.lower[5] = (_chr = c.lower_limits.charisma)     > self.lower[5] ? _chr : self.lower[5];
       }
-    self.upper[0] = self.sheet.race.bonuses.abilities.strength;
-    self.upper[1] = self.sheet.race.bonuses.abilities.constitution;
-    self.upper[2] = self.sheet.race.bonuses.abilities.dexterity;
-    self.upper[3] = self.sheet.race.bonuses.abilities.intelligence;
-    self.upper[4] = self.sheet.race.bonuses.abilities.wisdom;
-    self.upper[5] = self.sheet.race.bonuses.abilities.charisma;
+    self.upper[0] = self.sheet->race.bonuses.abilities.strength;
+    self.upper[1] = self.sheet->race.bonuses.abilities.constitution;
+    self.upper[2] = self.sheet->race.bonuses.abilities.dexterity;
+    self.upper[3] = self.sheet->race.bonuses.abilities.intelligence;
+    self.upper[4] = self.sheet->race.bonuses.abilities.wisdom;
+    self.upper[5] = self.sheet->race.bonuses.abilities.charisma;
     for (int i = 0; i < 6; i++)
       {
 	self.start[i] = self.abilityDice.roll();

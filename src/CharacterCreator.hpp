@@ -85,7 +85,7 @@ namespace tbrpg
     /**
      * The character sheet that is being generated
      */
-    CharacterSheet sheet;
+    CharacterSheet* sheet;
     
     
     

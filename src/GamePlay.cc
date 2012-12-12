@@ -38,16 +38,17 @@ namespace tbrpg
   GamePlay::GamePlay(Senario& senario)
   {
     this->game = senario;
-    this->position = &(senario.map.start);
-  }
-  
-  /**
-   * Copy construction
-   */
-  GamePlay::GamePlay(const GamePlay& original)
-  {
-    this->game = original.game;
-    this->position = original.position;
+    this->players = {};
+    this->next_player = 0;
+    
+    for (Character* player : senario.party.characters)
+      {
+	GameCharacter* gamechar = new GameCharacter();
+	this->players.push_back(gamechar);
+	
+	gamechar->character = player;
+	gamechar->area = &(senario.map.start);
+      }
   }
   
   /**
@@ -55,17 +56,8 @@ namespace tbrpg
    */
   GamePlay::~GamePlay()
   {
-    // do nothing
-  }
-  
-  /**
-   * Copy operator
-   */
-  GamePlay& GamePlay::operator =(const GamePlay& original)
-  {
-    this->game = original.game;
-    this->position = original.position;
-    return *this;
+    for (GameCharacter* player : this->players)
+      delete player;
   }
   
   
@@ -113,9 +105,16 @@ namespace tbrpg
     
     #undef __add
     
+    GameCharacter* player = this->players[this->next_player];
+    
     for (;;)
       {
-	int index = promptIndex(":: ", actions);
+        std::stringstream ss;
+	ss << "\033[01;3" << (char)('0' + player->character->record.colour) << 'm'
+	   << player->character->record.name
+	   << "\033[21;39m:: ";
+	
+	int index = promptIndex(ss.str(), actions);
 	if (index >= 0)
 	  {
 	    char r = (this->*functions[index])();
@@ -128,6 +127,8 @@ namespace tbrpg
 	  std::flush(std::cout << "Type . to wait one turn" << std::endl);
       }
     
+    this->next_player++;
+    this->next_player %= this->players.size();
     return true;
   }
   
@@ -203,6 +204,7 @@ namespace tbrpg
    */
   char GamePlay::action_attack()
   {
+    /*
     for (Creature& creature : this->position->creatures)
       if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
 	{
@@ -213,7 +215,7 @@ namespace tbrpg
 	  std::flush(std::cout << "You have killed \033[3" << creature.record.colour << "m" << creature.record.name << "\033[39m." << std::endl);
           return 1;
 	}
-    
+    */
     std::flush(std::cout << "There is no hostile nearby." << std::endl);
     return 2;
   }
@@ -401,6 +403,7 @@ namespace tbrpg
    */
   char GamePlay::action_area()
   {
+    /*
     std::cout << this->position->description << std::endl << std::endl;
     
     for (Entrance& connection : this->position->connections)
@@ -424,6 +427,7 @@ namespace tbrpg
       std::cout << std::endl;
     
     std::flush(std::cout);
+    */
     return 2;
   }
   

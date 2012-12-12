@@ -3398,6 +3398,7 @@ Go to the next character and set mark if none is active.
 @c @item C-_
 @c @itemx C-¿
 @c @item C-O
+@c @item C-t
 @item C-k
 Remove current character and all following.
 @item C-w

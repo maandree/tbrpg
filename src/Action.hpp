@@ -27,9 +27,6 @@
 #include <unordered_map>
 
 #include "Object.hpp"
-
-
-
 #include "hash.hpp"
 #include "Character.hpp"
 #include "Spell.hpp"
@@ -55,17 +52,17 @@ namespace tbrpg
     /**
      * The target of the action
      */
-    Character target;
+    Character* target;
     
     /**
      * Spell being casted
      */
-    Spell spell;
+    Spell* spell;
     
     /**
      * Item being used
      */
-    QuickItem item;
+    QuickItem* item;
     
     
     

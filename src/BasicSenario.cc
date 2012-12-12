@@ -35,14 +35,12 @@ namespace tbrpg
    */
   BasicSenario::BasicSenario() : Senario()
   {
-    this->rules.party_size = 1;
-    this->rules.party_start_size = 1;
+    this->rules.party_size = 3;
+    this->rules.party_start_size = 3;
+    
     this->rules.inventory_prototype.personal[0] = new Gold();
     this->rules.inventory_prototype.personal[0]->quantity = 400;
-    
-    #ifndef DELETE_INVENTORY
     cleaner::getInstance().enqueueDelete(this->rules.inventory_prototype.personal[0]);
-    #endif
     
     MapMajor map_town = MapMajor();
     MapMajor map_wilds = MapMajor();

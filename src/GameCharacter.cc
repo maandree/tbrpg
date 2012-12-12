@@ -36,16 +36,15 @@ namespace tbrpg
   GameCharacter::GameCharacter() : Object()
   {
     this->class_inheritance.push_back(143);
-    ////TODO implement constructor
-    //this->turn_undead_on = false;
-    //this->find_traps_on = false;
-    //this->stealth_on = false;
-    //this->self_interruptable = false;
-    //this->damage_interruptable = false;
-    //this->turns = 0;
-    //this->action = nullptr;
-    //this->character = nullptr;
-    //this->area = nullptr;
+    this->turn_undead_on = false;
+    this->find_traps_on = false;
+    this->stealth_on = false;
+    this->self_interruptable = false;
+    this->damage_interruptable = false;
+    this->turns = 0;
+    this->action = nullptr;
+    this->character = nullptr;
+    this->area = nullptr;
   }
   
   /**
@@ -55,7 +54,6 @@ namespace tbrpg
    */
   GameCharacter::GameCharacter(const GameCharacter& original) : Object(original)
   {
-    (void) original;
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
@@ -74,7 +72,6 @@ namespace tbrpg
    */
   GameCharacter::GameCharacter(GameCharacter& original) : Object(original)
   {
-    (void) original;
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
@@ -93,7 +90,6 @@ namespace tbrpg
    */
   GameCharacter::GameCharacter(GameCharacter&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->turn_undead_on, original.turn_undead_on);
     std::swap(this->find_traps_on, original.find_traps_on);
     std::swap(this->stealth_on, original.stealth_on);
@@ -122,10 +118,7 @@ namespace tbrpg
    */
   GameCharacter::~GameCharacter()
   {
-    ////TODO implement destructor
-    //delete this->action;
-    //delete this->character;
-    //delete this->area;
+    // do nothing
   }
   
   
@@ -138,8 +131,8 @@ namespace tbrpg
    */
   GameCharacter& GameCharacter::operator =(const GameCharacter& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->turn_undead_on = original.turn_undead_on;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
     this->self_interruptable = original.self_interruptable;
@@ -159,8 +152,8 @@ namespace tbrpg
    */
   GameCharacter& GameCharacter::operator =(GameCharacter& original)
   {
-    (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->turn_undead_on = original.turn_undead_on;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
     this->self_interruptable = original.self_interruptable;
@@ -180,8 +173,8 @@ namespace tbrpg
    */
   GameCharacter& GameCharacter::operator =(GameCharacter&& original)
   {
-    (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->turn_undead_on, original.turn_undead_on);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->turn_undead_on, original.turn_undead_on);
     std::swap(this->find_traps_on, original.find_traps_on);
     std::swap(this->stealth_on, original.stealth_on);
     std::swap(this->self_interruptable, original.self_interruptable);
@@ -257,11 +250,11 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<char>()(this->turns);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<Action>()(this->action);
+    rc += std::hash<Action*>()(this->action);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<Character>()(this->character);
+    rc += std::hash<Character*>()(this->character);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<MapMinor>()(this->area);
+    rc += std::hash<MapMinor*>()(this->area);
     return rc;
   }
   
