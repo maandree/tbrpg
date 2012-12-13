@@ -83,6 +83,16 @@ namespace tbrpg
     char turns;
     
     /**
+     * The index of the selected weapon
+     */
+    char weapon;
+    
+    /**
+     * The index of the selected quiver
+     */
+    char quiver;
+    
+    /**
      * The current action
      */
     Action action;

@@ -43,6 +43,8 @@ namespace tbrpg
     //this->self_interruptable = false;
     //this->damage_interruptable = false;
     //this->turns = 0;
+    //this->weapon = 0;
+    //this->quiver = 0;
     //this->action = nullptr;
     //this->character = nullptr;
     //this->area = nullptr;
@@ -62,6 +64,8 @@ namespace tbrpg
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
+    this->weapon = original.weapon;
+    this->quiver = original.quiver;
     this->action = original.action;
     this->character = original.character;
     this->area = original.area;
@@ -81,6 +85,8 @@ namespace tbrpg
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
+    this->weapon = original.weapon;
+    this->quiver = original.quiver;
     this->action = original.action;
     this->character = original.character;
     this->area = original.area;
@@ -100,6 +106,8 @@ namespace tbrpg
     std::swap(this->self_interruptable, original.self_interruptable);
     std::swap(this->damage_interruptable, original.damage_interruptable);
     std::swap(this->turns, original.turns);
+    std::swap(this->weapon, original.weapon);
+    std::swap(this->quiver, original.quiver);
     std::swap(this->action, original.action);
     std::swap(this->character, original.character);
     std::swap(this->area, original.area);
@@ -145,6 +153,8 @@ namespace tbrpg
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
+    this->weapon = original.weapon;
+    this->quiver = original.quiver;
     this->action = original.action;
     this->character = original.character;
     this->area = original.area;
@@ -166,6 +176,8 @@ namespace tbrpg
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
+    this->weapon = original.weapon;
+    this->quiver = original.quiver;
     this->action = original.action;
     this->character = original.character;
     this->area = original.area;
@@ -187,6 +199,8 @@ namespace tbrpg
     std::swap(this->self_interruptable, original.self_interruptable);
     std::swap(this->damage_interruptable, original.damage_interruptable);
     std::swap(this->turns, original.turns);
+    std::swap(this->weapon, original.weapon);
+    std::swap(this->quiver, original.quiver);
     std::swap(this->action, original.action);
     std::swap(this->character, original.character);
     std::swap(this->area, original.area);
@@ -208,6 +222,8 @@ namespace tbrpg
     if (this->self_interruptable != other.self_interruptable)  return false;
     if (this->damage_interruptable != other.damage_interruptable)  return false;
     if (this->turns != other.turns)  return false;
+    if (this->weapon != other.weapon)  return false;
+    if (this->quiver != other.quiver)  return false;
     if (this->action != other.action)  return false;
     if (this->character != other.character)  return false;
     if (this->area != other.area)  return false;
@@ -257,10 +273,14 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<char>()(this->turns);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<Action>()(this->action);
+    rc += std::hash<char>()(this->weapon);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<Character>()(this->character);
+    rc += std::hash<char>()(this->quiver);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<Action>()(this->action);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<Character>()(this->character);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<MapMinor>()(this->area);
     return rc;
   }
