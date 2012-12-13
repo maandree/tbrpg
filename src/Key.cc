@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Key::Key() : Item QuestItem()
+  Key::Key() : Item(), QuestItem()
   {
     this->class_inheritance.push_back(92);
     this->name = "key";
@@ -46,7 +46,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(const Key& original) : Item QuestItem(original)
+  Key::Key(const Key& original) : Item(original), QuestItem(original)
   {
     (void) original;
   }
@@ -56,7 +56,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key& original) : Item QuestItem(original)
+  Key::Key(Key& original) : Item(original), QuestItem(original)
   {
     (void) original;
   }
@@ -66,7 +66,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key&& original) : Item QuestItem(original)
+  Key::Key(Key&& original) : Item(original), QuestItem(original)
   {
     (void) original;
   }
