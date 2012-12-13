@@ -63,6 +63,11 @@ namespace tbrpg
      */
     char next_player;
     
+    /**
+     * The used last function
+     */
+    char (GamePlay::*last_function)();
+    
     
   public:
     /**
@@ -90,168 +95,168 @@ namespace tbrpg
     /**
      * Action: quit
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_quit();
     
     /**
      * Action: wait one turn
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_wait();
     
     /**
      * Action: redo last action by any party member
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_redo();
     
     /**
      * Action: rest
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_rest();
     
     /**
      * Action: select ammunition to use from the quiver
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_quiver();
     
     /**
      * Action: select weapon to use from the quick weapons
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_weapon();
     
     /**
      * Action: attack
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_attack();
     
     /**
      * Action: cast non-quick spell
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_cast();
     
     /**
      * Action: talk
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_talk();
     
     /**
      * Action: list special usable abilities
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_specials();
     
     /**
      * Action: bash a lock
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_bash();
     
     /**
      * Action: pick a lock
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_pick_lock();
     
     /**
      * Action: disarm a trap
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_disarm();
     
     /**
      * Action: pick pocket
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_pick_pocket();
     
     /**
      * Action: turn on stealth mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_stealth();
     
     /**
      * Action: turn off stealth mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_stealth_off();
     
     /**
      * Action: turn on find traps mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_find_traps();
     
     /**
      * Action: turn off find traps mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_find_traps_off();
     
     /**
      * Action: turn on turn undead mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_turn_undead();
     
     /**
      * Action: turn off turn undead mode
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_turn_undead_off();
     
     /**
      * Action: examine inventory
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_inventory();
     
     /**
      * Action: examine party
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_party();
     
     /**
      * Action: examine world map
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_map();
     
     /**
      * Action: examine area
      *
-     * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
     char action_area();
     

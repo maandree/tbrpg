@@ -117,7 +117,10 @@ namespace tbrpg
 	int index = promptIndex(ss.str(), actions);
 	if (index >= 0)
 	  {
+	    if (functions[index] != &GamePlay::action_redo)
+	      this->last_function = functions[index];
 	    char r = (this->*functions[index])();
+	    std::flush(std::cout);
 	    if (r == 2)
 	      continue;
 	    if (r == 0)
@@ -136,7 +139,7 @@ namespace tbrpg
   /**
    * Action: quit
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_quit()
   {
@@ -146,7 +149,7 @@ namespace tbrpg
   /**
    * Action: wait one turn
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_wait()
   {
@@ -156,54 +159,80 @@ namespace tbrpg
   /**
    * Action: redo last action by any party member
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_redo()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
-    return 2;
+    return (this->*(this->last_function))();
   }
   
   /**
    * Action: rest
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_rest()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: select ammunition to use from the quiver
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_quiver()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: select weapon to use from the quick weapons
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_weapon()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: attack
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_attack()
   {
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
     /*
     for (Creature& creature : this->position->creatures)
       if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
@@ -216,190 +245,374 @@ namespace tbrpg
           return 1;
 	}
     */
-    std::flush(std::cout << "There is no hostile nearby." << std::endl);
+    std::cout << "There is no hostile nearby." << std::endl;
     return 2;
   }
   
   /**
    * Action: cast non-quick spell
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_cast()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: talk
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_talk()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: list special usable abilities
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_specials()
   {
-    std::flush(std::cout << "You have no special abilties." << std::endl);
+    std::cout << "You have no special abilties." << std::endl;
     return 2;
   }
   
   /**
    * Action: bash a lock
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_bash()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: pick a lock
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_pick_lock()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: disarm a trap
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_disarm()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: pick pocket
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_pick_pocket()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: turn on stealth mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_stealth()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->stealth_on == false)
+      std::cout << "You already have Stealth activated." << std::endl;
+    else
+      std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: turn off stealth mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_stealth_off()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->stealth_on == false)
+      std::cout << "You already have Stealth Mode deactivated." << std::endl;
+    else
+      std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: turn on find traps mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_find_traps()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
-    return 2;
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You already have Find Traps activated." << std::endl;
+	return 2;
+      }
+    std::cout << "Not implement..." << std::endl;
+    return 1;
   }
   
   /**
    * Action: turn off find traps mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_find_traps_off()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->find_traps_on == false)
+      std::cout << "You already have Find Traps deactivated." << std::endl;
+    else
+      std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: turn on turn undead mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_turn_undead()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
-    return 2;
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You already have Turn Undead activated." << std::endl;
+	return 2;
+      }
+    std::cout << "Not implement..." << std::endl;
+    return 1;
   }
   
   /**
    * Action: turn off turn undead mode
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_turn_undead_off()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    
+    if (this->players[this->next_player]->turn_undead_on == false)
+      std::cout << "You already have Turn Undead deactivated." << std::endl;
+    else
+      std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: examine inventory
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_inventory()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn of Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: examine party
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_party()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: examine world map
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_map()
   {
-    std::flush(std::cout << "Not implement..." << std::endl);
+    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
   /**
    * Action: examine area
    *
-   * @return  0 for stop playing, 1 for continue playing, 2 for one mor time
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_area()
   {
