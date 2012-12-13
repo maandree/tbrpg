@@ -1514,6 +1514,75 @@ namespace tbrpg
   
   
   /**
+   * Prompt the user for a menu alternative and return index
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptMenu(const std::string& instruction, const std::vector<std::string>& alternatives)
+  {
+    __store_tty();
+    std::cout << CSI "?1049h" CSI "?25l";
+    
+    long selected = 0;
+    bool reading = true;
+    char c;
+    while (reading)
+      {
+	std::flush(std::cout << CSI "H" CSI "2J" << instruction << std::endl << std::endl);
+	int index = 0;
+	for (std::string& alt : alternatives)
+	  if (index++ == selected)
+	    std::cout << CSI "01;34m" << alt << CSI "21;39m" << std::endl;
+	  else
+	    std::cout << alt << std::endl;
+	std::flush(std::cout);
+	
+	bool readinginner = true;
+	while (readinginner)
+	  {
+	    if (read(STDIN_FILENO, &c, 1) <= 0)
+	      c = CTRL('G');
+	    
+	    switch (c) /* TODO document this in the info manual */
+	      {
+	      case CTRL('G'):
+		reading = readinginner = false;
+		selected = -1;
+		break;
+		
+	      case CTRL('L'):
+		readinginner = false;
+		break;
+		
+	      case CTRL('D'):
+	      case ' ':
+	      case 'd':
+	      case 'D':
+	      case '\n':
+		reading = readinginner = false;
+		break;
+		
+	      case 'A':
+	      case 'B':
+		if (selected == (c == 'A' ? 0 : (alternatives.size() - 1)))
+		  break;
+		std::cout << CSI << (selected + 1) << ";1H" << alt;
+		selected += (c == 'A' ? -1 : 1);
+		std::flush(std::cout << CSI << (selected + 1) << ";1H" CSI "01;34m" << alt << CSI "21;39m");
+		break;
+	      }
+	  }
+      }
+    
+    std::flush(std::cout << CSI "?1049l" CSI "?25h" CSI "H" CSI "2J");	
+    __restore_tty();
+    return selected;
+  }
+  
+  
+  /**
    * Print a list in columns
    * 
    * @param  items  The items to print

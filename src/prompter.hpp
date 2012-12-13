@@ -249,6 +249,15 @@ namespace tbrpg
   long promptDialogue(char colour, const std::string& name, const std::string& message, const std::vector<std::string>& alternatives, char spacing = 1);
   
   /**
+   * Prompt the user for a menu alternative and return index
+   * 
+   * @param   instruction   Instruction for the user
+   * @param   alternatives  Alternatives
+   * @return                The index of the select alternative, −1 if aborted
+   */
+  long promptIndex(const std::string& instruction, const std::vector<std::string>& alternatives);
+  
+  /**
    * Print a list in columns
    * 
    * @param  items  The items to print
