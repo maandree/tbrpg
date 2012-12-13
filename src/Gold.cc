@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(91);
     this->name = "gold";
+    this->weight = 2;
+    this->unit_value = 100;
   }
   
   /**

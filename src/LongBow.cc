@@ -39,6 +39,8 @@ namespace tbrpg
     this->name = "long bow";
     this->speed_factor = 8;
     this->hit_bonus = 1;
+    this->weight = 1350;
+    this->unit_value = 7500;
   }
   
   /**

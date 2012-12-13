@@ -41,6 +41,8 @@ namespace tbrpg
     this->damage_die = 4;
     this->damage_dice = 2;
     this->damage_type = {SLASHING};
+    this->weight = 4500;
+    this->unit_value = 2500;
   }
   
   /**

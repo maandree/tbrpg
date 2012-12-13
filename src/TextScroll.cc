@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(94);
     this->name = "text scroll";
+    this->weight = 10;
+    this->unit_value = 0;
   }
   
   /**

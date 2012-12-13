@@ -41,6 +41,8 @@ namespace tbrpg
     this->can_contain = {};
     this->contain_limit = 50;
     this->weight_modifier = 1;
+    this->weight = 1000;
+    this->unit_value = 33333;
   }
   
   /**

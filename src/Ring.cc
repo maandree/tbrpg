@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(95);
     this->name = "ring";
+    this->weight = 10;
+    this->unit_value = 200;
   }
   
   /**

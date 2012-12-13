@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(83);
     this->name = "robe";
+    this->weight = 1400;
+    this->unit_cost = 650;
   }
   
   /**

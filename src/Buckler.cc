@@ -39,6 +39,8 @@ namespace tbrpg
     this->name = "buckler";
     this->protect_melee[PIERCING] = false;
     this->protect_missile = false;
+    this->weight = 1350;
+    this->unit_value = 75;
   }
   
   /**

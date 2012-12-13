@@ -43,6 +43,8 @@ namespace tbrpg
     this->damage_dice = 1;
     this->damage_bonus = 1;
     this->bonuses.defence.melee = 0;
+    this->weight = 6800;
+    this->unit_value = 1450;
   }
   
   /**

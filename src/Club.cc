@@ -40,6 +40,8 @@ namespace tbrpg
     this->speed_factor = 4;
     this->damage_die = 6;
     this->damage_dice = 1;
+    this->weight = 1350;
+    this->unit_value = 70;
   }
   
   /**

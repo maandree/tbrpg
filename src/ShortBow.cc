@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(68);
     this->name = "short bow";
     this->speed_factor = 6;
+    this->weight = 900;
+    this->unit_value = 3000;
   }
   
   /**

@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(82);
     this->name = "helmet";
     this->critical_hit_protection = true;
+    this->weight = 1000;
+    this->unit_value = 100;
   }
   
   /**

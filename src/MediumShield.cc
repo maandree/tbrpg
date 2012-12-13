@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(71);
     this->name = "medium shield";
+    this->weight = 3150;
+    this->unit_value = 670;
   }
   
   /**

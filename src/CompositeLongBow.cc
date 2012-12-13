@@ -40,6 +40,8 @@ namespace tbrpg
     this->speed_factor = 7;
     this->hit_bonus = 1;
     this->damage_bonus = 2;
+    this->weight = 4500;
+    this->unit_value = 10000;
   }
   
   /**

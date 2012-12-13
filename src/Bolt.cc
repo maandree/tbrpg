@@ -42,6 +42,8 @@ namespace tbrpg
     this->damage_dice = 1;
     this->damage_bonus = 0;
     this->usable_with = PROTOTYPE(Crossbow);
+    this->weight = 20;
+    this->unit_value = 4;
   }
   
   /**
