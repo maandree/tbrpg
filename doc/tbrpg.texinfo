@@ -2870,8 +2870,15 @@ factors of weapons.
 @cindex turn
 @cindex round
 
-A turn consists of ten rounds. @c TODO  further describe
-@c TODO  relatation between round/turns and time
+A turn consists of ten rounds. The notation of rounds are
+merely to simply the thinking of how time passes. One round
+corresponds to ten minutes in the game, hence one turn
+corresponds to one minute in the game.
+
+None attack attack often take one round or one turn, while
+attack actions takes from one turn to one round. Removing
+the armour, putting on a armour, digging in the backpack
+all take one round. Many special abilities takes one turn.
 
 
 
@@ -3391,6 +3398,7 @@ Go to the next character and set mark if none is active.
 @c @item C-_
 @c @itemx C-¿
 @c @item C-O
+@c @item C-t
 @item C-k
 Remove current character and all following.
 @item C-w

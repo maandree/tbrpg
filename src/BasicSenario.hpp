@@ -17,15 +17,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_BASICSENARIO_H__
-#define __GUARD_BASICSENARIO_H__
+#ifndef __GUARD_BASICSENARIO_HPP__
+#define __GUARD_BASICSENARIO_HPP__
 
 
 #include "Senario.hpp"
 #include "pager.hpp"
 #include "prompter.hpp"
 #include "cleaner.hpp"
+#include "Town.hpp"
+#include "House.hpp"
+#include "Wilderness.hpp"
 #include "Gold.hpp"
+#include "Door.hpp"
+#include "Store.hpp"
+
+#include "ShortSword.hpp"
+#include "LongSword.hpp"
+#include "Bullet.hpp"
+#include "Sling.hpp"
+#include "ChainMail.hpp"
+#include "Helmet.hpp"
+#include "Key.hpp"
 
 
 /**
@@ -76,5 +89,5 @@ namespace tbrpg
 }
 
 
-#endif//__GUARD_BASICSENARIO_H__
+#endif//__GUARD_BASICSENARIO_HPP__
 

@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_MAPMINOR_HPP__
-#define __GUARD_MAPMINOR_HPP__
+#ifndef __GUARD_ACTION_HPP__
+#define __GUARD_ACTION_HPP__
 
 
 #include <stdlib.h>
@@ -26,14 +26,11 @@
 #include <vector>
 #include <unordered_map>
 
-#include "_MapMinor.hpp"
+#include "Object.hpp"
 #include "hash.hpp"
-#include "Road.hpp"
-#include "Entrance.hpp"
-#include "Item.hpp"
-#include "Creature.hpp"
-#include "MapMajor.hpp"
-#include "RestInterruption.hpp"
+#include "Character.hpp"
+#include "Spell.hpp"
+#include "QuickItem.hpp"
 
 
 /**
@@ -47,83 +44,53 @@
 namespace tbrpg
 {
   /**
-   * Map area
+   * Player action
    */
-  class MapMinor: public _MapMinor
+  class Action: public Object
   {
   public:
     /**
-     * Description of the area
+     * The target of the action
      */
-    std::string description;
+    Character* target;
     
     /**
-     * Whether you may rest in the area without renting a room
+     * Spell being casted
      */
-    bool may_rest;
+    Spell* spell;
     
     /**
-     * The radius of the area, in metres, the party starts at origo
+     * Item being used
      */
-    float area;
-    
-    /**
-     * Roads to other major areas in the area
-     */
-    std::vector<Road> roads;
-    
-    /**
-     * Entrance to other areas in the area
-     */
-    std::vector<Entrance> connections;
-    
-    /**
-     * Items in the area
-     */
-    std::vector<Item*> items;
-    
-    /**
-     * Creatures in the area
-     */
-    std::vector<Creature> creatures;
-    
-    /**
-     * Which major area to which  the area belongs
-     */
-    MapMajor is_in;
-    
-    /**
-     * Possible rest interruptions
-     */
-    std::vector<RestInterruption> interruptions;
+    QuickItem* item;
     
     
     
     /**
      * Construction
      */
-    MapMinor();
+    Action();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(const MapMinor& original);
+    Action(const Action& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(MapMinor& original);
+    Action(Action& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(MapMinor&& original);
+    Action(Action&& original);
     
     /**
      * Fork the object
@@ -137,7 +104,7 @@ namespace tbrpg
     /**
      * Destructor
      */
-    virtual ~MapMinor();
+    virtual ~Action();
     
     
     
@@ -147,7 +114,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(const MapMinor& original);
+    virtual Action& operator =(const Action& original);
     
     /**
      * Assignment operator
@@ -155,7 +122,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(MapMinor& original);
+    virtual Action& operator =(Action& original);
     
     /**
      * Move operator
@@ -163,7 +130,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(MapMinor&& original);
+    virtual Action& operator =(Action&& original);
     
     
     /**
@@ -172,7 +139,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operator ==(const MapMinor& other) const;
+    virtual bool operator ==(const Action& other) const;
     
     /**
      * Inequality evaluator
@@ -180,7 +147,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are not equal
      */
-    virtual bool operator !=(const MapMinor& other) const;
+    virtual bool operator !=(const Action& other) const;
     
     
   protected:
@@ -190,7 +157,7 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(MapMinor& self, const MapMinor& original);
+    static void __copy__(Action& self, const Action& original);
     
     
   public:
@@ -207,20 +174,20 @@ namespace tbrpg
 namespace std
 {
   template<>
-  class hash<tbrpg::MapMinor>
+  class hash<tbrpg::Action>
   {
   public:
-    size_t operator()(const tbrpg::MapMinor& elem) const
+    size_t operator()(const tbrpg::Action& elem) const
     {
        return elem.hash();
     }
   };
   
   template<>
-  class hash<tbrpg::MapMinor*>
+  class hash<tbrpg::Action*>
   {
   public:
-    size_t operator()(tbrpg::MapMinor* elem) const
+    size_t operator()(tbrpg::Action* elem) const
     {
        return elem == nullptr ? 0 : elem->hash();
     }
@@ -228,5 +195,5 @@ namespace std
 }
 
 
-#endif//__GUARD_MAPMINOR_HPP__
+#endif//__GUARD_ACTION_HPP__
 

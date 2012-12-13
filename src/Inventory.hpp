@@ -41,6 +41,7 @@
 #include "Boots.hpp"
 #include "Cloak.hpp"
 #include "Item.hpp"
+#include "cleaner.hpp"
 
 
 /**

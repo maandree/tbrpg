@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GUARD_MAPMINOR_HPP__
-#define __GUARD_MAPMINOR_HPP__
+#ifndef __GUARD_GAMECHARACTER_HPP__
+#define __GUARD_GAMECHARACTER_HPP__
 
 
 #include <stdlib.h>
@@ -26,14 +26,11 @@
 #include <vector>
 #include <unordered_map>
 
-#include "_MapMinor.hpp"
+#include "Object.hpp"
 #include "hash.hpp"
-#include "Road.hpp"
-#include "Entrance.hpp"
-#include "Item.hpp"
-#include "Creature.hpp"
-#include "MapMajor.hpp"
-#include "RestInterruption.hpp"
+#include "Action.hpp"
+#include "Character.hpp"
+#include "MapMinor.hpp"
 
 
 /**
@@ -47,83 +44,83 @@
 namespace tbrpg
 {
   /**
-   * Map area
+   * Game play wrapper for characters
    */
-  class MapMinor: public _MapMinor
+  class GameCharacter: public Object
   {
   public:
     /**
-     * Description of the area
+     * Whether turn undead is on
      */
-    std::string description;
+    bool turn_undead_on;
     
     /**
-     * Whether you may rest in the area without renting a room
+     * Whether find traps is on
      */
-    bool may_rest;
+    bool find_traps_on;
     
     /**
-     * The radius of the area, in metres, the party starts at origo
+     * Whether stealth mode is on
      */
-    float area;
+    bool stealth_on;
     
     /**
-     * Roads to other major areas in the area
+     * Whether the character can interrupt his current action
      */
-    std::vector<Road> roads;
+    bool self_interruptable;
     
     /**
-     * Entrance to other areas in the area
+     * Whether the character is interrupted if damaged
      */
-    std::vector<Entrance> connections;
+    bool damage_interruptable;
     
     /**
-     * Items in the area
+     * The number of turns until the current action is performed
      */
-    std::vector<Item*> items;
+    char turns;
     
     /**
-     * Creatures in the area
+     * The current action
      */
-    std::vector<Creature> creatures;
+    Action* action;
     
     /**
-     * Which major area to which  the area belongs
+     * The character
      */
-    MapMajor is_in;
+    Character* character;
     
     /**
-     * Possible rest interruptions
+     * The area where teh character currently is located
      */
-    std::vector<RestInterruption> interruptions;
+    MapMinor* area;
     
     
     
     /**
      * Construction
      */
-    MapMinor();
+    GameCharacter();
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(const MapMinor& original);
+    GameCharacter(const GameCharacter& original);
     
     /**
      * Copy constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(MapMinor& original);
+    GameCharacter(GameCharacter& original);
     
     /**
      * Move constructor
      * 
      * @param  original  The object to clone
      */
-    MapMinor(MapMinor&& original);
+    GameCharacter(GameCharacter&& original);
     
     /**
      * Fork the object
@@ -137,7 +134,7 @@ namespace tbrpg
     /**
      * Destructor
      */
-    virtual ~MapMinor();
+    virtual ~GameCharacter();
     
     
     
@@ -147,7 +144,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(const MapMinor& original);
+    virtual GameCharacter& operator =(const GameCharacter& original);
     
     /**
      * Assignment operator
@@ -155,7 +152,7 @@ namespace tbrpg
      * @param   original  The reference object
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(MapMinor& original);
+    virtual GameCharacter& operator =(GameCharacter& original);
     
     /**
      * Move operator
@@ -163,7 +160,7 @@ namespace tbrpg
      * @param   original  The moved object, its resourced will be moved
      * @return            The invoked object
      */
-    virtual MapMinor& operator =(MapMinor&& original);
+    virtual GameCharacter& operator =(GameCharacter&& original);
     
     
     /**
@@ -172,7 +169,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are equal
      */
-    virtual bool operator ==(const MapMinor& other) const;
+    virtual bool operator ==(const GameCharacter& other) const;
     
     /**
      * Inequality evaluator
@@ -180,7 +177,7 @@ namespace tbrpg
      * @param   other  The other comparand
      * @return         Whether the instances are not equal
      */
-    virtual bool operator !=(const MapMinor& other) const;
+    virtual bool operator !=(const GameCharacter& other) const;
     
     
   protected:
@@ -190,7 +187,7 @@ namespace tbrpg
      * @param  self      The object to modify
      * @param  original  The reference object
      */
-    static void __copy__(MapMinor& self, const MapMinor& original);
+    static void __copy__(GameCharacter& self, const GameCharacter& original);
     
     
   public:
@@ -207,20 +204,20 @@ namespace tbrpg
 namespace std
 {
   template<>
-  class hash<tbrpg::MapMinor>
+  class hash<tbrpg::GameCharacter>
   {
   public:
-    size_t operator()(const tbrpg::MapMinor& elem) const
+    size_t operator()(const tbrpg::GameCharacter& elem) const
     {
        return elem.hash();
     }
   };
   
   template<>
-  class hash<tbrpg::MapMinor*>
+  class hash<tbrpg::GameCharacter*>
   {
   public:
-    size_t operator()(tbrpg::MapMinor* elem) const
+    size_t operator()(tbrpg::GameCharacter* elem) const
     {
        return elem == nullptr ? 0 : elem->hash();
     }
@@ -228,5 +225,5 @@ namespace std
 }
 
 
-#endif//__GUARD_MAPMINOR_HPP__
+#endif//__GUARD_GAMECHARACTER_HPP__
 

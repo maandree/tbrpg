@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "Party.hpp"
+#include "Action.hpp"
 
 
 /**
@@ -33,11 +33,12 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Party::Party() : Object()
+  Action::Action() : Object()
   {
-    this->class_inheritance.push_back(8);
-    this->reputation = 12;
-    this->characters = {};
+    this->class_inheritance.push_back(144);
+    this->target = nullptr;
+    this->spell = nullptr;
+    this->item = nullptr;
   }
   
   /**
@@ -45,10 +46,11 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Party::Party(const Party& original) : Object(original)
+  Action::Action(const Action& original) : Object(original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    this->target = original.target;
+    this->spell = original.spell;
+    this->item = original.item;
   }
   
   /**
@@ -56,10 +58,11 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Party::Party(Party& original) : Object(original)
+  Action::Action(Action& original) : Object(original)
   {
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    this->target = original.target;
+    this->spell = original.spell;
+    this->item = original.item;
   }
   
   /**
@@ -67,10 +70,11 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Party::Party(Party&& original) : Object(original)
+  Action::Action(Action&& original) : Object(original)
   {
-    std::swap(this->reputation, original.reputation);
-    std::swap(this->characters, original.characters);
+    std::swap(this->target, original.target);
+    std::swap(this->spell, original.spell);
+    std::swap(this->item, original.item);
   }
   
   /**
@@ -78,9 +82,9 @@ namespace tbrpg
    * 
    * @return  A fork of the object
    */
-  Object* Party::fork() const
+  Object* Action::fork() const
   {
-    return (Object*)(new Party(*this));
+    return (Object*)(new Action(*this));
   }
   
   
@@ -88,10 +92,9 @@ namespace tbrpg
   /**
    * Destructor
    */
-  Party::~Party()
+  Action::~Action()
   {
-    //for (Character* c : this->characters)
-    //  delete c;
+    // do nothing
   }
   
   
@@ -102,11 +105,12 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Party& Party::operator =(const Party& original)
+  Action& Action::operator =(const Action& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    this->target = original.target;
+    this->spell = original.spell;
+    this->item = original.item;
     return *this;
   }
   
@@ -116,11 +120,12 @@ namespace tbrpg
    * @param   original  The reference object
    * @return            The invoked object
    */
-  Party& Party::operator =(Party& original)
+  Action& Action::operator =(Action& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->reputation = original.reputation;
-    this->characters = original.characters;
+    this->target = original.target;
+    this->spell = original.spell;
+    this->item = original.item;
     return *this;
   }
   
@@ -130,11 +135,12 @@ namespace tbrpg
    * @param   original  The moved object, its resourced will be moved
    * @return            The invoked object
    */
-  Party& Party::operator =(Party&& original)
+  Action& Action::operator =(Action&& original)
   {
     std::swap((Object&)*this, (Object&)original);
-    std::swap(this->reputation, original.reputation);
-    std::swap(this->characters, original.characters);
+    std::swap(this->target, original.target);
+    std::swap(this->spell, original.spell);
+    std::swap(this->item, original.item);
     return *this;
   }
   
@@ -145,10 +151,11 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are equal
    */
-  bool Party::operator ==(const Party& other) const
+  bool Action::operator ==(const Action& other) const
   {
-    if (this->reputation != other.reputation)  return false;
-    if (this->characters != other.characters)  return false;
+    if (this->target != other.target)  return false;
+    if (this->spell != other.spell)  return false;
+    if (this->item != other.item)  return false;
     return true;
   }
   
@@ -158,7 +165,7 @@ namespace tbrpg
    * @param   other  The other comparand
    * @return         Whether the instances are not equal
    */
-  bool Party::operator !=(const Party& other) const
+  bool Action::operator !=(const Action& other) const
   {
     return (*this == other) == false;
   }
@@ -169,7 +176,7 @@ namespace tbrpg
    * @param  self      The object to modify
    * @param  original  The reference object
    */
-  void Party::__copy__(Party& self, const Party& original)
+  void Action::__copy__(Action& self, const Action& original)
   {
     self = original;
   }
@@ -179,13 +186,15 @@ namespace tbrpg
    * 
    * @return  The object's hash code
    */
-  size_t Party::hash() const
+  size_t Action::hash() const
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<int>()(this->reputation);
+    rc += std::hash<Character*>()(this->target);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Character*>>()(this->characters);
+    rc += std::hash<Spell*>()(this->spell);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<QuickItem*>()(this->item);
     return rc;
   }
   

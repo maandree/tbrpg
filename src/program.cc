@@ -25,6 +25,7 @@
 #include "prompter.hpp"
 #include "Senario.hpp"
 #include "CharacterCreator.hpp"
+#include "GamePlay.hpp"
 
 #include "BasicSenario.hpp"
 
@@ -39,6 +40,25 @@
  */
 namespace tbrpg
 {
+  /**
+   * Create a party
+   * 
+   * @param   senario  The game senario
+   * @param   sheets   Solts for the character sheets of the party
+   * @return           Whether the party creation was completed
+   */
+  bool createParty(const Senario& senario, std::vector<CharacterSheet*>* sheets);
+  
+  /**
+   * Fixes character attributes and add them to the party member list
+   * 
+   * @param  senario  The game senario
+   * @param  sheets   The character sheets of the party
+   */
+  void fixCharacters(Senario& senario, std::vector<CharacterSheet*>* sheets);
+  
+  
+  
   /**
    * This the main entry point of the program
    * 
@@ -85,54 +105,84 @@ namespace tbrpg
 	return 0;
       }
     
+    cleaner::getInstance().enqueueDelete(_senario);
     Senario& senario = *_senario;
+    std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario.rules.party_start_size);
     
-    CharacterCreator characterCreator = CharacterCreator(senario.rules);
-    std::vector<CharacterSheet*> sheets = std::vector<CharacterSheet*>(senario.rules.party_start_size);
-    bool partyCreated = promptSlots<CharacterSheet>("Create your party, you need at least one character.",
-                                                    true, 1, sheets,
-						    [&] () -> CharacterSheet* { return characterCreator.create(); },
-						    [] (CharacterSheet* sheet, bool selected) -> void {
-						      if (sheet == nullptr)
-							std::cout << (selected ? "\033[01m(empty)\033[21m" : "(empty)");
-						      else
-							{
-							  std::cout << (selected ? "\033[01;3" : "\033[3") << (int)(sheet->colour) << "m";
-							  std::cout << sheet->name << "\033[21;39m";
-							}
-						    });
-    if (partyCreated == false)
+    if (createParty(senario, sheets) == false)
       {
-	delete _senario;
+	delete sheets;
         cleaner::getInstance().clean();
 	return 0;
       }
     
-    for (CharacterSheet* sheet : sheets)
-      if (sheet != nullptr)
-	{
-	  Character* character = new Character();
-	  character->record = (CharacterSheet&)*sheet;
-	  character->protagonist = true;
-	  character->hit_points = sheet->hit_points;
-	  
-	  for (long i = 0, n = sheet->prestige.size(); i < n; i++)
-	    if (sheet->prestige[i] >= PROTOTYPE(Warrior))
-	      if (sheet->level[i] >= 7)
-		character->extra_attacks++;
-	  
-	  senario.party.characters.push_back(character);
-	  //cleaner::getInstance().enqueueDelete(sheet);
-	  //cleaner::getInstance().enqueueDelete(character);
-	}
-    
+    fixCharacters(senario, sheets);
+    delete sheets;
     senario.partyFormed();
     senario.start();
     
-    delete _senario;
+    GamePlay game = GamePlay(senario);
+    while (game.next())
+      ;
+    
     cleaner::getInstance().clean();
     return 0;
   }
+  
+  
+  /**
+   * Create a party
+   * 
+   * @param   senario  The game senario
+   * @param   sheets   Solts for the character sheets of the party
+   * @return           Whether the party creation was completed
+   */
+  bool createParty(const Senario& senario, std::vector<CharacterSheet*>* sheets)
+  {
+    return promptSlots<CharacterSheet>("Create your party, you need at least one character.",
+				       true, 1, sheets,
+				       [&] () -> CharacterSheet* {
+					 CharacterCreator cc = CharacterCreator(senario.rules);
+					 return cc.create();
+				       },
+				       [] (CharacterSheet* sheet, bool selected) -> void {
+					 if (sheet == nullptr)
+					   std::cout << (selected ? "\033[01m(empty)\033[21m" : "(empty)");
+					 else
+					   {
+					     std::cout << (selected ? "\033[01;3" : "\033[3") << (int)(sheet->colour) << "m";
+					     std::cout << sheet->name << "\033[21;39m";
+					   }
+				       });
+  }
+  
+  /**
+   * Fixes character attributes and add them to the party member list
+   * 
+   * @param  senario  The game senario
+   * @param  sheets   The character sheets of the party
+   */
+  void fixCharacters(Senario& senario, std::vector<CharacterSheet*>* sheets)
+  {
+    for (CharacterSheet* sheet : *sheets)
+      if (sheet != nullptr)
+	{
+	  Character* character = new Character();
+	  character->record = *sheet;
+	  delete sheet;
+	  character->protagonist = true;
+	  character->hit_points = character->record.hit_points;
+	  
+	  for (size_t i = 0, n = character->record.prestige.size(); i < n; i++)
+	    if (character->record.prestige[i] >= PROTOTYPE(Warrior))
+	      if (character->record.level[i] >= 7)
+		character->extra_attacks++;
+	  
+	  cleaner::getInstance().enqueueDelete(character);
+	  senario.party.characters.push_back(character);
+	}
+  }
+  
 }
 
 

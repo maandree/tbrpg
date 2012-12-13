@@ -504,3 +504,19 @@ Senario: Object                           ; Game senario class
 	Party party                       ; The party
 	Map map                           ; The map
 
+GameCharacter: Object                     ; Game play wrapper for characters
+	bool turn_undead_on               ; Whether turn undead is on
+	bool find_traps_on                ; Whether find traps is on
+	bool stealth_on                   ; Whether stealth mode is on
+	bool self_interruptable           ; Whether the character can interrupt his current action
+	bool damage_interruptable         ; Whether the character is interrupted if damaged
+	char turns                        ; The number of turns until the current action is performed
+	Action action                     ; The current action
+	Character character               ; The character
+	MapMinor area                     ; The area where teh character currently is located
+
+Action: Object                            ; Player action
+	Character target                  ; The target of the action
+	Spell spell                       ; Spell being casted
+	QuickItem item                    ; Item being used
+
