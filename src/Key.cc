@@ -33,7 +33,7 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Key::Key() : Item()
+  Key::Key() : Item QuestItem()
   {
     this->class_inheritance.push_back(92);
     this->name = "key";
@@ -46,7 +46,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(const Key& original) : Item(original)
+  Key::Key(const Key& original) : Item QuestItem(original)
   {
     (void) original;
   }
@@ -56,7 +56,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key& original) : Item(original)
+  Key::Key(Key& original) : Item QuestItem(original)
   {
     (void) original;
   }
@@ -66,7 +66,7 @@ namespace tbrpg
    * 
    * @param  original  The object to clone
    */
-  Key::Key(Key&& original) : Item(original)
+  Key::Key(Key&& original) : Item QuestItem(original)
   {
     (void) original;
   }
@@ -102,6 +102,7 @@ namespace tbrpg
   Key& Key::operator =(const Key& original)
   {
     Item::__copy__((Item&)*this, (Item&)original);
+    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   
@@ -114,6 +115,7 @@ namespace tbrpg
   Key& Key::operator =(Key& original)
   {
     Item::__copy__((Item&)*this, (Item&)original);
+    QuestItem::__copy__((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   
@@ -126,6 +128,7 @@ namespace tbrpg
   Key& Key::operator =(Key&& original)
   {
     std::swap((Item&)*this, (Item&)original);
+    std::swap((QuestItem&)*this, (QuestItem&)original);
     return *this;
   }
   
@@ -139,6 +142,7 @@ namespace tbrpg
   bool Key::operator ==(const Key& other) const
   {
     if ((Item&)(*this) != (Item&)other)  return false;
+    if ((QuestItem&)(*this) != (QuestItem&)other)  return false;
     return true;
   }
   
@@ -174,6 +178,8 @@ namespace tbrpg
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Item>()(*this);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<QuestItem>()(*this);
     return rc;
   }
   

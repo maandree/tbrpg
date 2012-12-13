@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Item.hpp"
+#include "QuestItem.hpp"
 #include "hash.hpp"
 
 
@@ -43,7 +44,7 @@ namespace tbrpg
   /**
    * Key item class
    */
-  class Key: public Item
+  class Key: public Item QuestItem
   {
   public:
     /**

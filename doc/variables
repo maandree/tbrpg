@@ -384,7 +384,7 @@ FullPlateMail: BodyArmour                 ; Full plate mail item clss
 RightHandItem: Item                       ; Item that can be placed in the right hand
 Gold: Gem                                 ; Gold item class
 Gem: Item                                 ; Gem item class
-Key: Item                                 ; Key item class
+Key: Item QuestItem                       ; Key item class
 TextScroll: Item                          ; Text scroll item class
 Ring: Item                                ; Ring item class
 Amulet: Item                              ; Amulet, necklace and locket item class
