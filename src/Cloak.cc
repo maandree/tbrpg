@@ -38,7 +38,7 @@ namespace tbrpg
     this->class_inheritance.push_back(99);
     this->name = "cloak";
     this->weight = 1400;
-    this->unit_cost = 650;
+    this->unit_value = 650;
   }
   
   /**

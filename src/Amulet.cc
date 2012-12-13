@@ -38,7 +38,7 @@ namespace tbrpg
     this->class_inheritance.push_back(95);
     this->name = "amulet";
     this->weight = 20;
-    this->unit_cost = 1333;
+    this->unit_value = 1333;
   }
   
   /**
