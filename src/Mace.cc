@@ -41,6 +41,8 @@ namespace tbrpg
     this->damage_die = 6;
     this->damage_dice = 1;
     this->damage_bonus = 1;
+    this->weight = 3600;
+    this->unit_value = 1000;
   }
   
   /**

@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(64);
     this->name = "light crossbow";
     this->speed_factor = 7;
+    this->weight = 3150;
+    this->unit_value = 3500;
   }
   
   /**

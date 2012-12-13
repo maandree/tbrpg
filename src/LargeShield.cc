@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(71);
     this->name = "large sheild";
     this->bonuses.defence.missile = 2;
+    this->weight = 6800;
+    this->unit_value = 1000;
   }
   
   /**

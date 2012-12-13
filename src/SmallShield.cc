@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(69);
     this->name = "small shield";
     this->protect_missile = false;
+    this->weight = 1350;
+    this->unit_value = 250;
   }
   
   /**

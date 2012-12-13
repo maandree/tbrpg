@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(97);
     this->name = "warn out boots";
+    this->weight = 1000;
+    this->unit_value = 75;
   }
   
   /**

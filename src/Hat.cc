@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(79);
     this->name = "hat";
+    this->weight = 100;
+    this->unit_value = 130;
   }
   
   /**

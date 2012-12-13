@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(96);
     this->name = "girdle";
+    this->weight = 500;
+    this->unit_value = 75;
   }
   
   /**

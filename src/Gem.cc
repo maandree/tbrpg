@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(91);
     this->name = "gem";
+    this->weight = 25;
+    this->unit_value = 650;
   }
   
   /**

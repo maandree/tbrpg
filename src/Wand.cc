@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(78);
     this->name = "wand";
+    this->weight = 1000;
+    this->unit_value = 0;
   }
   
   /**

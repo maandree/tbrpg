@@ -40,6 +40,8 @@ namespace tbrpg
     this->armour_class = 4;
     this->armour_class_modifiers[PIERCING] = -1;
     this->armour_class_modifiers[BLUDGEONING] = -2;
+    this->weight = 18000;
+    this->unit_value = 8000;
   }
   
   /**

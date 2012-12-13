@@ -37,6 +37,8 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(80);
     this->name = "hood";
+    this->weight = 50;
+    this->unit_value = 65;
   }
   
   /**

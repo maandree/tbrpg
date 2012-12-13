@@ -42,6 +42,8 @@ namespace tbrpg
     this->damage_dice = 1;
     this->damage_type = {PIERCING};
     this->bonuses.defence.melee = 0;
+    this->weight = 450;
+    this->unit_value = 200;
   }
   
   /**

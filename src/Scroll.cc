@@ -38,6 +38,8 @@ namespace tbrpg
     this->class_inheritance.push_back(77);
     this->name = "scroll";
     this->quantity_limit = 5;
+    this->weight = 10;
+    this->unit_value = 0;
   }
   
   /**

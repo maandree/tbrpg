@@ -39,6 +39,8 @@ namespace tbrpg
     this->name = "plate mail";
     this->armour_class = 3;
     this->armour_class_modifiers[SLASHING] = -3;
+    this->weight = 22600;
+    this->unit_value = 26800;
   }
   
   /**

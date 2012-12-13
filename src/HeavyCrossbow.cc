@@ -39,6 +39,8 @@ namespace tbrpg
     this->name = "heavy crossbow";
     this->speed_factor = 10;
     this->damage_bonus = 2;
+    this->weight = 6300;
+    this->unit_value = 5000;
   }
   
   /**
