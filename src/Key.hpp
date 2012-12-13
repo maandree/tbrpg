@@ -44,7 +44,7 @@ namespace tbrpg
   /**
    * Key item class
    */
-  class Key: public Item QuestItem
+  class Key: public Item, public QuestItem
   {
   public:
     /**
