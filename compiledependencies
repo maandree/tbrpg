@@ -131,3 +131,4 @@ BasicSenario Helmet
 BasicSenario Key
 GamePlay Senario
 GamePlay GameCharacter
+GameCharacter prompter

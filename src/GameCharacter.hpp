@@ -31,6 +31,7 @@
 #include "Action.hpp"
 #include "Character.hpp"
 #include "MapMinor.hpp"
+#include "prompter.hpp"
 
 
 /**
@@ -188,6 +189,17 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const GameCharacter& other) const;
+    
+    
+    /**
+     * Select weapon to use
+     */
+    virtual void selectWeapon();
+    
+    /**
+     * Select quiver to use
+     */
+    virtual void selectQuiver();
     
     
   protected:

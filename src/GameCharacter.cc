@@ -234,6 +234,43 @@ namespace tbrpg
     return (*this == other) == false;
   }
   
+  
+  /**
+   * Select weapon to use
+   */
+  void GameCharacter::selectWeapon()
+  {
+    std::vector<std::string> items = {};
+    for (Weapon* item : this->character->inventory.left_hand)
+      if (item == nullptr)
+	if (this->character->inventory.right_hand == nullptr)
+	  items.push_back("(fists)");
+	else
+	  items.push_back("(fist)");
+      else
+	items.push_back(item->name);
+    int selected = promptMenu("Select weapon:");
+    if (selected >= 0)
+      this->weapon = selected;
+  }
+  
+  /**
+   * Select quiver to use
+   */
+  void GameCharacter::selectQuiver()
+  {
+    std::vector<std::string> items = {};
+    for (Ammunition* item : this->character->inventory.quiver)
+      if (item == nullptr)
+	items.push_back("(empty)");
+      else
+	items.push_back(item->name);
+    int selected = promptMenu("Select quiver:");
+    if (selected >= 0)
+      this->weapon = selected;
+  }
+  
+  
   /**
    * Copy method
    * 
