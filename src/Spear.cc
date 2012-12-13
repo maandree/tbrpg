@@ -43,7 +43,7 @@ namespace tbrpg
     this->damage_dice = 1;
     this->damage_type = {PIERCING};
     this->weight = 2300;
-    this->spear = 70;
+    this->unit_value = 70;
   }
   
   /**

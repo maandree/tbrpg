@@ -43,7 +43,7 @@ namespace tbrpg
     this->damage_dice = 1;
     this->damage_type = {BLUDGEONING};
     this->weight = 1800;
-    this->unit_cost = 65;
+    this->unit_value = 65;
   }
   
   /**
