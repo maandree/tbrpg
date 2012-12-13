@@ -102,36 +102,57 @@ namespace tbrpg
     
     // TODO special abilities
     // TODO quick spells
+    // TODO travel
     
     #undef __add
     
     GameCharacter* player = this->players[this->next_player];
     
-    for (;;)
-      {
-        std::stringstream ss;
-	ss << "\033[01;3" << (char)('0' + player->character->record.colour) << 'm'
-	   << player->character->record.name
-	   << "\033[21;39m:: ";
-	
-	int index = promptIndex(ss.str(), actions);
-	if (index >= 0)
-	  {
-	    if (functions[index] != &GamePlay::action_redo)
-	      this->last_function = functions[index];
-	    char r = (this->*functions[index])();
-	    std::flush(std::cout);
-	    if (r == 2)
-	      continue;
-	    if (r == 0)
-	      return false;
-	  }
-	else
-	  std::flush(std::cout << "Type . to wait one turn" << std::endl);
-      }
+    if (player->turns == 0)
+      for (;;)
+	{
+	  std::stringstream ss;
+	  ss << "\033[01;3" << (char)('0' + player->character->record.colour) << 'm'
+	     << player->character->record.name
+	     << "\033[21;39m:: ";
+	  
+	  int index = promptIndex(ss.str(), actions);
+	  if (index >= 0)
+	    {
+	      if (functions[index] != &GamePlay::action_redo)
+		this->last_function = functions[index];
+	      char r = (this->*functions[index])();
+	      std::flush(std::cout);
+	      if (r == 2)
+		continue;
+	      if (r == 0)
+		return false;
+	    }
+	  else
+	    std::flush(std::cout << "Type . to wait one turn" << std::endl);
+	}
     
+    if ((player->turns))
+      player->turns--;
     this->next_player++;
     this->next_player %= this->players.size();
+    return true;
+  }
+  
+  
+  /**
+   * Gets whether the party is gathered
+   * 
+   * @return  Whether the party is gathered
+   */
+  bool GamePlay::gathered() const
+  {
+    MapMinor* area = this->players[0]->area;
+    
+    for (size_t i = 1, n = this->players.size(); i < n; i++)
+      if (this->players[i]->area != area)
+	return false;
+    
     return true;
   }
   
@@ -174,22 +195,19 @@ namespace tbrpg
   char GamePlay::action_rest()
   {
     if (this->players[this->next_player]->stealth_on)
+      std::cout << "You will have to turn off Stealth Mode." << std::endl;
+    else if (this->players[this->next_player]->find_traps_on)
+      std::cout << "You will have to turn off Find Traps." << std::endl;
+    else if (this->players[this->next_player]->turn_undead_on)
+      std::cout << "You will have to turn off Turn Undead." << std::endl;
+    else if (gathered() == false)
+      std::cout << "You must gather you party before resting." << std::endl;
+    else if (this->players[0]->area->may_rest == false)
+      std::cout << "May not rest here, either find an inn or rest outside." << std::endl;
+    else
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
-	return 2;
+	std::cout << "Not implement..." << std::endl; // TODO
       }
-    if (this->players[this->next_player]->find_traps_on)
-      {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
-	return 2;
-      }
-    if (this->players[this->next_player]->turn_undead_on)
-      {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
-	return 2;
-      }
-    
-    std::cout << "Not implement..." << std::endl;
     return 2;
   }
   
@@ -200,7 +218,7 @@ namespace tbrpg
    */
   char GamePlay::action_quiver()
   {
-    std::cout << "Not implement..." << std::endl;
+    this->players[0]->selectQuiver();
     return 2;
   }
   
@@ -211,7 +229,7 @@ namespace tbrpg
    */
   char GamePlay::action_weapon()
   {
-    std::cout << "Not implement..." << std::endl;
+    this->players[0]->selectWeapon();
     return 2;
   }
   
@@ -224,12 +242,12 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
@@ -245,7 +263,7 @@ namespace tbrpg
           return 1;
 	}
     */
-    std::cout << "There is no hostile nearby." << std::endl;
+    std::cout << "There is no hostile nearby." << std::endl; // TODO
     return 2;
   }
   
@@ -258,21 +276,21 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -285,21 +303,21 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -310,7 +328,7 @@ namespace tbrpg
    */
   char GamePlay::action_specials()
   {
-    std::cout << "You have no special abilties." << std::endl;
+    std::cout << "You have no special abilties." << std::endl; // TODO
     return 2;
   }
   
@@ -323,21 +341,21 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -350,21 +368,21 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -377,21 +395,21 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -402,7 +420,23 @@ namespace tbrpg
    */
   char GamePlay::action_pick_pocket()
   {
-    std::cout << "Not implement..." << std::endl;
+    if (this->players[this->next_player]->stealth_on)
+      {
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->find_traps_on)
+      {
+	std::cout << "You will have to turn off Find Traps." << std::endl;
+	return 2;
+      }
+    if (this->players[this->next_player]->turn_undead_on)
+      {
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
+	return 2;
+      }
+    
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -415,19 +449,19 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
     if (this->players[this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth activated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl;
+      std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -440,19 +474,19 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
     if (this->players[this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl;
+      std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -465,12 +499,12 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
@@ -479,7 +513,7 @@ namespace tbrpg
 	std::cout << "You already have Find Traps activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 1;
   }
   
@@ -492,19 +526,19 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
     if (this->players[this->next_player]->find_traps_on == false)
       std::cout << "You already have Find Traps deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl;
+      std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -517,12 +551,12 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     
@@ -531,7 +565,7 @@ namespace tbrpg
 	std::cout << "You already have Turn Undead activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 1;
   }
   
@@ -544,19 +578,19 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     
     if (this->players[this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl;
+      std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -569,22 +603,24 @@ namespace tbrpg
   {
     if (this->players[this->next_player]->stealth_on)
       {
-	std::cout << "You will have to turn of Stealth Mode." << std::endl;
+	std::cout << "You will have to turn off Stealth Mode." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->find_traps_on)
       {
-	std::cout << "You will have to turn of Find Traps." << std::endl;
+	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
     if (this->players[this->next_player]->turn_undead_on)
       {
-	std::cout << "You will have to turn of Turn Undead." << std::endl;
+	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl;
-    return 2;
+    std::cout << "Not implement..." << std::endl; // TODO
+    
+    this->players[this->next_player]->turns += 10;
+    return 1;
   }
   
   /**
@@ -594,7 +630,7 @@ namespace tbrpg
    */
   char GamePlay::action_party()
   {
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -605,7 +641,7 @@ namespace tbrpg
    */
   char GamePlay::action_map()
   {
-    std::cout << "Not implement..." << std::endl;
+    std::cout << "Not implement..." << std::endl; // TODO
     return 2;
   }
   
@@ -641,7 +677,7 @@ namespace tbrpg
     
     std::flush(std::cout);
     */
-    return 2;
+    return 2; // TODO
   }
   
 }

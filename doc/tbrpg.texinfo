@@ -3229,6 +3229,7 @@ uniform stocastic distribution: D10 and D24.
 
 @menu
 * Protagonists::               Protagonists.
+* Gather the party::           Gather the party.
 @end menu
 
 
@@ -3248,6 +3249,18 @@ are resurrectable. Otherwise, the game is lost when all
 characters in the party are dead.
 
 Protagonists cannot be removed from the party.
+
+
+@node Gather the party
+@section Gather the party
+@cindex gather party
+@cindex party, gather
+@cindex travelling
+@cindex resting
+
+Your party can split up, there are however two occations
+when to party needs to be gathered: when resting and
+travelling long distances.
 
 
 

@@ -93,6 +93,14 @@ namespace tbrpg
     
   protected:
     /**
+     * Gets whether the party is gathered
+     * 
+     * @return  Whether the party is gathered
+     */
+    bool gathered() const;
+    
+    
+    /**
      * Action: quit
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one more time
