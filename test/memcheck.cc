@@ -43,7 +43,6 @@
 #include "../src/Buckler.hpp"
 #include "../src/Bullet.hpp"
 #include "../src/ChainMail.hpp"
-#include "../src/CharacterCreator.hpp"
 #include "../src/Character.hpp"
 #include "../src/CharacterSheet.hpp"
 #include "../src/Class.hpp"
@@ -267,7 +266,6 @@ namespace tbrpg
     {auto x = new WizardScroll(); delete x;}
     {auto x = new ActionSlotChart(); delete x;}
     {auto x = new Body(); delete x;}
-    {auto x = new CharacterCreator(RuleSet()); delete x;}
     {auto x = new Character(); delete x;}
     {auto x = new CharacterSheet(); delete x;}
     {auto x = new Creature(); delete x;}
@@ -371,7 +369,6 @@ namespace tbrpg
     {auto x = Buckler(), y = Buckler(); x = y;}
     {auto x = Bullet(), y = Bullet(); x = y;}
     {auto x = ChainMail(), y = ChainMail(); x = y;}
-    {auto x = CharacterCreator(RuleSet()), y = CharacterCreator(RuleSet()); x = y;}
     {auto x = Character(), y = Character(); x = y;}
     {auto x = CharacterSheet(), y = CharacterSheet(); x = y;}
     {auto x = Class(), y = Class(); x = y;}
