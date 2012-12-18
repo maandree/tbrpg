@@ -223,8 +223,8 @@ namespace tbrpg
 	{
           if (this->players[0]->area->may_rest == false)
 	    {
-	      std::cout << "May not rest here, either find an inn or rest outside." << std::endl;
-	      std::cerr << "\033[02msenario error: may_rest flag is of, but rest was allowed.\033[22m" << std::endl;
+              std::flush(std::cout << "May not rest here, either find an inn or rest outside." << std::endl);
+	      std::flush(std::cerr << "\033[02msenario error: may_rest flag is of, but rest was allowed.\033[22m" << std::endl);
 	      return 2;
 	    }
 	  std::cout << "Your party have slept for 8 hours (48 rounds)." << std::endl;
