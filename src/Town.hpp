@@ -28,6 +28,7 @@
 
 #include "MapMinor.hpp"
 #include "hash.hpp"
+#include "prompter.hpp"
 
 
 /**
@@ -128,6 +129,13 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const Town& other) const;
+    
+    /**
+     * Resting function
+     * 
+     * @return  Whether the party successfully slept
+     */
+    virtual bool rest() const;
     
     
   protected:

@@ -1560,6 +1560,7 @@ namespace tbrpg
 	      case ' ':
 	      case 'd':
 	      case 'D':
+	      case 'C':
 	      case '\n':
 		reading = readinginner = false;
 		break;

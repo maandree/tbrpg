@@ -182,6 +182,13 @@ namespace tbrpg
      */
     virtual bool operator !=(const MapMinor& other) const;
     
+    /**
+     * Resting function
+     * 
+     * @return  Whether the party successfully slept
+     */
+    virtual bool rest() const;
+    
     
   protected:
     /**

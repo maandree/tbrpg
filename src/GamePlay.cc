@@ -135,7 +135,16 @@ namespace tbrpg
     if ((player->turns))
       player->turns--;
     this->next_player++;
-    this->next_player %= this->players.size();
+    if (this->next_player == this->players.size())
+      {
+	this->next_player = 0;
+	for (GameCharacter* p = this->players)
+	  if ((p->character->fatigue += 1) >= 24 * 60);
+	    std::flush(std::cout << "033[01;3" << p->character->record.colour << "m"
+				 << p->character->record.name
+				 << "\033[21;39m is tired."
+				 << std::endl);
+      }
     return true;
   }
   
@@ -194,20 +203,39 @@ namespace tbrpg
    */
   char GamePlay::action_rest()
   {
-    if (this->players[this->next_player]->stealth_on)
+    int monstercount = 0;
+    for (Creature& creature : this->position->creatures)
+      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
+	monstercount++;
+    
+    if (monstercount > 0)
+      std::cout << "You may not rest while in combat." << std::endl;
+    else if (gathered() == false)
+      std::cout << "You must gather you party before resting." << std::endl;
+    else if (this->players[this->next_player]->stealth_on)
       std::cout << "You will have to turn off Stealth Mode." << std::endl;
     else if (this->players[this->next_player]->find_traps_on)
       std::cout << "You will have to turn off Find Traps." << std::endl;
     else if (this->players[this->next_player]->turn_undead_on)
       std::cout << "You will have to turn off Turn Undead." << std::endl;
-    else if (gathered() == false)
-      std::cout << "You must gather you party before resting." << std::endl;
-    else if (this->players[0]->area->may_rest == false)
-      std::cout << "May not rest here, either find an inn or rest outside." << std::endl;
     else
-      {
-	std::cout << "Not implement..." << std::endl; // TODO
-      }
+      if (this->players[0]->area->rest())
+	{
+          if (this->players[0]->area->may_rest == false)
+	    {
+	      std::cout << "May not rest here, either find an inn or rest outside." << std::endl;
+	      std::cerr << "\033[02msenario error: may_rest flag is of, but rest was allowed.\033[22m" << std::endl;
+	      return 2;
+	    }
+	  std::cout << "Your party have slept for 8 hours (48 rounds)." << std::endl;
+	  for (GameCharacter* player : this->players)
+	    {
+	      player->character->hit_points += (480 / rest_healing_turns) * rest_healing;
+	      if (player->character->hit_points > player->character->record.hit_points)
+		player->character->hit_points = player->character->record.hit_points;
+	      player->character->fatigue = 0;
+	    }
+	}
     return 2;
   }
   

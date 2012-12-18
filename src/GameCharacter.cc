@@ -240,6 +240,11 @@ namespace tbrpg
    */
   void GameCharacter::selectWeapon()
   {
+    if (this->character->inventory.left_hand[this->weapon].cursed)
+      {
+	std::cout << "You current weapon is cursed, you cannot change it." << std::endl;
+	return;
+      }
     std::vector<std::string> items = {};
     for (Weapon* item : this->character->inventory.left_hand)
       if (item == nullptr)
@@ -247,9 +252,15 @@ namespace tbrpg
 	  items.push_back("(fists)");
 	else
 	  items.push_back("(fist)");
+      else if (item->quantity_limit > 1)
+	{
+	  std::stringstream ss;
+	  ss << item->name << " [" << item->quantity << "]";
+	  items.push_back(ss.str());
+	}
       else
 	items.push_back(item->name);
-    int selected = promptMenu("Select weapon:");
+    int selected = promptMenu("Select weapon:", items);
     if (selected >= 0)
       this->weapon = selected;
   }
@@ -259,15 +270,26 @@ namespace tbrpg
    */
   void GameCharacter::selectQuiver()
   {
+    if (this->character->inventory.quiver[this->quiver].cursed)
+      {
+	std::cout << "You current quiver is cursed, you cannot change it." << std::endl;
+	return;
+      }
     std::vector<std::string> items = {};
     for (Ammunition* item : this->character->inventory.quiver)
       if (item == nullptr)
 	items.push_back("(empty)");
+      else if (item->quantity_limit > 1)
+	{
+	  std::stringstream ss;
+	  ss << item->name << " [" << item->quantity << "]";
+	  items.push_back(ss.str());
+	}
       else
 	items.push_back(item->name);
-    int selected = promptMenu("Select quiver:");
+    int selected = promptMenu("Select quiver:", items);
     if (selected >= 0)
-      this->weapon = selected;
+      this->quiver = selected;
   }
   
   

@@ -150,6 +150,49 @@ namespace tbrpg
     return (*this == other) == false;
   }
   
+  
+  /**
+   * Resting function
+   * 
+   * @return  Whether the party successfully slept
+   */
+  bool MapMinor::rest() const
+  {
+    if (this->may_rest == false)
+      {
+	std::cout << "May not rest here, either find an inn or rest outside." << std::endl;
+	return false;
+      }
+    
+    if (this->interruptions.size() > 0)
+      {
+	for (RestInterruption& interruption : this->interruptions)
+	  if (Dice(interrupt_dice, interrupt_die).roll() <= interrupt_risk)
+	    {
+	      int monsters = 0;
+	      for (Creature& creature : interruption.creatures)
+		{
+		  this->creatures.push_back(Creature(creature));
+		  monsters++;
+		}
+	      
+	      if (monsters == 0)
+		std::cout << "You woke up by a terrifing vivid nightmare." << std::endl;
+	      else
+		std::cout << "You woke up monsters." << std::endl;
+	      return false;
+	    }
+      }
+    else
+      promptDialogue(1, "Guard",
+		 "You may not rest in public, either rent a"     "\n"
+		 "room in an inn or rest outside the town."
+		  {});
+    
+    return true;
+  }
+  
+  
   /**
    * Copy method
    * 

@@ -255,7 +255,7 @@ namespace tbrpg
    * @param   alternatives  Alternatives
    * @return                The index of the select alternative, −1 if aborted
    */
-  long promptIndex(const std::string& instruction, const std::vector<std::string>& alternatives);
+  long promptMenu(const std::string& instruction, const std::vector<std::string>& alternatives);
   
   /**
    * Print a list in columns

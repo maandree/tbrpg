@@ -3278,6 +3278,7 @@ travelling long distances.
 * Dialogues::                  Dialogue.
 * Starting the game::          Starting the game.
 * Creating your party::        Creating your party.
+* Item and spell selection::   Item and spell selection.
 @end menu
 
 
@@ -3489,6 +3490,28 @@ To remove a character press @kbd{r}, @kbd{C-g} to abort, and
 
 If the form have been obstructed by printk or something
 similar, you can press @kbd{C-l} to redraw the form.
+
+
+
+@node Item and spell selection
+@section Item and spell selection
+@cindex input, selection
+@cindex input, item
+@cindex input, spell
+@cindex selection, item
+@cindex selection, spell
+@cindex item, selection
+@cindex spell, selection
+
+During game play you can select items, such as weapons and
+spells to use. When this is done in a simple menu, which
+is navigated with the @kbd{up} and @kbd{down} arrow keys,
+and is exited with @kbd{C-d}, @kbd{spacebar}, @kbd{enter},
+@kbd{d} or the another arrow key. The action can be aborted
+with @kbd{C-g}.
+
+If the menu have been obstructed by printk or something
+similar, you can press @kbd{C-l} to redraw the menu.
 
 
 
