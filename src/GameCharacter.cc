@@ -240,15 +240,15 @@ namespace tbrpg
    */
   void GameCharacter::selectWeapon()
   {
-    if (this->character->inventory.left_hand[this->weapon].cursed)
+    if (this->character->record.inventory.left_hand[this->weapon]->cursed)
       {
 	std::cout << "You current weapon is cursed, you cannot change it." << std::endl;
 	return;
       }
     std::vector<std::string> items = {};
-    for (Weapon* item : this->character->inventory.left_hand)
+    for (Weapon* item : this->character->record.inventory.left_hand)
       if (item == nullptr)
-	if (this->character->inventory.right_hand == nullptr)
+	if (this->character->record.inventory.right_hand == nullptr)
 	  items.push_back("(fists)");
 	else
 	  items.push_back("(fist)");
@@ -270,13 +270,13 @@ namespace tbrpg
    */
   void GameCharacter::selectQuiver()
   {
-    if (this->character->inventory.quiver[this->quiver].cursed)
+    if (this->character->record.inventory.quiver[this->quiver]->cursed)
       {
 	std::cout << "You current quiver is cursed, you cannot change it." << std::endl;
 	return;
       }
     std::vector<std::string> items = {};
-    for (Ammunition* item : this->character->inventory.quiver)
+    for (Ammunition* item : this->character->record.inventory.quiver)
       if (item == nullptr)
 	items.push_back("(empty)");
       else if (item->quantity_limit > 1)

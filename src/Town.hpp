@@ -135,7 +135,7 @@ namespace tbrpg
      * 
      * @return  Whether the party successfully slept
      */
-    virtual bool rest() const;
+    virtual bool rest();
     
     
   protected:

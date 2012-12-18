@@ -135,11 +135,11 @@ namespace tbrpg
     if ((player->turns))
       player->turns--;
     this->next_player++;
-    if (this->next_player == this->players.size())
+    if (this->next_player == (long)(this->players.size()))
       {
 	this->next_player = 0;
-	for (GameCharacter* p = this->players)
-	  if ((p->character->fatigue += 1) >= 24 * 60);
+	for (GameCharacter* p : this->players)
+	  if ((p->character->fatigue += 1) >= 24 * 60)
 	    std::flush(std::cout << "033[01;3" << p->character->record.colour << "m"
 				 << p->character->record.name
 				 << "\033[21;39m is tired."
@@ -204,7 +204,7 @@ namespace tbrpg
   char GamePlay::action_rest()
   {
     int monstercount = 0;
-    for (Creature& creature : this->position->creatures)
+    for (Creature& creature : this->players[this->next_player]->area->creatures)
       if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
 	monstercount++;
     
@@ -230,7 +230,8 @@ namespace tbrpg
 	  std::cout << "Your party have slept for 8 hours (48 rounds)." << std::endl;
 	  for (GameCharacter* player : this->players)
 	    {
-	      player->character->hit_points += (480 / rest_healing_turns) * rest_healing;
+	      player->character->hit_points += (480 / this->game.rules.rest_healing_turns)
+		                                    * this->game.rules.rest_healing;
 	      if (player->character->hit_points > player->character->record.hit_points)
 		player->character->hit_points = player->character->record.hit_points;
 	      player->character->fatigue = 0;

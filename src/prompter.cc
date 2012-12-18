@@ -1532,7 +1532,7 @@ namespace tbrpg
       {
 	std::flush(std::cout << CSI "H" CSI "2J" << instruction << std::endl << std::endl);
 	int index = 0;
-	for (std::string& alt : alternatives)
+	for (const std::string& alt : alternatives)
 	  if (index++ == selected)
 	    std::cout << CSI "01;34m" << alt << CSI "21;39m" << std::endl;
 	  else
@@ -1567,11 +1567,11 @@ namespace tbrpg
 		
 	      case 'A':
 	      case 'B':
-		if (selected == (c == 'A' ? 0 : (alternatives.size() - 1)))
+		if (selected == (c == 'A' ? 0 : (long)(alternatives.size() - 1)))
 		  break;
-		std::cout << CSI << (selected + 1) << ";1H" << alt;
+		std::cout << CSI << (selected + 1) << ";1H" << alternatives[selected];
 		selected += (c == 'A' ? -1 : 1);
-		std::flush(std::cout << CSI << (selected + 1) << ";1H" CSI "01;34m" << alt << CSI "21;39m");
+		std::flush(std::cout << CSI << (selected + 1) << ";1H" CSI "01;34m" << alternatives[selected] << CSI "21;39m");
 		break;
 	      }
 	  }

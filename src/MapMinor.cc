@@ -225,7 +225,7 @@ namespace tbrpg
    * 
    * @return  Whether the party successfully slept
    */
-  bool MapMinor::rest() const
+  bool MapMinor::rest()
   {
     if (this->may_rest == false)
       {
@@ -234,7 +234,7 @@ namespace tbrpg
       }
     
     for (RestInterruption& interruption : this->interruptions)
-      if (Dice(interrupt_dice, interrupt_die).roll() <= interrupt_risk)
+      if (Dice(interruption.interrupt_dice, interruption.interrupt_die).roll() <= interruption.interrupt_risk)
 	{
 	  int monsters = 0;
 	  for (Creature& creature : interruption.creatures)

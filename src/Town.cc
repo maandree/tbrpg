@@ -156,7 +156,7 @@ namespace tbrpg
    * 
    * @return  Whether the party successfully slept
    */
-  bool MapMinor::rest() const
+  bool Town::rest()
   {
     if (this->may_rest == false)
       {
@@ -167,7 +167,7 @@ namespace tbrpg
     if (this->interruptions.size() > 0)
       {
 	for (RestInterruption& interruption : this->interruptions)
-	  if (Dice(interrupt_dice, interrupt_die).roll() <= interrupt_risk)
+	  if (Dice(interruption.interrupt_dice, interruption.interrupt_die).roll() <= interruption.interrupt_risk)
 	    {
 	      int monsters = 0;
 	      for (Creature& creature : interruption.creatures)
@@ -186,8 +186,8 @@ namespace tbrpg
     else
       promptDialogue(1, "Guard",
 		 "You may not rest in public, either rent a"     "\n"
-		 "room in an inn or rest outside the town."
-		  {});
+		 "room in an inn or rest outside the town.",
+		 {});
     
     return true;
   }

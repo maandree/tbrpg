@@ -132,3 +132,5 @@ BasicSenario Key
 GamePlay Senario
 GamePlay GameCharacter
 GameCharacter prompter
+MapMinor Dice
+MapMinor prompter
