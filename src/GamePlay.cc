@@ -49,6 +49,9 @@ namespace tbrpg
 	gamechar->character = player;
 	gamechar->area = &(senario.map.start);
       }
+    
+    this->attack_dice = Dice(senario.rules.attack_roll_dice,
+			     senario.rules.attack_roll_die);
   }
   
   /**
@@ -269,12 +272,14 @@ namespace tbrpg
    */
   char GamePlay::action_attack()
   {
-    if (this->players[this->next_player]->find_traps_on)
+    GameCharacter* player = this->players[this->next_player];
+    
+    if (player->find_traps_on)
       {
 	std::cout << "You will have to turn off Find Traps." << std::endl;
 	return 2;
       }
-    if (this->players[this->next_player]->turn_undead_on)
+    if (player->turn_undead_on)
       {
 	std::cout << "You will have to turn off Turn Undead." << std::endl;
 	return 2;
@@ -282,7 +287,7 @@ namespace tbrpg
     
     std::vector<Creature> attackable = std::vector<Creature>();
     
-    for (Creature& creature : this->players[this->next_player]->area->creatures)
+    for (Creature& creature : player->area->creatures)
       if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
 	attackable.push_back(creature);
     
@@ -298,7 +303,7 @@ namespace tbrpg
       {
 	std::vector<std::string> targets = std::vector<std::string>();
 	for (Creature& creature : attackable)
-	  targets.push_back(creature.character.record.name);
+	  targets.push_back(creature.record.name);
 	
 	target = promptMenu("Select target:", targets);
       }
@@ -306,7 +311,38 @@ namespace tbrpg
     if (target < 0)
       return 2;
     
-    // TODO
+    // TODO right hand weapon support
+    
+    Weapon* weapon = player.character->inventory.left_hand[player.weapon];
+    player->turns += weapon->speed_factor;
+    
+    int roll = this->attack_dice.roll();
+    std::cout << "Attack roll: " << roll << std::endl;
+    
+    if (roll <= this->game.rules.critical_miss)
+      {
+	std::cout << "Critical miss." << std::endl;
+	player->turns += 10;
+	player->stealth_on = false;
+	return 1;
+      }
+    
+    int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
+    if (multiplier == 2)
+      std::cout << "Critical hit." << std::endl;
+    if (player->stealth_on))
+    {
+      player->stealth_on = false;
+      multiplier *= 1; // TODO backstab multipler
+    }
+    
+    if (player->racial_enemy != nullptr)
+      {
+	if (attackable[target].character->record.race >= *(player->character.racial_enemy))
+	  roll += 4;
+	else
+	  roll -= 4;
+      }
     
     return 1;
   }

@@ -30,6 +30,7 @@
 #include "Senario.hpp"
 #include "prompter.hpp"
 #include "GameCharacter.hpp"
+#include "Calculator.hpp"
 
 
 /**
@@ -67,6 +68,11 @@ namespace tbrpg
      * The used last function
      */
     char (GamePlay::*last_function)();
+    
+    /**
+     * The attack dice
+     */
+    char attack_dice;
     
     
   public:

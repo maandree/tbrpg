@@ -726,6 +726,10 @@ namespace tbrpg
     self.upper[3] = self.sheet->race.bonuses.abilities.intelligence;
     self.upper[4] = self.sheet->race.bonuses.abilities.wisdom;
     self.upper[5] = self.sheet->race.bonuses.abilities.charisma;
+    if (self.sheet->female)
+      self.lower[0]--;
+    else
+      self.lower[2]--;
     for (int i = 0; i < 6; i++)
       {
 	self.start[i] = self.abilityDice.roll();
@@ -733,6 +737,12 @@ namespace tbrpg
 	  self.start[i] = self.lower[i];
 	self.lower[i] += self.upper[i];
 	self.upper[i] += 18;
+	if (self.sheet->female)
+	  self.upper[0]--;
+	else
+	  self.upper[2]--;
+	if (self.start[i] > self.upper[i])
+	  self.start[i] = self.upper[i];
       }
   }
   

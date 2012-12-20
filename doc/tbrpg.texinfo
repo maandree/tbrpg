@@ -166,9 +166,9 @@ constituion, but a penalty point to their charisma and
 dexterity.
 @item  Halfling
 Halflings have high (75 %) resistance to poison and magic,
-and have −4 2 bonus point THAC0 when using slings. They
-have a receive a bonus point to their dexterity, but a
-penalty point to their strength.
+and have −4 bonus point THAC0 when using slings. They have a
+receive a bonus point to their dexterity, but a penalty
+point to their strength.
 @item  Gnome
 Gnomes have infravision and full resistance to magic, both
 protective and distructive magic, but only wizard spells.
@@ -388,7 +388,7 @@ special abilities.
 
 @itemize @bullet
 @item  Find traps (5)
-(and move disarm them)
+(and disarm them)
 @item  Open locks (10)
 @item  Pick pockets (15)
 @item  Stealth (10)
@@ -3504,7 +3504,6 @@ To remove a character press @kbd{r}, @kbd{C-g} to abort, and
 
 If the form have been obstructed by printk or something
 similar, you can press @kbd{C-l} to redraw the form.
-
 
 
 @node Item and spell selection

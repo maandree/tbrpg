@@ -131,6 +131,8 @@ BasicSenario Helmet
 BasicSenario Key
 GamePlay Senario
 GamePlay GameCharacter
+GamePlay Calculator
 GameCharacter prompter
 MapMinor Dice
 MapMinor prompter
+Calculator Character
