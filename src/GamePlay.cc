@@ -168,7 +168,7 @@ namespace tbrpg
   
   /**
    * Action: quit
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_quit()
@@ -178,7 +178,7 @@ namespace tbrpg
   
   /**
    * Action: wait one turn
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_wait()
@@ -188,7 +188,7 @@ namespace tbrpg
   
   /**
    * Action: redo last action by any party member
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_redo()
@@ -198,7 +198,7 @@ namespace tbrpg
   
   /**
    * Action: rest
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_rest()
@@ -242,7 +242,7 @@ namespace tbrpg
   
   /**
    * Action: select ammunition to use from the quiver
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_quiver()
@@ -253,7 +253,7 @@ namespace tbrpg
   
   /**
    * Action: select weapon to use from the quick weapons
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_weapon()
@@ -264,7 +264,7 @@ namespace tbrpg
   
   /**
    * Action: attack
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_attack()
@@ -280,7 +280,6 @@ namespace tbrpg
 	return 2;
       }
     
-    /*
     for (Creature& creature : this->position->creatures)
       if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
 	{
@@ -291,14 +290,14 @@ namespace tbrpg
 	  std::flush(std::cout << "You have killed \033[3" << creature.record.colour << "m" << creature.record.name << "\033[39m." << std::endl);
           return 1;
 	}
-    */
+    
     std::cout << "There is no hostile nearby." << std::endl; // TODO
     return 2;
   }
   
   /**
    * Action: cast non-quick spell
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_cast()
@@ -325,7 +324,7 @@ namespace tbrpg
   
   /**
    * Action: talk
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_talk()
@@ -352,7 +351,7 @@ namespace tbrpg
   
   /**
    * Action: list special usable abilities
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_specials()
@@ -363,7 +362,7 @@ namespace tbrpg
   
   /**
    * Action: bash a lock
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_bash()
@@ -390,7 +389,7 @@ namespace tbrpg
   
   /**
    * Action: pick a lock
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_pick_lock()
@@ -417,7 +416,7 @@ namespace tbrpg
   
   /**
    * Action: disarm a trap
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_disarm()
@@ -444,7 +443,7 @@ namespace tbrpg
   
   /**
    * Action: pick pocket
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_pick_pocket()
@@ -471,7 +470,7 @@ namespace tbrpg
   
   /**
    * Action: turn on stealth mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_stealth()
@@ -496,7 +495,7 @@ namespace tbrpg
   
   /**
    * Action: turn off stealth mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_stealth_off()
@@ -521,7 +520,7 @@ namespace tbrpg
   
   /**
    * Action: turn on find traps mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_find_traps()
@@ -548,7 +547,7 @@ namespace tbrpg
   
   /**
    * Action: turn off find traps mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_find_traps_off()
@@ -573,7 +572,7 @@ namespace tbrpg
   
   /**
    * Action: turn on turn undead mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_turn_undead()
@@ -600,7 +599,7 @@ namespace tbrpg
   
   /**
    * Action: turn off turn undead mode
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_turn_undead_off()
@@ -625,7 +624,7 @@ namespace tbrpg
   
   /**
    * Action: examine inventory
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_inventory()
@@ -654,7 +653,7 @@ namespace tbrpg
   
   /**
    * Action: examine party
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_party()
@@ -665,7 +664,7 @@ namespace tbrpg
   
   /**
    * Action: examine world map
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_map()
@@ -676,7 +675,7 @@ namespace tbrpg
   
   /**
    * Action: examine area
-   *
+   * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
   char GamePlay::action_area()

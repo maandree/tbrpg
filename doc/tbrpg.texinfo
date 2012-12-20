@@ -3230,6 +3230,7 @@ uniform stocastic distribution: D10 and D24.
 @menu
 * Protagonists::               Protagonists.
 * Gather the party::           Gather the party.
+* Beyond resurrection::        Beyond resurrection,
 @end menu
 
 
@@ -3261,6 +3262,19 @@ Protagonists cannot be removed from the party.
 Your party can split up, there are however two occations
 when to party needs to be gathered: when resting and
 travelling long distances.
+
+
+@node Beyond resurrection
+@section Beyond resurrection
+@cindex beyond resurrection
+@cindex resurrection, beyond
+@cindex critical death
+@cindex death, critical
+
+A character or creature dies when the hit points reaches
+zero. If the hit point goes 10 points below zero, he is
+beyond resurrection and will never re-enter the game. This
+is known as a critical death.
 
 
 
