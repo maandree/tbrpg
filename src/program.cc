@@ -176,7 +176,7 @@ namespace tbrpg
 	  for (size_t i = 0, n = character->record.prestige.size(); i < n; i++)
 	    if (character->record.prestige[i] >= PROTOTYPE(Warrior))
 	      if (character->record.level[i] >= 7)
-		character->extra_attacks++;
+		character->extra_attacks += 2;
 	  
 	  cleaner::getInstance().enqueueDelete(character);
 	  senario.party.characters.push_back(character);
