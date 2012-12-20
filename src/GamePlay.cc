@@ -280,19 +280,35 @@ namespace tbrpg
 	return 2;
       }
     
-    for (Creature& creature : this->position->creatures)
-      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
-	{
-          for (Item* item : creature.record.inventory.personal)
-	    if (item != nullptr)
-	      this->position->items.push_back((Item&)*item);
-	  creature.alive = false;
-	  std::flush(std::cout << "You have killed \033[3" << creature.record.colour << "m" << creature.record.name << "\033[39m." << std::endl);
-          return 1;
-	}
+    std::vector<Creature> attackable = std::vector<Creature>();
     
-    std::cout << "There is no hostile nearby." << std::endl; // TODO
-    return 2;
+    for (Creature& creature : this->players[this->next_player]->area->creatures)
+      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
+	attackable.push_back(creature);
+    
+    if (attackable.size() == 0)
+      {
+	std::cout << "There are no hostiles nearby." << std::endl;
+	return 2;
+      }
+    
+    long target = 0;
+    
+    if (attackable.size() > 1)
+      {
+	std::vector<std::string> targets = std::vector<std::string>();
+	for (Creature& creature : attackable)
+	  targets.push_back(creature.character.record.name);
+	
+	target = promptMenu("Select target:", targets);
+      }
+    
+    if (target < 0)
+      return 2;
+    
+    // TODO
+    
+    return 1;
   }
   
   /**
