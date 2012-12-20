@@ -78,7 +78,7 @@ namespace tbrpg
     int fatigue;
     
     /**
-     * Extra attacks, increased by one when warriors reach level 7
+     * Extra half attacks, increased by two (one attack) when warriors reach level 7
      */
     char extra_attacks;
     
