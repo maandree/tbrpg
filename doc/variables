@@ -523,3 +523,5 @@ Action: Object                            ; Player action
 	Spell spell                       ; Spell being casted
 	QuickItem item                    ; Item being used
 
+Calculator: Object                        ; Character attribute calculator
+
