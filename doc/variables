@@ -35,6 +35,7 @@ RuleSet: Object                          ; Game rules
 	int racial_enemy_penality        ; THAC0 penality when not fighting racial enemy
 	char party_size                  ; The maximum size of the party
 	char party_start_size            ; The maximum size of the party when the game is starting
+	int critical_death               ; The number of points below zero (absolute value) at which a critical death reached
 	ReputationChart reputation_chart ; The reputation chart
 	AbilityChart ability_chart       ; The ability chart
 	Inventory inventory_prototype    ; The inventory prototype, basiclly it defines how many slots there is in the inventory
