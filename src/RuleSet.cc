@@ -56,6 +56,7 @@ namespace tbrpg
     this->racial_enemies = {};
     this->party_size = 1;
     this->party_start_size = 6;
+    this->critical_death = 10;
     
     ABJURATION.opposite = {ALTERATION};
     ALTERATION.opposite = {ABJURATION, NECROMANCY};
@@ -104,6 +105,7 @@ namespace tbrpg
     this->racial_enemy_penality = original.racial_enemy_penality;
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
+    this->critical_death = original.critical_death;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = Inventory(original.inventory_prototype);
@@ -133,6 +135,7 @@ namespace tbrpg
     this->racial_enemy_penality = original.racial_enemy_penality;
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
+    this->critical_death = original.critical_death;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = Inventory(original.inventory_prototype);
@@ -162,6 +165,7 @@ namespace tbrpg
     std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
     std::swap(this->party_size, original.party_size);
     std::swap(this->party_start_size, original.party_start_size);
+    std::swap(this->critical_death, original.critical_death);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
@@ -215,6 +219,7 @@ namespace tbrpg
     this->racial_enemy_penality = original.racial_enemy_penality;
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
+    this->critical_death = original.critical_death;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = Inventory(original.inventory_prototype);
@@ -247,6 +252,7 @@ namespace tbrpg
     this->racial_enemy_penality = original.racial_enemy_penality;
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
+    this->critical_death = original.critical_death;
     this->reputation_chart = original.reputation_chart;
     this->ability_chart = original.ability_chart;
     this->inventory_prototype = Inventory(original.inventory_prototype);
@@ -279,6 +285,7 @@ namespace tbrpg
     std::swap(this->racial_enemy_penality, original.racial_enemy_penality);
     std::swap(this->party_size, original.party_size);
     std::swap(this->party_start_size, original.party_start_size);
+    std::swap(this->critical_death, original.critical_death);
     std::swap(this->reputation_chart, original.reputation_chart);
     std::swap(this->ability_chart, original.ability_chart);
     std::swap(this->inventory_prototype, original.inventory_prototype);
@@ -311,6 +318,7 @@ namespace tbrpg
     if (this->racial_enemy_penality != other.racial_enemy_penality)  return false;
     if (this->party_size != other.party_size)  return false;
     if (this->party_start_size != other.party_start_size)  return false;
+    if (this->critical_death != other.critical_death)  return false;
     if (this->reputation_chart != other.reputation_chart)  return false;
     if (this->ability_chart != other.ability_chart)  return false;
     if (this->inventory_prototype != other.inventory_prototype)  return false;
@@ -379,16 +387,18 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<char>()(this->party_start_size);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<ReputationChart>()(this->reputation_chart);
+    rc += std::hash<int>()(this->critical_death);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<AbilityChart>()(this->ability_chart);
+    rc += std::hash<ReputationChart>()(this->reputation_chart);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<Inventory>()(this->inventory_prototype);
+    rc += std::hash<AbilityChart>()(this->ability_chart);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Spell>>()(this->spells);
+    rc += std::hash<Inventory>()(this->inventory_prototype);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<Race>>()(this->races);
+    rc += std::hash<std::vector<Spell>>()(this->spells);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
+    rc += std::hash<std::vector<Race>>()(this->races);
+    rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<std::vector<Race>>()(this->racial_enemies);
     return rc;
   }
