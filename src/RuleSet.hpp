@@ -129,6 +129,11 @@ namespace tbrpg
     char party_start_size;
     
     /**
+     * The number of points below zero (absolute value) at which a critical death reached
+     */
+    int critical_death;
+    
+    /**
      * The reputation chart
      */
     ReputationChart reputation_chart;
