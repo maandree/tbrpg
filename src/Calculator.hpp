@@ -27,6 +27,7 @@
 #include <unordered_map>
 
 #include "Object.hpp"
+#include "Character.hpp"
 
 
 
@@ -130,6 +131,27 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const Calculator& other) const;
+    
+    
+    virtual int getHalfAttacks(const Character& character) const; // character proficiency
+    virtual int getTHAC0(const Character& character, bool missile) const; // str (dex:missle) proficiency luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
+    virtual int getDamageBonus(const Character& character, bool missile) const; // (str:melée) proficiency weapon
+    virtual int getCarryLimit(const Character& character) const; // str
+    virtual int getBashing(const Character& character) const; // str
+    virtual int getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const; // dex bodyarmour shield weapon
+    virtual int getLevelUpHitPointBonus(const Character& character) const; // con
+    virtual int getResurrectability(const Character& character) const; // con
+    virtual int getWizardSpellLevelLimit(const Character& character) const; // int
+    virtual int getWizardSpellLearn(const Character& character) const; // int
+    virtual int getWizardSpellScrollUse(const Character& character) const; // int
+    virtual int getWizardSpellCountLimit(const Character& character) const; // int
+    virtual int getLore(const Character& character) const; // int wis
+    virtual int getPriestSpellFailure(const Character& character) const; // wis
+    virtual std::vector<int> getPriestSpellSlots(const Character& character) const; // wis
+    virtual std::vector<int> getWizardSpellSlots(const Character& character) const; // 
+    virtual int getWizardSpellFailure(const Character& character) const; // 
+    virtual int getReactionAdjustment(const Character& character) const; // cha
+    virtual bool getCriticalHitProtected(const Character& character) const; // helmet
     
     
   protected:

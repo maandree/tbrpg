@@ -238,6 +238,8 @@ namespace tbrpg
 	      if (player->character->hit_points > player->character->record.hit_points)
 		player->character->hit_points = player->character->record.hit_points;
 	      player->character->fatigue = 0;
+	      
+	      // TODO rememorise spells
 	    }
 	}
     return 2;
@@ -313,7 +315,8 @@ namespace tbrpg
     
     // TODO right hand weapon support
     
-    Weapon* weapon = player.character->inventory.left_hand[player.weapon];
+    Weapon* weapon = player->character->record.inventory.left_hand[player->weapon];
+    // TODO fallback weapon (fists)
     player->turns += weapon->speed_factor;
     
     int roll = this->attack_dice.roll();
@@ -330,19 +333,21 @@ namespace tbrpg
     int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
     if (multiplier == 2)
       std::cout << "Critical hit." << std::endl;
-    if (player->stealth_on))
+    if (player->stealth_on)
     {
       player->stealth_on = false;
       multiplier *= 1; // TODO backstab multipler
     }
     
-    if (player->racial_enemy != nullptr)
+    if (player->character->record.racial_enemy != nullptr)
       {
-	if (attackable[target].character->record.race >= *(player->character.racial_enemy))
+	if (attackable[target].record.race >= *(player->character->record.racial_enemy))
 	  roll += 4;
 	else
 	  roll -= 4;
       }
+    
+    // TODO hit if roll ≥ attacker.thac0 - target.ac
     
     return 1;
   }

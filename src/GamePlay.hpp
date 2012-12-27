@@ -31,6 +31,7 @@
 #include "prompter.hpp"
 #include "GameCharacter.hpp"
 #include "Calculator.hpp"
+#include "Dice.hpp"
 
 
 /**
@@ -72,7 +73,7 @@ namespace tbrpg
     /**
      * The attack dice
      */
-    char attack_dice;
+    Dice attack_dice;
     
     
   public:

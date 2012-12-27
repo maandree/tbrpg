@@ -645,7 +645,7 @@ spellcaster to cast the spell.
 @item Area of effect
 @cindex area of effect
 Specifies which targets are affect by the spell, this can
-incluce groups of creatures, hostality and radius.
+include groups of creatures, hostality and radius.
 
 @item Saving throw
 @cindex saving throw
@@ -732,7 +732,7 @@ sheild, that is items not in your hands, their weight
 effect is divided by two; but items in your hands'
 weight effect is doubled.
 @item  @b{Bashing}
-The chance of a character being able to open a long using
+The chance of a character being able to open a lock using
 brute force.
 @end itemize
 
@@ -1044,7 +1044,7 @@ cost, by using a identify spell or by examining the item
 if it has a lore value equal to or lower than the examining
 character's lore.
 
-As characters gain levels they gain lore.
+Characters gain levels they gain lore.
 
 @itemize @bullet
 @item  @b{Bards} gain 10 lore rating per level.
@@ -1237,9 +1237,9 @@ somtimes gain control over the undead.
 
 A character can continue to operate at peak efficiency for
 24 hours game time, after which the character receieves a
-−1 luck penalty evety fourth hour. −1 luck means that every
+−1 luck penalty every fourth hour. −1 luck means that every
 roll (die) value is decrease by one, the value can however
-not go below 1. If a character do not spell for five days
+not go below 1. If a character do not sleep for five days
 he may at any time fall unconscious.
 
 As soon as the character has rested for 8 hours all
@@ -1364,7 +1364,8 @@ If you reputation of your party falls below 6, the paladins
 your your party loses their status as paladins. At
 reputation level 4, rangers loss the there abilities.
 Paladins and rangers that fall below their acceptable
-reputation level become fighters cannot regain their status.
+reputation level become fighters and cannot regain their
+status.
 
 
 @node Reaction adjustments
@@ -3004,6 +3005,7 @@ Also called quarrel.
 @item Bullet
 Ammunition (stones) for slings.
 @end table
+
 
 
 @node Body armour slot
