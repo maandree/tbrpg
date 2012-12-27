@@ -103,7 +103,7 @@ GCHS :=
 GCHS += $(shell find src | grep '\.hpp$$' | sort | sed -e 's/$$/\.gch/g')
 GCHS += $(shell find src | grep '\.h$$'   | sort | sed -e 's/$$/\.gch/g')
 
-MISC_FILES=compiledependencies COPYING LICENSE Makefile __order tools/paramake.py tools/vargen.py
+MISC_FILES=COPYING LICENSE Makefile tools/paramake.py tools/vargen.py
 
 AR_FILES=$(SOURCE) $(TEST) $(MISC_FILES)
 
@@ -193,7 +193,8 @@ parallel: parallel. program
 parallel.:
 	@if [ ! -d  bin ]; then  mkdir bin;  fi
 	@if [   -f .tmp ]; then  rm   .tmp;  fi
-	@((time ((echo $(NODES) ; cat compiledependencies __order) |                                        \
+	@((time ((echo $(NODES) ; grep '^#include "' src/*.hpp | grep '.hpp"' |                             \
+	sed -e 's/.hpp//g' -e 's/"//g' -e 's/:#include//g' -e 's/^src\///') |                               \
 	        (tools/paramake.py OPTIMISE="$(OPTIMISE)" CPPFLAGS="$(CPPFLAGS)" ; echo $$? > .tmp))) |&    \
 	sed -e 's/$$/\x1b\[0m/g' -e 's/^real\x09/\x1b\[2mreal\x09/g'                                        \
 	-e 's/^user\x09/\x1b\[2muser\x09/g' -e 's/^sys\x09/\x1b\[2msys\x09/g'                               \
@@ -204,7 +205,9 @@ parallel.:
 sequencial: sequencial. program
 sequencial.:
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@cat compiledependencies __order | sort | uniq | tsort | tac > .tmp1
+	@grep '^#include "' src/*.hpp | grep '.hpp"' |                         \
+	 sed -e 's/.hpp//g' -e 's/"//g' -e 's/:#include//g' -e 's/^src\///' |  \
+	 sort | uniq | tsort | tac > .tmp1
 	@ls -1 --color=no src/ | grep \\.hpp\$ | sed -e s/\\.hpp\$//g | sort > .tmp
 	@$(SHELL) -c 'diff <(sort < .tmp1 | uniq) .tmp > .tmp2 || echo -n'
 	@((grep '> ' < .tmp2 | sed -e 's/> //g') ; cat .tmp1) > .tmp
