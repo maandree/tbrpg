@@ -197,7 +197,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The number of half attacks
      */
-    virtual int getHalfAttacks(const Character& character) const;
+    virtual char getHalfAttacks(const Character& character, const Weapon& weapon) const;
     
     /**
      * Get a character's THAC0

@@ -30,6 +30,21 @@
  */
 namespace tbrpg
 {
+  #define ___f(X, Y, Z)  this->rules.ability_chart.X[this->Y(character)].bonues.Z
+  
+  #define __f(X)					\
+    if (this->getStrength(character) != 18)		\
+      rc += ___f(strength, getStrength, X);		\
+    else						\
+      rc += ___f(strength18, getStrength18, X);		\
+    rc += ___f(constitution, getConstitution, X);	\
+    rc += ___f(dexterity, getDexterity, X);		\
+    rc += ___f(intelligence, getIntelligence, X);	\
+    rc += ___f(wisdom, getWisdom, X);			\
+    rc += ___f(charisma, getCharisma, X)
+  
+  
+  
   /**
    * Constructor
    */
@@ -166,7 +181,8 @@ namespace tbrpg
    */
   char Calculator::getStrength(const Character& character) const
   {
-    return character.record.abilities.abilities.strength;
+    char rc = character.record.abilities.abilities.strength;
+    return rc;
   }
   
   /**
@@ -177,7 +193,8 @@ namespace tbrpg
    */
   char Calculator::getStrength18(const Character& character) const
   {
-    return character.record.abilities.abilities.strength18;
+    char rc = character.record.abilities.abilities.strength18;
+    return rc;
   }
   
   /**
@@ -188,7 +205,8 @@ namespace tbrpg
    */
   char Calculator::getConstitution(const Character& character) const
   {
-    return character.record.abilities.abilities.constitution;
+    char rc = character.record.abilities.abilities.constitution;
+    return rc;
   }
   
   /**
@@ -199,7 +217,8 @@ namespace tbrpg
    */
   char Calculator::getDexterity(const Character& character) const
   {
-    return character.record.abilities.abilities.dexterity;
+    char rc = character.record.abilities.abilities.dexterity;
+    return rc;
   }
   
   /**
@@ -210,7 +229,8 @@ namespace tbrpg
    */
   char Calculator::getIntelligence(const Character& character) const
   {
-    return character.record.abilities.abilities.intelligence;
+    char rc = character.record.abilities.abilities.intelligence;
+    return rc;
   }
   
   /**
@@ -221,7 +241,8 @@ namespace tbrpg
    */
   char Calculator::getWisdom(const Character& character) const
   {
-    return character.record.abilities.abilities.wisdom;
+    char rc = character.record.abilities.abilities.wisdom;
+    return rc;
   }
   
   /**
@@ -232,7 +253,8 @@ namespace tbrpg
    */
   char Calculator::getCharisma(const Character& character) const
   {
-    return character.record.abilities.abilities.charisma;
+    char rc = character.record.abilities.abilities.charisma;
+    return rc;
   }
   
   
@@ -240,9 +262,19 @@ namespace tbrpg
    * Get the number of half attacks inclicted by a character
    * 
    * @param   character  The character
+   * @param   weapon     The character's weapon
    * @return             The number of half attacks
    */
-  int Calculator::getHalfAttacks(const Character& character) const; // character proficiency
+  char Calculator::getHalfAttacks(const Character& character, const Weapon& weapon) const
+  {
+    char rc = 0;
+    int prof = character.record.proficiencies[*(weapon.weapon_group)];
+    for (const Class& c : character.prestige)
+      rc += c.proficiency_chart[*(weapon.weapon_group)][prof].half_attacks;
+    rc /= character.prestige.size();
+    rc += character.extra_attacks;
+    return rc;
+  }
   
   /**
    * Get a character's THAC0
@@ -268,7 +300,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The characters's carry limit in grams
    */
-  int Calculator::getCarryLimit(const Character& character) const; // str
+  int Calculator::getCarryLimit(const Character& character) const
+  {
+    int rc = __f(carry_limit);
+    return rc;
+  }
   
   /**
    * Gets a character's bashing modifier
@@ -276,7 +312,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's bashing modifier
    */
-  float Calculator::getBashing(const Character& character) const; // str
+  float Calculator::getBashing(const Character& character) const
+  {
+    float rc = __f(bashing);
+    return rc;
+  }
   
   /**
    * Gets a character's armour class
@@ -294,7 +334,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's hit point bonus at level up that does not depend on the level
    */
-  int Calculator::getLevelUpHitPointBonus(const Character& character) const; // con
+  int Calculator::getLevelUpHitPointBonus(const Character& character) const
+  {
+    int rc = __f(hit_point_bonus);
+    return rc;
+  }
   
   /**
    * Get a character's resurrectability
@@ -302,7 +346,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's resurrectability
    */
-  float Calculator::getResurrectability(const Character& character) const; // con
+  float Calculator::getResurrectability(const Character& character) const
+  {
+    float rc = __f(resurrectability);
+    return rc;
+  }
   
   /**
    * Gets a character's spell level limit
@@ -364,7 +412,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's lore level
    */
-  int Calculator::getLore(const Character& character) const; // int wis
+  int Calculator::getLore(const Character& character) const
+  {
+    int rc = __f(lore_bonus);
+    return rc;
+  }
   
   /**
    * Gets a character's reaction adjustment
@@ -372,7 +424,11 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's reaction adjustment
    */
-  int Calculator::getReactionAdjustment(const Character& character) const; // cha
+  int Calculator::getReactionAdjustment(const Character& character) const
+  {
+    int rc = __f(reaction_bonus);
+    return rc;
+  }
   
   /**
    * Gets whether a cahracter is protected against critical hits
@@ -380,7 +436,12 @@ namespace tbrpg
    * @parma   character  The character
    * @return             Whether a cahracter is protected against critical hits
    */
-  bool Calculator::getCriticalHitProtected(const Character& character) const; // helmet
+  bool Calculator::getCriticalHitProtected(const Character& character) const
+  {
+    Headgear* headgear = character.record.inventory.headgear;
+    bool rc = (headgear != nullptr) && headgear->critical_hit_protection;
+    return rc;
+  }
   
   
   
@@ -405,6 +466,10 @@ namespace tbrpg
     size_t rc = 0;
     return rc;
   }
+  
+  
+  #undef __f
+  #undef ___f
   
 }
 
