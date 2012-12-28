@@ -52,7 +52,7 @@ namespace tbrpg
     /**
      * Construction
      */
-    Calculator();
+    Calculator(const RuleSet& ruleset);
     
     /**
      * Copy constructor
