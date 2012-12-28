@@ -31,6 +31,8 @@
 
 
 #include "hash.hpp"
+#include "RuleSet.hpp"
+
 
 /**
  * Text based roll playing game
@@ -48,6 +50,13 @@ namespace tbrpg
   class Calculator: public Object
   {
   public:
+    /**
+     * The game rules
+     */
+    RuleSet rules;
+    
+    
+    
     /**
      * Construction
      */

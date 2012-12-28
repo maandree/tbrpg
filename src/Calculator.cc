@@ -37,6 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(144);
     ////TODO implement constructor
+    //this->rules = nullptr;
   }
   
   /**
@@ -47,7 +48,7 @@ namespace tbrpg
   Calculator::Calculator(const Calculator& original) : Object(original)
   {
     (void) original;
-
+    this->rules = original.rules;
   }
   
   /**
@@ -58,7 +59,7 @@ namespace tbrpg
   Calculator::Calculator(Calculator& original) : Object(original)
   {
     (void) original;
-
+    this->rules = original.rules;
   }
   
   /**
@@ -69,7 +70,7 @@ namespace tbrpg
   Calculator::Calculator(Calculator&& original) : Object(original)
   {
     (void) original;
-
+    std::swap(this->rules, original.rules);
   }
   
   /**
@@ -90,6 +91,7 @@ namespace tbrpg
   Calculator::~Calculator()
   {
     ////TODO implement destructor
+    //delete this->rules;
   }
   
   
@@ -103,7 +105,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(const Calculator& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
     return *this;
   }
   
@@ -116,7 +118,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);
+    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
     return *this;
   }
   
@@ -129,7 +131,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);
+    std::swap((Object&)*this, (Object&)original);    std::swap(this->rules, original.rules);
     return *this;
   }
   
@@ -142,6 +144,7 @@ namespace tbrpg
    */
   bool Calculator::operator ==(const Calculator& other) const
   {
+    if (this->rules != other.rules)  return false;
     return true;
   }
   
@@ -175,6 +178,8 @@ namespace tbrpg
   size_t Calculator::hash() const
   {
     size_t rc = 0;
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<RuleSet>()(this->rules);
     return rc;
   }
   
