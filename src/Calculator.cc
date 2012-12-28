@@ -284,7 +284,17 @@ namespace tbrpg
    * @param   missile    Whether to get THAC0 when using missile weapon, otherwise, when using melée weapon
    * @return             The character's THAC0
    */
-  int Calculator::getTHAC0(const Character& character, bool missile) const; // str (dex:missle) proficiency luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
+  int Calculator::getTHAC0(const Character& character, bool missile) const
+  {
+    int rc = 0;
+    __f(hit_bonus);
+    if (missile == false)
+      {
+	__f(missile_attack_bonus);
+      }
+    rc = -rc;
+    return rc;
+  } // proficiency -luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
   
   /**
    * Gets a character's damage bonus
@@ -293,7 +303,15 @@ namespace tbrpg
    * @param   missile    Whether to get damage bonus when using missile weapon, otherwise, when using melée weapon
    * @return             The characters damage bonus
    */
-  int Calculator::getDamageBonus(const Character& character, bool missile) const; // (str:melée) proficiency weapon
+  int Calculator::getDamageBonus(const Character& character, bool missile) const
+  {
+    int rc = 0;
+    if (missile == false)
+      {
+	__f(damage_bonus);
+      }
+    return rc;
+  } // proficiency weapon
   
   /**
    * Gets a character's carry limit
@@ -303,7 +321,8 @@ namespace tbrpg
    */
   int Calculator::getCarryLimit(const Character& character) const
   {
-    int rc = __f(carry_limit);
+    int rc = 0;
+    __f(carry_limit);
     return rc;
   }
   
@@ -315,7 +334,8 @@ namespace tbrpg
    */
   float Calculator::getBashing(const Character& character) const
   {
-    float rc = __f(bashing);
+    float rc = 0f;
+    __f(bashing);
     return rc;
   }
   
@@ -337,7 +357,8 @@ namespace tbrpg
    */
   int Calculator::getLevelUpHitPointBonus(const Character& character) const
   {
-    int rc = __f(hit_point_bonus);
+    int rc = 0;
+    __f(hit_point_bonus);
     return rc;
   }
   
@@ -349,7 +370,8 @@ namespace tbrpg
    */
   float Calculator::getResurrectability(const Character& character) const
   {
-    float rc = __f(resurrectability);
+    float rc = 0f;
+    __f(resurrectability);
     return rc;
   }
   
@@ -514,7 +536,8 @@ namespace tbrpg
    */
   int Calculator::getLore(const Character& character) const
   {
-    int rc = __f(lore_bonus);
+    int rc = 0;
+    __f(lore_bonus);
     return rc;
   }
   
@@ -526,7 +549,8 @@ namespace tbrpg
    */
   int Calculator::getReactionAdjustment(const Character& character) const
   {
-    int rc = __f(reaction_bonus);
+    int rc = 0;
+    __f(reaction_bonus);
     return rc;
   }
   
