@@ -360,7 +360,23 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell level limit, negative for disabled
    */
-  int Calculator::getSpellLevelLimit(const Character& character, const bool wizard) const; // (wizard:int) (priest:wis)
+  int Calculator::getSpellLevelLimit(const Character& character, const bool wizard) const
+  {
+    int rc = 0;
+    if (wizard)
+      {
+	__f(spell_level_limit);
+      }
+    else
+      {
+	/* TODO make customisable */
+	short wis = getWisdom(character);
+	rc = 5;
+	if (wis >= 17)  rc++;
+	if (wis >= 18)  rc++;
+      }
+    return rc;
+  }
   
   /**
    * Gets a character's spell learn success chance
@@ -369,7 +385,23 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell learn success chance, negative for disabled
    */
-  float Calculator::getSpellLearn(const Character& character, const bool wizard) const; // (wizard:int)
+  float Calculator::getSpellLearn(const Character& character, const bool wizard) const
+  {
+    float rc = 0;
+    if (wizard)
+      {
+	__f(spell_learn);
+	bool ok = false;
+	for (const Class& c : character.record.prestige)
+	  if (c.learn_from_scroll)
+	    ok = true;
+	if (ok == false)
+	  rc = -10f;
+      }
+    else
+      rc = -10f;
+    return rc;
+  }
   
   /**
    * Gets a character's spell scroll use success chance
@@ -378,7 +410,11 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell scroll use success chance, negative for disabled
    */
-  float Calculator::getSpellScrollUse(const Character& character, const bool wizard) const; // (wizard:in)
+  float Calculator::getSpellScrollUse(const Character& character, const bool wizard) const
+  {
+    float rc = 2f;
+    return rc;
+  }
   
   /**
    * Gets a character's spell learn count limit
@@ -387,7 +423,17 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell learn count limit, negative for disabled
    */
-  int Calculator::getSpellCountLimit(const Character& character, const bool wizard) const; // (wizard:int)
+  int Calculator::getSpellCountLimit(const Character& character, const bool wizard) const
+  {
+    int rc = 0;
+    if (wizard)
+      {
+	__f(max_spells_level);
+      }
+    else
+      rc = 0x7FFFffff;
+    return rc;
+  }
   
   /**
    * Gets a character's spell cast success chance
@@ -396,7 +442,22 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell cast use success chance, negative for disabled
    */
-  float Calculator::getSpellSuccess(const Character& character, const bool wizard) const; // (priest:wis)
+  float Calculator::getSpellSuccess(const Character& character, const bool wizard) const
+  {
+    float rc = 0;
+    if (wizard)
+      {
+	rc = 2f;
+      }
+    else
+      {
+	__f(spell_failure);
+	rc = 1f - spell_failure;
+	if (rc < 0f)
+	  rc = 0f;
+      }
+    return rc;
+  }
   
   /**
    * Get a characters's number of spell slots
@@ -405,7 +466,45 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's numer of spell slots per spell level
    */
-  std::vector<int> Calculator::getSpellSlots(const Character& character, const bool wizard) const; // (priest:wis)
+  std::vector<int> Calculator::getSpellSlots(const Character& character, const bool wizard) const
+  {
+    std::vector<int> rc = std::vector<int>();
+    if (wizard)
+      for (size_t c = 0, n = character.record.prestige.size(); i < n; i++)
+	{
+	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.wizard_slots);
+	  char level = character.record.level[c];
+	  if (level >= chart.size())
+	    level = chart.size() - 1;
+	  size_t i = 0;
+	  for (int count : chart[level])
+	    {
+	      if (i >= rc.size())
+		rc.append(count);
+	      else
+		rc[i] += count;
+	      i++;
+	    }
+	}
+    else
+      {
+	__f(bonus_spells);
+	std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.priest_slots);
+	char level = character.record.level[c];
+	if (level >= chart.size())
+	  level = chart.size() - 1;
+	size_t i = 0;
+	for (int count : chart[level])
+	  {
+	    if (i >= rc.size())
+	      rc.append(count);
+	    else
+	      rc[i] += count;
+	    i++;
+	  }
+      }
+    return rc;
+  }
   
   /**
    * Gets a character's lore level
@@ -443,6 +542,10 @@ namespace tbrpg
     bool rc = (headgear != nullptr) && headgear->critical_hit_protection;
     return rc;
   }
+
+//TODO magic defence
+//TODO casting level
+//TODO detect doors
   
   
   

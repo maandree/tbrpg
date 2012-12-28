@@ -46,7 +46,7 @@
 namespace tbrpg
 {
   /**
-   * Character attribute calculator
+   * Character attribute façade
    */
   class Calculator: public Object
   {
