@@ -164,7 +164,21 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's strength
    */
-  char Calculator::getStrength(const Character& character) const;
+  char Calculator::getStrength(const Character& character) const
+  {
+    return character.record.abilities.abilities.strength;
+  }
+  
+  /**
+   * Gets a character's strength's extra part of 18
+   * 
+   * @param   character  The character
+   * @return             The character's strength's extra part of 18
+   */
+  char Calculator::getStrength18(const Character& character) const
+  {
+    return character.record.abilities.abilities.strength18;
+  }
   
   /**
    * Gets a character's constitution
@@ -172,7 +186,10 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's constitution
    */
-  char Calculator::getConstitution(const Character& character) const;
+  char Calculator::getConstitution(const Character& character) const
+  {
+    return character.record.abilities.abilities.constitution;
+  }
   
   /**
    * Gets a character's dexterity
@@ -180,7 +197,10 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's dexterity
    */
-  char Calculator::getDexterity(const Character& character) const;
+  char Calculator::getDexterity(const Character& character) const
+  {
+    return character.record.abilities.abilities.dexterity;
+  }
   
   /**
    * Gets a character's intelligence
@@ -188,7 +208,10 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's intelligence
    */
-  char Calculator::getIntelligence(const Character& character) const;
+  char Calculator::getIntelligence(const Character& character) const
+  {
+    return character.record.abilities.abilities.intelligence;
+  }
   
   /**
    * Gets a character's wisdom
@@ -196,7 +219,10 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's wisdom
    */
-  char Calculator::getWisdom(const Character& character) const;
+  char Calculator::getWisdom(const Character& character) const
+  {
+    return character.record.abilities.abilities.wisdom;
+  }
   
   /**
    * Gets a character's charisma
@@ -204,7 +230,10 @@ namespace tbrpg
    * @param   character  The character
    * @return             The character's charisma
    */
-  char Calculator::getCharisma(const Character& character) const;
+  char Calculator::getCharisma(const Character& character) const
+  {
+    return character.record.abilities.abilities.charisma;
+  }
   
   
   /**
