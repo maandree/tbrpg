@@ -524,4 +524,4 @@ Action: Object                            ; Player action
 	QuickItem item                    ; Item being used
 
 Calculator: Object                        ; Character attribute calculator
-
+	RuleSet rules                     ; The game rules
