@@ -51,8 +51,7 @@ namespace tbrpg
   Calculator::Calculator(const RuleSet& ruleset) : Object()
   {
     this->class_inheritance.push_back(144);
-    ////TODO implement constructor
-    //this->rules = nullptr;
+    this->rules = ruleset;
   }
   
   /**
@@ -62,8 +61,7 @@ namespace tbrpg
    */
   Calculator::Calculator(const Calculator& original) : Object(original)
   {
-    (void) original;
-    this->rules = original.rules;
+    this->rules = (RuleSet&)(original.rules);
   }
   
   /**
@@ -73,8 +71,7 @@ namespace tbrpg
    */
   Calculator::Calculator(Calculator& original) : Object(original)
   {
-    (void) original;
-    this->rules = original.rules;
+    this->rules = (RuleSet&)(original.rules);
   }
   
   /**
@@ -84,7 +81,6 @@ namespace tbrpg
    */
   Calculator::Calculator(Calculator&& original) : Object(original)
   {
-    (void) original;
     std::swap(this->rules, original.rules);
   }
   
@@ -105,8 +101,7 @@ namespace tbrpg
    */
   Calculator::~Calculator()
   {
-    ////TODO implement destructor
-    //delete this->rules;
+    // do nothing
   }
   
   
@@ -120,7 +115,8 @@ namespace tbrpg
   Calculator& Calculator::operator =(const Calculator& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->rules = (RuleSet&)(original.rules);
     return *this;
   }
   
@@ -133,7 +129,8 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator& original)
   {
     (void) original;
-    Object::__copy__((Object&)*this, (Object&)original);    this->rules = original.rules;
+    Object::__copy__((Object&)*this, (Object&)original);
+    this->rules = (RuleSet&)(original.rules);
     return *this;
   }
   
@@ -146,7 +143,8 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator&& original)
   {
     (void) original;
-    std::swap((Object&)*this, (Object&)original);    std::swap(this->rules, original.rules);
+    std::swap((Object&)*this, (Object&)original);
+    std::swap(this->rules, (RuleSet&)(original.rules));
     return *this;
   }
   
