@@ -156,6 +156,205 @@ namespace tbrpg
     return (*this == other) == false;
   }
   
+  
+  
+  /**
+   * Gets a character's strength
+   * 
+   * @param   character  The character
+   * @return             The character's strength
+   */
+  char Calculator::getStrength(const Character& character) const;
+  
+  /**
+   * Gets a character's constitution
+   * 
+   * @param   character  The character
+   * @return             The character's constitution
+   */
+  char Calculator::getConstitution(const Character& character) const;
+  
+  /**
+   * Gets a character's dexterity
+   * 
+   * @param   character  The character
+   * @return             The character's dexterity
+   */
+  char Calculator::getDexterity(const Character& character) const;
+  
+  /**
+   * Gets a character's intelligence
+   * 
+   * @param   character  The character
+   * @return             The character's intelligence
+   */
+  char Calculator::getIntelligence(const Character& character) const;
+  
+  /**
+   * Gets a character's wisdom
+   * 
+   * @param   character  The character
+   * @return             The character's wisdom
+   */
+  char Calculator::getWisdom(const Character& character) const;
+  
+  /**
+   * Gets a character's charisma
+   * 
+   * @param   character  The character
+   * @return             The character's charisma
+   */
+  char Calculator::getCharisma(const Character& character) const;
+  
+  
+  /**
+   * Get the number of half attacks inclicted by a character
+   * 
+   * @param   character  The character
+   * @return             The number of half attacks
+   */
+  int Calculator::getHalfAttacks(const Character& character) const; // character proficiency
+  
+  /**
+   * Get a character's THAC0
+   * 
+   * @param   character  The character
+   * @param   missile    Whether to get THAC0 when using missile weapon, otherwise, when using melée weapon
+   * @return             The character's THAC0
+   */
+  int Calculator::getTHAC0(const Character& character, bool missile) const; // str (dex:missle) proficiency luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
+  
+  /**
+   * Gets a character's damage bonus
+   * 
+   * @param   character  The character
+   * @param   missile    Whether to get damage bonus when using missile weapon, otherwise, when using melée weapon
+   * @return             The characters damage bonus
+   */
+  int Calculator::getDamageBonus(const Character& character, bool missile) const; // (str:melée) proficiency weapon
+  
+  /**
+   * Gets a character's carry limit
+   * 
+   * @param   character  The character
+   * @return             The characters's carry limit in grams
+   */
+  int Calculator::getCarryLimit(const Character& character) const; // str
+  
+  /**
+   * Gets a character's bashing modifier
+   * 
+   * @param   character  The character
+   * @return             The character's bashing modifier
+   */
+  float Calculator::getBashing(const Character& character) const; // str
+  
+  /**
+   * Gets a character's armour class
+   * 
+   * @param   character   The character
+   * @param   damagetype  The damage type versus which to get the armour class
+   * @param   missile     Whether to ger armour class versus missile weapons, otherwise, versus melée weapons
+   * @return              The character's armour class
+   */
+  int Calculator::getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const; // dex bodyarmour shield weapon
+  
+  /**
+   * Gets a character's hit point bonus at level up that does not depend on the level
+   * 
+   * @param   character  The character
+   * @return             The character's hit point bonus at level up that does not depend on the level
+   */
+  int Calculator::getLevelUpHitPointBonus(const Character& character) const; // con
+  
+  /**
+   * Get a character's resurrectability
+   * 
+   * @param   character  The character
+   * @return             The character's resurrectability
+   */
+  float Calculator::getResurrectability(const Character& character) const; // con
+  
+  /**
+   * Gets a character's spell level limit
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's spell level limit, negative for disabled
+   */
+  int Calculator::getSpellLevelLimit(const Character& character, const bool wizard) const; // (wizard:int) (priest:wis)
+  
+  /**
+   * Gets a character's spell learn success chance
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's spell learn success chance, negative for disabled
+   */
+  float Calculator::getSpellLearn(const Character& character, const bool wizard) const; // (wizard:int)
+  
+  /**
+   * Gets a character's spell scroll use success chance
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's spell scroll use success chance, negative for disabled
+   */
+  float Calculator::getSpellScrollUse(const Character& character, const bool wizard) const; // (wizard:in)
+  
+  /**
+   * Gets a character's spell learn count limit
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's spell learn count limit, negative for disabled
+   */
+  int Calculator::getSpellCountLimit(const Character& character, const bool wizard) const; // (wizard:int)
+  
+  /**
+   * Gets a character's spell cast success chance
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's spell cast use success chance, negative for disabled
+   */
+  float Calculator::getSpellSuccess(const Character& character, const bool wizard) const; // (priest:wis)
+  
+  /**
+   * Get a characters's number of spell slots
+   * 
+   * @param   character  The character
+   * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
+   * @return             The character's numer of spell slots per spell level
+   */
+  std::vector<int> Calculator::getSpellSlots(const Character& character, const bool wizard) const; // (priest:wis)
+  
+  /**
+   * Gets a character's lore level
+   * 
+   * @param   character  The character
+   * @return             The character's lore level
+   */
+  int Calculator::getLore(const Character& character) const; // int wis
+  
+  /**
+   * Gets a character's reaction adjustment
+   * 
+   * @param   character  The character
+   * @return             The character's reaction adjustment
+   */
+  int Calculator::getReactionAdjustment(const Character& character) const; // cha
+  
+  /**
+   * Gets whether a cahracter is protected against critical hits
+   * 
+   * @parma   character  The character
+   * @return             Whether a cahracter is protected against critical hits
+   */
+  bool Calculator::getCriticalHitProtected(const Character& character) const; // helmet
+  
+  
+  
   /**
    * Copy method
    * 

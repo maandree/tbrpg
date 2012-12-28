@@ -189,7 +189,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The number of half attacks
      */
-    virtual int getHalfAttacks(const Character& character) const; // character proficiency
+    virtual int getHalfAttacks(const Character& character) const;
     
     /**
      * Get a character's THAC0
@@ -198,7 +198,7 @@ namespace tbrpg
      * @param   missile    Whether to get THAC0 when using missile weapon, otherwise, when using melée weapon
      * @return             The character's THAC0
      */
-    virtual int getTHAC0(const Character& character, bool missile) const; // str (dex:missle) proficiency luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
+    virtual int getTHAC0(const Character& character, bool missile) const;
     
     /**
      * Gets a character's damage bonus
@@ -207,7 +207,7 @@ namespace tbrpg
      * @param   missile    Whether to get damage bonus when using missile weapon, otherwise, when using melée weapon
      * @return             The characters damage bonus
      */
-    virtual int getDamageBonus(const Character& character, bool missile) const; // (str:melée) proficiency weapon
+    virtual int getDamageBonus(const Character& character, bool missile) const;
     
     /**
      * Gets a character's carry limit
@@ -215,7 +215,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The characters's carry limit in grams
      */
-    virtual int getCarryLimit(const Character& character) const; // str
+    virtual int getCarryLimit(const Character& character) const;
     
     /**
      * Gets a character's bashing modifier
@@ -223,7 +223,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The character's bashing modifier
      */
-    virtual float getBashing(const Character& character) const; // str
+    virtual float getBashing(const Character& character) const;
     
     /**
      * Gets a character's armour class
@@ -233,7 +233,7 @@ namespace tbrpg
      * @param   missile     Whether to ger armour class versus missile weapons, otherwise, versus melée weapons
      * @return              The character's armour class
      */
-    virtual int getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const; // dex bodyarmour shield weapon
+    virtual int getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const;
     
     /**
      * Gets a character's hit point bonus at level up that does not depend on the level
@@ -241,7 +241,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The character's hit point bonus at level up that does not depend on the level
      */
-    virtual int getLevelUpHitPointBonus(const Character& character) const; // con
+    virtual int getLevelUpHitPointBonus(const Character& character) const;
     
     /**
      * Get a character's resurrectability
@@ -249,7 +249,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The character's resurrectability
      */
-    virtual float getResurrectability(const Character& character) const; // con
+    virtual float getResurrectability(const Character& character) const;
     
     /**
      * Gets a character's spell level limit
@@ -258,7 +258,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell level limit, negative for disabled
      */
-    virtual int getSpellLevelLimit(const Character& character, const bool wizard) const; // (wizard:int) (priest:wis)
+    virtual int getSpellLevelLimit(const Character& character, const bool wizard) const;
     
     /**
      * Gets a character's spell learn success chance
@@ -267,7 +267,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell learn success chance, negative for disabled
      */
-    virtual float getSpellLearn(const Character& character, const bool wizard) const; // (wizard:int)
+    virtual float getSpellLearn(const Character& character, const bool wizard) const;
     
     /**
      * Gets a character's spell scroll use success chance
@@ -276,7 +276,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell scroll use success chance, negative for disabled
      */
-    virtual float getSpellScrollUse(const Character& character, const bool wizard) const; // (wizard:in)
+    virtual float getSpellScrollUse(const Character& character, const bool wizard) const;
     
     /**
      * Gets a character's spell learn count limit
@@ -285,7 +285,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell learn count limit, negative for disabled
      */
-    virtual int getSpellCountLimit(const Character& character, const bool wizard) const; // (wizard:int)
+    virtual int getSpellCountLimit(const Character& character, const bool wizard) const;
     
     /**
      * Gets a character's spell cast success chance
@@ -294,7 +294,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell cast use success chance, negative for disabled
      */
-    virtual float getSpellSuccess(const Character& character, const bool wizard) const; // (priest:wis)
+    virtual float getSpellSuccess(const Character& character, const bool wizard) const;
     
     /**
      * Get a characters's number of spell slots
@@ -303,7 +303,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's numer of spell slots per spell level
      */
-    virtual std::vector<int> getSpellSlots(const Character& character, const bool wizard) const; // (priest:wis)
+    virtual std::vector<int> getSpellSlots(const Character& character, const bool wizard) const;
     
     /**
      * Gets a character's lore level
@@ -311,7 +311,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The character's lore level
      */
-    virtual int getLore(const Character& character) const; // int wis
+    virtual int getLore(const Character& character) const;
     
     /**
      * Gets a character's reaction adjustment
@@ -319,7 +319,7 @@ namespace tbrpg
      * @param   character  The character
      * @return             The character's reaction adjustment
      */
-    virtual int getReactionAdjustment(const Character& character) const; // cha
+    virtual int getReactionAdjustment(const Character& character) const;
     
     /**
      * Gets whether a cahracter is protected against critical hits
@@ -327,7 +327,7 @@ namespace tbrpg
      * @parma   character  The character
      * @return             Whether a cahracter is protected against critical hits
      */
-    virtual bool getCriticalHitProtected(const Character& character) const; // helmet
+    virtual bool getCriticalHitProtected(const Character& character) const;
     
     
     
