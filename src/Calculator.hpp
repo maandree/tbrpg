@@ -135,12 +135,12 @@ namespace tbrpg
     
     
     /**
-     * Gets a character's strenght
+     * Gets a character's strength
      * 
      * @param   character  The character
-     * @return             The character's strenght
+     * @return             The character's strength
      */
-    virtual char getStrenght(const Character& character) const;
+    virtual char getStrength(const Character& character) const;
     
     /**
      * Gets a character's constitution
