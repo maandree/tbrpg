@@ -646,14 +646,32 @@ namespace tbrpg
   /**
    * Gets whether a cahracter is protected against critical hits
    * 
-   * @parma   character  The character
-   * @return             Whether a cahracter is protected against critical hits
+   * @param   character  The character
+   * @return             Whether a character is protected against critical hits
    */
   bool Calculator::getCriticalHitProtected(const Character& character) const
   {
     Headgear* headgear = character.record.inventory.headgear;
     bool rc = (headgear != nullptr) && headgear->critical_hit_protection;
     return rc;
+  }
+  
+  /**
+   * Gets a character's backstab multiplier
+   * 
+   * @param   character  The character
+   * @return             The character's backstab multiplier
+   */
+  int Calculator::getBackstabMultiplier(const Character& character) const
+  {
+    char rc = 0;
+    for (size_t c = 0, n = character.prestige.size(); c < n; c++)
+      {
+	char candidate = character.record.prestige[c].experience_chart.backstabs[(long)(character.record.level[c])];
+	if (rc < candidate)
+	  rc = candidate;
+      }
+    return (int)rc;
   }
   
 //TODO magic defence

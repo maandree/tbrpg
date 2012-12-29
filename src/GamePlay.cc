@@ -339,10 +339,10 @@ namespace tbrpg
     int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
     if (multiplier == 2)
       std::cout << "Critical hit." << std::endl;
-    if (player->stealth_on)
+    if ((player->stealth_on) && weapon.melee) /* TODO document that backstab multipler only applies to melée */
     {
       player->stealth_on = false;
-      multiplier *= 1; // TODO backstab multipler
+      multiplier *= this->calc.getBackstabMultiplier(player->character);
     }
     
     if (player->character->record.racial_enemy != nullptr)

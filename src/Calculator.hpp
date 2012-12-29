@@ -344,10 +344,18 @@ namespace tbrpg
     /**
      * Gets whether a cahracter is protected against critical hits
      * 
-     * @parma   character  The character
-     * @return             Whether a cahracter is protected against critical hits
+     * @param   character  The character
+     * @return             Whether a character is protected against critical hits
      */
     virtual bool getCriticalHitProtected(const Character& character) const;
+    
+    /**
+     * Gets a character's backstab multiplier
+     * 
+     * @param   character  The character
+     * @return             The character's backstab multiplier
+     */
+    virtual int getBackstabMultiplier(const Character& character) const;
     
     
     
