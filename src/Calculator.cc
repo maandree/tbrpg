@@ -30,7 +30,9 @@
  */
 namespace tbrpg
 {
-  #define ___f(X, Y, Z)  (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
+  #define ___f(X, Y, Z)   (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
+  
+  #define ___i(X, Y, op)  if (character.record.inventory.X == nullptr) op (character.record.inventory.X->bonuses.bonuses.Y)
   
   #define __g(X, op)					\
     if (this->getStrength(character) != 18)		\
@@ -44,7 +46,18 @@ namespace tbrpg
     op ___f(charisma, getCharisma, X);			\
     op (character.record.race.bonuses.bonuses.X);	\
     for (const Class& c : character.record.prestige)	\
-      op (c.abilities.bonuses.X)
+      op (c.abilities.bonuses.X);			\
+    ___i(right_hand, X, op);			       	\
+    ___i(headgear, X, op);			       	\
+    ___i(amulet, X, op);				\
+    ___i(body, X, op);					\
+    ___i(gauntlets, X, op);				\
+    ___i(girdle, X, op);				\
+    ___i(boots, X, op);					\
+    ___i(cloak, X, op);					\
+    for (Ring* ring : character.record.inventory.rings)	\
+      if (ring != nullptr)				\
+	op (ring->bonuses.bonuses.X)
   
   #define __f(X) __g(X, rc +=)
   
@@ -644,7 +657,6 @@ namespace tbrpg
 //TODO casting level
 //TODO detect doors
 //TODO armour can block spell casting
-//TODO bonuses from used items
 //TODO element defence
   
   
@@ -673,7 +685,10 @@ namespace tbrpg
   }
   
   
+  
   #undef __w
+  #undef __g
+  #undef __i
   #undef __f
   #undef ___f
   
