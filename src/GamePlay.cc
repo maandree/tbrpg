@@ -37,6 +37,8 @@ namespace tbrpg
    */
   GamePlay::GamePlay(Senario& senario)
   {
+    this->calc = Calculator();
+    this->calc.rules = senario.rules;
     this->game = senario;
     this->players = {};
     this->next_player = 0;
@@ -342,7 +344,7 @@ namespace tbrpg
     if ((player->stealth_on) && weapon->melee)
     {
       player->stealth_on = false;
-      multiplier *= this->calc.getBackstabMultiplier(player->character);
+      multiplier *= this->calc.getBackstabMultiplier(*(player->character));
     }
     
     if (player->character->record.racial_enemy != nullptr)
@@ -354,7 +356,11 @@ namespace tbrpg
       }
     
     // TODO quiver
-    bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, nullptr) - this->calc.get(attackable[target], *weapon, nullptr);
+    Weapon targetweapon = *weapon;/*TODO use target weapon*/
+    DamageType damagetype = SLASHING;/*TODO random type from the attacker's weapon's types */
+    
+    bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, nullptr)
+                     - this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
     
     // TODO implement damage logic
     

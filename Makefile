@@ -111,7 +111,7 @@ AR_FILES=$(SOURCE) $(TEST) $(MISC_FILES)
 ## BUILD BINARIES ##
 
 # DEFAULT
-all: parallel tests info pdf
+all: info pdf parallel tests
 .PHONY: all
 
 
@@ -542,7 +542,7 @@ okular: $(BOOK).pdf ; okular "$<"
 .PHONY: gs
 gs: $(BOOK).pdf ; gs "$<"
 
-.PHONY: clean
+.PHONY: jfbview
 jfbview: $(BOOK).pdf
 	jfbview "$<"
 	echo -en '\e[H\e[2J'

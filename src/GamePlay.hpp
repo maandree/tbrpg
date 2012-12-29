@@ -75,6 +75,11 @@ namespace tbrpg
      */
     Dice attack_dice;
     
+    /**
+     * The attribute calculator
+     */
+    Calculator calc;
+    
     
   public:
     /**

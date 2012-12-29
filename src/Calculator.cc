@@ -71,10 +71,9 @@ namespace tbrpg
   /**
    * Constructor
    */
-  Calculator::Calculator(const RuleSet& ruleset) : Object()
+  Calculator::Calculator() : Object()
   {
     this->class_inheritance.push_back(144);
-    this->rules = ruleset;
   }
   
   /**
