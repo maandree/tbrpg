@@ -30,7 +30,7 @@
  */
 namespace tbrpg
 {
-  #define ___f(X, Y, Z)  this->rules.ability_chart.X[this->Y(character)].bonues.Z
+  #define ___f(X, Y, Z)  this->rules.ability_chart.X[this->Y(character)].bonuses.Z
   
   #define __f(X)					\
     if (this->getStrength(character) != 18)		\
@@ -42,9 +42,9 @@ namespace tbrpg
     rc += ___f(intelligence, getIntelligence, X);	\
     rc += ___f(wisdom, getWisdom, X);			\
     rc += ___f(charisma, getCharisma, X);               \
-    rc += character.record.race.bonues.bonues.X;        \
+    rc += character.record.race.bonuses.bonues.X;       \
     for (const Class& c : character.record.prestige)    \
-      rc += c.abilities.bonues.X
+      rc += c.abilities.bonuses.X
   
   
   
