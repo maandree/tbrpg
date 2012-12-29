@@ -30,9 +30,12 @@
  */
 namespace tbrpg
 {
-  #define ___f(X, Y, Z)   (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
+  #define ___f(X, Y, Z)  \
+    (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
   
-  #define ___i(X, Y, op)  if (character.record.inventory.X == nullptr) op (character.record.inventory.X->bonuses.bonuses.Y)
+  #define ___i(X, Y, op)					\
+    if (character.record.inventory.X == nullptr)		\
+      op (character.record.inventory.X->bonuses.bonuses.Y)
   
   #define __g(X, op)					\
     if (this->getStrength(character) != 18)		\
