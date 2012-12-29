@@ -30,21 +30,25 @@
  */
 namespace tbrpg
 {
-  #define ___f(X, Y, Z)  this->rules.ability_chart.X[this->Y(character)].bonuses.Z
+  #define ___f(X, Y, Z)  (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
   
-  #define __f(X)					\
+  #define __g(X, op)					\
     if (this->getStrength(character) != 18)		\
-      rc += ___f(strength, getStrength, X);		\
+      op ___f(strength, getStrength, X);		\
     else						\
-      rc += ___f(strength18, getStrength18, X);		\
-    rc += ___f(constitution, getConstitution, X);	\
-    rc += ___f(dexterity, getDexterity, X);		\
-    rc += ___f(intelligence, getIntelligence, X);	\
-    rc += ___f(wisdom, getWisdom, X);			\
-    rc += ___f(charisma, getCharisma, X);               \
-    rc += character.record.race.bonuses.bonuses.X;      \
-    for (const Class& c : character.record.prestige)    \
-      rc += c.abilities.bonuses.X
+      op ___f(strength18, getStrength18, X);		\
+    op ___f(constitution, getConstitution, X);		\
+    op ___f(dexterity, getDexterity, X);		\
+    op ___f(intelligence, getIntelligence, X);		\
+    op ___f(wisdom, getWisdom, X);			\
+    op ___f(charisma, getCharisma, X);			\
+    op (character.record.race.bonuses.bonuses.X);	\
+    for (const Class& c : character.record.prestige)	\
+      op (c.abilities.bonuses.X)
+  
+  #define __f(X) __g(X, rc +=)
+  
+  #define __w  *(weapon.weapon_group)
   
   
   
@@ -117,7 +121,6 @@ namespace tbrpg
    */
   Calculator& Calculator::operator =(const Calculator& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
     this->rules = (RuleSet&)(original.rules);
     return *this;
@@ -131,7 +134,6 @@ namespace tbrpg
    */
   Calculator& Calculator::operator =(Calculator& original)
   {
-    (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
     this->rules = (RuleSet&)(original.rules);
     return *this;
@@ -145,7 +147,6 @@ namespace tbrpg
    */
   Calculator& Calculator::operator =(Calculator&& original)
   {
-    (void) original;
     std::swap((Object&)*this, (Object&)original);
     std::swap(this->rules, (RuleSet&)(original.rules));
     return *this;
@@ -272,10 +273,10 @@ namespace tbrpg
   char Calculator::getHalfAttacks(const Character& character, const Weapon& weapon) const
   {
     char rc = 0;
-    int prof = character.record.proficiencies[*(weapon.weapon_group)];
-    for (const Class& c : character.prestige)
-      rc += c.proficiency_chart[*(weapon.weapon_group)][prof].half_attacks;
-    rc /= character.prestige.size();
+    int prof = character.record.proficiencies.at(__w);
+    for (const Class& c : character.record.prestige)
+      rc += c.proficiency_chart.at(__w)[prof].half_attacks;
+    rc /= character.record.prestige.size();
     rc += character.extra_attacks;
     return rc;
   }
@@ -304,14 +305,14 @@ namespace tbrpg
     if (f > 0)
       rc += f;
     int rc_prof = 0, rc_class = 0;
-    int prof = character.record.proficiencies[*(weapon.weapon_group)];
-    for (const Class& c : character.prestige)
+    int prof = character.record.proficiencies.at(__w);
+    for (const Class& c : character.record.prestige)
       {
-	rc_prof += c.proficiency_chart[*(weapon.weapon_group)][prof].hit_bonus;
+	rc_prof += c.proficiency_chart.at(__w)[prof].hit_bonus;
 	if (rc_class < c.thac0)
 	  rc_class = c.thac0;
       }
-    rc -= rc_prof / character.prestige.size();
+    rc -= rc_prof / character.record.prestige.size();
     rc += rc_class;
     rc -= weapon.hit_bonus;
     if (ammo != nullptr)
@@ -335,11 +336,11 @@ namespace tbrpg
 	__f(damage_bonus);
       }
     int rc_prof = 0;
-    int prof = character.record.proficiencies[*(weapon.weapon_group)];
-    for (const Class& c : character.prestige)
-      rc_prof += c.proficiency_chart[*(weapon.weapon_group)][prof].damage_bonus;
-    rc += rc_prof / character.prestige.size();
-    rc += damage_bonus;
+    int prof = character.record.proficiencies.at(__w);
+    for (const Class& c : character.record.prestige)
+      rc_prof += c.proficiency_chart.at(__w)[prof].damage_bonus;
+    rc += rc_prof / character.record.prestige.size();
+    rc += weapon.damage_bonus;
     if (ammo != nullptr)
       rc += ammo->damage_bonus;
     return rc;
@@ -366,7 +367,7 @@ namespace tbrpg
    */
   float Calculator::getBashing(const Character& character) const
   {
-    float rc = 0f;
+    float rc = 0;
     __f(bashing);
     return rc;
   }
@@ -399,7 +400,7 @@ namespace tbrpg
     int base = 10; /* TODO make base AC customisable */
     if (character.record.inventory.body != nullptr)
       {
-	in candidate;
+	int candidate;
 	candidate = character.record.inventory.body->armour_class;
 	if (base > candidate)
 	  base = candidate;
@@ -428,7 +429,7 @@ namespace tbrpg
    */
   float Calculator::getResurrectability(const Character& character) const
   {
-    float rc = 0f;
+    float rc = 0;
     __f(resurrectability);
     return rc;
   }
@@ -440,7 +441,7 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell level limit, negative for disabled
    */
-  int Calculator::getSpellLevelLimit(const Character& character, const bool wizard) const
+  int Calculator::getSpellLevelLimit(const Character& character, bool wizard) const
   {
     int rc = 0;
     if (wizard)
@@ -465,7 +466,7 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell learn success chance, negative for disabled
    */
-  float Calculator::getSpellLearn(const Character& character, const bool wizard) const
+  float Calculator::getSpellLearn(const Character& character, bool wizard) const
   {
     float rc = 0;
     if (wizard)
@@ -476,10 +477,10 @@ namespace tbrpg
 	  if (c.learn_from_scroll)
 	    ok = true;
 	if (ok == false)
-	  rc = -10f;
+	  rc = -10;
       }
     else
-      rc = -10f;
+      rc = -10;
     return rc;
   }
   
@@ -490,9 +491,12 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell scroll use success chance, negative for disabled
    */
-  float Calculator::getSpellScrollUse(const Character& character, const bool wizard) const
+  float Calculator::getSpellScrollUse(const Character& character, bool wizard) const
   {
-    float rc = 2f;
+    (void) character;
+    (void) wizard;
+  //TODO should this depend on something?
+    float rc = 2;
     return rc;
   }
   
@@ -503,7 +507,7 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell learn count limit, negative for disabled
    */
-  int Calculator::getSpellCountLimit(const Character& character, const bool wizard) const
+  int Calculator::getSpellCountLimit(const Character& character, bool wizard) const
   {
     int rc = 0;
     if (wizard)
@@ -522,19 +526,19 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's spell cast use success chance, negative for disabled
    */
-  float Calculator::getSpellSuccess(const Character& character, const bool wizard) const
+  float Calculator::getSpellSuccess(const Character& character, bool wizard) const
   {
     float rc = 0;
     if (wizard)
       {
-	rc = 2f;
+	rc = 2;
       }
     else
       {
 	__f(spell_failure);
-	rc = 1f - spell_failure;
-	if (rc < 0f)
-	  rc = 0f;
+	rc = 1 - rc;
+	if (rc < 0)
+	  rc = 0;
       }
     return rc;
   }
@@ -546,41 +550,52 @@ namespace tbrpg
    * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
    * @return             The character's numer of spell slots per spell level
    */
-  std::vector<int> Calculator::getSpellSlots(const Character& character, const bool wizard) const
+  std::vector<int> Calculator::getSpellSlots(const Character& character, bool wizard) const
   {
     std::vector<int> rc = std::vector<int>();
     if (wizard)
-      for (size_t c = 0, n = character.record.prestige.size(); i < n; i++)
+      for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	{
 	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.wizard_slots);
 	  char level = character.record.level[c];
-	  if (level >= chart.size())
+	  if (level >= (char)(chart.size()))
 	    level = chart.size() - 1;
 	  size_t i = 0;
 	  for (int count : chart[level])
 	    {
-	      if (i >= rc.size())
-		rc.append(count);
-	      else
+  	      if (i >= rc.size())
+  		rc.push_back(count);
+  	      else
 		rc[i] += count;
 	      i++;
 	    }
 	}
     else
       {
-	__f(bonus_spells);
-	std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.priest_slots);
-	char level = character.record.level[c];
-	if (level >= chart.size())
-	  level = chart.size() - 1;
-	size_t i = 0;
-	for (int count : chart[level])
+	std::vector<std::vector<int>> rca = std::vector<std::vector<int>>();
+	__g(bonus_spells, rca.push_back);
+	
+	
+	for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	  {
-	    if (i >= rc.size())
-	      rc.append(count);
-	    else
-	      rc[i] += count;
-	    i++;
+	    std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.priest_slots);
+	    char level = character.record.level[c];
+	    if (level >= (char)(chart.size()))
+	      level = chart.size() - 1;
+	    rca.push_back(chart[level]);
+	  }
+	
+	for (std::vector<int>& rcae : rca)
+	  {
+	    size_t i = 0;
+	    for (int count : rcae)
+	      {
+		if (i >= rc.size())
+		  rc.push_back(count);
+		else
+		  rc[i] += count;
+		i++;
+	      }
 	  }
       }
     return rc;
@@ -658,6 +673,7 @@ namespace tbrpg
   }
   
   
+  #undef __w
   #undef __f
   #undef ___f
   

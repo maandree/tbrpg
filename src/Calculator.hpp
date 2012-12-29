@@ -278,7 +278,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell level limit, negative for disabled
      */
-    virtual int getSpellLevelLimit(const Character& character, const bool wizard) const;
+    virtual int getSpellLevelLimit(const Character& character, bool wizard) const;
     
     /**
      * Gets a character's spell learn success chance
@@ -287,7 +287,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell learn success chance, negative for disabled
      */
-    virtual float getSpellLearn(const Character& character, const bool wizard) const;
+    virtual float getSpellLearn(const Character& character, bool wizard) const;
     
     /**
      * Gets a character's spell scroll use success chance
@@ -296,7 +296,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell scroll use success chance, negative for disabled
      */
-    virtual float getSpellScrollUse(const Character& character, const bool wizard) const;
+    virtual float getSpellScrollUse(const Character& character, bool wizard) const;
     
     /**
      * Gets a character's spell learn count limit
@@ -305,7 +305,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell learn count limit, negative for disabled
      */
-    virtual int getSpellCountLimit(const Character& character, const bool wizard) const;
+    virtual int getSpellCountLimit(const Character& character, bool wizard) const;
     
     /**
      * Gets a character's spell cast success chance
@@ -314,7 +314,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's spell cast use success chance, negative for disabled
      */
-    virtual float getSpellSuccess(const Character& character, const bool wizard) const;
+    virtual float getSpellSuccess(const Character& character, bool wizard) const;
     
     /**
      * Get a characters's number of spell slots
@@ -323,7 +323,7 @@ namespace tbrpg
      * @param   wizard     Whether it concerns wizard spells, otherwise, priest spells
      * @return             The character's numer of spell slots per spell level
      */
-    virtual std::vector<int> getSpellSlots(const Character& character, const bool wizard) const;
+    virtual std::vector<int> getSpellSlots(const Character& character, bool wizard) const;
     
     /**
      * Gets a character's lore level
