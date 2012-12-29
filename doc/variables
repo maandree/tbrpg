@@ -207,7 +207,7 @@ Class: Object                                                              ; Pre
 	std::vector<MagicSchool> specialisations                           ; Availiable specialisations for the class
 	std::unordered_map<WeaponGroup, std::vector<Proficiency>> proficiency_chart  ; Proficiency chart
 	Weapon default_one_hand                                                      ; Weapon used when the character has his left hand free but is holding a shield
-	Weapon default_two_hand                                                      ; Weapon used when the character has both his hands free
+	Weapon default_two_hands                                                     ; Weapon used when the character has both his hands free
 
 Race: Object                                                               ; Race class
 	std::string name                                                   ; The name of the race
