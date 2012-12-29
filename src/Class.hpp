@@ -152,7 +152,7 @@ namespace tbrpg
     /**
      * Weapon used when the character has both his hands free
      */
-    Weapon default_two_hand;
+    Weapon default_two_hands;
     
     
     

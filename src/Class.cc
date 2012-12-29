@@ -55,7 +55,7 @@ namespace tbrpg
     //this->specialisations = nullptr;
     //this->proficiency_chart = nullptr;
     //this->default_one_hand = nullptr;
-    //this->default_two_hand = nullptr;
+    //this->default_two_hands = nullptr;
   }
   
   /**
@@ -84,7 +84,7 @@ namespace tbrpg
     this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
-    this->default_two_hand = original.default_two_hand;
+    this->default_two_hands = original.default_two_hands;
   }
   
   /**
@@ -113,7 +113,7 @@ namespace tbrpg
     this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
-    this->default_two_hand = original.default_two_hand;
+    this->default_two_hands = original.default_two_hands;
   }
   
   /**
@@ -142,7 +142,7 @@ namespace tbrpg
     std::swap(this->specialisations, original.specialisations);
     std::swap(this->proficiency_chart, original.proficiency_chart);
     std::swap(this->default_one_hand, original.default_one_hand);
-    std::swap(this->default_two_hand, original.default_two_hand);
+    std::swap(this->default_two_hands, original.default_two_hands);
   }
   
   /**
@@ -174,7 +174,7 @@ namespace tbrpg
     //delete this->specialisations;
     //delete this->proficiency_chart;
     //delete this->default_one_hand;
-    //delete this->default_two_hand;
+    //delete this->default_two_hands;
   }
   
   
@@ -206,7 +206,7 @@ namespace tbrpg
     this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
-    this->default_two_hand = original.default_two_hand;
+    this->default_two_hands = original.default_two_hands;
     return *this;
   }
   
@@ -237,7 +237,7 @@ namespace tbrpg
     this->specialisations = original.specialisations;
     this->proficiency_chart = original.proficiency_chart;
     this->default_one_hand = original.default_one_hand;
-    this->default_two_hand = original.default_two_hand;
+    this->default_two_hands = original.default_two_hands;
     return *this;
   }
   
@@ -268,7 +268,7 @@ namespace tbrpg
     std::swap(this->specialisations, original.specialisations);
     std::swap(this->proficiency_chart, original.proficiency_chart);
     std::swap(this->default_one_hand, original.default_one_hand);
-    std::swap(this->default_two_hand, original.default_two_hand);
+    std::swap(this->default_two_hands, original.default_two_hands);
     return *this;
   }
   
@@ -299,7 +299,7 @@ namespace tbrpg
     if (this->specialisations != other.specialisations)  return false;
     if (this->proficiency_chart != other.proficiency_chart)  return false;
     if (this->default_one_hand != other.default_one_hand)  return false;
-    if (this->default_two_hand != other.default_two_hand)  return false;
+    if (this->default_two_hands != other.default_two_hands)  return false;
     return true;
   }
   
@@ -370,7 +370,7 @@ namespace tbrpg
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<Weapon>()(this->default_one_hand);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<Weapon>()(this->default_two_hand);
+    rc += std::hash<Weapon>()(this->default_two_hands);
     return rc;
   }
   
