@@ -37,6 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(29);
     this->learned = {};
+    this->selected = {};
     this->memorised = {};
   }
   
@@ -48,6 +49,7 @@ namespace tbrpg
   SpellBook::SpellBook(const SpellBook& original) : Object(original)
   {
     this->learned = original.learned;
+    this->selected = original.selected;
     this->memorised = original.memorised;
   }
   
@@ -59,6 +61,7 @@ namespace tbrpg
   SpellBook::SpellBook(SpellBook& original) : Object(original)
   {
     this->learned = original.learned;
+    this->selected = original.selected;
     this->memorised = original.memorised;
   }
   
@@ -70,6 +73,7 @@ namespace tbrpg
   SpellBook::SpellBook(SpellBook&& original) : Object(original)
   {
     std::swap(this->learned, original.learned);
+    std::swap(this->selected, original.selected);
     std::swap(this->memorised, original.memorised);
   }
   
@@ -105,6 +109,7 @@ namespace tbrpg
   {
     Object::__copy__((Object&)*this, (Object&)original);
     this->learned = original.learned;
+    this->selected = original.selected;
     this->memorised = original.memorised;
     return *this;
   }
@@ -119,6 +124,7 @@ namespace tbrpg
   {
     Object::__copy__((Object&)*this, (Object&)original);
     this->learned = original.learned;
+    this->selected = original.selected;
     this->memorised = original.memorised;
     return *this;
   }
@@ -133,6 +139,7 @@ namespace tbrpg
   {
     std::swap((Object&)*this, (Object&)original);
     std::swap(this->learned, original.learned);
+    std::swap(this->selected, original.selected);
     std::swap(this->memorised, original.memorised);
     return *this;
   }
@@ -147,6 +154,7 @@ namespace tbrpg
   bool SpellBook::operator ==(const SpellBook& other) const
   {
     if (this->learned != other.learned)  return false;
+    if (this->selected != other.selected)  return false;
     if (this->memorised != other.memorised)  return false;
     return true;
   }
@@ -184,6 +192,8 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::vector<Spell>>()(this->learned);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<std::vector<Spell>>()(this->selected);
+    rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::vector<Spell>>()(this->memorised);
     return rc;
   }

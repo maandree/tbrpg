@@ -53,6 +53,11 @@ namespace tbrpg
     std::vector<Spell> learned;
     
     /**
+     * Spell selection
+     */
+    std::vector<Spell> selected;
+    
+    /**
      * Memorisations
      */
     std::vector<Spell> memorised;
