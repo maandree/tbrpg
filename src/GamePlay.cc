@@ -316,7 +316,13 @@ namespace tbrpg
     // TODO right hand weapon support
     
     Weapon* weapon = player->character->record.inventory.left_hand[player->weapon];
-    // TODO fallback weapon (fists)
+    if (weapon == nullptr)
+      {
+	if (player->character->record.inventory.right_hand == nullptr)
+	  weapon = &(player->character->record.prestige[0].default_one_hand);
+	else
+	  weapon = &(player->character->record.prestige[0].default_two_hands);
+      }
     player->turns += weapon->speed_factor;
     
     int roll = this->attack_dice.roll();
