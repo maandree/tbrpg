@@ -309,6 +309,7 @@ AbilityBonus: Object                      ; Abilities bonus class
 
 SpellBook: Object                         ; Character spell book
 	std::vector<Spell> learned        ; Learned spells
+	std::vector<Spell> selected       ; Spell selection
 	std::vector<Spell> memorised      ; Memorisations
 
 Container: Item                           ; Item container item class
