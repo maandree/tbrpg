@@ -41,7 +41,10 @@ namespace tbrpg
     rc += ___f(dexterity, getDexterity, X);		\
     rc += ___f(intelligence, getIntelligence, X);	\
     rc += ___f(wisdom, getWisdom, X);			\
-    rc += ___f(charisma, getCharisma, X)
+    rc += ___f(charisma, getCharisma, X);               \
+    rc += character.record.race.bonues.bonues.X;        \
+    for (const Class& c : character.record.prestige)    \
+      rc += c.abilities.bonues.X
   
   
   

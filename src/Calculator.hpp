@@ -253,7 +253,7 @@ namespace tbrpg
      * @param   missile     Whether to ger armour class versus missile weapons, otherwise, versus melée weapons
      * @return              The character's armour class
      */
-    virtual int getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const;
+    virtual int getArmourClass(const Character& character, const DamageType& damagetype, bool missile, const Weapon& weapon) const;
     
     /**
      * Gets a character's hit point bonus at level up that does not depend on the level
