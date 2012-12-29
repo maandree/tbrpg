@@ -204,6 +204,7 @@ namespace tbrpg
      * Get the number of half attacks inclicted by a character
      * 
      * @param   character  The character
+     * @param   weapon     The character's weapon
      * @return             The number of half attacks
      */
     virtual char getHalfAttacks(const Character& character, const Weapon& weapon) const;
@@ -212,19 +213,21 @@ namespace tbrpg
      * Get a character's THAC0
      * 
      * @param   character  The character
-     * @param   missile    Whether to get THAC0 when using missile weapon, otherwise, when using melée weapon
+     * @param   weapon     The character's weapon
+     * @param   ammo       The character's ammunition
      * @return             The character's THAC0
      */
-    virtual int getTHAC0(const Character& character, bool missile) const;
+    virtual int getTHAC0(const Character& character, const Weapon& weapon, const Ammunition* ammo) const;
     
     /**
      * Gets a character's damage bonus
      * 
      * @param   character  The character
-     * @param   missile    Whether to get damage bonus when using missile weapon, otherwise, when using melée weapon
+     * @param   weapon     The character's weapon
+     * @param   ammo       The character's ammunition
      * @return             The characters damage bonus
      */
-    virtual int getDamageBonus(const Character& character, bool missile) const;
+    virtual int getDamageBonus(const Character& character, const Weapon& weapon, const Ammunition* ammo) const;
     
     /**
      * Gets a character's carry limit

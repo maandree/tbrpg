@@ -281,37 +281,66 @@ namespace tbrpg
    * Get a character's THAC0
    * 
    * @param   character  The character
-   * @param   missile    Whether to get THAC0 when using missile weapon, otherwise, when using melée weapon
+   * @param   weapon     The character's weapon
+   * @param   ammo       The character's ammunition
    * @return             The character's THAC0
    */
-  int Calculator::getTHAC0(const Character& character, bool missile) const
+  int Calculator::getTHAC0(const Character& character, const Weapon& weapon, const Ammunition* ammo) const
   {
     int rc = 0;
     __f(hit_bonus);
-    if (missile == false)
+    __f(luck);
+    if (weapon.melee == false)
       {
 	__f(missile_attack_bonus);
       }
     rc = -rc;
+    for (char level : character.record.level) /* TODO make this formula customisable */
+      rc -= level - 1;
+    int f = (character.fatigue - 24) / 4; /* TODO make this formula customisable */
+    if (f > 0)
+      rc += f;
+    int rc_prof = 0, rc_class = 0;
+    int prof = character.record.proficiencies[*(weapon.weapon_group)];
+    for (const Class& c : character.prestige)
+      {
+	rc_prof += c.proficiency_chart[*(weapon.weapon_group)][prof].hit_bonus;
+	if (rc_class < c.thac0)
+	  rc_class = c.thac0;
+      }
+    rc -= rc_prof / character.prestige.size();
+    rc += rc_class;
+    rc -= weapon.hit_bonus;
+    if (ammo != nullptr)
+      rc -= ammo->hit_bonus;
     return rc;
-  } // proficiency -luck $(: -(fatigue - 24) / 4 : 0) weapon class $(-(level - 1))
+  }
   
   /**
    * Gets a character's damage bonus
    * 
    * @param   character  The character
-   * @param   missile    Whether to get damage bonus when using missile weapon, otherwise, when using melée weapon
+   * @param   weapon     The character's weapon
+   * @param   ammo       The character's ammunition
    * @return             The characters damage bonus
    */
-  int Calculator::getDamageBonus(const Character& character, bool missile) const
+  int Calculator::getDamageBonus(const Character& character, const Weapon& weapon, const Ammunition* ammo) const
   {
     int rc = 0;
-    if (missile == false)
+    if (weapon.melee)
       {
 	__f(damage_bonus);
       }
+    int rc_prof = 0;
+    int prof = character.record.proficiencies[*(weapon.weapon_group)];
+    for (const Class& c : character.prestige)
+      rc_prof += c.proficiency_chart[*(weapon.weapon_group)][prof].damage_bonus;
+    rc += rc_prof / character.prestige.size();
+    rc += damage_bonus;
+    if (ammo != nullptr)
+      rc += ammo->damage_bonus;
     return rc;
-  } // proficiency weapon
+  }
   
   /**
    * Gets a character's carry limit
