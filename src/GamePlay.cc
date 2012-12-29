@@ -353,7 +353,10 @@ namespace tbrpg
 	  roll -= 4;
       }
     
-    // TODO hit if roll ≥ attacker.thac0 - target.ac
+    // TODO quiver
+    bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, nullptr) - this->calc.get(attackable[target], *weapon, nullptr);
+    
+    // TODO implement damage logic
     
     return 1;
   }
