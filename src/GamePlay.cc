@@ -239,7 +239,7 @@ namespace tbrpg
 		player->character->hit_points = player->character->record.hit_points;
 	      player->character->fatigue = 0;
 	      
-	      // TODO rememorise spells
+	      player->character->record.spells.memorised = player->character->record.spells.selected;
 	    }
 	}
     return 2;
