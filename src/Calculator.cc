@@ -374,9 +374,35 @@ namespace tbrpg
    * @param   character   The character
    * @param   damagetype  The damage type versus which to get the armour class
    * @param   missile     Whether to ger armour class versus missile weapons, otherwise, versus melée weapons
+   * @param   weapon      The character's weapon
    * @return              The character's armour class
    */
-  int Calculator::getArmourClass(const Character& character, const DamageType& damagetype, bool missile) const; // dex bodyarmour shield weapon
+  int Calculator::getArmourClass(const Character& character, const DamageType& damagetype, bool missile, const Weapon& weapon) const
+  {
+    int rc = 0;
+    __f(armour_class_bonus);
+    rc += weapon.bonuses.bonuses.armour_class_bonus;
+    if (character.record.inventory.right_hand != nullptr)
+      if (*(character.record.inventory.right_hand) >= PROTOTYPE(Shield))
+	{
+	  Shield* shield = static_cast<Shield*>(character.record.inventory.right_hand);
+	  if (missile ? shield->protect_missile : shield->protect_melee[damagetype])
+	    {
+	      rc += shield->bonuses.bonuses.armour_class_bonus;
+	      rc += shield->armour_class_modifiers[damagetype];
+	      rc += missile ? shield->bonuses.defence.missile : shield->bonuses.defence.melee;
+	    }
+	}
+    int base = 10; /* TODO make base AC customisable */
+    if (character.record.inventory.body != nullptr)
+      {
+	in candidate;
+	candidate = character.record.inventory.body->armour_class;
+	if (base > candidate)
+	  base = candidate;
+      }
+    return base - rc;
+  }
   
   /**
    * Gets a character's hit point bonus at level up that does not depend on the level
@@ -595,11 +621,13 @@ namespace tbrpg
     bool rc = (headgear != nullptr) && headgear->critical_hit_protection;
     return rc;
   }
-
+  
 //TODO magic defence
 //TODO casting level
 //TODO detect doors
-  
+//TODO armour can block spell casting
+//TODO bonuses from used items
+//TODO element defence
   
   
   /**
