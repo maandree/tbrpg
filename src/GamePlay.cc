@@ -254,7 +254,7 @@ namespace tbrpg
    */
   char GamePlay::action_quiver()
   {
-    this->players[0]->selectQuiver();
+    this->players[this->next_player]->selectQuiver();
     return 2;
   }
   
@@ -265,7 +265,7 @@ namespace tbrpg
    */
   char GamePlay::action_weapon()
   {
-    this->players[0]->selectWeapon();
+    this->players[this->next_player]->selectWeapon();
     return 2;
   }
   
