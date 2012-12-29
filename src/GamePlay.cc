@@ -339,7 +339,7 @@ namespace tbrpg
     int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
     if (multiplier == 2)
       std::cout << "Critical hit." << std::endl;
-    if ((player->stealth_on) && weapon.melee)
+    if ((player->stealth_on) && weapon->melee)
     {
       player->stealth_on = false;
       multiplier *= this->calc.getBackstabMultiplier(player->character);

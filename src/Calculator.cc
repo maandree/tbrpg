@@ -665,7 +665,7 @@ namespace tbrpg
   int Calculator::getBackstabMultiplier(const Character& character) const
   {
     char rc = 0;
-    for (size_t c = 0, n = character.prestige.size(); c < n; c++)
+    for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
       {
 	char candidate = character.record.prestige[c].experience_chart.backstabs[(long)(character.record.level[c])];
 	if (rc < candidate)

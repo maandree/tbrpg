@@ -95,8 +95,8 @@ namespace tbrpg
     this->lower_limits.intelligence = 3;
     this->lower_limits.wisdom = 3;
     this->lower_limits.charisma = 3;
-    this->default_one_hand = PROTOTYPE(Fist());
-    this->default_two_hands = PROTOTYPE(Fists());
+    this->default_one_hand = PROTOTYPE(Fist);
+    this->default_two_hands = PROTOTYPE(Fists);
     
     this->special_abilities = {};
     this->specialisations = {};
