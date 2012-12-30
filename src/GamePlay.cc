@@ -433,6 +433,21 @@ namespace tbrpg
       }
     
     std::cout << "Total damage: " << totaldamage << std::endl;
+    attackable[target].hit_points -= totaldamage;
+    if (attackable[target].hit_points <= -(this->game.rules.critical_death))
+      {
+	attackable[target].alive = -1;
+	std::cout << "Critical death inflicated to target." << std::endl;
+      }
+    else if (attackable[target].hit_points <= 0)
+      {
+	attackable[target].alive = 0;
+	std::cout << "Death inflicated to target." << std::endl;
+      }
+    else
+      return 1;
+    
+    // TODO drop enemy's (he is death) inventory to the ground
     
     return 1;
   }

@@ -727,7 +727,7 @@ makes it easier to hit the target.
 Added to the damage inflicted by a sucessful melée attack.
 @item  @b{Carry limit}
 How much weight a character can carry before being
-encumbered. When you wear items other then weapons and
+encumbered. When you wear items other than weapons and
 sheild, that is items not in your hands, their weight
 effect is divided by two; but items in your hands'
 weight effect is doubled.
@@ -2779,7 +2779,7 @@ characters. Healing can other be instant or continuous.
 @cindex raising the dead
 @cindex resurrection
 
-Dead characters are uneffected by spells other then Raise
+Dead characters are uneffected by spells other than Raise
 Dead and Resurrection. Newly raised characters will have
 only on hit point and require addition healing.
 
