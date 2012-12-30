@@ -365,6 +365,30 @@ namespace tbrpg
      */
     virtual float getPicking(const Character& character) const;
     
+    /**
+     * Gets a character's pick pocketing modifier
+     * 
+     * @param   character  The character
+     * @return             The character's pick pocketing modifier
+     */
+    virtual float getStealing(const Character& character) const;
+    
+    /**
+     * Gets a character's stealth modifier
+     * 
+     * @param   character  The character
+     * @return             The character's stealth modifier
+     */
+    virtual float getHiding(const Character& character) const;
+    
+    /**
+     * Gets a character's find traps modifier
+     * 
+     * @param   character  The character
+     * @return             The character's find traps modifier
+     */
+    virtual float getFinding(const Character& character) const;
+    
     
     
   protected:

@@ -685,7 +685,46 @@ namespace tbrpg
   {
     int rc = 0;
     __ff(thief_abilities, open_locks);
-  return (float)rc / 100.;
+    return (float)rc / 100.;
+  }
+  
+  /**
+   * Gets a character's pick pocketing modifier
+   * 
+   * @param   character  The character
+   * @return             The character's pick pocketing modifier
+   */
+  float Calculator::getStealing(const Character& character) const
+  {
+    int rc = 0;
+    __ff(thief_abilities, pick_pockets);
+    return (float)rc / 100.;
+  }
+  
+  /**
+   * Gets a character's stealth modifier
+   * 
+   * @param   character  The character
+   * @return             The character's stealth modifier
+   */
+  float Calculator::getHiding(const Character& character) const
+  {
+    int rc = 0;
+    __ff(thief_abilities, stealth);
+    return (float)rc / 100.;
+  }
+  
+  /**
+   * Gets a character's find traps modifier
+   * 
+   * @param   character  The character
+   * @return             The character's find traps modifier
+   */
+  float Calculator::getFinding(const Character& character) const
+  {
+    int rc = 0;
+    __ff(thief_abilities, find_traps);
+    return (float)rc / 100.;
   }
   
 //TODO magic defence
