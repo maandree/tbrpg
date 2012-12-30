@@ -528,8 +528,41 @@ namespace tbrpg
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl; // TODO
-    return 2;
+    std::vector<Creature> talkable = std::vector<Creature>();
+    for (Creature& creature : this->players[this->next_player]->area->creatures)
+      if ((creature.hostile == false) && creature.alive && (((Character&)creature).alive == 1))
+	talkable.push_back(creature);
+    
+    if (talkable.size() == 0)
+      {
+	std::cout << "There is no one nearby to talk to." << std::endl;
+	return 2;
+      }
+    
+    long target = 0;
+    
+    if (talkable.size() > 1)
+      {
+	std::vector<std::string> targets = std::vector<std::string>();
+	for (Creature& creature : talkable)
+	  targets.push_back(creature.record.name);
+	
+	target = promptMenu("Select target:", targets);
+      }
+    
+    if (target < 0)
+      return 2;
+    
+    std::vector<Character*> here = std::vector<Character*>();
+    MapMinor* location = this->players[this->next_player]->area;
+    
+    for (GameCharacter* p : this->players)
+      if (p->area == location)
+	here.push_back(p->character);
+    
+    talkable[target].interact(here);
+    
+    return 1;
   }
   
   /**
