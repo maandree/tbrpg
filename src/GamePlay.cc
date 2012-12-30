@@ -436,12 +436,12 @@ namespace tbrpg
     attackable[target].hit_points -= totaldamage;
     if (attackable[target].hit_points <= -(this->game.rules.critical_death))
       {
-	attackable[target].alive = -1;
+	((Character&)(attackable[target])).alive = -1;
 	std::cout << "Critical death inflicated to target." << std::endl;
       }
     else if (attackable[target].hit_points <= 0)
       {
-	attackable[target].alive = 0;
+	((Character&)(attackable[target])).alive = 0;
 	std::cout << "Death inflicated to target." << std::endl;
       }
     else
