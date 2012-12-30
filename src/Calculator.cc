@@ -293,7 +293,7 @@ namespace tbrpg
       rc += c.proficiency_chart.at(__w)[prof].half_attacks;
     rc /= character.record.prestige.size();
     rc += character.extra_attacks;
-    return rc;
+    return rc + 2; /* 2 is the base half attacks, i.e. just one attack*/
   }
   
   /**

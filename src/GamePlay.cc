@@ -372,37 +372,67 @@ namespace tbrpg
 	    }
 	}
     
-    int roll = this->attack_dice.roll();
-    std::cout << "Attack roll: " << roll << std::endl;
-    
-    if (roll <= this->game.rules.critical_miss)
-      {
-	std::cout << "Critical miss." << std::endl;
-	player->turns += 10;
-	player->stealth_on = false;
-	return 1;
-      }
-    
-    int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
-    if (multiplier == 2)
-      std::cout << "Critical hit." << std::endl;
+    int backstabMultiplier = 1;
     if ((player->stealth_on) && weapon->melee)
     {
       player->stealth_on = false;
-      multiplier *= this->calc.getBackstabMultiplier(*(player->character));
+      backstabMultiplier *= this->calc.getBackstabMultiplier(*(player->character));
     }
     
-    if (player->character->record.racial_enemy != nullptr)
+    int totaldamage = 0;
+    int attacks = this->calc.getHalfAttacks(*(player->character), *weapon);
+    
+    while (attacks >= 0)
       {
-	if (attackable[target].record.race >= *(player->character->record.racial_enemy))
-	  roll += 4; /* TODO make racial enemy bonus/penality a customisable rule */
+	int thac0 = this->calc.getTHAC0(*(player->character), *weapon, quiver);
+	int ac = this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
+	int rollmod = 0;
+	
+	if (player->character->record.racial_enemy != nullptr)
+	  {
+	    if (attackable[target].record.race >= *(player->character->record.racial_enemy))
+	      {
+		rollmod += 4; /* TODO make racial enemy bonus/penality a customisable rule */
+		std::cout << "Racial enemy bonus" << std::endl;
+	      }
+	    else
+	      {
+		rollmod -= 4;
+		std::cout << "Racial enemy penality" << std::endl;
+ 	      }
+	  }
+	
+	int roll = this->attack_dice.roll();
+	std::cout << "Attack roll: " << roll << " versus " << thac0 << " - " << ac << ": ";
+	
+	if (roll <= this->game.rules.critical_miss)
+	  {
+	    std::cout << "Critical miss" << std::endl;
+	    player->turns += 10;
+	    player->stealth_on = false;
+	    return 1;
+	  }
+	
+	bool hit = roll + rollmod >= thac0 - ac;
+	int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1;
+	if (multiplier == 2)
+	  {
+	    std::cout << "Critical hit" << std::endl;
+	    hit = true;
+	  }
+	else if (hit)
+	  std::cout << "Hit" << std::endl;
 	else
-	  roll -= 4;
+	  std::cout << "Miss" << std::endl;
+	multiplier *= backstabMultiplier;
+	
+	Dice damagedice = Dice(weapon->damage_dice, weapon->damage_die);
+	int damage = this->calc.getDamageBonus(*(player->character), *weapon, quiver);
+	std::cout << "Damage: " << damage << std::endl;
+	totaldamage += damage;
       }
     
-    int thac0 = this->calc.getTHAC0(*(player->character), *weapon, quiver);
-    int ac = this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
-    bool hit = roll >= thac0 - ac;
+    std::cout << "Total damage: " << totaldamage << std::endl;
     
     return 1;
   }
