@@ -350,14 +350,20 @@ namespace tbrpg
     if (player->character->record.racial_enemy != nullptr)
       {
 	if (attackable[target].record.race >= *(player->character->record.racial_enemy))
-	  roll += 4;
+	  roll += 4; /* TODO make racial enemy bonus/penality a customisable rule */
 	else
 	  roll -= 4;
       }
     
     // TODO quiver
     Weapon targetweapon = *weapon;/*TODO use target weapon*/
-    DamageType damagetype = SLASHING;/*TODO random type from the attacker's weapon's types */
+    
+    DamageType damagetype = weapon->damage_type[0];
+    if (weapon->damage_type.size() > 0)
+      {
+	Die dmgtypedie = Die(weapon->damage_type.size());
+	damagetype = weapon->damage_type[(long)(dmgtypedie.roll())];
+      }
     
     bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, nullptr)
                      - this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
