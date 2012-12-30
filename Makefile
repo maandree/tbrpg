@@ -126,11 +126,13 @@ all-at-once: $(SOURCE)
 	     if [ -e "src/$*.hpp.gch" ]; then  $(RM) "src/$*.hpp.gch";  fi;  \
 	     ln -s "/dev/shm/tbrpg/$*.hpp.gch" "src/$*.hpp.gch";             \
 	 fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 %.o: src/%.cc
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 src/%.hpp.gch: src/%.hpp
 	@if [ ! -d bin ]; then  mkdir bin;  fi
@@ -139,7 +141,8 @@ src/%.hpp.gch: src/%.hpp
 	     if [ -e "$@" ]; then  $(RM) "$@";  fi;   \
 	     ln -s "/dev/shm/tbrpg/$*.hpp.gch" "$@";  \
 	 fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 %.o src/%.h.gch: src/%.c src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
@@ -148,11 +151,13 @@ src/%.hpp.gch: src/%.hpp
 	     if [ -e "src/$*.h.gch" ]; then  $(RM) "src/$*.h.gch";  fi;  \
 	     ln -s "/dev/shm/tbrpg/$*.h.gch" "src/$*.h.gch";             \
 	 fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 %.o: src/%.c
 	@if [ ! -d bin ]; then  mkdir bin;  fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 src/%.h.gch: src/%.h
 	@if [ ! -d bin ]; then  mkdir bin;  fi
@@ -161,7 +166,8 @@ src/%.h.gch: src/%.h
 	     if [ -e "$@" ]; then  $(RM) "$@";  fi;  \
 	     ln -s "/dev/shm/tbrpg/$*.h.gch" "$@";   \
 	 fi
-	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^
+	@time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^ || \
+	 (make clean/"$*" && time $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $^)
 
 $(EXEC) program: src/program.cc $(OBJS)
 	@echo -e "\e[01;35m$(EXEC)\e[0m";
