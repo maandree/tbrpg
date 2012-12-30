@@ -30,39 +30,41 @@
  */
 namespace tbrpg
 {
-  #define ___f(X, Y, Z)  \
-    (this->rules.ability_chart.X[(long)(this->Y(character))].bonuses.Z)
+  #define ___f(X, Y, Z, W)					\
+    (this->rules.ability_chart.X[(long)(this->Y(character))].Z.W)
   
-  #define ___i(X, Y, op)					\
-    if (character.record.inventory.X == nullptr)		\
-      op (character.record.inventory.X->bonuses.bonuses.Y)
+  #define ___i(X, Y, Z, op)				\
+    if (character.record.inventory.X == nullptr)	\
+      op (character.record.inventory.X->bonuses.Y.Z)
   
-  #define __g(X, op)					\
+  #define __gg(X, Y, op)			       	\
     if (this->getStrength(character) != 18)		\
-      op ___f(strength, getStrength, X);		\
+      op ___f(strength, getStrength, X, Y);		\
     else						\
-      op ___f(strength18, getStrength18, X);		\
-    op ___f(constitution, getConstitution, X);		\
-    op ___f(dexterity, getDexterity, X);		\
-    op ___f(intelligence, getIntelligence, X);		\
-    op ___f(wisdom, getWisdom, X);			\
-    op ___f(charisma, getCharisma, X);			\
-    op (character.record.race.bonuses.bonuses.X);	\
+      op ___f(strength18, getStrength18, X, Y);		\
+    op ___f(constitution, getConstitution, X, Y);	\
+    op ___f(dexterity, getDexterity, X, Y);		\
+    op ___f(intelligence, getIntelligence, X, Y);	\
+    op ___f(wisdom, getWisdom, X, Y);			\
+    op ___f(charisma, getCharisma, X, Y);		\
+    op (character.record.race.bonuses.X.Y);		\
     for (const Class& c : character.record.prestige)	\
-      op (c.abilities.bonuses.X);			\
-    ___i(right_hand, X, op);			       	\
-    ___i(headgear, X, op);			       	\
-    ___i(amulet, X, op);				\
-    ___i(body, X, op);					\
-    ___i(gauntlets, X, op);				\
-    ___i(girdle, X, op);				\
-    ___i(boots, X, op);					\
-    ___i(cloak, X, op);					\
+      op (c.abilities.X.Y);				\
+    ___i(right_hand, X, Y, op);			       	\
+    ___i(headgear, X, Y, op);			       	\
+    ___i(amulet, X, Y, op);				\
+    ___i(body, X, Y, op);				\
+    ___i(gauntlets, X, Y, op);				\
+    ___i(girdle, X, Y, op);				\
+    ___i(boots, X, Y, op);				\
+    ___i(cloak, X, Y, op);				\
     for (Ring* ring : character.record.inventory.rings)	\
       if (ring != nullptr)				\
-	op (ring->bonuses.bonuses.X)
+	op (ring->bonuses.X.Y)
   
+  #define __g(X, op) __gg(bonuses, X, op)
   #define __f(X) __g(X, rc +=)
+  #define __ff(X, Y) __gg(X, Y, rc +=)
   
   #define __w  *(weapon.weapon_group)
   
@@ -673,6 +675,19 @@ namespace tbrpg
     return (int)rc;
   }
   
+  /**
+   * Gets a character's lock picking modifier
+   * 
+   * @param   character  The character
+   * @return             The character's lock picking modifier
+   */
+  float Calculator::getPicking(const Character& character) const
+  {
+    int rc = 0;
+    __ff(thief_abilities, open_locks);
+  return (float)rc / 100.;
+  }
+  
 //TODO magic defence
 //TODO casting level
 //TODO detect doors
@@ -707,9 +722,11 @@ namespace tbrpg
   
   
   #undef __w
-  #undef __g
   #undef __i
+  #undef __g
   #undef __f
+  #undef __gg
+  #undef __ff
   #undef ___f
   
 }

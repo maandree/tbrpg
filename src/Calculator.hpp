@@ -357,6 +357,14 @@ namespace tbrpg
      */
     virtual int getBackstabMultiplier(const Character& character) const;
     
+    /**
+     * Gets a character's lock picking modifier
+     * 
+     * @param   character  The character
+     * @return             The character's lock picking modifier
+     */
+    virtual float getPicking(const Character& character) const;
+    
     
     
   protected:
