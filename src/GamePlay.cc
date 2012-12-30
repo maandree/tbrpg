@@ -475,6 +475,8 @@ namespace tbrpg
     #undef __drop
     #undef __drops
     
+    // TODO gain experience add new levels
+    
     return 1;
   }
   

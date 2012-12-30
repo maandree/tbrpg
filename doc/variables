@@ -422,8 +422,8 @@ LowWand: Wand                             ; Low order magic wand
 
 Lockable                                  ; Lockable object
 	bool locked                       ; Whether the object is locked
-	int pick_level                    ; The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
-	int bash_level                    ; The lowest value needed from 1D20 roll, with modifiers, to be able to bash the lock
+	int pick_level                    ; The lowest value needed from an attack roll, with modifiers, to be able to pick the lock
+	int bash_level                    ; The lowest value needed from an attack roll, with modifiers, to be able to bash the lock
 	bool pickable                     ; Whether the lock is pickable
 	bool bashable                     ; Whether the lock is bashable
 
@@ -457,7 +457,10 @@ Creature: Character                       ; A creature in the area
 	float y                           ; The creatures vertical position in metres, the parties starts at 0
 	bool alive                        ; Whether the creature is alive, the game senario is allowed to have it dead and the set it to live to simulate the creature being new
 	bool resurrect                    ; Whether the creature is resurrected when the party leaves the area
-	int experience                    ; the experience gain for killing the creature
+	int experience                    ; The experience gain for killing the creature
+	int pick_level                    ; Lowest, modified, attack roll needed to successfully pick pocket
+	bool pickable                     ; Whether pick pocket is possible
+	bool pick_hostile                 ; Whether the creature because hostile when pick pocketed
 
 Map: Object                               ; The world map
 	MapMinor start                    ; The start area of the game senario

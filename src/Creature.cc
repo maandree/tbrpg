@@ -42,6 +42,9 @@ namespace tbrpg
     this->y = 0;
     this->alive = true;
     this->resurrect = true;
+    this->pick_level = 10;
+    this->pickable = true;
+    this->pick_hostile = true;
   }
   
   /**
@@ -57,6 +60,9 @@ namespace tbrpg
     this->alive = original.alive;
     this->resurrect = original.resurrect;
     this->experience = original.experience;
+    this->pick_level = original.pick_level;
+    this->pickable = original.pickable;
+    this->pick_hostile = original.pick_hostile;
   }
   
   /**
@@ -72,6 +78,9 @@ namespace tbrpg
     this->alive = original.alive;
     this->resurrect = original.resurrect;
     this->experience = original.experience;
+    this->pick_level = original.pick_level;
+    this->pickable = original.pickable;
+    this->pick_hostile = original.pick_hostile;
   }
   
   /**
@@ -87,6 +96,9 @@ namespace tbrpg
     std::swap(this->alive, original.alive);
     std::swap(this->resurrect, original.resurrect);
     std::swap(this->experience, original.experience);
+    std::swap(this->pick_level, original.pick_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->pick_hostile, original.pick_hostile);
   }
   
   /**
@@ -126,6 +138,9 @@ namespace tbrpg
     this->alive = original.alive;
     this->resurrect = original.resurrect;
     this->experience = original.experience;
+    this->pick_level = original.pick_level;
+    this->pickable = original.pickable;
+    this->pick_hostile = original.pick_hostile;
     return *this;
   }
   
@@ -144,6 +159,9 @@ namespace tbrpg
     this->alive = original.alive;
     this->resurrect = original.resurrect;
     this->experience = original.experience;
+    this->pick_level = original.pick_level;
+    this->pickable = original.pickable;
+    this->pick_hostile = original.pick_hostile;
     return *this;
   }
   
@@ -162,6 +180,9 @@ namespace tbrpg
     std::swap(this->alive, original.alive);
     std::swap(this->resurrect, original.resurrect);
     std::swap(this->experience, original.experience);
+    std::swap(this->pick_level, original.pick_level);
+    std::swap(this->pickable, original.pickable);
+    std::swap(this->pick_hostile, original.pick_hostile);
     return *this;
   }
   
@@ -181,6 +202,9 @@ namespace tbrpg
     if (this->alive != other.alive)  return false;
     if (this->resurrect != other.resurrect)  return false;
     if (this->experience != other.experience)  return false;
+    if (this->pick_level != other.pick_level)  return false;
+    if (this->pickable != other.pickable)  return false;
+    if (this->pick_hostile != other.pick_hostile)  return false;
     return true;
   }
   
@@ -244,6 +268,12 @@ namespace tbrpg
     rc += std::hash<bool>()(this->resurrect);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<int>()(this->experience);
+    rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
+    rc += std::hash<int>()(this->pick_level);
+    rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
+    rc += std::hash<bool>()(this->pickable);
+    rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
+    rc += std::hash<bool>()(this->pick_hostile);
     return rc;
   }
   
