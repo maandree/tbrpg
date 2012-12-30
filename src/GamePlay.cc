@@ -321,7 +321,7 @@ namespace tbrpg
     if (weapon == nullptr)
       {
 	if (player->character->record.inventory.right_hand == nullptr)
-	  weapon = &(player->character->record.prestige[0].default_one_hand);
+	  weapon = &(player->character->record.prestige[0].default_one_hand); /* TODO document that the first prestige is used*/
 	else
 	  weapon = &(player->character->record.prestige[0].default_two_hands);
       }
@@ -355,8 +355,12 @@ namespace tbrpg
 	  roll -= 4;
       }
     
-    // TODO quiver
-    Weapon targetweapon = *weapon;/*TODO use target weapon*/
+    Ammunition* quiver = nullptr; /* TODO quiver*/
+    Weapon* _targetweapon = attackable[target].inventory.left_hand[0]; /* TODO dual weapon */
+    Weapon targetweapon = _targetweapon != nullptr ? *_targetweapon
+                        : attackable[target].inventory.right_hand != nullptr
+                        ? attackable[target].record.prestige[0].default_one_hand
+                        : attackable[target].record.prestige[0].default_two_hands;
     
     DamageType damagetype = weapon->damage_type[0];
     if (weapon->damage_type.size() > 0)
@@ -365,8 +369,29 @@ namespace tbrpg
 	damagetype = weapon->damage_type[(long)(dmgtypedie.roll())];
       }
     
-    bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, nullptr)
+    bool hit = roll >= this->calc.getTHAC0(*(player->character), *weapon, quiver)
                      - this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
+    
+    Item* diminish = nullptr;
+    if ((quiver))
+      diminish = static_cast<Item*>(quiver);
+    else if (weapon->quantity_limit > 1) /* throw weapon */
+      diminish = static_cast<Item*>(weapon);
+    
+    if ((diminish))
+      if (--(diminish->quantity) == 0)
+	{
+	  if ((quiver))
+	    {
+	      player->character->record.inventory.quiver[player->quiver] = nullptr;
+	      std::cout << "You have now run out of your selected quiver." << std::endl;
+	    }
+	  else
+	    {
+	      player->character->record.inventory.left_hand[player->weapon] = nullptr;
+	      std::cout << "You have now run out of your selected throwing weapon." << std::endl;
+	    }
+	}
     
     // TODO implement damage logic
     
