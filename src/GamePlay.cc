@@ -772,7 +772,7 @@ namespace tbrpg
     
     {
       long _slot = 0;
-      for (Item* item : this->players[this->next_player]->character.record.inventory.personal)
+      for (Item* item : this->players[this->next_player]->character->record.inventory.personal)
 	if (item == nullptr)
 	  {
 	    slot = _slot;
@@ -845,14 +845,14 @@ namespace tbrpg
 	if ((stole))
 	  {
 	    std::cout << "Stole: " << stole->name << std::endl;
-	    this->players[this->next_player]->character.record.inventory.personal = stole;
+	    this->players[this->next_player]->character->record.inventory.personal = stole;
 	  }
 	else
 	  std::cout << "Target has noting to steal." << std::endl;
       }
     else
       {
-	if ((pickable[target].hostile = pickable[target].pick_hostile; /* FIXME not implemented */))
+	if ((pickable[target].hostile = pickable[target].pick_hostile/* FIXME not implemented */))
 	  std::cout << "Failure: Target became hostile." << std::endl;
 	else
 	  std::cout << "Failure: Target remains friendly." << std::endl;
