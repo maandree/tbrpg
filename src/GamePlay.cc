@@ -674,8 +674,56 @@ namespace tbrpg
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl; // TODO
-    return 2;
+    std::vector<Lockable*> locks = std::vector<Lockable*>();
+    std::vector<std::string> names = std::vector<std::string>();
+    
+    for (Entrance& entrance : this->players[this->next_player]->area->connections)
+      if (entrance >= PROTOTYPE(Door))
+	{
+	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(&entrance)));
+	  std::stringstream ss;
+	  ss << "Door (" << entrance.direction << ")";
+	  names.push_back(ss.str());
+	}
+    
+    for (Item* item : this->players[this->next_player]->area->items)
+      if (*item >= PROTOTYPE(EnvironmentContainer))
+	{
+	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Item*>(item)));
+	  std::stringstream ss;
+	  ss << "Container (" << item->name << ")";
+	  names.push_back(ss.str());
+	}
+    
+    long target = promptMenu("Select target:", names);
+    if (target < 0)
+      return 2;
+    this->players[this->next_player]->turns += 1; /* TODO document time and make customisable */
+    
+    Lockable* lock = locks[target];
+    
+    if (lock->locked == false)
+      std::cout << "Not locked." << std::endl;
+    else
+      {
+	/* TODO document that only response you get is the roll and modifer, not the level or possibility */
+	int roll = this->attack_dice.roll();
+	int level = lock->pick_level;
+	float mod = this->calc.getPicking(*(this->players[this->next_player]->character));
+	bool possible = lock->pickable;
+	int total = (int)(roll * mod + 0.5);
+	bool success = possible && (total >= level);
+	
+	std::cout << "Roll: " << roll << std::endl;
+	std::cout << "Multiplier: " << (int)(mod * 100. + 0.5) << " %" << std::endl;
+	std::cout << "Total: " << total << std::endl;
+	
+	std::cout << (success ? "Success." : "Failure.") << std::endl;
+	
+	lock->locked = success;
+      }
+    
+    return 1;
   }
   
   /**
