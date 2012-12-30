@@ -831,15 +831,15 @@ namespace tbrpg
     if (target < 0)
       return 2;
     
-    if (pickable[target].pickable/*FIXME not implemented*/ == false)
+    if (pickable[target].pickable == false)
       {
 	std::cout << "Not possible." << std::endl;
 	return 2;
       }
     
-    int level = pickable[target].pick_level; /* FIXME not implemented */
+    int level = pickable[target].pick_level;
     int roll = this->attack_dice.roll();
-    float mod = this->calc.getStealing(this->players[this->next_player]);
+    float mod = this->calc.getStealing(*(this->players[this->next_player]->character));
     
     if ((int)(roll * mod + 0.5) >= level)
       {
@@ -847,14 +847,14 @@ namespace tbrpg
 	if ((stole))
 	  {
 	    std::cout << "Stole: " << stole->name << std::endl;
-	    this->players[this->next_player]->character->record.inventory.personal = stole;
+	    this->players[this->next_player]->character->record.inventory.personal[slot] = stole;
 	  }
 	else
 	  std::cout << "Target has noting to steal." << std::endl;
       }
     else
       {
-	if ((pickable[target].hostile = pickable[target].pick_hostile/* FIXME not implemented */))
+	if ((pickable[target].hostile = pickable[target].pick_hostile))
 	  std::cout << "Failure: Target became hostile." << std::endl;
 	else
 	  std::cout << "Failure: Target remains friendly." << std::endl;
