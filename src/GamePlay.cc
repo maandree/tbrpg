@@ -447,7 +447,33 @@ namespace tbrpg
     else
       return 1;
     
-    // TODO drop enemy's (he is death) inventory to the ground
+    #define __drop(X)				\
+      if (X != nullptr)				\
+	{					\
+	  player->area->items.push_back(X);	\
+	  X = nullptr;				\
+	}//
+    
+    #define __drops(X)					\
+      for (size_t i = 0, n = X.size(); i < n; i++)	\
+	__drop(X[i])
+    
+    __drops(attackable[target].record.inventory.left_hand);
+    __drop(attackable[target].record.inventory.right_hand);
+    __drops(attackable[target].record.inventory.quiver);
+    __drops(attackable[target].record.inventory.quick_items);
+    __drop(attackable[target].record.inventory.headgear);
+    __drop(attackable[target].record.inventory.amulet);
+    __drops(attackable[target].record.inventory.rings);
+    __drop(attackable[target].record.inventory.body);
+    __drop(attackable[target].record.inventory.gauntlets);
+    __drop(attackable[target].record.inventory.girdle);
+    __drop(attackable[target].record.inventory.boots);
+    __drop(attackable[target].record.inventory.cloak);
+    __drops(attackable[target].record.inventory.personal);
+    
+    #undef __drop
+    #undef __drops
     
     return 1;
   }
