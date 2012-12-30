@@ -467,7 +467,7 @@ namespace tbrpg
       }
     else
       {
-	/* TODO make customisable */
+	/* XXX make customisable */
 	short wis = getWisdom(character);
 	rc = 5;
 	if (wis >= 17)  rc++;

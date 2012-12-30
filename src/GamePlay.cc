@@ -392,7 +392,7 @@ namespace tbrpg
 	  {
 	    if (attackable[target].record.race >= *(player->character->record.racial_enemy))
 	      {
-		rollmod += 4; /* TODO make racial enemy bonus/penality a customisable rule */
+		rollmod += 4; /* XXX make racial enemy bonus/penality a customisable rule */
 		std::cout << "Racial enemy bonus" << std::endl;
 	      }
 	    else
@@ -408,13 +408,13 @@ namespace tbrpg
 	if (roll <= this->game.rules.critical_miss)
 	  {
 	    std::cout << "Critical miss" << std::endl;
-	    player->turns += 10; /* TODO make customisable */
+	    player->turns += 10; /* XXX make customisable */
 	    player->stealth_on = false;
 	    return 1;
 	  }
 	
 	bool hit = roll + rollmod >= thac0 - ac;
-	int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1; /* TODO make customisable */
+	int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1; /* XXX make customisable */
 	if (multiplier == 2)
 	  {
 	    std::cout << "Critical hit" << std::endl;
@@ -625,7 +625,7 @@ namespace tbrpg
     long target = promptMenu("Select target:", names);
     if (target < 0)
       return 2;
-    this->players[this->next_player]->turns += 1; /* TODO document time and make customisable */
+    this->players[this->next_player]->turns += 1; /* XXX document time and make customisable */
     
     Lockable* lock = locks[target];
     
@@ -704,7 +704,7 @@ namespace tbrpg
     long target = promptMenu("Select target:", names);
     if (target < 0)
       return 2;
-    this->players[this->next_player]->turns += 1; /* TODO document time and make customisable */
+    this->players[this->next_player]->turns += 1; /* XXX document time and make customisable */
     
     Lockable* lock = locks[target];
     
@@ -1042,7 +1042,7 @@ namespace tbrpg
     
     std::cout << "Not implement..." << std::endl; // TODO
     
-    this->players[this->next_player]->turns += 10;
+    this->players[this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
   }
   
