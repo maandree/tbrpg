@@ -629,19 +629,23 @@ namespace tbrpg
     
     if (lock->locked == false)
       std::cout << "Not locked." << std::endl;
+    else if (lock->bashable == false)
+      {
+	std::cout << "Not possible." << std::endl;
+	return 2;
+      }
     else
       {
-	/* TODO document that only response you get is the roll and modifer, not the level or possibility */
 	int roll = this->attack_dice.roll();
 	int level = lock->bash_level;
 	float mod = this->calc.getBashing(*(this->players[this->next_player]->character));
-	bool possible = lock->bashable;
 	int total = (int)(roll * mod + 0.5);
-	bool success = possible && (total >= level);
+	bool success = total >= level;
 	
 	std::cout << "Roll: " << roll << std::endl;
 	std::cout << "Multiplier: " << (int)(mod * 100. + 0.5) << " %" << std::endl;
 	std::cout << "Total: " << total << std::endl;
+	/* do not print level */
 	
 	std::cout << (success ? "Success." : "Failure.") << std::endl;
 	
@@ -704,19 +708,23 @@ namespace tbrpg
     
     if (lock->locked == false)
       std::cout << "Not locked." << std::endl;
+    else if (lock->pickable == false)
+      {
+	std::cout << "Not possible." << std::endl;
+	return 2;
+      }
     else
       {
-	/* TODO document that only response you get is the roll and modifer, not the level or possibility */
 	int roll = this->attack_dice.roll();
 	int level = lock->pick_level;
 	float mod = this->calc.getPicking(*(this->players[this->next_player]->character));
-	bool possible = lock->pickable;
 	int total = (int)(roll * mod + 0.5);
-	bool success = possible && (total >= level);
+	bool success = total >= level;
 	
 	std::cout << "Roll: " << roll << std::endl;
 	std::cout << "Multiplier: " << (int)(mod * 100. + 0.5) << " %" << std::endl;
 	std::cout << "Total: " << total << std::endl;
+	/* do not print level */
 	
 	std::cout << (success ? "Success." : "Failure.") << std::endl;
 	
@@ -760,6 +768,26 @@ namespace tbrpg
    */
   char GamePlay::action_pick_pocket()
   {
+    long slot = -1;
+    
+    {
+      long _slot = 0;
+      for (Item* item : this->players[this->next_player]->character.record.inventory.personal)
+	if (item == nullptr)
+	  {
+	    slot = _slot;
+	    break;
+	  }
+	else
+	  _slot++;
+    }
+    
+    if (slot < 0)
+      {
+	std::cout << "Your inventory is full." << std::endl;
+	return 2;
+      }
+    
     if (this->players[this->next_player]->stealth_on)
       {
 	std::cout << "You will have to turn off Stealth Mode." << std::endl;
@@ -776,8 +804,61 @@ namespace tbrpg
 	return 2;
       }
     
-    std::cout << "Not implement..." << std::endl; // TODO
-    return 2;
+    std::vector<Creature> pickable = std::vector<Creature>();
+    for (Creature& creature : this->players[this->next_player]->area->creatures)
+      if ((creature.hostile == false) && creature.alive && (((Character&)creature).alive == 1))
+	pickable.push_back(creature);
+    
+    if (pickable.size() == 0)
+      {
+	std::cout << "There is no one nearby to pick pocket." << std::endl;
+	return 2;
+      }
+    
+    long target = 0;
+    
+    if (pickable.size() > 1)
+      {
+	std::vector<std::string> targets = std::vector<std::string>();
+	for (Creature& creature : pickable)
+	  targets.push_back(creature.record.name);
+	
+	target = promptMenu("Select target:", targets);
+      }
+    
+    if (target < 0)
+      return 2;
+    
+    if (pickable[target].pickable/*FIXME not implemented*/ == false)
+      {
+	std::cout << "Not possible." << std::endl;
+	return 2;
+      }
+    
+    int level = pickable[target].pick_level; /* FIXME not implemented */
+    int roll = this->attack_dice.roll();
+    float mod = this->calc.getStealing(this->players[this->next_player]);
+    
+    if ((int)(roll * mod + 0.5) >= level)
+      {
+	Item* stole = pickable[target].pickPocket(); /* FIXME not implemented */
+	if ((stole))
+	  {
+	    std::cout << "Stole: " << stole->name << std::endl;
+	    this->players[this->next_player]->character.record.inventory.personal = stole;
+	  }
+	else
+	  std::cout << "Target has noting to steal." << std::endl;
+      }
+    else
+      {
+	if ((pickable[target].hostile = pickable[target].pick_hostile; /* FIXME not implemented */))
+	  std::cout << "Failure: Target became hostile." << std::endl;
+	else
+	  std::cout << "Failure: Target remains friendly." << std::endl;
+      }
+    
+    return 1;
   }
   
   /**
