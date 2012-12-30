@@ -74,9 +74,24 @@ namespace tbrpg
     bool resurrect;
     
     /**
-     * the experience gain for killing the creature
+     * The experience gain for killing the creature
      */
     int experience;
+    
+    /**
+     * Lowest, modified, attack roll needed to successfully pick pocket
+     */
+    int pick_level;
+    
+    /**
+     * Whether pick pocket is possible
+     */
+    bool pickable;
+    
+    /**
+     * Whether the creature because hostile when pick pocketed
+     */
+    bool pick_hostile;
     
     
     
