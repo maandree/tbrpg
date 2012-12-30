@@ -32,6 +32,8 @@
 #include "GameCharacter.hpp"
 #include "Calculator.hpp"
 #include "Dice.hpp"
+#include "EnvironmentContainer.hpp"
+#include "Door.hpp"
 
 
 /**

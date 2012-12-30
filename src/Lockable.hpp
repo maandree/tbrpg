@@ -50,8 +50,9 @@ namespace tbrpg
      */
     bool locked;
     
+    /* TODO change dock, using attack roll (which can be customised) */
     /**
-     * The lowest value needed from 1D20 roll, with modifiers, to be able to pick the lock
+     * The lowest value needed from 1D20 roll , with modifiers, to be able to pick the lock
      */
     int pick_level;
     
