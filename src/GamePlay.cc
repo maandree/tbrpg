@@ -355,7 +355,17 @@ namespace tbrpg
 	  roll -= 4;
       }
     
-    Ammunition* quiver = nullptr; /* TODO quiver*/
+    Ammunition* quiver = nullptr;
+    if (*weapon >= PROTOTYPE(RangedWeapon))
+      {
+	quiver = player->character->record.inventory.quiver[player->quiver];
+	if ((quiver == nullptr) || ((quiver.usable_with <= *weapon) == false))
+	  {
+	    std::cout << "You need to select a quiver for your weapon" << std::endl;
+	    return 2;
+	  }
+      }
+    
     Weapon* _targetweapon = attackable[target].inventory.left_hand[0]; /* TODO dual weapon */
     Weapon targetweapon = _targetweapon != nullptr ? *_targetweapon
                         : attackable[target].inventory.right_hand != nullptr
