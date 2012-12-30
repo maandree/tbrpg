@@ -843,7 +843,7 @@ namespace tbrpg
     
     if ((int)(roll * mod + 0.5) >= level)
       {
-	Item* stole = pickable[target].pickPocket(); /* FIXME not implemented */
+	Item* stole = pickable[target].pickPocket();
 	if ((stole))
 	  {
 	    std::cout << "Stole: " << stole->name << std::endl;

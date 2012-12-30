@@ -181,9 +181,16 @@ namespace tbrpg
     /**
      * Interact, but do not fight, with the creature
      * 
-     * @parm  nearby  Party members nearby
+     * @param  nearby  Party members nearby
      */
     virtual void interact(std::vector<Character*>& nearby);
+    
+    /**
+     * Successfully pick pockey the creature
+     * 
+     * @return  The stolen item, null is there is nothing to steal
+     */
+    virtual Item* pickPocket();
     
     
     

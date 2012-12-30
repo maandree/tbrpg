@@ -223,7 +223,7 @@ namespace tbrpg
   /**
    * Interact, but do not fight, with the creature
    * 
-   * @parm  nearby  Party members nearby
+   * @param  nearby  Party members nearby
    */
   void Creature::interact(std::vector<Character*>& nearby)
   {
@@ -232,6 +232,17 @@ namespace tbrpg
 	       << "\033[01;3" << this->record.colour << "m"
 	       << this->record.name << "\033[21;39m"
 	       << " has nothing to say.");
+  }
+  
+  /**
+   * Successfully pick pockey the creature
+   * 
+   * @return  The stolen item, null is there is nothing to steal
+   */
+  Item* Creature::pickPocket()
+  {
+    /* TODO dummy implementation */
+    return nullptr;
   }
   
   
