@@ -1090,17 +1090,17 @@ namespace tbrpg
     std::cout << this->players[this->next_player]->area->description << std::endl << std::endl;
     
     for (Entrance& connection : this->players[this->next_player]->area->connections)
-      std::cout << connection.direction << " → " << connection.description << std::endl;
+      std::cout << "Entrance: " << connection.direction << " → " << connection.description << std::endl;
     if (this->players[this->next_player]->area->connections.size() > 0)
       std::cout << std::endl;
     
     for (Road& road : this->players[this->next_player]->area->roads)
-      std::cout << road.direction << std::endl;
+      std::cout << "Road direction: " << road.direction << std::endl;
     if (this->players[this->next_player]->area->roads.size() > 0)
       std::cout << std::endl;
     
     for (Item* item : this->players[this->next_player]->area->items)
-      std::cout << item->name << std::endl;
+      std::cout << "On the ground: " << item->name << std::endl;
     if (this->players[this->next_player]->area->items.size() > 0)
       std::cout << std::endl;
     
