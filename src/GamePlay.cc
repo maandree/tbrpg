@@ -1053,7 +1053,55 @@ namespace tbrpg
    */
   char GamePlay::action_party()
   {
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Reputation: " << this->game.party.reputation << std::endl << std::endl;
+    
+    std::cout << "Party members:" << std::endl;
+    long pindex = 0;
+    for (GameCharacter* character : this->players)
+      {
+	Character* c = character->character;
+	std::cout << "\033[";
+	if (pindex++ == this->next_player)
+	  std::cout << "01;";
+	std::cout << "3" << (char)((int)'0' + c->record.colour) << "m";
+	std::cout << c->record.name << "\033[39m";
+	std::cout << "\033[21m" << std::endl;
+    /*
+	bool turn_undead_on = character->turn_undead_on;
+	bool find_traps_on = character->find_traps_on;
+	bool stealth_on = character->stealth_on;
+	c->protagonist
+	  c->hit_points
+	  c->alive
+	  c->fatigue
+	  c->extra_attacks
+	  c->record
+    */
+    /*
+    std::string name;
+    std::string biography;
+    int hit_points;
+    char alignment;
+    std::string portrait;
+    bool female;
+    std::vector<int> experience;
+    std::vector<char> level;
+    std::vector<bool> class_abondoned;
+    std::unordered_map<WeaponGroup, int> proficiencies;
+    std::vector<Spell> affected_by;
+    Inventory inventory;
+    AbilityBonus abilities;
+    SpellBook spells;
+    Race race;
+    Race* racial_enemy;
+    std::vector<Class> prestige;
+    MagicSchool specialisation;
+    std::vector<Spell> special_abilities;
+     */
+      }
+    
+    std::cout << "Empty party slots: " << (this->game->rules.party_size - this->players.size()) << std::endl;
+    
     return 2;
   }
   
