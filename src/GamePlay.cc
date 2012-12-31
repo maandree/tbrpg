@@ -1064,15 +1064,15 @@ namespace tbrpg
    */
   char GamePlay::action_map()
   {
-    for (MapMajor& major : this->game->map->majors)
+    for (MapMajor& major : this->game.map.majors)
       if (major.visible)
 	{
 	  std::cout << major.name;
-	  if  (visited == false)
+	  if  (major.visited == false)
 	    std::cout << " (not visited)";
-	  if  (visitable == false)
+	  if  (major.visitable == false)
 	    std::cout << " (not visitable)";
-	  if  (&(major.name) == this->players[this->next_player]->area)
+	  if  (major == this->players[this->next_player]->area->is_in)
 	    std::cout << " (you are here)";
 	  std::cout << std::endl;
 	}
