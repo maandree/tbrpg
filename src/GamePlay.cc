@@ -1075,31 +1075,29 @@ namespace tbrpg
    */
   char GamePlay::action_area()
   {
-    /*
-    std::cout << this->position->description << std::endl << std::endl;
+    std::cout << this->players[this->next_player]->area->description << std::endl << std::endl;
     
-    for (Entrance& connection : this->position->connections)
+    for (Entrance& connection : this->players[this->next_player]->area->connections)
       std::cout << connection.direction << " → " << connection.description << std::endl;
-    if (this->position->connections.size() > 0)
+    if (this->players[this->next_player]->area->connections.size() > 0)
       std::cout << std::endl;
     
-    for (Road& road : this->position->roads)
+    for (Road& road : this->players[this->next_player]->area->roads)
       std::cout << road.direction << std::endl;
-    if (this->position->roads.size() > 0)
+    if (this->players[this->next_player]->area->roads.size() > 0)
       std::cout << std::endl;
     
-    for (Item& item : this->position->items)
-      std::cout << item.name << std::endl;
-    if (this->position->items.size() > 0)
+    for (Item* item : this->players[this->next_player]->area->items)
+      std::cout << item->name << std::endl;
+    if (this->players[this->next_player]->area->items.size() > 0)
       std::cout << std::endl;
     
-    for (Creature& creature : this->position->creatures)
+    for (Creature& creature : this->players[this->next_player]->area->creatures)
       std::cout << creature.record.name << std::endl;
-    if (this->position->creatures.size() > 0)
+    if (this->players[this->next_player]->area->creatures.size() > 0)
       std::cout << std::endl;
     
     std::flush(std::cout);
-    */
     return 2; // TODO
   }
   
