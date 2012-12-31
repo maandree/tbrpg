@@ -1099,7 +1099,7 @@ namespace tbrpg
       std::cout << std::endl;
     
     std::flush(std::cout);
-    return 2; // TODO
+    return 2;
   }
   
 }
