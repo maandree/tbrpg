@@ -1093,7 +1093,8 @@ namespace tbrpg
       std::cout << std::endl;
     
     for (Creature& creature : this->players[this->next_player]->area->creatures)
-      std::cout << creature.record.name << std::endl;
+      if (creature.alive && (((Character&)creature).alive == 1))
+	std::cout << creature.record.name << (creature.hostile ? " (hostile)" : " (friendly)") << std::endl;
     if (this->players[this->next_player]->area->creatures.size() > 0)
       std::cout << std::endl;
     
