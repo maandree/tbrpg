@@ -1,3 +1,5 @@
+# Copyright © 2012, 2013  Mattias Andrée
+# 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.  This file is offered as-is,
