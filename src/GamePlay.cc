@@ -1063,8 +1063,8 @@ namespace tbrpg
    */
   char GamePlay::action_travel()
   {
-    std::vector<Entrance> entrances  = std::vector<Entrance>();
-    std::vector<Roads> roads  = std::vector<Roads>();
+    std::vector<Entrance> entrances = std::vector<Entrance>();
+    std::vector<Road> roads = std::vector<Road>();
     std::vector<std::string> names = std::vector<std::string>();
     
     for (Entrance& entrance : this->players[this->next_player]->area->connections)
@@ -1074,7 +1074,7 @@ namespace tbrpg
 	names.push_back(ss.str());
       }
     
-    for (Read& road : this->players[this->next_player]->area->roads)
+    for (Road& road : this->players[this->next_player]->area->roads)
       {
 	std::stringstream ss;
 	ss << "Road: " << road.direction;
@@ -1085,12 +1085,12 @@ namespace tbrpg
     if (target < 0)
       return 2;
     
-    if (target < entrances.size())
+    if ((size_t)target < entrances.size())
       {
 	Entrance& entrance = entrances[target];
 	if (entrance.usable == false)
 	  std::cout << "Not possible." << std::endl;
-	else if (entrance >= PROTOTYPE(Door) && dynamic_cast<Door>(locked).locked)
+	else if (entrance >= PROTOTYPE(Door) && dynamic_cast<Door*>(&entrance)->locked)
 	  std::cout << "It's locked." << std::endl;
 	else
 	  this->players[this->next_player]->area = static_cast<MapMinor*>(&(entrance.leads_to));
