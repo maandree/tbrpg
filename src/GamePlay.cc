@@ -113,7 +113,7 @@ namespace tbrpg
     
     GameCharacter* player = this->players[this->next_player];
     
-    if (player->turns == 0)
+    if ((player->turns == 0) && (player->character->alive == 1))
       for (;;)
 	{
 	  std::stringstream ss;
@@ -1063,44 +1063,51 @@ namespace tbrpg
 	std::cout << "\033[";
 	if (pindex++ == this->next_player)
 	  std::cout << "01;";
-	std::cout << "3" << (char)((int)'0' + c->record.colour) << "m";
-	std::cout << c->record.name << "\033[39m";
+	std::cout << "3" << (char)((int)'0' + c->record.colour) << "m"
+		  << c->record.name << "\033[39m ";
+	
+	if (c->protagonist)  std::cout << "(P)";
+	if (c->alive == 0)   std::cout << "(D)";
+	if (c->alive < 0)    std::cout << "(DD)";
+	
+	std::cout << " (" << c->hit_points << "/" << c->record.hit_points << ")";
 	std::cout << "\033[21m" << std::endl;
-    /*
-	bool turn_undead_on = character->turn_undead_on;
-	bool find_traps_on = character->find_traps_on;
-	bool stealth_on = character->stealth_on;
-	c->protagonist
-	  c->hit_points
-	  c->alive
+	/*
+	  bool turn_undead_on = character->turn_undead_on;
+	  bool find_traps_on = character->find_traps_on;
+	  bool stealth_on = character->stealth_on;
 	  c->fatigue
 	  c->extra_attacks
-	  c->record
-    */
-    /*
-    std::string name;
-    std::string biography;
-    int hit_points;
-    char alignment;
-    std::string portrait;
-    bool female;
-    std::vector<int> experience;
-    std::vector<char> level;
-    std::vector<bool> class_abondoned;
-    std::unordered_map<WeaponGroup, int> proficiencies;
-    std::vector<Spell> affected_by;
-    Inventory inventory;
-    AbilityBonus abilities;
-    SpellBook spells;
-    Race race;
-    Race* racial_enemy;
-    std::vector<Class> prestige;
-    MagicSchool specialisation;
-    std::vector<Spell> special_abilities;
-     */
+	*/
+	/*
+	  c->record. .....
+	  std::string name;
+	  std::string biography;
+	  char alignment;
+	  std::string portrait;
+	  bool female;
+	  std::vector<int> experience;
+	  std::vector<char> level;
+	  std::vector<bool> class_abondoned;
+	  std::unordered_map<WeaponGroup, int> proficiencies;
+	  std::vector<Spell> affected_by;
+	  Inventory inventory;
+	  AbilityBonus abilities;
+	  SpellBook spells;
+	  Race race;
+	  Race* racial_enemy;
+	  std::vector<Class> prestige;
+	  MagicSchool specialisation;
+	  std::vector<Spell> special_abilities;
+	*/
       }
     
-    std::cout << "Empty party slots: " << (this->game->rules.party_size - this->players.size()) << std::endl;
+    std::cout << "Empty party slots: " << (this->game.rules.party_size - this->players.size()) << std::endl << std::endl;
+    
+    std::cout << "(P)   = Protagonist" << std::endl;
+    std::cout << "(#/#) = Hit points of max hit points:" << std::endl;
+    std::cout << "(D)   = Dead" << std::endl;
+    std::cout << "(DD)  = Permanenty dead" << std::endl;
     
     return 2;
   }
