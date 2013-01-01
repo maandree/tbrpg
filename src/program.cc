@@ -80,21 +80,24 @@ namespace tbrpg
     
     std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
-    long senarioIndex = promptDialogue(4, "Welcome to tbrpg!",
-		 "Select a game senario."                        "\n"
-		                                                 "\n"
-		 "Use the up and down arrow keys to nagivate,"   "\n"
-		 "and press enter, spacebar or the right arrow"  "\n"
-		 "key to start the select senario. You can"      "\n"
-		 "also use the letter in front of the senario."  "\n"
-		                                                 "\n"
-		 "You should play with the manual by your side," "\n"
-		 "run `info tbrpg` or open a graphical if you"   "\n"
-		 "have one installed, jfbview can view them in"  "\n"
-		 "the TTY."                                      "\n"
-		                                                 "\n"
-		 "If you want to exit, press <control>g."        "\n",
-		 senarioTitles, 0);
+    long senarioIndex = promptDialogue(4,
+		"So what do you wanna do now, play a game?",
+		/* true nerd's will get it, once we get some pony games */
+		
+		"Select a game senario."                        "\n"
+		                                                "\n"
+		"Use the up and down arrow keys to nagivate,"   "\n"
+		"and press enter, spacebar or the right arrow"  "\n"
+		"key to start the select senario. You can"      "\n"
+		"also use the letter in front of the senario."  "\n"
+		                                                "\n"
+		"You should play with the manual by your side," "\n"
+		"run `info tbrpg` or open a graphical if you"   "\n"
+		"have one installed, jfbview can view them in"  "\n"
+		"the TTY."                                      "\n"
+		                                                "\n"
+		"If you want to exit, press <control>g."        "\n",
+		senarioTitles, 0);
     
     Senario* _senario = nullptr;
     if (senarioIndex == 0)

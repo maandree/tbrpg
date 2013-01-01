@@ -1006,15 +1006,16 @@ namespace tbrpg
    */
   char GamePlay::action_map()
   {
+    /* TODO add distance with time */
     for (MapMajor& major : this->game.map.majors)
       if (major.visible)
 	{
 	  std::cout << major.name;
-	  if  (major.visited == false)
+	  if (major.visited == false)
 	    std::cout << " (not visited)";
-	  if  (major.visitable == false)
+	  if (major.visitable == false)
 	    std::cout << " (not visitable)";
-	  if  (major == this->players[this->next_player]->area->is_in)
+	  if (major == this->players[this->next_player]->area->is_in)
 	    std::cout << " (you are here)";
 	  std::cout << std::endl;
 	}
@@ -1103,7 +1104,49 @@ namespace tbrpg
 	  std::cout << "You must gather your party before venturing forth." << std::endl;
 	else
 	  {
-	    //FIXME
+	    MapMajor& major = static_cast<MapMinor*>(&(road.leads_to))->is_in;
+	    if (major.detectable && !(major.visible))
+	      major.visible = true;
+	    
+	    names = std::vector<std::string>();
+	    std::vector<MapMajor> majors = std::vector<MapMajor>();
+	    
+	    /* TODO add distance with time */
+	    for (MapMajor& mmajor : this->game.map.majors)
+	      if (mmajor.visible)
+		{
+		  majors.push_back(mmajor);
+		  std::stringstream ss;
+		  ss << mmajor.name;
+		  if (mmajor.visited == false)
+		    ss << " (not visited)";
+		  if (mmajor.visitable == false)
+		    ss << " (not visitable)";
+		  if (mmajor == this->players[this->next_player]->area->is_in)
+		    ss << " (you are here)";
+		  if (mmajor == major)
+		    ss << " (neighbouring)";
+		  names.push_back(ss.str());
+		}
+	    
+	    long target = promptMenu("Where do you want to go?", names);
+	    if (target < 0)
+	      return 2;
+	    
+	    MapMajor* mmajor = &(majors[target]);
+	    
+	    if (mmajor->visitable == false)
+	      {
+		std::cout << "Dude, I just told you, you cannot travel there right now!" << std::endl;
+		return 2;
+	      }
+	    
+	    /* TODO get route and travel time */
+	    /* TODO support waylay */
+	    
+	    //for (GameCharacter* gamechar : this->players)
+	    //  gamechar->area = mminor; /* we do not know mminor yet*/
+	    //mmajor->visited = true;
 	  }
       }
     
