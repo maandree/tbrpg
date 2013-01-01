@@ -282,6 +282,13 @@ namespace tbrpg
      */
     char action_area();
     
+    /**
+     * Action: travel to another area
+     *
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+     */
+    char action_travel();
+    
   };
 }
 

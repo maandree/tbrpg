@@ -124,13 +124,13 @@ namespace tbrpg
     __add("weapon", action_weapon);
     __add("quiver", action_quiver);
     __add("rest", action_rest);
+    __add("travel", action_travel);
     __add("!", action_redo);
     __add(".", action_wait);
     __add("quit", action_quit);
     
     // TODO special abilities
     // TODO quick spells
-    // TODO travel
     // TODO cheats (obviously)
     
     #undef __add
@@ -716,7 +716,7 @@ namespace tbrpg
     __forbid_turn_undead();
     
     std::cout << "Not implement..." << std::endl; // TODO
-    return 2;
+    return 2;//...
   }
   
   /**
@@ -857,7 +857,7 @@ namespace tbrpg
 	return 2;
       }
     std::cout << "Not implement..." << std::endl; // TODO
-    return 1;
+    return 2;//1;
   }
   
   /**
@@ -893,7 +893,7 @@ namespace tbrpg
 	return 2;
       }
     std::cout << "Not implement..." << std::endl; // TODO
-    return 1;
+    return 2;//1;
   }
   
   /**
@@ -985,7 +985,9 @@ namespace tbrpg
 	*/
       }
     
-    std::cout << std::endl << "Empty party slots: " << (this->game.rules.party_size - this->players.size()) << std::endl << std::endl;
+    std::cout << std::endl
+	      << "Empty party slots: " << (this->game.rules.party_size - this->players.size())
+	      << std::endl << std::endl;
     
     // TODO examine character, reform party
     
@@ -1051,6 +1053,60 @@ namespace tbrpg
       std::cout << std::endl;
     
     std::flush(std::cout);
+    return 2;
+  }
+  
+  /**
+   * Action: travel to another area
+   *
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+   */
+  char GamePlay::action_travel()
+  {
+    std::vector<Entrance> entrances  = std::vector<Entrance>();
+    std::vector<Roads> roads  = std::vector<Roads>();
+    std::vector<std::string> names = std::vector<std::string>();
+    
+    for (Entrance& entrance : this->players[this->next_player]->area->connections)
+      {
+	std::stringstream ss;
+	ss << "Entrance: " << entrance.direction << " → " << entrance.description;
+	names.push_back(ss.str());
+      }
+    
+    for (Read& road : this->players[this->next_player]->area->roads)
+      {
+	std::stringstream ss;
+	ss << "Road: " << road.direction;
+	names.push_back(ss.str());
+      }
+    
+    long target = promptMenu("Where do you want to go?", names);
+    if (target < 0)
+      return 2;
+    
+    if (target < entrances.size())
+      {
+	Entrance& entrance = entrances[target];
+	if (entrance.usable == false)
+	  std::cout << "Not possible." << std::endl;
+	else if (entrance >= PROTOTYPE(Door) && dynamic_cast<Door>(locked).locked)
+	  std::cout << "It's locked." << std::endl;
+	else
+	  this->players[this->next_player]->area = static_cast<MapMinor*>(&(entrance.leads_to));
+      }
+    else
+      {
+	target -= entrances.size();
+	Road& road = roads[target];
+	if (gathered() == false)
+	  std::cout << "You must gather your party before venturing forth." << std::endl;
+	else
+	  {
+	    //FIXME
+	  }
+      }
+    
     return 2;
   }
   
