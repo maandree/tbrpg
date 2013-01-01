@@ -108,6 +108,7 @@ namespace tbrpg
     // TODO special abilities
     // TODO quick spells
     // TODO travel
+    // TODO cheats (obviously)
     
     #undef __add
     
@@ -1091,7 +1092,6 @@ namespace tbrpg
 	  std::vector<bool> class_abondoned;
 	  std::unordered_map<WeaponGroup, int> proficiencies;
 	  std::vector<Spell> affected_by;
-	  Inventory inventory;
 	  AbilityBonus abilities;
 	  SpellBook spells;
 	  Race race;
@@ -1102,7 +1102,9 @@ namespace tbrpg
 	*/
       }
     
-    std::cout << "Empty party slots: " << (this->game.rules.party_size - this->players.size()) << std::endl << std::endl;
+    std::cout << std::endl << "Empty party slots: " << (this->game.rules.party_size - this->players.size()) << std::endl << std::endl;
+    
+    // TODO examine character, reform party
     
     std::cout << "(P)   = Protagonist" << std::endl;
     std::cout << "(#/#) = Hit points of max hit points:" << std::endl;
