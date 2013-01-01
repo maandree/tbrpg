@@ -459,17 +459,17 @@ namespace tbrpg
 	__drop(X[i])
     
     __drops(attackable[target].record.inventory.left_hand);
-    __drop(attackable[target].record.inventory.right_hand);
+    __drop (attackable[target].record.inventory.right_hand);
     __drops(attackable[target].record.inventory.quiver);
     __drops(attackable[target].record.inventory.quick_items);
-    __drop(attackable[target].record.inventory.headgear);
-    __drop(attackable[target].record.inventory.amulet);
+    __drop (attackable[target].record.inventory.headgear);
+    __drop (attackable[target].record.inventory.amulet);
     __drops(attackable[target].record.inventory.rings);
-    __drop(attackable[target].record.inventory.body);
-    __drop(attackable[target].record.inventory.gauntlets);
-    __drop(attackable[target].record.inventory.girdle);
-    __drop(attackable[target].record.inventory.boots);
-    __drop(attackable[target].record.inventory.cloak);
+    __drop (attackable[target].record.inventory.body);
+    __drop (attackable[target].record.inventory.gauntlets);
+    __drop (attackable[target].record.inventory.girdle);
+    __drop (attackable[target].record.inventory.boots);
+    __drop (attackable[target].record.inventory.cloak);
     __drops(attackable[target].record.inventory.personal);
     
     #undef __drop
