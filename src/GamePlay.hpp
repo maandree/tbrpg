@@ -289,6 +289,30 @@ namespace tbrpg
      */
     char action_travel();
     
+    
+    /**
+     * Find the distances to all map major
+     * 
+     * @param   start    The start minor area
+     * @param   distmap  Map to fill with distances to majors
+     * @param   where    Map major to map minor map
+     * @return           Walk path mapping
+     */
+    std::unordered_map<MapMinor, MapMinor>* findDistances(const MapMinor& start,
+							  std::unordered_map<MapMajor, int>& distmap,
+							  std::unordered_map<MapMajor, MapMinor>* where) const;
+    
+    /**
+     * Find the path to a area
+     * 
+     * @param  mapping  Walk path mapping
+     * @param  end      The target minor area
+     * @param  path     Vector to fill with the path
+     */
+    void findPath(const std::unordered_map<MapMinor, MapMinor>* mapping,
+		  const MapMinor& end, std::vector<Road>& path) const;
+    
+    
   };
 }
 

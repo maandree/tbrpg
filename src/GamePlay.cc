@@ -1006,17 +1006,25 @@ namespace tbrpg
    */
   char GamePlay::action_map()
   {
-    /* TODO add distance with time */
+    std::unordered_map<MapMajor, int> distmap = std::unordered_map<MapMajor, int>();
+    for (MapMajor& mmajor : this->game.map.majors)
+      distmap[mmajor] = -1;
+    this->findDistances(*(this->players[this->next_player]->area), distmap, nullptr);
+    
     for (MapMajor& major : this->game.map.majors)
       if (major.visible)
 	{
 	  std::cout << major.name;
-	  if (major.visited == false)
+	  if (distmap.at(major) < 0)
+	    std::cout << " (not reachable)";
+	  else if (major.visited == false)
 	    std::cout << " (not visited)";
 	  if (major.visitable == false)
 	    std::cout << " (not visitable)";
 	  if (major == this->players[this->next_player]->area->is_in)
 	    std::cout << " (you are here)";
+	  else if (distmap.at(major) >= 0)
+	    std::cout << " (distance: " << distmap.at(major) << ")";
 	  std::cout << std::endl;
 	}
     
@@ -1111,19 +1119,28 @@ namespace tbrpg
 	    names = std::vector<std::string>();
 	    std::vector<MapMajor> majors = std::vector<MapMajor>();
 	    
-	    /* TODO add distance with time */
+	    std::unordered_map<MapMajor, int> distmap = std::unordered_map<MapMajor, int>();
+	    for (MapMajor& mmajor : this->game.map.majors)
+	      distmap[mmajor] = -1;
+	    std::unordered_map<MapMajor, MapMinor> where = std::unordered_map<MapMajor, MapMinor>();
+	    auto map = this->findDistances(*(this->players[this->next_player]->area), distmap, &where);
+	    
 	    for (MapMajor& mmajor : this->game.map.majors)
 	      if (mmajor.visible)
 		{
 		  majors.push_back(mmajor);
 		  std::stringstream ss;
 		  ss << mmajor.name;
-		  if (mmajor.visited == false)
+		  if (distmap.at(mmajor) < 0)
+		    ss << " (not reachable)";
+		  else if (mmajor.visited == false)
 		    ss << " (not visited)";
 		  if (mmajor.visitable == false)
 		    ss << " (not visitable)";
 		  if (mmajor == this->players[this->next_player]->area->is_in)
 		    ss << " (you are here)";
+		  else if (distmap.at(mmajor) >= 0)
+		    ss << " (distance: " << distmap.at(mmajor) << ")";
 		  if (mmajor == major)
 		    ss << " (neighbouring)";
 		  names.push_back(ss.str());
@@ -1137,20 +1154,152 @@ namespace tbrpg
 	    
 	    if (mmajor->visitable == false)
 	      {
+		delete map;
 		std::cout << "Dude, I just told you, you cannot travel there right now!" << std::endl;
 		return 2;
 	      }
 	    
+	    std::vector<Road> path = std::vector<Road>();
+	    this->findPath(map, where[*mmajor], path);
+	    delete map;
+	    MapMinor* mminor = static_cast<MapMinor*>(&(path[path.size() - 1].leads_to));
+	    
 	    /* TODO get route and travel time */
 	    /* TODO support waylay */
 	    
-	    //for (GameCharacter* gamechar : this->players)
-	    //  gamechar->area = mminor; /* we do not know mminor yet*/
-	    //mmajor->visited = true;
+	    for (GameCharacter* gamechar : this->players)
+	      gamechar->area = mminor;
+	    mmajor->visited = true;
 	  }
       }
     
     return 2;
+  }
+  
+  
+  /**
+   * Find the distances to all map major
+   * 
+   * @param   start    The start minor area
+   * @param   distmap  Map to fill with distances to majors
+   * @param   where    Map major to map minor map
+   * @return           Walk path mapping
+   */
+  std::unordered_map<MapMinor, MapMinor>* GamePlay::findDistances(const MapMinor& start,
+								  std::unordered_map<MapMajor, int>& distmap,
+								  std::unordered_map<MapMajor, MapMinor>* where) const
+  {
+    /* Dijkstra's algorithm [XXX c++ does not have a proper priority queue so we use vector] */
+    
+    std::unordered_map<MapMinor, bool>      explored =     std::unordered_map<MapMinor, bool>();
+    std::unordered_map<MapMinor, int>       distance =     std::unordered_map<MapMinor, int>();
+    std::unordered_map<MapMinor, MapMinor>* previous = new std::unordered_map<MapMinor, MapMinor>();
+    
+    distance[start] = 0;
+    explored[start] = true;
+    distmap[start.is_in] = 0;
+    (*previous)[start] = start;
+    
+    std::vector<MapMinor> set = std::vector<MapMinor>();
+    set.push_back(start);
+    
+    while ((set.size()))
+      {
+	int index = 0;
+	int best = -1;
+	int i = 0;
+	for (MapMinor& element : set)
+	  {
+	    i++;
+	    if ((best < 0) || (explored.at(element) && (distance.at(element) < best)))
+	      {
+		index = i;
+		distance[element] = best;
+	      }
+	  }
+	MapMinor& u = set[index];
+	set.erase(set.begin() + index);
+	if (explored.at(u) == false)
+	  break;
+	
+        #define __update()							\
+	  if ((explored.at(v) == false) || (candidate < distance.at(v)))	\
+	    {									\
+	      distance[v] = candidate;						\
+	      explored[v] = true;						\
+	      (*previous)[v] = u;						\
+	      if (distmap[v.is_in] > candidate)					\
+		{								\
+		  distmap[v.is_in] = candidate;					\
+		  if (where != nullptr)						\
+		    (*where)[v.is_in] = v;					\
+		}								\
+	      bool exists = false;						\
+	      for (MapMinor& element : set)					\
+		if (element == v)						\
+		  {								\
+		    exists = true;						\
+		    break;							\
+		  }								\
+	      if (exists == false)						\
+		set.push_back(v);						\
+	    }//
+	
+	for (Road& road : u.roads)
+	  {
+	    int candidate = distance.at(u) + road.first_distance + road.last_distance;
+	    MapMinor& v = *(static_cast<MapMinor*>(&(road.leads_to)));
+	    __update();
+	  }
+	int candidate = distance.at(u);
+	for (Entrance& entrance : u.connections)
+	  {
+	    MapMinor& v = *(static_cast<MapMinor*>(&(entrance.leads_to)));
+	    __update();
+	  }
+	
+	#undef __update
+      }
+    
+    return previous;
+  }
+  
+  
+  /**
+   * Find the path to a area
+   * 
+   * @param  mapping  Walk path mapping
+   * @param  end      The target minor area
+   * @param  path     Vector to fill with the path
+   */
+  void GamePlay::findPath(const std::unordered_map<MapMinor, MapMinor>* mapping,
+			  const MapMinor& end, std::vector<Road>& path) const
+  {
+    std::vector<MapMinor> rev = std::vector<MapMinor>();
+    {
+      MapMinor& prev = (MapMinor&)end;
+      while (mapping->at(prev) != prev)
+	rev.push_back(prev = mapping->at(prev));
+    }
+    for (size_t i = 1, n = rev.size(); i < n; i++)
+      {
+	MapMinor& u = rev[i - 1];
+	MapMinor& v = rev[i - 1];
+	bool done = false;
+	for (Entrance& entrance : u.connections)
+	  if (v == *(static_cast<MapMinor*>(&(entrance.leads_to))))
+	    {
+	      done = true;
+	      break;
+	    }
+	if (done == false)
+	  for (Road& road : u.roads)
+	    if (v == *(static_cast<MapMinor*>(&(road.leads_to))))
+	      {
+		path.push_back(road);
+		break;
+	      }
+      }
   }
   
   
