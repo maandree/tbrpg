@@ -203,7 +203,7 @@ namespace tbrpg
 		   "bash              :: Bash a door or chest"                              "\n"
 		   "specials          :: List other special ability commands you can use"   "\n"
 		   "talk              :: Talk to a NPC"                                     "\n"
-		   "go ***            :: Go in the direction ***"                           "\n"
+		   "travel            :: Go in some direction"                              "\n"
 		   "cast ***          :: Cast a *** spell"                                  "\n"
 		   "cast              :: Cast a non-quick spell"                            "\n"
 		   "attack            :: Attack with you current weapon"                    "\n"

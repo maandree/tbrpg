@@ -298,9 +298,9 @@ namespace tbrpg
      * @param   where    Map major to map minor map
      * @return           Walk path mapping
      */
-    std::unordered_map<MapMinor, MapMinor>* findDistances(const MapMinor& start,
-							  std::unordered_map<MapMajor, int>& distmap,
-							  std::unordered_map<MapMajor, MapMinor>* where) const;
+    std::unordered_map<MapMinor*, MapMinor*>* findDistances(const MapMinor& start,
+							    std::unordered_map<MapMajor*, int>& distmap,
+							    std::unordered_map<MapMajor*, MapMinor*>* where) const;
     
     /**
      * Find the path to a area
@@ -309,7 +309,7 @@ namespace tbrpg
      * @param  end      The target minor area
      * @param  path     Vector to fill with the path
      */
-    void findPath(const std::unordered_map<MapMinor, MapMinor>* mapping,
+    void findPath(const std::unordered_map<MapMinor*, MapMinor*>* mapping,
 		  const MapMinor& end, std::vector<Road>& path) const;
     
     

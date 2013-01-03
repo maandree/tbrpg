@@ -81,7 +81,7 @@ namespace tbrpg
     std::vector<std::string> senarioTitles = {BasicSenario::getTitle()};
     
     long senarioIndex = promptDialogue(4,
-		"So what do you wanna do now, play a game?",
+		"So what do you wanna do, play a game?",
 		/* true nerd's will get it, once we get some pony games */
 		
 		"Select a game senario."                        "\n"
