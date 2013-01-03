@@ -115,6 +115,9 @@ namespace tbrpg
     door_in.leads_to = area_inn;
     door_out.leads_to = area_town;
     
+    area_town.connections.push_back(door_in);
+    area_inn.connections.push_back(door_out);
+    
     Entrance next = Entrance();
     Entrance prev = Entrance();
     

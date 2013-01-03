@@ -162,7 +162,7 @@ namespace tbrpg
 	    std::flush(std::cout << "Type . to wait one turn" << std::endl);
 	}
     
-    this->players[player->turns]->character->fatigue++;
+    this->players[this->next_player]->character->fatigue++;
     if ((player->turns))
       player->turns--;
     if (++(this->next_player) == (long)(this->players.size()))
@@ -603,6 +603,12 @@ namespace tbrpg
 	  names.push_back(ss.str());
 	}
     
+    if (names.size() == 0)
+      {
+	std::cout << "There is nothing to bash." << std::endl;
+	return 2;
+      }
+    
     long target = promptMenu("Select target:", names);
     if (target < 0)
       return 2;
@@ -669,6 +675,12 @@ namespace tbrpg
 	  ss << "Container (" << item->name << ")";
 	  names.push_back(ss.str());
 	}
+    
+    if (names.size() == 0)
+      {
+	std::cout << "There is nothing to pick." << std::endl;
+	return 2;
+      }
     
     long target = promptMenu("Select target:", names);
     if (target < 0)

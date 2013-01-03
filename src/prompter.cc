@@ -1569,9 +1569,9 @@ namespace tbrpg
 	      case 'B':
 		if (selected == (c == 'A' ? 0 : (long)(alternatives.size() - 1)))
 		  break;
-		std::cout << CSI << (selected + 1) << ";1H" << alternatives[selected];
+		std::cout << CSI << (selected + 3) << ";1H" << alternatives[selected];
 		selected += (c == 'A' ? -1 : 1);
-		std::flush(std::cout << CSI << (selected + 1) << ";1H" CSI "01;34m" << alternatives[selected] << CSI "21;39m");
+		std::flush(std::cout << CSI << (selected + 3) << ";1H" CSI "01;34m" << alternatives[selected] << CSI "21;39m");
 		break;
 	      }
 	  }
