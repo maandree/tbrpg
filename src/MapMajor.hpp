@@ -31,6 +31,8 @@
 
 
 #include "hash.hpp"
+#include "_MapMinor.hpp"
+
 
 /**
  * Text based roll playing game
@@ -76,7 +78,7 @@ namespace tbrpg
     /**
      * Minor areas in the area
      */
-    std::vector<_MapMinor>;
+    std::vector<_MapMinor> minors;
     
     
     

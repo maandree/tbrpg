@@ -472,7 +472,7 @@ MapMajor: Object                          ; Areas on the world map
 	bool visited                      ; Whether the area has been visited
 	bool visitable                    ; Whether the area is visitable
 	bool detectable                   ; Whether the area is detectable
-	std::vector<_MapMinor>	          ; Minor areas in the area
+	std::vector<_MapMinor> minors     ; Minor areas in the area
 
 Road: Object                              ; A road between major map area
 	int first_distance                ; Distance to the waylay point in metres
