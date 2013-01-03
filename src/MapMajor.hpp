@@ -28,6 +28,8 @@
 
 #include "Object.hpp"
 #include "hash.hpp"
+#include "_MapMinor.hpp"
+
 
 
 /**
@@ -74,7 +76,7 @@ namespace tbrpg
     /**
      * Minor areas in the area
      */
-    std::vector<_MapMinor>;
+    std::vector<_MapMinor> minors;
     
     
     
