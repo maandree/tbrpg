@@ -28,6 +28,8 @@
 
 #include "Object.hpp"
 #include "hash.hpp"
+#include "_MapMinor.hpp"
+
 
 
 /**
@@ -70,6 +72,11 @@ namespace tbrpg
      * Whether the area is detectable
      */
     bool detectable;
+    
+    /**
+     * Minor areas in the area
+     */
+    std::vector<_MapMinor> minors;
     
     
     
