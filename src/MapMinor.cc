@@ -39,7 +39,7 @@ namespace tbrpg
     this->may_rest = true;
     this->area = 100;
     this->description = "";
-    this->is_in = MapMajor();
+    this->is_in = PROTOTYPE(MapMajor());
     this->roads = {};
     this->connections = {};
     this->items = {};

@@ -63,19 +63,22 @@ namespace tbrpg
     
     area_inn.description = "You are standing in an inn.";
     area_inn.area = 40;
-    area_inn.is_in = map_town;
+    (area_inn.is_in = map_town).minors.push_back(area_inn);
     
     area_town.description = "You are standing in the marketplace.";
     area_town.area = 80;
     area_town.is_in = map_town;
+    (area_town.is_in = map_town).minors.push_back(area_town);
     
     area_wilds.description = "You are out on the open roads.";
     area_wilds.area = 80;
     area_wilds.is_in = map_wilds;
+    (area_wilds.is_in = map_wilds).minors.push_back(area_wilds);
     
     area_goal.description = "You are in the wilderness.";
     area_goal.area = 80;
     area_goal.is_in = map_wilds;
+    (area_goal.is_in = map_wilds).minors.push_back(area_wilds);
     
     Road road_out = Road();
     Road road_in = Road();
