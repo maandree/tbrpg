@@ -1199,54 +1199,55 @@ namespace tbrpg
     #define __ensure(M, K, V, W)  \
       M.insert(std::pair<MapMinor*, V>((MapMinor*)(K), W))
     
-    for (MapMajor& major : this->game.map)
-      for (MapMinor& minor : this->game.map.minors)
+    for (const MapMajor& major : this->game.map.majors)
+      for (const _MapMinor& _minor : major.minors)
 	{
+	  const MapMinor& minor = *(static_cast<const MapMinor*>(&_minor));
 	  __ensure(distance, &minor, int, 0);
 	  __ensure(explored, &minor, bool, false);
 	  __ensure((*previous), &minor, MapMinor*, nullptr);
 	}
     
-    explored[&start] = true;
-    (*previous)[&start] = &start;
-    distmap[&(start.is_in)] = 0;
+    explored[&(MapMinor&)start] = true;
+    (*previous)[&(MapMinor&)start] = &(MapMinor&)start;
+    distmap[&(MapMajor&)(start.is_in)] = 0;
     
-    std::vector<MapMinor> set = std::vector<MapMinor>();
-    set.push_back(start);
+    std::vector<MapMinor*> set = std::vector<MapMinor*>();
+    set.push_back(&(MapMinor&)start);
     
     while ((set.size()))
       {
 	int index = 0;
 	int best = -1;
 	int i = 0;
-	for (MapMinor& element : set)
+	for (MapMinor* element : set)
 	  {
 	    i++;
-	    if ((best < 0) || (explored.at(&element) && (distance.at(&element) < best)))
+	    if ((best < 0) || (explored[element] && (distance[element] < best)))
 	      {
 		index = i;
-		distance[&element] = best;
+		distance[element] = best;
 	      }
 	  }
-	MapMinor& u = set[index];
+	MapMinor* u = set[index];
 	set.erase(set.begin() + index);
-	if (explored.at(&u) == false)
+	if (explored[u] == false)
 	  break;
 	
         #define __update()							\
-	  if ((explored.at(&v) == false) || (candidate < distance.at(&v)))	\
+	  if ((explored[v] == false) || (candidate < distance[v]))		\
 	    {									\
-	      distance[&v] = candidate;						\
-	      explored[&v] = true;						\
-	      (*previous)[&v] = &u;						\
-	      if (distmap[&(v.is_in)] > candidate)				\
+	      distance[v] = candidate;						\
+	      explored[v] = true;						\
+	      (*previous)[v] = u;						\
+	      if (distmap[&(v->is_in)] > candidate)				\
 		{								\
-		  distmap[&(v.is_in)] = candidate;				\
+		  distmap[&(v->is_in)] = candidate;				\
 		  if (where != nullptr)						\
-		    (*where)[&(v.is_in)] = &v;					\
+		    (*where)[&(v->is_in)] = v;					\
 		}								\
 	      bool exists = false;						\
-	      for (MapMinor& element : set)					\
+	      for (MapMinor* element : set)					\
 		if (element == v)						\
 		  {								\
 		    exists = true;						\
@@ -1256,16 +1257,16 @@ namespace tbrpg
 		set.push_back(v);						\
 	    }//
 	
-	for (Road& road : u.roads)
+	for (Road& road : u->roads)
 	  {
-	    int candidate = distance.at(&u) + road.first_distance + road.last_distance;
-	    MapMinor& v = *(static_cast<MapMinor*>(&(road.leads_to)));
+	    int candidate = distance[u] + road.first_distance + road.last_distance;
+	    MapMinor* v = static_cast<MapMinor*>(&(road.leads_to));
 	    __update();
 	  }
-	int candidate = distance.at(&u);
-	for (Entrance& entrance : u.connections)
+	int candidate = distance[u];
+	for (Entrance& entrance : u->connections)
 	  {
-	    MapMinor& v = *(static_cast<MapMinor*>(&(entrance.leads_to)));
+	    MapMinor* v = static_cast<MapMinor*>(&(entrance.leads_to));
 	    __update();
 	  }
 	
