@@ -73,6 +73,11 @@ namespace tbrpg
      */
     bool detectable;
     
+    /**
+     * Minor areas in the area
+     */
+    std::vector<_MapMinor>;
+    
     
     
     /**

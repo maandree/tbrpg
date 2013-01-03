@@ -42,6 +42,7 @@ namespace tbrpg
     //this->visited = false;
     //this->visitable = false;
     //this->detectable = false;
+    //this->td::vector<_MapMinor> = nullptr;
   }
   
   /**
@@ -57,6 +58,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
+    this->td::vector<_MapMinor> = original.td::vector<_MapMinor>;
   }
   
   /**
@@ -72,6 +74,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
+    this->td::vector<_MapMinor> = original.td::vector<_MapMinor>;
   }
   
   /**
@@ -87,6 +90,7 @@ namespace tbrpg
     std::swap(this->visited, original.visited);
     std::swap(this->visitable, original.visitable);
     std::swap(this->detectable, original.detectable);
+    std::swap(this->td::vector<_MapMinor>, original.td::vector<_MapMinor>);
   }
   
   /**
@@ -108,6 +112,7 @@ namespace tbrpg
   {
     ////TODO implement destructor
     //delete this->name;
+    //delete this->td::vector<_MapMinor>;
   }
   
   
@@ -126,6 +131,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
+    this->td::vector<_MapMinor> = original.td::vector<_MapMinor>;
     return *this;
   }
   
@@ -143,6 +149,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
+    this->td::vector<_MapMinor> = original.td::vector<_MapMinor>;
     return *this;
   }
   
@@ -160,6 +167,7 @@ namespace tbrpg
     std::swap(this->visited, original.visited);
     std::swap(this->visitable, original.visitable);
     std::swap(this->detectable, original.detectable);
+    std::swap(this->td::vector<_MapMinor>, original.td::vector<_MapMinor>);
     return *this;
   }
   
@@ -177,6 +185,7 @@ namespace tbrpg
     if (this->visited != other.visited)  return false;
     if (this->visitable != other.visitable)  return false;
     if (this->detectable != other.detectable)  return false;
+    if (this->td::vector<_MapMinor> != other.td::vector<_MapMinor>)  return false;
     return true;
   }
   
@@ -220,6 +229,8 @@ namespace tbrpg
     rc += std::hash<bool>()(this->visitable);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<bool>()(this->detectable);
+    rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
+    rc += std::hash<>()(this->td::vector<_MapMinor>);
     return rc;
   }
   
