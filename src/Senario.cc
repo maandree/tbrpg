@@ -48,7 +48,6 @@ namespace tbrpg
    */
   Senario::Senario(const Senario& original) : Object(original)
   {
-    (void) original;
     this->rules = original.rules;
     this->party = original.party;
     this->map = original.map;

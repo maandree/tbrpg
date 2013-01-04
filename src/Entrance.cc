@@ -39,7 +39,7 @@ namespace tbrpg
     this->usable = true;
     this->description = "";
     this->direction = "";
-    this->leads_to = _MapMinor();
+    this->leads_to = nullptr;
   }
   
   /**
@@ -204,7 +204,7 @@ namespace tbrpg
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::string>()(this->direction);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<_MapMinor>()(this->leads_to);
+    rc += std::hash<_MapMinor*>()(this->leads_to);
     return rc;
   }
   

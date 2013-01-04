@@ -80,12 +80,12 @@ namespace tbrpg
     /**
      * The area entered if you get waylaid
      */
-    _MapMinor waylay_map;
+    _MapMinor* waylay_map;
     
     /**
      * The area to which the the road leads
      */
-    _MapMinor leads_to;
+    _MapMinor* leads_to;
     
     
     

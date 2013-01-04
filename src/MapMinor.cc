@@ -39,7 +39,7 @@ namespace tbrpg
     this->may_rest = true;
     this->area = 100;
     this->description = "";
-    this->is_in = PROTOTYPE(MapMajor);
+    this->is_in = nullptr;
     this->roads = {};
     this->connections = {};
     this->items = {};
@@ -118,7 +118,10 @@ namespace tbrpg
    */
   MapMinor::~MapMinor()
   {
-    // do nothing
+    for (Road* road : this->roads)
+      delete road;
+    for (Entrance* connection : this->connections)
+      delete connection;
   }
   
   
@@ -282,15 +285,15 @@ namespace tbrpg
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<float>()(this->area);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<std::vector<Road>>()(this->roads);
+    rc += std::hash<std::vector<Road*>>()(this->roads);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<Entrance>>()(this->connections);
+    rc += std::hash<std::vector<Entrance*>>()(this->connections);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<std::vector<Item*>>()(this->items);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<Creature>>()(this->creatures);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<MapMajor>()(this->is_in);
+    rc += std::hash<MapMajor*>()(this->is_in);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::vector<RestInterruption>>()(this->interruptions);
     return rc;

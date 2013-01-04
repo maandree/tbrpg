@@ -36,7 +36,7 @@ namespace tbrpg
   Map::Map() : Object()
   {
     this->class_inheritance.push_back(130);
-    this->start = MapMinor();
+    this->start = nullptr;
     this->majors = {};
   }
   
@@ -90,7 +90,8 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    // do nothing
+    for (MapMajor* major : this->majors)
+      delete major;
   }
   
   
@@ -182,9 +183,9 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<MapMinor>()(this->start);
+    rc += std::hash<MapMinor*>()(this->start);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<MapMajor>>()(this->majors);
+    rc += std::hash<std::vector<MapMajor*>>()(this->majors);
     return rc;
   }
   

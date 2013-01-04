@@ -310,7 +310,7 @@ namespace tbrpg
      * @param  path     Vector to fill with the path
      */
     void findPath(const std::unordered_map<MapMinor*, MapMinor*>* mapping,
-		  const MapMinor& end, std::vector<Road>& path) const;
+		  const MapMinor& end, std::vector<Road*>& path) const;
     
     
   };

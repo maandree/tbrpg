@@ -72,7 +72,7 @@ namespace tbrpg
 	this->players.push_back(gamechar);
 	
 	gamechar->character = player;
-	gamechar->area = &(senario.map.start);
+	gamechar->area = senario.map.start;
       }
     
     this->attack_dice = Dice(senario.rules.attack_roll_dice,
@@ -585,12 +585,12 @@ namespace tbrpg
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance& entrance : this->players[this->next_player]->area->connections)
-      if (entrance >= PROTOTYPE(Door))
+    for (Entrance* entrance : this->players[this->next_player]->area->connections)
+      if (*entrance >= PROTOTYPE(Door))
 	{
-	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(&entrance)));
+	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(entrance)));
 	  std::stringstream ss;
-	  ss << "Door (" << entrance.direction << ")";
+	  ss << "Door (" << entrance->direction << ")";
 	  names.push_back(ss.str());
 	}
     
@@ -658,12 +658,12 @@ namespace tbrpg
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance& entrance : this->players[this->next_player]->area->connections)
-      if (entrance >= PROTOTYPE(Door))
+    for (Entrance* entrance : this->players[this->next_player]->area->connections)
+      if (*entrance >= PROTOTYPE(Door))
 	{
-	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(&entrance)));
+	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(entrance)));
 	  std::stringstream ss;
-	  ss << "Door (" << entrance.direction << ")";
+	  ss << "Door (" << entrance->direction << ")";
 	  names.push_back(ss.str());
 	}
     
@@ -1020,24 +1020,24 @@ namespace tbrpg
   char GamePlay::action_map()
   {
     std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
-    for (MapMajor& mmajor : this->game.map.majors)
-      distmap[&mmajor] = -1;
+    for (MapMajor* mmajor : this->game.map.majors)
+      distmap[mmajor] = -1;
     this->findDistances(*(this->players[this->next_player]->area), distmap, nullptr);
     
-    for (MapMajor& major : this->game.map.majors)
-      if (major.visible)
+    for (MapMajor* major : this->game.map.majors)
+      if (major->visible)
 	{
-	  std::cout << major.name;
-	  if (distmap.at(&major) < 0)
+	  std::cout << major->name;
+	  if (distmap.at(major) < 0)
 	    std::cout << " (not reachable)";
-	  else if (major.visited == false)
+	  else if (major->visited == false)
 	    std::cout << " (not visited)";
-	  if (major.visitable == false)
+	  if (major->visitable == false)
 	    std::cout << " (not visitable)";
 	  if (major == this->players[this->next_player]->area->is_in)
 	    std::cout << " (you are here)";
-	  else if (distmap.at(&major) >= 0)
-	    std::cout << " (distance: " << distmap.at(&major) << ")";
+	  else if (distmap.at(major) >= 0)
+	    std::cout << " (distance: " << distmap.at(major) << ")";
 	  std::cout << std::endl;
 	}
     
@@ -1053,13 +1053,13 @@ namespace tbrpg
   {
     std::cout << this->players[this->next_player]->area->description << std::endl << std::endl;
     
-    for (Entrance& connection : this->players[this->next_player]->area->connections)
-      std::cout << "Entrance: " << connection.direction << " → " << connection.description << std::endl;
+    for (Entrance* connection : this->players[this->next_player]->area->connections)
+      std::cout << "Entrance: " << connection->direction << " → " << connection->description << std::endl;
     if (this->players[this->next_player]->area->connections.size() > 0)
       std::cout << std::endl;
     
-    for (Road& road : this->players[this->next_player]->area->roads)
-      std::cout << "Road direction: " << road.direction << std::endl;
+    for (Road* road : this->players[this->next_player]->area->roads)
+      std::cout << "Road direction: " << road->direction << std::endl;
     if (this->players[this->next_player]->area->roads.size() > 0)
       std::cout << std::endl;
     
@@ -1085,22 +1085,24 @@ namespace tbrpg
    */
   char GamePlay::action_travel()
   {
-    std::vector<Entrance> entrances = std::vector<Entrance>();
-    std::vector<Road> roads = std::vector<Road>();
+    std::vector<Entrance*> entrances = std::vector<Entrance*>();
+    std::vector<Road*> roads = std::vector<Road*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance& entrance : this->players[this->next_player]->area->connections)
+    for (Entrance* entrance : this->players[this->next_player]->area->connections)
       {
 	std::stringstream ss;
-	ss << "Entrance: " << entrance.direction << " → " << entrance.description;
+	ss << "Entrance: " << entrance->direction << " → " << entrance->description;
 	names.push_back(ss.str());
+	entrances.push_back(entrance);
       }
     
-    for (Road& road : this->players[this->next_player]->area->roads)
+    for (Road* road : this->players[this->next_player]->area->roads)
       {
 	std::stringstream ss;
-	ss << "Road: " << road.direction;
+	ss << "Road: " << road->direction;
 	names.push_back(ss.str());
+	roads.push_back(road);
       }
     
     long target = promptMenu("Where do you want to go?", names);
@@ -1109,51 +1111,51 @@ namespace tbrpg
     
     if ((size_t)target < entrances.size())
       {
-	Entrance& entrance = entrances[target];
-	if (entrance.usable == false)
+	Entrance* entrance = entrances[target];
+	if (entrance->usable == false)
 	  std::cout << "Not possible." << std::endl;
-	else if (entrance >= PROTOTYPE(Door) && dynamic_cast<Door*>(&entrance)->locked)
+	else if ((*entrance >= PROTOTYPE(Door)) && static_cast<Door*>(entrance)->locked)
 	  std::cout << "It's locked." << std::endl;
 	else
-	  this->players[this->next_player]->area = static_cast<MapMinor*>(&(entrance.leads_to));
+	  this->players[this->next_player]->area = static_cast<MapMinor*>(entrance->leads_to);
       }
     else
       {
 	target -= entrances.size();
-	Road& road = roads[target];
+	Road* road = roads[target];
 	if (gathered() == false)
 	  std::cout << "You must gather your party before venturing forth." << std::endl;
 	else
 	  {
-	    MapMajor& major = static_cast<MapMinor*>(&(road.leads_to))->is_in;
-	    if (major.detectable && !(major.visible))
-	      major.visible = true;
+	    MapMajor* major = static_cast<MapMinor*>(road->leads_to)->is_in;
+	    if (major->detectable && !(major->visible))
+	      major->visible = true;
 	    
 	    names = std::vector<std::string>();
-	    std::vector<MapMajor> majors = std::vector<MapMajor>();
+	    std::vector<MapMajor*> majors = std::vector<MapMajor*>();
 	    
 	    std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
-	    for (MapMajor& mmajor : this->game.map.majors)
-	      distmap[&mmajor] = -1;
+	    for (MapMajor* mmajor : this->game.map.majors)
+	      distmap[mmajor] = -1;
 	    std::unordered_map<MapMajor*, MapMinor*> where = std::unordered_map<MapMajor*, MapMinor*>();
 	    auto map = this->findDistances(*(this->players[this->next_player]->area), distmap, &where);
 	    
-	    for (MapMajor& mmajor : this->game.map.majors)
-	      if (mmajor.visible)
+	    for (MapMajor* mmajor : this->game.map.majors)
+	      if (mmajor->visible)
 		{
 		  majors.push_back(mmajor);
 		  std::stringstream ss;
-		  ss << mmajor.name;
-		  if (distmap.at(&mmajor) < 0)
+		  ss << mmajor->name;
+		  if (distmap.at(mmajor) < 0)
 		    ss << " (not reachable)";
-		  else if (mmajor.visited == false)
+		  else if (mmajor->visited == false)
 		    ss << " (not visited)";
-		  if (mmajor.visitable == false)
+		  if (mmajor->visitable == false)
 		    ss << " (not visitable)";
 		  if (mmajor == this->players[this->next_player]->area->is_in)
 		    ss << " (you are here)";
-		  else if (distmap.at(&mmajor) >= 0)
-		    ss << " (distance: " << distmap.at(&mmajor) << ")";
+		  else if (distmap.at(mmajor) >= 0)
+		    ss << " (distance: " << distmap.at(mmajor) << ")";
 		  if (mmajor == major)
 		    ss << " (neighbouring)";
 		  names.push_back(ss.str());
@@ -1163,7 +1165,7 @@ namespace tbrpg
 	    if (target < 0)
 	      return 2;
 	    
-	    MapMajor* mmajor = &(majors[target]);
+	    MapMajor* mmajor = majors[target];
 	    
 	    if (mmajor->visitable == false)
 	      {
@@ -1172,10 +1174,10 @@ namespace tbrpg
 		return 2;
 	      }
 	    
-	    std::vector<Road> path = std::vector<Road>();
+	    std::vector<Road*> path = std::vector<Road*>();
 	    this->findPath(map, *(where[mmajor]), path);
 	    delete map;
-	    MapMinor* mminor = static_cast<MapMinor*>(&(path[path.size() - 1].leads_to));
+	    MapMinor* mminor = static_cast<MapMinor*>(path[path.size() - 1]->leads_to);
 	    
 	    /* TODO get travel time */
 	    /* TODO support waylay */
@@ -1211,18 +1213,18 @@ namespace tbrpg
     #define __ensure(M, K, V, W)  \
       M.insert(std::pair<MapMinor*, V>((MapMinor*)(K), W))
     
-    for (const MapMajor& major : this->game.map.majors)
-      for (const _MapMinor& _minor : major.minors)
+    for (const MapMajor* major : this->game.map.majors)
+      for (const _MapMinor* _minor : major->minors)
 	{
-	  const MapMinor& minor = *(static_cast<const MapMinor*>(&_minor));
-	  __ensure(distance, &minor, int, 0);
-	  __ensure(explored, &minor, bool, false);
-	  __ensure((*previous), &minor, MapMinor*, nullptr);
+	  const MapMinor* minor = static_cast<const MapMinor*>(_minor);
+	  __ensure(distance, minor, int, 0);
+	  __ensure(explored, minor, bool, false);
+	  __ensure((*previous), minor, MapMinor*, nullptr);
 	}
     
     explored[&(MapMinor&)start] = true;
     (*previous)[&(MapMinor&)start] = &(MapMinor&)start;
-    distmap[&(MapMajor&)(start.is_in)] = 0;
+    distmap[(MapMajor*)(start.is_in)] = 0;
     
     std::vector<MapMinor*> set = std::vector<MapMinor*>();
     set.push_back(&(MapMinor&)start);
@@ -1252,11 +1254,11 @@ namespace tbrpg
 	      distance[v] = candidate;						\
 	      explored[v] = true;						\
 	      (*previous)[v] = u;						\
-	      if (distmap[&(v->is_in)] > candidate)				\
+	      if (distmap[v->is_in] > candidate)				\
 		{								\
-		  distmap[&(v->is_in)] = candidate;				\
+		  distmap[v->is_in] = candidate;				\
 		  if (where != nullptr)						\
-		    (*where)[&(v->is_in)] = v;					\
+		    (*where)[v->is_in] = v;					\
 		}								\
 	      bool exists = false;						\
 	      for (MapMinor* element : set)					\
@@ -1269,16 +1271,16 @@ namespace tbrpg
 		set.push_back(v);						\
 	    }//
 	
-	for (Road& road : u->roads)
+	for (Road* road : u->roads)
 	  {
-	    int candidate = distance[u] + road.first_distance + road.last_distance;
-	    MapMinor* v = static_cast<MapMinor*>(&(road.leads_to));
+	    int candidate = distance[u] + road->first_distance + road->last_distance;
+	    MapMinor* v = static_cast<MapMinor*>(road->leads_to);
 	    __update();
 	  }
 	int candidate = distance[u];
-	for (Entrance& entrance : u->connections)
+	for (Entrance* entrance : u->connections)
 	  {
-	    MapMinor* v = static_cast<MapMinor*>(&(entrance.leads_to));
+	    MapMinor* v = static_cast<MapMinor*>(entrance->leads_to);
 	    __update();
 	  }
 	
@@ -1299,28 +1301,28 @@ namespace tbrpg
    * @param  path     Vector to fill with the path
    */
   void GamePlay::findPath(const std::unordered_map<MapMinor*, MapMinor*>* mapping,
-			  const MapMinor& end, std::vector<Road>& path) const
+			  const MapMinor& end, std::vector<Road*>& path) const
   {
-    std::vector<MapMinor> rev = std::vector<MapMinor>();
+    std::vector<MapMinor*> rev = std::vector<MapMinor*>();
     {
       MapMinor* prev = &(MapMinor&)end;
       while (mapping->at(prev) != prev)
-	rev.push_back(*(prev = mapping->at(prev)));
+	rev.push_back(prev = mapping->at(prev));
     }
     for (size_t i = 1, n = rev.size(); i < n; i++)
       {
-	MapMinor& u = rev[i - 1];
-	MapMinor& v = rev[i - 1];
+	MapMinor* u = rev[i - 1];
+	MapMinor* v = rev[i - 1];
 	bool done = false;
-	for (Entrance& entrance : u.connections)
-	  if (v == *(static_cast<MapMinor*>(&(entrance.leads_to))))
+	for (Entrance* entrance : u->connections)
+	  if (v == static_cast<MapMinor*>(entrance->leads_to))
 	    {
 	      done = true;
 	      break;
 	    }
 	if (done == false)
-	  for (Road& road : u.roads)
-	    if (v == *(static_cast<MapMinor*>(&(road.leads_to))))
+	  for (Road* road : u->roads)
+	    if (v == static_cast<MapMinor*>(road->leads_to))
 	      {
 		path.push_back(road);
 		break;

@@ -42,8 +42,8 @@ namespace tbrpg
     this->waylay_dice = 1;
     this->waylay_risk = 2;
     this->direction = "?";
-    this->waylay_map = _MapMinor();
-    this->leads_to = _MapMinor();
+    this->waylay_map = nullptr;
+    this->leads_to = nullptr;
   }
   
   /**
@@ -114,7 +114,7 @@ namespace tbrpg
    */
   Road::~Road()
   {
-    // do nothing
+    delete this->waylay_map;
   }
   
   
@@ -242,9 +242,9 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<std::string>()(this->direction);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<_MapMinor>()(this->waylay_map);
+    rc += std::hash<_MapMinor*>()(this->waylay_map);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<_MapMinor>()(this->leads_to);
+    rc += std::hash<_MapMinor*>()(this->leads_to);
     return rc;
   }
   

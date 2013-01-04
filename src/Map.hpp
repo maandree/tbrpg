@@ -51,12 +51,12 @@ namespace tbrpg
     /**
      * The start area of the game senario
      */
-    MapMinor start;
+    MapMinor* start;
     
     /**
      * All major areas in the world map
      */
-    std::vector<MapMajor> majors;
+    std::vector<MapMajor*> majors;
     
     
     

@@ -42,98 +42,98 @@ namespace tbrpg
     this->rules.inventory_prototype.personal[0]->quantity = 400;
     cleaner::getInstance().enqueueDelete(this->rules.inventory_prototype.personal[0]);
     
-    MapMajor map_town = MapMajor();
-    MapMajor map_wilds = MapMajor();
+    MapMajor* map_town = new MapMajor();
+    MapMajor* map_wilds = new MapMajor();
     
-    MapMinor area_inn = House();
-    MapMinor area_town = Town();
-    MapMinor area_wilds = Wilderness();
-    MapMinor area_goal = Wilderness();
+    MapMinor* area_inn = new House();
+    MapMinor* area_town = new Town();
+    MapMinor* area_wilds = new Wilderness();
+    MapMinor* area_goal = new Wilderness();
     
-    map_town.name = "The town";
-    map_town.visible = true;
-    map_town.visited = true;
-    map_town.visitable = true;
+    map_town->name = "The town";
+    map_town->visible = true;
+    map_town->visited = true;
+    map_town->visitable = true;
     
-    map_wilds.name = "Outside the town";
-    map_wilds.visible = false;
-    map_wilds.visited = false;
-    map_wilds.visitable = true;
-    map_wilds.detectable = true;
+    map_wilds->name = "Outside the town";
+    map_wilds->visible = false;
+    map_wilds->visited = false;
+    map_wilds->visitable = true;
+    map_wilds->detectable = true;
     
-    area_inn.description = "You are standing in an inn.";
-    area_inn.area = 40;
-    (area_inn.is_in = map_town).minors.push_back(area_inn);
+    area_inn->description = "You are standing in an inn.";
+    area_inn->area = 40;
+    (area_inn->is_in = map_town)->minors.push_back(area_inn);
     
-    area_town.description = "You are standing in the marketplace.";
-    area_town.area = 80;
-    area_town.is_in = map_town;
-    (area_town.is_in = map_town).minors.push_back(area_town);
+    area_town->description = "You are standing in the marketplace.";
+    area_town->area = 80;
+    area_town->is_in = map_town;
+    (area_town->is_in = map_town)->minors.push_back(area_town);
     
-    area_wilds.description = "You are out on the open roads.";
-    area_wilds.area = 80;
-    area_wilds.is_in = map_wilds;
-    (area_wilds.is_in = map_wilds).minors.push_back(area_wilds);
+    area_wilds->description = "You are out on the open roads.";
+    area_wilds->area = 80;
+    area_wilds->is_in = map_wilds;
+    (area_wilds->is_in = map_wilds)->minors.push_back(area_wilds);
     
-    area_goal.description = "You are in the wilderness.";
-    area_goal.area = 80;
-    area_goal.is_in = map_wilds;
-    (area_goal.is_in = map_wilds).minors.push_back(area_wilds);
+    area_goal->description = "You are in the wilderness.";
+    area_goal->area = 80;
+    area_goal->is_in = map_wilds;
+    (area_goal->is_in = map_wilds)->minors.push_back(area_wilds);
     
-    Road road_out = Road();
-    Road road_in = Road();
+    Road* road_out = new Road();
+    Road* road_in = new Road();
     
-    road_out.first_distance = road_in.last_distance = 1000;
-    road_out.last_distance = road_in.first_distance = 1000;
+    road_out->first_distance = road_in->last_distance = 1000;
+    road_out->last_distance = road_in->first_distance = 1000;
     
-    road_out.waylay_die = road_out.waylay_dice = 1;
-    road_out.waylay_risk = 0;
+    road_out->waylay_die = road_out->waylay_dice = 1;
+    road_out->waylay_risk = 0;
     
-    road_in.waylay_die = road_in.waylay_dice = 1;
-    road_in.waylay_risk = 0;
+    road_in->waylay_die = road_in->waylay_dice = 1;
+    road_in->waylay_risk = 0;
     
-    road_out.direction = "south";
-    road_in.direction = "north";
+    road_out->direction = "south";
+    road_in->direction = "north";
     
-    road_out.leads_to = area_wilds;
-    road_in.leads_to = area_town;
+    road_out->leads_to = area_wilds;
+    road_in->leads_to = area_town;
     
-    area_town.roads.push_back(road_out);
-    area_wilds.roads.push_back(road_in);
+    area_town->roads.push_back(road_out);
+    area_wilds->roads.push_back(road_in);
     
-    Door door_in = Door();
-    Door door_out = Door();
+    Door* door_in = new Door();
+    Door* door_out = new Door();
     
-    door_in.usable = true;
-    door_out.usable = true;
-    door_in.locked = false;
-    door_out.locked = false;
-    door_in.direction = "inn";
-    door_out.direction = "town";
-    door_in.description = "inn, you can rest safely here and get equipment";
-    door_out.description = "the town";
-    door_in.leads_to = area_inn;
-    door_out.leads_to = area_town;
+    door_in->usable = true;
+    door_out->usable = true;
+    door_in->locked = false;
+    door_out->locked = false;
+    door_in->direction = "inn";
+    door_out->direction = "town";
+    door_in->description = "inn, you can rest safely here and get equipment";
+    door_out->description = "the town";
+    door_in->leads_to = area_inn;
+    door_out->leads_to = area_town;
     
-    area_town.connections.push_back(door_in);
-    area_inn.connections.push_back(door_out);
+    area_town->connections.push_back(door_in);
+    area_inn->connections.push_back(door_out);
     
-    Entrance next = Entrance();
-    Entrance prev = Entrance();
+    Entrance* next = new Entrance();
+    Entrance* prev = new Entrance();
     
-    next.usable = true;
-    prev.usable = true;
-    next.direction = "south";
-    prev.direction = "north";
-    next.description = "the wilderness";
-    prev.description = "the open roads";
-    next.leads_to = area_goal;
-    prev.leads_to = area_wilds;
+    next->usable = true;
+    prev->usable = true;
+    next->direction = "south";
+    prev->direction = "north";
+    next->description = "the wilderness";
+    prev->description = "the open roads";
+    next->leads_to = area_goal;
+    prev->leads_to = area_wilds;
     
     Store store = Store();
-    area_inn.creatures.push_back(store);
+    area_inn->creatures.push_back(store);
     
-    this->map.start = (MapMinor&)area_town;
+    this->map.start = area_town;
     this->map.majors.push_back(map_town);
     this->map.majors.push_back(map_wilds);
     

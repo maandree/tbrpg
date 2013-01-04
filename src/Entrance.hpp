@@ -65,7 +65,7 @@ namespace tbrpg
     /**
      * The area to which the entrance leads
      */
-    _MapMinor leads_to;
+    _MapMinor* leads_to;
     
     
     

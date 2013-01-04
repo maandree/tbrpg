@@ -71,12 +71,12 @@ namespace tbrpg
     /**
      * Roads to other major areas in the area
      */
-    std::vector<Road> roads;
+    std::vector<Road*> roads;
     
     /**
      * Entrance to other areas in the area
      */
-    std::vector<Entrance> connections;
+    std::vector<Entrance*> connections;
     
     /**
      * Items in the area
@@ -91,7 +91,7 @@ namespace tbrpg
     /**
      * Which major area to which  the area belongs
      */
-    MapMajor is_in;
+    MapMajor* is_in;
     
     /**
      * Possible rest interruptions

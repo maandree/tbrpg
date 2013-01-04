@@ -231,7 +231,8 @@ namespace tbrpg
     std::flush(std::cout
 	       << "\033[01;3" << this->record.colour << "m"
 	       << this->record.name << "\033[21;39m"
-	       << " has nothing to say.");
+	       << " has nothing to say."
+	       << std::endl);
   }
   
   /**

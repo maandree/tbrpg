@@ -146,7 +146,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    size_t hash() const;
+    virtual size_t hash() const;
     
   };
 }
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::_MapMinor* elem) const
     {
-       return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

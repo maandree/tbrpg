@@ -106,7 +106,8 @@ namespace tbrpg
    */
   MapMajor::~MapMajor()
   {
-    // do nothing
+    for (_MapMinor* minor : this->minors)
+      delete minor;
   }
   
   
@@ -224,7 +225,7 @@ namespace tbrpg
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<bool>()(this->detectable);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<_MapMinor>>()(this->minors);
+    rc += std::hash<std::vector<_MapMinor*>>()(this->minors);
     return rc;
   }
   
