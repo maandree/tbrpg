@@ -208,7 +208,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    size_t hash() const;
+    virtual size_t hash() const;
     
   };
 }
@@ -221,7 +221,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ReputationChart& elem) const
     {
-       return elem.hash();
+      return elem.hash();
     }
   };
   
@@ -231,7 +231,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ReputationChart* elem) const
     {
-       return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }
