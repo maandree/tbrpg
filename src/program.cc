@@ -99,32 +99,31 @@ namespace tbrpg
 		"If you want to exit, press <control>g."        "\n",
 		senarioTitles, 0);
     
-    Senario* _senario = nullptr;
+    Senario* senario = nullptr;
     if (senarioIndex == 0)
-      _senario = new BasicSenario();
-    if (_senario == nullptr)
+      senario = new BasicSenario();
+    if (senario == nullptr)
       {
 	cleaner::getInstance().clean();
 	return 0;
       }
     
-    cleaner::getInstance().enqueueDelete(_senario);
-    Senario& senario = *_senario;
-    std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario.rules.party_start_size);
+    cleaner::getInstance().enqueueDelete(senario);
+    std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario->rules.party_start_size);
     
-    if (createParty(senario, sheets) == false)
+    if (createParty(*senario, sheets) == false)
       {
 	delete sheets;
         cleaner::getInstance().clean();
 	return 0;
       }
     
-    fixCharacters(senario, sheets);
+    fixCharacters(*senario, sheets);
     delete sheets;
-    senario.partyFormed();
-    senario.start();
+    senario->partyFormed();
+    senario->start();
     
-    GamePlay game = GamePlay(senario);
+    GamePlay game = GamePlay(*senario);
     while (game.next())
       ;
     
