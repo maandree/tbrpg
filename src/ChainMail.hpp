@@ -148,7 +148,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    virtual size_t hash() const;
+    size_t hash() const;
     
   };
 }
@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ChainMail& elem) const
     {
-      return dynamic_cast<const tbrpg::ChainMail*>(&elem)->hash();
+      return elem.hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ChainMail* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<tbrpg::ChainMail*>(elem)->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

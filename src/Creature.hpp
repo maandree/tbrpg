@@ -195,7 +195,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    virtual size_t hash() const;
+    size_t hash() const;
     
   };
 }
@@ -208,7 +208,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Creature& elem) const
     {
-      return dynamic_cast<const tbrpg::Creature*>(&elem)->hash();
+      return elem.hash();
     }
   };
   
@@ -218,7 +218,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Creature* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Creature*>(elem)->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

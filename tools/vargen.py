@@ -258,7 +258,7 @@ for line in lines:
         output += '     * \n'
         output += '     * @return  The object\'s hash code\n'
         output += '     */\n'
-        output += '    virtual size_t hash() const;\n'
+        output += '    size_t hash() const;\n'
         output += '    \n'
         output += '  };\n'
         output += '}\n'
@@ -271,7 +271,7 @@ for line in lines:
         output += '  public:\n'
         output += '    size_t operator()(const tbrpg::%s& elem) const\n' % className
         output += '    {\n'
-        output += '      return dynamic_cast<const tbrpg::%s*>(&elem)->hash();\n' % className
+        output += '      return elem.hash();\n'
         output += '    }\n'
         output += '  };\n'
         output += '  \n'
@@ -281,7 +281,7 @@ for line in lines:
         output += '  public:\n'
         output += '    size_t operator()(tbrpg::%s* elem) const\n' % className
         output += '    {\n'
-        output += '      return elem == nullptr ? 0 : dynamic_cast<tbrpg::%s*>(elem)->hash();\n' % className
+        output += '      return elem == nullptr ? 0 : elem->hash();\n'
         output += '    }\n'
         output += '  };\n'
         output += '}\n'
