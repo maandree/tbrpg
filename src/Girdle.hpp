@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Girdle& elem) const
     {
-      return dynamic_cast<Girdle*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Girdle*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Girdle* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Girdle*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Girdle*>(elem)->hash();
     }
   };
 }

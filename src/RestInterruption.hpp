@@ -182,7 +182,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::RestInterruption& elem) const
     {
-      return dynamic_cast<RestInterruption*>(&elem)->hash();
+      return dynamic_cast<tbrpg::RestInterruption*>(&elem)->hash();
     }
   };
   
@@ -192,7 +192,7 @@ namespace std
   public:
     size_t operator()(tbrpg::RestInterruption* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<RestInterruption*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::RestInterruption*>(elem)->hash();
     }
   };
 }

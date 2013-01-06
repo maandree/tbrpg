@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::NPC& elem) const
     {
-      return dynamic_cast<NPC*>(&elem)->hash();
+      return dynamic_cast<tbrpg::NPC*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::NPC* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<NPC*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::NPC*>(elem)->hash();
     }
   };
 }

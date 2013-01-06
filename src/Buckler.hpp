@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Buckler& elem) const
     {
-      return dynamic_cast<Buckler*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Buckler*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Buckler* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Buckler*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Buckler*>(elem)->hash();
     }
   };
 }

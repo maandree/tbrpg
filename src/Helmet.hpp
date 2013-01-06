@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Helmet& elem) const
     {
-      return dynamic_cast<Helmet*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Helmet*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Helmet* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Helmet*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Helmet*>(elem)->hash();
     }
   };
 }

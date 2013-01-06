@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Amulet& elem) const
     {
-      return dynamic_cast<Amulet*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Amulet*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Amulet* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Amulet*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Amulet*>(elem)->hash();
     }
   };
 }

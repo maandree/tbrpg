@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Fists& elem) const
     {
-      return dynamic_cast<Fists*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Fists*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Fists* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Fists*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Fists*>(elem)->hash();
     }
   };
 }

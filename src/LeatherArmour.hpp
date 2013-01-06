@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LeatherArmour& elem) const
     {
-      return dynamic_cast<LeatherArmour*>(&elem)->hash();
+      return dynamic_cast<tbrpg::LeatherArmour*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::LeatherArmour* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<LeatherArmour*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::LeatherArmour*>(elem)->hash();
     }
   };
 }

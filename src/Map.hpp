@@ -173,7 +173,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Map& elem) const
     {
-      return dynamic_cast<Map*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Map*>(&elem)->hash();
     }
   };
   
@@ -183,7 +183,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Map* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Map*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Map*>(elem)->hash();
     }
   };
 }

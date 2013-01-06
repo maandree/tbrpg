@@ -197,7 +197,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::AbilityChart& elem) const
     {
-      return dynamic_cast<AbilityChart*>(&elem)->hash();
+      return dynamic_cast<tbrpg::AbilityChart*>(&elem)->hash();
     }
   };
   
@@ -207,7 +207,7 @@ namespace std
   public:
     size_t operator()(tbrpg::AbilityChart* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<AbilityChart*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::AbilityChart*>(elem)->hash();
     }
   };
 }

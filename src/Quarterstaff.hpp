@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Quarterstaff& elem) const
     {
-      return dynamic_cast<Quarterstaff*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Quarterstaff*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Quarterstaff* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Quarterstaff*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Quarterstaff*>(elem)->hash();
     }
   };
 }

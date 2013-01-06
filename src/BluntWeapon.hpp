@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::BluntWeapon& elem) const
     {
-      return dynamic_cast<BluntWeapon*>(&elem)->hash();
+      return dynamic_cast<tbrpg::BluntWeapon*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::BluntWeapon* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<BluntWeapon*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::BluntWeapon*>(elem)->hash();
     }
   };
 }

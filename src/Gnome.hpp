@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Gnome& elem) const
     {
-      return dynamic_cast<Gnome*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Gnome*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Gnome* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Gnome*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Gnome*>(elem)->hash();
     }
   };
 }
