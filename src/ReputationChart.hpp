@@ -223,7 +223,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ReputationChart& elem) const
     {
-      return elem.hash();
+      return dynamic_cast<ReputationChart*>(&elem)->hash();
     }
   };
   
@@ -233,7 +233,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ReputationChart* elem) const
     {
-      return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : dynamic_cast<ReputationChart*>(elem)->hash();
     }
   };
 }

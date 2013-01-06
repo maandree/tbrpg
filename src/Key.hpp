@@ -162,7 +162,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Key& elem) const
     {
-      return elem.hash();
+      return dynamic_cast<Key*>(&elem)->hash();
     }
   };
   
@@ -172,7 +172,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Key* elem) const
     {
-      return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : dynamic_cast<Key*>(elem)->hash();
     }
   };
 }
