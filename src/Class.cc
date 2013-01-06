@@ -66,8 +66,8 @@ namespace tbrpg
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
-    this->can_use = std::unordered_map<Item*, bool>();/*
-    this->can_use[&PROTOTYPE(Hood)] = true;
+    this->can_use = std::unordered_map<Item*, bool>();
+    this->can_use[&PROTOTYPE(Hood)] = true;/*
     this->can_use[&PROTOTYPE(Helmet)] = true;
     this->can_use[&PROTOTYPE(Buckler)] = true;
     this->can_use[&PROTOTYPE(SmallShield)] = true;
