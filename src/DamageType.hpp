@@ -186,7 +186,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::DamageType& elem) const
     {
-      return elem.hash();
+      return dynamic_cast<DamageType*>(&elem)->hash();
     }
   };
   
@@ -196,7 +196,7 @@ namespace std
   public:
     size_t operator()(tbrpg::DamageType* elem) const
     {
-      return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : dynamic_cast<DamageType*>(elem)->hash();
     }
   };
 }

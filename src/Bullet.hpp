@@ -160,7 +160,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Bullet& elem) const
     {
-      return elem.hash();
+      return dynamic_cast<Bullet*>(&elem)->hash();
     }
   };
   
@@ -170,7 +170,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Bullet* elem) const
     {
-      return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : dynamic_cast<Bullet*>(elem)->hash();
     }
   };
 }
