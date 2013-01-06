@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::BattleAxe& elem) const
     {
-      return dynamic_cast<BattleAxe*>(&elem)->hash();
+      return dynamic_cast<tbrpg::BattleAxe*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::BattleAxe* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<BattleAxe*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::BattleAxe*>(elem)->hash();
     }
   };
 }

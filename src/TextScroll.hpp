@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::TextScroll& elem) const
     {
-      return dynamic_cast<TextScroll*>(&elem)->hash();
+      return dynamic_cast<tbrpg::TextScroll*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::TextScroll* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<TextScroll*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::TextScroll*>(elem)->hash();
     }
   };
 }

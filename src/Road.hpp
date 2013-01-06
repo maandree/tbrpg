@@ -202,7 +202,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Road& elem) const
     {
-      return dynamic_cast<Road*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Road*>(&elem)->hash();
     }
   };
   
@@ -212,7 +212,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Road* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Road*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Road*>(elem)->hash();
     }
   };
 }

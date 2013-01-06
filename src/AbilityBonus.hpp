@@ -203,7 +203,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::AbilityBonus& elem) const
     {
-      return dynamic_cast<AbilityBonus*>(&elem)->hash();
+      return dynamic_cast<tbrpg::AbilityBonus*>(&elem)->hash();
     }
   };
   
@@ -213,7 +213,7 @@ namespace std
   public:
     size_t operator()(tbrpg::AbilityBonus* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<AbilityBonus*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::AbilityBonus*>(elem)->hash();
     }
   };
 }

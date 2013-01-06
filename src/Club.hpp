@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Club& elem) const
     {
-      return dynamic_cast<Club*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Club*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Club* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Club*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Club*>(elem)->hash();
     }
   };
 }

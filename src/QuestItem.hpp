@@ -158,7 +158,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::QuestItem& elem) const
     {
-      return dynamic_cast<QuestItem*>(&elem)->hash();
+      return dynamic_cast<tbrpg::QuestItem*>(&elem)->hash();
     }
   };
   
@@ -168,7 +168,7 @@ namespace std
   public:
     size_t operator()(tbrpg::QuestItem* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<QuestItem*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::QuestItem*>(elem)->hash();
     }
   };
 }

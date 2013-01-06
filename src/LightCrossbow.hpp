@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LightCrossbow& elem) const
     {
-      return dynamic_cast<LightCrossbow*>(&elem)->hash();
+      return dynamic_cast<tbrpg::LightCrossbow*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::LightCrossbow* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<LightCrossbow*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::LightCrossbow*>(elem)->hash();
     }
   };
 }

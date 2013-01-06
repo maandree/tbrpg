@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ShortSword& elem) const
     {
-      return dynamic_cast<ShortSword*>(&elem)->hash();
+      return dynamic_cast<tbrpg::ShortSword*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ShortSword* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<ShortSword*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::ShortSword*>(elem)->hash();
     }
   };
 }

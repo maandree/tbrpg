@@ -278,7 +278,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::RuleSet& elem) const
     {
-      return dynamic_cast<RuleSet*>(&elem)->hash();
+      return dynamic_cast<tbrpg::RuleSet*>(&elem)->hash();
     }
   };
   
@@ -288,7 +288,7 @@ namespace std
   public:
     size_t operator()(tbrpg::RuleSet* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<RuleSet*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::RuleSet*>(elem)->hash();
     }
   };
 }
