@@ -300,6 +300,8 @@ for line in lines:
                 file.write(output.encode('utf-8'))
                 file.flush()
         
+        
+        
         voidIt = '    (void) original;'
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long', 'float', 'long float', 'double']
         numericals = ['signed ' + t for t in numericals] + ['unsigned ' + t for t in numericals] + numericals
