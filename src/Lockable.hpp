@@ -179,7 +179,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Lockable& elem) const
     {
-      return dynamic_cast<tbrpg::Lockable*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Lockable*>(&elem)->hash();
     }
   };
   

@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Club& elem) const
     {
-      return dynamic_cast<tbrpg::Club*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Club*>(&elem)->hash();
     }
   };
   

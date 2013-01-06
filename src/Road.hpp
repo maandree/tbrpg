@@ -205,7 +205,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Road& elem) const
     {
-      return dynamic_cast<tbrpg::Road*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Road*>(&elem)->hash();
     }
   };
   

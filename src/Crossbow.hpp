@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Crossbow& elem) const
     {
-      return dynamic_cast<tbrpg::Crossbow*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Crossbow*>(&elem)->hash();
     }
   };
   

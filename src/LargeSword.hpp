@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LargeSword& elem) const
     {
-      return dynamic_cast<tbrpg::LargeSword*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::LargeSword*>(&elem)->hash();
     }
   };
   

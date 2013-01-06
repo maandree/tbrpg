@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Mace& elem) const
     {
-      return dynamic_cast<tbrpg::Mace*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Mace*>(&elem)->hash();
     }
   };
   

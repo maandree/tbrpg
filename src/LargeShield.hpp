@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LargeShield& elem) const
     {
-      return dynamic_cast<tbrpg::LargeShield*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::LargeShield*>(&elem)->hash();
     }
   };
   

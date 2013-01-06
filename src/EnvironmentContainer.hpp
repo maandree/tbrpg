@@ -162,7 +162,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::EnvironmentContainer& elem) const
     {
-      return dynamic_cast<tbrpg::EnvironmentContainer*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::EnvironmentContainer*>(&elem)->hash();
     }
   };
   

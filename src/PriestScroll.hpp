@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::PriestScroll& elem) const
     {
-      return dynamic_cast<tbrpg::PriestScroll*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::PriestScroll*>(&elem)->hash();
     }
   };
   

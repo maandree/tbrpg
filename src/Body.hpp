@@ -170,7 +170,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Body& elem) const
     {
-      return dynamic_cast<tbrpg::Body*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Body*>(&elem)->hash();
     }
   };
   

@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::TwoHandedSword& elem) const
     {
-      return dynamic_cast<tbrpg::TwoHandedSword*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::TwoHandedSword*>(&elem)->hash();
     }
   };
   

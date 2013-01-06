@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Cloak& elem) const
     {
-      return dynamic_cast<tbrpg::Cloak*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Cloak*>(&elem)->hash();
     }
   };
   

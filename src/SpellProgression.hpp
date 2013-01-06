@@ -183,7 +183,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::SpellProgression& elem) const
     {
-      return dynamic_cast<tbrpg::SpellProgression*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::SpellProgression*>(&elem)->hash();
     }
   };
   

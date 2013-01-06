@@ -271,7 +271,7 @@ for line in lines:
         output += '  public:\n'
         output += '    size_t operator()(const tbrpg::%s& elem) const\n' % className
         output += '    {\n'
-        output += '      return dynamic_cast<tbrpg::%s*>(&elem)->hash();\n' % className
+        output += '      return dynamic_cast<const tbrpg::%s*>(&elem)->hash();\n' % className
         output += '    }\n'
         output += '  };\n'
         output += '  \n'

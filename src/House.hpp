@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::House& elem) const
     {
-      return dynamic_cast<tbrpg::House*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::House*>(&elem)->hash();
     }
   };
   

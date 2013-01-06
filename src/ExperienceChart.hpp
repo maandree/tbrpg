@@ -215,7 +215,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ExperienceChart& elem) const
     {
-      return dynamic_cast<tbrpg::ExperienceChart*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::ExperienceChart*>(&elem)->hash();
     }
   };
   

@@ -185,7 +185,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::RestInterruption& elem) const
     {
-      return dynamic_cast<tbrpg::RestInterruption*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::RestInterruption*>(&elem)->hash();
     }
   };
   

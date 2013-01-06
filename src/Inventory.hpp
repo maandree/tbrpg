@@ -242,7 +242,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Inventory& elem) const
     {
-      return dynamic_cast<tbrpg::Inventory*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Inventory*>(&elem)->hash();
     }
   };
   

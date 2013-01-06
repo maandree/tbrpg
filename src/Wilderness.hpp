@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Wilderness& elem) const
     {
-      return dynamic_cast<tbrpg::Wilderness*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Wilderness*>(&elem)->hash();
     }
   };
   

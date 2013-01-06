@@ -274,7 +274,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::RuleSet& elem) const
     {
-      return dynamic_cast<tbrpg::RuleSet*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::RuleSet*>(&elem)->hash();
     }
   };
   

@@ -203,7 +203,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Defence& elem) const
     {
-      return dynamic_cast<tbrpg::Defence*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Defence*>(&elem)->hash();
     }
   };
   

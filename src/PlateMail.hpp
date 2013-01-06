@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::PlateMail& elem) const
     {
-      return dynamic_cast<tbrpg::PlateMail*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::PlateMail*>(&elem)->hash();
     }
   };
   

@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LeatherArmour& elem) const
     {
-      return dynamic_cast<tbrpg::LeatherArmour*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::LeatherArmour*>(&elem)->hash();
     }
   };
   

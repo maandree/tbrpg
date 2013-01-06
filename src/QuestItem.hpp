@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::QuestItem& elem) const
     {
-      return dynamic_cast<tbrpg::QuestItem*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::QuestItem*>(&elem)->hash();
     }
   };
   

@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::OneHandedMelee& elem) const
     {
-      return dynamic_cast<tbrpg::OneHandedMelee*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::OneHandedMelee*>(&elem)->hash();
     }
   };
   

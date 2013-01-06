@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LowWand& elem) const
     {
-      return dynamic_cast<tbrpg::LowWand*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::LowWand*>(&elem)->hash();
     }
   };
   

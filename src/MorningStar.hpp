@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::MorningStar& elem) const
     {
-      return dynamic_cast<tbrpg::MorningStar*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::MorningStar*>(&elem)->hash();
     }
   };
   

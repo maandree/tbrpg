@@ -175,7 +175,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ActionSlotChart& elem) const
     {
-      return dynamic_cast<tbrpg::ActionSlotChart*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::ActionSlotChart*>(&elem)->hash();
     }
   };
   

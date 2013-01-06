@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Sling& elem) const
     {
-      return dynamic_cast<tbrpg::Sling*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Sling*>(&elem)->hash();
     }
   };
   

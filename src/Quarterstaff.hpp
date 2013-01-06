@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Quarterstaff& elem) const
     {
-      return dynamic_cast<tbrpg::Quarterstaff*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Quarterstaff*>(&elem)->hash();
     }
   };
   
