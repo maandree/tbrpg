@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::TwoHandedMelee& elem) const
     {
-      return dynamic_cast<tbrpg::TwoHandedMelee*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::TwoHandedMelee*>(&elem)->hash();
     }
   };
   

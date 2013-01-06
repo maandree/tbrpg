@@ -198,7 +198,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Store& elem) const
     {
-      return dynamic_cast<tbrpg::Store*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Store*>(&elem)->hash();
     }
   };
   

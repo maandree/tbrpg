@@ -180,7 +180,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Proficiency& elem) const
     {
-      return dynamic_cast<tbrpg::Proficiency*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Proficiency*>(&elem)->hash();
     }
   };
   

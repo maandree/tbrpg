@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Scroll& elem) const
     {
-      return dynamic_cast<tbrpg::Scroll*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Scroll*>(&elem)->hash();
     }
   };
   

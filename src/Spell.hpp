@@ -237,7 +237,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Spell& elem) const
     {
-      return dynamic_cast<tbrpg::Spell*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Spell*>(&elem)->hash();
     }
   };
   

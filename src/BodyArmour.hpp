@@ -166,7 +166,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::BodyArmour& elem) const
     {
-      return dynamic_cast<tbrpg::BodyArmour*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::BodyArmour*>(&elem)->hash();
     }
   };
   

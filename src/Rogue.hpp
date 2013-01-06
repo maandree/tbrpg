@@ -163,7 +163,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Rogue& elem) const
     {
-      return dynamic_cast<tbrpg::Rogue*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Rogue*>(&elem)->hash();
     }
   };
   

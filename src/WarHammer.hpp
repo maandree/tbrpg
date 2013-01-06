@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::WarHammer& elem) const
     {
-      return dynamic_cast<tbrpg::WarHammer*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::WarHammer*>(&elem)->hash();
     }
   };
   

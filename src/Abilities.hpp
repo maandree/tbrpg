@@ -196,7 +196,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Abilities& elem) const
     {
-      return dynamic_cast<tbrpg::Abilities*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Abilities*>(&elem)->hash();
     }
   };
   

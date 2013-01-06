@@ -285,7 +285,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Class& elem) const
     {
-      return dynamic_cast<tbrpg::Class*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Class*>(&elem)->hash();
     }
   };
   

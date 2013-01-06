@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::SplintMail& elem) const
     {
-      return dynamic_cast<tbrpg::SplintMail*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::SplintMail*>(&elem)->hash();
     }
   };
   

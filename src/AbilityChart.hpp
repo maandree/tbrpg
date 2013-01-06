@@ -197,7 +197,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::AbilityChart& elem) const
     {
-      return dynamic_cast<tbrpg::AbilityChart*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::AbilityChart*>(&elem)->hash();
     }
   };
   

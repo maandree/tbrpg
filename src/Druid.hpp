@@ -160,7 +160,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Druid& elem) const
     {
-      return dynamic_cast<tbrpg::Druid*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Druid*>(&elem)->hash();
     }
   };
   
