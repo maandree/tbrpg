@@ -186,7 +186,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::CorpseMaker& elem) const
     {
-      return dynamic_cast<tbrpg::CorpseMaker*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::CorpseMaker*>(&elem)->hash();
     }
   };
   

@@ -269,7 +269,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::CharacterSheet& elem) const
     {
-      return dynamic_cast<tbrpg::CharacterSheet*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::CharacterSheet*>(&elem)->hash();
     }
   };
   

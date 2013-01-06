@@ -220,7 +220,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::MapMinor& elem) const
     {
-      return dynamic_cast<tbrpg::MapMinor*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::MapMinor*>(&elem)->hash();
     }
   };
   

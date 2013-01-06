@@ -256,7 +256,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Bonuses& elem) const
     {
-      return dynamic_cast<tbrpg::Bonuses*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Bonuses*>(&elem)->hash();
     }
   };
   

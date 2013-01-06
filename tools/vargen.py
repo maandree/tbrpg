@@ -271,7 +271,7 @@ for line in lines:
         output += '  public:\n'
         output += '    size_t operator()(const tbrpg::%s& elem) const\n' % className
         output += '    {\n'
-        output += '      return dynamic_cast<tbrpg::%s*>(&elem)->hash();\n' % className
+        output += '      return dynamic_cast<const tbrpg::%s*>(&elem)->hash();\n' % className
         output += '    }\n'
         output += '  };\n'
         output += '  \n'
@@ -299,6 +299,8 @@ for line in lines:
             with open(className + '.hpp', 'wb') as file:
                 file.write(output.encode('utf-8'))
                 file.flush()
+        
+        
         
         voidIt = '    (void) original;'
         numericals = ['char', 'byte', 'short', 'int', 'long', 'size_t', 'long long', 'float', 'long float', 'double']

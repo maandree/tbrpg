@@ -166,7 +166,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Headgear& elem) const
     {
-      return dynamic_cast<tbrpg::Headgear*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Headgear*>(&elem)->hash();
     }
   };
   

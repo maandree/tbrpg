@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::CompositeLongBow& elem) const
     {
-      return dynamic_cast<tbrpg::CompositeLongBow*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::CompositeLongBow*>(&elem)->hash();
     }
   };
   

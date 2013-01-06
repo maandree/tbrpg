@@ -193,7 +193,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Ammunition& elem) const
     {
-      return dynamic_cast<tbrpg::Ammunition*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Ammunition*>(&elem)->hash();
     }
   };
   

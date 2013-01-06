@@ -420,7 +420,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Calculator& elem) const
     {
-      return dynamic_cast<tbrpg::Calculator*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Calculator*>(&elem)->hash();
     }
   };
   

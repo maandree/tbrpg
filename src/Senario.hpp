@@ -195,7 +195,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Senario& elem) const
     {
-      return dynamic_cast<tbrpg::Senario*>(&elem)->hash();
+      return dynamic_cast<const tbrpg::Senario*>(&elem)->hash();
     }
   };
   
