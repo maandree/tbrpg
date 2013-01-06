@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -49,11 +49,13 @@ namespace tbrpg
     this->bonuses.thief_abilities.stealth = 0;
     
     this->allowed_classes =
-      {{PROTOTYPE(Fighter)},
-       {PROTOTYPE(Thief)},
-       {PROTOTYPE(Cleric)},
-       {PROTOTYPE(Mage)}, {PROTOTYPE(Sorcerer)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Thief)}};
+      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
+       new std::vector<Class*>({&PROTOTYPE(Thief)}),
+       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
+       new std::vector<Class*>({&PROTOTYPE(Mage)}),
+       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)})
+      };
   }
   
   /**

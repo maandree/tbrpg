@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -49,7 +49,7 @@ namespace tbrpg
     /**
      * Items contained by the container
      */
-    std::vector<Item> contains;
+    std::vector<Item*> contains;
     
     /**
      * Number of items that can be put in the container

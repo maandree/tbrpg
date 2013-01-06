@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -42,10 +42,12 @@ namespace tbrpg
     this->hit_point_bonus = std::vector<int>(31);
     this->selectable_wizard = std::vector<int>(31);
     this->selectable_priest = std::vector<int>(31);
-    this->new_spells =std::vector<std::vector<Spell>>(31);
+    this->new_spells = std::vector<std::vector<Spell*>*>();
     this->proficiencies = std::vector<int>(31);
     this->backstabs = std::vector<char>(31);
     this->thief_abilities = std::vector<char>(31);
+    for (size_t i = 0; i < 31; i++)
+      this->new_spells.push_back(new std::vector<Spell*>());
   }
   
   /**
@@ -61,6 +63,8 @@ namespace tbrpg
     this->hit_point_bonus = original.hit_point_bonus;
     this->selectable_wizard = original.selectable_wizard;
     this->selectable_priest = original.selectable_priest;
+    for (size_t i = 0; i < 31; i++)
+      this->new_spells.push_back(new std::vector<Spell*>(*(original.new_spells[i])));
     this->new_spells = original.new_spells;
     this->proficiencies = original.proficiencies;
     this->backstabs = original.backstabs;
@@ -80,7 +84,8 @@ namespace tbrpg
     this->hit_point_bonus = original.hit_point_bonus;
     this->selectable_wizard = original.selectable_wizard;
     this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
+    for (size_t i = 0; i < 31; i++)
+      this->new_spells.push_back(new std::vector<Spell*>(*(original.new_spells[i])));
     this->proficiencies = original.proficiencies;
     this->backstabs = original.backstabs;
     this->thief_abilities = original.thief_abilities;
@@ -122,7 +127,8 @@ namespace tbrpg
    */
   ExperienceChart::~ExperienceChart()
   {
-    // do nothing
+    for (std::vector<Spell*>* elem : this->new_spells)
+      delete elem;
   }
   
   
@@ -142,7 +148,11 @@ namespace tbrpg
     this->hit_point_bonus = original.hit_point_bonus;
     this->selectable_wizard = original.selectable_wizard;
     this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
+    for (size_t i = 0; i < 31; i++)
+      {
+	delete this->new_spells[i];
+	this->new_spells[i] = new std::vector<Spell*>(*(original.new_spells[i]));
+      }
     this->proficiencies = original.proficiencies;
     this->backstabs = original.backstabs;
     this->thief_abilities = original.thief_abilities;
@@ -164,7 +174,11 @@ namespace tbrpg
     this->hit_point_bonus = original.hit_point_bonus;
     this->selectable_wizard = original.selectable_wizard;
     this->selectable_priest = original.selectable_priest;
-    this->new_spells = original.new_spells;
+    for (size_t i = 0; i < 31; i++)
+      {
+	delete this->new_spells[i];
+	this->new_spells[i] = new std::vector<Spell*>(*(original.new_spells[i]));
+      }
     this->proficiencies = original.proficiencies;
     this->backstabs = original.backstabs;
     this->thief_abilities = original.thief_abilities;
@@ -258,7 +272,7 @@ namespace tbrpg
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
     rc += std::hash<std::vector<int>>()(this->selectable_priest);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::vector<std::vector<Spell>>>()(this->new_spells);
+    rc += std::hash<std::vector<std::vector<Spell*>*>>()(this->new_spells);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<int>>()(this->proficiencies);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -43,14 +43,14 @@ namespace tbrpg
     this->abilities.saving_throws.rod_staff_wand = 14;
     this->abilities.saving_throws.spell = 15;
     this->lower_limits.wisdom = 9;
-    
-    this->can_use[PROTOTYPE(ThrowingDagger)] = false;
-    this->can_use[PROTOTYPE(HighWand)] = true;
-    this->can_use[PROTOTYPE(PriestScroll)] = true;
-    
-    this->spell_progression.priest_slots = std::vector<std::vector<int>>(31);
+    /*
+    this->can_use[&PROTOTYPE(ThrowingDagger)] = false;
+    this->can_use[&PROTOTYPE(HighWand)] = true;
+    this->can_use[&PROTOTYPE(PriestScroll)] = true;
+    */
+    this->spell_progression.priest_slots = std::vector<std::vector<int>*>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression.priest_slots[i] = std::vector<int>(8);
+      this->spell_progression.priest_slots[i] = new std::vector<int>(8);
     
     this->spell_progression.priest_levels = std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
@@ -71,7 +71,7 @@ namespace tbrpg
 	  case 19:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][1] = cur;
+	this->spell_progression.priest_slots[i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -89,7 +89,7 @@ namespace tbrpg
 	  case 19:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][2] = cur;
+	this->spell_progression.priest_slots[i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -107,7 +107,7 @@ namespace tbrpg
 	  case 19:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][3] = cur;
+	this->spell_progression.priest_slots[i][0][3] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -125,7 +125,7 @@ namespace tbrpg
 	  case 21:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][4] = cur;
+	this->spell_progression.priest_slots[i][0][4] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -143,7 +143,7 @@ namespace tbrpg
 	  case 22:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][5] = cur;
+	this->spell_progression.priest_slots[i][0][5] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -161,7 +161,7 @@ namespace tbrpg
 	  case 26:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][6] = cur;
+	this->spell_progression.priest_slots[i][0][6] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -178,7 +178,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][7] = cur;
+	this->spell_progression.priest_slots[i][0][7] = cur;
       }
     
     this->experience_chart.hit_point_die = std::vector<char>(31);

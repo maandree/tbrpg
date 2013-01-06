@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -42,17 +42,22 @@ namespace tbrpg
     this->bonuses.thief_abilities.pick_pockets = 10;
     this->bonuses.thief_abilities.stealth = 5;
     this->allowed_classes =
-      {{PROTOTYPE(Fighter)}, {PROTOTYPE(Ranger)},
-       {PROTOTYPE(Thief)}, {PROTOTYPE(Bard)},
-       {PROTOTYPE(Cleric)}, {PROTOTYPE(Druid)},
-       {PROTOTYPE(Mage)}, {PROTOTYPE(Sorcerer)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Thief)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Cleric)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Druid)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Mage)},
-       {PROTOTYPE(Mage), PROTOTYPE(Cleric)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Thief)},
-       {PROTOTYPE(Fighter), PROTOTYPE(Mage), PROTOTYPE(Cleric)}};
+      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
+       new std::vector<Class*>({&PROTOTYPE(Ranger)}),
+       new std::vector<Class*>({&PROTOTYPE(Thief)}),
+       new std::vector<Class*>({&PROTOTYPE(Bard)}),
+       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
+       new std::vector<Class*>({&PROTOTYPE(Druid)}),
+       new std::vector<Class*>({&PROTOTYPE(Mage)}),
+       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Cleric)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Druid)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage)}),
+       new std::vector<Class*>({&PROTOTYPE(Mage), &PROTOTYPE(Cleric)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Thief)}),
+       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Cleric)})
+      };
   }
   
   /**

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -46,17 +46,17 @@ namespace tbrpg
     #define D  (1LL << 6LL)
     #define M  (1LL << 7LL)
     #define S  (1LL << 8LL)
-    
-    this->index_map[Fighter()] = F;
-    this->index_map[Ranger()] = R;
-    this->index_map[Paladin()] = P;
-    this->index_map[Thief()] = T;
-    this->index_map[Bard()] = B;
-    this->index_map[Cleric()] = C;
-    this->index_map[Druid()] = D;
-    this->index_map[Mage()] = M;
-    this->index_map[Sorcerer()] = S;
-    
+    /*
+    this->index_map[PROTOTYPE(Fighter)] = F;
+    this->index_map[PROTOTYPE(Ranger)] = R;
+    this->index_map[PROTOTYPE(Paladin)] = P;
+    this->index_map[PROTOTYPE(Thief)] = T;
+    this->index_map[PROTOTYPE(Bard)] = B;
+    this->index_map[PROTOTYPE(Cleric)] = C;
+    this->index_map[PROTOTYPE(Druid)] = D;
+    this->index_map[PROTOTYPE(Mage)] = M;
+    this->index_map[PROTOTYPE(Sorcerer)] = S;
+    */
     this->slot_map[F]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON};
     this->slot_map[P]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, CAST_SPELL};
     this->slot_map[R]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, STEALTH,     CAST_SPELL};

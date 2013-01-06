@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -46,9 +46,9 @@ namespace tbrpg
     for (long i = 2; i <= 30; i++)
       this->experience_chart.thief_abilities[i] = 5;
     
-    this->spell_progression.priest_slots = std::vector<std::vector<int>>(17);
+    this->spell_progression.priest_slots = std::vector<std::vector<int>*>(17);
     for (int i = 0; i <= 16; i++)
-      this->spell_progression.priest_slots[i] = std::vector<int>(4);
+      this->spell_progression.priest_slots[i] = new std::vector<int>(4);
     
     this->spell_progression.priest_levels = std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
@@ -63,7 +63,7 @@ namespace tbrpg
 	  case 13:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][1] = cur;
+	this->spell_progression.priest_slots[i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 16; i++)
@@ -75,7 +75,7 @@ namespace tbrpg
 	  case 15:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][2] = cur;
+	this->spell_progression.priest_slots[i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 16; i++)
@@ -87,7 +87,7 @@ namespace tbrpg
 	  case 16:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][3] = cur;
+	this->spell_progression.priest_slots[i][0][3] = cur;
       }
   }
   

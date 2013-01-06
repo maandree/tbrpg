@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -47,9 +47,9 @@ namespace tbrpg
     op ___f(intelligence, getIntelligence, X, Y);	\
     op ___f(wisdom, getWisdom, X, Y);			\
     op ___f(charisma, getCharisma, X, Y);		\
-    op (character.record.race.bonuses.X.Y);		\
-    for (const Class& c : character.record.prestige)	\
-      op (c.abilities.X.Y);				\
+    op (character.record.race->bonuses.X.Y);		\
+    for (Class* c : character.record.prestige)		\
+      op (c->abilities.X.Y);				\
     ___i(right_hand, X, Y, op);			       	\
     ___i(headgear, X, Y, op);			       	\
     ___i(amulet, X, Y, op);				\
@@ -291,8 +291,8 @@ namespace tbrpg
   {
     char rc = 0;
     int prof = character.record.proficiencies.at(__w);
-    for (const Class& c : character.record.prestige)
-      rc += c.proficiency_chart.at(__w)[prof].half_attacks;
+    for (Class* c : character.record.prestige)
+      rc += c->proficiency_chart.at(__w)[prof].half_attacks;
     rc /= character.record.prestige.size();
     rc += character.extra_attacks;
     return rc + 2; /* 2 is the base half attacks, i.e. just one attack*/
@@ -323,11 +323,11 @@ namespace tbrpg
       rc += f;
     int rc_prof = 0, rc_class = 0;
     int prof = character.record.proficiencies.at(__w);
-    for (const Class& c : character.record.prestige)
+    for (Class* c : character.record.prestige)
       {
-	rc_prof += c.proficiency_chart.at(__w)[prof].hit_bonus;
-	if (rc_class < c.thac0)
-	  rc_class = c.thac0;
+	rc_prof += c->proficiency_chart.at(__w)[prof].hit_bonus;
+  if (rc_class < c->thac0)
+	  rc_class = c->thac0;
       }
     rc -= rc_prof / character.record.prestige.size();
     rc += rc_class;
@@ -354,8 +354,8 @@ namespace tbrpg
       }
     int rc_prof = 0;
     int prof = character.record.proficiencies.at(__w);
-    for (const Class& c : character.record.prestige)
-      rc_prof += c.proficiency_chart.at(__w)[prof].damage_bonus;
+    for (Class* c : character.record.prestige)
+      rc_prof += c->proficiency_chart.at(__w)[prof].damage_bonus;
     rc += rc_prof / character.record.prestige.size();
     rc += weapon.damage_bonus;
     if (ammo != nullptr)
@@ -490,8 +490,8 @@ namespace tbrpg
       {
 	__f(spell_learn);
 	bool ok = false;
-	for (const Class& c : character.record.prestige)
-	  if (c.learn_from_scroll)
+	for (Class* c : character.record.prestige)
+	  if (c->learn_from_scroll)
 	    ok = true;
 	if (ok == false)
 	  rc = -10;
@@ -573,7 +573,7 @@ namespace tbrpg
     if (wizard)
       for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	{
-	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.wizard_slots);
+	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression.wizard_slots);
 	  char level = character.record.level[c];
 	  if (level >= (char)(chart.size()))
 	    level = chart.size() - 1;
@@ -595,7 +595,7 @@ namespace tbrpg
 	
 	for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	  {
-	    std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c].spell_progression.priest_slots);
+	    std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression.priest_slots);
 	    char level = character.record.level[c];
 	    if (level >= (char)(chart.size()))
 	      level = chart.size() - 1;
@@ -668,7 +668,7 @@ namespace tbrpg
     char rc = 0;
     for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
       {
-	char candidate = character.record.prestige[c].experience_chart.backstabs[(long)(character.record.level[c])];
+	char candidate = character.record.prestige[c]->experience_chart.backstabs[(long)(character.record.level[c])];
 	if (rc < candidate)
 	  rc = candidate;
       }

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -234,8 +234,8 @@ namespace tbrpg
   char GamePlay::action_rest()
   {
     int monstercount = 0;
-    for (Creature& creature : this->players[this->next_player]->area->creatures)
-      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
+    for (Creature* creature : this->players[this->next_player]->area->creatures)
+      if (creature->hostile && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	monstercount++;
     
     if (monstercount > 0)
@@ -306,10 +306,10 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::vector<Creature> attackable = std::vector<Creature>();
+    std::vector<Creature*> attackable = std::vector<Creature*>();
     
-    for (Creature& creature : player->area->creatures)
-      if (creature.hostile && creature.alive && (((Character&)creature).alive == 1))
+    for (Creature* creature : player->area->creatures)
+      if (creature->hostile && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	attackable.push_back(creature);
     
     if (attackable.size() == 0)
@@ -323,8 +323,8 @@ namespace tbrpg
     if (attackable.size() > 1)
       {
 	std::vector<std::string> targets = std::vector<std::string>();
-	for (Creature& creature : attackable)
-	  targets.push_back(creature.record.name);
+	for (Creature* creature : attackable)
+	  targets.push_back(creature->record.name);
 	
 	target = promptMenu("Select target:", targets);
       }
@@ -338,9 +338,9 @@ namespace tbrpg
     if (weapon == nullptr)
       {
 	if (player->character->record.inventory.right_hand == nullptr)
-	  weapon = &(player->character->record.prestige[0].default_one_hand); /* TODO document that the first prestige is used*/
+	  weapon = &(player->character->record.prestige[0]->default_one_hand); /* TODO document that the first prestige is used*/
 	else
-	  weapon = &(player->character->record.prestige[0].default_two_hands);
+	  weapon = &(player->character->record.prestige[0]->default_two_hands);
       }
     player->turns += weapon->speed_factor;
     
@@ -355,11 +355,11 @@ namespace tbrpg
 	  }
       }
     
-    Weapon* _targetweapon = attackable[target].record.inventory.left_hand[0]; /* TODO dual weapon */
+    Weapon* _targetweapon = attackable[target]->record.inventory.left_hand[0]; /* TODO dual weapon */
     Weapon targetweapon = _targetweapon != nullptr ? *_targetweapon
-                        : attackable[target].record.inventory.right_hand != nullptr
-                        ? attackable[target].record.prestige[0].default_one_hand
-                        : attackable[target].record.prestige[0].default_two_hands;
+                        : attackable[target]->record.inventory.right_hand != nullptr
+                        ? attackable[target]->record.prestige[0]->default_one_hand
+                        : attackable[target]->record.prestige[0]->default_two_hands;
     
     DamageType damagetype = weapon->damage_type[0];
     if (weapon->damage_type.size() > 0)
@@ -402,12 +402,12 @@ namespace tbrpg
     while (attacks >= 0)
       {
 	int thac0 = this->calc.getTHAC0(*(player->character), *weapon, quiver);
-	int ac = this->calc.getArmourClass(attackable[target], damagetype, !(weapon->melee), targetweapon);
+	int ac = this->calc.getArmourClass(*(attackable[target]), damagetype, !(weapon->melee), targetweapon);
 	int rollmod = 0;
 	
 	if (player->character->record.racial_enemy != nullptr)
 	  {
-	    if (attackable[target].record.race >= *(player->character->record.racial_enemy))
+	    if (*(attackable[target]->record.race) >= *(player->character->record.racial_enemy))
 	      {
 		rollmod += 4; /* XXX make racial enemy bonus/penality a customisable rule */
 		std::cout << "Racial enemy bonus" << std::endl;
@@ -450,15 +450,15 @@ namespace tbrpg
       }
     
     std::cout << "Total damage: " << totaldamage << std::endl;
-    attackable[target].hit_points -= totaldamage;
-    if (attackable[target].hit_points <= -(this->game.rules.critical_death))
+    attackable[target]->hit_points -= totaldamage;
+    if (attackable[target]->hit_points <= -(this->game.rules.critical_death)) /* TODO delete nealy and not resurrectable */
       {
-	((Character&)(attackable[target])).alive = -1;
+	dynamic_cast<Character*>(attackable[target])->alive = -1;
 	std::cout << "Critical death inflicated on target." << std::endl;
       }
-    else if (attackable[target].hit_points <= 0)
+    else if (attackable[target]->hit_points <= 0)
       {
-	((Character&)(attackable[target])).alive = 0;
+	dynamic_cast<Character*>(attackable[target])->alive = 0;
 	std::cout << "Death inflicated on target." << std::endl;
       }
     else
@@ -475,19 +475,19 @@ namespace tbrpg
       for (size_t i = 0, n = X.size(); i < n; i++)	\
 	__drop(X[i])
     
-    __drops(attackable[target].record.inventory.left_hand);
-    __drop (attackable[target].record.inventory.right_hand);
-    __drops(attackable[target].record.inventory.quiver);
-    __drops(attackable[target].record.inventory.quick_items);
-    __drop (attackable[target].record.inventory.headgear);
-    __drop (attackable[target].record.inventory.amulet);
-    __drops(attackable[target].record.inventory.rings);
-    __drop (attackable[target].record.inventory.body);
-    __drop (attackable[target].record.inventory.gauntlets);
-    __drop (attackable[target].record.inventory.girdle);
-    __drop (attackable[target].record.inventory.boots);
-    __drop (attackable[target].record.inventory.cloak);
-    __drops(attackable[target].record.inventory.personal);
+    __drops(attackable[target]->record.inventory.left_hand);
+    __drop (attackable[target]->record.inventory.right_hand);
+    __drops(attackable[target]->record.inventory.quiver);
+    __drops(attackable[target]->record.inventory.quick_items);
+    __drop (attackable[target]->record.inventory.headgear);
+    __drop (attackable[target]->record.inventory.amulet);
+    __drops(attackable[target]->record.inventory.rings);
+    __drop (attackable[target]->record.inventory.body);
+    __drop (attackable[target]->record.inventory.gauntlets);
+    __drop (attackable[target]->record.inventory.girdle);
+    __drop (attackable[target]->record.inventory.boots);
+    __drop (attackable[target]->record.inventory.cloak);
+    __drops(attackable[target]->record.inventory.personal);
     
     #undef __drop
     #undef __drops
@@ -523,9 +523,9 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::vector<Creature> talkable = std::vector<Creature>();
-    for (Creature& creature : this->players[this->next_player]->area->creatures)
-      if ((creature.hostile == false) && creature.alive && (((Character&)creature).alive == 1))
+    std::vector<Creature*> talkable = std::vector<Creature*>();
+    for (Creature* creature : this->players[this->next_player]->area->creatures)
+      if ((creature->hostile == false) && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	talkable.push_back(creature);
     
     if (talkable.size() == 0)
@@ -539,8 +539,8 @@ namespace tbrpg
     if (talkable.size() > 1)
       {
 	std::vector<std::string> targets = std::vector<std::string>();
-	for (Creature& creature : talkable)
-	  targets.push_back(creature.record.name);
+	for (Creature* creature : talkable)
+	  targets.push_back(creature->record.name);
 	
 	target = promptMenu("Select target:", targets);
       }
@@ -555,7 +555,7 @@ namespace tbrpg
       if (p->area == location)
 	here.push_back(p->character);
     
-    talkable[target].interact(here);
+    talkable[target]->interact(here);
     
     return 1;
   }
@@ -763,9 +763,9 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::vector<Creature> pickable = std::vector<Creature>();
-    for (Creature& creature : this->players[this->next_player]->area->creatures)
-      if ((creature.hostile == false) && creature.alive && (((Character&)creature).alive == 1))
+    std::vector<Creature*> pickable = std::vector<Creature*>();
+    for (Creature* creature : this->players[this->next_player]->area->creatures)
+      if ((creature->hostile == false) && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	pickable.push_back(creature);
     
     if (pickable.size() == 0)
@@ -779,8 +779,8 @@ namespace tbrpg
     if (pickable.size() > 1)
       {
 	std::vector<std::string> targets = std::vector<std::string>();
-	for (Creature& creature : pickable)
-	  targets.push_back(creature.record.name);
+	for (Creature* creature : pickable)
+	  targets.push_back(creature->record.name);
 	
 	target = promptMenu("Select target:", targets);
       }
@@ -788,19 +788,19 @@ namespace tbrpg
     if (target < 0)
       return 2;
     
-    if (pickable[target].pickable == false)
+    if (pickable[target]->pickable == false)
       {
 	std::cout << "Not possible." << std::endl;
 	return 2;
       }
     
-    int level = pickable[target].pick_level;
+    int level = pickable[target]->pick_level;
     int roll = this->attack_dice.roll();
     float mod = this->calc.getStealing(*(this->players[this->next_player]->character));
     
     if ((int)(roll * mod + 0.5) >= level)
       {
-	Item* stole = pickable[target].pickPocket();
+	Item* stole = pickable[target]->pickPocket();
 	if ((stole))
 	  {
 	    std::cout << "Stole: " << stole->name << std::endl;
@@ -811,7 +811,7 @@ namespace tbrpg
       }
     else
       {
-	if ((pickable[target].hostile = pickable[target].pick_hostile))
+	if ((pickable[target]->hostile = pickable[target]->pick_hostile))
 	  std::cout << "Failure: Target became hostile." << std::endl;
 	else
 	  std::cout << "Failure: Target remains friendly." << std::endl;
@@ -1068,9 +1068,9 @@ namespace tbrpg
     if (this->players[this->next_player]->area->items.size() > 0)
       std::cout << std::endl;
     
-    for (Creature& creature : this->players[this->next_player]->area->creatures)
-      if (creature.alive && (((Character&)creature).alive == 1))
-	std::cout << creature.record.name << (creature.hostile ? " (hostile)" : " (friendly)") << std::endl;
+    for (Creature* creature : this->players[this->next_player]->area->creatures)
+      if (creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
+	std::cout << creature->record.name << (creature->hostile ? " (hostile)" : " (friendly)") << std::endl;
     if (this->players[this->next_player]->area->creatures.size() > 0)
       std::cout << std::endl;
     

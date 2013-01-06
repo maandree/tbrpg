@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -98,7 +98,10 @@ namespace tbrpg
    */
   SpellProgression::~SpellProgression()
   {
-    // do nothing
+    for (std::vector<int>* elem : wizard_slots)
+      delete elem;
+    for (std::vector<int>* elem : priest_slots)
+      delete elem;
   }
   
   
@@ -198,9 +201,9 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<std::vector<int>>>()(this->wizard_slots);
+    rc += std::hash<std::vector<std::vector<int>*>>()(this->wizard_slots);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<std::vector<int>>>()(this->priest_slots);
+    rc += std::hash<std::vector<std::vector<int>*>>()(this->priest_slots);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::vector<int>>()(this->wizard_levels);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);

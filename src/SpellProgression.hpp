@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -49,12 +49,12 @@ namespace tbrpg
     /**
      * The number of wizard spell slots per character level and spell level
      */
-    std::vector<std::vector<int>> wizard_slots;
+    std::vector<std::vector<int>*> wizard_slots;
     
     /**
      * The number of priest spell slots per character level and spell level
      */
-    std::vector<std::vector<int>> priest_slots;
+    std::vector<std::vector<int>*> priest_slots;
     
     /**
      * Wizard castings level for each prestige level

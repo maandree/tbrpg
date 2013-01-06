@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -46,24 +46,24 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 12;
     this->lower_limits.intelligence = 9;
     this->abilities.bonuses.detect_doors = 0.05;
-    
-    this->can_use[PROTOTYPE(Hat)] = true;
-    this->can_use[PROTOTYPE(Hood)] = false;
-    this->can_use[PROTOTYPE(Helmet)] = false;
-    this->can_use[PROTOTYPE(Buckler)] = false;
-    this->can_use[PROTOTYPE(SmallShield)] = false;
-    this->can_use[PROTOTYPE(LeatherArmour)] = false;
-    this->can_use[PROTOTYPE(StuddedLeatherArmour)] = false;
-    this->can_use[PROTOTYPE(Robe)] = true;
-    this->can_use[PROTOTYPE(Club)] = false;
-    this->can_use[PROTOTYPE(HighWand)] = true;
-    this->can_use[PROTOTYPE(WizardScroll)] = true;
-    
-    this->spell_progression.wizard_slots = std::vector<std::vector<int>>(31);
+    /*
+    this->can_use[&PROTOTYPE(Hat)] = true;
+    this->can_use[&PROTOTYPE(Hood)] = false;
+    this->can_use[&PROTOTYPE(Helmet)] = false;
+    this->can_use[&PROTOTYPE(Buckler)] = false;
+    this->can_use[&PROTOTYPE(SmallShield)] = false;
+    this->can_use[&PROTOTYPE(LeatherArmour)] = false;
+    this->can_use[&PROTOTYPE(StuddedLeatherArmour)] = false;
+    this->can_use[&PROTOTYPE(Robe)] = true;
+    this->can_use[&PROTOTYPE(Club)] = false;
+    this->can_use[&PROTOTYPE(HighWand)] = true;
+    this->can_use[&PROTOTYPE(WizardScroll)] = true;
+    */
+    this->spell_progression.wizard_slots = std::vector<std::vector<int>*>(31);
     for (int i = 0; i <= 30; i++)
       {
-	this->spell_progression.wizard_slots[i] = std::vector<int>(10);
-	this->spell_progression.wizard_slots[i][0] = 1 + i;
+	this->spell_progression.wizard_slots[i] = new std::vector<int>(10);
+	this->spell_progression.wizard_slots[i][0][0] = 1 + i;
       }
     
     this->spell_progression.wizard_levels = std::vector<int>(31);
@@ -85,7 +85,7 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][1] = cur;
+	this->spell_progression.wizard_slots[i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -102,7 +102,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][2] = cur;
+	this->spell_progression.wizard_slots[i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -119,7 +119,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][3] = cur;
+	this->spell_progression.wizard_slots[i][0][3] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -135,7 +135,7 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][4] = cur;
+	this->spell_progression.wizard_slots[i][0][4] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -151,7 +151,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][5] = cur;
+	this->spell_progression.wizard_slots[i][0][5] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -167,7 +167,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][6] = cur;
+	this->spell_progression.wizard_slots[i][0][6] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -182,7 +182,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][7] = cur;
+	this->spell_progression.wizard_slots[i][0][7] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -197,7 +197,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][8] = cur;
+	this->spell_progression.wizard_slots[i][0][8] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -210,7 +210,7 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][9] = cur;
+	this->spell_progression.wizard_slots[i][0][9] = cur;
       }
     
     this->experience_chart.experience = std::vector<int>(31);

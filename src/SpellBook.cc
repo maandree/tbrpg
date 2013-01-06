@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -190,11 +190,11 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<Spell>>()(this->learned);
+    rc += std::hash<std::vector<Spell*>>()(this->learned);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Spell>>()(this->selected);
+    rc += std::hash<std::vector<Spell*>>()(this->selected);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<Spell>>()(this->memorised);
+    rc += std::hash<std::vector<Spell*>>()(this->memorised);
     return rc;
   }
   

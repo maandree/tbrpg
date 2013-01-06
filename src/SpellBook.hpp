@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -50,17 +50,17 @@ namespace tbrpg
     /**
      * Learned spells
      */
-    std::vector<Spell> learned;
+    std::vector<Spell*> learned;
     
     /**
      * Spell selection
      */
-    std::vector<Spell> selected;
+    std::vector<Spell*> selected;
     
     /**
      * Memorisations
      */
-    std::vector<Spell> memorised;
+    std::vector<Spell*> memorised;
     
     
     

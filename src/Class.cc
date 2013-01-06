@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -62,31 +62,31 @@ namespace tbrpg
     
     this->spell_progression = SpellProgression();
     
-    this->alignments = new bool[9];
+    this->alignments = (bool*)malloc(9);//bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
-    this->can_use = std::unordered_map<Item, bool>();
-    this->can_use[PROTOTYPE(Hood)] = true;
-    this->can_use[PROTOTYPE(Helmet)] = true;
-    this->can_use[PROTOTYPE(Buckler)] = true;
-    this->can_use[PROTOTYPE(SmallShield)] = true;
-    this->can_use[PROTOTYPE(LeatherArmour)] = true;
-    this->can_use[PROTOTYPE(StuddedLeatherArmour)] = true;
-    this->can_use[PROTOTYPE(Dart)] = true;
-    this->can_use[PROTOTYPE(Sling)] = true;
-    this->can_use[PROTOTYPE(ThrowingDagger)] = true;
-    this->can_use[PROTOTYPE(Fist)] = true;
-    this->can_use[PROTOTYPE(Fists)] = true;
-    this->can_use[PROTOTYPE(Bullet)] = true;
-    this->can_use[PROTOTYPE(Torch)] = true;
-    this->can_use[PROTOTYPE(Quarterstaff)] = true;
-    this->can_use[PROTOTYPE(Dagger)] = true;
-    this->can_use[PROTOTYPE(Club)] = true;
-    this->can_use[PROTOTYPE(Potion)] = true;
-    this->can_use[PROTOTYPE(LowScroll)] = true;
-    this->can_use[PROTOTYPE(LowWand)] = true;
-    
+    this->can_use = std::unordered_map<Item*, bool>();/*
+    this->can_use[&PROTOTYPE(Hood)] = true;
+    this->can_use[&PROTOTYPE(Helmet)] = true;
+    this->can_use[&PROTOTYPE(Buckler)] = true;
+    this->can_use[&PROTOTYPE(SmallShield)] = true;
+    this->can_use[&PROTOTYPE(LeatherArmour)] = true;
+    this->can_use[&PROTOTYPE(StuddedLeatherArmour)] = true;
+    this->can_use[&PROTOTYPE(Dart)] = true;
+    this->can_use[&PROTOTYPE(Sling)] = true;
+    this->can_use[&PROTOTYPE(ThrowingDagger)] = true;
+    this->can_use[&PROTOTYPE(Fist)] = true;
+    this->can_use[&PROTOTYPE(Fists)] = true;
+    this->can_use[&PROTOTYPE(Bullet)] = true;
+    this->can_use[&PROTOTYPE(Torch)] = true;
+    this->can_use[&PROTOTYPE(Quarterstaff)] = true;
+    this->can_use[&PROTOTYPE(Dagger)] = true;
+    this->can_use[&PROTOTYPE(Club)] = true;
+    this->can_use[&PROTOTYPE(Potion)] = true;
+    this->can_use[&PROTOTYPE(LowScroll)] = true;
+    this->can_use[&PROTOTYPE(LowWand)] = true;
+    */
     this->lower_limits = Abilities();
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
@@ -95,6 +95,7 @@ namespace tbrpg
     this->lower_limits.intelligence = 3;
     this->lower_limits.wisdom = 3;
     this->lower_limits.charisma = 3;
+    
     this->default_one_hand = PROTOTYPE(Fist);
     this->default_two_hands = PROTOTYPE(Fists);
     
@@ -103,7 +104,12 @@ namespace tbrpg
     
     this->proficiency_chart = std::unordered_map<WeaponGroup, std::vector<Proficiency>>();
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
-      this->proficiency_chart[*weapongroup] = {Proficiency(0, -1, 2), Proficiency(0, 1, 2), Proficiency(1, 3, 3)};
+      this->proficiency_chart[*weapongroup] = {
+	Proficiency(0, -1, 2), 
+	Proficiency(0, 1, 2),
+	Proficiency(1, 3, 3)
+      };
+    
   }
   
   /**
@@ -117,7 +123,7 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = new bool[9];
+    this->alignments = (bool*)malloc(9);//new bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
@@ -147,7 +153,7 @@ namespace tbrpg
     this->hit_points = original.hit_points;
     this->thac0 = original.thac0;
     this->lore_bonus = original.lore_bonus;
-    this->alignments = new bool[9];
+    this->alignments = (bool*)malloc(9);//new bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = original.alignments[i];
     this->learn_from_scroll = original.learn_from_scroll;
@@ -177,9 +183,6 @@ namespace tbrpg
     std::swap(this->hit_points, original.hit_points);
     std::swap(this->thac0, original.thac0);
     std::swap(this->lore_bonus, original.lore_bonus);
-    this->alignments = new bool[9];
-    for (int i = 0; i < 9; i++)
-      this->alignments[i] = 0;
     std::swap(this->alignments, original.alignments);
     std::swap(this->learn_from_scroll, original.learn_from_scroll);
     std::swap(this->proficiencies_each, original.proficiencies_each);
@@ -214,7 +217,7 @@ namespace tbrpg
    */
   Class::~Class()
   {
-    delete[] this->alignments;
+    free(this->alignments);//delete[] this->alignments;
   }
   
   
@@ -406,9 +409,9 @@ namespace tbrpg
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<Abilities>()(this->lower_limits);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<Spell>>()(this->special_abilities);
+    rc += std::hash<std::vector<Spell*>>()(this->special_abilities);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<std::unordered_map<Item, bool>>()(this->can_use);
+    rc += std::hash<std::unordered_map<Item*, bool>>()(this->can_use);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<std::vector<MagicSchool>>()(this->specialisations);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);

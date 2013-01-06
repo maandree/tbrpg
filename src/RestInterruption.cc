@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -98,7 +98,8 @@ namespace tbrpg
    */
   RestInterruption::~RestInterruption()
   {
-    // do nothing
+    for (Creature* creature : this->creatures)
+      delete creature;
   }
   
   
@@ -204,7 +205,7 @@ namespace tbrpg
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<unsigned char>()(this->interrupt_risk);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<Creature>>()(this->creatures);
+    rc += std::hash<std::vector<Creature*>>()(this->creatures);
     return rc;
   }
   

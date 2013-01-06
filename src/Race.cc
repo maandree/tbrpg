@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -104,7 +104,8 @@ namespace tbrpg
    */
   Race::~Race()
   {
-    // do nothing
+    for (std::vector<Class*>* elem : this->allowed_classes)
+      delete elem;
   }
   
   
@@ -210,7 +211,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::string>()(this->name);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<std::vector<Class>>>()(this->allowed_classes);
+    rc += std::hash<std::vector<std::vector<Class*>*>>()(this->allowed_classes);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<short>()(this->dualclass_level);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);

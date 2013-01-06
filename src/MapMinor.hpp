@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -86,7 +86,7 @@ namespace tbrpg
     /**
      * Creatures in the area
      */
-    std::vector<Creature> creatures;
+    std::vector<Creature*> creatures;
     
     /**
      * Which major area to which  the area belongs
@@ -96,7 +96,7 @@ namespace tbrpg
     /**
      * Possible rest interruptions
      */
-    std::vector<RestInterruption> interruptions;
+    std::vector<RestInterruption*> interruptions;
     
     
     

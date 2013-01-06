@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -67,21 +67,21 @@ namespace tbrpg
     INVOCATION.opposite = {ENCHANTMENT, CONJURATION};
     NECROMANCY.opposite = {ILLUSION};
     
-    this->races.push_back(PROTOTYPE(Human));
-    this->races.push_back(PROTOTYPE(HalfOrc));
-    this->races.push_back(PROTOTYPE(HalfElf));
-    this->races.push_back(PROTOTYPE(Elf));
-    this->races.push_back(PROTOTYPE(Dwarf));
-    this->races.push_back(PROTOTYPE(Gnome));
-    this->races.push_back(PROTOTYPE(Halfling));
+    this->races.push_back(&PROTOTYPE(Human));
+    this->races.push_back(&PROTOTYPE(HalfOrc));
+    this->races.push_back(&PROTOTYPE(HalfElf));
+    this->races.push_back(&PROTOTYPE(Elf));
+    this->races.push_back(&PROTOTYPE(Dwarf));
+    this->races.push_back(&PROTOTYPE(Gnome));
+    this->races.push_back(&PROTOTYPE(Halfling));
     
-    this->racial_enemies.push_back(PROTOTYPE(Human));
-    this->racial_enemies.push_back(PROTOTYPE(HalfOrc));
-    this->racial_enemies.push_back(PROTOTYPE(HalfElf));
-    this->racial_enemies.push_back(PROTOTYPE(Elf));
-    this->racial_enemies.push_back(PROTOTYPE(Dwarf));
-    this->racial_enemies.push_back(PROTOTYPE(Gnome));
-    this->racial_enemies.push_back(PROTOTYPE(Halfling));
+    this->racial_enemies.push_back(&PROTOTYPE(Human));
+    this->racial_enemies.push_back(&PROTOTYPE(HalfOrc));
+    this->racial_enemies.push_back(&PROTOTYPE(HalfElf));
+    this->racial_enemies.push_back(&PROTOTYPE(Elf));
+    this->racial_enemies.push_back(&PROTOTYPE(Dwarf));
+    this->racial_enemies.push_back(&PROTOTYPE(Gnome));
+    this->racial_enemies.push_back(&PROTOTYPE(Halfling));
   }
   
   /**
@@ -395,11 +395,11 @@ namespace tbrpg
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<Inventory>()(this->inventory_prototype);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<Spell>>()(this->spells);
+    rc += std::hash<std::vector<Spell*>>()(this->spells);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<Race>>()(this->races);
+    rc += std::hash<std::vector<Race*>>()(this->races);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<std::vector<Race>>()(this->racial_enemies);
+    rc += std::hash<std::vector<Race*>>()(this->racial_enemies);
     return rc;
   }
   

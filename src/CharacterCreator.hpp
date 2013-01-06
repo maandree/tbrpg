@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -55,7 +55,7 @@ namespace tbrpg
     /**
      * The game's rules
      */
-    RuleSet ruleset;
+    const RuleSet* ruleset;
     
     /**
      * The start values, these are updated by the assign function
@@ -94,7 +94,7 @@ namespace tbrpg
      * 
      * @param  rules  The game's rules
      */
-    CharacterCreator(const RuleSet& rules);
+    CharacterCreator(const RuleSet* rules = nullptr);
     
     /**
      * Destructor

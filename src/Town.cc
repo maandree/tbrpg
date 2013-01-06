@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -166,13 +166,13 @@ namespace tbrpg
     
     if (this->interruptions.size() > 0)
       {
-	for (RestInterruption& interruption : this->interruptions)
-	  if (Dice(interruption.interrupt_dice, interruption.interrupt_die).roll() <= interruption.interrupt_risk)
+	for (RestInterruption* interruption : this->interruptions) /* TODO support for lock */
+	  if (Dice(interruption->interrupt_dice, interruption->interrupt_die).roll() <= interruption->interrupt_risk)
 	    {
 	      int monsters = 0;
-	      for (Creature& creature : interruption.creatures)
+	      for (Creature* creature : interruption->creatures)
 		{
-		  this->creatures.push_back(Creature(creature));
+		  this->creatures.push_back(dynamic_cast<Creature*>(creature->fork()));
 		  monsters++;
 		}
 	      

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -49,25 +49,25 @@ namespace tbrpg
     this->abilities.thief_abilities.stealth = 10;
     for (long i = 2; i <= 30; i++)
       this->experience_chart.thief_abilities[i] = 5;
-    
-    this->can_use[PROTOTYPE(ChainMail)] = true;
-    this->can_use[PROTOTYPE(LongBow)] = true;
-    this->can_use[PROTOTYPE(HeavyCrossbow)] = true;
-    this->can_use[PROTOTYPE(LightCrossbow)] = true;
-    this->can_use[PROTOTYPE(Flail)] = true;
-    this->can_use[PROTOTYPE(Halberd)] = true;
-    this->can_use[PROTOTYPE(TwoHandedSword)] = true;
-    this->can_use[PROTOTYPE(WarHammer)] = true;
-    this->can_use[PROTOTYPE(BastardSword)] = true;
-    this->can_use[PROTOTYPE(BattleAxe)] = true;
-    this->can_use[PROTOTYPE(Bolt)] = true;
-    this->can_use[PROTOTYPE(Mace)] = true;
-    this->can_use[PROTOTYPE(MorningStar)] = true;
-    this->can_use[PROTOTYPE(Spear)] = true;
-    
-    this->spell_progression.wizard_slots = std::vector<std::vector<int>>(24);
+    /*
+    this->can_use[&PROTOTYPE(ChainMail)] = true;
+    this->can_use[&PROTOTYPE(LongBow)] = true;
+    this->can_use[&PROTOTYPE(HeavyCrossbow)] = true;
+    this->can_use[&PROTOTYPE(LightCrossbow)] = true;
+    this->can_use[&PROTOTYPE(Flail)] = true;
+    this->can_use[&PROTOTYPE(Halberd)] = true;
+    this->can_use[&PROTOTYPE(TwoHandedSword)] = true;
+    this->can_use[&PROTOTYPE(WarHammer)] = true;
+    this->can_use[&PROTOTYPE(BastardSword)] = true;
+    this->can_use[&PROTOTYPE(BattleAxe)] = true;
+    this->can_use[&PROTOTYPE(Bolt)] = true;
+    this->can_use[&PROTOTYPE(Mace)] = true;
+    this->can_use[&PROTOTYPE(MorningStar)] = true;
+    this->can_use[&PROTOTYPE(Spear)] = true;
+    */
+    this->spell_progression.wizard_slots = std::vector<std::vector<int>*>(24);
     for (int i = 0; i <= 23; i++)
-      this->spell_progression.wizard_slots[i] = std::vector<int>(7);
+      this->spell_progression.wizard_slots[i] = new std::vector<int>(7);
     
     this->spell_progression.wizard_levels = std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
@@ -84,7 +84,7 @@ namespace tbrpg
 	  case 21:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][1] = cur;
+	this->spell_progression.wizard_slots[i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 23; i++)
@@ -98,7 +98,7 @@ namespace tbrpg
 	  case 22:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][2] = cur;
+	this->spell_progression.wizard_slots[i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 23; i++)
@@ -112,7 +112,7 @@ namespace tbrpg
 	  case 23:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][3] = cur;
+	this->spell_progression.wizard_slots[i][0][3] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 23; i++)
@@ -125,7 +125,7 @@ namespace tbrpg
 	  case 19:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][4] = cur;
+	this->spell_progression.wizard_slots[i][0][4] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 23; i++)
@@ -138,7 +138,7 @@ namespace tbrpg
 	  case 20:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][5] = cur;
+	this->spell_progression.wizard_slots[i][0][5] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 23; i++)
@@ -151,7 +151,7 @@ namespace tbrpg
 	  case 23:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][6] = cur;
+	this->spell_progression.wizard_slots[i][0][6] = cur;
       }
   }
   

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -61,7 +61,7 @@ namespace tbrpg
     /**
      * Spells the store (priest) offers to cast
      */
-    std::vector<Spell> spells;
+    std::vector<Spell*> spells;
     
     /**
      * The cost at which the store (priest) casts spells
@@ -71,7 +71,7 @@ namespace tbrpg
     /**
      * The store's inventory, negative quantity if unlimited, zero does selling and not buying
      */
-    std::vector<Item> inventory;
+    std::vector<Item*> inventory;
     
     /**
      * The cost of the available rooms

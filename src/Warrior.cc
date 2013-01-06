@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -46,33 +46,33 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 17;
     this->lower_limits.strength = 9;
     this->extra_strength = true;
-    
-    this->can_use[PROTOTYPE(MediumShield)] = true;
-    this->can_use[PROTOTYPE(LargeShield)] = true;
-    this->can_use[PROTOTYPE(ChainMail)] = true;
-    this->can_use[PROTOTYPE(SplintMail)] = true;
-    this->can_use[PROTOTYPE(PlateMail)] = true;
-    this->can_use[PROTOTYPE(FullPlateMail)] = true;
-    this->can_use[PROTOTYPE(CompositeLongBow)] = true;
-    this->can_use[PROTOTYPE(LongBow)] = true;
-    this->can_use[PROTOTYPE(ShortBow)] = true;
-    this->can_use[PROTOTYPE(HeavyCrossbow)] = true;
-    this->can_use[PROTOTYPE(LightCrossbow)] = true;
-    this->can_use[PROTOTYPE(ThrowingAxe)] = true;
-    this->can_use[PROTOTYPE(Flail)] = true;
-    this->can_use[PROTOTYPE(Halberd)] = true;
-    this->can_use[PROTOTYPE(TwoHandedSword)] = true;
-    this->can_use[PROTOTYPE(WarHammer)] = true;
-    this->can_use[PROTOTYPE(Arrow)] = true;
-    this->can_use[PROTOTYPE(BastardSword)] = true;
-    this->can_use[PROTOTYPE(BattleAxe)] = true;
-    this->can_use[PROTOTYPE(Bolt)] = true;
-    this->can_use[PROTOTYPE(LongSword)] = true;
-    this->can_use[PROTOTYPE(Mace)] = true;
-    this->can_use[PROTOTYPE(MorningStar)] = true;
-    this->can_use[PROTOTYPE(ShortSword)] = true;
-    this->can_use[PROTOTYPE(Spear)] = true;
-    
+    /*
+    this->can_use[&PROTOTYPE(MediumShield)] = true;
+    this->can_use[&PROTOTYPE(LargeShield)] = true;
+    this->can_use[&PROTOTYPE(ChainMail)] = true;
+    this->can_use[&PROTOTYPE(SplintMail)] = true;
+    this->can_use[&PROTOTYPE(PlateMail)] = true;
+    this->can_use[&PROTOTYPE(FullPlateMail)] = true;
+    this->can_use[&PROTOTYPE(CompositeLongBow)] = true;
+    this->can_use[&PROTOTYPE(LongBow)] = true;
+    this->can_use[&PROTOTYPE(ShortBow)] = true;
+    this->can_use[&PROTOTYPE(HeavyCrossbow)] = true;
+    this->can_use[&PROTOTYPE(LightCrossbow)] = true;
+    this->can_use[&PROTOTYPE(ThrowingAxe)] = true;
+    this->can_use[&PROTOTYPE(Flail)] = true;
+    this->can_use[&PROTOTYPE(Halberd)] = true;
+    this->can_use[&PROTOTYPE(TwoHandedSword)] = true;
+    this->can_use[&PROTOTYPE(WarHammer)] = true;
+    this->can_use[&PROTOTYPE(Arrow)] = true;
+    this->can_use[&PROTOTYPE(BastardSword)] = true;
+    this->can_use[&PROTOTYPE(BattleAxe)] = true;
+    this->can_use[&PROTOTYPE(Bolt)] = true;
+    this->can_use[&PROTOTYPE(LongSword)] = true;
+    this->can_use[&PROTOTYPE(Mace)] = true;
+    this->can_use[&PROTOTYPE(MorningStar)] = true;
+    this->can_use[&PROTOTYPE(ShortSword)] = true;
+    this->can_use[&PROTOTYPE(Spear)] = true;
+    */
     for (const WeaponGroup* weapongroup : WEAPON_GROUPS)
       this->proficiency_chart[*weapongroup].push_back(Proficiency(3, 4, 3));
     

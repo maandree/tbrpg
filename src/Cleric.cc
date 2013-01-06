@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -39,19 +39,19 @@ namespace tbrpg
     this->name = "cleric";
     this->thac0 = 20;
     this->abilities.bonuses.detect_doors = 0.10;
-    
-    this->can_use[PROTOTYPE(MediumShield)] = true;
-    this->can_use[PROTOTYPE(LargeShield)] = true;
-    this->can_use[PROTOTYPE(ChainMail)] = true;
-    this->can_use[PROTOTYPE(SplintMail)] = true;
-    this->can_use[PROTOTYPE(PlateMail)] = true;
-    this->can_use[PROTOTYPE(FullPlateMail)] = true;
-    this->can_use[PROTOTYPE(Dart)] = false;
-    this->can_use[PROTOTYPE(Dagger)] = false;
-    this->can_use[PROTOTYPE(Flail)] = true;
-    this->can_use[PROTOTYPE(Mace)] = true;
-    this->can_use[PROTOTYPE(MorningStar)] = true;
-    
+    /*
+    this->can_use[&PROTOTYPE(MediumShield)] = true;
+    this->can_use[&PROTOTYPE(LargeShield)] = true;
+    this->can_use[&PROTOTYPE(ChainMail)] = true;
+    this->can_use[&PROTOTYPE(SplintMail)] = true;
+    this->can_use[&PROTOTYPE(PlateMail)] = true;
+    this->can_use[&PROTOTYPE(FullPlateMail)] = true;
+    this->can_use[&PROTOTYPE(Dart)] = false;
+    this->can_use[&PROTOTYPE(Dagger)] = false;
+    this->can_use[&PROTOTYPE(Flail)] = true;
+    this->can_use[&PROTOTYPE(Mace)] = true;
+    this->can_use[&PROTOTYPE(MorningStar)] = true;
+    */
     this->experience_chart.experience = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)

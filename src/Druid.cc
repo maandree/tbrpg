@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -40,7 +40,7 @@ namespace tbrpg
     this->thac0 = 23;
     this->lower_limits.charisma = 9;
     
-    this->can_use[PROTOTYPE(Spear)] = true;
+    //this->can_use[&PROTOTYPE(Spear)] = true;
     
     this->experience_chart.experience = std::vector<int>(31);
     

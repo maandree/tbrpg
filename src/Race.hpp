@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -66,7 +66,7 @@ namespace tbrpg
     /**
      * Allowed classes for the race
      */
-    std::vector<std::vector<Class>> allowed_classes;
+    std::vector<std::vector<Class*>*> allowed_classes;
     
     /**
      * At which level the dual class is allowed, use 2³¹ − 1 for never

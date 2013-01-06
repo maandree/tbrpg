@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -122,6 +122,10 @@ namespace tbrpg
       delete road;
     for (Entrance* connection : this->connections)
       delete connection;
+    for (RestInterruption* interruption : this->interruptions)
+      delete interruption;
+    for (Creature* creature : this->creatures)
+      delete creature;
   }
   
   
@@ -236,13 +240,13 @@ namespace tbrpg
 	return false;
       }
     
-    for (RestInterruption& interruption : this->interruptions)
-      if (Dice(interruption.interrupt_dice, interruption.interrupt_die).roll() <= interruption.interrupt_risk)
+    for (RestInterruption* interruption : this->interruptions) /* TODO add support for luck */
+      if (Dice(interruption->interrupt_dice, interruption->interrupt_die).roll() <= interruption->interrupt_risk)
 	{
 	  int monsters = 0;
-	  for (Creature& creature : interruption.creatures)
+	  for (Creature* creature : interruption->creatures)
 	    {
-	      this->creatures.push_back(Creature(creature));
+	      this->creatures.push_back(dynamic_cast<Creature*>(creature->fork()));
 	      monsters++;
 	    }
 	  
@@ -291,11 +295,11 @@ namespace tbrpg
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<std::vector<Item*>>()(this->items);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<std::vector<Creature>>()(this->creatures);
+    rc += std::hash<std::vector<Creature*>>()(this->creatures);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<MapMajor*>()(this->is_in);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<RestInterruption>>()(this->interruptions);
+    rc += std::hash<std::vector<RestInterruption*>>()(this->interruptions);
     return rc;
   }
   

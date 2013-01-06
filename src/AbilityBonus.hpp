@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -81,7 +81,7 @@ namespace tbrpg
     /**
      * Effects
      */
-    std::vector<Spell> effects;
+    std::vector<Spell*> effects;
     
     /**
      * Defences

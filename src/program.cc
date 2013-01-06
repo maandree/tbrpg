@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++ , encoding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -108,7 +108,7 @@ namespace tbrpg
 	return 0;
       }
     
-    cleaner::getInstance().enqueueDelete(senario);
+    //cleaner::getInstance().enqueueDelete(senario);
     std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario->rules.party_start_size);
     
     if (createParty(*senario, sheets) == false)
@@ -144,7 +144,7 @@ namespace tbrpg
     return promptSlots<CharacterSheet>("Create your party, you need at least one character.",
 				       true, 1, sheets,
 				       [&] () -> CharacterSheet* {
-					 CharacterCreator cc = CharacterCreator(senario.rules);
+					 CharacterCreator cc = CharacterCreator(&(senario.rules));
 					 return cc.create();
 				       },
 				       [] (CharacterSheet* sheet, bool selected) -> void {
@@ -176,7 +176,7 @@ namespace tbrpg
 	  character->hit_points = character->record.hit_points;
 	  
 	  for (size_t i = 0, n = character->record.prestige.size(); i < n; i++)
-	    if (character->record.prestige[i] >= PROTOTYPE(Warrior))
+	    if (*(character->record.prestige[i]) >= PROTOTYPE(Warrior))
 	      if (character->record.level[i] >= 7)
 		character->extra_attacks += 2; /* XXX this should be embedded in some rule */
 	  

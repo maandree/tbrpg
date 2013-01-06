@@ -1,4 +1,4 @@
-// -*- mode: c++, encoding: utf-8 -*-
+// -*- mode: c++ , encoding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 

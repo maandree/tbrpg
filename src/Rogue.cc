@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -42,13 +42,13 @@ namespace tbrpg
     this->abilities.saving_throws.petrification_polymorph = 12;
     this->abilities.saving_throws.rod_staff_wand = 14;
     this->abilities.saving_throws.spell = 15;
-    
-    this->can_use[PROTOTYPE(Hood)] = false;
-    this->can_use[PROTOTYPE(Arrow)] = true;
-    this->can_use[PROTOTYPE(LongSword)] = true;
-    this->can_use[PROTOTYPE(ShortSword)] = true;
-    this->can_use[PROTOTYPE(ShortBow)] = true;
-    
+    /*
+    this->can_use[&PROTOTYPE(Hood)] = false;
+    this->can_use[&PROTOTYPE(Arrow)] = true;
+    this->can_use[&PROTOTYPE(LongSword)] = true;
+    this->can_use[&PROTOTYPE(ShortSword)] = true;
+    this->can_use[&PROTOTYPE(ShortBow)] = true;
+    */
     this->experience_chart.experience = std::vector<int>(31);
     this->experience_chart.hit_point_die = std::vector<char>(31);
     this->experience_chart.hit_point_dice = std::vector<char>(31);

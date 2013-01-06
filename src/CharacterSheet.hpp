@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -112,7 +112,7 @@ namespace tbrpg
     /**
      * Spells the character is affected by
      */
-    std::vector<Spell> affected_by;
+    std::vector<Spell*> affected_by;
     
     /**
      * The character's inventory
@@ -132,7 +132,7 @@ namespace tbrpg
     /**
      * The character's race
      */
-    Race race;
+    Race* race;
     
     /**
      * The character's racial enemy
@@ -142,7 +142,7 @@ namespace tbrpg
     /**
      * The character's prestige classes
      */
-    std::vector<Class> prestige;
+    std::vector<Class*> prestige;
     
     /**
      * The character's magic school specialisation
@@ -152,7 +152,7 @@ namespace tbrpg
     /**
      * The character's special abilities
      */
-    std::vector<Spell> special_abilities;
+    std::vector<Spell*> special_abilities;
     
     
     

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -143,12 +143,12 @@ namespace tbrpg
     /**
      * Special abilities
      */
-    std::vector<Spell> special_abilities;
+    std::vector<Spell*> special_abilities;
     
     /**
      * Usable items
      */
-    std::unordered_map<Item, bool> can_use;
+    std::unordered_map<Item*, bool> can_use;
     
     /**
      * Availiable specialisations for the class

@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -151,17 +151,17 @@ namespace tbrpg
     /**
      * All spells, very useful for when new characters selects spells, or to restrict imported characters
      */
-    std::vector<Spell> spells;
+    std::vector<Spell*> spells;
     
     /**
      * Races in the game that new charactes can chooses
      */
-    std::vector<Race> races;
+    std::vector<Race*> races;
     
     /**
      * Allowed racial enemies
      */
-    std::vector<Race> racial_enemies;
+    std::vector<Race*> racial_enemies;
     
     
     

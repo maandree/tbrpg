@@ -192,308 +192,163 @@ namespace tbrpg
     (void) argc;
     (void) argv;
     
+    #define __a(T)  {std::cout << "a: " << #T << std::endl; auto x = new T(); delete x;}
+    #define __b(T)  {std::cout << "b: " << #T << std::endl; auto x = T(), y = T(); x = y;}
+    #define __(T)  __a(T) __b(T) //
+    
     /* misc. */
-    {auto x = new Abilities(); delete x;}
-    {auto x = new AbilityBonus(); delete x;}
-    {auto x = new AbilityChart(); delete x;}
-    {auto x = new ActionSlot(); delete x;}
-    {auto x = new Amulet(); delete x;}
-    {auto x = new BodyArmour(); delete x;}
-    {auto x = new Bonuses(); delete x;}
-    {auto x = new Boots(); delete x;}
-    {auto x = new Buckler(); delete x;}
-    {auto x = new ChainMail(); delete x;}
-    {auto x = new Cloak(); delete x;}
-    {auto x = new Container(); delete x;}
-    {auto x = new CorpseMaker(); delete x;}
-    {auto x = new Defence(); delete x;}
-    {auto x = new Dice(); delete x;}
-    {auto x = new Die(); delete x;}
-    {auto x = new Door(); delete x;}
-    {auto x = new Entrance(); delete x;}
-    {auto x = new EnvironmentContainer(); delete x;}
-    {auto x = new ExperienceChart(); delete x;}
-    {auto x = new FullPlateMail(); delete x;}
-    {auto x = new Gauntlets(); delete x;}
-    {auto x = new Gem(); delete x;}
-    {auto x = new Girdle(); delete x;}
-    {auto x = new Gold(); delete x;}
-    {auto x = new Hat(); delete x;}
-    {auto x = new Headgear(); delete x;}
-    {auto x = new Helmet(); delete x;}
-    {auto x = new HighWand(); delete x;}
-    {auto x = new Hood(); delete x;}
-    {auto x = new House(); delete x;}
-    {auto x = new Item(); delete x;}
-    {auto x = new Key(); delete x;}
-    {auto x = new LargeShield(); delete x;}
-    {auto x = new LeatherArmour(); delete x;}
-    {auto x = new Lockable(); delete x;}
-    {auto x = new LowScroll(); delete x;}
-    {auto x = new LowWand(); delete x;}
-    {auto x = new MapMajor(); delete x;}
-    {auto x = new _MapMinor(); delete x;}
-    {auto x = new MapMinor(); delete x;}
-    {auto x = new Map(); delete x;}
-    {auto x = new MediumShield(); delete x;}
-    {auto x = new Object(); delete x;}
-    {auto x = new Party(); delete x;}
-    {auto x = new PlateMail(); delete x;}
-    {auto x = new Potion(); delete x;}
-    {auto x = new PriestScroll(); delete x;}
-    {auto x = new Proficiency(); delete x;}
-    {auto x = new QuestItem(); delete x;}
-    {auto x = new QuickItem(); delete x;}
-    {auto x = new ReputationChart(); delete x;}
-    {auto x = new RestInterruption(); delete x;}
-    {auto x = new RightHandItem(); delete x;}
-    {auto x = new Ring(); delete x;}
-    {auto x = new Road(); delete x;}
-    {auto x = new Robe(); delete x;}
-    {auto x = new SavingThrows(); delete x;}
-    {auto x = new Scroll(); delete x;}
-    {auto x = new Shield(); delete x;}
-    {auto x = new SmallShield(); delete x;}
-    {auto x = new SpellBook(); delete x;}
-    {auto x = new SpellProgression(); delete x;}
-    {auto x = new SplintMail(); delete x;}
-    {auto x = new StuddedLeatherArmour(); delete x;}
-    {auto x = new TextScroll(); delete x;}
-    {auto x = new ThiefAbilities(); delete x;}
-    {auto x = new Town(); delete x;}
-    {auto x = new Wand(); delete x;}
-    {auto x = new Wilderness(); delete x;}
-    {auto x = new WizardScroll(); delete x;}
-    {auto x = new ActionSlotChart(); delete x;}
-    {auto x = new Body(); delete x;}
-    {auto x = new Character(); delete x;}
-    {auto x = new CharacterSheet(); delete x;}
-    {auto x = new Creature(); delete x;}
-    {auto x = new DamageType(); delete x;}
-    {auto x = new Inventory(); delete x;}
-    {auto x = new MagicSchool(); delete x;}
-    {auto x = new NPC(); delete x;}
-    {auto x = new RuleSet(); delete x;}
-    {auto x = new Spell(); delete x;}
-    {auto x = new Store(); delete x;}
-    {auto x = new WeaponGroup(); delete x;}
+    __(Abilities);
+    __(AbilityBonus);
+    __(AbilityChart);
+    __(ActionSlot);
+    __(Amulet);
+    __(BodyArmour);
+    __(Bonuses);
+    __(Boots);
+    __(Buckler);
+    __(ChainMail);
+    __(Cloak);
+    __(Container);
+    __(CorpseMaker);
+    __(Defence);
+    __(Dice);
+    __(Die);
+    __(Door);
+    __(Entrance);
+    __(EnvironmentContainer);
+    __(ExperienceChart);
+    __(FullPlateMail);
+    __(Gauntlets);
+    __(Gem);
+    __(Girdle);
+    __(Gold);
+    __(Hat);
+    __(Headgear);
+    __(Helmet);
+    __(HighWand);
+    __(Hood);
+    __(House);
+    __(Item);
+    __(Key);
+    __(LargeShield);
+    __(LeatherArmour);
+    __(Lockable);
+    __(LowScroll);
+    __(LowWand);
+    __(MapMajor);
+    __(_MapMinor);
+    __(MapMinor);
+    __(Map);
+    __(MediumShield);
+    __(Object);
+    __(Party);
+    __(PlateMail);
+    __(Potion);
+    __(PriestScroll);
+    __(Proficiency);
+    __(QuestItem);
+    __(QuickItem);
+    __(ReputationChart);
+    __(RestInterruption);
+    __(RightHandItem);
+    __(Ring);
+    __(Road);
+    __(Robe);
+    __(SavingThrows);
+    __(Scroll);
+    __(Shield);
+    __(SmallShield);
+    __(SpellBook);
+    __(SpellProgression);
+    __(SplintMail);
+    __(StuddedLeatherArmour);
+    __(TextScroll);
+    __(ThiefAbilities);
+    __(Town);
+    __(Wand);
+    __(Wilderness);
+    __(WizardScroll);
+    __(ActionSlotChart);
+    __(Body);
+    __(Character);
+    __(CharacterSheet);
+    __(Creature);
+    __(DamageType);
+    __(Inventory);
+    __(MagicSchool);
+    __(NPC);
+    __(RuleSet);
+    __(Spell);
+    __(Store);
+    __(WeaponGroup);
     
     /* races */
-    {auto x = new Dwarf(); delete x;}
-    {auto x = new Elf(); delete x;}
-    {auto x = new Gnome(); delete x;}
-    {auto x = new Human(); delete x;}
-    {auto x = new HalfElf(); delete x;}
-    {auto x = new Halfling(); delete x;}
-    {auto x = new HalfOrc(); delete x;}
-    {auto x = new Race(); delete x;}
+    __(Dwarf);
+    __(Elf);
+    __(Gnome);
+    __(Human);
+    __(HalfElf);
+    __(Halfling);
+    __(HalfOrc);
+    __(Race);
     
     /* prestiges */
-    {auto x = new Bard(); delete x;}
-    {auto x = new Class(); delete x;}
-    {auto x = new Cleric(); delete x;}
-    {auto x = new Druid(); delete x;}
-    {auto x = new Fighter(); delete x;}
-    {auto x = new Mage(); delete x;}
-    {auto x = new Paladin(); delete x;}
-    {auto x = new Priest(); delete x;}
-    {auto x = new Ranger(); delete x;}
-    {auto x = new Rogue(); delete x;}
-    {auto x = new Sorcerer(); delete x;}
-    {auto x = new Thief(); delete x;}
-    {auto x = new Warrior(); delete x;}
-    {auto x = new Wizard(); delete x;}
+    __(Bard);
+    __(Class);
+    __(Cleric);
+    __(Druid);
+    __(Fighter);
+    __(Mage);
+    __(Paladin);
+    __(Priest);
+    __(Ranger);
+    __(Rogue);
+    __(Sorcerer);
+    __(Thief);
+    __(Warrior);
+    __(Wizard);
     
     /* weapons and ammunition */
-    {auto x = new Ammunition(); delete x;}
-    {auto x = new Arrow(); delete x;}
-    {auto x = new BastardSword(); delete x;}
-    {auto x = new BattleAxe(); delete x;}
-    {auto x = new BluntWeapon(); delete x;}
-    {auto x = new Bolt(); delete x;}
-    {auto x = new Bow(); delete x;}
-    {auto x = new Bullet(); delete x;}
-    {auto x = new Club(); delete x;}
-    {auto x = new CompositeLongBow(); delete x;}
-    {auto x = new Crossbow(); delete x;}
-    {auto x = new Dagger(); delete x;}
-    {auto x = new Dart(); delete x;}
-    {auto x = new Fist(); delete x;}
-    {auto x = new Fists(); delete x;}
-    {auto x = new Flail(); delete x;}
-    {auto x = new Halberd(); delete x;}
-    {auto x = new HeavyCrossbow(); delete x;}
-    {auto x = new LargeSword(); delete x;}
-    {auto x = new LightCrossbow(); delete x;}
-    {auto x = new LongBow(); delete x;}
-    {auto x = new LongSword(); delete x;}
-    {auto x = new Mace(); delete x;}
-    {auto x = new MeleeWeapon(); delete x;}
-    {auto x = new MorningStar(); delete x;}
-    {auto x = new OneHandedMelee(); delete x;}
-    {auto x = new Quarterstaff(); delete x;}
-    {auto x = new RangedWeapon(); delete x;}
-    {auto x = new ShortBow(); delete x;}
-    {auto x = new ShortSword(); delete x;}
-    {auto x = new Sling(); delete x;}
-    {auto x = new Spear(); delete x;}
-    {auto x = new ThrowingAxe(); delete x;}
-    {auto x = new ThrowingDagger(); delete x;}
-    {auto x = new Throwing(); delete x;}
-    {auto x = new Torch(); delete x;}
-    {auto x = new TwoHandedMelee(); delete x;}
-    {auto x = new TwoHandedSword(); delete x;}
-    {auto x = new WarHammer(); delete x;}
-    {auto x = new Weapon(); delete x;}
-    
-    
-    /* copy operator leak check */
-    {auto x = Abilities(), y = Abilities(); x = y;}
-    {auto x = AbilityBonus(), y = AbilityBonus(); x = y;}
-    {auto x = AbilityChart(), y = AbilityChart(); x = y;}
-    {auto x = ActionSlotChart(), y = ActionSlotChart(); x = y;}
-    {auto x = ActionSlot(), y = ActionSlot(); x = y;}
-    {auto x = Ammunition(), y = Ammunition(); x = y;}
-    {auto x = Amulet(), y = Amulet(); x = y;}
-    {auto x = Arrow(), y = Arrow(); x = y;}
-    {auto x = Bard(), y = Bard(); x = y;}
-    {auto x = BastardSword(), y = BastardSword(); x = y;}
-    {auto x = BattleAxe(), y = BattleAxe(); x = y;}
-    {auto x = BluntWeapon(), y = BluntWeapon(); x = y;}
-    {auto x = BodyArmour(), y = BodyArmour(); x = y;}
-    {auto x = Body(), y = Body(); x = y;}
-    {auto x = Bolt(), y = Bolt(); x = y;}
-    {auto x = Bonuses(), y = Bonuses(); x = y;}
-    {auto x = Boots(), y = Boots(); x = y;}
-    {auto x = Bow(), y = Bow(); x = y;}
-    {auto x = Buckler(), y = Buckler(); x = y;}
-    {auto x = Bullet(), y = Bullet(); x = y;}
-    {auto x = ChainMail(), y = ChainMail(); x = y;}
-    {auto x = Character(), y = Character(); x = y;}
-    {auto x = CharacterSheet(), y = CharacterSheet(); x = y;}
-    {auto x = Class(), y = Class(); x = y;}
-    {auto x = Cleric(), y = Cleric(); x = y;}
-    {auto x = Cloak(), y = Cloak(); x = y;}
-    {auto x = Club(), y = Club(); x = y;}
-    {auto x = CompositeLongBow(), y = CompositeLongBow(); x = y;}
-    {auto x = Container(), y = Container(); x = y;}
-    {auto x = CorpseMaker(), y = CorpseMaker(); x = y;}
-    {auto x = Creature(), y = Creature(); x = y;}
-    {auto x = Crossbow(), y = Crossbow(); x = y;}
-    {auto x = Dagger(), y = Dagger(); x = y;}
-    {auto x = DamageType(), y = DamageType(); x = y;}
-    {auto x = Dart(), y = Dart(); x = y;}
-    {auto x = Defence(), y = Defence(); x = y;}
-    {auto x = Dice(), y = Dice(); x = y;}
-    {auto x = Die(), y = Die(); x = y;}
-    {auto x = Door(), y = Door(); x = y;}
-    {auto x = Druid(), y = Druid(); x = y;}
-    {auto x = Dwarf(), y = Dwarf(); x = y;}
-    {auto x = Elf(), y = Elf(); x = y;}
-    {auto x = Entrance(), y = Entrance(); x = y;}
-    {auto x = EnvironmentContainer(), y = EnvironmentContainer(); x = y;}
-    {auto x = ExperienceChart(), y = ExperienceChart(); x = y;}
-    {auto x = Fighter(), y = Fighter(); x = y;}
-    {auto x = Fist(), y = Fist(); x = y;}
-    {auto x = Fists(), y = Fists(); x = y;}
-    {auto x = Flail(), y = Flail(); x = y;}
-    {auto x = FullPlateMail(), y = FullPlateMail(); x = y;}
-    {auto x = Gauntlets(), y = Gauntlets(); x = y;}
-    {auto x = Gem(), y = Gem(); x = y;}
-    {auto x = Girdle(), y = Girdle(); x = y;}
-    {auto x = Gnome(), y = Gnome(); x = y;}
-    {auto x = Gold(), y = Gold(); x = y;}
-    {auto x = Halberd(), y = Halberd(); x = y;}
-    {auto x = HalfElf(), y = HalfElf(); x = y;}
-    {auto x = Halfling(), y = Halfling(); x = y;}
-    {auto x = HalfOrc(), y = HalfOrc(); x = y;}
-    {auto x = Hat(), y = Hat(); x = y;}
-    {auto x = Headgear(), y = Headgear(); x = y;}
-    {auto x = HeavyCrossbow(), y = HeavyCrossbow(); x = y;}
-    {auto x = Helmet(), y = Helmet(); x = y;}
-    {auto x = HighWand(), y = HighWand(); x = y;}
-    {auto x = Hood(), y = Hood(); x = y;}
-    {auto x = House(), y = House(); x = y;}
-    {auto x = Human(), y = Human(); x = y;}
-    {auto x = Inventory(), y = Inventory(); x = y;}
-    {auto x = Item(), y = Item(); x = y;}
-    {auto x = Key(), y = Key(); x = y;}
-    {auto x = LargeShield(), y = LargeShield(); x = y;}
-    {auto x = LargeSword(), y = LargeSword(); x = y;}
-    {auto x = LeatherArmour(), y = LeatherArmour(); x = y;}
-    {auto x = LightCrossbow(), y = LightCrossbow(); x = y;}
-    {auto x = Lockable(), y = Lockable(); x = y;}
-    {auto x = LongBow(), y = LongBow(); x = y;}
-    {auto x = LongSword(), y = LongSword(); x = y;}
-    {auto x = LowScroll(), y = LowScroll(); x = y;}
-    {auto x = LowWand(), y = LowWand(); x = y;}
-    {auto x = Mace(), y = Mace(); x = y;}
-    {auto x = Mage(), y = Mage(); x = y;}
-    {auto x = MagicSchool(), y = MagicSchool(); x = y;}
-    {auto x = MapMajor(), y = MapMajor(); x = y;}
-    {auto x = _MapMinor(), y = _MapMinor(); x = y;}
-    {auto x = MapMinor(), y = MapMinor(); x = y;}
-    {auto x = Map(), y = Map(); x = y;}
-    {auto x = MediumShield(), y = MediumShield(); x = y;}
-    {auto x = MeleeWeapon(), y = MeleeWeapon(); x = y;}
-    {auto x = MorningStar(), y = MorningStar(); x = y;}
-    {auto x = NPC(), y = NPC(); x = y;}
-    {auto x = Object(), y = Object(); x = y;}
-    {auto x = OneHandedMelee(), y = OneHandedMelee(); x = y;}
-    {auto x = Paladin(), y = Paladin(); x = y;}
-    {auto x = Party(), y = Party(); x = y;}
-    {auto x = PlateMail(), y = PlateMail(); x = y;}
-    {auto x = Potion(), y = Potion(); x = y;}
-    {auto x = Priest(), y = Priest(); x = y;}
-    {auto x = PriestScroll(), y = PriestScroll(); x = y;}
-    {auto x = Proficiency(), y = Proficiency(); x = y;}
-    {auto x = Quarterstaff(), y = Quarterstaff(); x = y;}
-    {auto x = QuestItem(), y = QuestItem(); x = y;}
-    {auto x = QuickItem(), y = QuickItem(); x = y;}
-    {auto x = Race(), y = Race(); x = y;}
-    {auto x = RangedWeapon(), y = RangedWeapon(); x = y;}
-    {auto x = Ranger(), y = Ranger(); x = y;}
-    {auto x = ReputationChart(), y = ReputationChart(); x = y;}
-    {auto x = RestInterruption(), y = RestInterruption(); x = y;}
-    {auto x = RightHandItem(), y = RightHandItem(); x = y;}
-    {auto x = Ring(), y = Ring(); x = y;}
-    {auto x = Road(), y = Road(); x = y;}
-    {auto x = Robe(), y = Robe(); x = y;}
-    {auto x = Rogue(), y = Rogue(); x = y;}
-    {auto x = RuleSet(), y = RuleSet(); x = y;}
-    {auto x = SavingThrows(), y = SavingThrows(); x = y;}
-    {auto x = Scroll(), y = Scroll(); x = y;}
-    {auto x = Shield(), y = Shield(); x = y;}
-    {auto x = ShortBow(), y = ShortBow(); x = y;}
-    {auto x = ShortSword(), y = ShortSword(); x = y;}
-    {auto x = Sling(), y = Sling(); x = y;}
-    {auto x = SmallShield(), y = SmallShield(); x = y;}
-    {auto x = Sorcerer(), y = Sorcerer(); x = y;}
-    {auto x = Spear(), y = Spear(); x = y;}
-    {auto x = SpellBook(), y = SpellBook(); x = y;}
-    {auto x = Spell(), y = Spell(); x = y;}
-    {auto x = SpellProgression(), y = SpellProgression(); x = y;}
-    {auto x = SplintMail(), y = SplintMail(); x = y;}
-    {auto x = Store(), y = Store(); x = y;}
-    {auto x = StuddedLeatherArmour(), y = StuddedLeatherArmour(); x = y;}
-    {auto x = TextScroll(), y = TextScroll(); x = y;}
-    {auto x = ThiefAbilities(), y = ThiefAbilities(); x = y;}
-    {auto x = Thief(), y = Thief(); x = y;}
-    {auto x = ThrowingAxe(), y = ThrowingAxe(); x = y;}
-    {auto x = ThrowingDagger(), y = ThrowingDagger(); x = y;}
-    {auto x = Throwing(), y = Throwing(); x = y;}
-    {auto x = Torch(), y = Torch(); x = y;}
-    {auto x = Town(), y = Town(); x = y;}
-    {auto x = TwoHandedMelee(), y = TwoHandedMelee(); x = y;}
-    {auto x = TwoHandedSword(), y = TwoHandedSword(); x = y;}
-    {auto x = Wand(), y = Wand(); x = y;}
-    {auto x = WarHammer(), y = WarHammer(); x = y;}
-    {auto x = Warrior(), y = Warrior(); x = y;}
-    {auto x = WeaponGroup(), y = WeaponGroup(); x = y;}
-    {auto x = Weapon(), y = Weapon(); x = y;}
-    {auto x = Wilderness(), y = Wilderness(); x = y;}
-    {auto x = Wizard(), y = Wizard(); x = y;}
-    {auto x = WizardScroll(), y = WizardScroll(); x = y;}
+    __(Ammunition);
+    __(Arrow);
+    __(BastardSword);
+    __(BattleAxe);
+    __(BluntWeapon);
+    __(Bolt);
+    __(Bow);
+    __(Bullet);
+    __(Club);
+    __(CompositeLongBow);
+    __(Crossbow);
+    __(Dagger);
+    __(Dart);
+    __(Fist);
+    __(Fists);
+    __(Flail);
+    __(Halberd);
+    __(HeavyCrossbow);
+    __(LargeSword);
+    __(LightCrossbow);
+    __(LongBow);
+    __(LongSword);
+    __(Mace);
+    __(MeleeWeapon);
+    __(MorningStar);
+    __(OneHandedMelee);
+    __(Quarterstaff);
+    __(RangedWeapon);
+    __(ShortBow);
+    __(ShortSword);
+    __(Sling);
+    __(Spear);
+    __(ThrowingAxe);
+    __(ThrowingDagger);
+    __(Throwing);
+    __(Torch);
+    __(TwoHandedMelee);
+    __(TwoHandedSword);
+    __(WarHammer);
+    __(Weapon);
     
     return 0;
   }

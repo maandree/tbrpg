@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -52,7 +52,7 @@ namespace tbrpg
     this->inventory = Inventory();
     this->abilities = AbilityBonus();
     this->spells = SpellBook();
-    this->race = Race();
+    this->race = nullptr;
     this->prestige = {};
     this->specialisation = GENERAL_MAGE;
     this->special_abilities = {};
@@ -348,7 +348,7 @@ namespace tbrpg
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::unordered_map<WeaponGroup, int>>()(this->proficiencies);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<Spell>>()(this->affected_by);
+    rc += std::hash<std::vector<Spell*>>()(this->affected_by);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<Inventory>()(this->inventory);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
@@ -356,15 +356,15 @@ namespace tbrpg
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<SpellBook>()(this->spells);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<Race>()(this->race);
+    rc += std::hash<Race*>()(this->race);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<Race*>()(this->racial_enemy);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<Class>>()(this->prestige);
+    rc += std::hash<std::vector<Class*>>()(this->prestige);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<MagicSchool>()(this->specialisation);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<Spell>>()(this->special_abilities);
+    rc += std::hash<std::vector<Spell*>>()(this->special_abilities);
     return rc;
   }
   

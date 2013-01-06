@@ -1,4 +1,4 @@
-// -*- mode: c++, coding: utf-8 -*-
+// -*- mode: c++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -80,7 +80,7 @@ namespace tbrpg
     /**
      * Spells that are learned to when a level is reached
      */
-    std::vector<std::vector<Spell>> new_spells;
+    std::vector<std::vector<Spell*>*> new_spells;
     
     /**
      * The number of proficiencies that that can be allocated when a level is reached
