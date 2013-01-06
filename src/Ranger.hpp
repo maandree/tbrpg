@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Ranger& elem) const
     {
-      return elem.hash();
+      return dynamic_cast<Ranger*>(&elem)->hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Ranger* elem) const
     {
-      return elem == nullptr ? 0 : elem->hash();
+      return elem == nullptr ? 0 : dynamic_cast<Ranger*>(elem)->hash();
     }
   };
 }
