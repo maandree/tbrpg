@@ -189,7 +189,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    virtual size_t hash() const;
+    size_t hash() const;
     
   };
 }
@@ -202,7 +202,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Road& elem) const
     {
-      return dynamic_cast<const tbrpg::Road*>(&elem)->hash();
+      return elem.hash();
     }
   };
   
@@ -212,7 +212,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Road* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Road*>(elem)->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }

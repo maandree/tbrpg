@@ -146,7 +146,7 @@ namespace tbrpg
      * 
      * @return  The object's hash code
      */
-    virtual size_t hash() const;
+    size_t hash() const;
     
   };
 }
@@ -159,7 +159,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::ThrowingDagger& elem) const
     {
-      return dynamic_cast<const tbrpg::ThrowingDagger*>(&elem)->hash();
+      return elem.hash();
     }
   };
   
@@ -169,7 +169,7 @@ namespace std
   public:
     size_t operator()(tbrpg::ThrowingDagger* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<tbrpg::ThrowingDagger*>(elem)->hash();
+      return elem == nullptr ? 0 : elem->hash();
     }
   };
 }
