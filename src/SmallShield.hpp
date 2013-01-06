@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::SmallShield& elem) const
     {
-      return dynamic_cast<SmallShield*>(&elem)->hash();
+      return dynamic_cast<tbrpg::SmallShield*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::SmallShield* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<SmallShield*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::SmallShield*>(elem)->hash();
     }
   };
 }

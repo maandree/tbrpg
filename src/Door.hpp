@@ -162,7 +162,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Door& elem) const
     {
-      return dynamic_cast<Door*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Door*>(&elem)->hash();
     }
   };
   
@@ -172,7 +172,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Door* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Door*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Door*>(elem)->hash();
     }
   };
 }

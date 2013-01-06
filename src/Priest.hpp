@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Priest& elem) const
     {
-      return dynamic_cast<Priest*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Priest*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Priest* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Priest*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Priest*>(elem)->hash();
     }
   };
 }

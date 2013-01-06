@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Flail& elem) const
     {
-      return dynamic_cast<Flail*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Flail*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Flail* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Flail*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Flail*>(elem)->hash();
     }
   };
 }

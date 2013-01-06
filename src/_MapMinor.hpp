@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::_MapMinor& elem) const
     {
-      return dynamic_cast<_MapMinor*>(&elem)->hash();
+      return dynamic_cast<tbrpg::_MapMinor*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::_MapMinor* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<_MapMinor*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::_MapMinor*>(elem)->hash();
     }
   };
 }

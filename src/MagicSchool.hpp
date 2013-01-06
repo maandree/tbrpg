@@ -183,7 +183,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::MagicSchool& elem) const
     {
-      return dynamic_cast<MagicSchool*>(&elem)->hash();
+      return dynamic_cast<tbrpg::MagicSchool*>(&elem)->hash();
     }
   };
   
@@ -193,7 +193,7 @@ namespace std
   public:
     size_t operator()(tbrpg::MagicSchool* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<MagicSchool*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::MagicSchool*>(elem)->hash();
     }
   };
 }

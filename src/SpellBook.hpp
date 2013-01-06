@@ -180,7 +180,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::SpellBook& elem) const
     {
-      return dynamic_cast<SpellBook*>(&elem)->hash();
+      return dynamic_cast<tbrpg::SpellBook*>(&elem)->hash();
     }
   };
   
@@ -190,7 +190,7 @@ namespace std
   public:
     size_t operator()(tbrpg::SpellBook* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<SpellBook*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::SpellBook*>(elem)->hash();
     }
   };
 }

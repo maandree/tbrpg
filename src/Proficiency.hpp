@@ -178,7 +178,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Proficiency& elem) const
     {
-      return dynamic_cast<Proficiency*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Proficiency*>(&elem)->hash();
     }
   };
   
@@ -188,7 +188,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Proficiency* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Proficiency*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Proficiency*>(elem)->hash();
     }
   };
 }

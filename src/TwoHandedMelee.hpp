@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::TwoHandedMelee& elem) const
     {
-      return dynamic_cast<TwoHandedMelee*>(&elem)->hash();
+      return dynamic_cast<tbrpg::TwoHandedMelee*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::TwoHandedMelee* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<TwoHandedMelee*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::TwoHandedMelee*>(elem)->hash();
     }
   };
 }

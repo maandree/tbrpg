@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::HighWand& elem) const
     {
-      return dynamic_cast<HighWand*>(&elem)->hash();
+      return dynamic_cast<tbrpg::HighWand*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::HighWand* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<HighWand*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::HighWand*>(elem)->hash();
     }
   };
 }

@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Cloak& elem) const
     {
-      return dynamic_cast<Cloak*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Cloak*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Cloak* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Cloak*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Cloak*>(elem)->hash();
     }
   };
 }

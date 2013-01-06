@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Sorcerer& elem) const
     {
-      return dynamic_cast<Sorcerer*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Sorcerer*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Sorcerer* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Sorcerer*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Sorcerer*>(elem)->hash();
     }
   };
 }

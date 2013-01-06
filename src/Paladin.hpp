@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Paladin& elem) const
     {
-      return dynamic_cast<Paladin*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Paladin*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Paladin* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Paladin*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Paladin*>(elem)->hash();
     }
   };
 }

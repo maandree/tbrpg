@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LargeSword& elem) const
     {
-      return dynamic_cast<LargeSword*>(&elem)->hash();
+      return dynamic_cast<tbrpg::LargeSword*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::LargeSword* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<LargeSword*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::LargeSword*>(elem)->hash();
     }
   };
 }

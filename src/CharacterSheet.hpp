@@ -272,7 +272,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::CharacterSheet& elem) const
     {
-      return dynamic_cast<CharacterSheet*>(&elem)->hash();
+      return dynamic_cast<tbrpg::CharacterSheet*>(&elem)->hash();
     }
   };
   
@@ -282,7 +282,7 @@ namespace std
   public:
     size_t operator()(tbrpg::CharacterSheet* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<CharacterSheet*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::CharacterSheet*>(elem)->hash();
     }
   };
 }

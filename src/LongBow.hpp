@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::LongBow& elem) const
     {
-      return dynamic_cast<LongBow*>(&elem)->hash();
+      return dynamic_cast<tbrpg::LongBow*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::LongBow* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<LongBow*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::LongBow*>(elem)->hash();
     }
   };
 }

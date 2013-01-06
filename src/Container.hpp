@@ -183,7 +183,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Container& elem) const
     {
-      return dynamic_cast<Container*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Container*>(&elem)->hash();
     }
   };
   
@@ -193,7 +193,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Container* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Container*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Container*>(elem)->hash();
     }
   };
 }

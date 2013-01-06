@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Mace& elem) const
     {
-      return dynamic_cast<Mace*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Mace*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Mace* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Mace*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Mace*>(elem)->hash();
     }
   };
 }

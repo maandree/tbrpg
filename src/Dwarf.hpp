@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Dwarf& elem) const
     {
-      return dynamic_cast<Dwarf*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Dwarf*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Dwarf* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Dwarf*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Dwarf*>(elem)->hash();
     }
   };
 }

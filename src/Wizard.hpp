@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Wizard& elem) const
     {
-      return dynamic_cast<Wizard*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Wizard*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Wizard* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Wizard*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Wizard*>(elem)->hash();
     }
   };
 }

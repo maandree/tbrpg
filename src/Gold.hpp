@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Gold& elem) const
     {
-      return dynamic_cast<Gold*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Gold*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Gold* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Gold*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Gold*>(elem)->hash();
     }
   };
 }

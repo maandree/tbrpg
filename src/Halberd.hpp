@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Halberd& elem) const
     {
-      return dynamic_cast<Halberd*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Halberd*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Halberd* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Halberd*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Halberd*>(elem)->hash();
     }
   };
 }

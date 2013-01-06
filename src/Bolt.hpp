@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::Bolt& elem) const
     {
-      return dynamic_cast<Bolt*>(&elem)->hash();
+      return dynamic_cast<tbrpg::Bolt*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::Bolt* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<Bolt*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::Bolt*>(elem)->hash();
     }
   };
 }

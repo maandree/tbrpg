@@ -195,7 +195,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::MapMajor& elem) const
     {
-      return dynamic_cast<MapMajor*>(&elem)->hash();
+      return dynamic_cast<tbrpg::MapMajor*>(&elem)->hash();
     }
   };
   
@@ -205,7 +205,7 @@ namespace std
   public:
     size_t operator()(tbrpg::MapMajor* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<MapMajor*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::MapMajor*>(elem)->hash();
     }
   };
 }

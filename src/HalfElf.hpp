@@ -161,7 +161,7 @@ namespace std
   public:
     size_t operator()(const tbrpg::HalfElf& elem) const
     {
-      return dynamic_cast<HalfElf*>(&elem)->hash();
+      return dynamic_cast<tbrpg::HalfElf*>(&elem)->hash();
     }
   };
   
@@ -171,7 +171,7 @@ namespace std
   public:
     size_t operator()(tbrpg::HalfElf* elem) const
     {
-      return elem == nullptr ? 0 : dynamic_cast<HalfElf*>(elem)->hash();
+      return elem == nullptr ? 0 : dynamic_cast<tbrpg::HalfElf*>(elem)->hash();
     }
   };
 }
