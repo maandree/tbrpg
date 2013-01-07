@@ -50,37 +50,37 @@ namespace tbrpg
     /**
      * Strength chart
      */
-    AbilityBonus* strength;
+    AbilityBonus** strength;
     
     /**
      * Strength 18/?? chart
      */
-    AbilityBonus* strength18;
+    AbilityBonus** strength18;
     
     /**
      * Dexterity chart
      */
-    AbilityBonus* dexterity;
+    AbilityBonus** dexterity;
     
     /**
      * Constitution chart
      */
-    AbilityBonus* constitution;
+    AbilityBonus** constitution;
     
     /**
      * Intelligence chart
      */
-    AbilityBonus* intelligence;
+    AbilityBonus** intelligence;
     
     /**
      * Wisdom chart
      */
-    AbilityBonus* wisdom;
+    AbilityBonus** wisdom;
     
     /**
      * Charisma chart
      */
-    AbilityBonus* charisma;
+    AbilityBonus** charisma;
     
     
     

@@ -287,7 +287,7 @@ namespace tbrpg
     __(Spell);
     __(Store);
     __(WeaponGroup);
-    __a(CharacterCreator);
+    __(CharacterCreator);
     /**/
     
     /* races */
@@ -365,7 +365,7 @@ namespace tbrpg
     /**/
     
     /* senarioes */
-    __a(Senario);
+    __(Senario);
     __a(BasicSenario);
     
     cleaner::getInstance().clean();

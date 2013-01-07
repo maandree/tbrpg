@@ -97,9 +97,58 @@ namespace tbrpg
     CharacterCreator(const RuleSet* rules = nullptr);
     
     /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    CharacterCreator(const CharacterCreator& original);
+    
+    /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    CharacterCreator(CharacterCreator& original);
+    
+    /**
+     * Move constructor
+     * 
+     * @param  original  The object to clone
+     */
+    CharacterCreator(CharacterCreator&& original);
+    
+    
+    
+    /**
      * Destructor
      */
     ~CharacterCreator();
+    
+    
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    virtual CharacterCreator& operator =(const CharacterCreator& original);
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    virtual CharacterCreator& operator =(CharacterCreator& original);
+    
+    /**
+     * Move operator
+     * 
+     * @param   original  The moved object, its resourced will be moved
+     * @return            The invoked object
+     */
+    virtual CharacterCreator& operator =(CharacterCreator&& original);
     
     
     

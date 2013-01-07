@@ -70,13 +70,107 @@ namespace tbrpg
     this->sheet = new CharacterSheet();
   }
   
+  
+  
+  /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  CharacterCreator::CharacterCreator(const CharacterCreator& original)
+  {
+    this->ruleset = original.ruleset;
+    this->abilityDice = original.abilityDice;
+    this->dice100 = original.dice100;
+    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+  }
+  
+  /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  CharacterCreator::CharacterCreator(CharacterCreator& original)
+  {
+    this->ruleset = original.ruleset;
+    this->abilityDice = original.abilityDice;
+    this->dice100 = original.dice100;
+    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+  }
+  
+  /**
+   * Move constructor
+   * 
+   * @param  original  The object to clone
+   */
+  CharacterCreator::CharacterCreator(CharacterCreator&& original)
+  {
+    std::swap(this->ruleset, original.ruleset);
+    std::swap(this->abilityDice, original.abilityDice);
+    std::swap(this->dice100, original.dice100);
+    std::swap(this->sheet, original.sheet);
+  }
+  
+  
+  
   /**
    * Destructor
    */
   CharacterCreator::~CharacterCreator()
   {
-    if (this->sheet != nullptr)
+    if ((this->sheet))
       delete this->sheet;
+  }
+  
+  
+  
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  CharacterCreator& CharacterCreator::operator =(const CharacterCreator& original)
+  {
+    if ((this->sheet))
+      delete this->sheet;
+    this->ruleset = original.ruleset;
+    this->abilityDice = original.abilityDice;
+    this->dice100 = original.dice100;
+    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    return *this;
+  }
+  
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  CharacterCreator& CharacterCreator::operator =(CharacterCreator& original)
+  {
+    if ((this->sheet))
+      delete this->sheet;
+    this->ruleset = original.ruleset;
+    this->abilityDice = original.abilityDice;
+    this->dice100 = original.dice100;
+    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    return *this;
+  }
+  
+  /**
+   * Move operator
+   * 
+   * @param   original  The moved object, its resourced will be moved
+   * @return            The invoked object
+   */
+  CharacterCreator& CharacterCreator::operator =(CharacterCreator&& original)
+  {
+    std::swap(this->ruleset, original.ruleset);
+    std::swap(this->abilityDice, original.abilityDice);
+    std::swap(this->dice100, original.dice100);
+    std::swap(this->sheet, original.sheet);
+    return *this;
   }
   
   

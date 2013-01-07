@@ -116,7 +116,7 @@ namespace tbrpg
   {
     delete this->rules;
     delete this->party;
-    //delete this->map;
+    delete this->map;
   }
   
   

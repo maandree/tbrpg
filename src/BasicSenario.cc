@@ -50,6 +50,11 @@ namespace tbrpg
     MapMinor* area_wilds = new Wilderness();
     MapMinor* area_goal = new Wilderness();
     
+    cleaner::getInstance().enqueueDelete(map_town);
+    cleaner::getInstance().enqueueDelete(map_wilds);
+    cleaner::getInstance().enqueueDelete(area_wilds);
+    cleaner::getInstance().enqueueDelete(area_goal);
+    
     map_town->name = "The town";
     map_town->visible = true;
     map_town->visited = true;

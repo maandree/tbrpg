@@ -37,352 +37,352 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(25);
     
-    this->strength     = new AbilityBonus[26];
-    this->strength18   = new AbilityBonus[101];
-    this->dexterity    = new AbilityBonus[26];
-    this->constitution = new AbilityBonus[26];
-    this->intelligence = new AbilityBonus[26];
-    this->wisdom       = new AbilityBonus[26];
-    this->charisma     = new AbilityBonus[26];
+    this->strength     = new AbilityBonus*[26];
+    this->strength18   = new AbilityBonus*[101];
+    this->dexterity    = new AbilityBonus*[26];
+    this->constitution = new AbilityBonus*[26];
+    this->intelligence = new AbilityBonus*[26];
+    this->wisdom       = new AbilityBonus*[26];
+    this->charisma     = new AbilityBonus*[26];
     
     for (long i = 0; i <= 25; i++)
       {
-	this->strength[i]     = AbilityBonus();
-	this->dexterity[i]    = AbilityBonus();
-	this->constitution[i] = AbilityBonus();
-	this->intelligence[i] = AbilityBonus();
-	this->wisdom[i]       = AbilityBonus();
-	this->charisma[i]     = AbilityBonus();
+	this->strength[i]     = new AbilityBonus();
+	this->dexterity[i]    = new AbilityBonus();
+	this->constitution[i] = new AbilityBonus();
+	this->intelligence[i] = new AbilityBonus();
+	this->wisdom[i]       = new AbilityBonus();
+	this->charisma[i]     = new AbilityBonus();
       }
     for (long i = 0; i <= 100; i++)
-      this->strength18[i] = AbilityBonus();
+      this->strength18[i] = new AbilityBonus();
     
-    this->strength[1].bonuses.hit_bonus = -5;
-    this->strength[2].bonuses.hit_bonus = -5;
-    this->strength[3].bonuses.hit_bonus = -3;
-    this->strength[4].bonuses.hit_bonus = -2;
-    this->strength[5].bonuses.hit_bonus = -2;
-    this->strength[6].bonuses.hit_bonus = -1;
-    this->strength[7].bonuses.hit_bonus = -1;
-    this->strength[17].bonuses.hit_bonus = 1;
-    this->strength[18].bonuses.hit_bonus = 1;
+    this->strength[1]->bonuses.hit_bonus = -5;
+    this->strength[2]->bonuses.hit_bonus = -5;
+    this->strength[3]->bonuses.hit_bonus = -3;
+    this->strength[4]->bonuses.hit_bonus = -2;
+    this->strength[5]->bonuses.hit_bonus = -2;
+    this->strength[6]->bonuses.hit_bonus = -1;
+    this->strength[7]->bonuses.hit_bonus = -1;
+    this->strength[17]->bonuses.hit_bonus = 1;
+    this->strength[18]->bonuses.hit_bonus = 1;
     for (long i = 0; i <= 50; i++)
-      this->strength18[i].bonuses.hit_bonus = 1;
+      this->strength18[i]->bonuses.hit_bonus = 1;
     for (long i = 51; i <= 99; i++)
-      this->strength18[i].bonuses.hit_bonus = 2;
-    this->strength18[100].bonuses.hit_bonus = 3;
-    this->strength[19].bonuses.hit_bonus = 3;
-    this->strength[20].bonuses.hit_bonus = 3;
-    this->strength[21].bonuses.hit_bonus = 4;
-    this->strength[22].bonuses.hit_bonus = 4;
-    this->strength[23].bonuses.hit_bonus = 5;
-    this->strength[24].bonuses.hit_bonus = 6;
-    this->strength[25].bonuses.hit_bonus = 7;
+      this->strength18[i]->bonuses.hit_bonus = 2;
+    this->strength18[100]->bonuses.hit_bonus = 3;
+    this->strength[19]->bonuses.hit_bonus = 3;
+    this->strength[20]->bonuses.hit_bonus = 3;
+    this->strength[21]->bonuses.hit_bonus = 4;
+    this->strength[22]->bonuses.hit_bonus = 4;
+    this->strength[23]->bonuses.hit_bonus = 5;
+    this->strength[24]->bonuses.hit_bonus = 6;
+    this->strength[25]->bonuses.hit_bonus = 7;
     
-    this->strength[1].bonuses.damage_bonus = -2;
-    this->strength[2].bonuses.damage_bonus = -2;
-    this->strength[3].bonuses.damage_bonus = -1;
-    this->strength[4].bonuses.damage_bonus = -1;
-    this->strength[5].bonuses.damage_bonus = -1;
-    this->strength[16].bonuses.damage_bonus = 1;
-    this->strength[17].bonuses.damage_bonus = 1;
-    this->strength[18].bonuses.damage_bonus = 2;
-    this->strength18[0].bonuses.hit_bonus = 2;
+    this->strength[1]->bonuses.damage_bonus = -2;
+    this->strength[2]->bonuses.damage_bonus = -2;
+    this->strength[3]->bonuses.damage_bonus = -1;
+    this->strength[4]->bonuses.damage_bonus = -1;
+    this->strength[5]->bonuses.damage_bonus = -1;
+    this->strength[16]->bonuses.damage_bonus = 1;
+    this->strength[17]->bonuses.damage_bonus = 1;
+    this->strength[18]->bonuses.damage_bonus = 2;
+    this->strength18[0]->bonuses.hit_bonus = 2;
     for (long i = 1; i <= 75; i++)
-      this->strength18[i].bonuses.hit_bonus = 3;
+      this->strength18[i]->bonuses.hit_bonus = 3;
     for (long i = 76; i <= 90; i++)
-      this->strength18[i].bonuses.hit_bonus = 4;
+      this->strength18[i]->bonuses.hit_bonus = 4;
     for (long i = 91; i <= 99; i++)
-      this->strength18[i].bonuses.hit_bonus = 5;
-    this->strength18[100].bonuses.hit_bonus = 6;
-    this->strength[19].bonuses.damage_bonus = 7;
-    this->strength[20].bonuses.damage_bonus = 8;
-    this->strength[21].bonuses.damage_bonus = 9;
-    this->strength[22].bonuses.damage_bonus = 10;
-    this->strength[23].bonuses.damage_bonus = 11;
-    this->strength[24].bonuses.damage_bonus = 12;
-    this->strength[25].bonuses.damage_bonus = 14;
+      this->strength18[i]->bonuses.hit_bonus = 5;
+    this->strength18[100]->bonuses.hit_bonus = 6;
+    this->strength[19]->bonuses.damage_bonus = 7;
+    this->strength[20]->bonuses.damage_bonus = 8;
+    this->strength[21]->bonuses.damage_bonus = 9;
+    this->strength[22]->bonuses.damage_bonus = 10;
+    this->strength[23]->bonuses.damage_bonus = 11;
+    this->strength[24]->bonuses.damage_bonus = 12;
+    this->strength[25]->bonuses.damage_bonus = 14;
     
-    this->strength[1].bonuses.carry_limit = 1750;
-    this->strength[2].bonuses.carry_limit = 2000;
-    this->strength[3].bonuses.carry_limit = 2250;
-    this->strength[4].bonuses.carry_limit = 6750;
-    this->strength[5].bonuses.carry_limit = 6750;
-    this->strength[6].bonuses.carry_limit = 13500;
-    this->strength[7].bonuses.carry_limit = 13500;
-    this->strength[8].bonuses.carry_limit = 22500;
-    this->strength[9].bonuses.carry_limit = 22500;
-    this->strength[10].bonuses.carry_limit = 31500;
-    this->strength[11].bonuses.carry_limit = 31500;
-    this->strength[12].bonuses.carry_limit = 40500;
-    this->strength[13].bonuses.carry_limit = 40500;
-    this->strength[14].bonuses.carry_limit = 45000;
-    this->strength[15].bonuses.carry_limit = 45000;
-    this->strength[16].bonuses.carry_limit = 67500;
-    this->strength[17].bonuses.carry_limit = 67500;
-    this->strength[18].bonuses.carry_limit = 90000;
+    this->strength[1]->bonuses.carry_limit = 1750;
+    this->strength[2]->bonuses.carry_limit = 2000;
+    this->strength[3]->bonuses.carry_limit = 2250;
+    this->strength[4]->bonuses.carry_limit = 6750;
+    this->strength[5]->bonuses.carry_limit = 6750;
+    this->strength[6]->bonuses.carry_limit = 13500;
+    this->strength[7]->bonuses.carry_limit = 13500;
+    this->strength[8]->bonuses.carry_limit = 22500;
+    this->strength[9]->bonuses.carry_limit = 22500;
+    this->strength[10]->bonuses.carry_limit = 31500;
+    this->strength[11]->bonuses.carry_limit = 31500;
+    this->strength[12]->bonuses.carry_limit = 40500;
+    this->strength[13]->bonuses.carry_limit = 40500;
+    this->strength[14]->bonuses.carry_limit = 45000;
+    this->strength[15]->bonuses.carry_limit = 45000;
+    this->strength[16]->bonuses.carry_limit = 67500;
+    this->strength[17]->bonuses.carry_limit = 67500;
+    this->strength[18]->bonuses.carry_limit = 90000;
     for (long i = 1; i <= 50; i++)
-      this->strength18[i].bonuses.carry_limit = 99000;
+      this->strength18[i]->bonuses.carry_limit = 99000;
     for (long i = 51; i <= 75; i++)
-      this->strength18[i].bonuses.carry_limit = 112500;
+      this->strength18[i]->bonuses.carry_limit = 112500;
     for (long i = 76; i <= 90; i++)
-      this->strength18[i].bonuses.carry_limit = 126000;
+      this->strength18[i]->bonuses.carry_limit = 126000;
     for (long i = 91; i <= 99; i++)
-      this->strength18[i].bonuses.carry_limit = 144000;
-    this->strength18[100].bonuses.carry_limit = 180000;
-    this->strength[19].bonuses.carry_limit = 225000;
-    this->strength[20].bonuses.carry_limit = 270000;
-    this->strength[21].bonuses.carry_limit = 315000;
-    this->strength[22].bonuses.carry_limit = 360000;
-    this->strength[23].bonuses.carry_limit = 450000;
-    this->strength[24].bonuses.carry_limit = 540000;
-    this->strength[25].bonuses.carry_limit = 720000;
+      this->strength18[i]->bonuses.carry_limit = 144000;
+    this->strength18[100]->bonuses.carry_limit = 180000;
+    this->strength[19]->bonuses.carry_limit = 225000;
+    this->strength[20]->bonuses.carry_limit = 270000;
+    this->strength[21]->bonuses.carry_limit = 315000;
+    this->strength[22]->bonuses.carry_limit = 360000;
+    this->strength[23]->bonuses.carry_limit = 450000;
+    this->strength[24]->bonuses.carry_limit = 540000;
+    this->strength[25]->bonuses.carry_limit = 720000;
     
-    this->strength[1].bonuses.bashing = 0.00;
-    this->strength[2].bonuses.bashing = 0.01;
-    this->strength[3].bonuses.bashing = 0.03;
-    this->strength[4].bonuses.bashing = 0.04;
-    this->strength[5].bonuses.bashing = 0.04;
-    this->strength[6].bonuses.bashing = 0.06;
-    this->strength[7].bonuses.bashing = 0.06;
-    this->strength[8].bonuses.bashing = 0.08;
-    this->strength[9].bonuses.bashing = 0.08;
-    this->strength[10].bonuses.bashing = 0.10;
-    this->strength[11].bonuses.bashing = 0.10;
-    this->strength[12].bonuses.bashing = 0.12;
-    this->strength[13].bonuses.bashing = 0.12;
-    this->strength[14].bonuses.bashing = 0.14;
-    this->strength[15].bonuses.bashing = 0.14;
-    this->strength[16].bonuses.bashing = 0.16;
-    this->strength[17].bonuses.bashing = 0.18;
-    this->strength[18].bonuses.bashing = 0.20;
+    this->strength[1]->bonuses.bashing = 0.00;
+    this->strength[2]->bonuses.bashing = 0.01;
+    this->strength[3]->bonuses.bashing = 0.03;
+    this->strength[4]->bonuses.bashing = 0.04;
+    this->strength[5]->bonuses.bashing = 0.04;
+    this->strength[6]->bonuses.bashing = 0.06;
+    this->strength[7]->bonuses.bashing = 0.06;
+    this->strength[8]->bonuses.bashing = 0.08;
+    this->strength[9]->bonuses.bashing = 0.08;
+    this->strength[10]->bonuses.bashing = 0.10;
+    this->strength[11]->bonuses.bashing = 0.10;
+    this->strength[12]->bonuses.bashing = 0.12;
+    this->strength[13]->bonuses.bashing = 0.12;
+    this->strength[14]->bonuses.bashing = 0.14;
+    this->strength[15]->bonuses.bashing = 0.14;
+    this->strength[16]->bonuses.bashing = 0.16;
+    this->strength[17]->bonuses.bashing = 0.18;
+    this->strength[18]->bonuses.bashing = 0.20;
     for (long i = 1; i <= 50; i++)
-      this->strength18[i].bonuses.bashing = 0.25;
+      this->strength18[i]->bonuses.bashing = 0.25;
     for (long i = 51; i <= 75; i++)
-      this->strength18[i].bonuses.bashing = 0.30;
+      this->strength18[i]->bonuses.bashing = 0.30;
     for (long i = 76; i <= 90; i++)
-      this->strength18[i].bonuses.bashing = 0.35;
+      this->strength18[i]->bonuses.bashing = 0.35;
     for (long i = 91; i <= 99; i++)
-      this->strength18[i].bonuses.bashing = 0.40;
-    this->strength18[100].bonuses.bashing = 0.45;
-    this->strength[19].bonuses.bashing = 0.50;
-    this->strength[20].bonuses.bashing = 0.55;
-    this->strength[21].bonuses.bashing = 0.60;
-    this->strength[22].bonuses.bashing = 0.65;
-    this->strength[23].bonuses.bashing = 0.70;
-    this->strength[24].bonuses.bashing = 0.75;
-    this->strength[25].bonuses.bashing = 0.80;
+      this->strength18[i]->bonuses.bashing = 0.40;
+    this->strength18[100]->bonuses.bashing = 0.45;
+    this->strength[19]->bonuses.bashing = 0.50;
+    this->strength[20]->bonuses.bashing = 0.55;
+    this->strength[21]->bonuses.bashing = 0.60;
+    this->strength[22]->bonuses.bashing = 0.65;
+    this->strength[23]->bonuses.bashing = 0.70;
+    this->strength[24]->bonuses.bashing = 0.75;
+    this->strength[25]->bonuses.bashing = 0.80;
     
-    this->dexterity[1].bonuses.missile_attack_bonus = -3;
-    this->dexterity[2].bonuses.missile_attack_bonus = -2;
-    this->dexterity[3].bonuses.missile_attack_bonus = -1;
+    this->dexterity[1]->bonuses.missile_attack_bonus = -3;
+    this->dexterity[2]->bonuses.missile_attack_bonus = -2;
+    this->dexterity[3]->bonuses.missile_attack_bonus = -1;
     for (long i = 4; i < 16; i++)
-      this->dexterity[0].bonuses.missile_attack_bonus = 0;
-    this->dexterity[16].bonuses.missile_attack_bonus = 1;
-    this->dexterity[17].bonuses.missile_attack_bonus = 2;
-    this->dexterity[18].bonuses.missile_attack_bonus = 2;
-    this->dexterity[19].bonuses.missile_attack_bonus = 3;
-    this->dexterity[20].bonuses.missile_attack_bonus = 3;
-    this->dexterity[21].bonuses.missile_attack_bonus = 4;
-    this->dexterity[22].bonuses.missile_attack_bonus = 4;
-    this->dexterity[23].bonuses.missile_attack_bonus = 4;
-    this->dexterity[24].bonuses.missile_attack_bonus = 5;
-    this->dexterity[25].bonuses.missile_attack_bonus = 5;
+      this->dexterity[0]->bonuses.missile_attack_bonus = 0;
+    this->dexterity[16]->bonuses.missile_attack_bonus = 1;
+    this->dexterity[17]->bonuses.missile_attack_bonus = 2;
+    this->dexterity[18]->bonuses.missile_attack_bonus = 2;
+    this->dexterity[19]->bonuses.missile_attack_bonus = 3;
+    this->dexterity[20]->bonuses.missile_attack_bonus = 3;
+    this->dexterity[21]->bonuses.missile_attack_bonus = 4;
+    this->dexterity[22]->bonuses.missile_attack_bonus = 4;
+    this->dexterity[23]->bonuses.missile_attack_bonus = 4;
+    this->dexterity[24]->bonuses.missile_attack_bonus = 5;
+    this->dexterity[25]->bonuses.missile_attack_bonus = 5;
     
-    this->dexterity[1].bonuses.armour_class_bonus = 6;
-    this->dexterity[2].bonuses.armour_class_bonus = 5;
-    this->dexterity[3].bonuses.armour_class_bonus = 4;
-    this->dexterity[4].bonuses.armour_class_bonus = 3;
-    this->dexterity[5].bonuses.armour_class_bonus = 2;
-    this->dexterity[6].bonuses.armour_class_bonus = 1;
+    this->dexterity[1]->bonuses.armour_class_bonus = 6;
+    this->dexterity[2]->bonuses.armour_class_bonus = 5;
+    this->dexterity[3]->bonuses.armour_class_bonus = 4;
+    this->dexterity[4]->bonuses.armour_class_bonus = 3;
+    this->dexterity[5]->bonuses.armour_class_bonus = 2;
+    this->dexterity[6]->bonuses.armour_class_bonus = 1;
     for (long i = 6; i < 15; i++)
-      this->dexterity[i].bonuses.armour_class_bonus = 0;
-    this->dexterity[15].bonuses.armour_class_bonus = -1;
-    this->dexterity[16].bonuses.armour_class_bonus = -2;
-    this->dexterity[17].bonuses.armour_class_bonus = -3;
-    this->dexterity[18].bonuses.armour_class_bonus = -4;
-    this->dexterity[19].bonuses.armour_class_bonus = -4;
-    this->dexterity[20].bonuses.armour_class_bonus = -4;
-    this->dexterity[21].bonuses.armour_class_bonus = -5;
-    this->dexterity[22].bonuses.armour_class_bonus = -5;
-    this->dexterity[23].bonuses.armour_class_bonus = -5;
-    this->dexterity[24].bonuses.armour_class_bonus = -6;
-    this->dexterity[25].bonuses.armour_class_bonus = -6;
+      this->dexterity[i]->bonuses.armour_class_bonus = 0;
+    this->dexterity[15]->bonuses.armour_class_bonus = -1;
+    this->dexterity[16]->bonuses.armour_class_bonus = -2;
+    this->dexterity[17]->bonuses.armour_class_bonus = -3;
+    this->dexterity[18]->bonuses.armour_class_bonus = -4;
+    this->dexterity[19]->bonuses.armour_class_bonus = -4;
+    this->dexterity[20]->bonuses.armour_class_bonus = -4;
+    this->dexterity[21]->bonuses.armour_class_bonus = -5;
+    this->dexterity[22]->bonuses.armour_class_bonus = -5;
+    this->dexterity[23]->bonuses.armour_class_bonus = -5;
+    this->dexterity[24]->bonuses.armour_class_bonus = -6;
+    this->dexterity[25]->bonuses.armour_class_bonus = -6;
     
-    this->constitution[1].bonuses.hit_point_bonus = -2;
-    this->constitution[2].bonuses.hit_point_bonus = -1;
-    this->constitution[3].bonuses.hit_point_bonus = -1;
-    this->constitution[4].bonuses.hit_point_bonus = -1;
+    this->constitution[1]->bonuses.hit_point_bonus = -2;
+    this->constitution[2]->bonuses.hit_point_bonus = -1;
+    this->constitution[3]->bonuses.hit_point_bonus = -1;
+    this->constitution[4]->bonuses.hit_point_bonus = -1;
     for (long i = 4; i < 15; i++)
-      this->constitution[i].bonuses.hit_point_bonus = 0;
-    this->constitution[15].bonuses.hit_point_bonus = 1;
-    this->constitution[16].bonuses.hit_point_bonus = 2;
-    this->constitution[17].bonuses.hit_point_bonus = 3;
-    this->constitution[18].bonuses.hit_point_bonus = 4;
-    this->constitution[19].bonuses.hit_point_bonus = 5;
-    this->constitution[20].bonuses.hit_point_bonus = 5;
-    this->constitution[21].bonuses.hit_point_bonus = 6;
-    this->constitution[22].bonuses.hit_point_bonus = 6;
-    this->constitution[23].bonuses.hit_point_bonus = 6;
-    this->constitution[24].bonuses.hit_point_bonus = 7;
-    this->constitution[25].bonuses.hit_point_bonus = 7;
+      this->constitution[i]->bonuses.hit_point_bonus = 0;
+    this->constitution[15]->bonuses.hit_point_bonus = 1;
+    this->constitution[16]->bonuses.hit_point_bonus = 2;
+    this->constitution[17]->bonuses.hit_point_bonus = 3;
+    this->constitution[18]->bonuses.hit_point_bonus = 4;
+    this->constitution[19]->bonuses.hit_point_bonus = 5;
+    this->constitution[20]->bonuses.hit_point_bonus = 5;
+    this->constitution[21]->bonuses.hit_point_bonus = 6;
+    this->constitution[22]->bonuses.hit_point_bonus = 6;
+    this->constitution[23]->bonuses.hit_point_bonus = 6;
+    this->constitution[24]->bonuses.hit_point_bonus = 7;
+    this->constitution[25]->bonuses.hit_point_bonus = 7;
     
     for (long i = 1; i <= 11; i++)
-      this->constitution[i].bonuses.resurrectability = 0.35 + 0.05 * i;
+      this->constitution[i]->bonuses.resurrectability = 0.35 + 0.05 * i;
     for (long i = 12; i <= 15; i++)
-      this->constitution[i].bonuses.resurrectability = 0.90 + 0.02 * (i - 11);
+      this->constitution[i]->bonuses.resurrectability = 0.90 + 0.02 * (i - 11);
     for (long i = 16; i <= 25; i++)
-      this->constitution[i].bonuses.resurrectability = 1.00;
+      this->constitution[i]->bonuses.resurrectability = 1.00;
     
     for (long i = 1; i <= 25; i++)
       {
-	this->intelligence[i].bonuses.spell_level_limit = i >= 18 ? 9 : (i >> 1);
-	this->intelligence[i].bonuses.spell_learn = i > 18
+	this->intelligence[i]->bonuses.spell_level_limit = i >= 18 ? 9 : (i >> 1);
+	this->intelligence[i]->bonuses.spell_learn = i > 18
 	                                          ? ((i - 19 + 95) / 100.)
 	                                          : (0.05 * (i - 2));
       }
-    this->intelligence[1].bonuses.spell_learn = 0.00;
-    this->intelligence[2].bonuses.spell_learn = 0.01;
-    this->intelligence[18].bonuses.spell_learn = 0.85;
-    this->intelligence[25].bonuses.spell_learn = 1.00;
+    this->intelligence[1]->bonuses.spell_learn = 0.00;
+    this->intelligence[2]->bonuses.spell_learn = 0.01;
+    this->intelligence[18]->bonuses.spell_learn = 0.85;
+    this->intelligence[25]->bonuses.spell_learn = 1.00;
     
-    this->intelligence[1].bonuses.max_spells_level = 0;
-    this->intelligence[2].bonuses.max_spells_level = 0;
-    this->intelligence[3].bonuses.max_spells_level = 1;
-    this->intelligence[4].bonuses.max_spells_level = 1;
-    this->intelligence[5].bonuses.max_spells_level = 2;
-    this->intelligence[6].bonuses.max_spells_level = 2;
-    this->intelligence[7].bonuses.max_spells_level = 4;
-    this->intelligence[8].bonuses.max_spells_level = 4;
-    this->intelligence[9].bonuses.max_spells_level = 6;
-    this->intelligence[10].bonuses.max_spells_level = 7;
-    this->intelligence[11].bonuses.max_spells_level = 7;
-    this->intelligence[12].bonuses.max_spells_level = 7;
-    this->intelligence[13].bonuses.max_spells_level = 9;
-    this->intelligence[14].bonuses.max_spells_level = 9;
-    this->intelligence[15].bonuses.max_spells_level = 11;
-    this->intelligence[16].bonuses.max_spells_level = 11;
-    this->intelligence[17].bonuses.max_spells_level = 14;
-    this->intelligence[18].bonuses.max_spells_level = 17;
+    this->intelligence[1]->bonuses.max_spells_level = 0;
+    this->intelligence[2]->bonuses.max_spells_level = 0;
+    this->intelligence[3]->bonuses.max_spells_level = 1;
+    this->intelligence[4]->bonuses.max_spells_level = 1;
+    this->intelligence[5]->bonuses.max_spells_level = 2;
+    this->intelligence[6]->bonuses.max_spells_level = 2;
+    this->intelligence[7]->bonuses.max_spells_level = 4;
+    this->intelligence[8]->bonuses.max_spells_level = 4;
+    this->intelligence[9]->bonuses.max_spells_level = 6;
+    this->intelligence[10]->bonuses.max_spells_level = 7;
+    this->intelligence[11]->bonuses.max_spells_level = 7;
+    this->intelligence[12]->bonuses.max_spells_level = 7;
+    this->intelligence[13]->bonuses.max_spells_level = 9;
+    this->intelligence[14]->bonuses.max_spells_level = 9;
+    this->intelligence[15]->bonuses.max_spells_level = 11;
+    this->intelligence[16]->bonuses.max_spells_level = 11;
+    this->intelligence[17]->bonuses.max_spells_level = 14;
+    this->intelligence[18]->bonuses.max_spells_level = 17;
     for (long i = 1; i <= 25; i++)
-      this->intelligence[i].bonuses.max_spells_level = -1;
+      this->intelligence[i]->bonuses.max_spells_level = -1;
     
-    this->intelligence[1].bonuses.lore_bonus = -30;
-    this->intelligence[2].bonuses.lore_bonus = -30;
-    this->intelligence[3].bonuses.lore_bonus = -20;
-    this->intelligence[4].bonuses.lore_bonus = -20;
-    this->intelligence[5].bonuses.lore_bonus = -20;
-    this->intelligence[6].bonuses.lore_bonus = -20;
-    this->intelligence[7].bonuses.lore_bonus = -10;
-    this->intelligence[8].bonuses.lore_bonus = -10;
-    this->intelligence[9].bonuses.lore_bonus = -10;
+    this->intelligence[1]->bonuses.lore_bonus = -30;
+    this->intelligence[2]->bonuses.lore_bonus = -30;
+    this->intelligence[3]->bonuses.lore_bonus = -20;
+    this->intelligence[4]->bonuses.lore_bonus = -20;
+    this->intelligence[5]->bonuses.lore_bonus = -20;
+    this->intelligence[6]->bonuses.lore_bonus = -20;
+    this->intelligence[7]->bonuses.lore_bonus = -10;
+    this->intelligence[8]->bonuses.lore_bonus = -10;
+    this->intelligence[9]->bonuses.lore_bonus = -10;
     for (long i = 10; i < 15; i++)
-      this->intelligence[i].bonuses.lore_bonus = 0;
-    this->intelligence[15].bonuses.lore_bonus = 3;
-    this->intelligence[16].bonuses.lore_bonus = 5;
-    this->intelligence[17].bonuses.lore_bonus = 7;
-    this->intelligence[18].bonuses.lore_bonus = 10;
-    this->intelligence[19].bonuses.lore_bonus = 12;
+      this->intelligence[i]->bonuses.lore_bonus = 0;
+    this->intelligence[15]->bonuses.lore_bonus = 3;
+    this->intelligence[16]->bonuses.lore_bonus = 5;
+    this->intelligence[17]->bonuses.lore_bonus = 7;
+    this->intelligence[18]->bonuses.lore_bonus = 10;
+    this->intelligence[19]->bonuses.lore_bonus = 12;
     for (long i = 20; i <= 25; i++)
-      this->intelligence[i].bonuses.lore_bonus = 15 + (i - 20) * 5;
+      this->intelligence[i]->bonuses.lore_bonus = 15 + (i - 20) * 5;
     
     for (long i = 1; i <= 5; i++)
-      this->wisdom[i].bonuses.magic_defence_bonus = -6 + i;
-    this->wisdom[6].bonuses.magic_defence_bonus = -1;
-    this->wisdom[7].bonuses.magic_defence_bonus = -1;
+      this->wisdom[i]->bonuses.magic_defence_bonus = -6 + i;
+    this->wisdom[6]->bonuses.magic_defence_bonus = -1;
+    this->wisdom[7]->bonuses.magic_defence_bonus = -1;
     for (long i = 8; i < 15; i++)
-      this->wisdom[i].bonuses.magic_defence_bonus = 0;
+      this->wisdom[i]->bonuses.magic_defence_bonus = 0;
     for (long i = 15; i <= 25; i++)
-      this->wisdom[i].bonuses.magic_defence_bonus = i > 18 ? 4 : (i - 14);
+      this->wisdom[i]->bonuses.magic_defence_bonus = i > 18 ? 4 : (i - 14);
     
     for (long i = 1; i <= 12; i++)
-      this->wisdom[i].bonuses.spell_failure = (65 - i * 5) / 100.;
+      this->wisdom[i]->bonuses.spell_failure = (65 - i * 5) / 100.;
     for (long i = 13; i <= 25; i++)
-      this->wisdom[i].bonuses.spell_failure = 0;
+      this->wisdom[i]->bonuses.spell_failure = 0;
     
-    this->wisdom[1].bonuses.lore_bonus = -30;
-    this->wisdom[2].bonuses.lore_bonus = -30;
-    this->wisdom[3].bonuses.lore_bonus = -20;
-    this->wisdom[4].bonuses.lore_bonus = -20;
-    this->wisdom[5].bonuses.lore_bonus = -20;
-    this->wisdom[6].bonuses.lore_bonus = -20;
-    this->wisdom[7].bonuses.lore_bonus = -10;
-    this->wisdom[8].bonuses.lore_bonus = -10;
-    this->wisdom[9].bonuses.lore_bonus = -10;
+    this->wisdom[1]->bonuses.lore_bonus = -30;
+    this->wisdom[2]->bonuses.lore_bonus = -30;
+    this->wisdom[3]->bonuses.lore_bonus = -20;
+    this->wisdom[4]->bonuses.lore_bonus = -20;
+    this->wisdom[5]->bonuses.lore_bonus = -20;
+    this->wisdom[6]->bonuses.lore_bonus = -20;
+    this->wisdom[7]->bonuses.lore_bonus = -10;
+    this->wisdom[8]->bonuses.lore_bonus = -10;
+    this->wisdom[9]->bonuses.lore_bonus = -10;
     for (long i = 10; i < 15; i++)
-      this->wisdom[i].bonuses.lore_bonus = 0;
-    this->wisdom[15].bonuses.lore_bonus = 3;
-    this->wisdom[16].bonuses.lore_bonus = 5;
-    this->wisdom[17].bonuses.lore_bonus = 7;
-    this->wisdom[18].bonuses.lore_bonus = 10;
-    this->wisdom[19].bonuses.lore_bonus = 12;
+      this->wisdom[i]->bonuses.lore_bonus = 0;
+    this->wisdom[15]->bonuses.lore_bonus = 3;
+    this->wisdom[16]->bonuses.lore_bonus = 5;
+    this->wisdom[17]->bonuses.lore_bonus = 7;
+    this->wisdom[18]->bonuses.lore_bonus = 10;
+    this->wisdom[19]->bonuses.lore_bonus = 12;
     for (long i = 20; i <= 25; i++)
-      this->wisdom[i].bonuses.lore_bonus = 15 + (i - 20) * 5;
+      this->wisdom[i]->bonuses.lore_bonus = 15 + (i - 20) * 5;
     
     for (long i = 0; i < 13; i++)
-      this->wisdom[i].bonuses.bonus_spells = {};
-    this->wisdom[13].bonuses.bonus_spells = {0, 1};
-    this->wisdom[14].bonuses.bonus_spells = {0, 2};
-    this->wisdom[15].bonuses.bonus_spells = {0, 2, 1};
-    this->wisdom[16].bonuses.bonus_spells = {0, 2, 2};
-    this->wisdom[17].bonuses.bonus_spells = {0, 2, 2, 1};
-    this->wisdom[18].bonuses.bonus_spells = {0, 2, 2, 1, 1};
-    this->wisdom[19].bonuses.bonus_spells = {0, 3, 2, 1, 2};
-    this->wisdom[20].bonuses.bonus_spells = {0, 3, 3, 1, 2};
-    this->wisdom[21].bonuses.bonus_spells = {0, 3, 3, 2, 2, 1};
-    this->wisdom[22].bonuses.bonus_spells = {0, 3, 3, 2, 3, 2};
-    this->wisdom[23].bonuses.bonus_spells = {0, 3, 3, 2, 3, 4};
-    this->wisdom[24].bonuses.bonus_spells = {0, 3, 3, 2, 3, 4, 2};
-    this->wisdom[25].bonuses.bonus_spells = {0, 3, 3, 2, 3, 4, 3, 1};
+      this->wisdom[i]->bonuses.bonus_spells = {};
+    this->wisdom[13]->bonuses.bonus_spells = {0, 1};
+    this->wisdom[14]->bonuses.bonus_spells = {0, 2};
+    this->wisdom[15]->bonuses.bonus_spells = {0, 2, 1};
+    this->wisdom[16]->bonuses.bonus_spells = {0, 2, 2};
+    this->wisdom[17]->bonuses.bonus_spells = {0, 2, 2, 1};
+    this->wisdom[18]->bonuses.bonus_spells = {0, 2, 2, 1, 1};
+    this->wisdom[19]->bonuses.bonus_spells = {0, 3, 2, 1, 2};
+    this->wisdom[20]->bonuses.bonus_spells = {0, 3, 3, 1, 2};
+    this->wisdom[21]->bonuses.bonus_spells = {0, 3, 3, 2, 2, 1};
+    this->wisdom[22]->bonuses.bonus_spells = {0, 3, 3, 2, 3, 2};
+    this->wisdom[23]->bonuses.bonus_spells = {0, 3, 3, 2, 3, 4};
+    this->wisdom[24]->bonuses.bonus_spells = {0, 3, 3, 2, 3, 4, 2};
+    this->wisdom[25]->bonuses.bonus_spells = {0, 3, 3, 2, 3, 4, 3, 1};
     
     for (long i = 1; i <= 7; i++)
-      this->charisma[i].bonuses.reaction_bonus = -8 + i;
+      this->charisma[i]->bonuses.reaction_bonus = -8 + i;
     for (long i = 8; i < 13; i++)
-      this->charisma[i].bonuses.reaction_bonus = 0;
-    this->charisma[13].bonuses.reaction_bonus = 1;
-    this->charisma[14].bonuses.reaction_bonus = 2;
-    this->charisma[15].bonuses.reaction_bonus = 3;
-    this->charisma[16].bonuses.reaction_bonus = 4;
-    this->charisma[17].bonuses.reaction_bonus = 4;
-    this->charisma[18].bonuses.reaction_bonus = 5;
+      this->charisma[i]->bonuses.reaction_bonus = 0;
+    this->charisma[13]->bonuses.reaction_bonus = 1;
+    this->charisma[14]->bonuses.reaction_bonus = 2;
+    this->charisma[15]->bonuses.reaction_bonus = 3;
+    this->charisma[16]->bonuses.reaction_bonus = 4;
+    this->charisma[17]->bonuses.reaction_bonus = 4;
+    this->charisma[18]->bonuses.reaction_bonus = 5;
     for (long i = 19; i <= 25; i++)
-      this->charisma[i].bonuses.reaction_bonus = i - 11;
+      this->charisma[i]->bonuses.reaction_bonus = i - 11;
     
     for (long i = 1; i <= 9; i++)
-      this->dexterity[i].thief_abilities.find_traps = -30 + 5 * (i >> 1);
-    this->dexterity[10].thief_abilities.find_traps = -10;
-    this->dexterity[11].thief_abilities.find_traps = -5;
+      this->dexterity[i]->thief_abilities.find_traps = -30 + 5 * (i >> 1);
+    this->dexterity[10]->thief_abilities.find_traps = -10;
+    this->dexterity[11]->thief_abilities.find_traps = -5;
     for (long i = 18; i <= 25; i++)
-      this->dexterity[i].thief_abilities.find_traps = 5 * (i - 17);
+      this->dexterity[i]->thief_abilities.find_traps = 5 * (i - 17);
     
     for (long i = 1; i <= 10; i++)
-      this->dexterity[i].thief_abilities.open_locks = -30 + 5 * (i >> 1);
+      this->dexterity[i]->thief_abilities.open_locks = -30 + 5 * (i >> 1);
     for (long i = 11; i < 16; i++)
-      this->dexterity[i].thief_abilities.open_locks = 0;
+      this->dexterity[i]->thief_abilities.open_locks = 0;
     for (long i = 16; i <= 25; i++)
-      this->dexterity[i].thief_abilities.open_locks = 5 * (i - 15);
+      this->dexterity[i]->thief_abilities.open_locks = 5 * (i - 15);
     
     for (long i = 1; i <= 10; i++)
-      this->dexterity[i].thief_abilities.pick_pockets = -35 + 5 * (i >> 1);
-    this->dexterity[11].thief_abilities.pick_pockets = -5;
+      this->dexterity[i]->thief_abilities.pick_pockets = -35 + 5 * (i >> 1);
+    this->dexterity[11]->thief_abilities.pick_pockets = -5;
     for (long i = 12; i <= 25; i++)
-      this->dexterity[i].thief_abilities.pick_pockets = 5 * (i - 16);
+      this->dexterity[i]->thief_abilities.pick_pockets = 5 * (i - 16);
     
     for (long i = 1; i <= 10; i++)
-      this->dexterity[i].thief_abilities.stealth = -40 + 5 * (i >> 1);
-    this->dexterity[11].thief_abilities.stealth = -10;
-    this->dexterity[12].thief_abilities.stealth = -5;
+      this->dexterity[i]->thief_abilities.stealth = -40 + 5 * (i >> 1);
+    this->dexterity[11]->thief_abilities.stealth = -10;
+    this->dexterity[12]->thief_abilities.stealth = -5;
     for (long i = 13; i < 17; i++)
-      this->dexterity[i].thief_abilities.stealth = 0;
-    this->dexterity[17].thief_abilities.stealth = 5;
-    this->dexterity[18].thief_abilities.stealth = 10;
-    this->dexterity[19].thief_abilities.stealth = 15;
-    this->dexterity[20].thief_abilities.stealth = 18;
-    this->dexterity[21].thief_abilities.stealth = 20;
-    this->dexterity[22].thief_abilities.stealth = 23;
-    this->dexterity[23].thief_abilities.stealth = 25;
-    this->dexterity[24].thief_abilities.stealth = 30;
-    this->dexterity[25].thief_abilities.stealth = 35;
+      this->dexterity[i]->thief_abilities.stealth = 0;
+    this->dexterity[17]->thief_abilities.stealth = 5;
+    this->dexterity[18]->thief_abilities.stealth = 10;
+    this->dexterity[19]->thief_abilities.stealth = 15;
+    this->dexterity[20]->thief_abilities.stealth = 18;
+    this->dexterity[21]->thief_abilities.stealth = 20;
+    this->dexterity[22]->thief_abilities.stealth = 23;
+    this->dexterity[23]->thief_abilities.stealth = 25;
+    this->dexterity[24]->thief_abilities.stealth = 30;
+    this->dexterity[25]->thief_abilities.stealth = 35;
   }
   
   /**
@@ -392,20 +392,24 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(const AbilityChart& original) : Object(original)
   {
-    this->strength     = new AbilityBonus[26];
-    this->strength18   = new AbilityBonus[101];
-    this->dexterity    = new AbilityBonus[26];
-    this->constitution = new AbilityBonus[26];
-    this->intelligence = new AbilityBonus[26];
-    this->wisdom       = new AbilityBonus[26];
-    this->charisma     = new AbilityBonus[26];
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    this->strength     = new AbilityBonus*[26];
+    this->strength18   = new AbilityBonus*[101];
+    this->dexterity    = new AbilityBonus*[26];
+    this->constitution = new AbilityBonus*[26];
+    this->intelligence = new AbilityBonus*[26];
+    this->wisdom       = new AbilityBonus*[26];
+    this->charisma     = new AbilityBonus*[26];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strength[i] = new AbilityBonus(*(original.strength[i]));
+	this->dexterity[i] = new AbilityBonus(*(original.dexterity[i]));
+	this->constitution[i] = new AbilityBonus(*(original.constitution[i]));
+	this->intelligence[i] = new AbilityBonus(*(original.intelligence[i]));
+	this->wisdom[i] = new AbilityBonus(*(original.wisdom[i]));
+	this->charisma[i] = new AbilityBonus(*(original.charisma[i]));
+      }
+    for (long i = 0; i < 101; i++)
+      this->strength18[i] = new AbilityBonus(*(original.strength18[i]));
   }
   
   /**
@@ -415,20 +419,24 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(AbilityChart& original) : Object(original)
   {
-    this->strength     = new AbilityBonus[26];
-    this->strength18   = new AbilityBonus[101];
-    this->dexterity    = new AbilityBonus[26];
-    this->constitution = new AbilityBonus[26];
-    this->intelligence = new AbilityBonus[26];
-    this->wisdom       = new AbilityBonus[26];
-    this->charisma     = new AbilityBonus[26];
-    this->strength = original.strength;
-    this->strength18 = original.strength18;
-    this->dexterity = original.dexterity;
-    this->constitution = original.constitution;
-    this->intelligence = original.intelligence;
-    this->wisdom = original.wisdom;
-    this->charisma = original.charisma;
+    this->strength     = new AbilityBonus*[26];
+    this->strength18   = new AbilityBonus*[101];
+    this->dexterity    = new AbilityBonus*[26];
+    this->constitution = new AbilityBonus*[26];
+    this->intelligence = new AbilityBonus*[26];
+    this->wisdom       = new AbilityBonus*[26];
+    this->charisma     = new AbilityBonus*[26];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strength[i] = new AbilityBonus(*(original.strength[i]));
+	this->dexterity[i] = new AbilityBonus(*(original.dexterity[i]));
+	this->constitution[i] = new AbilityBonus(*(original.constitution[i]));
+	this->intelligence[i] = new AbilityBonus(*(original.intelligence[i]));
+	this->wisdom[i] = new AbilityBonus(*(original.wisdom[i]));
+	this->charisma[i] = new AbilityBonus(*(original.charisma[i]));
+      }
+    for (long i = 0; i < 101; i++)
+      this->strength18[i] = new AbilityBonus(*(original.strength18[i]));
   }
   
   /**
@@ -438,13 +446,6 @@ namespace tbrpg
    */
   AbilityChart::AbilityChart(AbilityChart&& original) : Object(original)
   {
-    this->strength     = new AbilityBonus[26];
-    this->strength18   = new AbilityBonus[101];
-    this->dexterity    = new AbilityBonus[26];
-    this->constitution = new AbilityBonus[26];
-    this->intelligence = new AbilityBonus[26];
-    this->wisdom       = new AbilityBonus[26];
-    this->charisma     = new AbilityBonus[26];
     std::swap(this->strength, original.strength);
     std::swap(this->strength18, original.strength18);
     std::swap(this->dexterity, original.dexterity);
@@ -471,6 +472,17 @@ namespace tbrpg
    */
   AbilityChart::~AbilityChart()
   {
+    for (long i = 0; i < 26; i++)
+      {
+	delete this->strength[i];
+	delete this->dexterity[i];
+	delete this->constitution[i];
+	delete this->intelligence[i];
+	delete this->wisdom[i];
+	delete this->charisma[i];
+      }
+    for (long i = 0; i < 101; i++)
+      delete this->strength18[i];
     delete[] this->strength;
     delete[] this->strength18;
     delete[] this->dexterity;
@@ -493,15 +505,26 @@ namespace tbrpg
     Object::__copy__((Object&)*this, (Object&)original);
     for (long i = 0; i < 26; i++)
       {
-	this->strength[i] = original.strength[i];
-	this->dexterity[i] = original.dexterity[i];
-	this->constitution[i] = original.constitution[i];
-	this->intelligence[i] = original.intelligence[i];
-	this->wisdom[i] = original.wisdom[i];
-	this->charisma[i] = original.charisma[i];
+	delete this->strength[i];
+	delete this->dexterity[i];
+	delete this->constitution[i];
+	delete this->intelligence[i];
+	delete this->wisdom[i];
+	delete this->charisma[i];
       }
     for (long i = 0; i < 101; i++)
-      this->strength18[i] = original.strength18[i];
+      delete this->strength18[i];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strength[i] = new AbilityBonus(*(original.strength[i]));
+	this->dexterity[i] = new AbilityBonus(*(original.dexterity[i]));
+	this->constitution[i] = new AbilityBonus(*(original.constitution[i]));
+	this->intelligence[i] = new AbilityBonus(*(original.intelligence[i]));
+	this->wisdom[i] = new AbilityBonus(*(original.wisdom[i]));
+	this->charisma[i] = new AbilityBonus(*(original.charisma[i]));
+      }
+    for (long i = 0; i < 101; i++)
+      this->strength18[i] = new AbilityBonus(*(original.strength18[i]));
     return *this;
   }
   
@@ -516,15 +539,26 @@ namespace tbrpg
     Object::__copy__((Object&)*this, (Object&)original);
     for (long i = 0; i < 26; i++)
       {
-	this->strength[i] = original.strength[i];
-	this->dexterity[i] = original.dexterity[i];
-	this->constitution[i] = original.constitution[i];
-	this->intelligence[i] = original.intelligence[i];
-	this->wisdom[i] = original.wisdom[i];
-	this->charisma[i] = original.charisma[i];
+	delete this->strength[i];
+	delete this->dexterity[i];
+	delete this->constitution[i];
+	delete this->intelligence[i];
+	delete this->wisdom[i];
+	delete this->charisma[i];
       }
     for (long i = 0; i < 101; i++)
-      this->strength18[i] = original.strength18[i];
+      delete this->strength18[i];
+    for (long i = 0; i < 26; i++)
+      {
+	this->strength[i] = new AbilityBonus(*(original.strength[i]));
+	this->dexterity[i] = new AbilityBonus(*(original.dexterity[i]));
+	this->constitution[i] = new AbilityBonus(*(original.constitution[i]));
+	this->intelligence[i] = new AbilityBonus(*(original.intelligence[i]));
+	this->wisdom[i] = new AbilityBonus(*(original.wisdom[i]));
+	this->charisma[i] = new AbilityBonus(*(original.charisma[i]));
+      }
+    for (long i = 0; i < 101; i++)
+      this->strength18[i] = new AbilityBonus(*(original.strength18[i]));
     return *this;
   }
   
@@ -603,22 +637,22 @@ namespace tbrpg
     for (long i = 0; i < 26; i++)
       {
 	rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-	rc += std::hash<AbilityBonus>()(this->strength[i]);
+	rc += std::hash<AbilityBonus*>()(this->strength[i]);
 	rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-	rc += std::hash<AbilityBonus>()(this->dexterity[i]);
+	rc += std::hash<AbilityBonus*>()(this->dexterity[i]);
 	rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-	rc += std::hash<AbilityBonus>()(this->constitution[i]);
+	rc += std::hash<AbilityBonus*>()(this->constitution[i]);
 	rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-	rc += std::hash<AbilityBonus>()(this->intelligence[i]);
+	rc += std::hash<AbilityBonus*>()(this->intelligence[i]);
 	rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-	rc += std::hash<AbilityBonus>()(this->wisdom[i]);
+	rc += std::hash<AbilityBonus*>()(this->wisdom[i]);
 	rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-	rc += std::hash<AbilityBonus>()(this->charisma[i]);
+	rc += std::hash<AbilityBonus*>()(this->charisma[i]);
       }
     for (long i = 0; i < 101; i++)
       {
 	rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-	rc += std::hash<AbilityBonus>()(this->strength18[i]);
+	rc += std::hash<AbilityBonus*>()(this->strength18[i]);
       }
     return rc;
   }

@@ -90,8 +90,8 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    for (MapMajor* major : *(this->majors))
-      delete major;
+    //for (MapMajor* major : *(this->majors))
+    //  delete major;
     delete this->majors;
   }
   
@@ -105,8 +105,8 @@ namespace tbrpg
    */
   Map& Map::operator =(const Map& original)
   {
-    for (MapMajor* major : *(this->majors))
-      delete major;
+    //for (MapMajor* major : *(this->majors))
+    //  delete major;
     delete this->majors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->start = original.start;
@@ -122,8 +122,8 @@ namespace tbrpg
    */
   Map& Map::operator =(Map& original)
   {
-    for (MapMajor* major : *(this->majors))
-      delete major;
+    //for (MapMajor* major : *(this->majors))
+    //  delete major;
     delete this->majors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->start = original.start;

@@ -31,7 +31,7 @@
 namespace tbrpg
 {
   #define ___f(X, Y, Z, W)					\
-    (this->rules->ability_chart->X[(long)(this->Y(character))].Z.W)
+    (this->rules->ability_chart->X[(long)(this->Y(character))]->Z.W)
   
   #define ___i(X, Y, Z, op)				\
     if (character.record.inventory.X == nullptr)	\
