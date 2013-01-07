@@ -55,7 +55,7 @@ namespace tbrpg
     /**
      * The game senario
      */
-    Senario game;
+    Senario* game;
     
     /**
      * The players
@@ -89,7 +89,7 @@ namespace tbrpg
      * 
      * @param  senario  The game senario
      */
-    GamePlay(Senario& senario);
+    GamePlay(Senario* senario = nullptr);
     
     /**
      * Destructor

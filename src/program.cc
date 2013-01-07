@@ -123,7 +123,7 @@ namespace tbrpg
     senario->partyFormed();
     senario->start();
     
-    GamePlay game = GamePlay(*senario);
+    GamePlay game = GamePlay(senario);
     while (game.next())
       ;
     

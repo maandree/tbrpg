@@ -231,7 +231,11 @@ namespace tbrpg
   _01:
     input = promptList("Select gender: ", genders);
     if (input == "")
-      return nullptr;
+      {
+	delete this->sheet;
+	this->sheet = nullptr;
+	return nullptr;
+      }
     this->sheet->female = input == "female";
     
     
