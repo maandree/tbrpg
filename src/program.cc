@@ -108,7 +108,7 @@ namespace tbrpg
 	return 0;
       }
     
-    //cleaner::getInstance().enqueueDelete(senario);
+    cleaner::getInstance().enqueueDelete(senario);
     std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario->rules.party_start_size);
     
     if (createParty(*senario, sheets) == false)

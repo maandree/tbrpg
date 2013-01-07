@@ -129,6 +129,8 @@ namespace tbrpg
     prev->description = "the open roads";
     next->leads_to = area_goal;
     prev->leads_to = area_wilds;
+    area_goal->connections.push_back(prev);
+    area_wilds->connections.push_back(next);
     
     Store* store = new Store();
     area_inn->creatures.push_back(store);
