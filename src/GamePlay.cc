@@ -31,21 +31,21 @@
 namespace tbrpg
 {
   #define __forbid_stealth()							\
-    if (this->players[this->next_player]->stealth_on)				\
+    if (this->players[0][this->next_player]->stealth_on)			\
       {										\
 	std::cout << "You will have to turn off Stealth Mode." << std::endl;	\
 	return 2;								\
       }//
       
   #define __forbid_find_trap()							\
-    if (this->players[this->next_player]->find_traps_on)			\
+    if (this->players[0][this->next_player]->find_traps_on)			\
       {										\
 	std::cout << "You will have to turn off Find Traps." << std::endl; 	\
 	return 2;								\
       }//
       
   #define __forbid_turn_undead()						\
-    if (this->players[this->next_player]->turn_undead_on)			\
+    if (this->players[0][this->next_player]->turn_undead_on)			\
       {										\
 	std::cout << "You will have to turn off Turn Undead." << std::endl;	\
 	return 2;								\
@@ -60,35 +60,42 @@ namespace tbrpg
    */
   GamePlay::GamePlay(Senario* senario)
   {
-    this->calc = Calculator();
+    this->calc = new Calculator();
     if ((senario))
-      this->calc.rules = senario->rules;
+      this->calc->rules = senario->rules;
     this->game = senario;
-    this->players = {};
+    this->players = new std::vector<GameCharacter*>();
     this->next_player = 0;
   
     if ((senario))
       for (Character* player : senario->party->characters)
 	{
 	  GameCharacter* gamechar = new GameCharacter();
-	  this->players.push_back(gamechar);
+	  this->players->push_back(gamechar);
 	  
 	  gamechar->character = player;
 	  gamechar->area = senario->map->start;
 	}
     
     if ((senario))
-      this->attack_dice = Dice(senario->rules->attack_roll_dice,
-			       senario->rules->attack_roll_die);
+      this->attack_dice = new Dice(senario->rules->attack_roll_dice,
+				   senario->rules->attack_roll_die);
+    else
+      this->attack_dice = nullptr;
   }
+  
   
   /**
    * Destructor
    */
   GamePlay::~GamePlay()
   {
-    for (GameCharacter* player : this->players)
+    for (GameCharacter* player : *(this->players))
       delete player;
+    delete this->players;
+    delete this->calc;
+    if ((this->attack_dice))
+      delete this->attack_dice;
   }
   
   
@@ -138,7 +145,7 @@ namespace tbrpg
     
     #undef __add
     
-    GameCharacter* player = this->players[this->next_player];
+    GameCharacter* player = (*(this->players))[this->next_player];
     
     if ((player->turns == 0) && (player->character->alive == 1))
       for (;;)
@@ -165,13 +172,13 @@ namespace tbrpg
 	    std::flush(std::cout << "Type . to wait one turn" << std::endl);
 	}
     
-    this->players[this->next_player]->character->fatigue++;
+    (*(this->players))[this->next_player]->character->fatigue++;
     if ((player->turns))
       player->turns--;
-    if (++(this->next_player) == (long)(this->players.size()))
+    if (++(this->next_player) == (long)(this->players->size()))
       {
 	this->next_player = 0;
-	for (GameCharacter* p : this->players)
+	for (GameCharacter* p : *(this->players))
 	  if ((p->character->fatigue += 1) >= 24 * 60)
 	    std::flush(std::cout << "033[01;3" << (char)((int)'0' + p->character->record.colour) << "m"
 				 << p->character->record.name
@@ -189,10 +196,10 @@ namespace tbrpg
    */
   bool GamePlay::gathered() const
   {
-    MapMinor* area = this->players[0]->area;
+    MapMinor* area = this->players[0][0]->area;
     
-    for (size_t i = 1, n = this->players.size(); i < n; i++)
-      if (this->players[i]->area != area)
+    for (size_t i = 1, n = this->players->size(); i < n; i++)
+      if (this->players[0][i]->area != area)
 	return false;
     
     return true;
@@ -237,7 +244,7 @@ namespace tbrpg
   char GamePlay::action_rest()
   {
     int monstercount = 0;
-    for (Creature* creature : this->players[this->next_player]->area->creatures)
+    for (Creature* creature : (*(this->players))[this->next_player]->area->creatures)
       if (creature->hostile && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	monstercount++;
     
@@ -245,23 +252,23 @@ namespace tbrpg
       std::cout << "You may not rest while in combat." << std::endl;
     else if (gathered() == false)
       std::cout << "You must gather you party before resting." << std::endl;
-    else if (this->players[this->next_player]->stealth_on)
+    else if (this->players[0][this->next_player]->stealth_on)
       std::cout << "You will have to turn off Stealth Mode." << std::endl;
-    else if (this->players[this->next_player]->find_traps_on)
+    else if (this->players[0][this->next_player]->find_traps_on)
       std::cout << "You will have to turn off Find Traps." << std::endl;
-    else if (this->players[this->next_player]->turn_undead_on)
+    else if (this->players[0][this->next_player]->turn_undead_on)
       std::cout << "You will have to turn off Turn Undead." << std::endl;
     else
-      if (this->players[0]->area->rest())
+      if (this->players[0][0]->area->rest())
 	{
-          if (this->players[0]->area->may_rest == false)
+          if (this->players[0][0]->area->may_rest == false)
 	    {
               std::flush(std::cout << "May not rest here, either find an inn or rest outside." << std::endl);
 	      std::flush(std::cerr << "\033[02msenario error: may_rest flag is of, but rest was allowed.\033[22m" << std::endl);
 	      return 2;
 	    }
 	  std::cout << "Your party have slept for 8 hours (48 rounds)." << std::endl;
-	  for (GameCharacter* player : this->players)
+	  for (GameCharacter* player : this->players[0])
 	    {
 	      player->character->hit_points += (480 / this->game->rules->rest_healing_turns)
 		                                    * this->game->rules->rest_healing;
@@ -282,7 +289,7 @@ namespace tbrpg
    */
   char GamePlay::action_quiver()
   {
-    this->players[this->next_player]->selectQuiver();
+    this->players[0][this->next_player]->selectQuiver();
     return 2;
   }
   
@@ -293,7 +300,7 @@ namespace tbrpg
    */
   char GamePlay::action_weapon()
   {
-    this->players[this->next_player]->selectWeapon();
+    this->players[0][this->next_player]->selectWeapon();
     return 2;
   }
   
@@ -304,7 +311,7 @@ namespace tbrpg
    */
   char GamePlay::action_attack()
   {
-    GameCharacter* player = this->players[this->next_player];
+    GameCharacter* player = this->players[0][this->next_player];
     
     __forbid_find_trap();
     __forbid_turn_undead();
@@ -396,16 +403,16 @@ namespace tbrpg
     if ((player->stealth_on) && weapon->melee)
     {
       player->stealth_on = false;
-      backstabMultiplier *= this->calc.getBackstabMultiplier(*(player->character));
+      backstabMultiplier *= this->calc->getBackstabMultiplier(*(player->character));
     }
     
     int totaldamage = 0;
-    int attacks = this->calc.getHalfAttacks(*(player->character), *weapon);
+    int attacks = this->calc->getHalfAttacks(*(player->character), *weapon);
     
     while (attacks >= 0)
       {
-	int thac0 = this->calc.getTHAC0(*(player->character), *weapon, quiver);
-	int ac = this->calc.getArmourClass(*(attackable[target]), damagetype, !(weapon->melee), targetweapon);
+	int thac0 = this->calc->getTHAC0(*(player->character), *weapon, quiver);
+	int ac = this->calc->getArmourClass(*(attackable[target]), damagetype, !(weapon->melee), targetweapon);
 	int rollmod = 0;
 	
 	if (player->character->record.racial_enemy != nullptr)
@@ -422,7 +429,7 @@ namespace tbrpg
  	      }
 	  }
 	
-	int roll = this->attack_dice.roll();
+	int roll = this->attack_dice->roll();
 	std::cout << "Attack roll: " << roll << " versus " << thac0 << " - " << ac << ": ";
 	
 	if (roll <= this->game->rules->critical_miss)
@@ -447,7 +454,7 @@ namespace tbrpg
 	multiplier *= backstabMultiplier;
 	
 	Dice damagedice = Dice(weapon->damage_dice, weapon->damage_die);
-	int damage = this->calc.getDamageBonus(*(player->character), *weapon, quiver);
+	int damage = this->calc->getDamageBonus(*(player->character), *weapon, quiver);
 	std::cout << "Damage: " << damage << std::endl;
 	totaldamage += damage;
       }
@@ -527,7 +534,7 @@ namespace tbrpg
     __forbid_turn_undead();
     
     std::vector<Creature*> talkable = std::vector<Creature*>();
-    for (Creature* creature : this->players[this->next_player]->area->creatures)
+    for (Creature* creature : this->players[0][this->next_player]->area->creatures)
       if ((creature->hostile == false) && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	talkable.push_back(creature);
     
@@ -552,9 +559,9 @@ namespace tbrpg
       return 2; 
     
     std::vector<Character*> here = std::vector<Character*>();
-    MapMinor* location = this->players[this->next_player]->area;
+    MapMinor* location = this->players[0][this->next_player]->area;
     
-    for (GameCharacter* p : this->players)
+    for (GameCharacter* p : this->players[0])
       if (p->area == location)
 	here.push_back(p->character);
     
@@ -588,7 +595,7 @@ namespace tbrpg
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance* entrance : this->players[this->next_player]->area->connections)
+    for (Entrance* entrance : this->players[0][this->next_player]->area->connections)
       if (*entrance >= PROTOTYPE(Door))
 	{
 	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(entrance)));
@@ -597,7 +604,7 @@ namespace tbrpg
 	  names.push_back(ss.str());
 	}
     
-    for (Item* item : this->players[this->next_player]->area->items)
+    for (Item* item : this->players[0][this->next_player]->area->items)
       if (*item >= PROTOTYPE(EnvironmentContainer))
 	{
 	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Item*>(item)));
@@ -615,7 +622,7 @@ namespace tbrpg
     long target = promptMenu("Select target:", names);
     if (target < 0)
       return 2;
-    this->players[this->next_player]->turns += 1; /* XXX document time and make customisable */
+    this->players[0][this->next_player]->turns += 1; /* XXX document time and make customisable */
     
     Lockable* lock = locks[target];
     
@@ -628,9 +635,9 @@ namespace tbrpg
       }
     else
       {
-	int roll = this->attack_dice.roll();
+	int roll = this->attack_dice->roll();
 	int level = lock->bash_level;
-	float mod = this->calc.getBashing(*(this->players[this->next_player]->character));
+	float mod = this->calc->getBashing(*(this->players[0][this->next_player]->character));
 	int total = (int)(roll * mod + 0.5);
 	bool success = total >= level;
 	
@@ -661,7 +668,7 @@ namespace tbrpg
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance* entrance : this->players[this->next_player]->area->connections)
+    for (Entrance* entrance : this->players[0][this->next_player]->area->connections)
       if (*entrance >= PROTOTYPE(Door))
 	{
 	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Door*>(entrance)));
@@ -670,7 +677,7 @@ namespace tbrpg
 	  names.push_back(ss.str());
 	}
     
-    for (Item* item : this->players[this->next_player]->area->items)
+    for (Item* item : this->players[0][this->next_player]->area->items)
       if (*item >= PROTOTYPE(EnvironmentContainer))
 	{
 	  locks.push_back(dynamic_cast<Lockable*>(static_cast<Item*>(item)));
@@ -688,7 +695,7 @@ namespace tbrpg
     long target = promptMenu("Select target:", names);
     if (target < 0)
       return 2;
-    this->players[this->next_player]->turns += 1; /* XXX document time and make customisable */
+    this->players[0][this->next_player]->turns += 1; /* XXX document time and make customisable */
     
     Lockable* lock = locks[target];
     
@@ -701,9 +708,9 @@ namespace tbrpg
       }
     else
       {
-	int roll = this->attack_dice.roll();
+	int roll = this->attack_dice->roll();
 	int level = lock->pick_level;
-	float mod = this->calc.getPicking(*(this->players[this->next_player]->character));
+	float mod = this->calc->getPicking(*(this->players[0][this->next_player]->character));
 	int total = (int)(roll * mod + 0.5);
 	bool success = total >= level;
 	
@@ -746,7 +753,7 @@ namespace tbrpg
     
     {
       long _slot = 0;
-      for (Item* item : this->players[this->next_player]->character->record.inventory.personal)
+      for (Item* item : this->players[0][this->next_player]->character->record.inventory.personal)
 	if (item == nullptr)
 	  {
 	    slot = _slot;
@@ -767,7 +774,7 @@ namespace tbrpg
     __forbid_turn_undead();
     
     std::vector<Creature*> pickable = std::vector<Creature*>();
-    for (Creature* creature : this->players[this->next_player]->area->creatures)
+    for (Creature* creature : this->players[0][this->next_player]->area->creatures)
       if ((creature->hostile == false) && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	pickable.push_back(creature);
     
@@ -798,8 +805,8 @@ namespace tbrpg
       }
     
     int level = pickable[target]->pick_level;
-    int roll = this->attack_dice.roll();
-    float mod = this->calc.getStealing(*(this->players[this->next_player]->character));
+    int roll = this->attack_dice->roll();
+    float mod = this->calc->getStealing(*(this->players[0][this->next_player]->character));
     
     if ((int)(roll * mod + 0.5) >= level)
       {
@@ -807,7 +814,7 @@ namespace tbrpg
 	if ((stole))
 	  {
 	    std::cout << "Stole: " << stole->name << std::endl;
-	    this->players[this->next_player]->character->record.inventory.personal[slot] = stole;
+	    this->players[0][this->next_player]->character->record.inventory.personal[slot] = stole;
 	  }
 	else
 	  std::cout << "Target has noting to steal." << std::endl;
@@ -833,7 +840,7 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    if (this->players[this->next_player]->stealth_on == false)
+    if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth activated." << std::endl;
     else
       std::cout << "Not implement..." << std::endl; // TODO
@@ -850,7 +857,7 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    if (this->players[this->next_player]->stealth_on == false)
+    if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
     else
       std::cout << "Not implement..." << std::endl; // TODO
@@ -867,7 +874,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_turn_undead();
     
-    if (this->players[this->next_player]->find_traps_on)
+    if (this->players[0][this->next_player]->find_traps_on)
       {
 	std::cout << "You already have Find Traps activated." << std::endl;
 	return 2;
@@ -886,7 +893,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_turn_undead();
     
-    if (this->players[this->next_player]->find_traps_on == false)
+    if (this->players[0][this->next_player]->find_traps_on == false)
       std::cout << "You already have Find Traps deactivated." << std::endl;
     else
       std::cout << "Not implement..." << std::endl; // TODO
@@ -903,7 +910,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     
-    if (this->players[this->next_player]->turn_undead_on)
+    if (this->players[0][this->next_player]->turn_undead_on)
       {
 	std::cout << "You already have Turn Undead activated." << std::endl;
 	return 2;
@@ -922,7 +929,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     
-    if (this->players[this->next_player]->turn_undead_on == false)
+    if (this->players[0][this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
       std::cout << "Not implement..." << std::endl; // TODO
@@ -942,7 +949,7 @@ namespace tbrpg
     
     std::cout << "Not implement..." << std::endl; // TODO
     
-    this->players[this->next_player]->turns += 10; /* XXX make customisable */
+    this->players[0][this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
   }
   
@@ -957,7 +964,7 @@ namespace tbrpg
     
     std::cout << "Party members:" << std::endl;
     long pindex = 0;
-    for (GameCharacter* character : this->players)
+    for (GameCharacter* character : *(this->players))
       {
 	Character* c = character->character;
 	std::cout << "\033[";
@@ -1002,7 +1009,7 @@ namespace tbrpg
       }
     
     std::cout << std::endl
-	      << "Empty party slots: " << (this->game->rules->party_size - this->players.size())
+	      << "Empty party slots: " << (this->game->rules->party_size - this->players->size())
 	      << std::endl << std::endl;
     
     // TODO examine character, reform party
@@ -1025,22 +1032,25 @@ namespace tbrpg
     std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
     for (MapMajor* mmajor : *(this->game->map->majors))
       distmap[mmajor] = -1;
-    this->findDistances(*(this->players[this->next_player]->area), distmap, nullptr);
+    this->findDistances(*(this->players[0][this->next_player]->area), distmap, nullptr);
     
     for (MapMajor* major : *(this->game->map->majors))
       if (major->visible)
 	{
 	  std::cout << major->name;
-	  if (distmap.at(major) < 0)
-	    std::cout << " (not reachable)";
-	  else if (major->visited == false)
-	    std::cout << " (not visited)";
-	  if (major->visitable == false)
-	    std::cout << " (not visitable)";
-	  if (major == this->players[this->next_player]->area->is_in)
+	  if (major == this->players[0][this->next_player]->area->is_in)
 	    std::cout << " (you are here)";
-	  else if (distmap.at(major) >= 0)
-	    std::cout << " (distance: " << distmap.at(major) << ")";
+	  else
+	    {
+	      if (distmap.at(major) < 0)
+		std::cout << " (not reachable)";
+	      else if (major->visited == false)
+		std::cout << " (not visited)";
+	      if (major->visitable == false)
+		std::cout << " (not visitable)";
+	      if (distmap.at(major) >= 0)
+		std::cout << " (distance: " << distmap.at(major) << ")";
+	    }
 	  std::cout << std::endl;
 	}
     
@@ -1054,27 +1064,27 @@ namespace tbrpg
    */
   char GamePlay::action_area()
   {
-    std::cout << this->players[this->next_player]->area->description << std::endl << std::endl;
+    std::cout << this->players[0][this->next_player]->area->description << std::endl << std::endl;
     
-    for (Entrance* connection : this->players[this->next_player]->area->connections)
+    for (Entrance* connection : this->players[0][this->next_player]->area->connections)
       std::cout << "Entrance: " << connection->direction << " → " << connection->description << std::endl;
-    if (this->players[this->next_player]->area->connections.size() > 0)
+    if (this->players[0][this->next_player]->area->connections.size() > 0)
       std::cout << std::endl;
     
-    for (Road* road : this->players[this->next_player]->area->roads)
+    for (Road* road : this->players[0][this->next_player]->area->roads)
       std::cout << "Road direction: " << road->direction << std::endl;
-    if (this->players[this->next_player]->area->roads.size() > 0)
+    if (this->players[0][this->next_player]->area->roads.size() > 0)
       std::cout << std::endl;
     
-    for (Item* item : this->players[this->next_player]->area->items)
+    for (Item* item : this->players[0][this->next_player]->area->items)
       std::cout << "On the ground: " << item->name << std::endl;
-    if (this->players[this->next_player]->area->items.size() > 0)
+    if (this->players[0][this->next_player]->area->items.size() > 0)
       std::cout << std::endl;
     
-    for (Creature* creature : this->players[this->next_player]->area->creatures)
+    for (Creature* creature : this->players[0][this->next_player]->area->creatures)
       if (creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
 	std::cout << creature->record.name << (creature->hostile ? " (hostile)" : " (friendly)") << std::endl;
-    if (this->players[this->next_player]->area->creatures.size() > 0)
+    if (this->players[0][this->next_player]->area->creatures.size() > 0)
       std::cout << std::endl;
     
     std::flush(std::cout);
@@ -1092,7 +1102,7 @@ namespace tbrpg
     std::vector<Road*> roads = std::vector<Road*>();
     std::vector<std::string> names = std::vector<std::string>();
     
-    for (Entrance* entrance : this->players[this->next_player]->area->connections)
+    for (Entrance* entrance : this->players[0][this->next_player]->area->connections)
       {
 	std::stringstream ss;
 	ss << "Entrance: " << entrance->direction << " → " << entrance->description;
@@ -1100,7 +1110,7 @@ namespace tbrpg
 	entrances.push_back(entrance);
       }
     
-    for (Road* road : this->players[this->next_player]->area->roads)
+    for (Road* road : this->players[0][this->next_player]->area->roads)
       {
 	std::stringstream ss;
 	ss << "Road: " << road->direction;
@@ -1120,7 +1130,7 @@ namespace tbrpg
 	else if ((*entrance >= PROTOTYPE(Door)) && static_cast<Door*>(entrance)->locked)
 	  std::cout << "It's locked." << std::endl;
 	else
-	  this->players[this->next_player]->area = static_cast<MapMinor*>(entrance->leads_to);
+	  this->players[0][this->next_player]->area = static_cast<MapMinor*>(entrance->leads_to);
       }
     else
       {
@@ -1141,7 +1151,7 @@ namespace tbrpg
 	    for (MapMajor* mmajor : *(this->game->map->majors))
 	      distmap[mmajor] = -1;
 	    std::unordered_map<MapMajor*, MapMinor*> where = std::unordered_map<MapMajor*, MapMinor*>();
-	    auto map = this->findDistances(*(this->players[this->next_player]->area), distmap, &where);
+	    auto map = this->findDistances(*(this->players[0][this->next_player]->area), distmap, &where);
 	    
 	    for (MapMajor* mmajor : *(this->game->map->majors))
 	      if (mmajor->visible)
@@ -1149,23 +1159,26 @@ namespace tbrpg
 		  majors.push_back(mmajor);
 		  std::stringstream ss;
 		  ss << mmajor->name;
-		  if (distmap.at(mmajor) < 0)
-		    ss << " (not reachable)";
-		  else if (mmajor->visited == false)
-		    ss << " (not visited)";
-		  if (mmajor->visitable == false)
-		    ss << " (not visitable)";
-		  if (mmajor == this->players[this->next_player]->area->is_in)
+		  if (mmajor == this->players[0][this->next_player]->area->is_in)
 		    ss << " (you are here)";
-		  else if (distmap.at(mmajor) >= 0)
-		    ss << " (distance: " << distmap.at(mmajor) << ")";
-		  if (mmajor == major)
-		    ss << " (neighbouring)";
+		  else
+		    {
+		      if (distmap.at(mmajor) < 0)
+			ss << " (not reachable)";
+		      else if (mmajor->visited == false)
+			ss << " (not visited)";
+		      if (mmajor->visitable == false)
+			ss << " (not visitable)";
+		      if (distmap.at(mmajor) >= 0)
+			ss << " (distance: " << distmap.at(mmajor) << ")";
+		      if (mmajor == major)
+			ss << " (neighbouring)";
+		    }
 		  names.push_back(ss.str());
 		}
 	    
 	    long target = promptMenu("Where do you want to go?", names);
-	    if (target < 0)
+	    if ((target < 0) || (majors[target] == this->players[0][this->next_player]->area->is_in))
 	      return 2;
 	    
 	    MapMajor* mmajor = majors[target];
@@ -1185,7 +1198,7 @@ namespace tbrpg
 	    /* TODO get travel time */
 	    /* TODO support waylay */
 	    
-	    for (GameCharacter* gamechar : this->players)
+	    for (GameCharacter* gamechar : *(this->players))
 	      gamechar->area = mminor;
 	    mmajor->visited = true;
 	  }
@@ -1239,12 +1252,12 @@ namespace tbrpg
 	int i = 0;
 	for (MapMinor* element : set)
 	  {
-	    i++;
 	    if ((best < 0) || (explored[element] && (distance[element] < best)))
 	      {
 		index = i;
 		distance[element] = best;
 	      }
+	    i++;
 	  }
 	MapMinor* u = set[index];
 	set.erase(set.begin() + index);

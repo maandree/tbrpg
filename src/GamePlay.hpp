@@ -60,7 +60,7 @@ namespace tbrpg
     /**
      * The players
      */
-    std::vector<GameCharacter*> players;
+    std::vector<GameCharacter*>* players;
     
     /**
      * The next in the game loop
@@ -75,12 +75,12 @@ namespace tbrpg
     /**
      * The attack dice
      */
-    Dice attack_dice;
+    Dice* attack_dice;
     
     /**
      * The attribute calculator
      */
-    Calculator calc;
+    Calculator* calc;
     
     
   public:
