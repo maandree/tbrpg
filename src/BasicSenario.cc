@@ -38,9 +38,9 @@ namespace tbrpg
     this->rules->party_size = 3;
     this->rules->party_start_size = 3;
     
-    this->rules->inventory_prototype.personal[0] = new Gold();
-    this->rules->inventory_prototype.personal[0]->quantity = 400;
-    cleaner::getInstance().enqueueDelete(this->rules->inventory_prototype.personal[0]);
+    this->rules->inventory_prototype->personal[0] = new Gold();
+    this->rules->inventory_prototype->personal[0]->quantity = 400;
+    cleaner::getInstance().enqueueDelete(this->rules->inventory_prototype->personal[0]);
     
     MapMajor* map_town = new MapMajor();
     MapMajor* map_wilds = new MapMajor();

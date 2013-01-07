@@ -495,7 +495,7 @@ namespace tbrpg
     this->sheet->name = input;
     
     
-    Inventory* inventory = (Inventory*)(this->ruleset->inventory_prototype.fork());
+    Inventory* inventory = (Inventory*)(this->ruleset->inventory_prototype->fork());
     this->sheet->inventory = *inventory;
     delete inventory;
     //cleaner::getInstance().enqueueDelete(inventory);

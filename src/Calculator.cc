@@ -31,35 +31,35 @@
 namespace tbrpg
 {
   #define ___f(X, Y, Z, W)					\
-    (this->rules->ability_chart.X[(long)(this->Y(character))].Z.W)
+    (this->rules->ability_chart->X[(long)(this->Y(character))].Z.W)
   
   #define ___i(X, Y, Z, op)				\
     if (character.record.inventory.X == nullptr)	\
       op (character.record.inventory.X->bonuses.Y.Z)
   
-  #define __gg(X, Y, op)			       	\
-    if (this->getStrength(character) != 18)		\
-      op ___f(strength, getStrength, X, Y);		\
-    else						\
-      op ___f(strength18, getStrength18, X, Y);		\
-    op ___f(constitution, getConstitution, X, Y);	\
-    op ___f(dexterity, getDexterity, X, Y);		\
-    op ___f(intelligence, getIntelligence, X, Y);	\
-    op ___f(wisdom, getWisdom, X, Y);			\
-    op ___f(charisma, getCharisma, X, Y);		\
-    op (character.record.race->bonuses.X.Y);		\
-    for (Class* c : character.record.prestige)		\
-      op (c->abilities.X.Y);				\
-    ___i(right_hand, X, Y, op);			       	\
-    ___i(headgear, X, Y, op);			       	\
-    ___i(amulet, X, Y, op);				\
-    ___i(body, X, Y, op);				\
-    ___i(gauntlets, X, Y, op);				\
-    ___i(girdle, X, Y, op);				\
-    ___i(boots, X, Y, op);				\
-    ___i(cloak, X, Y, op);				\
-    for (Ring* ring : character.record.inventory.rings)	\
-      if (ring != nullptr)				\
+  #define __gg(X, Y, op)			       		\
+    if (this->getStrength(character) != 18)			\
+      op ___f(strength, getStrength, X, Y);			\
+    else							\
+      op ___f(strength18, getStrength18, X, Y);			\
+    op ___f(constitution, getConstitution, X, Y);		\
+    op ___f(dexterity, getDexterity, X, Y);			\
+    op ___f(intelligence, getIntelligence, X, Y);		\
+    op ___f(wisdom, getWisdom, X, Y);				\
+    op ___f(charisma, getCharisma, X, Y);			\
+    op (character.record.race->bonuses.X.Y);			\
+    for (Class* c : character.record.prestige)			\
+      op (c->abilities.X.Y);					\
+    ___i(right_hand, X, Y, op);				       	\
+    ___i(headgear, X, Y, op);				       	\
+    ___i(amulet, X, Y, op);					\
+    ___i(body, X, Y, op);					\
+    ___i(gauntlets, X, Y, op);					\
+    ___i(girdle, X, Y, op);					\
+    ___i(boots, X, Y, op);					\
+    ___i(cloak, X, Y, op);					\
+    for (Ring* ring : character.record.inventory.rings)		\
+      if (ring != nullptr)					\
 	op (ring->bonuses.X.Y)
   
   #define __g(X, op) __gg(bonuses, X, op)
