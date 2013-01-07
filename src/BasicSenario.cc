@@ -43,18 +43,12 @@ namespace tbrpg
     cleaner::getInstance().enqueueDelete(this->rules->inventory_prototype->personal[0]);
     
     MapMajor* map_town = new MapMajor();
-    //MapMajor* map_wilds = new MapMajor();
-    this->map->majors->push_back(map_town);
-    /*
+    MapMajor* map_wilds = new MapMajor();
+    
     MapMinor* area_inn = new House();
     MapMinor* area_town = new Town();
     MapMinor* area_wilds = new Wilderness();
     MapMinor* area_goal = new Wilderness();
-    
-    cleaner::getInstance().enqueueDelete(map_town);
-    cleaner::getInstance().enqueueDelete(map_wilds);
-    cleaner::getInstance().enqueueDelete(area_wilds);
-    cleaner::getInstance().enqueueDelete(area_goal);
     
     map_town->name = "The town";
     map_town->visible = true;
@@ -79,7 +73,7 @@ namespace tbrpg
     area_wilds->description = "You are out on the open roads.";
     area_wilds->area = 80;
     area_wilds->is_in = map_wilds;
-    (area_wilds->is_in = map_wilds)->minors->push_back(area_wilds);
+    (area_wilds->is_in = map_wilds)->minors->push_back(area_goal);
     
     area_goal->description = "You are in the wilderness.";
     area_goal->area = 80;
@@ -179,7 +173,6 @@ namespace tbrpg
     gibberling->record.colour = 2;
     gibberling->record.alignment = 4;
     gibberling->record.inventory.personal.push_back(questkey);
-    */
   }
   
   /**
