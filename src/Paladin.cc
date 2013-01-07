@@ -46,13 +46,11 @@ namespace tbrpg
     for (int i = 0; i < 8; i++)
       this->alignments[i] = false;
     
-    this->spell_progression->priest_slots = new std::vector<std::vector<int>*>(21);
     for (int i = 0; i <= 20; i++)
-      this->spell_progression->priest_slots[0][i] = new std::vector<int>(5);
+      this->spell_progression->priest_slots->push_back(new std::vector<int>(5));
     
-    this->spell_progression->priest_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression->priest_levels[0][i] = i < 9 ? 0 : i > 17 ? 9 : (i - 8);
+      this->spell_progression->priest_levels->push_back(i < 9 ? 0 : i > 17 ? 9 : (i - 8));
     
     for (int cur = 0, i = 0; i <= 20; i++)
       {

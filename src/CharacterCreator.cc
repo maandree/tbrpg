@@ -153,7 +153,7 @@ namespace tbrpg
   _03:
     prestiges = std::vector<std::string>();
     prestigeMap = std::unordered_map<std::string, std::vector<Class*>*>();
-    for (std::vector<Class*>* p : this->sheet->race->allowed_classes)
+    for (std::vector<Class*>* p : *(this->sheet->race->allowed_classes))
       {
 	std::string ac = "";
 	for (Class* c : *p)

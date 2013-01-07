@@ -39,17 +39,15 @@ namespace tbrpg
     this->name = "human";
     this->dualclass_level = 4;
     
-    this->allowed_classes =
-      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
-       new std::vector<Class*>({&PROTOTYPE(Ranger)}),
-       new std::vector<Class*>({&PROTOTYPE(Paladin)}),
-       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Druid)}),
-       new std::vector<Class*>({&PROTOTYPE(Mage)}),
-       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
-       new std::vector<Class*>({&PROTOTYPE(Thief)}),
-       new std::vector<Class*>({&PROTOTYPE(Bard)})
-      };
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Ranger)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Paladin)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Druid)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Mage)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Sorcerer)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Thief)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Bard)}));
   }
   
   /**

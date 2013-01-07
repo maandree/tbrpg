@@ -168,6 +168,7 @@
 #include "../src/Wilderness.hpp"
 #include "../src/Wizard.hpp"
 #include "../src/WizardScroll.hpp"
+#include "../src/cleaner.hpp"
 
 
 /**
@@ -191,10 +192,11 @@ namespace tbrpg
   {
     (void) argc;
     (void) argv;
+    cleaner::getInstance();
     
     #define __a(T)  {std::cout << "a: " << #T << std::endl; auto x = new T(); delete x;}
     #define __b(T)  {std::cout << "b: " << #T << std::endl; auto x = T(), y = T(); x = y;}
-#define __(T)  __a(T) // __b(T) //
+    #define __(T)  __a(T) __b(T) //
     
     /* misc. */
     __(Abilities);
@@ -350,6 +352,7 @@ namespace tbrpg
     __(WarHammer);
     __(Weapon);
     
+    cleaner::getInstance().clean();
     return 0;
   }
 }

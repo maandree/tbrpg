@@ -48,14 +48,12 @@ namespace tbrpg
     this->bonuses.thief_abilities.pick_pockets = 0;
     this->bonuses.thief_abilities.stealth = 0;
     
-    this->allowed_classes =
-      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
-       new std::vector<Class*>({&PROTOTYPE(Thief)}),
-       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Mage)}),
-       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)})
-      };
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Thief)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Mage)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Sorcerer)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)}));
   }
   
   /**

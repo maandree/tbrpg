@@ -41,23 +41,22 @@ namespace tbrpg
     this->bonuses.thief_abilities.open_locks = 0;
     this->bonuses.thief_abilities.pick_pockets = 10;
     this->bonuses.thief_abilities.stealth = 5;
-    this->allowed_classes =
-      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
-       new std::vector<Class*>({&PROTOTYPE(Ranger)}),
-       new std::vector<Class*>({&PROTOTYPE(Thief)}),
-       new std::vector<Class*>({&PROTOTYPE(Bard)}),
-       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Druid)}),
-       new std::vector<Class*>({&PROTOTYPE(Mage)}),
-       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Druid)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage)}),
-       new std::vector<Class*>({&PROTOTYPE(Mage), &PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Thief)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Cleric)})
-      };
+    
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Ranger)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Thief)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Bard)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Druid)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Mage)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Sorcerer)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Thief)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Druid)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Mage), &PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Thief)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Mage), &PROTOTYPE(Cleric)}));
   }
   
   /**

@@ -30,6 +30,7 @@
 #include "hash.hpp"
 #include "AbilityBonus.hpp"
 #include "DamageType.hpp"
+#include "prototype.hpp"
 
 
 /**

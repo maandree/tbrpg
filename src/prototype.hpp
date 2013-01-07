@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <unordered_map>
 
+#include "cleaner.hpp"
+
 
 /**
  * Get the prototype for a class
@@ -31,7 +33,7 @@
  * @param   C  The class
  * @return     The prototype for a class
  */
-#define PROTOTYPE(C)  (prototype<C>::get())
+#define PROTOTYPE(C)  ((C&)*(prototype<C>::get()))
 
 
 /**
@@ -58,9 +60,9 @@ namespace tbrpg
      * 
      * @return  The prototype for a class
      */
-    static C& get()
+    static C* get()
     {
-      static C instance;
+      static C* instance = (C*)(cleaner::getInstance().enqueueDelete(new C()));
       return instance;
     }
     
@@ -69,4 +71,3 @@ namespace tbrpg
 
 
 #endif//__GUARD_PROTOTYPE_HPP__
-

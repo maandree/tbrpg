@@ -59,16 +59,14 @@ namespace tbrpg
     this->can_use[&PROTOTYPE(HighWand)] = true;
     this->can_use[&PROTOTYPE(WizardScroll)] = true;
     
-    this->spell_progression->wizard_slots = new std::vector<std::vector<int>*>(31);
     for (int i = 0; i <= 30; i++)
       {
-	this->spell_progression->wizard_slots[0][i] = new std::vector<int>(10);
+	this->spell_progression->wizard_slots->push_back(new std::vector<int>(10));
 	this->spell_progression->wizard_slots[0][i][0][0] = 1 + i;
       }
     
-    this->spell_progression->wizard_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression->wizard_levels[0][i] = i;
+      this->spell_progression->wizard_levels->push_back(i);
     
     for (int cur = 0, i = 0; i <= 30; i++)
       {

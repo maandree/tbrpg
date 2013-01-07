@@ -40,6 +40,7 @@
 #include "Druid.hpp"
 #include "Mage.hpp"
 #include "Sorcerer.hpp"
+#include "prototype.hpp"
 
 
 /**
@@ -66,7 +67,7 @@ namespace tbrpg
     /**
      * Allowed classes for the race
      */
-    std::vector<std::vector<Class*>*> allowed_classes;
+    std::vector<std::vector<Class*>*>* allowed_classes;
     
     /**
      * At which level the dual class is allowed, use 2³¹ − 1 for never

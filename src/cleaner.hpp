@@ -84,23 +84,26 @@ namespace tbrpg
     /**
      * Add instance that that should be cleaned using `free()`
      * 
-     * @param  obj  The object
+     * @param   object  The object
+     * @return          The object
      */
-    void enqueueFree(void* object);
+    void* enqueueFree(void* object);
     
     /**
      * Add instance that that should be cleaned using `delete`
      * 
-     * @param  obj  The object
+     * @param   object  The object
+     * @return          The object
      */
-    void enqueueDelete(Object* object);
+    Object* enqueueDelete(Object* object);
     
     /**
      * Add instance that that should be cleaned using `delete[]`
      * 
-     * @param  obj  The object
+     * @param   object  The object
+     * @return          The object
      */
-    void enqueueDeleteArray(Object* object);
+    Object* enqueueDeleteArray(Object* object);
     
   };
 }

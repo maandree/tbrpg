@@ -73,31 +73,37 @@ namespace tbrpg
   /**
    * Add instance that that should be cleaned using `free()`
    * 
-   * @param  obj  The object
+   * @param   object  The object
+   * @return          The object
    */
-  void cleaner::enqueueFree(void* object)
+  void* cleaner::enqueueFree(void* object)
   {
     this->clean_list_free.push_back(object);
+    return object;
   }
   
   /**
    * Add instance that that should be cleaned using `delete`
    * 
-   * @param  obj  The object
+   * @param   object  The object
+   * @return          The object
    */
-  void cleaner::enqueueDelete(Object* object)
+  Object* cleaner::enqueueDelete(Object* object)
   {
     this->clean_list_delete.push_back(object);
+    return object;
   }
   
   /**
    * Add instance that that should be cleaned using `delete[]`
    * 
-   * @param  obj  The object
+   * @param   object  The object
+   * @return          The object
    */
-  void cleaner::enqueueDeleteArray(Object* object)
+  Object* cleaner::enqueueDeleteArray(Object* object)
   {
     this->clean_list_array.push_back(object);
+    return object;
   }
   
 }

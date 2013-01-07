@@ -42,13 +42,11 @@ namespace tbrpg
     this->bonuses.abilities.intelligence = -1;
     this->bonuses.abilities.charisma = -1;
     
-    this->allowed_classes =
-      {new std::vector<Class*>({&PROTOTYPE(Fighter)}),
-       new std::vector<Class*>({&PROTOTYPE(Cleric)}),
-       new std::vector<Class*>({&PROTOTYPE(Mage)}),
-       new std::vector<Class*>({&PROTOTYPE(Sorcerer)}),
-       new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Cleric)})
-      };
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Cleric)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Mage)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Sorcerer)}));
+    this->allowed_classes->push_back(new std::vector<Class*>({&PROTOTYPE(Fighter), &PROTOTYPE(Cleric)}));
   }
   
   /**

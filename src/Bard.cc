@@ -65,13 +65,11 @@ namespace tbrpg
     this->can_use[&PROTOTYPE(MorningStar)] = true;
     this->can_use[&PROTOTYPE(Spear)] = true;
     
-    this->spell_progression->wizard_slots = new std::vector<std::vector<int>*>(24);
     for (int i = 0; i <= 23; i++)
-      this->spell_progression->wizard_slots[0][i] = new std::vector<int>(7);
+      this->spell_progression->wizard_slots->push_back(new std::vector<int>(7));
     
-    this->spell_progression->wizard_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression->wizard_levels[0][i] = i < 2 ? 0 : i > 23 ? 8 : ((i + 1) / 3);
+      this->spell_progression->wizard_levels->push_back(i < 2 ? 0 : i > 23 ? 8 : ((i + 1) / 3));
     
     for (int cur = 0, i = 0; i <= 23; i++)
       {

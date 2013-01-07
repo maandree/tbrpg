@@ -36,10 +36,10 @@ namespace tbrpg
   SpellProgression::SpellProgression() : Object()
   {
     this->class_inheritance.push_back(10);
-    wizard_slots = new std::vector<std::vector<int>*>();
-    priest_slots = new std::vector<std::vector<int>*>();
-    wizard_levels = new std::vector<int>();
-    priest_levels = new std::vector<int>();
+    this->wizard_slots = new std::vector<std::vector<int>*>();
+    this->priest_slots = new std::vector<std::vector<int>*>();
+    this->wizard_levels = new std::vector<int>();
+    this->priest_levels = new std::vector<int>();
   }
   
   /**

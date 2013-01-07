@@ -27,7 +27,6 @@
 #include <unordered_map>
 
 #include "hash.hpp"
-#include "prototype.hpp"
 
 
 /**

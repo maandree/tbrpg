@@ -46,13 +46,11 @@ namespace tbrpg
     for (long i = 2; i <= 30; i++)
       this->experience_chart->thief_abilities[i] = 5;
     
-    this->spell_progression->priest_slots = new std::vector<std::vector<int>*>(17);
     for (int i = 0; i <= 16; i++)
-      this->spell_progression->priest_slots[0][i] = new std::vector<int>(4);
+      this->spell_progression->priest_slots->push_back(new std::vector<int>(4));
     
-    this->spell_progression->priest_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression->priest_levels[0][i] = i < 8 ? 0 : i > 16 ? 9 : (i - 7);
+      this->spell_progression->priest_levels->push_back(i < 8 ? 0 : i > 16 ? 9 : (i - 7));
     
     for (int cur = 0, i = 0; i <= 16; i++)
       {

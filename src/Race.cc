@@ -37,7 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(20);
     this->name = "?";
-    this->allowed_classes = {};
+    this->allowed_classes = new std::vector<std::vector<Class*>*>();
     this->bonuses = AbilityBonus();
     this->dualclass_level = 0x7FFF;
     this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
@@ -53,7 +53,9 @@ namespace tbrpg
   Race::Race(const Race& original) : Object(original)
   {
     this->name = original.name;
-    this->allowed_classes = original.allowed_classes;
+    this->allowed_classes = new std::vector<std::vector<Class*>*>();
+    for (std::vector<Class*>* elem : *(original.allowed_classes))
+      this->allowed_classes->push_back(new std::vector<Class*>(*elem));
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
@@ -67,7 +69,9 @@ namespace tbrpg
   Race::Race(Race& original) : Object(original)
   {
     this->name = original.name;
-    this->allowed_classes = original.allowed_classes;
+    this->allowed_classes = new std::vector<std::vector<Class*>*>();
+    for (std::vector<Class*>* elem : *(original.allowed_classes))
+      this->allowed_classes->push_back(new std::vector<Class*>(*elem));
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
@@ -104,8 +108,9 @@ namespace tbrpg
    */
   Race::~Race()
   {
-    //for (std::vector<Class*>* elem : this->allowed_classes)
-    //  delete elem;
+    for (std::vector<Class*>* elem : *(this->allowed_classes))
+      delete elem;
+    delete this->allowed_classes;
   }
   
   
@@ -118,9 +123,14 @@ namespace tbrpg
    */
   Race& Race::operator =(const Race& original)
   {
+    for (std::vector<Class*>* elem : *(this->allowed_classes))
+      delete elem;
+    delete this->allowed_classes;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
-    this->allowed_classes = original.allowed_classes;
+    this->allowed_classes = new std::vector<std::vector<Class*>*>();
+    for (std::vector<Class*>* elem : *(original.allowed_classes))
+      this->allowed_classes->push_back(new std::vector<Class*>(*elem));
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
@@ -135,9 +145,14 @@ namespace tbrpg
    */
   Race& Race::operator =(Race& original)
   {
+    for (std::vector<Class*>* elem : *(this->allowed_classes))
+      delete elem;
+    delete this->allowed_classes;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
-    this->allowed_classes = original.allowed_classes;
+    this->allowed_classes = new std::vector<std::vector<Class*>*>();
+    for (std::vector<Class*>* elem : *(original.allowed_classes))
+      this->allowed_classes->push_back(new std::vector<Class*>(*elem));
     this->dualclass_level = original.dualclass_level;
     this->specialisations = original.specialisations;
     this->bonuses = original.bonuses;
@@ -211,7 +226,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<std::string>()(this->name);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<std::vector<Class*>*>>()(this->allowed_classes);
+    rc += std::hash<std::vector<std::vector<Class*>*>*>()(this->allowed_classes);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<short>()(this->dualclass_level);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);

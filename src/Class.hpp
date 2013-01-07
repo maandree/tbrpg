@@ -57,6 +57,7 @@
 #include "Potion.hpp"
 #include "LowScroll.hpp"
 #include "LowWand.hpp"
+#include "prototype.hpp"
 
 
 /**
