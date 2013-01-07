@@ -1164,7 +1164,7 @@ namespace tbrpg
 		  else
 		    {
 		      if (distmap.at(mmajor) < 0)
-			ss << " (not reachable)"; /* TODO support this*/
+			ss << " (not reachable)";
 		      else if (mmajor->visited == false)
 			ss << " (not visited)";
 		      if (mmajor->visitable == false)
@@ -1186,7 +1186,7 @@ namespace tbrpg
 	    
 	    MapMajor* mmajor = majors[target];
 	    
-	    if (mmajor->visitable == false)
+	    if ((mmajor->visitable == false) || (distmap.at(mmajor) < 0))
 	      {
 		delete map;
 		std::cout << "Dude, I just told you, you cannot travel there right now!" << std::endl;
