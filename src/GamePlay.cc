@@ -66,17 +66,17 @@ namespace tbrpg
     this->players = {};
     this->next_player = 0;
     
-    for (Character* player : senario.party.characters)
+    for (Character* player : senario.party->characters)
       {
 	GameCharacter* gamechar = new GameCharacter();
 	this->players.push_back(gamechar);
 	
 	gamechar->character = player;
-	gamechar->area = senario.map.start;
+	gamechar->area = senario.map->start;
       }
     
-    this->attack_dice = Dice(senario.rules.attack_roll_dice,
-			     senario.rules.attack_roll_die);
+    this->attack_dice = Dice(senario.rules->attack_roll_dice,
+			     senario.rules->attack_roll_die);
   }
   
   /**
@@ -260,8 +260,8 @@ namespace tbrpg
 	  std::cout << "Your party have slept for 8 hours (48 rounds)." << std::endl;
 	  for (GameCharacter* player : this->players)
 	    {
-	      player->character->hit_points += (480 / this->game.rules.rest_healing_turns)
-		                                    * this->game.rules.rest_healing;
+	      player->character->hit_points += (480 / this->game.rules->rest_healing_turns)
+		                                    * this->game.rules->rest_healing;
 	      if (player->character->hit_points > player->character->record.hit_points)
 		player->character->hit_points = player->character->record.hit_points;
 	      player->character->fatigue = 0;
@@ -422,7 +422,7 @@ namespace tbrpg
 	int roll = this->attack_dice.roll();
 	std::cout << "Attack roll: " << roll << " versus " << thac0 << " - " << ac << ": ";
 	
-	if (roll <= this->game.rules.critical_miss)
+	if (roll <= this->game.rules->critical_miss)
 	  {
 	    std::cout << "Critical miss" << std::endl;
 	    player->turns += 10; /* XXX make customisable */
@@ -431,7 +431,7 @@ namespace tbrpg
 	  }
 	
 	bool hit = roll + rollmod >= thac0 - ac;
-	int multiplier = (roll >= this->game.rules.critical_hit) ? 2 : 1; /* XXX make customisable */
+	int multiplier = (roll >= this->game.rules->critical_hit) ? 2 : 1; /* XXX make customisable */
 	if (multiplier == 2)
 	  {
 	    std::cout << "Critical hit" << std::endl;
@@ -451,7 +451,7 @@ namespace tbrpg
     
     std::cout << "Total damage: " << totaldamage << std::endl;
     attackable[target]->hit_points -= totaldamage;
-    if (attackable[target]->hit_points <= -(this->game.rules.critical_death)) /* TODO delete nealy and not resurrectable */
+    if (attackable[target]->hit_points <= -(this->game.rules->critical_death)) /* TODO delete nealy and not resurrectable */
       {
 	dynamic_cast<Character*>(attackable[target])->alive = -1;
 	std::cout << "Critical death inflicated on target." << std::endl;
@@ -950,7 +950,7 @@ namespace tbrpg
    */
   char GamePlay::action_party()
   {
-    std::cout << "Reputation: " << this->game.party.reputation << std::endl << std::endl;
+    std::cout << "Reputation: " << this->game.party->reputation << std::endl << std::endl;
     
     std::cout << "Party members:" << std::endl;
     long pindex = 0;
@@ -999,7 +999,7 @@ namespace tbrpg
       }
     
     std::cout << std::endl
-	      << "Empty party slots: " << (this->game.rules.party_size - this->players.size())
+	      << "Empty party slots: " << (this->game.rules->party_size - this->players.size())
 	      << std::endl << std::endl;
     
     // TODO examine character, reform party
@@ -1020,11 +1020,11 @@ namespace tbrpg
   char GamePlay::action_map()
   {
     std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
-    for (MapMajor* mmajor : this->game.map.majors)
+    for (MapMajor* mmajor : *(this->game.map->majors))
       distmap[mmajor] = -1;
     this->findDistances(*(this->players[this->next_player]->area), distmap, nullptr);
     
-    for (MapMajor* major : this->game.map.majors)
+    for (MapMajor* major : *(this->game.map->majors))
       if (major->visible)
 	{
 	  std::cout << major->name;
@@ -1135,12 +1135,12 @@ namespace tbrpg
 	    std::vector<MapMajor*> majors = std::vector<MapMajor*>();
 	    
 	    std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
-	    for (MapMajor* mmajor : this->game.map.majors)
+	    for (MapMajor* mmajor : *(this->game.map->majors))
 	      distmap[mmajor] = -1;
 	    std::unordered_map<MapMajor*, MapMinor*> where = std::unordered_map<MapMajor*, MapMinor*>();
 	    auto map = this->findDistances(*(this->players[this->next_player]->area), distmap, &where);
 	    
-	    for (MapMajor* mmajor : this->game.map.majors)
+	    for (MapMajor* mmajor : *(this->game.map->majors))
 	      if (mmajor->visible)
 		{
 		  majors.push_back(mmajor);
@@ -1213,8 +1213,8 @@ namespace tbrpg
     #define __ensure(M, K, V, W)  \
       M.insert(std::pair<MapMinor*, V>((MapMinor*)(K), W))
     
-    for (const MapMajor* major : this->game.map.majors)
-      for (const _MapMinor* _minor : major->minors)
+    for (const MapMajor* major : *(this->game.map->majors))
+      for (const _MapMinor* _minor : *(major->minors))
 	{
 	  const MapMinor* minor = static_cast<const MapMinor*>(_minor);
 	  __ensure(distance, minor, int, 0);

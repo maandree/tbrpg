@@ -168,6 +168,9 @@
 #include "../src/Wilderness.hpp"
 #include "../src/Wizard.hpp"
 #include "../src/WizardScroll.hpp"
+#include "../src/Senario.hpp"
+#include "../src/BasicSenario.hpp"
+#include "../src/CharacterCreator.hpp"
 #include "../src/cleaner.hpp"
 
 
@@ -199,6 +202,7 @@ namespace tbrpg
     #define __(T)  __a(T) __b(T) //
     
     /* misc. */
+    /** /
     __(Abilities);
     __(AbilityBonus);
     __(AbilityChart);
@@ -283,8 +287,11 @@ namespace tbrpg
     __(Spell);
     __(Store);
     __(WeaponGroup);
+    __a(CharacterCreator);
+    /**/
     
     /* races */
+    /** /
     __(Dwarf);
     __(Elf);
     __(Gnome);
@@ -293,8 +300,10 @@ namespace tbrpg
     __(Halfling);
     __(HalfOrc);
     __(Race);
+    /**/
     
     /* prestiges */
+    /** /
     __(Bard);
     __(Class);
     __(Cleric);
@@ -309,8 +318,10 @@ namespace tbrpg
     __(Thief);
     __(Warrior);
     __(Wizard);
+    /**/
     
     /* weapons and ammunition */
+    /** /
     __(Ammunition);
     __(Arrow);
     __(BastardSword);
@@ -351,6 +362,11 @@ namespace tbrpg
     __(TwoHandedSword);
     __(WarHammer);
     __(Weapon);
+    /**/
+    
+    /* senarioes */
+    __a(Senario);
+    __a(BasicSenario);
     
     cleaner::getInstance().clean();
     return 0;

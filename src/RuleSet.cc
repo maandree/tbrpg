@@ -48,9 +48,9 @@ namespace tbrpg
     this->rest_healing_turns = 1;
     this->racial_enemy_bonus = 4;
     this->racial_enemy_penality = 4;
-    this->reputation_chart = ReputationChart();
-    this->ability_chart = AbilityChart();
-    this->inventory_prototype = Inventory();
+    this->reputation_chart = new ReputationChart();
+    this->ability_chart = new AbilityChart();
+    this->inventory_prototype = new Inventory();
     this->spells = {};
     this->races = {};
     this->racial_enemies = {};
@@ -106,9 +106,9 @@ namespace tbrpg
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
     this->critical_death = original.critical_death;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = Inventory(original.inventory_prototype);
+    this->reputation_chart = new ReputationChart(*(original.reputation_chart));
+    this->ability_chart = new AbilityChart(*(original.ability_chart));
+    this->inventory_prototype = new Inventory(*(original.inventory_prototype));
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -136,9 +136,9 @@ namespace tbrpg
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
     this->critical_death = original.critical_death;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = Inventory(original.inventory_prototype);
+    this->reputation_chart = new ReputationChart(*(original.reputation_chart));
+    this->ability_chart = new AbilityChart(*(original.ability_chart));
+    this->inventory_prototype = new Inventory(*(original.inventory_prototype));
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -191,7 +191,9 @@ namespace tbrpg
    */
   RuleSet::~RuleSet()
   {
-    // do nothing
+    delete this->reputation_chart;
+    delete this->ability_chart;
+    delete this->inventory_prototype;
   }
   
   
@@ -204,6 +206,9 @@ namespace tbrpg
    */
   RuleSet& RuleSet::operator =(const RuleSet& original)
   {
+    delete this->reputation_chart;
+    delete this->ability_chart;
+    delete this->inventory_prototype;
     Object::__copy__((Object&)*this, (Object&)original);
     this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
@@ -220,9 +225,9 @@ namespace tbrpg
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
     this->critical_death = original.critical_death;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = Inventory(original.inventory_prototype);
+    this->reputation_chart = new ReputationChart(*(original.reputation_chart));
+    this->ability_chart = new AbilityChart(*(original.ability_chart));
+    this->inventory_prototype = new Inventory(*(original.inventory_prototype));
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -237,6 +242,9 @@ namespace tbrpg
    */
   RuleSet& RuleSet::operator =(RuleSet& original)
   {
+    delete this->reputation_chart;
+    delete this->ability_chart;
+    delete this->inventory_prototype;
     Object::__copy__((Object&)*this, (Object&)original);
     this->attack_roll_die = original.attack_roll_die;
     this->attack_roll_dice = original.attack_roll_dice;
@@ -253,9 +261,9 @@ namespace tbrpg
     this->party_size = original.party_size;
     this->party_start_size = original.party_start_size;
     this->critical_death = original.critical_death;
-    this->reputation_chart = original.reputation_chart;
-    this->ability_chart = original.ability_chart;
-    this->inventory_prototype = Inventory(original.inventory_prototype);
+    this->reputation_chart = new ReputationChart(*(original.reputation_chart));
+    this->ability_chart = new AbilityChart(*(original.ability_chart));
+    this->inventory_prototype = new Inventory(*(original.inventory_prototype));
     this->spells = original.spells;
     this->races = original.races;
     this->racial_enemies = original.racial_enemies;
@@ -389,11 +397,11 @@ namespace tbrpg
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
     rc += std::hash<int>()(this->critical_death);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<ReputationChart>()(this->reputation_chart);
+    rc += std::hash<ReputationChart*>()(this->reputation_chart);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<AbilityChart>()(this->ability_chart);
+    rc += std::hash<AbilityChart*>()(this->ability_chart);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Inventory>()(this->inventory_prototype);
+    rc += std::hash<Inventory*>()(this->inventory_prototype);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<std::vector<Spell*>>()(this->spells);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);

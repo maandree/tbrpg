@@ -37,7 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(130);
     this->start = nullptr;
-    this->majors = {};
+    this->majors = new std::vector<MapMajor*>();
   }
   
   /**
@@ -48,7 +48,7 @@ namespace tbrpg
   Map::Map(const Map& original) : Object(original)
   {
     this->start = original.start;
-    this->majors = original.majors;
+    this->majors = new std::vector<MapMajor*>(*(original.majors));
   }
   
   /**
@@ -59,7 +59,7 @@ namespace tbrpg
   Map::Map(Map& original) : Object(original)
   {
     this->start = original.start;
-    this->majors = original.majors;
+    this->majors = new std::vector<MapMajor*>(*(original.majors));
   }
   
   /**
@@ -90,8 +90,9 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    for (MapMajor* major : this->majors)
+    for (MapMajor* major : *(this->majors))
       delete major;
+    delete this->majors;
   }
   
   
@@ -104,9 +105,12 @@ namespace tbrpg
    */
   Map& Map::operator =(const Map& original)
   {
+    for (MapMajor* major : *(this->majors))
+      delete major;
+    delete this->majors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->start = original.start;
-    this->majors = original.majors;
+    this->majors = new std::vector<MapMajor*>(*(original.majors));
     return *this;
   }
   
@@ -118,9 +122,12 @@ namespace tbrpg
    */
   Map& Map::operator =(Map& original)
   {
+    for (MapMajor* major : *(this->majors))
+      delete major;
+    delete this->majors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->start = original.start;
-    this->majors = original.majors;
+    this->majors = new std::vector<MapMajor*>(*(original.majors));
     return *this;
   }
   
@@ -185,7 +192,7 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<MapMinor*>()(this->start);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<MapMajor*>>()(this->majors);
+    rc += std::hash<std::vector<MapMajor*>*>()(this->majors);
     return rc;
   }
   

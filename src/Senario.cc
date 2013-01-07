@@ -36,9 +36,9 @@ namespace tbrpg
   Senario::Senario() : Object()
   {
     this->class_inheritance.push_back(141);
-    this->rules = RuleSet();
-    this->party = Party();
-    this->map = Map();
+    this->rules = new RuleSet();
+    this->party = new Party();
+    this->map = new Map();
   }
   
   /**
@@ -48,9 +48,9 @@ namespace tbrpg
    */
   Senario::Senario(const Senario& original) : Object(original)
   {
-    this->rules = original.rules;
-    this->party = original.party;
-    this->map = original.map;
+    this->rules = new RuleSet(*(original.rules));
+    this->party = new Party(*(original.party));
+    this->map = new Map(*(original.map));
   }
   
   /**
@@ -60,9 +60,9 @@ namespace tbrpg
    */
   Senario::Senario(Senario& original) : Object(original)
   {
-    this->rules = original.rules;
-    this->party = original.party;
-    this->map = original.map;
+    this->rules = new RuleSet(*(original.rules));
+    this->party = new Party(*(original.party));
+    this->map = new Map(*(original.map));
   }
   
   /**
@@ -114,7 +114,9 @@ namespace tbrpg
    */
   Senario::~Senario()
   {
-    // do nothing
+    delete this->rules;
+    delete this->party;
+    delete this->map;
   }
   
   
@@ -127,11 +129,14 @@ namespace tbrpg
    */
   Senario& Senario::operator =(const Senario& original)
   {
+    delete this->rules;
+    delete this->party;
+    delete this->map;
     (void) original;
     Object::__copy__((Object&)*this, (Object&)original);
-    this->rules = original.rules;
-    this->party = original.party;
-    this->map = original.map;
+    this->rules = new RuleSet(*(original.rules));
+    this->party = new Party(*(original.party));
+    this->map = new Map(*(original.map));
     return *this;
   }
   
@@ -143,10 +148,13 @@ namespace tbrpg
    */
   Senario& Senario::operator =(Senario& original)
   {
+    delete this->rules;
+    delete this->party;
+    delete this->map;
     Object::__copy__((Object&)*this, (Object&)original);
-    this->rules = original.rules;
-    this->party = original.party;
-    this->map = original.map;
+    this->rules = new RuleSet(*(original.rules));
+    this->party = new Party(*(original.party));
+    this->map = new Map(*(original.map));
     return *this;
   }
   
@@ -211,11 +219,11 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<RuleSet>()(this->rules);
+    rc += std::hash<RuleSet*>()(this->rules);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Party>()(this->party);
+    rc += std::hash<Party*>()(this->party);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<Map>()(this->map);
+    rc += std::hash<Map*>()(this->map);
     return rc;
   }
   

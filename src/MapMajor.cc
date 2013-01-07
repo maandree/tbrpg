@@ -41,7 +41,7 @@ namespace tbrpg
     this->visited = false;
     this->visitable = true;
     this->detectable = true;
-    this->minors = {};
+    this->minors = new std::vector<_MapMinor*>();
   }
   
   /**
@@ -56,7 +56,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
-    this->minors = original.minors;
+    this->minors = new std::vector<_MapMinor*>(*(original.minors));
   }
   
   /**
@@ -71,7 +71,7 @@ namespace tbrpg
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
-    this->minors = original.minors;
+    this->minors = new std::vector<_MapMinor*>(*(original.minors));
   }
   
   /**
@@ -106,8 +106,9 @@ namespace tbrpg
    */
   MapMajor::~MapMajor()
   {
-    for (_MapMinor* minor : this->minors)
+    for (_MapMinor* minor : *(this->minors))
       delete minor;
+    delete this->minors;
   }
   
   
@@ -120,13 +121,16 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(const MapMajor& original)
   {
+    for (_MapMinor* minor : *(this->minors))
+      delete minor;
+    delete this->minors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
-    this->minors = original.minors;
+    this->minors = new std::vector<_MapMinor*>(*(original.minors));
     return *this;
   }
   
@@ -138,13 +142,16 @@ namespace tbrpg
    */
   MapMajor& MapMajor::operator =(MapMajor& original)
   {
+    for (_MapMinor* minor : *(this->minors))
+      delete minor;
+    delete this->minors;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->visible = original.visible;
     this->visited = original.visited;
     this->visitable = original.visitable;
     this->detectable = original.detectable;
-    this->minors = original.minors;
+    this->minors = new std::vector<_MapMinor*>(*(original.minors));
     return *this;
   }
   
@@ -225,7 +232,7 @@ namespace tbrpg
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
     rc += std::hash<bool>()(this->detectable);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<std::vector<_MapMinor*>>()(this->minors);
+    rc += std::hash<std::vector<_MapMinor*>*>()(this->minors);
     return rc;
   }
   

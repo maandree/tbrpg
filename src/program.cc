@@ -109,7 +109,7 @@ namespace tbrpg
       }
     
     cleaner::getInstance().enqueueDelete(senario);
-    std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario->rules.party_start_size);
+    std::vector<CharacterSheet*>* sheets = new std::vector<CharacterSheet*>(senario->rules->party_start_size);
     
     if (createParty(*senario, sheets) == false)
       {
@@ -144,7 +144,7 @@ namespace tbrpg
     return promptSlots<CharacterSheet>("Create your party, you need at least one character.",
 				       true, 1, sheets,
 				       [&] () -> CharacterSheet* {
-					 CharacterCreator cc = CharacterCreator(&(senario.rules));
+					 CharacterCreator cc = CharacterCreator(senario.rules);
 					 return cc.create();
 				       },
 				       [] (CharacterSheet* sheet, bool selected) -> void {
@@ -181,7 +181,7 @@ namespace tbrpg
 		character->extra_attacks += 2; /* XXX this should be embedded in some rule */
 	  
 	  cleaner::getInstance().enqueueDelete(character);
-	  senario.party.characters.push_back(character);
+	  senario.party->characters.push_back(character);
 	}
   }
   

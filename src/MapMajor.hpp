@@ -76,7 +76,7 @@ namespace tbrpg
     /**
      * Minor areas in the area
      */
-    std::vector<_MapMinor*> minors;
+    std::vector<_MapMinor*>* minors;
     
     
     

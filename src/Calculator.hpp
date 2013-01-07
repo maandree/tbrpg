@@ -54,7 +54,7 @@ namespace tbrpg
     /**
      * The game rules
      */
-    RuleSet rules;
+    RuleSet* rules;
     
     
     

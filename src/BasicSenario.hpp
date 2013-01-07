@@ -63,9 +63,63 @@ namespace tbrpg
     BasicSenario();
     
     /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    BasicSenario(const BasicSenario& original);
+    
+    /**
+     * Copy constructor
+     * 
+     * @param  original  The object to clone
+     */
+    BasicSenario(BasicSenario& original);
+    
+    /**
+     * Move constructor
+     * 
+     * @param  original  The object to clone
+     */
+    BasicSenario(BasicSenario&& original);
+    
+    /**
+     * Fork the object
+     * 
+     * @return  A fork of the object
+     */
+    virtual Object* fork() const;
+    
+    
+    /**
      * Destructor
      */
     ~BasicSenario();
+    
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    virtual BasicSenario& operator =(const BasicSenario& original);
+    
+    /**
+     * Assignment operator
+     * 
+     * @param   original  The reference object
+     * @return            The invoked object
+     */
+    virtual BasicSenario& operator =(BasicSenario& original);
+    
+    /**
+     * Move operator
+     * 
+     * @param   original  The moved object, its resourced will be moved
+     * @return            The invoked object
+     */
+    virtual BasicSenario& operator =(BasicSenario&& original);
     
     
     

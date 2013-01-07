@@ -35,12 +35,12 @@ namespace tbrpg
    */
   BasicSenario::BasicSenario() : Senario()
   {
-    this->rules.party_size = 3;
-    this->rules.party_start_size = 3;
+    this->rules->party_size = 3;
+    this->rules->party_start_size = 3;
     
-    this->rules.inventory_prototype.personal[0] = new Gold();
-    this->rules.inventory_prototype.personal[0]->quantity = 400;
-    cleaner::getInstance().enqueueDelete(this->rules.inventory_prototype.personal[0]);
+    this->rules->inventory_prototype.personal[0] = new Gold();
+    this->rules->inventory_prototype.personal[0]->quantity = 400;
+    cleaner::getInstance().enqueueDelete(this->rules->inventory_prototype.personal[0]);
     
     MapMajor* map_town = new MapMajor();
     MapMajor* map_wilds = new MapMajor();
@@ -63,22 +63,22 @@ namespace tbrpg
     
     area_inn->description = "You are standing in an inn.";
     area_inn->area = 40;
-    (area_inn->is_in = map_town)->minors.push_back(area_inn);
+    (area_inn->is_in = map_town)->minors->push_back(area_inn);
     
     area_town->description = "You are standing in the marketplace.";
     area_town->area = 80;
     area_town->is_in = map_town;
-    (area_town->is_in = map_town)->minors.push_back(area_town);
+    (area_town->is_in = map_town)->minors->push_back(area_town);
     
     area_wilds->description = "You are out on the open roads.";
     area_wilds->area = 80;
     area_wilds->is_in = map_wilds;
-    (area_wilds->is_in = map_wilds)->minors.push_back(area_wilds);
+    (area_wilds->is_in = map_wilds)->minors->push_back(area_wilds);
     
     area_goal->description = "You are in the wilderness.";
     area_goal->area = 80;
     area_goal->is_in = map_wilds;
-    (area_goal->is_in = map_wilds)->minors.push_back(area_wilds);
+    (area_goal->is_in = map_wilds)->minors->push_back(area_wilds);
     
     Road* road_out = new Road();
     Road* road_in = new Road();
@@ -135,9 +135,9 @@ namespace tbrpg
     Store* store = new Store();
     area_inn->creatures.push_back(store);
     
-    this->map.start = area_town;
-    this->map.majors.push_back(map_town);
-    this->map.majors.push_back(map_wilds);
+    this->map->start = area_town;
+    this->map->majors->push_back(map_town);
+    this->map->majors->push_back(map_wilds);
     
     store->room_costs.push_back(1);
     store->room_quality.push_back(2);
@@ -176,11 +176,88 @@ namespace tbrpg
   }
   
   /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  BasicSenario::BasicSenario(const BasicSenario& original) : Senario(original)
+  {
+    (void) original;
+  }
+  
+  /**
+   * Copy constructor
+   * 
+   * @param  original  The object to clone
+   */
+  BasicSenario::BasicSenario(BasicSenario& original) : Senario(original)
+  {
+    (void) original;
+  }
+  
+  /**
+   * Move constructor
+   * 
+   * @param  original  The object to clone
+   */
+  BasicSenario::BasicSenario(BasicSenario&& original) : Senario(original)
+  {
+    (void) original;
+  }
+    
+  /**
+   * Fork the object
+   * 
+   * @return  A fork of the object
+   */
+  Object* BasicSenario::fork() const
+  {
+    return (Object*)(new BasicSenario(*this));
+  }
+  
+  
+  
+  /**
    * Destructor
    */
   BasicSenario::~BasicSenario()
   {
     // do nothing
+  }
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  BasicSenario& BasicSenario::operator =(const BasicSenario& original)
+  {
+    Object::__copy__((Senario&)*this, (Senario&)original);
+    return *this;
+  }
+  
+  /**
+   * Assignment operator
+   * 
+   * @param   original  The reference object
+   * @return            The invoked object
+   */
+  BasicSenario& BasicSenario::operator =(BasicSenario& original)
+  {
+    Object::__copy__((Senario&)*this, (Senario&)original);
+    return *this;
+  }
+  
+  /**
+   * Move operator
+   * 
+   * @param   original  The moved object, its resourced will be moved
+   * @return            The invoked object
+   */
+  BasicSenario& BasicSenario::operator =(BasicSenario&& original)
+  {
+    std::swap((Senario&)*this, (Senario&)original);
+    return *this;
   }
   
   

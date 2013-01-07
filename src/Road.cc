@@ -60,7 +60,7 @@ namespace tbrpg
     this->waylay_risk = original.waylay_risk;
     this->direction = original.direction;
     this->waylay_map = original.waylay_map;
-    this->leads_to = original.leads_to;
+    this->leads_to = original.leads_to == nullptr ? nullptr : (_MapMinor*)(original.leads_to->fork());
   }
   
   /**
@@ -77,7 +77,7 @@ namespace tbrpg
     this->waylay_risk = original.waylay_risk;
     this->direction = original.direction;
     this->waylay_map = original.waylay_map;
-    this->leads_to = original.leads_to;
+    this->leads_to = original.leads_to == nullptr ? nullptr : (_MapMinor*)(original.leads_to->fork());
   }
   
   /**
@@ -114,7 +114,8 @@ namespace tbrpg
    */
   Road::~Road()
   {
-    delete this->waylay_map;
+    if ((this->waylay_map))
+      delete this->waylay_map;
   }
   
   
@@ -127,6 +128,8 @@ namespace tbrpg
    */
   Road& Road::operator =(const Road& original)
   {
+    if ((this->waylay_map))
+      delete this->waylay_map;
     Object::__copy__((Object&)*this, (Object&)original);
     this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
@@ -135,7 +138,7 @@ namespace tbrpg
     this->waylay_risk = original.waylay_risk;
     this->direction = original.direction;
     this->waylay_map = original.waylay_map;
-    this->leads_to = original.leads_to;
+    this->leads_to = original.leads_to == nullptr ? nullptr : (_MapMinor*)(original.leads_to->fork());
     return *this;
   }
   
@@ -147,6 +150,8 @@ namespace tbrpg
    */
   Road& Road::operator =(Road& original)
   {
+    if ((this->waylay_map))
+      delete this->waylay_map;
     Object::__copy__((Object&)*this, (Object&)original);
     this->first_distance = original.first_distance;
     this->last_distance = original.last_distance;
@@ -155,7 +160,7 @@ namespace tbrpg
     this->waylay_risk = original.waylay_risk;
     this->direction = original.direction;
     this->waylay_map = original.waylay_map;
-    this->leads_to = original.leads_to;
+    this->leads_to = original.leads_to == nullptr ? nullptr : (_MapMinor*)(original.leads_to->fork());
     return *this;
   }
   

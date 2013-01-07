@@ -53,17 +53,17 @@ namespace tbrpg
     /**
      * The rules of the game
      */
-    RuleSet rules;
+    RuleSet* rules;
     
     /**
      * The party
      */
-    Party party;
+    Party* party;
     
     /**
      * The map
      */
-    Map map;
+    Map* map;
     
     
     

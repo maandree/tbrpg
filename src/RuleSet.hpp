@@ -136,17 +136,17 @@ namespace tbrpg
     /**
      * The reputation chart
      */
-    ReputationChart reputation_chart;
+    ReputationChart* reputation_chart;
     
     /**
      * The ability chart
      */
-    AbilityChart ability_chart;
+    AbilityChart* ability_chart;
     
     /**
      * The inventory prototype, basiclly it defines how many slots there is in the inventory
      */
-    Inventory inventory_prototype;
+    Inventory* inventory_prototype;
     
     /**
      * All spells, very useful for when new characters selects spells, or to restrict imported characters

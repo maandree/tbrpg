@@ -31,7 +31,7 @@
 namespace tbrpg
 {
   #define ___f(X, Y, Z, W)					\
-    (this->rules.ability_chart.X[(long)(this->Y(character))].Z.W)
+    (this->rules->ability_chart.X[(long)(this->Y(character))].Z.W)
   
   #define ___i(X, Y, Z, op)				\
     if (character.record.inventory.X == nullptr)	\
@@ -85,7 +85,7 @@ namespace tbrpg
    */
   Calculator::Calculator(const Calculator& original) : Object(original)
   {
-    this->rules = (RuleSet&)(original.rules);
+    this->rules = original.rules;
   }
   
   /**
@@ -95,7 +95,7 @@ namespace tbrpg
    */
   Calculator::Calculator(Calculator& original) : Object(original)
   {
-    this->rules = (RuleSet&)(original.rules);
+    this->rules = original.rules;
   }
   
   /**
@@ -139,7 +139,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(const Calculator& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->rules = (RuleSet&)(original.rules);
+    this->rules = original.rules;
     return *this;
   }
   
@@ -152,7 +152,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator& original)
   {
     Object::__copy__((Object&)*this, (Object&)original);
-    this->rules = (RuleSet&)(original.rules);
+    this->rules = original.rules;
     return *this;
   }
   
@@ -165,7 +165,7 @@ namespace tbrpg
   Calculator& Calculator::operator =(Calculator&& original)
   {
     std::swap((Object&)*this, (Object&)original);
-    std::swap(this->rules, (RuleSet&)(original.rules));
+    std::swap(this->rules, original.rules);
     return *this;
   }
   
@@ -754,7 +754,7 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<RuleSet>()(this->rules);
+    rc += std::hash<RuleSet*>()(this->rules);
     return rc;
   }
   
