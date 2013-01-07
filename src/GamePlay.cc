@@ -1032,7 +1032,7 @@ namespace tbrpg
     std::unordered_map<MapMajor*, int> distmap = std::unordered_map<MapMajor*, int>();
     for (MapMajor* mmajor : *(this->game->map->majors))
       distmap[mmajor] = -1;
-    this->findDistances(*(this->players[0][this->next_player]->area), distmap, nullptr);
+    delete this->findDistances(this->players[0][this->next_player]->area, distmap, nullptr);
     
     for (MapMajor* major : *(this->game->map->majors))
       if (major->visible)
@@ -1151,7 +1151,7 @@ namespace tbrpg
 	    for (MapMajor* mmajor : *(this->game->map->majors))
 	      distmap[mmajor] = -1;
 	    std::unordered_map<MapMajor*, MapMinor*> where = std::unordered_map<MapMajor*, MapMinor*>();
-	    auto map = this->findDistances(*(this->players[0][this->next_player]->area), distmap, &where);
+	    auto map = this->findDistances(this->players[0][this->next_player]->area, distmap, &where);
 	    
 	    for (MapMajor* mmajor : *(this->game->map->majors))
 	      if (mmajor->visible)
@@ -1164,7 +1164,7 @@ namespace tbrpg
 		  else
 		    {
 		      if (distmap.at(mmajor) < 0)
-			ss << " (not reachable)";
+			ss << " (not reachable)"; /* TODO support this*/
 		      else if (mmajor->visited == false)
 			ss << " (not visited)";
 		      if (mmajor->visitable == false)
@@ -1179,7 +1179,10 @@ namespace tbrpg
 	    
 	    long target = promptMenu("Where do you want to go?", names);
 	    if ((target < 0) || (majors[target] == this->players[0][this->next_player]->area->is_in))
-	      return 2;
+	      {
+		delete map;
+		return 2;
+	      }
 	    
 	    MapMajor* mmajor = majors[target];
 	    
@@ -1191,7 +1194,7 @@ namespace tbrpg
 	      }
 	    
 	    std::vector<Road*> path = std::vector<Road*>();
-	    this->findPath(map, *(where[mmajor]), path);
+	    this->findPath(map, where[mmajor], path);
 	    delete map;
 	    MapMinor* mminor = static_cast<MapMinor*>(path[path.size() - 1]->leads_to);
 	    
@@ -1216,7 +1219,7 @@ namespace tbrpg
    * @param   where    Map major to map minor map
    * @return           Walk path mapping
    */
-  std::unordered_map<MapMinor*, MapMinor*>* GamePlay::findDistances(const MapMinor& start,
+  std::unordered_map<MapMinor*, MapMinor*>* GamePlay::findDistances(MapMinor* start,
 								    std::unordered_map<MapMajor*, int>& distmap,
 								    std::unordered_map<MapMajor*, MapMinor*>* where) const
   {
@@ -1238,12 +1241,12 @@ namespace tbrpg
 	  __ensure((*previous), minor, MapMinor*, nullptr);
 	}
     
-    explored[&(MapMinor&)start] = true;
-    (*previous)[&(MapMinor&)start] = &(MapMinor&)start;
-    distmap[(MapMajor*)(start.is_in)] = 0;
+    explored[start] = true;
+    (*previous)[start] = start;
+    distmap[(MapMajor*)(start->is_in)] = 0;
     
     std::vector<MapMinor*> set = std::vector<MapMinor*>();
-    set.push_back(&(MapMinor&)start);
+    set.push_back(start);
     
     while ((set.size()))
       {
@@ -1317,11 +1320,11 @@ namespace tbrpg
    * @param  path     Vector to fill with the path
    */
   void GamePlay::findPath(const std::unordered_map<MapMinor*, MapMinor*>* mapping,
-			  const MapMinor& end, std::vector<Road*>& path) const
+			  MapMinor* end, std::vector<Road*>& path) const
   {
     std::vector<MapMinor*> rev = std::vector<MapMinor*>();
     {
-      MapMinor* prev = &(MapMinor&)end;
+      MapMinor* prev = end;
       while (mapping->at(prev) != prev)
 	rev.push_back(prev = mapping->at(prev));
     }
