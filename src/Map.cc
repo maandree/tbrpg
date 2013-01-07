@@ -90,8 +90,8 @@ namespace tbrpg
    */
   Map::~Map()
   {
-    //for (MapMajor* major : *(this->majors))
-    //  delete major;
+    for (MapMajor* major : *(this->majors))
+      delete major;
     delete this->majors;
   }
   

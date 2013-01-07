@@ -43,8 +43,9 @@ namespace tbrpg
     cleaner::getInstance().enqueueDelete(this->rules->inventory_prototype->personal[0]);
     
     MapMajor* map_town = new MapMajor();
-    MapMajor* map_wilds = new MapMajor();
-    
+    //MapMajor* map_wilds = new MapMajor();
+    this->map->majors->push_back(map_town);
+    /*
     MapMinor* area_inn = new House();
     MapMinor* area_town = new Town();
     MapMinor* area_wilds = new Wilderness();
@@ -178,6 +179,7 @@ namespace tbrpg
     gibberling->record.colour = 2;
     gibberling->record.alignment = 4;
     gibberling->record.inventory.personal.push_back(questkey);
+    */
   }
   
   /**
@@ -229,6 +231,9 @@ namespace tbrpg
   {
     // do nothing
   }
+  
+  
+  
   /**
    * Assignment operator
    * 

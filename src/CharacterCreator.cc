@@ -67,7 +67,7 @@ namespace tbrpg
     this->ruleset = rules;
     this->abilityDice = Dice(3, 6);
     this->dice100 = Dice(1, 100);
-    this->sheet = new CharacterSheet();
+    this->sheet = nullptr;
   }
   
   
@@ -82,7 +82,7 @@ namespace tbrpg
     this->ruleset = original.ruleset;
     this->abilityDice = original.abilityDice;
     this->dice100 = original.dice100;
-    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    this->sheet = original.sheet;
   }
   
   /**
@@ -95,7 +95,7 @@ namespace tbrpg
     this->ruleset = original.ruleset;
     this->abilityDice = original.abilityDice;
     this->dice100 = original.dice100;
-    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    this->sheet = original.sheet;
   }
   
   /**
@@ -118,8 +118,8 @@ namespace tbrpg
    */
   CharacterCreator::~CharacterCreator()
   {
-    if ((this->sheet))
-      delete this->sheet;
+    //if ((this->sheet))
+    //  delete this->sheet;
   }
   
   
@@ -132,12 +132,10 @@ namespace tbrpg
    */
   CharacterCreator& CharacterCreator::operator =(const CharacterCreator& original)
   {
-    if ((this->sheet))
-      delete this->sheet;
     this->ruleset = original.ruleset;
     this->abilityDice = original.abilityDice;
     this->dice100 = original.dice100;
-    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    this->sheet = original.sheet;
     return *this;
   }
   
@@ -149,12 +147,10 @@ namespace tbrpg
    */
   CharacterCreator& CharacterCreator::operator =(CharacterCreator& original)
   {
-    if ((this->sheet))
-      delete this->sheet;
     this->ruleset = original.ruleset;
     this->abilityDice = original.abilityDice;
     this->dice100 = original.dice100;
-    this->sheet = original.sheet == nullptr ? nullptr : new CharacterSheet(*(original.sheet));
+    this->sheet = original.sheet;
     return *this;
   }
   
@@ -182,6 +178,8 @@ namespace tbrpg
    */
   CharacterSheet* CharacterCreator::create()
   {
+    this->sheet = new CharacterSheet();
+    
     std::vector<std::string> genders = {"male", "female"};
     
     std::vector<std::string> races = std::vector<std::string>();

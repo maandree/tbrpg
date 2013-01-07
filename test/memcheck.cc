@@ -202,7 +202,7 @@ namespace tbrpg
     #define __(T)  __a(T) __b(T) //
     
     /* misc. */
-    /** /
+    /**/
     __(Abilities);
     __(AbilityBonus);
     __(AbilityChart);
@@ -291,7 +291,7 @@ namespace tbrpg
     /**/
     
     /* races */
-    /** /
+    /**/
     __(Dwarf);
     __(Elf);
     __(Gnome);
@@ -303,7 +303,7 @@ namespace tbrpg
     /**/
     
     /* prestiges */
-    /** /
+    /**/
     __(Bard);
     __(Class);
     __(Cleric);
@@ -321,7 +321,7 @@ namespace tbrpg
     /**/
     
     /* weapons and ammunition */
-    /** /
+    /**/
     __(Ammunition);
     __(Arrow);
     __(BastardSword);
@@ -365,8 +365,10 @@ namespace tbrpg
     /**/
     
     /* senarioes */
+    /**/
     __(Senario);
-    __a(BasicSenario);
+    __(BasicSenario);
+    /**/
     
     cleaner::getInstance().clean();
     return 0;

@@ -122,7 +122,7 @@ namespace tbrpg
     /**
      * Destructor
      */
-    ~CharacterCreator();
+    virtual ~CharacterCreator();
     
     
     
