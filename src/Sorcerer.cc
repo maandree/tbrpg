@@ -37,7 +37,7 @@ namespace tbrpg
   {
     this->class_inheritance.push_back(101);
     this->name = "sorcerer";
-    this->experience_chart.selectable_wizard = {0, 3};
+    this->experience_chart->selectable_wizard = {0, 3};
   }
   
   /**

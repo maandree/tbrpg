@@ -104,8 +104,8 @@ namespace tbrpg
    */
   Race::~Race()
   {
-    for (std::vector<Class*>* elem : this->allowed_classes)
-      delete elem;
+    //for (std::vector<Class*>* elem : this->allowed_classes)
+    //  delete elem;
   }
   
   

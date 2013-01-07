@@ -49,22 +49,22 @@ namespace tbrpg
     /**
      * The number of wizard spell slots per character level and spell level
      */
-    std::vector<std::vector<int>*> wizard_slots;
+    std::vector<std::vector<int>*>* wizard_slots;
     
     /**
      * The number of priest spell slots per character level and spell level
      */
-    std::vector<std::vector<int>*> priest_slots;
+    std::vector<std::vector<int>*>* priest_slots;
     
     /**
      * Wizard castings level for each prestige level
      */
-    std::vector<int> wizard_levels;
+    std::vector<int>* wizard_levels;
     
     /**
      * Priest castings level for each prestige level
      */
-    std::vector<int> priest_levels;
+    std::vector<int>* priest_levels;
     
     
     

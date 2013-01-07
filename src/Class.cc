@@ -51,23 +51,23 @@ namespace tbrpg
     this->abilities.thief_abilities.pick_pockets = -1;
     this->abilities.thief_abilities.stealth = -1;
     
-    this->experience_chart = ExperienceChart();
+    this->experience_chart = new ExperienceChart();
     char backstabs;
     for (long i = 0; i <= 30; i++)
       {
-	this->experience_chart.thief_abilities[i] = 0;
+	this->experience_chart->thief_abilities[i] = 0;
         backstabs = i >= 13 ? 5 : ((i + 7) >> 2);
-	this->experience_chart.backstabs[i] = backstabs;
+	this->experience_chart->backstabs[i] = backstabs;
       }
     
-    this->spell_progression = SpellProgression();
+    this->spell_progression = new SpellProgression();
     
     this->alignments = (bool*)malloc(9);//bool[9];
     for (int i = 0; i < 9; i++)
       this->alignments[i] = true;
     
     this->can_use = std::unordered_map<Item*, bool>();
-    this->can_use[&PROTOTYPE(Hood)] = true;/*
+    this->can_use[&PROTOTYPE(Hood)] = true;
     this->can_use[&PROTOTYPE(Helmet)] = true;
     this->can_use[&PROTOTYPE(Buckler)] = true;
     this->can_use[&PROTOTYPE(SmallShield)] = true;
@@ -86,7 +86,7 @@ namespace tbrpg
     this->can_use[&PROTOTYPE(Potion)] = true;
     this->can_use[&PROTOTYPE(LowScroll)] = true;
     this->can_use[&PROTOTYPE(LowWand)] = true;
-    */
+    
     this->lower_limits = Abilities();
     this->lower_limits.strength = 3;
     this->lower_limits.strength18 = 0;
@@ -109,7 +109,6 @@ namespace tbrpg
 	Proficiency(0, 1, 2),
 	Proficiency(1, 3, 3)
       };
-    
   }
   
   /**
@@ -130,8 +129,8 @@ namespace tbrpg
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
     this->have_racial_enemy = original.have_racial_enemy;
-    this->experience_chart = original.experience_chart;
-    this->spell_progression = original.spell_progression;
+    this->experience_chart = new ExperienceChart(*(original.experience_chart));
+    this->spell_progression = new SpellProgression(*(original.spell_progression));
     this->abilities = original.abilities;
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
@@ -160,8 +159,8 @@ namespace tbrpg
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
     this->have_racial_enemy = original.have_racial_enemy;
-    this->experience_chart = original.experience_chart;
-    this->spell_progression = original.spell_progression;
+    this->experience_chart = new ExperienceChart(*(original.experience_chart));
+    this->spell_progression = new SpellProgression(*(original.spell_progression));
     this->abilities = original.abilities;
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
@@ -217,6 +216,8 @@ namespace tbrpg
    */
   Class::~Class()
   {
+    delete this->experience_chart;
+    delete this->spell_progression;
     free(this->alignments);//delete[] this->alignments;
   }
   
@@ -230,6 +231,8 @@ namespace tbrpg
    */
   Class& Class::operator =(const Class& original)
   {
+    delete this->experience_chart;
+    delete this->spell_progression;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->hit_points = original.hit_points;
@@ -241,8 +244,8 @@ namespace tbrpg
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
     this->have_racial_enemy = original.have_racial_enemy;
-    this->experience_chart = original.experience_chart;
-    this->spell_progression = original.spell_progression;
+    this->experience_chart = new ExperienceChart(*(original.experience_chart));
+    this->spell_progression = new SpellProgression(*(original.spell_progression));
     this->abilities = original.abilities;
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
@@ -262,6 +265,8 @@ namespace tbrpg
    */
   Class& Class::operator =(Class& original)
   {
+    delete this->experience_chart;
+    delete this->spell_progression;
     Object::__copy__((Object&)*this, (Object&)original);
     this->name = original.name;
     this->hit_points = original.hit_points;
@@ -273,8 +278,8 @@ namespace tbrpg
     this->proficiencies_each = original.proficiencies_each;
     this->extra_strength = original.extra_strength;
     this->have_racial_enemy = original.have_racial_enemy;
-    this->experience_chart = original.experience_chart;
-    this->spell_progression = original.spell_progression;
+    this->experience_chart = new ExperienceChart(*(original.experience_chart));
+    this->spell_progression = new SpellProgression(*(original.spell_progression));
     this->abilities = original.abilities;
     this->lower_limits = original.lower_limits;
     this->special_abilities = original.special_abilities;
@@ -401,9 +406,9 @@ namespace tbrpg
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
     rc += std::hash<bool>()(this->have_racial_enemy);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<ExperienceChart>()(this->experience_chart);
+    rc += std::hash<ExperienceChart*>()(this->experience_chart);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<SpellProgression>()(this->spell_progression);
+    rc += std::hash<SpellProgression*>()(this->spell_progression);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<AbilityBonus>()(this->abilities);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);

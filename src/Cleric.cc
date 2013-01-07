@@ -39,7 +39,7 @@ namespace tbrpg
     this->name = "cleric";
     this->thac0 = 20;
     this->abilities.bonuses.detect_doors = 0.10;
-    /*
+    
     this->can_use[&PROTOTYPE(MediumShield)] = true;
     this->can_use[&PROTOTYPE(LargeShield)] = true;
     this->can_use[&PROTOTYPE(ChainMail)] = true;
@@ -51,20 +51,20 @@ namespace tbrpg
     this->can_use[&PROTOTYPE(Flail)] = true;
     this->can_use[&PROTOTYPE(Mace)] = true;
     this->can_use[&PROTOTYPE(MorningStar)] = true;
-    */
-    this->experience_chart.experience = std::vector<int>(31);
+    
+    this->experience_chart->experience = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)
       if (i <= 1)
-	this->experience_chart.experience[i] = 0;
+	this->experience_chart->experience[i] = 0;
       else if (i <= 4)
-	this->experience_chart.experience[i] = 1500 << (i - 2);
+	this->experience_chart->experience[i] = 1500 << (i - 2);
       else if (i == 5)
-	this->experience_chart.experience[i] = 13000;
+	this->experience_chart->experience[i] = 13000;
       else if (i <= 8)
-	this->experience_chart.experience[i] = 27500 << (i - 6);
+	this->experience_chart->experience[i] = 27500 << (i - 6);
       else
-	this->experience_chart.experience[i] = 225000 * (i - 8);
+	this->experience_chart->experience[i] = 225000 * (i - 8);
   }
   
   /**

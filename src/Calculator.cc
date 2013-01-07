@@ -573,7 +573,7 @@ namespace tbrpg
     if (wizard)
       for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	{
-	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression.wizard_slots);
+	  std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression->wizard_slots);
 	  char level = character.record.level[c];
 	  if (level >= (char)(chart.size()))
 	    level = chart.size() - 1;
@@ -595,7 +595,7 @@ namespace tbrpg
 	
 	for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
 	  {
-	    std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression.priest_slots);
+	    std::vector<std::vector<int>> chart = (std::vector<std::vector<int>>&)(character.record.prestige[c]->spell_progression->priest_slots);
 	    char level = character.record.level[c];
 	    if (level >= (char)(chart.size()))
 	      level = chart.size() - 1;
@@ -668,7 +668,7 @@ namespace tbrpg
     char rc = 0;
     for (size_t c = 0, n = character.record.prestige.size(); c < n; c++)
       {
-	char candidate = character.record.prestige[c]->experience_chart.backstabs[(long)(character.record.level[c])];
+	char candidate = character.record.prestige[c]->experience_chart->backstabs[(long)(character.record.level[c])];
 	if (rc < candidate)
 	  rc = candidate;
       }

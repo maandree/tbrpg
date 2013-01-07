@@ -262,7 +262,7 @@ namespace tbrpg
     count = assignScores = eachScores = 0;
     for (Class* c : this->sheet->prestige)
       {
-	int candidate = c->experience_chart.proficiencies[1];
+	int candidate = c->experience_chart->proficiencies[1];
 	if (assignScores < candidate)
 	  assignScores = candidate;
 	candidate = c->proficiencies_each;
@@ -351,7 +351,7 @@ namespace tbrpg
 	for (int i = 0; i < 4; i++)
 	  if (start[i] >= 0)
 	    upper[i] += c->abilities.thief_abilities.limit;
-	assignable += c->experience_chart.thief_abilities[1];
+	assignable += c->experience_chart->thief_abilities[1];
       }
     lower = new int[4];
     for (int i = 0; i < 4; i++)
@@ -391,12 +391,12 @@ namespace tbrpg
       int priestAssign1 = 0;
       for (Class* c : this->sheet->prestige)
 	{
-	  if (c->experience_chart.selectable_wizard.size() > 0)
-	    wizardAssign0 += c->experience_chart.selectable_wizard[0];
-	  if (c->experience_chart.selectable_wizard.size() > 1)
-	    wizardAssign1 += c->experience_chart.selectable_wizard[1];
-	  if (c->experience_chart.selectable_priest.size() > 1)
-	    priestAssign1 += c->experience_chart.selectable_priest[1];
+	  if (c->experience_chart->selectable_wizard.size() > 0)
+	    wizardAssign0 += c->experience_chart->selectable_wizard[0];
+	  if (c->experience_chart->selectable_wizard.size() > 1)
+	    wizardAssign1 += c->experience_chart->selectable_wizard[1];
+	  if (c->experience_chart->selectable_priest.size() > 1)
+	    priestAssign1 += c->experience_chart->selectable_priest[1];
 	}
       
       std::vector<std::string> wizard0s = std::vector<std::string>();
@@ -502,7 +502,7 @@ namespace tbrpg
     long long prestige = 0;
     ActionSlotChart slotchart = ActionSlotChart();
     for (Class* c : this->sheet->prestige)
-      prestige |= slotchart.index_map[*c];
+      prestige |= slotchart.index_map[c];
     std::vector<ActionSlot>& slots = slotchart.slot_map[prestige];
     size_t weapons = this->sheet->inventory.left_hand.size();
     for (ActionSlot slot : slots)
@@ -518,15 +518,15 @@ namespace tbrpg
 	if (minHP < c->hit_points)
 	  minHP = c->hit_points;
 	
-	int hp = c->experience_chart.hit_point_die[1]
-	       * c->experience_chart.hit_point_dice[1]
-	       + c->experience_chart.hit_point_bonus[1];
+	int hp = c->experience_chart->hit_point_die[1]
+	       * c->experience_chart->hit_point_dice[1]
+	       + c->experience_chart->hit_point_bonus[1];
 	if (bestHP < hp)
 	  {
 	    bestHP = hp;
-	    hpDie = c->experience_chart.hit_point_die[1];
-	    hpDice = c->experience_chart.hit_point_dice[1];
-	    hpBonus = c->experience_chart.hit_point_bonus[1];
+	    hpDie = c->experience_chart->hit_point_die[1];
+	    hpDice = c->experience_chart->hit_point_dice[1];
+	    hpBonus = c->experience_chart->hit_point_bonus[1];
 	  }
       }
     

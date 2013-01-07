@@ -38,7 +38,7 @@ namespace tbrpg
     this->class_inheritance.push_back(100);
     this->name = "mage";
     this->learn_from_scroll = true;
-    this->experience_chart.selectable_wizard = {0, 2};
+    this->experience_chart->selectable_wizard = {0, 2};
     this->specialisations = {GENERAL_MAGE, ABJURATION, ALTERATION,
 			     CONJURATION, DIVINATION, ENCHANTMENT,
 			     ILLUSION, INVOCATION, NECROMANCY};

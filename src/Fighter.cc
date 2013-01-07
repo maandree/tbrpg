@@ -93,17 +93,17 @@ namespace tbrpg
    */
   Fighter::~Fighter()
   {
-    /* this->experience_chart.experience is initialised by the superclass's constructor */
+    /* this->experience_chart->experience is initialised by the superclass's constructor */
     for (int i = 1; i <= 30; i++)
       {
 	if (i <= 1)
-	  this->experience_chart.experience[i] = 0;
+	  this->experience_chart->experience[i] = 0;
 	else if (i <= 7)
-	  this->experience_chart.experience[i] = 2000 << (i - 2);
+	  this->experience_chart->experience[i] = 2000 << (i - 2);
 	else if (i <= 8)
-	  this->experience_chart.experience[i] = 125000;
+	  this->experience_chart->experience[i] = 125000;
 	else
-	  this->experience_chart.experience[i] = 250000 * (i - 8);
+	  this->experience_chart->experience[i] = 250000 * (i - 8);
       }
   }
   

@@ -46,17 +46,17 @@ namespace tbrpg
     #define D  (1LL << 6LL)
     #define M  (1LL << 7LL)
     #define S  (1LL << 8LL)
-    /*
-    this->index_map[PROTOTYPE(Fighter)] = F;
-    this->index_map[PROTOTYPE(Ranger)] = R;
-    this->index_map[PROTOTYPE(Paladin)] = P;
-    this->index_map[PROTOTYPE(Thief)] = T;
-    this->index_map[PROTOTYPE(Bard)] = B;
-    this->index_map[PROTOTYPE(Cleric)] = C;
-    this->index_map[PROTOTYPE(Druid)] = D;
-    this->index_map[PROTOTYPE(Mage)] = M;
-    this->index_map[PROTOTYPE(Sorcerer)] = S;
-    */
+    
+    this->index_map[&PROTOTYPE(Fighter)] = F;
+    this->index_map[&PROTOTYPE(Ranger)] = R;
+    this->index_map[&PROTOTYPE(Paladin)] = P;
+    this->index_map[&PROTOTYPE(Thief)] = T;
+    this->index_map[&PROTOTYPE(Bard)] = B;
+    this->index_map[&PROTOTYPE(Cleric)] = C;
+    this->index_map[&PROTOTYPE(Druid)] = D;
+    this->index_map[&PROTOTYPE(Mage)] = M;
+    this->index_map[&PROTOTYPE(Sorcerer)] = S;
+    
     this->slot_map[F]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON};
     this->slot_map[P]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, TURN_UNDEAD, CAST_SPELL};
     this->slot_map[R]     = {QUICK_WEAPON, QUICK_WEAPON, QUICK_WEAPON, STEALTH,     CAST_SPELL};
@@ -230,7 +230,7 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::unordered_map<Class, long long>>()(this->index_map);
+    rc += std::hash<std::unordered_map<Class*, long long>>()(this->index_map);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<std::unordered_map<long long, std::vector<ActionSlot>>>()(this->slot_map);
     return rc;

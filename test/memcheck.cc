@@ -194,7 +194,7 @@ namespace tbrpg
     
     #define __a(T)  {std::cout << "a: " << #T << std::endl; auto x = new T(); delete x;}
     #define __b(T)  {std::cout << "b: " << #T << std::endl; auto x = T(), y = T(); x = y;}
-    #define __(T)  __a(T) //__b(T) //
+#define __(T)  __a(T) // __b(T) //
     
     /* misc. */
     __(Abilities);

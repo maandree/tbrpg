@@ -60,7 +60,7 @@ namespace tbrpg
     /**
      * Prestige class to OR:able index map
      */
-    std::unordered_map<Class, long long> index_map;
+    std::unordered_map<Class*, long long> index_map;
     
     /**
      * Index combination to action slots map

@@ -44,15 +44,15 @@ namespace tbrpg
     this->abilities.thief_abilities.limit = 99;
     this->abilities.thief_abilities.stealth = 10;
     for (long i = 2; i <= 30; i++)
-      this->experience_chart.thief_abilities[i] = 5;
+      this->experience_chart->thief_abilities[i] = 5;
     
-    this->spell_progression.priest_slots = std::vector<std::vector<int>*>(17);
+    this->spell_progression->priest_slots = new std::vector<std::vector<int>*>(17);
     for (int i = 0; i <= 16; i++)
-      this->spell_progression.priest_slots[i] = new std::vector<int>(4);
+      this->spell_progression->priest_slots[0][i] = new std::vector<int>(4);
     
-    this->spell_progression.priest_levels = std::vector<int>(31);
+    this->spell_progression->priest_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression.priest_levels[i] = i < 8 ? 0 : i > 16 ? 9 : (i - 7);
+      this->spell_progression->priest_levels[0][i] = i < 8 ? 0 : i > 16 ? 9 : (i - 7);
     
     for (int cur = 0, i = 0; i <= 16; i++)
       {
@@ -63,7 +63,7 @@ namespace tbrpg
 	  case 13:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][0][1] = cur;
+	this->spell_progression->priest_slots[0][i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 16; i++)
@@ -75,7 +75,7 @@ namespace tbrpg
 	  case 15:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][0][2] = cur;
+	this->spell_progression->priest_slots[0][i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 16; i++)
@@ -87,7 +87,7 @@ namespace tbrpg
 	  case 16:
 	    cur++;
 	  }
-	this->spell_progression.priest_slots[i][0][3] = cur;
+	this->spell_progression->priest_slots[0][i][0][3] = cur;
       }
   }
   

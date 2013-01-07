@@ -36,10 +36,10 @@ namespace tbrpg
   SpellProgression::SpellProgression() : Object()
   {
     this->class_inheritance.push_back(10);
-    wizard_slots = {};
-    priest_slots = {};
-    wizard_levels = {};
-    priest_levels = {};
+    wizard_slots = new std::vector<std::vector<int>*>();
+    priest_slots = new std::vector<std::vector<int>*>();
+    wizard_levels = new std::vector<int>();
+    priest_levels = new std::vector<int>();
   }
   
   /**
@@ -49,10 +49,14 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression(const SpellProgression& original) : Object(original)
   {
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
-    this->wizard_levels = original.wizard_levels;
-    this->priest_levels = original.priest_levels;
+    this->wizard_slots = new std::vector<std::vector<int>*>();
+    this->priest_slots = new std::vector<std::vector<int>*>();
+    for (std::vector<int>* elem : *(original.wizard_slots))
+      this->wizard_slots->push_back(new std::vector<int>(*elem));
+    for (std::vector<int>* elem : *(original.priest_slots))
+      this->priest_slots->push_back(new std::vector<int>(*elem));
+    this->wizard_levels = new std::vector<int>(*(original.wizard_levels));
+    this->priest_levels = new std::vector<int>(*(original.priest_levels));
   }
   
   /**
@@ -62,10 +66,14 @@ namespace tbrpg
    */
   SpellProgression::SpellProgression(SpellProgression& original) : Object(original)
   {
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
-    this->wizard_levels = original.wizard_levels;
-    this->priest_levels = original.priest_levels;
+    this->wizard_slots = new std::vector<std::vector<int>*>();
+    this->priest_slots = new std::vector<std::vector<int>*>();
+    for (std::vector<int>* elem : *(original.wizard_slots))
+      this->wizard_slots->push_back(new std::vector<int>(*elem));
+    for (std::vector<int>* elem : *(original.priest_slots))
+      this->priest_slots->push_back(new std::vector<int>(*elem));
+    this->wizard_levels = new std::vector<int>(*(original.wizard_levels));
+    this->priest_levels = new std::vector<int>(*(original.priest_levels));
   }
   
   /**
@@ -98,10 +106,14 @@ namespace tbrpg
    */
   SpellProgression::~SpellProgression()
   {
-    for (std::vector<int>* elem : wizard_slots)
+    for (std::vector<int>* elem : *(this->wizard_slots))
       delete elem;
-    for (std::vector<int>* elem : priest_slots)
+    for (std::vector<int>* elem : *(this->priest_slots))
       delete elem;
+    delete this->wizard_slots;
+    delete this->priest_slots;
+    delete this->wizard_levels;
+    delete this->priest_levels;
   }
   
   
@@ -114,11 +126,23 @@ namespace tbrpg
    */
   SpellProgression& SpellProgression::operator =(const SpellProgression& original)
   {
+    for (std::vector<int>* elem : *(this->wizard_slots))
+      delete elem;
+    for (std::vector<int>* elem : *(this->priest_slots))
+      delete elem;
+    delete this->wizard_slots;
+    delete this->priest_slots;
+    delete this->wizard_levels;
+    delete this->priest_levels;
     Object::__copy__((Object&)*this, (Object&)original);
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
-    this->wizard_levels = original.wizard_levels;
-    this->priest_levels = original.priest_levels;
+    this->wizard_slots = new std::vector<std::vector<int>*>();
+    this->priest_slots = new std::vector<std::vector<int>*>();
+    for (std::vector<int>* elem : *(original.wizard_slots))
+      this->wizard_slots->push_back(new std::vector<int>(*elem));
+    for (std::vector<int>* elem : *(original.priest_slots))
+      this->priest_slots->push_back(new std::vector<int>(*elem));
+    this->wizard_levels = new std::vector<int>(*(original.wizard_levels));
+    this->priest_levels = new std::vector<int>(*(original.priest_levels));
     return *this;
   }
   
@@ -130,11 +154,23 @@ namespace tbrpg
    */
   SpellProgression& SpellProgression::operator =(SpellProgression& original)
   {
+    for (std::vector<int>* elem : *(this->wizard_slots))
+      delete elem;
+    for (std::vector<int>* elem : *(this->priest_slots))
+      delete elem;
+    delete this->wizard_slots;
+    delete this->priest_slots;
+    delete this->wizard_levels;
+    delete this->priest_levels;
     Object::__copy__((Object&)*this, (Object&)original);
-    this->wizard_slots = original.wizard_slots;
-    this->priest_slots = original.priest_slots;
-    this->wizard_levels = original.wizard_levels;
-    this->priest_levels = original.priest_levels;
+    this->wizard_slots = new std::vector<std::vector<int>*>();
+    this->priest_slots = new std::vector<std::vector<int>*>();
+    for (std::vector<int>* elem : *(original.wizard_slots))
+      this->wizard_slots->push_back(new std::vector<int>(*elem));
+    for (std::vector<int>* elem : *(original.priest_slots))
+      this->priest_slots->push_back(new std::vector<int>(*elem));
+    this->wizard_levels = new std::vector<int>(*(original.wizard_levels));
+    this->priest_levels = new std::vector<int>(*(original.priest_levels));
     return *this;
   }
   
@@ -201,13 +237,13 @@ namespace tbrpg
   {
     size_t rc = 0;
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<std::vector<std::vector<int>*>>()(this->wizard_slots);
+    rc += std::hash<std::vector<std::vector<int>*>*>()(this->wizard_slots);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<std::vector<std::vector<int>*>>()(this->priest_slots);
+    rc += std::hash<std::vector<std::vector<int>*>*>()(this->priest_slots);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
-    rc += std::hash<std::vector<int>>()(this->wizard_levels);
+    rc += std::hash<std::vector<int>*>()(this->wizard_levels);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<std::vector<int>>()(this->priest_levels);
+    rc += std::hash<std::vector<int>*>()(this->priest_levels);
     return rc;
   }
   

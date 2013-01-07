@@ -42,33 +42,33 @@ namespace tbrpg
     this->abilities.saving_throws.petrification_polymorph = 12;
     this->abilities.saving_throws.rod_staff_wand = 14;
     this->abilities.saving_throws.spell = 15;
-    /*
+    
     this->can_use[&PROTOTYPE(Hood)] = false;
     this->can_use[&PROTOTYPE(Arrow)] = true;
     this->can_use[&PROTOTYPE(LongSword)] = true;
     this->can_use[&PROTOTYPE(ShortSword)] = true;
     this->can_use[&PROTOTYPE(ShortBow)] = true;
-    */
-    this->experience_chart.experience = std::vector<int>(31);
-    this->experience_chart.hit_point_die = std::vector<char>(31);
-    this->experience_chart.hit_point_dice = std::vector<char>(31);
-    this->experience_chart.hit_point_bonus = std::vector<int>(31);
-    this->experience_chart.proficiencies = std::vector<int>(31);
+    
+    this->experience_chart->experience = std::vector<int>(31);
+    this->experience_chart->hit_point_die = std::vector<char>(31);
+    this->experience_chart->hit_point_dice = std::vector<char>(31);
+    this->experience_chart->hit_point_bonus = std::vector<int>(31);
+    this->experience_chart->proficiencies = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)
       {
-	this->experience_chart.hit_point_die[i] = 6;
-	this->experience_chart.hit_point_dice[i] = i > 10 ? 10 : i;
-	this->experience_chart.hit_point_bonus[i] = i <= 10 ? 0 : ((i - 10) * 2);
-	this->experience_chart.proficiencies[i] = i / 4 + 2;
+	this->experience_chart->hit_point_die[i] = 6;
+	this->experience_chart->hit_point_dice[i] = i > 10 ? 10 : i;
+	this->experience_chart->hit_point_bonus[i] = i <= 10 ? 0 : ((i - 10) * 2);
+	this->experience_chart->proficiencies[i] = i / 4 + 2;
 	if (i <= 1)
-	  this->experience_chart.experience[i] = 0;
+	  this->experience_chart->experience[i] = 0;
 	else if (i <= 7)
-	  this->experience_chart.experience[i] = 1250 << (i - 2);
+	  this->experience_chart->experience[i] = 1250 << (i - 2);
 	else if (i <= 11)
-	  this->experience_chart.experience[i] = (7 + (i - 8) * (i - 1) / 2) * 10000;
+	  this->experience_chart->experience[i] = (7 + (i - 8) * (i - 1) / 2) * 10000;
 	else
-	  this->experience_chart.experience[i] = 220000 * (i - 10);
+	  this->experience_chart->experience[i] = 220000 * (i - 10);
       }
   }
   

@@ -46,7 +46,7 @@ namespace tbrpg
     this->abilities.saving_throws.spell = 12;
     this->lower_limits.intelligence = 9;
     this->abilities.bonuses.detect_doors = 0.05;
-    /*
+    
     this->can_use[&PROTOTYPE(Hat)] = true;
     this->can_use[&PROTOTYPE(Hood)] = false;
     this->can_use[&PROTOTYPE(Helmet)] = false;
@@ -58,17 +58,17 @@ namespace tbrpg
     this->can_use[&PROTOTYPE(Club)] = false;
     this->can_use[&PROTOTYPE(HighWand)] = true;
     this->can_use[&PROTOTYPE(WizardScroll)] = true;
-    */
-    this->spell_progression.wizard_slots = std::vector<std::vector<int>*>(31);
+    
+    this->spell_progression->wizard_slots = new std::vector<std::vector<int>*>(31);
     for (int i = 0; i <= 30; i++)
       {
-	this->spell_progression.wizard_slots[i] = new std::vector<int>(10);
-	this->spell_progression.wizard_slots[i][0][0] = 1 + i;
+	this->spell_progression->wizard_slots[0][i] = new std::vector<int>(10);
+	this->spell_progression->wizard_slots[0][i][0][0] = 1 + i;
       }
     
-    this->spell_progression.wizard_levels = std::vector<int>(31);
+    this->spell_progression->wizard_levels = new std::vector<int>(31);
     for (int i = 0; i <= 30; i++)
-      this->spell_progression.wizard_levels[i] = i;
+      this->spell_progression->wizard_levels[0][i] = i;
     
     for (int cur = 0, i = 0; i <= 30; i++)
       {
@@ -85,7 +85,7 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][1] = cur;
+	this->spell_progression->wizard_slots[0][i][0][1] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -102,7 +102,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][2] = cur;
+	this->spell_progression->wizard_slots[0][i][0][2] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -119,7 +119,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][3] = cur;
+	this->spell_progression->wizard_slots[0][i][0][3] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -135,7 +135,7 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][4] = cur;
+	this->spell_progression->wizard_slots[0][i][0][4] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -151,7 +151,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][5] = cur;
+	this->spell_progression->wizard_slots[0][i][0][5] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -167,7 +167,7 @@ namespace tbrpg
 	  case 30:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][6] = cur;
+	this->spell_progression->wizard_slots[0][i][0][6] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -182,7 +182,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][7] = cur;
+	this->spell_progression->wizard_slots[0][i][0][7] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -197,7 +197,7 @@ namespace tbrpg
 	  case 28:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][8] = cur;
+	this->spell_progression->wizard_slots[0][i][0][8] = cur;
       }
     
     for (int cur = 0, i = 0; i <= 30; i++)
@@ -210,33 +210,33 @@ namespace tbrpg
 	  case 29:
 	    cur++;
 	  }
-	this->spell_progression.wizard_slots[i][0][9] = cur;
+	this->spell_progression->wizard_slots[0][i][0][9] = cur;
       }
     
-    this->experience_chart.experience = std::vector<int>(31);
-    this->experience_chart.hit_point_die = std::vector<char>(31);
-    this->experience_chart.hit_point_dice = std::vector<char>(31);
-    this->experience_chart.hit_point_bonus = std::vector<int>(31);
-    this->experience_chart.proficiencies = std::vector<int>(31);
+    this->experience_chart->experience = std::vector<int>(31);
+    this->experience_chart->hit_point_die = std::vector<char>(31);
+    this->experience_chart->hit_point_dice = std::vector<char>(31);
+    this->experience_chart->hit_point_bonus = std::vector<int>(31);
+    this->experience_chart->proficiencies = std::vector<int>(31);
     
     for (int i = 1; i <= 30; i++)
       {
-	this->experience_chart.hit_point_die[i] = 4;
-	this->experience_chart.hit_point_dice[i] = i > 10 ? 10 : i;
-	this->experience_chart.hit_point_bonus[i] = i <= 10 ? 0 : (i - 10);
-	this->experience_chart.proficiencies[i] = i / 5 + 2;
+	this->experience_chart->hit_point_die[i] = 4;
+	this->experience_chart->hit_point_dice[i] = i > 10 ? 10 : i;
+	this->experience_chart->hit_point_bonus[i] = i <= 10 ? 0 : (i - 10);
+	this->experience_chart->proficiencies[i] = i / 5 + 2;
 	if (i <= 1)
-	  this->experience_chart.experience[i] = 0;
+	  this->experience_chart->experience[i] = 0;
 	else if (i <= 6)
-	  this->experience_chart.experience[i] = 2500 << (i - 2);
+	  this->experience_chart->experience[i] = 2500 << (i - 2);
 	else if (i <= 8)
-	  this->experience_chart.experience[i] = 60000 + 30000 * (i - 7);
+	  this->experience_chart->experience[i] = 60000 + 30000 * (i - 7);
 	else if (i == 9)
-	  this->experience_chart.experience[i] = 135000;
+	  this->experience_chart->experience[i] = 135000;
 	else if (i <= 11)
-	  this->experience_chart.experience[i] = 250000 + 125000 * (i - 10);
+	  this->experience_chart->experience[i] = 250000 + 125000 * (i - 10);
 	else
-	  this->experience_chart.experience[i] = 750000 + 375000 * (i - 12);
+	  this->experience_chart->experience[i] = 750000 + 375000 * (i - 12);
       }
   }
   

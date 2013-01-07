@@ -123,12 +123,12 @@ namespace tbrpg
     /**
      * The class's experience chart
      */
-    ExperienceChart experience_chart;
+    ExperienceChart* experience_chart;
     
     /**
      * The class's spell progression chart
      */
-    SpellProgression spell_progression;
+    SpellProgression* spell_progression;
     
     /**
      * Abilties
