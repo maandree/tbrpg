@@ -1,7 +1,7 @@
 /**
  * tbrpg – Text based roll playing game
  * 
- * Copyright © 2012  Mattias Andrée (maandree@kth.se)
+ * Copyright © 2012, 2013  Mattias Andrée (maandree@kth.se)
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -514,6 +514,7 @@ GameCharacter: Object                     ; Game play wrapper for characters
 	bool turn_undead_on               ; Whether turn undead is on
 	bool find_traps_on                ; Whether find traps is on
 	bool stealth_on                   ; Whether stealth mode is on
+	bool bard_song_on                 ; Whether bard song is on
 	bool self_interruptable           ; Whether the character can interrupt his current action
 	bool damage_interruptable         ; Whether the character is interrupted if damaged
 	char turns                        ; The number of turns until the current action is performed

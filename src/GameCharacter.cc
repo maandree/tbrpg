@@ -39,6 +39,7 @@ namespace tbrpg
     this->turn_undead_on = false;
     this->find_traps_on = false;
     this->stealth_on = false;
+    this->bard_song_on = false;
     this->self_interruptable = false;
     this->damage_interruptable = false;
     this->turns = 0;
@@ -59,6 +60,7 @@ namespace tbrpg
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
+    this->bard_song_on = original.bard_song_on;
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
@@ -79,6 +81,7 @@ namespace tbrpg
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
+    this->bard_song_on = original.bard_song_on;
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
@@ -99,6 +102,7 @@ namespace tbrpg
     std::swap(this->turn_undead_on, original.turn_undead_on);
     std::swap(this->find_traps_on, original.find_traps_on);
     std::swap(this->stealth_on, original.stealth_on);
+    std::swap(this->bard_song_on, original.bard_song_on);
     std::swap(this->self_interruptable, original.self_interruptable);
     std::swap(this->damage_interruptable, original.damage_interruptable);
     std::swap(this->turns, original.turns);
@@ -143,6 +147,7 @@ namespace tbrpg
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
+    this->bard_song_on = original.bard_song_on;
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
@@ -166,6 +171,7 @@ namespace tbrpg
     this->turn_undead_on = original.turn_undead_on;
     this->find_traps_on = original.find_traps_on;
     this->stealth_on = original.stealth_on;
+    this->bard_song_on = original.bard_song_on;
     this->self_interruptable = original.self_interruptable;
     this->damage_interruptable = original.damage_interruptable;
     this->turns = original.turns;
@@ -189,6 +195,7 @@ namespace tbrpg
     std::swap(this->turn_undead_on, original.turn_undead_on);
     std::swap(this->find_traps_on, original.find_traps_on);
     std::swap(this->stealth_on, original.stealth_on);
+    std::swap(this->bard_song_on, original.bard_song_on);
     std::swap(this->self_interruptable, original.self_interruptable);
     std::swap(this->damage_interruptable, original.damage_interruptable);
     std::swap(this->turns, original.turns);
@@ -212,6 +219,7 @@ namespace tbrpg
     if (this->turn_undead_on != other.turn_undead_on)  return false;
     if (this->find_traps_on != other.find_traps_on)  return false;
     if (this->stealth_on != other.stealth_on)  return false;
+    if (this->bard_song_on != other.bard_song_on)  return false;
     if (this->self_interruptable != other.self_interruptable)  return false;
     if (this->damage_interruptable != other.damage_interruptable)  return false;
     if (this->turns != other.turns)  return false;
@@ -319,20 +327,22 @@ namespace tbrpg
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
     rc += std::hash<bool>()(this->stealth_on);
     rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
-    rc += std::hash<bool>()(this->self_interruptable);
+    rc += std::hash<bool>()(this->bard_song_on);
     rc = (rc * 11) ^ ((rc >> (sizeof(size_t) << 2)) * 11);
-    rc += std::hash<bool>()(this->damage_interruptable);
+    rc += std::hash<bool>()(this->self_interruptable);
     rc = (rc * 13) ^ ((rc >> (sizeof(size_t) << 2)) * 13);
-    rc += std::hash<char>()(this->turns);
+    rc += std::hash<bool>()(this->damage_interruptable);
     rc = (rc * 17) ^ ((rc >> (sizeof(size_t) << 2)) * 17);
-    rc += std::hash<char>()(this->weapon);
+    rc += std::hash<char>()(this->turns);
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
-    rc += std::hash<char>()(this->quiver);
+    rc += std::hash<char>()(this->weapon);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<Action*>()(this->action);
+    rc += std::hash<char*>()(this->quiver);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
-    rc += std::hash<Character*>()(this->character);
+    rc += std::hash<Action*>()(this->action);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);
+    rc += std::hash<Character*>()(this->character);
+    rc = (rc * 9) ^ ((rc >> (sizeof(size_t) << 2)) * 9);
     rc += std::hash<MapMinor*>()(this->area);
     return rc;
   }
