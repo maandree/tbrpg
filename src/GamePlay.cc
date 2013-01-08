@@ -738,7 +738,7 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Not implement..." << std::endl; // TODO disarm
     return 2;//...
   }
   
@@ -843,7 +843,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth activated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO
+      std::cout << "Not implement..." << std::endl; // TODO stealth
     return 2;
   }
   
@@ -860,7 +860,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO
+      std::cout << "Not implement..." << std::endl; // TODO stealth off
     return 2;
   }
   
@@ -879,7 +879,7 @@ namespace tbrpg
 	std::cout << "You already have Find Traps activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Not implement..." << std::endl; // TODO find traps
     return 2;//1;
   }
   
@@ -896,7 +896,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->find_traps_on == false)
       std::cout << "You already have Find Traps deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO
+      std::cout << "Not implement..." << std::endl; // TODO find traps off
     return 2;
   }
   
@@ -915,7 +915,7 @@ namespace tbrpg
 	std::cout << "You already have Turn Undead activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Not implement..." << std::endl; // TODO turn undead
     return 2;//1;
   }
   
@@ -932,7 +932,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO
+      std::cout << "Not implement..." << std::endl; // TODO turn undead off
     return 2;
   }
   
@@ -947,7 +947,7 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Not implement..." << std::endl; // TODO inventory
     
     this->players[0][this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
