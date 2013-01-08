@@ -518,7 +518,7 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     
-    std::cout << "Not implement..." << std::endl; // TODO
+    std::cout << "Not implement..." << std::endl; // TODO cast
     return 2;
   }
   
