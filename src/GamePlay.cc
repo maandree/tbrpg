@@ -875,8 +875,8 @@ namespace tbrpg
   {
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
-    else
-      std::cout << "Not implement..." << std::endl; // TODO stealth off
+    elsed
+      std::cout << "Not implemented..." << std::endl; // TODO stealth off
     return 2;
   }
   
@@ -896,7 +896,7 @@ namespace tbrpg
 	std::cout << "You already have Find Traps activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl; // TODO find traps
+    std::cout << "Not implemented..." << std::endl; // TODO find traps
     return 2;//1;
   }
   
@@ -930,7 +930,7 @@ namespace tbrpg
 	std::cout << "You already have Turn Undead activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implement..." << std::endl; // TODO turn undead
+    std::cout << "Not implemented..." << std::endl; // TODO turn undead
     return 2;//1;
   }
   
@@ -944,7 +944,41 @@ namespace tbrpg
     if (this->players[0][this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO turn undead off
+      std::cout << "Not implemented..." << std::endl; // TODO turn undead off
+    return 2;
+  }
+  
+  /**
+   * Action: turn on bard song mode
+   * 
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+   */
+  char GamePlay::action_bard_song()
+  {
+    __forbid_stealth();
+    __forbid_find_trap();
+    __forbid_turn_undead();
+    
+    if (this->players[0][this->next_player]->bard_song_on)
+      {
+	std::cout << "You already have Bard Song activated." << std::endl;
+	return 2;
+      }
+    std::cout << "Not implemented..." << std::endl; // TODO bard song
+    return 2;//1;
+  }
+  
+  /**
+   * Action: turn off bard song mode
+   * 
+   * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+   */
+  char GamePlay::action_bard_song_off()
+  {
+    if (this->players[0][this->next_player]->bard_song_on == false)
+      std::cout << "You already have Bard Song deactivated." << std::endl;
+    else
+      std::cout << "Not implemented..." << std::endl; // TODO bard song off
     return 2;
   }
   

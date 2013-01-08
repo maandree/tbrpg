@@ -255,6 +255,20 @@ namespace tbrpg
     char action_turn_undead_off();
     
     /**
+     * Action: turn on bard song mode
+     *
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+     */
+    char action_bard_song();
+    
+    /**
+     * Action: turn off bard song mode
+     *
+     * @return  0 for stop playing, 1 for continue playing, 2 for one more time
+     */
+    char action_bard_song_off();
+    
+    /**
      * Action: examine inventory
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one more time
