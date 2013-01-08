@@ -337,7 +337,7 @@ namespace tbrpg
     rc = (rc * 19) ^ ((rc >> (sizeof(size_t) << 2)) * 19);
     rc += std::hash<char>()(this->weapon);
     rc = (rc * 3) ^ ((rc >> (sizeof(size_t) << 2)) * 3);
-    rc += std::hash<char*>()(this->quiver);
+    rc += std::hash<char>()(this->quiver);
     rc = (rc * 5) ^ ((rc >> (sizeof(size_t) << 2)) * 5);
     rc += std::hash<Action*>()(this->action);
     rc = (rc * 7) ^ ((rc >> (sizeof(size_t) << 2)) * 7);

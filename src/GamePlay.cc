@@ -875,7 +875,7 @@ namespace tbrpg
   {
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
-    elsed
+    else
       std::cout << "Not implemented..." << std::endl; // TODO stealth off
     return 2;
   }
