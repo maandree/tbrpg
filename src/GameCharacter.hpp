@@ -2,7 +2,7 @@
 /**
  * tbrpg – Text based roll playing game
  * 
- * Copyright © 2012  Mattias Andrée (maandree@kth.se)
+ * Copyright © 2012, 2013  Mattias Andrée (maandree@kth.se)
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,6 +66,11 @@ namespace tbrpg
      * Whether stealth mode is on
      */
     bool stealth_on;
+    
+    /**
+     * Whether bard song is on
+     */
+    bool bard_song_on;
     
     /**
      * Whether the character can interrupt his current action
