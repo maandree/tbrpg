@@ -1049,7 +1049,7 @@ namespace tbrpg
 	      if (major->visitable == false)
 		std::cout << " (not visitable)";
 	      if (distmap.at(major) >= 0)
-		std::cout << " (distance: " << distmap.at(major) << ")";
+		std::cout << " (distance: " << ((distmap.at(major) + 500) / 1000) << " km)";
 	    }
 	  std::cout << std::endl;
 	}
@@ -1098,6 +1098,8 @@ namespace tbrpg
    */
   char GamePlay::action_travel()
   {
+    // TODO check that you can outrun hostiles
+    
     std::vector<Entrance*> entrances = std::vector<Entrance*>();
     std::vector<Road*> roads = std::vector<Road*>();
     std::vector<std::string> names = std::vector<std::string>();
@@ -1170,7 +1172,7 @@ namespace tbrpg
 		      if (mmajor->visitable == false)
 			ss << " (not visitable)";
 		      if (distmap.at(mmajor) >= 0)
-			ss << " (distance: " << distmap.at(mmajor) << ")";
+			ss << " (distance: " << ((distmap.at(mmajor) + 500) / 1000) << " km)";
 		      if (mmajor == major)
 			ss << " (neighbouring)";
 		    }
@@ -1207,7 +1209,7 @@ namespace tbrpg
 	  }
       }
     
-    return 2;
+    return 1;
   }
   
   
@@ -1255,10 +1257,10 @@ namespace tbrpg
 	int i = 0;
 	for (MapMinor* element : set)
 	  {
-	    if ((best < 0) || (explored[element] && (distance[element] < best)))
+	    if (explored[element] && ((best < 0) || (distance[element] < best)))
 	      {
 		index = i;
-		distance[element] = best;
+		best = distance[element];
 	      }
 	    i++;
 	  }
@@ -1273,7 +1275,7 @@ namespace tbrpg
 	      distance[v] = candidate;						\
 	      explored[v] = true;						\
 	      (*previous)[v] = u;						\
-	      if (distmap[v->is_in] > candidate)				\
+	      if ((distmap[v->is_in] < 0) || (candidate < distmap[v->is_in]))	\
 		{								\
 		  distmap[v->is_in] = candidate;				\
 		  if (where != nullptr)						\
@@ -1325,12 +1327,13 @@ namespace tbrpg
     std::vector<MapMinor*> rev = std::vector<MapMinor*>();
     {
       MapMinor* prev = end;
+      rev.push_back(end);
       while (mapping->at(prev) != prev)
 	rev.push_back(prev = mapping->at(prev));
     }
-    for (size_t i = 1, n = rev.size(); i < n; i++)
+    for (size_t i = 1; i < rev.size(); i++)
       {
-	MapMinor* u = rev[i - 1];
+	MapMinor* u = rev[i];
 	MapMinor* v = rev[i - 1];
 	bool done = false;
 	for (Entrance* entrance : u->connections)

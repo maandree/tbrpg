@@ -366,7 +366,7 @@ namespace tbrpg
     __(Weapon);
     /**/
     
-    /* senarioes */
+    /* senarios */
     /**/
     __(Senario);
     __(BasicSenario);
