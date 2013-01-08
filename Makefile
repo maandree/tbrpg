@@ -299,11 +299,11 @@ install-strip: install-bin
 
 .PHONY: install-html
 install-html:
-	@echo Not implemented  FIXME
+	@echo Not implemented  XXX
 
 .PHONY: install-info
 install-info: $(BOOK).info
-	@echo Not implemented  FIXME
+	@echo Not implemented  XXX
 
 
 .PHONY: install-dvi
