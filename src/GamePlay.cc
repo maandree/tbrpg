@@ -50,6 +50,13 @@ namespace tbrpg
 	std::cout << "You will have to turn off Turn Undead." << std::endl;	\
 	return 2;								\
       }//
+      
+  #define __forbid_bard_song()							\
+    if (this->players[0][this->next_player]->bard_song_on)			\
+      {										\
+	std::cout << "You will have to turn off Bard Song." << std::endl;	\
+	return 2;								\
+      }//
   
   
   
@@ -123,6 +130,8 @@ namespace tbrpg
     __add("find traps off", action_find_traps_off);
     __add("stealth", action_stealth);
     __add("stealth off", action_stealth_off);
+    __add("bard song", action_bard_song);
+    __add("bard song off", action_bard_song_off);
     __add("pick pocket", action_pick_pocket);
     __add("disarm", action_disarm);
     __add("unlock", action_pick_lock);
@@ -258,6 +267,8 @@ namespace tbrpg
       std::cout << "You will have to turn off Find Traps." << std::endl;
     else if (this->players[0][this->next_player]->turn_undead_on)
       std::cout << "You will have to turn off Turn Undead." << std::endl;
+    else if (this->players[0][this->next_player]->bard_song_on)
+      std::cout << "You will have to turn off Bard Song." << std::endl;
     else
       if (this->players[0][0]->area->rest())
 	{
@@ -315,6 +326,7 @@ namespace tbrpg
     
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::vector<Creature*> attackable = std::vector<Creature*>();
     
@@ -517,6 +529,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::cout << "Not implement..." << std::endl; // TODO cast
     return 2;
@@ -532,6 +545,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::vector<Creature*> talkable = std::vector<Creature*>();
     for (Creature* creature : this->players[0][this->next_player]->area->creatures)
@@ -591,6 +605,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
@@ -664,6 +679,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::vector<Lockable*> locks = std::vector<Lockable*>();
     std::vector<std::string> names = std::vector<std::string>();
@@ -737,6 +753,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::cout << "Not implement..." << std::endl; // TODO disarm
     return 2;//...
@@ -772,6 +789,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::vector<Creature*> pickable = std::vector<Creature*>();
     for (Creature* creature : this->players[0][this->next_player]->area->creatures)
@@ -839,6 +857,7 @@ namespace tbrpg
   {
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth activated." << std::endl;
@@ -854,9 +873,6 @@ namespace tbrpg
    */
   char GamePlay::action_stealth_off()
   {
-    __forbid_find_trap();
-    __forbid_turn_undead();
-    
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
     else
@@ -873,6 +889,7 @@ namespace tbrpg
   {
     __forbid_stealth();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     if (this->players[0][this->next_player]->find_traps_on)
       {
@@ -890,9 +907,6 @@ namespace tbrpg
    */
   char GamePlay::action_find_traps_off()
   {
-    __forbid_stealth();
-    __forbid_turn_undead();
-    
     if (this->players[0][this->next_player]->find_traps_on == false)
       std::cout << "You already have Find Traps deactivated." << std::endl;
     else
@@ -909,6 +923,7 @@ namespace tbrpg
   {
     __forbid_stealth();
     __forbid_find_trap();
+    __forbid_bard_song();
     
     if (this->players[0][this->next_player]->turn_undead_on)
       {
@@ -926,9 +941,6 @@ namespace tbrpg
    */
   char GamePlay::action_turn_undead_off()
   {
-    __forbid_stealth();
-    __forbid_find_trap();
-    
     if (this->players[0][this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
@@ -946,6 +958,7 @@ namespace tbrpg
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_turn_undead();
+    __forbid_bard_song();
     
     std::cout << "Not implement..." << std::endl; // TODO inventory
     
@@ -983,6 +996,7 @@ namespace tbrpg
 	  bool turn_undead_on = character->turn_undead_on;
 	  bool find_traps_on = character->find_traps_on;
 	  bool stealth_on = character->stealth_on;
+	  bool bard_song_on = character->bard_song_on;
 	  c->fatigue
 	  c->extra_attacks
 	*/
