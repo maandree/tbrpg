@@ -67,6 +67,11 @@ namespace tbrpg
     bool stealth_on;
     
     /**
+     * Whether bard song is on
+     */
+    bool bard_song_on;
+    
+    /**
      * Whether the character can interrupt his current action
      */
     bool self_interruptable;
