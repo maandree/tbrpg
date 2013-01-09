@@ -378,10 +378,10 @@ namespace tbrpg
       }
     
     Weapon* _targetweapon = attackable[target]->record.inventory.left_hand[0]; /* TODO dual weapon */
-    Weapon targetweapon = _targetweapon != nullptr ? *_targetweapon
-                        : attackable[target]->record.inventory.right_hand != nullptr
-                        ? attackable[target]->record.prestige[0]->default_one_hand
-                        : attackable[target]->record.prestige[0]->default_two_hands;
+    Weapon& targetweapon = _targetweapon != nullptr ? *_targetweapon
+      			 : (attackable[target]->record.inventory.right_hand != nullptr
+                         ? attackable[target]->record.prestige[0]->default_one_hand
+			 : attackable[target]->record.prestige[0]->default_two_hands);
     
     DamageType damagetype = weapon->damage_type[0];
     if (weapon->damage_type.size() > 0)

@@ -34,7 +34,7 @@ namespace tbrpg
     (this->rules->ability_chart->X[(long)(this->Y(character))]->Z.W)
   
   #define ___i(X, Y, Z, op)				\
-    if (character.record.inventory.X == nullptr)	\
+    if (character.record.inventory.X != nullptr)	\
       op (character.record.inventory.X->bonuses.Y.Z)
   
   #define __gg(X, Y, op)			       		\

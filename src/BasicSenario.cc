@@ -148,6 +148,9 @@ namespace tbrpg
     store->room_costs.push_back(8);
     store->room_quality.push_back(16);
     
+    store->record.race = &PROTOTYPE(Human);
+    store->record.prestige.push_back(&PROTOTYPE(Fighter));
+    
     store->inventory.push_back(&PROTOTYPE(ShortSword));
     store->inventory.push_back(&PROTOTYPE(LongSword));
     store->inventory.push_back(&PROTOTYPE(Bullet));
@@ -173,6 +176,8 @@ namespace tbrpg
     gibberling->record.colour = 2;
     gibberling->record.alignment = 4;
     gibberling->record.inventory.personal.push_back(questkey);
+    gibberling->record.race = &PROTOTYPE(Human);
+    gibberling->record.prestige.push_back(&PROTOTYPE(Fighter));
   }
   
   /**
