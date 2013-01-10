@@ -264,6 +264,7 @@ namespace tbrpg
     return 0;
   }
   
+  
   /**
    * Action: wait one turn
    * 
@@ -274,6 +275,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: redo last action by any party member
    * 
@@ -283,6 +285,7 @@ namespace tbrpg
   {
     return (this->*(this->last_function))();
   }
+  
   
   /**
    * Action: rest
@@ -332,6 +335,7 @@ namespace tbrpg
     return 2;
   }
   
+  
   /**
    * Action: select ammunition to use from the quiver
    * 
@@ -343,6 +347,7 @@ namespace tbrpg
     return 2;
   }
   
+  
   /**
    * Action: select weapon to use from the quick weapons
    * 
@@ -353,6 +358,7 @@ namespace tbrpg
     this->players[0][this->next_player]->selectWeapon();
     return 2;
   }
+  
   
   /**
    * Action: attack
@@ -558,6 +564,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: cast non-quick spell
    * 
@@ -573,6 +580,7 @@ namespace tbrpg
     std::cout << "Not implement..." << std::endl; // TODO cast
     return 2;
   }
+  
   
   /**
    * Action: talk
@@ -623,6 +631,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: list special usable abilities
    * 
@@ -633,6 +642,7 @@ namespace tbrpg
     std::cout << "You have no special abilties." << std::endl; // TODO
     return 2;
   }
+  
   
   /**
    * Action: bash a lock
@@ -708,6 +718,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: pick a lock
    * 
@@ -782,6 +793,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: disarm a trap
    * 
@@ -797,6 +809,7 @@ namespace tbrpg
     std::cout << "Not implement..." << std::endl; // TODO disarm
     return 2;//...
   }
+  
   
   /**
    * Action: pick pocket
@@ -887,6 +900,7 @@ namespace tbrpg
     return 1;
   }
   
+  
   /**
    * Action: turn on stealth mode
    * 
@@ -905,6 +919,7 @@ namespace tbrpg
     return 2;
   }
   
+  
   /**
    * Action: turn off stealth mode
    * 
@@ -918,6 +933,7 @@ namespace tbrpg
       std::cout << "Not implemented..." << std::endl; // TODO stealth off
     return 2;
   }
+  
   
   /**
    * Action: turn on find traps mode
@@ -939,6 +955,7 @@ namespace tbrpg
     return 2;//1;
   }
   
+  
   /**
    * Action: turn off find traps mode
    * 
@@ -952,6 +969,7 @@ namespace tbrpg
       std::cout << "Not implement..." << std::endl; // TODO find traps off
     return 2;
   }
+  
   
   /**
    * Action: turn on turn undead mode
@@ -973,6 +991,7 @@ namespace tbrpg
     return 2;//1;
   }
   
+  
   /**
    * Action: turn off turn undead mode
    * 
@@ -986,6 +1005,7 @@ namespace tbrpg
       std::cout << "Not implemented..." << std::endl; // TODO turn undead off
     return 2;
   }
+  
   
   /**
    * Action: turn on bard song mode
@@ -1004,8 +1024,9 @@ namespace tbrpg
 	return 2;
       }
     std::cout << "Not implemented..." << std::endl; // TODO bard song
-    return 2;//1;
+    return 1;
   }
+  
   
   /**
    * Action: turn off bard song mode
@@ -1020,6 +1041,7 @@ namespace tbrpg
       std::cout << "Not implemented..." << std::endl; // TODO bard song off
     return 2;
   }
+  
   
   /**
    * Action: examine inventory
@@ -1038,6 +1060,7 @@ namespace tbrpg
     this->players[0][this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
   }
+  
   
   /**
    * Action: examine party
@@ -1109,6 +1132,7 @@ namespace tbrpg
     return 2;
   }
   
+  
   /**
    * Action: examine world map
    * 
@@ -1144,6 +1168,7 @@ namespace tbrpg
     return 2;
   }
   
+  
   /**
    * Action: examine area
    * 
@@ -1177,6 +1202,7 @@ namespace tbrpg
     std::flush(std::cout);
     return 2;
   }
+  
   
   /**
    * Action: travel to another area
