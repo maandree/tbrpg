@@ -127,7 +127,7 @@ namespace tbrpg
       hasCastSpell  = false;
     
     long long prestige = 0;
-    for (Class* c : (*(this->players))[this->next_player]->record.prestige)
+    for (Class* c : (*(this->players))[this->next_player]->character->record.prestige)
       prestige |= this->slot_chart->index_map[c];
     std::vector<ActionSlot>& slots = this->slot_chart->slot_map[prestige];
     for (ActionSlot slot : slots)
