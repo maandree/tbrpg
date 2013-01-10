@@ -73,7 +73,8 @@ namespace tbrpg
     this->game = senario;
     this->players = new std::vector<GameCharacter*>();
     this->next_player = 0;
-  
+    this->slot_chart = new ActionSlotChart();
+    
     if ((senario))
       for (Character* player : senario->party->characters)
 	{
@@ -103,6 +104,7 @@ namespace tbrpg
     delete this->calc;
     if ((this->attack_dice))
       delete this->attack_dice;
+    delete this->slot_chart;
   }
   
   
@@ -116,40 +118,80 @@ namespace tbrpg
     std::vector<std::string> actions = {};
     std::vector<char (GamePlay::*)()> functions = {};
     
+    bool
+      hasTurnUndead = false,
+      hasBardSong   = false,
+      hasFindTraps  = false,
+      hasThieving   = false,
+      hasStealth    = false,
+      hasCastSpell  = false;
+    
+    long long prestige = 0;
+    for (Class* c : (*(this->players))[this->next_player]->record.prestige)
+      prestige |= this->slot_chart->index_map[c];
+    std::vector<ActionSlot>& slots = this->slot_chart->slot_map[prestige];
+    for (ActionSlot slot : slots)
+      switch (slot)
+	{
+	case TURN_UNDEAD:  hasTurnUndead = true ;  break;
+	case BARD_SONG:    hasBardSong   = true ;  break;
+	case FIND_TRAPS:   hasFindTraps  = true ;  break;
+	case THIEVING:     hasThieving   = true ;  break;
+	case STEALTH:      hasStealth    = true ;  break;
+	case CAST_SPELL:   hasCastSpell  = true ;  break;
+	}
+    
     #define __add(cmd, f)      		 \
       actions.push_back(cmd);            \
       functions.push_back(&GamePlay::f)
     
-    __add("examine map", action_map);
-    __add("examine area", action_area);
-    __add("examine party", action_party);
+    __add("examine map",       action_map);
+    __add("examine area",      action_area);
+    __add("examine party",     action_party);
     __add("examine inventory", action_inventory);
-    __add("turn undead", action_turn_undead);
-    __add("turn undead off", action_turn_undead_off);
-    __add("find traps", action_find_traps);
-    __add("find traps off", action_find_traps_off);
-    __add("stealth", action_stealth);
-    __add("stealth off", action_stealth_off);
-    __add("bard song", action_bard_song);
-    __add("bard song off", action_bard_song_off);
-    __add("pick pocket", action_pick_pocket);
-    __add("disarm", action_disarm);
-    __add("unlock", action_pick_lock);
-    __add("bash", action_bash);
-    __add("specials", action_specials);
-    __add("talk", action_talk);
-    __add("cast", action_cast);
-    __add("attack", action_attack);
-    __add("weapon", action_weapon);
-    __add("quiver", action_quiver);
-    __add("rest", action_rest);
-    __add("travel", action_travel);
-    __add("!", action_redo);
-    __add(".", action_wait);
-    __add("quit", action_quit);
+    if (hasTurnUndead)
+      {
+	__add("turn undead",       action_turn_undead);
+	__add("turn undead off",   action_turn_undead_off);
+      }
+    if (hasFindTraps)
+      {
+	__add("find traps",        action_find_traps);
+	__add("find traps off",    action_find_traps_off);
+      }
+    if (hasStealth)
+      {
+	__add("stealth",           action_stealth);
+	__add("stealth off",       action_stealth_off);
+      }
+    if (hasBardSong)
+      {
+	__add("bard song",         action_bard_song);
+	__add("bard song off",     action_bard_song_off);
+      }
+    if (hasThieving)
+      {
+	__add("pick pocket",       action_pick_pocket);
+	__add("disarm",            action_disarm);
+	__add("unlock",            action_pick_lock);
+      }
+    if (hasCastSpell)
+      {
+	__add("cast",              action_cast);
+      }
+    __add("bash",              action_bash);
+    __add("specials",          action_specials);
+    __add("talk",              action_talk);
+    __add("attack",            action_attack);
+    __add("weapon",            action_weapon);
+    __add("quiver",            action_quiver);
+    __add("rest",              action_rest);
+    __add("travel",            action_travel);
+    __add("!",                 action_redo);
+    __add(".",                 action_wait);
+    __add("quit",              action_quit);
     
     // TODO special abilities
-    // TODO quick spells
     // TODO cheats (obviously)
     
     #undef __add
