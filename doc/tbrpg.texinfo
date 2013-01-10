@@ -622,7 +622,7 @@ The distance from the caster at which the spell effect
 occurs or begins, in metres. If the range is zero, it can
 only be used ont the caster himself; ‘Touch’ can use the
 spell on others if he can physically touch them, which
-requires a sucessful hit roll. These two special ranges
+requires a successful hit roll. These two special ranges
 can be combinded, meaning that either can be utilied,
 this is denoted ‘0/Touch’.
 
@@ -724,7 +724,7 @@ is allowed.
 Added to the attack roll durign combat, higher value
 makes it easier to hit the target.
 @item  @b{Damage bonus}
-Added to the damage inflicted by a sucessful melée attack.
+Added to the damage inflicted by a successful melée attack.
 @item  @b{Carry limit}
 How much weight a character can carry before being
 encumbered. When you wear items other than weapons and
@@ -1207,7 +1207,7 @@ the protected character caused by such attacks receive a
 
 Clerics and paladins have the ability to turn undead. This
 ability lets the deity manifest a portion of its power
-through a mortal vessel that does not assure sucess.
+through a mortal vessel that does not assure success.
 Evil undead creatures can lose morale and run away. If the
 deity's power is channeled through a good aligned clerics,
 the undead can be destroyed outright. Evil clerics can
