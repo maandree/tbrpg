@@ -131,15 +131,12 @@ namespace tbrpg
       prestige |= this->slot_chart->index_map[c];
     std::vector<ActionSlot>& slots = this->slot_chart->slot_map[prestige];
     for (ActionSlot slot : slots)
-      switch (slot)
-	{
-	case TURN_UNDEAD:  hasTurnUndead = true ;  break;
-	case BARD_SONG:    hasBardSong   = true ;  break;
-	case FIND_TRAPS:   hasFindTraps  = true ;  break;
-	case THIEVING:     hasThieving   = true ;  break;
-	case STEALTH:      hasStealth    = true ;  break;
-	case CAST_SPELL:   hasCastSpell  = true ;  break;
-	}
+      if      (slot == TURN_UNDEAD)  hasTurnUndead = true;
+      else if (slot == BARD_SONG)    hasBardSong   = true;
+      else if (slot == FIND_TRAPS)   hasFindTraps  = true;
+      else if (slot == THIEVING)     hasThieving   = true;
+      else if (slot == STEALTH)      hasStealth    = true;
+      else if (slot == CAST_SPELL)   hasCastSpell  = true;
     
     #define __add(cmd, f)      		 \
       actions.push_back(cmd);            \
