@@ -215,7 +215,7 @@ namespace tbrpg
   int prompt_stat(char* filename, struct stat* filestat)
   {
     return stat(filename, filestat);
-    /* TODO implement restriction */
+    /* XXX implement restriction */
   }
   
   /**
@@ -616,7 +616,7 @@ namespace tbrpg
   /**
    * Delete a character
    * 
-   * @param  whether to insert the deletion to the killring  TODO implement
+   * @param  whether to insert the deletion to the killring  XXX implement
    */
   void prompt_delete(bool store = false)
   {
@@ -849,7 +849,7 @@ namespace tbrpg
    * @param   done         Entry done hook
    * @return               The string provided by the user, empty string is returned if aborted
    */
-  std::string promptArbitrary(const std::string& instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* TODO colouring hooks and more editing command */
+  std::string promptArbitrary(const std::string& instruction, void (*previous)(void), void (*next)(void), void (*done)(void)) /* XXX colouring hooks and more editing command */
   {
     std::cout << instruction;
     std::flush(std::cout);
@@ -1545,7 +1545,7 @@ namespace tbrpg
 	    if (read(STDIN_FILENO, &c, 1) <= 0)
 	      c = CTRL('G');
 	    
-	    switch (c) /* TODO document this in the info manual */
+	    switch (c) /* XXX document this in the info manual */
 	      {
 	      case CTRL('G'):
 		reading = readinginner = false;
