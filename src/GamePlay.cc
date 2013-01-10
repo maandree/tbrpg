@@ -473,7 +473,7 @@ namespace tbrpg
     
     std::cout << "Total damage: " << totaldamage << std::endl;
     attackable[target]->hit_points -= totaldamage;
-    if (attackable[target]->hit_points <= -(this->game->rules->critical_death)) /* TODO delete nealy and not resurrectable */
+    if (attackable[target]->hit_points <= -(this->game->rules->critical_death)) /* TODO delete newly and not resurrectable */
       {
 	dynamic_cast<Character*>(attackable[target])->alive = -1;
 	std::cout << "Critical death inflicated on target." << std::endl;
