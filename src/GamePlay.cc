@@ -877,6 +877,7 @@ namespace tbrpg
     int level = pickable[target]->pick_level;
     int roll = this->attack_dice->roll();
     float mod = this->calc->getStealing(*(this->players[0][this->next_player]->character));
+    std::cout << "Roll: " << roll << std::endl;
     
     if ((int)(roll * mod + 0.5) >= level)
       {
@@ -913,10 +914,22 @@ namespace tbrpg
     __forbid_bard_song();
     
     if (this->players[0][this->next_player]->stealth_on == false)
-      std::cout << "You already have Stealth activated." << std::endl;
+      {
+	std::cout << "You already have Stealth activated." << std::endl;
+	return 2;
+      }
+    
+    int level = 16; /* XXX stealth level */
+    int roll = this->attack_dice->roll();
+    float mod = this->calc->getHiding(*(this->players[0][this->next_player]->character));
+    std::cout << "Roll: " << roll << std::endl;
+    
+    if ((this->players[0][this->next_player]->stealth_on = (int)(roll * mod + 0.5) >= level))
+      std::cout << "Success!" << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO stealth
-    return 2;
+      std::cout << "Hiding in shadows is really hard..." << std::endl;
+    
+    return 1;
   }
   
   

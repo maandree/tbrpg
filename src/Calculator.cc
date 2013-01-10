@@ -645,7 +645,7 @@ namespace tbrpg
   }
   
   /**
-   * Gets whether a cahracter is protected against critical hits
+   * Gets whether a character is protected against critical hits
    * 
    * @param   character  The character
    * @return             Whether a character is protected against critical hits
