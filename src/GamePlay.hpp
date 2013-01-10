@@ -35,6 +35,7 @@
 #include "EnvironmentContainer.hpp"
 #include "Door.hpp"
 #include "ActionSlotChart.hpp"
+#include "NPC.hpp"
 
 
 /**

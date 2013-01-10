@@ -1239,7 +1239,19 @@ namespace tbrpg
    */
   char GamePlay::action_travel()
   {
-    // TODO check that you can outrun hostiles
+    std::vector<Creature*> monsters = std::vector<Creature*>();
+    
+    for (Creature* creature : this->players[0][this->next_player]->area->creatures)
+      if (creature->hostile && creature->alive && (dynamic_cast<Character*>(creature)->alive == 1))
+	if ((*creature >= PROTOTYPE(NPC)) == false)
+	  monsters.push_back(creature);
+    
+    if ((monsters.size()))
+      {
+	std::cout << "There are monsters nearby you cannot outrun." << std::endl;
+	return 2;
+	// XXX check that you can outrun monsters
+      }
     
     std::vector<Entrance*> entrances = std::vector<Entrance*>();
     std::vector<Road*> roads = std::vector<Road*>();
