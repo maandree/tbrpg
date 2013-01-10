@@ -566,7 +566,7 @@ namespace tbrpg
   
   
   /**
-   * Action: cast non-quick spell
+   * Action: cast spell
    * 
    * @return  0 for stop playing, 1 for continue playing, 2 for one more time
    */
@@ -577,7 +577,7 @@ namespace tbrpg
     __forbid_turn_undead();
     __forbid_bard_song();
     
-    std::cout << "Not implement..." << std::endl; // TODO cast
+    std::cout << "You do not have any spells" << std::endl; // TODO cast
     return 2;
   }
   

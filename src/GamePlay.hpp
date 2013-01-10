@@ -171,7 +171,7 @@ namespace tbrpg
     char action_attack();
     
     /**
-     * Action: cast non-quick spell
+     * Action: cast spell
      *
      * @return  0 for stop playing, 1 for continue playing, 2 for one more time
      */
