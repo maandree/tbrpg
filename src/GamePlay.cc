@@ -930,7 +930,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->stealth_on == false)
       std::cout << "You already have Stealth Mode deactivated." << std::endl;
     else
-      std::cout << "Not implemented..." << std::endl; // TODO stealth off
+      this->players[0][this->next_player]->stealth_on = false;
     return 2;
   }
   
@@ -966,7 +966,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->find_traps_on == false)
       std::cout << "You already have Find Traps deactivated." << std::endl;
     else
-      std::cout << "Not implement..." << std::endl; // TODO find traps off
+      this->players[0][this->next_player]->find_traps_on = false;
     return 2;
   }
   
@@ -1002,7 +1002,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->turn_undead_on == false)
       std::cout << "You already have Turn Undead deactivated." << std::endl;
     else
-      std::cout << "Not implemented..." << std::endl; // TODO turn undead off
+      this->players[0][this->next_player]->turn_undead_on = false;
     return 2;
   }
   
@@ -1038,7 +1038,7 @@ namespace tbrpg
     if (this->players[0][this->next_player]->bard_song_on == false)
       std::cout << "You already have Bard Song deactivated." << std::endl;
     else
-      std::cout << "Not implemented..." << std::endl; // TODO bard song off
+      this->players[0][this->next_player]->bard_song_on = false;
     return 2;
   }
   
