@@ -806,7 +806,7 @@ namespace tbrpg
     __forbid_turn_undead();
     __forbid_bard_song();
     
-    std::cout << "Not implement..." << std::endl; // TODO disarm
+    std::cout << "You have not found any traps." << std::endl; // XXX disarm
     return 2;//...
   }
   
