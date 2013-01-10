@@ -316,9 +316,9 @@ namespace tbrpg
 	__f(missile_attack_bonus);
       }
     rc = -rc;
-    for (char level : character.record.level) /* TODO make this formula customisable */
+    for (char level : character.record.level) /* XXX make this formula customisable */
       rc -= level - 1;
-    int f = (character.fatigue - 24) / 4; /* TODO make this formula customisable */
+    int f = (character.fatigue - 24) / 4; /* XXX make this formula customisable */
     if (f > 0)
       rc += f;
     int rc_prof = 0, rc_class = 0;
@@ -414,7 +414,7 @@ namespace tbrpg
 	      rc += missile ? shield->bonuses.defence.missile : shield->bonuses.defence.melee;
 	    }
 	}
-    int base = 10; /* TODO make base AC customisable */
+    int base = 10; /* XXX make base AC customisable */
     if (character.record.inventory.body != nullptr)
       {
 	int candidate;

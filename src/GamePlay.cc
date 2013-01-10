@@ -405,7 +405,7 @@ namespace tbrpg
     if (weapon == nullptr)
       {
 	if (player->character->record.inventory.right_hand == nullptr)
-	  weapon = &(player->character->record.prestige[0]->default_one_hand); /* TODO document that the first prestige is used*/
+	  weapon = &(player->character->record.prestige[0]->default_one_hand); /* XXX document that the first prestige is used */
 	else
 	  weapon = &(player->character->record.prestige[0]->default_two_hands);
       }

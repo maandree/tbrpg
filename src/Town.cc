@@ -166,7 +166,7 @@ namespace tbrpg
     
     if (this->interruptions.size() > 0)
       {
-	for (RestInterruption* interruption : this->interruptions) /* TODO support for lock */
+	for (RestInterruption* interruption : this->interruptions) /* TODO support for luck */
 	  if (Dice(interruption->interrupt_dice, interruption->interrupt_die).roll() <= interruption->interrupt_risk)
 	    {
 	      int monsters = 0;

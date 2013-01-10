@@ -2065,7 +2065,7 @@ mage does not learn spells at level up and is thus excluded.
 Number of selectable wizard spells for sorcerer at level up
 at each spell level.
 
-@c TODO fill table
+@c XXX fill table
 @multitable @columnfractions 0.08 0.06 0.06 0.06 0.06 0.06 0.06 0.06 0.06 0.06
 @item @b{Level} @tab @b{1} @tab @b{2} @tab @b{3} @tab @b{4}
 @tab @b{5} @tab @b{6} @tab @b{7} @tab @b{8} @tab @b{9}
@@ -2107,7 +2107,7 @@ at each spell level.
 @cindex ranger spell book
 @cindex spell book, ranger
 
-@c TODO fill table
+@c XXX fill table
 @table @b
 @item Level  8
 -
@@ -2163,7 +2163,7 @@ at each spell level.
 @cindex paladin spell book
 @cindex spell book, paladin
 
-@c TODO fill table
+@c XXX fill table
 @table @b
 @item Level  9
 -
@@ -2217,7 +2217,7 @@ at each spell level.
 @cindex bard spell book
 @cindex spell book, bard
 
-@c TODO fill table
+@c XXX fill table
 @table @b
 @item Level  2
 -
@@ -2285,7 +2285,7 @@ at each spell level.
 @cindex cleric spell book
 @cindex spell book, cleric
 
-@c TODO fill table
+@c XXX fill table
 @table @b
 @item Level  1
 -
@@ -2355,7 +2355,7 @@ at each spell level.
 @cindex druid spell book
 @cindex spell book, druid
 
-@c TODO fill table
+@c XXX fill table
 @table @b
 @item Level  1
 -
