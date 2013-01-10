@@ -34,6 +34,7 @@
 #include "Dice.hpp"
 #include "EnvironmentContainer.hpp"
 #include "Door.hpp"
+#include "ActionSlotChart.hpp"
 
 
 /**
@@ -81,6 +82,11 @@ namespace tbrpg
      * The attribute calculator
      */
     Calculator* calc;
+    
+    /**
+     * Action slot chart
+     */
+    ActionSlotChart* slot_chart;
     
     
   public:
