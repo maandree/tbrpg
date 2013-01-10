@@ -964,8 +964,10 @@ namespace tbrpg
 	std::cout << "You already have Find Traps activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implemented..." << std::endl; // TODO find traps
-    return 2;//1;
+    
+    this->players[0][this->next_player]->find_traps_on = true;
+    std::cout << "The search has begun." << std::endl;
+    return 1;
   }
   
   
@@ -1036,7 +1038,9 @@ namespace tbrpg
 	std::cout << "You already have Bard Song activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implemented..." << std::endl; // TODO bard song
+    
+    this->players[0][this->next_player]->bard_song_on = true;
+    std::cout << "You have begun singing your silly song." << std::endl;
     return 1;
   }
   
