@@ -928,6 +928,7 @@ namespace tbrpg
       std::cout << "Success!" << std::endl;
     else
       std::cout << "Hiding in shadows is really hard..." << std::endl;
+    /* XXX characters in stealth mode move slower than others */
     
     return 1;
   }
@@ -993,6 +994,8 @@ namespace tbrpg
    */
   char GamePlay::action_turn_undead()
   {
+    /* XXX turn undead: required level: cleric(1) paladin(3) */
+    
     __forbid_stealth();
     __forbid_find_trap();
     __forbid_bard_song();
@@ -1002,8 +1005,16 @@ namespace tbrpg
 	std::cout << "You already have Turn Undead activated." << std::endl;
 	return 2;
       }
-    std::cout << "Not implemented..." << std::endl; // TODO turn undead
-    return 2;//1;
+    
+    // Affects seen hostile undead within 20 meters
+    // A limited number of undead are affected, the nearer the more prioritised, it is limited to the turner's level, without modification
+    // The duration of the flight is 50 turns, plus 10 turns per the turner's level
+    // A critical miss means that a target is not affected
+    // A critical hit, from a cleric, means that a target is either destroyed or controlled, depending on turner's alignment
+    // The turners level is [normally] the character level minus the requried level, plus 1
+    
+    std::cout << "No undead where affected" << std::endl; // XXX turn undead
+    return 1;
   }
   
   
