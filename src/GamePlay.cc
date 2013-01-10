@@ -1405,5 +1405,6 @@ namespace tbrpg
   #undef __forbid_stealth
   #undef __forbid_find_trap
   #undef __forbid_turn_undead
+  #undef __forbid_bard_song
 }
 
