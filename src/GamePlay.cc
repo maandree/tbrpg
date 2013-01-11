@@ -399,7 +399,7 @@ namespace tbrpg
     if (target < 0)
       return 2;
     
-    // TODO right hand weapon support
+    /* TODO right hand weapon support */
     
     Weapon* weapon = player->character->record.inventory.left_hand[player->weapon];
     if (weapon == nullptr)
@@ -432,11 +432,11 @@ namespace tbrpg
     if (weapon->damage_type.size() > 0)
       {
 	Die dmgtypedie = Die(weapon->damage_type.size());
-	damagetype = weapon->damage_type[(long)(dmgtypedie.roll())];
+	damagetype = weapon->damage_type[(long)(dmgtypedie.roll()) - 1];
       }
     
     Item* diminish = nullptr;
-    if ((quiver))
+    if (quiver != nullptr)
       diminish = quiver;
     else if (weapon->quantity_limit > 1) /* throw weapon */
       diminish = weapon;
@@ -465,6 +465,10 @@ namespace tbrpg
     
     int totaldamage = 0;
     int attacks = this->calc->getHalfAttacks(*(player->character), *weapon);
+    std::cout << "Attacks: " << (attacks >> 1);
+    if ((attacks & 1))
+      std::cout << "½";
+    std::cout << std::endl;
     
     while (attacks >= 0)
       {
@@ -510,10 +514,20 @@ namespace tbrpg
 	  std::cout << "Miss" << std::endl;
 	multiplier *= backstabMultiplier;
 	
-	Dice damagedice = Dice(weapon->damage_dice, weapon->damage_die);
-	int damage = this->calc->getDamageBonus(*(player->character), *weapon, quiver);
-	std::cout << "Damage: " << damage << std::endl;
-	totaldamage += damage;
+	if (hit)
+	  {
+	    Dice damagedice = Dice(weapon->damage_dice, weapon->damage_die);
+	    int damage = damagedice.roll();
+	    std::cout << "Damage roll: " << damage << std::endl;
+	    damage += this->calc->getDamageBonus(*(player->character), *weapon, quiver);
+	    if (damage > 0)
+	      {
+		std::cout << "Damage: " << damage << " * " << multiplier << " = " << (damage * multiplier) << std::endl;
+		totaldamage += damage * multiplier;
+	      }
+	  }
+	
+	attacks--;
       }
     
     std::cout << "Total damage: " << totaldamage << std::endl;
@@ -559,7 +573,7 @@ namespace tbrpg
     #undef __drop
     #undef __drops
     
-    // TODO gain experience add new levels
+    /* TODO gain experience add new levels */
     
     return 1;
   }
