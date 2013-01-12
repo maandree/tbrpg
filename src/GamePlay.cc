@@ -1155,7 +1155,7 @@ namespace tbrpg
     std::cout << std::endl;
     
     /* XXX document this */
-    int index = promptIndex("What now?", {"examine character", "reform party"});
+    int index = promptIndex("What now? ", {"examine character", "reform party"});
     if (index == 0)
       {
 	std::vector<std::string> names = std::vector<std::string>();
@@ -1208,7 +1208,7 @@ namespace tbrpg
 	    if (r.class_abondoned[i])
 	      std::cout << "\033[02m";
 	    std::cout << r.prestige[i]->name
-		      << " level " << r.level[i]
+		      << " level " << (int)(r.level[i])
 		      << " (" << r.experience[i] << ")";
 	    if (r.class_abondoned[i])
 	      std::cout << "\033[22m";
@@ -1222,25 +1222,25 @@ namespace tbrpg
 	if (c->extra_attacks == 1)
 	  std::cout << "½" << std::endl;
 	else
-	  std::cout << (c->extra_attacks >> 1) << ((c->extra_attacks & 1) ? "½" : "") << std::endl;
+	  std::cout << (int)(c->extra_attacks >> 1) << ((c->extra_attacks & 1) ? "½" : "") << std::endl;
 	
 	if (this->calc->getStrength(*c) != 18)
-	  std::cout << "Strength: " << this->calc->getStrength(*c) << std::endl;
+	  std::cout << "Strength: " << (int)(this->calc->getStrength(*c)) << std::endl;
 	else if (this->calc->getStrength18(*c) == 100)
-	  std::cout << "Strength: " << this->calc->getStrength(*c) << "/00" << std::endl;
+	  std::cout << "Strength: " << (int)(this->calc->getStrength(*c)) << "/00" << std::endl;
 	else
-	  std::cout << "Strength: " << this->calc->getStrength(*c) << "/"
+	  std::cout << "Strength: " << (int)(this->calc->getStrength(*c)) << "/"
 		    << ((this->calc->getStrength18(*c) < 10) ? "0" : "")
-		    << this->calc->getStrength18(*c) << std::endl;
-	std::cout << "Constitution: " << this->calc->getConstitution(*c) << std::endl;
-	std::cout << "Dexterity: " << this->calc->getDexterity(*c) << std::endl;
-	std::cout << "Intelligence: " << this->calc->getIntelligence(*c) << std::endl;
-	std::cout << "Wisdom: " << this->calc->getWisdom(*c) << std::endl;
-	std::cout << "Charisma: " << this->calc->getCharisma(*c) << std::endl;
-	//XXX std::cout << "THAC0: " << this->calc->getTHAC0(*c) << std::endl;
-	//XXX std::cout << "Armour class: " << this->calc->getArmourClass(*c) << std::endl;
-	std::cout << "Lore: " << this->calc->getLore(*c) << std::endl;
-	std::cout << "Backstabbing: " << this->calc->getBackstabMultiplier(*c) << "x" << std::endl;
+		    << (int)(this->calc->getStrength18(*c)) << std::endl;
+	std::cout << "Constitution: " << (int)(this->calc->getConstitution(*c)) << std::endl;
+	std::cout << "Dexterity: " << (int)(this->calc->getDexterity(*c)) << std::endl;
+	std::cout << "Intelligence: " << (int)(this->calc->getIntelligence(*c)) << std::endl;
+	std::cout << "Wisdom: " << (int)(this->calc->getWisdom(*c)) << std::endl;
+	std::cout << "Charisma: " << (int)(this->calc->getCharisma(*c)) << std::endl;
+	//XXX std::cout << "THAC0: " << (int)(this->calc->getTHAC0(*c)) << std::endl;
+	//XXX std::cout << "Armour class: " << (int)(this->calc->getArmourClass(*c)) << std::endl;
+	std::cout << "Lore: " << (int)(this->calc->getLore(*c)) << std::endl;
+	std::cout << "Backstabbing: " << (int)(this->calc->getBackstabMultiplier(*c)) << "x" << std::endl;
 	std::cout << "Bashing: " << this->calc->getBashing(*c) * 100 << " %" << std::endl;
 	std::cout << "Pick pocket: " << this->calc->getPicking(*c) * 100 << " %" << std::endl;
 	std::cout << "Stealth: " << this->calc->getStealing(*c) * 100 << " %" << std::endl;
