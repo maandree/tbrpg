@@ -33,14 +33,20 @@ namespace tbrpg
   /**
    * Construction
    */
-  InventoryExaminor::InventoryExaminor();
+  InventoryExaminor::InventoryExaminor()
+  {
+    // Do nothing
+  }
   
   
   
   /**
    * Destructor
    */
-  InventoryExaminor::~InventoryExaminor();
+  InventoryExaminor::~InventoryExaminor()
+  {
+    // Do nothing
+  }
   
   
   
