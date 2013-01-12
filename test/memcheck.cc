@@ -172,6 +172,7 @@
 #include "../src/BasicSenario.hpp"
 #include "../src/CharacterCreator.hpp"
 #include "../src/GamePlay.hpp"
+#include "../src/InventoryExaminor.hpp"
 #include "../src/cleaner.hpp"
 
 
@@ -290,6 +291,7 @@ namespace tbrpg
     __(WeaponGroup);
     __(CharacterCreator);
     __a(GamePlay);
+    __a(InventoryExaminor);
     /**/
     
     /* races */
