@@ -28,9 +28,6 @@
 
 #include "Object.hpp"
 #include "Character.hpp"
-
-
-
 #include "hash.hpp"
 #include "RuleSet.hpp"
 
