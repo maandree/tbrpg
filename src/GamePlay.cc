@@ -187,8 +187,8 @@ namespace tbrpg
     __add("!",                 action_redo);
     __add(".",                 action_wait);
     __add("quit",              action_quit);
+    // XXX special abilities
     
-    // TODO special abilities
     // TODO cheats (obviously)
     
     #undef __add
@@ -1096,6 +1096,33 @@ namespace tbrpg
     __forbid_find_trap();
     __forbid_turn_undead();
     __forbid_bard_song();
+    
+    std::cout << "Navigation:" << std::endl << std::endl; /* XXX document this */
+    std::cout << "F1 : equipped items" << std::endl;
+    std::cout << "F2 : personal inventory" << std::endl;
+    std::cout << "F3 : item on the ground" << std::endl;
+    std::cout << "d  : Drop item on the ground" << std::endl;
+    std::cout << "p  : Pick up item to temporary slot" << std::endl;
+    std::cout << "s  : Swap item with temporary slot" << std::endl;
+    
+    /*
+    std::vector<Weapon*> left_hand;
+    std::vector<Ammunition*> quiver;
+    std::vector<QuickItem*> quick_items;
+    RightHandItem* right_hand;
+    Headgear* headgear;
+    Amulet* amulet;
+    std::vector<Ring*> rings;
+    BodyArmour* body;
+    Gauntlets* gauntlets;
+    Girdle* girdle;
+    Boots* boots;
+    Cloak* cloak;
+    
+    std::vector<Item*> personal;
+    
+    ground
+    */
     
     std::cout << "Not implement..." << std::endl; /* TODO inventory */
     
