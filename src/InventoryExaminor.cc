@@ -30,6 +30,22 @@
  */
 namespace tbrpg
 {
+  #define  __store_tty()		       \
+    struct termios saved_stty;                 \
+    struct termios stty;                       \
+    tcgetattr(STDIN_FILENO, &saved_stty);      \
+    tcgetattr(STDIN_FILENO, &stty);            \
+    stty.c_lflag &= ~(ICANON | ECHO | ISIG);   \
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &stty)
+    
+  #define __restore_tty()  \
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved_stty)
+  
+  #define  ESC  "\033"  /* since \e generates a non-ISO-standard warning */
+  #define  CSI  ESC "["
+  
+  
+  
   /**
    * Construction
    */
@@ -56,7 +72,11 @@ namespace tbrpg
    * @param  character   The index of the active character
    * @param  characters  The party members
    */
-  void InventoryExaminor::examine(long character, GameCharacter* characters) const;
+  void InventoryExaminor::examine(long character, GameCharacter* characters) const
+  {
+    if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
+      prompterdata.c = '\n';
+  }
   
 }
 

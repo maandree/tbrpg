@@ -21,10 +21,16 @@
 #define __GUARD_INVENTORYEXAMINOR_HPP__
 
 
+#include <iostream>
 #include <stdlib.h>
-#include <algorithm>
+#include <stdio.h>
+#include <unistd.h>
 #include <vector>
-#include <unordered_map>
+#include <algorithm>
+#include <unistd.h>
+#include <termios.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
 
 #include "GameCharacter.hpp"
 
