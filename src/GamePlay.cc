@@ -1132,10 +1132,10 @@ namespace tbrpg
     ground
     */
     
-    std::cout << "Not implement..." << std::endl; /* TODO inventory */
-    
     // std::cout << "Carry limit: " << this->calc->getCarryLimit(*c) << std::endl;
     
+    /* XXX determine armour change time penalty */
+  
     this->players[0][this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
   }
