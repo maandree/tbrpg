@@ -227,7 +227,7 @@ namespace tbrpg
       {
 	this->next_player = 0;
 	for (GameCharacter* p : *(this->players))
-	  if ((p->character->fatigue += 1) >= 24 * 60)
+	  if ((p->character->fatigue += 1) >= 24 * 60) /* XXX make customisable*/
 	    std::flush(std::cout << "033[01;3" << (char)((int)'0' + p->character->record.colour) << "m"
 				 << p->character->record.name
 				 << "\033[21;39m is tired."
@@ -1097,7 +1097,9 @@ namespace tbrpg
     __forbid_turn_undead();
     __forbid_bard_song();
     
-    std::cout << "Not implement..." << std::endl; // TODO inventory
+    std::cout << "Not implement..." << std::endl; /* TODO inventory */
+    
+    // std::cout << "Carry limit: " << this->calc->getCarryLimit(*c) << std::endl;
     
     this->players[0][this->next_player]->turns += 10; /* XXX make customisable */
     return 1;
@@ -1124,52 +1126,131 @@ namespace tbrpg
 	std::cout << "3" << (char)((int)'0' + c->record.colour) << "m"
 		  << c->record.name << "\033[39m ";
 	
-	if (c->protagonist)  std::cout << "(P)";
-	if (c->alive == 0)   std::cout << "(D)";
-	if (c->alive < 0)    std::cout << "(DD)";
+	if (c->protagonist)             std::cout << "(P)";
+	if (c->alive == 0)              std::cout << "(D)";
+	if (c->alive < 0)               std::cout << "(DD)";
+	if (character->turn_undead_on)  std::cout << "(T)";
+	if (character->find_traps_on)   std::cout << "(F)";
+	if (character->stealth_on)      std::cout << "(H)";
+	if (character->bard_song_on)    std::cout << "(B)";
+	if (c->fatigue >= 24 * 60)      std::cout << "(S)"; /* XXX */
 	
 	std::cout << " (" << c->hit_points << "/" << c->record.hit_points << ")";
 	std::cout << "\033[21m" << std::endl;
-	/*
-	  bool turn_undead_on = character->turn_undead_on;
-	  bool find_traps_on = character->find_traps_on;
-	  bool stealth_on = character->stealth_on;
-	  bool bard_song_on = character->bard_song_on;
-	  c->fatigue
-	  c->extra_attacks
-	*/
-	/*
-	  c->record. .....
-	  std::string name;
-	  std::string biography;
-	  char alignment;
-	  std::string portrait;
-	  bool female;
-	  std::vector<int> experience;
-	  std::vector<char> level;
-	  std::vector<bool> class_abondoned;
-	  std::unordered_map<WeaponGroup, int> proficiencies;
-	  std::vector<Spell> affected_by;
-	  AbilityBonus abilities;
-	  SpellBook spells;
-	  Race race;
-	  Race* racial_enemy;
-	  std::vector<Class> prestige;
-	  MagicSchool specialisation;
-	  std::vector<Spell> special_abilities;
-	*/
       }
     
     std::cout << std::endl
 	      << "Empty party slots: " << (this->game->rules->party_size - this->players->size())
 	      << std::endl << std::endl;
     
-    // TODO examine character, reform party
-    
     std::cout << "(P)   = Protagonist" << std::endl;
     std::cout << "(#/#) = Hit points of max hit points:" << std::endl;
     std::cout << "(D)   = Dead" << std::endl;
     std::cout << "(DD)  = Permanenty dead" << std::endl;
+    std::cout << "(T)   = Turning undead" << std::endl;
+    std::cout << "(F)   = Finding traps" << std::endl;
+    std::cout << "(H)   = Hiding in shadows" << std::endl;
+    std::cout << "(B)   = Singing bard song" << std::endl;
+    std::cout << "(S)   = Sleepy" << std::endl;
+    std::cout << std::endl;
+    
+    /* XXX document this */
+    int index = promptIndex("What now?", {"examine character", "reform party"});
+    if (index == 0)
+      {
+	std::vector<std::string> names = std::vector<std::string>();
+	for (GameCharacter* character : *(this->players))
+	  {
+	    Character* c = character->character;
+	    std::stringstream ss;
+	    ss << "\033[3" << (char)((int)'0' + c->record.colour) << "m"
+	       << c->record.name << "\033[39m";
+	    names.push_back(ss.str());
+	  }
+	
+	index = promptMenu("Select character to examine:", names);
+	if (index < 0)
+	  return 2;
+	
+	Character* c = (*(this->players))[index]->character;
+	CharacterSheet& r = c->record;
+	/* XXX
+	  std::string biography;
+	  std::string portrait;
+	  std::unordered_map<WeaponGroup, int> proficiencies;
+	  std::vector<Spell> affected_by;
+	  SpellBook spells;
+	  MagicSchool specialisation;
+	  std::vector<Spell> special_abilities;
+	*/
+	
+	std::cout << "Gender: " << (r.female ? "female" : "male") << std::endl;
+	std::cout << "Race: " << r.race->name << std::endl;
+	
+	std::cout << "Alignment: ";
+	switch (r.alignment)
+	  {
+	  case 0:  std::cout << "chaotic evil";  break;
+	  case 1:  std::cout << "neutral evil";  break;
+	  case 2:  std::cout <<  "lawful evil";  break;
+	  case 3:  std::cout << "chaotic neutral";  break;
+	  case 4:  std::cout <<    "true neutral";  break;
+	  case 5:  std::cout <<  "lawful neutral";  break;
+	  case 6:  std::cout << "chaotic good";  break;
+	  case 7:  std::cout << "neutral good";  break;
+	  case 8:  std::cout <<  "lawful good";  break;
+	  }
+	std::cout << std::endl;
+	
+	for (long i = 0, n = r.prestige.size(); i < n; i++)
+	  {
+	    std::cout << "Class: ";
+	    if (r.class_abondoned[i])
+	      std::cout << "\033[02m";
+	    std::cout << r.prestige[i]->name
+		      << " level " << r.level[i]
+		      << " (" << r.experience[i] << ")";
+	    if (r.class_abondoned[i])
+	      std::cout << "\033[22m";
+	    std::cout << std::endl;
+	  }
+	
+	if ((r.racial_enemy))
+	  std::cout << "Racial enemy: " << r.racial_enemy->name << std::endl;
+	
+	std::cout << "Extra attacks: ";
+	if (c->extra_attacks == 1)
+	  std::cout << "½" << std::endl;
+	else
+	  std::cout << (c->extra_attacks >> 1) << ((c->extra_attacks & 1) ? "½" : "") << std::endl;
+	
+	if (this->calc->getStrength(*c) != 18)
+	  std::cout << "Strength: " << this->calc->getStrength(*c) << std::endl;
+	else if (this->calc->getStrength18(*c) == 100)
+	  std::cout << "Strength: " << this->calc->getStrength(*c) << "/00" << std::endl;
+	else
+	  std::cout << "Strength: " << this->calc->getStrength(*c) << "/"
+		    << ((this->calc->getStrength18(*c) < 10) ? "0" : "")
+		    << this->calc->getStrength18(*c) << std::endl;
+	std::cout << "Constitution: " << this->calc->getConstitution(*c) << std::endl;
+	std::cout << "Dexterity: " << this->calc->getDexterity(*c) << std::endl;
+	std::cout << "Intelligence: " << this->calc->getIntelligence(*c) << std::endl;
+	std::cout << "Wisdom: " << this->calc->getWisdom(*c) << std::endl;
+	std::cout << "Charisma: " << this->calc->getCharisma(*c) << std::endl;
+	//XXX std::cout << "THAC0: " << this->calc->getTHAC0(*c) << std::endl;
+	//XXX std::cout << "Armour class: " << this->calc->getArmourClass(*c) << std::endl;
+	std::cout << "Lore: " << this->calc->getLore(*c) << std::endl;
+	std::cout << "Backstabbing: " << this->calc->getBackstabMultiplier(*c) << "x" << std::endl;
+	std::cout << "Bashing: " << this->calc->getBashing(*c) * 100 << " %" << std::endl;
+	std::cout << "Pick pocket: " << this->calc->getPicking(*c) * 100 << " %" << std::endl;
+	std::cout << "Stealth: " << this->calc->getStealing(*c) * 100 << " %" << std::endl;
+	std::cout << "Hiding: " << this->calc->getHiding(*c) * 100 << " %" << std::endl;
+	std::cout << "Find traps: " << this->calc->getFinding(*c) * 100 << " %" << std::endl;
+      }
+    else if (index == 1)
+      {
+	;
+      }
     
     return 2;
   }
