@@ -1111,6 +1111,8 @@ namespace tbrpg
     std::cout << "C-d : Complete" << std::endl;
     std::cout << std::endl << "Begin by pressing where you want to go." << std::endl;
     
+    InventoryExaminor examinor = InventoryExaminor();
+    examinor.examine(this->next_player, this->players);
     /*
     std::vector<Weapon*> left_hand;
     std::vector<Ammuntion*> quiver;
