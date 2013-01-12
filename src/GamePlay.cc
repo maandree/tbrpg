@@ -1098,16 +1098,22 @@ namespace tbrpg
     __forbid_bard_song();
     
     std::cout << "Navigation:" << std::endl << std::endl; /* XXX document this */
-    std::cout << "F1 : equipped items" << std::endl;
-    std::cout << "F2 : personal inventory" << std::endl;
-    std::cout << "F3 : item on the ground" << std::endl;
-    std::cout << "d  : Drop item on the ground" << std::endl;
-    std::cout << "p  : Pick up item to temporary slot" << std::endl;
-    std::cout << "s  : Swap item with temporary slot" << std::endl;
+    std::cout << "F1/1: equipped items" << std::endl;
+    std::cout << "F2/2: personal inventory" << std::endl;
+    std::cout << "F3/3: item on the ground" << std::endl;
+    std::cout << "d   : Drop temporary slot item on the ground" << std::endl;
+    std::cout << "S-d : Drop item on the ground" << std::endl;
+    std::cout << "p   : Pick up item to temporary slot" << std::endl;
+    std::cout << "s   : Swap item with temporary slot" << std::endl;
+    std::cout << "e   : Examine item in slot" << std::endl;
+    std::cout << "S-e : Examine item in temporary slot" << std::endl;
+    std::cout << "S-p : Give item to another party member" << std::endl;
+    std::cout << "C-d : Complete" << std::endl;
+    std::cout << std::endl << "Begin by pressing where you want to go." << std::endl;
     
     /*
     std::vector<Weapon*> left_hand;
-    std::vector<Ammunition*> quiver;
+    std::vector<Ammuntion*> quiver;
     std::vector<QuickItem*> quick_items;
     RightHandItem* right_hand;
     Headgear* headgear;
