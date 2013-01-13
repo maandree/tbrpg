@@ -1098,9 +1098,9 @@ namespace tbrpg
     __forbid_bard_song();
     
     std::cout << "Navigation:" << std::endl << std::endl; /* XXX document this */
-    std::cout << "F1/1: equipped items" << std::endl;
-    std::cout << "F2/2: personal inventory" << std::endl;
-    std::cout << "F3/3: item on the ground" << std::endl;
+    std::cout << "F1/1: Equipped items" << std::endl;
+    std::cout << "F2/2: Personal inventory" << std::endl;
+    std::cout << "F3/3: Item on the ground" << std::endl;
     std::cout << "d   : Drop temporary slot item on the ground" << std::endl;
     std::cout << "S-d : Drop item on the ground" << std::endl;
     std::cout << "p   : Pick up item to temporary slot" << std::endl;
@@ -1109,7 +1109,9 @@ namespace tbrpg
     std::cout << "S-e : Examine item in temporary slot" << std::endl;
     std::cout << "S-p : Give item to another party member" << std::endl;
     std::cout << "C-d : Complete" << std::endl;
+    std::cout << "C-g : Abort" << std::endl;
     std::cout << std::endl << "Begin by pressing where you want to go." << std::endl;
+    /* XXX up, down, C-p and C-n for navigations */
     
     InventoryExaminor examinor = InventoryExaminor();
     examinor.examine(this->next_player, this->players);

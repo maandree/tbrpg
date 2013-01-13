@@ -71,7 +71,7 @@ namespace tbrpg
      * @param  character   The index of the active character
      * @param  characters  The party members
      */
-    virtual void examine(long character, GameCharacter* characters) const;
+    virtual void examine(long character, std::vector<GameCharacter*>* characters) const;
     
   };
 }

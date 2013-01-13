@@ -36,6 +36,7 @@
 #include "Door.hpp"
 #include "ActionSlotChart.hpp"
 #include "NPC.hpp"
+#include "InventoryExaminor.hpp"
 
 
 /**
