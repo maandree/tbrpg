@@ -559,6 +559,11 @@ jfbview: $(BOOK).pdf
 
 ## OTHER STUFF ##
 
+.PHONY: gch-loop
+gch-loop:
+	mkdir -p bin/gch
+	ln -sf $$(cd bin/gch ; pwd) /dev/shm/tbrpg
+
 .PHONY: TAGS
 TAGS:
 	find ./ | grep    '\.c$$'      | xargs etags $(TAGSFLAGS) $(TAGSFLAGS_C)    --language=c

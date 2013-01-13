@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "InventorExaminor.hpp"
+#include "InventoryExaminor.hpp"
 
 
 /**
@@ -72,7 +72,7 @@ namespace tbrpg
    * @param  character   The index of the active character
    * @param  characters  The party members
    */
-  void InventoryExaminor::examine(long character, GameCharacter* characters) const
+  void InventoryExaminor::examine(long character, std::vector<GameCharacter*>* characters) const
   {
     if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
       prompterdata.c = '\n';
