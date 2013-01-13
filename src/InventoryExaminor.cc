@@ -74,8 +74,125 @@ namespace tbrpg
    */
   void InventoryExaminor::examine(long character, std::vector<GameCharacter*>* characters) const
   {
-    if (read(STDIN_FILENO, &(prompterdata.c), 1) <= 0)
-      prompterdata.c = '\n';
+    __store_tty();
+    
+    std::cout << CSI "?25l";
+    
+    char c;
+    bool reading = true;
+    
+    while (reading)
+      {
+	std::flush(std::cout);
+	if (read(STDIN_FILENO, &c, 1) <= 0)
+	  c = CTRL('G');
+	
+	bool readinginner = true;
+	while (readinginner)
+	  {
+	    readinginner = false;
+	    switch (c)
+	      {
+	      case '\033':
+		if (read(STDIN_FILENO, &c, 1) <= 0)
+		  break;
+		if (c == 'O')
+		  {
+		    read(STDIN_FILENO, &c, 1);
+		    switch (c)
+		      {
+		      case 'P':
+			c = '1';
+			readinginner = true;
+			break;
+		      case 'Q':
+			c = '2';
+			readinginner = true;
+			break;
+		      case 'R':
+			c = '3';
+			readinginner = true;
+			break;
+		      }
+		  }
+		else if (c == '[')
+		  {
+		    read(STDIN_FILENO, &c, 1);
+		    if (c == '1')
+		      {
+			switch (c)
+			  {
+			  case '1':
+			  case '2':
+			  case '3':
+			    readinginner = true;
+			    break;
+			  }
+			read(STDIN_FILENO, &c, 1);
+			if (c != '~')
+			  readinginner = false;
+		      }
+		    else if (c == 'A')
+		      {
+			c = CTRL('P');
+			readinginner = true;
+		      }
+		    else if (c == 'B')
+		      {
+			c = CTRL('N');
+			readinginner = true;
+		      }
+		  }
+		break;
+		
+	      case '1': /* Equipped items */
+		break;
+		
+	      case '2': /* Personal inventory */
+		break;
+		
+	      case '3': /* Item on the ground */
+		break;
+		
+	      case 'd': /* Drop temporary slot item on the ground */
+		break;
+		
+	      case 'D': /* Drop item on the ground */
+		break;
+		
+	      case 'p': /* Pick up item to temporary slot */
+		break;
+		
+	      case 's': /* Swap item with temporary slot */
+		break;
+		
+	      case 'e': /* Examine item in slot */
+		break;
+		
+	      case 'E': /* Examine item in temporary slot */
+		break;
+		
+	      case 'P': /* Give item to another party member */
+		break;
+		
+	      case CTRL('D'): /* Complete */
+		break;
+		
+	      case CTRL('G'): /* Abort */
+		break;
+		
+	      case CTRL('P'): /* Navigate up */
+		break;
+		
+	      case CTRL('N'): /* Navigate down */
+		break;
+	      }
+	  }
+      }
+    
+    std::flush(std::cout << CSI "?25l");
+    
+    __restore_tty();
   }
   
 }
