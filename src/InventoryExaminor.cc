@@ -429,31 +429,33 @@ namespace tbrpg
 		break;
 		
 	      case 'P': /* Give item to another party member */
-		std::vector<std::string> names = std::vector<std::string>();
-		for (GameCharacter* p : characters)
-		  {
-		    std::stringstream ss;
-		    ss << "\033[3" << (char)((int)'0' + p->character->record.colour) << "m"
-		       << p->character->record.name << "\033[39m";
-		    names.push_back(ss.str());
-		  }
-		long i = promptMenu("Select recipient:", names);
-		if (i < 0)
-		  break;
-		std::vector<Item*>& backpack = (*(characters))[i]->character->record.inventory.personal;
-		i = 0;
-		for (Item* slot : backpack)
-		  if (slot == nullptr)
+		{
+		  std::vector<std::string> names = std::vector<std::string>();
+		  for (GameCharacter* p : *characters)
 		    {
-		      backpack[i] = hand;
-		      hand = nullptr;
-		      readinginner = true;
-		      c = CTRL('L');
-		      break;
+		      std::stringstream ss;
+		      ss << "\033[3" << (char)((int)'0' + p->character->record.colour) << "m"
+			 << p->character->record.name << "\033[39m";
+		      names.push_back(ss.str());
 		    }
-		  else
-		    i++;
-		break;
+		  long i = promptMenu("Select recipient:", names);
+		  if (i < 0)
+		    break;
+		  std::vector<Item*>& backpack = (*(characters))[i]->character->record.inventory.personal;
+		  i = 0;
+		  for (Item* slot : backpack)
+		    if (slot == nullptr)
+		      {
+			backpack[i] = hand;
+			hand = nullptr;
+			readinginner = true;
+			c = CTRL('L');
+			break;
+		      }
+		    else
+		      i++;
+		  break;
+		}
 		
 	      case 'E': /* Examine item in temporary slot */
 		if ((hand))
@@ -528,7 +530,7 @@ namespace tbrpg
     __restore_tty();
     #undef __print
   }
-
+  
   
   /**
    * Examine an item
