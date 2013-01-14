@@ -160,6 +160,22 @@ namespace tbrpg
 	      case '3': /* Item on the ground */
 		page = c - '1';
 		index = 0;
+		index++;
+	      case CTRL('P'): /* Navigate up */ /* XXX this could be speed up */
+		index -= 2;
+	      case CTRL('N'): /* Navigate down */
+		index++;
+		if (index < 0)
+		  index = 0;
+		else
+		  {
+		    size_t n = page == 2 ? ground.size() + 1
+			     : page = 1 ? personal.size() 
+			     : inventory.left_hand.size() + inventory.quiver.size()
+			     + inventory.quick_items.size() + inventory.rings.size() + 8;
+		    if (index >= n)
+		      index = n - 1;
+		  }
 	      case CTRL('L'): /* Redraw */
 		std::cout << CSI "H" CSI "2J"
 			  << "Temporary slot: "
@@ -239,12 +255,6 @@ namespace tbrpg
 	      case CTRL('D'): /* Complete */
 		if (hand == nullptr)
 		  reading = false;
-		break;
-		
-	      case CTRL('P'): /* Navigate up */
-		break;
-		
-	      case CTRL('N'): /* Navigate down */
 		break;
 	      }
 	  }
