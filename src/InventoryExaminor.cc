@@ -428,7 +428,7 @@ namespace tbrpg
 		#undef ___swap
 		break;
 		
-	      case 'e': /* Examine item in slot */
+	      case 'P': /* Give item to another party member */
 		break;
 		
 	      case 'E': /* Examine item in temporary slot */
@@ -440,7 +440,7 @@ namespace tbrpg
 		  }
 		break;
 		
-	      case 'P': /* Give item to another party member */
+	      case 'e': /* Examine item in slot */
 		if ((page == 2) && (index < ground.size()))
 		  this->examine(ground[index]);
 		else if ((page == 1) && (personal[index] != nullptr))
