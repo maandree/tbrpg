@@ -1111,26 +1111,11 @@ namespace tbrpg
     std::cout << "C-d : Complete" << std::endl;
     std::cout << "C-g : Abort" << std::endl;
     std::cout << std::endl << "Begin by pressing where you want to go." << std::endl;
-    /* XXX up, down, C-p and C-n for navigations */
+    /* XXX up, down, C-p and C-n for navigations and C-l for redraw */
     
     InventoryExaminor examinor = InventoryExaminor();
     examinor.examine(this->next_player, this->players);
     /*
-    std::vector<Weapon*> left_hand;
-    std::vector<Ammuntion*> quiver;
-    std::vector<QuickItem*> quick_items;
-    RightHandItem* right_hand;
-    Headgear* headgear;
-    Amulet* amulet;
-    std::vector<Ring*> rings;
-    BodyArmour* body;
-    Gauntlets* gauntlets;
-    Girdle* girdle;
-    Boots* boots;
-    Cloak* cloak;
-    
-    std::vector<Item*> personal;
-    
     ground
     */
     

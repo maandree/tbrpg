@@ -74,9 +74,23 @@ namespace tbrpg
    */
   void InventoryExaminor::examine(long character, std::vector<GameCharacter*>* characters) const
   {
+    #define __print(X, Y)					\
+      std::cout << (i == index ? CSI "02m" : "")		\
+		<< X						\
+		<< (Y == nullptr ? "(empty)" : Y->name);	\
+      if ((Y != nullptr) && (Y->quantity_limit > 1))		\
+	std::cout << " (" << Y->quantity << ")";        	\
+      std::cout << CSI "22m" << std::endl
+    
     __store_tty();
     
     std::cout << CSI "?25l";
+    
+    Item* hand = nullptr;
+    size_t page = 0, index = 0;
+    
+    Inventory& inventory = (*(characters))[character]->character->record.inventory;
+    std::vector<Item*>& personal = inventory.personal;
     
     char c;
     bool reading = true;
@@ -132,26 +146,62 @@ namespace tbrpg
 			if (c != '~')
 			  readinginner = false;
 		      }
-		    else if (c == 'A')
+		    else if ((c == 'A') || (c == 'B'))
 		      {
-			c = CTRL('P');
-			readinginner = true;
-		      }
-		    else if (c == 'B')
-		      {
-			c = CTRL('N');
+			c = CTRL((c == 'A' ? 'P' : 'N'));
 			readinginner = true;
 		      }
 		  }
 		break;
 		
 	      case '1': /* Equipped items */
-		break;
-		
 	      case '2': /* Personal inventory */
-		break;
-		
 	      case '3': /* Item on the ground */
+		page = c - '1';
+		index = 0;
+	      case CTRL('L'): /* Redraw */
+		std::cout << CSI "H" CSI "2J"
+			  << "Temporary slot: "
+			  << (hand == nullptr ? "(empty)" : hand->name);
+		if ((hand != nullptr) && (hand->quantity_limit > 1))
+		  std::cout << " (" << hand->quantity << ")";
+		std::cout << std::endl << std::endl;
+		if (page == 0)
+		  {
+		    size_t i = 0;
+		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+		      {
+			__print("Left hand " << j << " ", inventory.left_hand[j]); i++;
+		      }
+		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+		      {
+			__print("Quiver " << j << "    ", inventory.quiver[j]); i++;
+		      }
+		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+		      {
+			__print("Quick item " << j << "", inventory.quick_items[j]); i++;
+		      }
+		    __print("Right hand  ", inventory.right_hand); i++;
+		    __print("Headgear    ", inventory.headgear); i++;
+		    __print("Amulet      ", inventory.amulet); i++;
+		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+		      {
+			__print("Ring " << j << "      ", inventory.rings[j]); i++;
+		      }
+		    __print("Body        ", inventory.body); i++;
+		    __print("Gauntlets   ", inventory.gauntlets); i++;
+		    __print("Girdle      ", inventory.girdle); i++;
+		    __print("Boots       ", inventory.boots); i++;
+		    __print("Cloak       ", inventory.cloak); i++;
+		  }
+		else if (page == 1)
+		  for (size_t i = 0, n = personal.size(); i < n; i++)
+		    {
+		      __print((i < 10 ? "Personal  " : "Personal ") << i, personal[i]);
+		    }
+		else if (page == 2)
+		  {
+		  }
 		break;
 		
 	      case 'd': /* Drop temporary slot item on the ground */
@@ -193,6 +243,7 @@ namespace tbrpg
     std::flush(std::cout << CSI "?25l");
     
     __restore_tty();
+    #undef __print
   }
   
 }
