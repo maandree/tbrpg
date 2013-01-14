@@ -93,6 +93,24 @@ namespace tbrpg
     std::vector<Item*>& personal = inventory.personal;
     std::vector<Item*>& ground = (*(characters))[character]->area->items;
     
+    std::vector<Item**> equipment = std::vector<Item**>();
+    for (Item*& slot : inventory.left_hand)
+      equipment.push_back(&slot);
+    for (Item*& slot : inventory.quiver)
+      equipment.push_back(&slot);
+    for (Item*& slot : inventory.quick_items)
+      equipment.push_back(&slot);
+    equipment.push_back(&(inventory.right_hand));
+    equipment.push_back(&(inventory.headgear));
+    equipment.push_back(&(inventory.amulet));
+    for (Item*& slot : inventory.rings)
+      equipment.push_back(&slot);
+    equipment.push_back(&(inventory.body));
+    equipment.push_back(&(inventory.gauntlets));
+    equipment.push_back(&(inventory.girdle));
+    equipment.push_back(&(inventory.boots));
+    equipment.push_back(&(inventory.cloak));
+    
     char c;
     bool reading = true;
     
@@ -242,23 +260,45 @@ namespace tbrpg
 		  {
 		    ground.push_back(ground[index]);
 		    ground.erase(index);
-		    readinginner = true;
-		    c = CTRL('L');
 		  }
 		else if ((page == 1) && (personal[index] != nullptr))
 		  {
 		    ground.push_back(personal[index]);
 		    personal[index] = nullptr;
-		    readinginner = true;
-		    c = CTRL('L');
 		  }
-		else if (page == 0)
+		else if ((page == 0) && (*(equipment[index]) != nullptr))
 		  {
-		    ;
+		    ground.push_back(*(equipment[index]));
+		    *(equipment[index]) = nullptr;
 		  }
+		else
+		  break;
+		readinginner = true;
+		c = CTRL('L');
 		break;
 		
 	      case 'p': /* Pick up item to temporary slot */
+		if ((hand))
+		  break;
+		if ((page == 2) && (index < ground.size()))
+		  {
+		    hand = ground[index];
+		    ground.erase(index);
+		  }
+		else if ((page == 1) && (personal[index] != nullptr))
+		  {
+		    hand = personal[index];
+		    personal[index] = nullptr;
+		  }
+		else if ((page == 0) && (*(equipment[index]) != nullptr))
+		  {
+		    hand = *(equipment[index]);
+		    *(equipment[index]) = nullptr;
+		  }
+		else
+		  break;
+		readinginner = true;
+		c = CTRL('L');
 		break;
 		
 	      case 's': /* Swap item with temporary slot */
