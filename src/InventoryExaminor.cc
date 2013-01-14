@@ -227,7 +227,14 @@ namespace tbrpg
 		  }
 		break;
 		
+	      /* XXX many things here gound be speed up */
 	      case 'd': /* Drop temporary slot item on the ground */
+		if (hand == nullptr)
+		  break;
+		ground.push_back(hand);
+		hand = nullptr;
+		readinginner = true;
+		c = CTRL('L');
 		break;
 		
 	      case 'D': /* Drop item on the ground */
