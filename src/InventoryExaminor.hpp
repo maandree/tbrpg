@@ -73,6 +73,13 @@ namespace tbrpg
      */
     virtual void examine(long character, std::vector<GameCharacter*>* characters) const;
     
+    /**
+     * Examine an item
+     * 
+     * @param  item  The item to examine
+     */
+    virtual void examine(Item* item) const;
+    
   };
 }
 

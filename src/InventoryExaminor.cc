@@ -432,9 +432,59 @@ namespace tbrpg
 		break;
 		
 	      case 'E': /* Examine item in temporary slot */
+		if ((hand))
+		  {
+		    this->examine(hand);
+		    readinginner = true;
+		    c = CTRL('L');
+		  }
 		break;
 		
 	      case 'P': /* Give item to another party member */
+		if ((page == 2) && (index < ground.size()))
+		  this->examine(ground[index]);
+		else if ((page == 1) && (personal[index] != nullptr))
+		  this->examine(personal[index]);
+		else if (page == 0)
+		  {
+		    size_t i = 0;
+		    
+		    #define  __examine(X)		       	\
+		      if ((i == index) && (X != nullptr))	\
+			this->examine(X);			\
+		      i++
+		    
+		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+		      {
+			__examine(inventory.left_hand[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+		      {
+			__examine(inventory.quiver[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+		      {
+			__examine(inventory.quick_items[j]);
+		      }
+		    __examine(inventory.right_hand);
+		    __examine(inventory.headgear);
+		    __examine(inventory.amulet);
+		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+		      {
+			__examine(inventory.rings[j]);
+		      }
+		    __examine(inventory.body);
+		    __examine(inventory.gauntlets);
+		    __examine(inventory.girdle);
+		    __examine(inventory.boots);
+		    __examine(inventory.cloak);
+		    
+		    #undef __examine
+		  }
+		else
+		  break;
+		readinginner = true;
+		c = CTRL('L');
 		break;
 		
 	      case CTRL('G'): /* Abort */
@@ -453,6 +503,17 @@ namespace tbrpg
     
     __restore_tty();
     #undef __print
+  }
+
+  
+  /**
+   * Examine an item
+   * 
+   * @param  item  The item to examine
+   */
+  void InventoryExaminor::examine(Item* item) const
+  {
+    // FIXME implement item examination
   }
   
 }
