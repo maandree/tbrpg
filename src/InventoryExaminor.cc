@@ -303,11 +303,15 @@ namespace tbrpg
 		  break;
 		if ((page == 2) && (index < ground.size()))
 		  {
+		    if ((*(ground[index]) >= PROTOTYPE(EnvironmentContainer)) == false)
+		      break;
 		    hand = ground[index];
 		    ground.erase(ground.begin() + index);
 		  }
 		else if ((page == 1) && (personal[index] != nullptr))
 		  {
+		    if ((*(personal[index]) >= PROTOTYPE(EnvironmentContainer)) == false)
+		      break;
 		    hand = personal[index];
 		    personal[index] = nullptr;
 		  }
@@ -315,12 +319,13 @@ namespace tbrpg
 		  {
 		    size_t i = 0;
 		    
-		    #define  __pickup(X)	       		\
-		      if ((i == index) && (X != nullptr))	\
-			{					\
-			  hand = X;				\
-			  X = nullptr;				\
-			}			       		\
+		    #define  __pickup(X)					\
+		      if ((i == index) && (X != nullptr))			\
+			if ((*(X) >= PROTOTYPE(EnvironmentContainer)) == false)	\
+			  {							\
+			    hand = X;						\
+			    X = nullptr;					\
+			  }							\
 		      i++
 		    
 		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
@@ -376,22 +381,27 @@ namespace tbrpg
 		  }
 		else if (page == 2)
 		  {
+		    if (*(ground[index]) >= PROTOTYPE(EnvironmentContainer))
+		      break;
 		    ___swap(hand, ground[index], Item);
 		  }
 		else if (page == 1)
 		  {
+		    if (*(personal[index]) >= PROTOTYPE(EnvironmentContainer))
+		      break;
 		    ___swap(hand, personal[index], Item);
 		  }
 		else if (page == 0)
 		  {
 		    size_t i = 0;
 		    
-		    #define  __swap(X, Y)					\
-		      if (i == index)						\
-			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))	\
-			  {							\
-			    ___swap(hand, X, Y);				\
-			  }							\
+		    #define  __swap(X, Y)						\
+		      if (i == index)							\
+			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))		\
+			  if ((*(X) >= PROTOTYPE(EnvironmentContainer)) == false)	\
+			    {								\
+			      ___swap(hand, X, Y);					\
+			    }								\
 		      i++
 		    
 		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)

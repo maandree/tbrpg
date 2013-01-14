@@ -34,6 +34,7 @@
 #include <sstream>
 
 #include "GameCharacter.hpp"
+#include "EnvironmentContainer.hpp"
 
 
 /**
