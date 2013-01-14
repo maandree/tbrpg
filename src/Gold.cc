@@ -39,6 +39,7 @@ namespace tbrpg
     this->name = "gold";
     this->weight = 2;
     this->unit_value = 100;
+    this->quantity_limit = 1000000000;
   }
   
   /**

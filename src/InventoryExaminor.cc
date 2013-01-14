@@ -217,7 +217,7 @@ namespace tbrpg
 		else if (page == 1)
 		  for (size_t i = 0, n = personal.size(); i < n; i++)
 		    {
-		      __print((i <= 10 ? "Personal  " : "Personal ") << (i + 1) << ": ", personal[i]);
+		      __print((i < 9 ? "Personal  " : "Personal ") << (i + 1) << ": ", personal[i]);
 		    }
 		else if (page == 2)
 		  {

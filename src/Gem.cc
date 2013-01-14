@@ -39,6 +39,7 @@ namespace tbrpg
     this->name = "gem";
     this->weight = 25;
     this->unit_value = 650;
+    this->quantity_limit = 5;
   }
   
   /**
