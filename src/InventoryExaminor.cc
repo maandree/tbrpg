@@ -232,10 +232,13 @@ namespace tbrpg
 	      case 'P': /* Give item to another party member */
 		break;
 		
-	      case CTRL('D'): /* Complete */
-		break;
-		
 	      case CTRL('G'): /* Abort */
+		if ((hand))
+		  ground.push_back(hand);
+		hand = nullptr;
+	      case CTRL('D'): /* Complete */
+		if (hand == nullptr)
+		  reading = false;
 		break;
 		
 	      case CTRL('P'): /* Navigate up */
