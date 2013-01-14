@@ -449,6 +449,52 @@ namespace tbrpg
 		
 	      case 'o': /* Open container */
 		{
+		  temp = nullptr;
+		  if ((page == 2) && (index < ground.size()))
+		    temp = ground[index];
+		  else if ((page == 1) && (personal[index] != nullptr))
+		    temp = personal[index];
+		  else if (page == 0)
+		    {
+		      size_t i = 0;
+		      
+		      #define  __open(X)			\
+			if ((i == index) && (X != nullptr))	\
+			  temp = X;				\
+			i++
+		      
+		      for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+			{
+			  __open(inventory.left_hand[j]);
+			}
+		      for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+			{
+			  __open(inventory.quiver[j]);
+			}
+		      for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+			{
+			  __open(inventory.quick_items[j]);
+			}
+		      __open(inventory.right_hand);
+		      __open(inventory.headgear);
+		      __open(inventory.amulet);
+		      for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+			{
+			  __open(inventory.rings[j]);
+			}
+		      __open(inventory.body);
+		      __open(inventory.gauntlets);
+		      __open(inventory.girdle);
+		      __open(inventory.boots);
+		      __open(inventory.cloak);
+		      
+		      #undef __open
+		    }
+		  else
+		    break;
+		  
+		  if (temp == nullptr)
+		    break;
 		  if ((*temp >= PROTOTYPE(Container)) == false)
 		    break;
 		  if (*temp >= PROTOTYPE(EnvironmentContainer))
@@ -458,6 +504,7 @@ namespace tbrpg
 			break; /* TODO allow unlocking */
 		    }
 		  container = static_cast<Container*>(temp);
+		  temp = nullptr;
 		  readinginner = true;
 		  c = CTRL('L');
 		  index = 0;
