@@ -31,6 +31,7 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
+#include <sstream>
 
 #include "GameCharacter.hpp"
 
