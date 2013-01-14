@@ -429,6 +429,7 @@ namespace tbrpg
 		break;
 		
 	      case 'P': /* Give item to another party member */
+		// FIXME implement giving to another party memeber
 		break;
 		
 	      case 'E': /* Examine item in temporary slot */
