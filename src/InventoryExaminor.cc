@@ -539,7 +539,7 @@ namespace tbrpg
    */
   void InventoryExaminor::examine(Item* item) const
   {
-    // FIXME implement item examination
+    /* TODO implement item examination */
   }
   
   

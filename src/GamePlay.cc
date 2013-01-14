@@ -1112,7 +1112,7 @@ namespace tbrpg
     std::cout << "C-g : Abort" << std::endl;
     std::cout << std::endl << "Begin by pressing where you want to go." << std::endl;
     /* XXX up, down, C-p and C-n for navigations and C-l for redraw */
-    /* FIXME add support for splitting and concating */
+    /* TODO add support for splitting and concating */
     
     InventoryExaminor examinor = InventoryExaminor();
     examinor.examine(this->next_player, this->players);
