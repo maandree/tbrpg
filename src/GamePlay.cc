@@ -1101,10 +1101,12 @@ namespace tbrpg
     std::cout << "F1/1: Equipped items" << std::endl;
     std::cout << "F2/2: Personal inventory" << std::endl;
     std::cout << "F3/3: Item on the ground" << std::endl;
+    std::cout << "F4/4: Opened container" << std::endl;
     std::cout << "d   : Drop temporary slot item on the ground" << std::endl;
     std::cout << "S-d : Drop item on the ground" << std::endl;
     std::cout << "p   : Pick up item to temporary slot" << std::endl;
     std::cout << "s   : Swap item with temporary slot" << std::endl;
+    std::cout << "o   : Open container" << std::endl;
     std::cout << "e   : Examine item in slot" << std::endl;
     std::cout << "S-e : Examine item in temporary slot" << std::endl;
     std::cout << "S-p : Give item to another party member" << std::endl;

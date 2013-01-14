@@ -87,6 +87,7 @@ namespace tbrpg
     std::cout << CSI "?25l";
     
     Item* hand = nullptr;
+    Container* container = nullptr;
     size_t page = 0, index = 0;
     
     Inventory& inventory = (*(characters))[character]->character->record.inventory;
@@ -129,6 +130,10 @@ namespace tbrpg
 			c = '3';
 			readinginner = true;
 			break;
+		      case 'S':
+			c = '4';
+			readinginner = true;
+			break;
 		      }
 		  }
 		else if (c == '[')
@@ -142,6 +147,7 @@ namespace tbrpg
 			  case '1':
 			  case '2':
 			  case '3':
+			  case '4':
 			    readinginner = true;
 			    break;
 			  }
@@ -161,6 +167,9 @@ namespace tbrpg
 	      case '1': /* Equipped items */
 	      case '2': /* Personal inventory */
 	      case '3': /* Item on the ground */
+	      case '4': /* Opened container */
+		if ((c == '4') and not (container))
+		  break;
 		page = c - '1';
 		index = 0;
 		index++;
@@ -303,14 +312,14 @@ namespace tbrpg
 		  break;
 		if ((page == 2) && (index < ground.size()))
 		  {
-		    if ((*(ground[index]) >= PROTOTYPE(EnvironmentContainer)) == false)
+		    if (ground[index]->stuck)
 		      break;
 		    hand = ground[index];
 		    ground.erase(ground.begin() + index);
 		  }
 		else if ((page == 1) && (personal[index] != nullptr))
 		  {
-		    if ((*(personal[index]) >= PROTOTYPE(EnvironmentContainer)) == false)
+		    if (personal[index]->stuck)
 		      break;
 		    hand = personal[index];
 		    personal[index] = nullptr;
@@ -319,13 +328,13 @@ namespace tbrpg
 		  {
 		    size_t i = 0;
 		    
-		    #define  __pickup(X)					\
-		      if ((i == index) && (X != nullptr))			\
-			if ((*(X) >= PROTOTYPE(EnvironmentContainer)) == false)	\
-			  {							\
-			    hand = X;						\
-			    X = nullptr;					\
-			  }							\
+		    #define  __pickup(X)			\
+		      if ((i == index) && (X != nullptr))	\
+			if (X->stuck == false)			\
+			  {					\
+			    hand = X;				\
+			    X = nullptr;			\
+			  }					\
 		      i++
 		    
 		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
@@ -381,13 +390,13 @@ namespace tbrpg
 		  }
 		else if (page == 2)
 		  {
-		    if (*(ground[index]) >= PROTOTYPE(EnvironmentContainer))
+		    if ((ground[index] != nullptr) && (ground[index]->stuck))
 		      break;
 		    ___swap(hand, ground[index], Item);
 		  }
 		else if (page == 1)
 		  {
-		    if (*(personal[index]) >= PROTOTYPE(EnvironmentContainer))
+		    if ((personal[index] != nullptr) && (personal[index]->stuck))
 		      break;
 		    ___swap(hand, personal[index], Item);
 		  }
@@ -395,13 +404,13 @@ namespace tbrpg
 		  {
 		    size_t i = 0;
 		    
-		    #define  __swap(X, Y)						\
-		      if (i == index)							\
-			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))		\
-			  if ((*(X) >= PROTOTYPE(EnvironmentContainer)) == false)	\
-			    {								\
-			      ___swap(hand, X, Y);					\
-			    }								\
+		    #define  __swap(X, Y)					\
+		      if (i == index)						\
+			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))	\
+			  if ((X == nullptr) || (X->stuck == false))		\
+			    {							\
+			      ___swap(hand, X, Y);				\
+			    }							\
 		      i++
 		    
 		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
@@ -436,6 +445,24 @@ namespace tbrpg
 		readinginner = true;
 		c = CTRL('L');
 		#undef ___swap
+		break;
+		
+	      case 'o': /* Open container */
+		{
+		  if ((*temp >= PROTOTYPE(Container)) == false)
+		    break;
+		  if (*temp >= PROTOTYPE(EnvironmentContainer))
+		    {
+		      EnvironmentContainer* cont = static_cast<EnvironmentContainer*>(temp);
+		      if (cont->locked)
+			break; /* TODO allow unlocking */
+		    }
+		  container = static_cast<Container*>(temp);
+		  readinginner = true;
+		  c = CTRL('L');
+		  index = 0;
+		  page = 3;
+		}
 		break;
 		
 	      case 'P': /* Give item to another party member */
