@@ -28,6 +28,7 @@
 #include <unordered_map>
 
 #include "Character.hpp"
+#include "Die.hpp"
 #include "hash.hpp"
 
 

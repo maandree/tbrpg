@@ -242,8 +242,19 @@ namespace tbrpg
    */
   Item* Creature::pickPocket()
   {
-    /* TODO dummy implementation */
-    return nullptr;
+    std::vector<size_t> indices = std::vector<size_t>();
+    for (size_t i = 0, n = this->record.inventory.personal.size(); i < n; i++)
+      if ((this->record.inventory.personal[i]))
+	indices.push_back(i);
+    
+    if (indices.size() == 0)
+      return nullptr;
+    
+    Die die = Die(indices.size());
+    int i = indices[die.roll() - 1];
+    Item* rc = this->record.inventory.personal[i];
+    this->record.inventory.personal[i] = nullptr;
+    return rc;
   }
   
   
