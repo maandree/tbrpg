@@ -191,22 +191,22 @@ namespace tbrpg
 		    size_t i = 0;
 		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
 		      {
-			__print("Left hand " << j << ":  ", inventory.left_hand[j]); i++;
+			__print("Left hand " << (j + 1) << ":  ", inventory.left_hand[j]); i++;
 		      }
 		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
 		      {
-			__print("Quiver " << j << ":     ", inventory.quiver[j]); i++;
+			__print("Quiver " << (j + 1) << ":     ", inventory.quiver[j]); i++;
 		      }
 		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
 		      {
-			__print("Quick item " << j << ": ", inventory.quick_items[j]); i++;
+			__print("Quick item " << (j + 1) << ": ", inventory.quick_items[j]); i++;
 		      }
 		    __print("Right hand:   ", inventory.right_hand); i++;
 		    __print("Headgear:     ", inventory.headgear); i++;
 		    __print("Amulet:       ", inventory.amulet); i++;
 		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
 		      {
-			__print("Ring " << j << ":       ", inventory.rings[j]); i++;
+			__print("Ring " << (j + 1) << ":       ", inventory.rings[j]); i++;
 		      }
 		    __print("Body:         ", inventory.body); i++;
 		    __print("Gauntlets:    ", inventory.gauntlets); i++;
@@ -217,17 +217,17 @@ namespace tbrpg
 		else if (page == 1)
 		  for (size_t i = 0, n = personal.size(); i < n; i++)
 		    {
-		      __print((i < 10 ? "Personal  " : "Personal ") << i << ": ", personal[i]);
+		      __print((i <= 10 ? "Personal  " : "Personal ") << (i + 1) << ": ", personal[i]);
 		    }
 		else if (page == 2)
 		  {
 		    for (size_t i = 0, n = ground.size(); i < n; i++)
 		      {
-			__print("Ground " << i << ": ", ground[i]);
+			__print("Ground " << (i + 1) << ": ", ground[i]);
 		      }
 		    size_t i = ground.size();
 		    std::cout << (i == index ? CSI "01m" : "")
-			      << "Ground " << i << ": (empty)"
+			      << "Ground " << (i + 1) << ": (empty)"
 			      << CSI "21m" << std::endl;
 		  }
 		break;
