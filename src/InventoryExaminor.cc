@@ -93,24 +93,6 @@ namespace tbrpg
     std::vector<Item*>& personal = inventory.personal;
     std::vector<Item*>& ground = (*(characters))[character]->area->items;
     
-    std::vector<Item**> equipment = std::vector<Item**>();
-    for (Item*& slot : inventory.left_hand)
-      equipment.push_back(&slot);
-    for (Item*& slot : inventory.quiver)
-      equipment.push_back(&slot);
-    for (Item*& slot : inventory.quick_items)
-      equipment.push_back(&slot);
-    equipment.push_back(&(inventory.right_hand));
-    equipment.push_back(&(inventory.headgear));
-    equipment.push_back(&(inventory.amulet));
-    for (Item*& slot : inventory.rings)
-      equipment.push_back(&slot);
-    equipment.push_back(&(inventory.body));
-    equipment.push_back(&(inventory.gauntlets));
-    equipment.push_back(&(inventory.girdle));
-    equipment.push_back(&(inventory.boots));
-    equipment.push_back(&(inventory.cloak));
-    
     char c;
     bool reading = true;
     
@@ -183,7 +165,7 @@ namespace tbrpg
 		index -= 2;
 	      case CTRL('N'): /* Navigate down */
 		index++;
-		if (index < 0)
+		if (index == (size_t)(-1))
 		  index = 0;
 		else
 		  {
@@ -232,16 +214,18 @@ namespace tbrpg
 		else if (page == 1)
 		  for (size_t i = 0, n = personal.size(); i < n; i++)
 		    {
-		      __print((i < 10 ? "Personal  " : "Personal ") << i, personal[i]);
+		      __print((i < 10 ? "Personal  " : "Personal ") << i << ": ", personal[i]);
 		    }
 		else if (page == 2)
 		  {
 		    for (size_t i = 0, n = ground.size(); i < n; i++)
-		    {
-		      __print("Ground " << i, ground[i]);
-		    }
-		    size_t i = ground.size(); 
-		    __print("Ground " << i, nullptr);
+		      {
+			__print("Ground " << i << ": ", ground[i]);
+		      }
+		    size_t i = ground.size();
+		    std::cout << (i == index ? CSI "02m" : "")
+			      << "Ground: (empty)"
+			      << CSI "22m" << std::endl;
 		  }
 		break;
 		
@@ -259,17 +243,51 @@ namespace tbrpg
 		if ((page == 2) && (index < ground.size()))
 		  {
 		    ground.push_back(ground[index]);
-		    ground.erase(index);
+		    ground.erase(ground.begin() + index);
 		  }
 		else if ((page == 1) && (personal[index] != nullptr))
 		  {
 		    ground.push_back(personal[index]);
 		    personal[index] = nullptr;
 		  }
-		else if ((page == 0) && (*(equipment[index]) != nullptr))
+		else if (page == 0)
 		  {
-		    ground.push_back(*(equipment[index]));
-		    *(equipment[index]) = nullptr;
+		    size_t i = 0;
+		    
+		    #define  __drop(X)					\
+		      if ((i == index) && (X != nullptr))		\
+			{						\
+			  ground.push_back(X);				\
+			  X = nullptr;					\
+			}			       			\
+		      i++
+		    
+		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+		      {
+			__drop(inventory.left_hand[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+		      {
+			__drop(inventory.quiver[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+		      {
+			__drop(inventory.quick_items[j]);
+		      }
+		    __drop(inventory.right_hand);
+		    __drop(inventory.headgear);
+		    __drop(inventory.amulet);
+		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+		      {
+			__drop(inventory.rings[j]);
+		      }
+		    __drop(inventory.body);
+		    __drop(inventory.gauntlets);
+		    __drop(inventory.girdle);
+		    __drop(inventory.boots);
+		    __drop(inventory.cloak);
+		    
+		    #undef __drop
 		  }
 		else
 		  break;
@@ -283,17 +301,51 @@ namespace tbrpg
 		if ((page == 2) && (index < ground.size()))
 		  {
 		    hand = ground[index];
-		    ground.erase(index);
+		    ground.erase(ground.begin() + index);
 		  }
 		else if ((page == 1) && (personal[index] != nullptr))
 		  {
 		    hand = personal[index];
 		    personal[index] = nullptr;
 		  }
-		else if ((page == 0) && (*(equipment[index]) != nullptr))
+		else if (page == 0)
 		  {
-		    hand = *(equipment[index]);
-		    *(equipment[index]) = nullptr;
+		    size_t i = 0;
+		    
+		    #define  __pickup(X)	       		\
+		      if ((i == index) && (X != nullptr))	\
+			{					\
+			  hand = X;				\
+			  X = nullptr;				\
+			}			       		\
+		      i++
+		    
+		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+		      {
+			__pickup(inventory.left_hand[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+		      {
+			__pickup(inventory.quiver[j]);
+		      }
+		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+		      {
+			__pickup(inventory.quick_items[j]);
+		      }
+		    __pickup(inventory.right_hand);
+		    __pickup(inventory.headgear);
+		    __pickup(inventory.amulet);
+		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+		      {
+			__pickup(inventory.rings[j]);
+		      }
+		    __pickup(inventory.body);
+		    __pickup(inventory.gauntlets);
+		    __pickup(inventory.girdle);
+		    __pickup(inventory.boots);
+		    __pickup(inventory.cloak);
+		    
+		    #undef __pickup
 		  }
 		else
 		  break;
