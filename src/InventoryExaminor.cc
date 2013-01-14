@@ -362,8 +362,6 @@ namespace tbrpg
 		  X = Y;				\
 		  Y = dynamic_cast<Z*>(temp)
 		
-		if ((hand))
-		  break;
 		if ((page == 2) && (index == ground.size()))
 		  {
 		    if (hand == nullptr)
@@ -389,7 +387,7 @@ namespace tbrpg
 		    size_t i = 0;
 		    
 		    #define  __swap(X, Y)					\
-		      if ((i == index) && (X != nullptr))			\
+		      if (i == index)						\
 			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))	\
 			  {							\
 			    ___swap(hand, X, Y);				\
@@ -441,6 +439,7 @@ namespace tbrpg
 		      names.push_back(ss.str());
 		    }
 		  long i = promptMenu("Select recipient:", names);
+		  std::flush(std::cout << CSI "?25l");
 		  if (i < 0)
 		    break;
 		  std::vector<Item*>& backpack = (*(characters))[i]->character->record.inventory.personal;
