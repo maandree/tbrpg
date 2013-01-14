@@ -238,6 +238,24 @@ namespace tbrpg
 		break;
 		
 	      case 'D': /* Drop item on the ground */
+		if ((page == 2) && (index < ground.size()))
+		  {
+		    ground.push_back(ground[index]);
+		    ground.erase(index);
+		    readinginner = true;
+		    c = CTRL('L');
+		  }
+		else if ((page == 1) && (personal[index] != nullptr))
+		  {
+		    ground.push_back(personal[index]);
+		    personal[index] = nullptr;
+		    readinginner = true;
+		    c = CTRL('L');
+		  }
+		else if (page == 0)
+		  {
+		    ;
+		  }
 		break;
 		
 	      case 'p': /* Pick up item to temporary slot */
