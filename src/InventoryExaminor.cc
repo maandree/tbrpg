@@ -91,6 +91,7 @@ namespace tbrpg
     
     Inventory& inventory = (*(characters))[character]->character->record.inventory;
     std::vector<Item*>& personal = inventory.personal;
+    std::vector<Item*>& ground = (*(characters))[character]->area->items;
     
     char c;
     bool reading = true;
@@ -201,6 +202,12 @@ namespace tbrpg
 		    }
 		else if (page == 2)
 		  {
+		    for (size_t i = 0, n = ground.size(); i < n; i++)
+		    {
+		      __print("Ground " << i, ground[i]);
+		    }
+		    size_t i = ground.size(); 
+		    __print("Ground " << i, nullptr);
 		  }
 		break;
 		
