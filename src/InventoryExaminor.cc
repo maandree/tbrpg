@@ -92,6 +92,7 @@ namespace tbrpg
     Inventory& inventory = (*(characters))[character]->character->record.inventory;
     std::vector<Item*>& personal = inventory.personal;
     std::vector<Item*>& ground = (*(characters))[character]->area->items;
+    Item* temp = nullptr;
     
     char c;
     bool reading = true;
@@ -354,6 +355,77 @@ namespace tbrpg
 		break;
 		
 	      case 's': /* Swap item with temporary slot */
+		#define ___swap(X, Y, Z)		\
+		  temp = X;				\
+		  X = Y;				\
+		  Y = dynamic_cast<Z*>(temp)
+		
+		if ((hand))
+		  break;
+		if ((page == 2) && (index == ground.size()))
+		  {
+		    if (hand == nullptr)
+		      break;
+		    ground.push_back(hand);
+		    hand = nullptr;
+		  }
+		else if ((page == 2) && (hand == nullptr))
+		  {
+		    hand = ground[index];
+		    ground.erase(ground.begin() + index);
+		  }
+		else if (page == 2)
+		  {
+		    ___swap(hand, ground[index], Item);
+		  }
+		else if (page == 1)
+		  {
+		    ___swap(hand, personal[index], Item);
+		  }
+		else if (page == 0)
+		  {
+		    size_t i = 0;
+		    
+		    #define  __swap(X, Y)					\
+		      if ((i == index) && (X != nullptr))			\
+			if ((hand == nullptr) || (*hand >= PROTOTYPE(Y)))	\
+			  {							\
+			    ___swap(hand, X, Y);				\
+			  }							\
+		      i++
+		    
+		    for (size_t j = 0, n = inventory.left_hand.size(); j < n; j++)
+		      {
+			__swap(inventory.left_hand[j], Weapon);
+		      }
+		    for (size_t j = 0, n = inventory.quiver.size(); j < n; j++)
+		      {
+			__swap(inventory.quiver[j], Ammunition);
+		      }
+		    for (size_t j = 0, n = inventory.quick_items.size(); j < n; j++)
+		      {
+			__swap(inventory.quick_items[j], QuickItem);
+		      }
+		    __swap(inventory.right_hand, RightHandItem);
+		    __swap(inventory.headgear, Headgear);
+		    __swap(inventory.amulet, Amulet);
+		    for (size_t j = 0, n = inventory.rings.size(); j < n; j++)
+		      {
+			__swap(inventory.rings[j], Ring);
+		      }
+		    __swap(inventory.body, BodyArmour);
+		    __swap(inventory.gauntlets, Gauntlets);
+		    __swap(inventory.girdle, Girdle);
+		    __swap(inventory.boots, Boots);
+		    __swap(inventory.cloak, Cloak);
+		    
+		    #undef __swap
+		  }
+		else
+		  break;
+		readinginner = true;
+		c = CTRL('L');
+		#undef ___swap
 		break;
 		
 	      case 'e': /* Examine item in slot */
