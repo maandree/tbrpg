@@ -584,7 +584,9 @@ namespace tbrpg
 		break;
 		
 	      case 'e': /* Examine item in slot */
-		if ((page == 2) && (index < ground.size()))
+		if ((page == 3) && (index < container->contains.size()))
+		  this->examine(container->contains[index]);
+		else if ((page == 2) && (index < ground.size()))
 		  this->examine(ground[index]);
 		else if ((page == 1) && (personal[index] != nullptr))
 		  this->examine(personal[index]);
