@@ -31,7 +31,6 @@
 #include "Gold.hpp"
 #include "Door.hpp"
 #include "Store.hpp"
-
 #include "ShortSword.hpp"
 #include "LongSword.hpp"
 #include "Bullet.hpp"
@@ -39,6 +38,7 @@
 #include "ChainMail.hpp"
 #include "Helmet.hpp"
 #include "Key.hpp"
+#include "EnvironmentContainer.hpp"
 
 
 /**

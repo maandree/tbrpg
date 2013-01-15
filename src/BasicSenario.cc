@@ -178,6 +178,21 @@ namespace tbrpg
     gibberling->record.inventory.personal.push_back(questkey);
     gibberling->record.race = &PROTOTYPE(Human);
     gibberling->record.prestige.push_back(&PROTOTYPE(Fighter));
+    
+    LongSword* legendsword = new LongSword();
+    cleaner::getInstance().enqueueDelete(legendsword);
+    legendsword->damage_dice = 3;
+    legendsword->damage_bonus = 4;
+    legendsword->speed_factor = 4;
+    
+    EnvironmentContainer* legendcontainer = new EnvironmentContainer();
+    cleaner::getInstance().enqueueDelete(legendcontainer);
+    legendcontainer->locked = true;
+    legendcontainer->pickable = false;
+    legendcontainer->bashable = false;
+    legendcontainer->contains.push_back(legendsword);
+    
+    area_goal->items.push_back(legendcontainer);
   }
   
   /**
