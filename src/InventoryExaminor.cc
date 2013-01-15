@@ -381,12 +381,32 @@ namespace tbrpg
 		break;
 		
 	      case 's': /* Swap item with temporary slot */
-		#define ___swap(X, Y, Z)		\
-		  temp = X;				\
-		  X = Y;				\
+		#define ___swap(X, Y, Z)	\
+		  temp = X;			\
+		  X = Y;			\
 		  Y = dynamic_cast<Z*>(temp)
 		
-		if ((page == 2) && (index == ground.size()))
+		if ((page == 3) && (index < container->contains.size()))
+		  {
+		    if ((hand == nullptr) || (container->canHold(hand) == false))
+		      break;
+		    container->contains.push_back(hand);
+		    hand = nullptr;
+		  }
+		else if ((page == 3) && (hand == nullptr))
+		  {
+		    hand = container->contains[index];
+		    container->contains.erase(container->contains.begin() + index);
+		  }
+		else if (page == 3)
+		  {
+		    if ((container->contains[index] != nullptr) && (container->contains[index]->stuck))
+		      break;
+		    if (container->canHold(hand) == false)
+		      break;
+		    ___swap(hand, container->contains[index], Item);
+		  }
+		else if ((page == 2) && (index == ground.size()))
 		  {
 		    if (hand == nullptr)
 		      break;
@@ -460,7 +480,9 @@ namespace tbrpg
 	      case 'o': /* Open container */
 		{
 		  temp = nullptr;
-		  if ((page == 2) && (index < ground.size()))
+		  if ((page == 3) && (index < container->contains.size()))
+		    temp = container->contains[index];
+		  else if ((page == 2) && (index < ground.size()))
 		    temp = ground[index];
 		  else if ((page == 1) && (personal[index] != nullptr))
 		    temp = personal[index];

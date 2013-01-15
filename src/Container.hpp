@@ -152,6 +152,16 @@ namespace tbrpg
     virtual bool operator !=(const Container& other) const;
     
     
+    /**
+     * Check whether the container can hold an item
+     * 
+     * @param   item    The item to add
+     * @param   remove  Item to remove
+     * @return          Whether the container can hold the item
+     */
+    virtual bool canHold(Item* item, Item* remove = nullptr) const;
+    
+    
   protected:
     /**
      * Copy method

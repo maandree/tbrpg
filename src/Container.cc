@@ -182,6 +182,35 @@ namespace tbrpg
     return (*this == other) == false;
   }
   
+  
+  
+  /**
+   * Check whether the container can hold an item
+   * 
+   * @param   item    The item to add
+   * @param   remove  Item to remove
+   * @return          Whether the container can hold the item
+   */
+  bool Container::canHold(Item* item, Item* remove) const
+  {
+    int itemcount = item->quantity;
+    if ((remove))
+      itemcount -= remove->quantity;
+    for (Item* elem : this->contains)
+      itemcount += elem->quantity;
+    if (itemcount > this->contain_limit)
+      return false;
+    
+    if (this->can_contain.size() == 0)
+      return true;
+    for (const Item& elem : this->can_contain)
+      if (*item >= elem)
+	return true;
+    return false;
+  }
+  
+  
+  
   /**
    * Copy method
    * 
