@@ -36,6 +36,7 @@ namespace tbrpg
   Key::Key() : Item(), QuestItem()
   {
     this->class_inheritance.push_back(92);
+    this->interface_inheritance.push_back("QuestItem");
     this->name = "key";
     this->weight = 5;
     this->unit_value = -1;

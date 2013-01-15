@@ -38,6 +38,7 @@ namespace tbrpg
     this->class_inheritance = std::vector<short>();
     this->class_inheritance.push_back(0);
     this->actual_instance = (void*)this;
+    this->interface_inheritance = std::vector<std::string>();
   }
   
   /**
@@ -148,6 +149,18 @@ namespace tbrpg
   
   
   /**
+   * Inequality evaluator
+   * 
+   * @param   other  The other comparand
+   * @return         Whether the instances are not equal
+   */
+  bool Object::operator !=(const Object& other) const
+  {
+    return (*this == other) == false;
+  }
+  
+  
+  /**
    * 'Instance of' evaluator
    * 
    * @param   other  The other comparand
@@ -165,7 +178,7 @@ namespace tbrpg
     return true;
   }
   
-    
+  
   /**
    * Reversed 'instance of' evaluator
    * 
@@ -179,14 +192,17 @@ namespace tbrpg
   
   
   /**
-   * Inequality evaluator
+   * Checks whether the class implements a specific interface
    * 
-   * @param   other  The other comparand
-   * @return         Whether the instances are not equal
+   * @param   interface  The interface
+   * @return             Whether the class implements a specific interface
    */
-  bool Object::operator !=(const Object& other) const
+  bool Object::implements(const std::string& interface) const
   {
-    return (*this == other) == false;
+    for (const std::string& elem : this->interface_inheritance)
+      if (elem == interface)
+	return true;
+    return false;
   }
   
   

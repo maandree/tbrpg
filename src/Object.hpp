@@ -50,6 +50,12 @@ namespace tbrpg
      */
     void* actual_instance;
     
+  protected:
+    /**
+     * Interface inheritance vector
+     */
+    std::vector<std::string> interface_inheritance;
+    
   public:
     /**
      * Class inheritance vector
@@ -150,7 +156,6 @@ namespace tbrpg
      */
     bool operator >=(const Object& other) const;
     
-    
     /**
      * Reversed 'instance of' evaluator
      * 
@@ -158,6 +163,14 @@ namespace tbrpg
      * @return         Whether the right comparand is an instance of the left comparand's class
      */
     bool operator <=(const Object& other) const;
+    
+    /**
+     * Checks whether the class implements a specific interface
+     * 
+     * @param   interface  The interface
+     * @return             Whether the class implements a specific interface
+     */
+    bool implements(const std::string& interface) const;
     
     
     /**
