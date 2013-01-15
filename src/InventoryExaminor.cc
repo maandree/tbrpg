@@ -252,7 +252,12 @@ namespace tbrpg
 		break;
 		
 	      case 'D': /* Drop item on the ground */
-		if ((page == 2) && (index < ground.size()))
+		if ((page == 3) && (index < container->contains.size()))
+		  {
+		    ground.push_back(container->contains[index]);
+		    container->contains.erase(container->contains.begin() + index);
+		  }
+		else if ((page == 2) && (index < ground.size()))
 		  {
 		    ground.push_back(ground[index]);
 		    ground.erase(ground.begin() + index);
@@ -310,7 +315,12 @@ namespace tbrpg
 	      case 'p': /* Pick up item to temporary slot */
 		if ((hand))
 		  break;
-		if ((page == 2) && (index < ground.size()))
+		if ((page == 3) && (index < container->contains.size()))
+		  {
+		    hand = container->contains[index];
+		    container->contains.erase(container->contains.begin() + index);
+		  }
+		else if ((page == 2) && (index < ground.size()))
 		  {
 		    if (ground[index]->stuck)
 		      break;
