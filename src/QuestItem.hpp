@@ -40,7 +40,7 @@
 namespace tbrpg
 {
   /**
-   * Quest item class
+   * Quest item class, these should never be imported (unless as randomise id is recognised and of correct class)
    */
   class QuestItem
   {
@@ -48,7 +48,7 @@ namespace tbrpg
     /**
      * A unique number for the item that the game senario can use for identifying quest items
      */
-    int id;
+    long long id;
     
     
     

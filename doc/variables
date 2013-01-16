@@ -166,8 +166,8 @@ Proficiency: Object                      ; Weapon proficiency level
 	int damage_bonus                 ; The damage bonus
 	char half_attacks                ; the number of half attacks
 
-QuestItem                                ; Quest item class
-	int id                           ; A unique number for the item that the game senario can use for identifying quest items
+QuestItem                                ; Quest item class, these should never be imported (unless as randomise id is recognised and of correct class)
+	long long id                     ; A unique number for the item that the game senario can use for identifying quest items
 
 Item: Object                                                               ; Item class
 	std::string name                                                   ; The name of the item
