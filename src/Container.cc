@@ -193,6 +193,9 @@ namespace tbrpg
    */
   bool Container::canHold(Item* item, Item* remove) const
   {
+    if (*item >= PROTOTYPE(Container))
+      return false;
+      
     int itemcount = item->quantity;
     if ((remove))
       itemcount -= remove->quantity;
