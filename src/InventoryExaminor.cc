@@ -317,6 +317,8 @@ namespace tbrpg
 		  break;
 		if ((page == 3) && (index < container->contains.size()))
 		  {
+		    if (container->contains[index]->stuck)
+		      break;
 		    hand = container->contains[index];
 		    container->contains.erase(container->contains.begin() + index);
 		  }
@@ -395,6 +397,8 @@ namespace tbrpg
 		  }
 		else if ((page == 3) && (hand == nullptr))
 		  {
+		    if (container->contains[index]->stuck)
+		      break;
 		    hand = container->contains[index];
 		    container->contains.erase(container->contains.begin() + index);
 		  }
@@ -403,6 +407,8 @@ namespace tbrpg
 		    if ((container->contains[index] != nullptr) && (container->contains[index]->stuck))
 		      break;
 		    if (container->canHold(hand) == false)
+		      break;
+		    if (container->contains[index]->stuck)
 		      break;
 		    ___swap(hand, container->contains[index], Item);
 		  }
@@ -415,6 +421,8 @@ namespace tbrpg
 		  }
 		else if ((page == 2) && (hand == nullptr))
 		  {
+		    if (ground[index]->stuck)
+		      break;
 		    hand = ground[index];
 		    ground.erase(ground.begin() + index);
 		  }
