@@ -62,6 +62,15 @@ namespace tbrpg
     std::vector<short> class_inheritance;
     
   public:
+    /**
+     * Event handling function
+     * 
+     * @param  Object*      The invoked object
+     * @param  std::string  The event name
+     * @param  void*        The event paramters
+     */
+    void (**event_handler)(Object*, std::string, void*);
+    
     
     
     /**

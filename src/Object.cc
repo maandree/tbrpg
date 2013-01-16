@@ -39,6 +39,7 @@ namespace tbrpg
     this->class_inheritance.push_back(0);
     this->actual_instance = (void*)this;
     this->interface_inheritance = std::vector<std::string>();
+    this->event_handler = nullptr;
   }
   
   /**
@@ -50,6 +51,7 @@ namespace tbrpg
   {
     this->class_inheritance = original.class_inheritance;
     this->actual_instance = original.actual_instance;
+    this->event_handler = original.event_handler;
   }
   
   /**
@@ -61,6 +63,7 @@ namespace tbrpg
   {
     this->class_inheritance = original.class_inheritance;
     this->actual_instance = original.actual_instance;
+    this->event_handler = original.event_handler;
   }
   
   /**
@@ -72,6 +75,7 @@ namespace tbrpg
   {
     std::swap(this->class_inheritance, original.class_inheritance);
     std::swap(this->actual_instance, original.actual_instance);
+    std::swap(this->event_handler, original.event_handler);
   }
   
   /**
@@ -106,6 +110,7 @@ namespace tbrpg
   {
     this->class_inheritance = original.class_inheritance;
     this->actual_instance = original.actual_instance;
+    this->event_handler = original.event_handler;
     return *this;
   }
   
@@ -119,6 +124,7 @@ namespace tbrpg
   {
     this->class_inheritance = original.class_inheritance;
     this->actual_instance = original.actual_instance;
+    this->event_handler = original.event_handler;
     return *this;
   }
   
@@ -132,6 +138,7 @@ namespace tbrpg
   {
     std::swap(this->class_inheritance, original.class_inheritance);
     std::swap(this->actual_instance, original.actual_instance);
+    std::swap(this->event_handler, original.event_handler);
     return *this;
   }
   
