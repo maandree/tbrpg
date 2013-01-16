@@ -139,6 +139,17 @@ namespace tbrpg
      */
     static std::string getTitle();
     
+    
+  private:
+    /**
+     * Event handling function for the goal container
+     * 
+     * @param  self   The invoked object
+     * @param  event  The event name
+     * @param  args   The event arguments
+     */
+    static void legend_open(Object* self, const std::string& event, void* args);
+    
   };
 }
 

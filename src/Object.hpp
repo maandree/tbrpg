@@ -67,9 +67,9 @@ namespace tbrpg
      * 
      * @param  Object*      The invoked object
      * @param  std::string  The event name
-     * @param  void*        The event paramters
+     * @param  void*        The event arguments
      */
-    void (**event_handler)(Object*, std::string, void*);
+    void (*event_handler)(Object*, const std::string&, void*);
     
     
     

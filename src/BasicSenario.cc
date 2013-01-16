@@ -190,10 +190,12 @@ namespace tbrpg
     legendcontainer->locked = true;
     legendcontainer->pickable = false;
     legendcontainer->bashable = false;
-    legendcontainer->contains.push_back(legendsword);
     
+    legendcontainer->contains.push_back(legendsword);
     area_goal->items.push_back(legendcontainer);
+    legendcontainer->event_handler = legend_open;
   }
+  
   
   /**
    * Copy constructor
@@ -333,6 +335,29 @@ namespace tbrpg
   std::string BasicSenario::getTitle()
   {
     return "Basic game senario demo";
+  }
+  
+  
+  /**
+   * Event handling function for the goal container
+   * 
+   * @param  self   The invoked object
+   * @param  event  The event name
+   * @param  args   The event arguments
+   */
+  void BasicSenario::legend_open(Object* self, const std::string& event, void* args)
+  {
+    if (event == "quest_unlock")
+      {
+	std::vector<long long>** vecs = (std::vector<long long>**)args;
+	for (size_t i = 0; i < 4; i++)
+	  for (long long id : *(vecs[4]))
+	    if (id == 0)
+	      {
+		static_cast<EnvironmentContainer*>(self)->locked = false;
+		break;
+	      }
+      }
   }
   
 }
