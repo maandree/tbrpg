@@ -35,6 +35,7 @@
 
 #include "GameCharacter.hpp"
 #include "EnvironmentContainer.hpp"
+#include "QuestItem.hpp"
 
 
 /**

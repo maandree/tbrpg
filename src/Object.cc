@@ -218,6 +218,18 @@ namespace tbrpg
   
   
   /**
+   * Invoked on a custom event
+   * 
+   * @param  action  The action name
+   * @param  args    The action parameters
+   */
+  void Object::event(const std::string& action, void* args)
+  {
+    // FIXME
+  }
+  
+  
+  /**
    * Copy method
    * 
    * @param  self      The object to modify

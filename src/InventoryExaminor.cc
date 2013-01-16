@@ -1,4 +1,4 @@
-// -*- mode: c++ , coding: utf-8 -*-
+// -*- mode++ , coding: utf-8 -*-
 /**
  * tbrpg – Text based roll playing game
  * 
@@ -533,7 +533,46 @@ namespace tbrpg
 		    {
 		      EnvironmentContainer* cont = static_cast<EnvironmentContainer*>(temp);
 		      if (cont->locked)
-			break; /* TODO allow unlocking */
+			{
+			  std::vector<long long>* weapon   = new std::vector<long long>();
+			  std::vector<long long>* quiver   = new std::vector<long long>();
+			  std::vector<long long>* equipped = new std::vector<long long>();
+			  std::vector<long long>* personal = new std::vector<long long>();
+			  std::vector<long long>** args = (std::vector<long long>**)malloc(4 * sizeof(std::vector<long long>*));
+			  
+			  (void) weapon; /* XXX fill `weapon` with weapon quest item ID:s */
+			  (void) quiver; /* XXX fill `quiver` with quiver quest item ID:s */
+			  (void) equipped; /* XXX fill `equipped` with equipped quest item ID:s */
+			  
+			  std::vector<Item*> queue = std::vector<Item*>();
+			  MapMinor* area = (*characters)[character]->area;
+			  for (GameCharacter* player : *characters)
+			    if (player->area == area)
+			      for (Item* item : player->character->record.inventory.personal)
+				queue.push_back(item);
+			  while ((queue.size()))
+			    {
+			      Item* item = queue[queue.size() - 1];
+			      queue.erase(queue.end() - 1);
+			      if (item->implements("QuestItem"))
+				personal->push_back(dynamic_cast<QuestItem*>(item)->id);
+			      if (*item >= PROTOTYPE(Container))
+				for (Item* subitem : static_cast<Container*>(item)->contains)
+				  queue.push_back(subitem);
+			    }
+			  
+			  cont->event("quest_unlock", args);
+			  
+			  free(args);
+			  delete weapon;
+			  delete quiver;
+			  delete equipped;
+			  delete personal;
+			  
+			  if (cont->locked)
+			    break; /* TODO allow unlocking */
+			}
+		      /* XXX traps */
 		    }
 		  container = static_cast<Container*>(temp);
 		  temp = nullptr;
@@ -658,6 +697,7 @@ namespace tbrpg
    */
   void InventoryExaminor::examine(Item* item) const
   {
+    (void) item;
     /* TODO implement item examination */
   }
   

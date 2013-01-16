@@ -181,6 +181,16 @@ namespace tbrpg
     void* getActual() const;
     
     
+    /**
+     * Invoked on a custom event
+     * 
+     * @param  action  The action name
+     * @param  args    The action parameters
+     */
+    virtual void event(const std::string& action, void* args);
+    
+    
+    
   protected:
     /**
      * Copy method
