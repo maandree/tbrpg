@@ -56,12 +56,12 @@ namespace tbrpg
      */
     std::vector<std::string> interface_inheritance;
     
-  public:
     /**
      * Class inheritance vector
      */
     std::vector<short> class_inheritance;
     
+  public:
     
     
     /**
