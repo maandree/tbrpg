@@ -232,7 +232,8 @@ namespace tbrpg
    */
   void Object::event(const std::string& action, void* args)
   {
-    // FIXME
+    if ((this->event_handler))
+      (*(this->event_handler))(this, action, args);
   }
   
   
