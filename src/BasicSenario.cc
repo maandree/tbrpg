@@ -184,6 +184,7 @@ namespace tbrpg
     legendsword->damage_dice = 3;
     legendsword->damage_bonus = 4;
     legendsword->speed_factor = 4;
+    legendsword->name = "Sword of Legends";
     
     EnvironmentContainer* legendcontainer = new EnvironmentContainer();
     cleaner::getInstance().enqueueDelete(legendcontainer);
