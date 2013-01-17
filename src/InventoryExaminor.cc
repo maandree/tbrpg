@@ -181,7 +181,8 @@ namespace tbrpg
 		  index = 0;
 		else
 		  {
-		    size_t n = page == 2 ? ground.size() + 1
+		    size_t n = page == 3 ? container->contains.size() + 1
+			     : page == 2 ? ground.size() + 1
 			     : page == 1 ? personal.size() 
 			     : inventory.left_hand.size() + inventory.quiver.size()
 			     + inventory.quick_items.size() + inventory.rings.size() + 8;
@@ -239,6 +240,17 @@ namespace tbrpg
 		    size_t i = ground.size();
 		    std::cout << (i == index ? CSI "01m" : "")
 			      << "Ground " << (i + 1) << ": (empty)"
+			      << CSI "21m" << std::endl;
+		  }
+		else if (page == 3)
+		  {
+		    for (size_t i = 0, n = container->contains.size(); i < n; i++)
+		      {
+			__print(container->name << (i + 1) << ": ", container->contains[i]);
+		      }
+		    size_t i = ground->contains.size();
+		    std::cout << (i == index ? CSI "01m" : "")
+			      << container->name << ": " << (i + 1) << ": (empty)"
 			      << CSI "21m" << std::endl;
 		  }
 		break;
