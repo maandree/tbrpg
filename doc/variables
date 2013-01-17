@@ -531,3 +531,6 @@ Action: Object                            ; Player action
 
 Calculator: Object                        ; Character attribute calculator
 	RuleSet rules                     ; The game rules
+
+SharedMemory: Object                               ; /dev/shm
+	std::unordered_map<std::string, void*> map ; /dev/shm files
