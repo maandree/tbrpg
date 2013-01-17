@@ -570,7 +570,7 @@ namespace tbrpg
 				  queue.push_back(subitem);
 			    }
 			  
-			  cont->event("quest_unlock", args);
+			  cont->event("quest_unlock", args); // FIXME segfualt here
 			  std::flush(std::cout << CSI "?25l");
 			  
 			  free(args);

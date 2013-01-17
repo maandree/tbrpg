@@ -523,11 +523,17 @@ namespace tbrpg
 	    if (damage > 0)
 	      {
 		std::cout << "Damage: " << damage << " * " << multiplier << " = " << (damage * multiplier) << std::endl;
-		totaldamage += damage * multiplier;
+		int dmg = damage * multiplier;
+		if (attacks == 1)
+		  {
+		    dmg /= 2; /* XXX how was it rounded? */
+		    std::cout << "Half attack" << std::endl;
+		  }
+		totaldamage += dmg;
 	      }
 	  }
 	
-	attacks--;
+	attacks -= 2;
       }
     
     std::cout << "Total damage: " << totaldamage << std::endl;
