@@ -36,6 +36,7 @@ namespace tbrpg
   EnvironmentContainer::EnvironmentContainer() : Container(), Lockable()
   {
     this->class_inheritance.push_back(133);
+    this->interface_inheritance.push_back("Lockable");
     this->stuck = true;
   }
   
