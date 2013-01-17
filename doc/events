@@ -3,3 +3,8 @@ ID		ARGUMENT				DESCRIPTION
 quest_unlock	std::vector<long long>*4		Whenever a locked object is tried to be opened.
 		weapon, quiver, equiped, personal
 
+pick_up		(void)					Whenever an item is picked up, even if it is
+							not for the first time.
+
+
+

@@ -375,9 +375,15 @@ namespace tbrpg
 		    __pickup(inventory.cloak);
 		    
 		    #undef __pickup
+		    
+		    if ((hand))
+		      hand->event("pick_up", nullptr); // FIXME segfualt here?
 		  }
 		else
 		  break;
+		if ((hand))
+		  if ((page))
+		    hand->event("pick_up", nullptr); // FIXME segfualt here?
 		readinginner = true;
 		c = CTRL('L');
 		break;
@@ -441,6 +447,7 @@ namespace tbrpg
 		else if (page == 0)
 		  {
 		    size_t i = 0;
+		    Item* hand_before = hand;
 		    
 		    #define  __swap(X, Y)					\
 		      if (i == index)						\
@@ -477,9 +484,16 @@ namespace tbrpg
 		    __swap(inventory.cloak, Cloak);
 		    
 		    #undef __swap
+		    
+		    if (hand_before != hand)
+		      if ((hand))
+			hand->event("pick_up", nullptr); // FIXME segfualt here?
 		  }
 		else
 		  break;
+		if ((hand))
+		  if ((page))
+		    hand->event("pick_up", nullptr); // FIXME segfualt here?
 		readinginner = true;
 		c = CTRL('L');
 		#undef ___swap
