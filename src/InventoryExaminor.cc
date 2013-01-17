@@ -557,7 +557,8 @@ namespace tbrpg
 			  for (GameCharacter* player : *characters)
 			    if (player->area == area)
 			      for (Item* item : player->character->record.inventory.personal)
-				queue.push_back(item);
+				if ((item))
+				  queue.push_back(item);
 			  while ((queue.size()))
 			    {
 			      Item* item = queue[queue.size() - 1];
@@ -570,6 +571,7 @@ namespace tbrpg
 			    }
 			  
 			  cont->event("quest_unlock", args);
+			  std::flush(std::cout << CSI "?25l");
 			  
 			  free(args);
 			  delete weapon;
@@ -598,7 +600,7 @@ namespace tbrpg
 		    {
 		      std::stringstream ss;
 		      ss << "\033[3" << (char)((int)'0' + p->character->record.colour) << "m"
-			 << p->character->record.name << "\033[39m";
+			 << p->character->record.name << CSI "39m";
 		      names.push_back(ss.str());
 		    }
 		  long i = promptMenu("Select recipient:", names);
