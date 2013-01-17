@@ -1124,11 +1124,6 @@ namespace tbrpg
     
     InventoryExaminor examinor = InventoryExaminor();
     examinor.examine(this->next_player, this->players);
-    /*
-    ground
-    */
-    
-    // std::cout << "Carry limit: " << this->calc->getCarryLimit(*c) << std::endl;
     
     /* XXX determine armour change time penalty */
   

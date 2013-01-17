@@ -189,6 +189,8 @@ namespace tbrpg
 		      index = n - 1;
 		  }
 	      case CTRL('L'): /* Redraw */
+		/* XXX carry limit and current carry */
+		/* std::cout << "Carry limit: " << this->calc->getCarryLimit(*c) << std::endl; */
 		std::cout << CSI "H" CSI "2J"
 			  << "Temporary slot: "
 			  << (hand == nullptr ? "(empty)" : hand->name);
