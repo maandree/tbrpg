@@ -193,7 +193,7 @@ namespace tbrpg
     
     legendcontainer->contains.push_back(legendsword);
     area_goal->items.push_back(legendcontainer);
-    legendcontainer->event_handler = legend_open;
+    legendcontainer->event_handler = &legend_open;
   }
   
   
