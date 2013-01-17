@@ -194,6 +194,7 @@ namespace tbrpg
     legendcontainer->contains.push_back(legendsword);
     area_goal->items.push_back(legendcontainer);
     legendcontainer->event_handler = &legend_open;
+    //FIXME implement pick_up event
   }
   
   
