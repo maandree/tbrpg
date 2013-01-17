@@ -39,7 +39,7 @@ namespace tbrpg
     this->class_inheritance.push_back(0);
     this->actual_instance = (void*)this;
     this->interface_inheritance = std::vector<std::string>();
-    this->event_handler = nullptr;
+    this->event_handler = noop_event;
   }
   
   /**
@@ -239,7 +239,7 @@ namespace tbrpg
   void Object::event(const std::string& action, void* args)
   {
     if ((this->event_handler))
-      (*(this->event_handler))(this, action, args);
+      this->event_handler(this, action, args);
   }
   
   
@@ -254,6 +254,7 @@ namespace tbrpg
     self = original;
   }
   
+  
   /**
    * Hash method
    * 
@@ -262,6 +263,22 @@ namespace tbrpg
   size_t Object::hash() const
   {
     return (size_t)this;
+  }
+  
+  
+  /**
+   * NoOP event handler
+   * 
+   * @param  self   The invoked object
+   * @param  ebent  The event name
+   * @param  args   The event arguments
+   */
+  void Object::noop_event(Object* self, const std::string& event, void* args)
+  {
+    (void) self;
+    (void) event;
+    (void) args;
+    /* Do nothing */
   }
   
 }

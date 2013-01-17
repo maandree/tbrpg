@@ -193,7 +193,7 @@ namespace tbrpg
     
     legendcontainer->contains.push_back(legendsword);
     area_goal->items.push_back(legendcontainer);
-    legendcontainer->event_handler = &legend_open;
+    legendcontainer->event_handler = legend_open;
     //FIXME implement pick_up event
   }
   
@@ -352,7 +352,7 @@ namespace tbrpg
       {
 	std::vector<long long>** vecs = (std::vector<long long>**)args;
 	for (size_t i = 0; i < 4; i++)
-	  for (long long id : *(vecs[4]))
+	  for (long long id : *(vecs[i]))
 	    if (id == 0)
 	      {
 		static_cast<EnvironmentContainer*>(self)->locked = false;

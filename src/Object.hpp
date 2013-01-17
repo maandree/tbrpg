@@ -69,7 +69,7 @@ namespace tbrpg
      * @param  std::string  The event name
      * @param  void*        The event arguments
      */
-    void (**event_handler)(Object*, const std::string&, void*);
+    void (*event_handler)(Object*, const std::string&, void*);
     
     
     
@@ -217,6 +217,17 @@ namespace tbrpg
      * @return  The object's hash code
      */
     size_t hash() const;
+    
+    
+  private:
+    /**
+     * NoOP event handler
+     * 
+     * @param  self   The invoked object
+     * @param  ebent  The event name
+     * @param  args   The event arguments
+     */
+    static void noop_event(Object* self, const std::string& event, void* args);
     
   };
 }

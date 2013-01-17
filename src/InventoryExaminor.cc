@@ -379,13 +379,13 @@ namespace tbrpg
 		    #undef __pickup
 		    
 		    if ((hand))
-		      hand->event("pick_up", nullptr); // FIXME segfualt here?
+		      hand->event("pick_up", nullptr);
 		  }
 		else
 		  break;
 		if ((hand))
 		  if ((page))
-		    hand->event("pick_up", nullptr); // FIXME segfualt here?
+		    hand->event("pick_up", nullptr);
 		readinginner = true;
 		c = CTRL('L');
 		break;
@@ -489,13 +489,13 @@ namespace tbrpg
 		    
 		    if (hand_before != hand)
 		      if ((hand))
-			hand->event("pick_up", nullptr); // FIXME segfualt here?
+			hand->event("pick_up", nullptr);
 		  }
 		else
 		  break;
 		if ((hand))
 		  if ((page))
-		    hand->event("pick_up", nullptr); // FIXME segfualt here?
+		    hand->event("pick_up", nullptr);
 		readinginner = true;
 		c = CTRL('L');
 		#undef ___swap
@@ -563,6 +563,10 @@ namespace tbrpg
 			  std::vector<long long>* equipped = new std::vector<long long>();
 			  std::vector<long long>* personal = new std::vector<long long>();
 			  std::vector<long long>** args = (std::vector<long long>**)malloc(4 * sizeof(std::vector<long long>*));
+			  args[0] = weapon;
+			  args[1] = quiver;
+			  args[2] = equipped;
+			  args[3] = personal;
 			  
 			  (void) weapon; /* XXX fill `weapon` with weapon quest item ID:s */
 			  (void) quiver; /* XXX fill `quiver` with quiver quest item ID:s */
@@ -586,7 +590,7 @@ namespace tbrpg
 				  queue.push_back(subitem);
 			    }
 			  
-			  cont->event("quest_unlock", args); // FIXME segfualt here
+			  cont->event("quest_unlock", args);
 			  std::flush(std::cout << CSI "?25l");
 			  
 			  free(args);
