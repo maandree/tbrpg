@@ -69,7 +69,7 @@ namespace tbrpg
      * @param  std::string  The event name
      * @param  void*        The event arguments
      */
-    void (*event_handler)(Object*, const std::string&, void*);
+    void (**event_handler)(Object*, const std::string&, void*);
     
     
     
