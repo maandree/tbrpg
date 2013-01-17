@@ -142,13 +142,13 @@ namespace tbrpg
     
   private:
     /**
-     * Event handling function for the goal container
+     * Event handling function for the goal items
      * 
      * @param  self   The invoked object
      * @param  event  The event name
      * @param  args   The event arguments
      */
-    static void legend_open(Object* self, const std::string& event, void* args);
+    static void legend_event(Object* self, const std::string& event, void* args);
     
   };
 }

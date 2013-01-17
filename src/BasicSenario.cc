@@ -193,8 +193,8 @@ namespace tbrpg
     
     legendcontainer->contains.push_back(legendsword);
     area_goal->items.push_back(legendcontainer);
-    legendcontainer->event_handler = legend_open;
-    //FIXME implement pick_up event
+    legendcontainer->event_handler = legend_event;
+    legendsword->event_handler = legend_event;
   }
   
   
@@ -340,13 +340,13 @@ namespace tbrpg
   
   
   /**
-   * Event handling function for the goal container
+   * Event handling function for the goal items
    * 
    * @param  self   The invoked object
    * @param  event  The event name
    * @param  args   The event arguments
    */
-  void BasicSenario::legend_open(Object* self, const std::string& event, void* args)
+  void BasicSenario::legend_event(Object* self, const std::string& event, void* args)
   {
     if (event == "quest_unlock")
       {
@@ -358,6 +358,10 @@ namespace tbrpg
 		static_cast<EnvironmentContainer*>(self)->locked = false;
 		break;
 	      }
+      }
+    else if (event == "pick_up")
+      {
+	// FIXME game over
       }
   }
   
