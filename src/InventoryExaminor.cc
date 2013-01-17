@@ -246,11 +246,11 @@ namespace tbrpg
 		  {
 		    for (size_t i = 0, n = container->contains.size(); i < n; i++)
 		      {
-			__print(container->name << (i + 1) << ": ", container->contains[i]);
+			__print(container->name << " " << (i + 1) << ": ", container->contains[i]);
 		      }
 		    size_t i = container->contains.size();
 		    std::cout << (i == index ? CSI "01m" : "")
-			      << container->name << ": " << (i + 1) << ": (empty)"
+			      << container->name << " " << (i + 1) << ": (empty)"
 			      << CSI "21m" << std::endl;
 		  }
 		break;
