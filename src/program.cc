@@ -26,8 +26,8 @@
 #include "Senario.hpp"
 #include "CharacterCreator.hpp"
 #include "GamePlay.hpp"
-
 #include "BasicSenario.hpp"
+#include "SharedMemory.hpp"
 
 
 /**
@@ -124,6 +124,7 @@ namespace tbrpg
     senario->start();
     
     GamePlay game = GamePlay(senario);
+    PROTOTYPE(SharedMemory).map["GamePlay"] = (void*)&game;
     while (game.next())
       ;
     

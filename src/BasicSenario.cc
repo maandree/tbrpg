@@ -360,9 +360,7 @@ namespace tbrpg
 	      }
       }
     else if (event == "pick_up")
-      {
-	// FIXME game over
-      }
+      PROTOTYPE(SharedMemory).map["GamePlay:gameover"] = (void*)1LL;
   }
   
 }

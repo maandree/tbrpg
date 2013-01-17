@@ -37,6 +37,7 @@
 #include "ActionSlotChart.hpp"
 #include "NPC.hpp"
 #include "InventoryExaminor.hpp"
+#include "SharedMemory.hpp"
 
 
 /**

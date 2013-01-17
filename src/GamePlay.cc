@@ -90,6 +90,8 @@ namespace tbrpg
 				   senario->rules->attack_roll_die);
     else
       this->attack_dice = nullptr;
+    
+    PROTOTYPE(SharedMemory).map["GamePlay:gameover"] = (void*)0LL;
   }
   
   
@@ -115,6 +117,12 @@ namespace tbrpg
    */
   bool GamePlay::next()
   {
+    if ((PROTOTYPE(SharedMemory).map["GamePlay:gameover"]))
+      {
+	std::cout << CSI "01;32m-- GAME OVER --" << CSI "21;39m" << std::endl;
+	return false;
+      }
+    
     std::vector<std::string> actions = {};
     std::vector<char (GamePlay::*)()> functions = {};
     

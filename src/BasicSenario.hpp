@@ -39,6 +39,7 @@
 #include "Helmet.hpp"
 #include "Key.hpp"
 #include "EnvironmentContainer.hpp"
+#include "SharedMemory.hpp"
 
 
 /**
