@@ -625,6 +625,65 @@ namespace tbrpg
 		}
 		break;
 		
+	      case 'j': /* XXX document this and fully implement */
+		{
+		  if (page != 2)
+		    break;
+		  if (hand == nullptr)
+		    break;
+		  if (personal[index] == nullptr)
+		    break;
+		  int q = hand->quantity;
+		  int p = personal[index]->quantity;
+		  hand->quantity = personal[index]->quantity = 1;
+		  if ((*hand == *personal[index]) && (p + q < personal[index]->quantity_limit))
+		    {
+		      personal[index]->quantity = p + q;
+		      
+		      std::vector<Object*>& list = cleaner::getInstance().clean_list_delete;
+		      auto ptr = list.begin();
+		      for (size_t index = 0;; index++)
+			{
+			  if (**ptr == *hand)
+			    {
+			      list.erase(list.begin() + index);
+			      break;
+			    }
+			  ptr++;
+			}
+		      
+		      delete hand;
+		      hand = nullptr;
+		    }
+		  else
+		    {
+		      hand->quantity = q;
+		      personal[index]->quantity = p;
+		    }
+		  readinginner = true;
+		  c = CTRL('L');
+		  break;
+		}
+		
+	      case 'J': /* XXX document this and fully implement */
+		{
+		  if (page != 2)
+		    break;
+		  if (hand != nullptr)
+		    break;
+		  if (personal[index] == nullptr)
+		    break;
+		  if (personal[index]->quantity <= 1)
+		    break;
+		  hand = (Item*)(personal[index]->fork());
+		  hand->quantity = (personal[index]->quantity >> 1) + (personal[index]->quantity & 1);
+		  personal[index]->quantity >>= 1;
+		  cleaner::getInstance().enqueueDelete(hand);
+		  readinginner = true;
+		  c = CTRL('L');
+		  break;
+		}
+		
 	      case 'P': /* Give item to another party member */
 		{
 		  std::vector<std::string> names = std::vector<std::string>();
