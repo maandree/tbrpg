@@ -250,7 +250,85 @@ namespace tbrpg
       __copy(rings[i], Ring);
     for (size_t i = 0, n = self.personal.size(); i < n; i++)
       __copy(personal[i], Item);
+    
+    #undef __copy
   }
+  
+  
+  /**
+   * Remove an item from the inventory
+   * 
+   * @param  item  The item
+   */
+  void Inventory::dissolve(const Item* item)
+  {
+    #define __dissolve(slot)		\
+      if (this->slot == item)		\
+	{				\
+	  this->slot = nullptr;		\
+	  return;			\
+	}//
+    
+    
+    __dissolve(right_hand);
+    __dissolve(headgear);
+    __dissolve(amulet);
+    __dissolve(body);
+    __dissolve(gauntlets);
+    __dissolve(girdle);
+    __dissolve(boots);
+    __dissolve(cloak);
+    
+    for (size_t i = 0, n = this->left_hand.size(); i < n; i++)
+      __dissolve(left_hand[i]);
+    for (size_t i = 0, n = this->quiver.size(); i < n; i++)
+      __dissolve(quiver[i]);
+    for (size_t i = 0, n = this->quick_items.size(); i < n; i++)
+      __dissolve(quick_items[i]);
+    for (size_t i = 0, n = this->rings.size(); i < n; i++)
+      __dissolve(rings[i]);
+    for (size_t i = 0, n = this->personal.size(); i < n; i++)
+      if ((this->personal[i]))
+	{
+	  __dissolve(personal[i]);
+	  if (*(this->personal[i]) >= PROTOTYPE(Container))
+	    {
+	      std::unordered_map<long, long> parents = std::unordered_map<long, long>();
+	      std::vector<Item*> queue = std::vector<Item*>();
+	      queue.push_back(this->personal[i]);
+	      parents[(long)(this->personal[i])] = 0;
+	      while ((queue.size()))
+		{
+		  Item* jtem = queue[queue.size() - 1];
+		  queue.erase(queue.end() - 1);
+		  if (jtem == item)
+		    {
+		      size_t index = 0;
+		      Container* parent = static_cast<Container*>((Item*)(parents[(long)jtem]));
+		      for (Item* subitem : parent->contains)
+			if (subitem == item)
+			  {
+			    parent->contains.erase(parent->contains.begin() + index);
+			    break;
+			  }
+			else
+			  index++;
+		      return;
+		    }
+		  if (*jtem >= PROTOTYPE(Container))
+		    for (Item* subitem : static_cast<Container*>(jtem)->contains)
+		      {
+			queue.push_back(subitem);
+			parents[(long)subitem] = (long)jtem;
+		      }
+		}
+	    }
+	}
+    
+    #undef __dissolve
+  }
+  
+  
   
   /**
    * Internal cleaning

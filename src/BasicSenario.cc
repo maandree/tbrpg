@@ -357,6 +357,27 @@ namespace tbrpg
 	    if (id == 0)
 	      {
 		static_cast<EnvironmentContainer*>(self)->locked = false;
+		GamePlay* game = (GamePlay*)PROTOTYPE(SharedMemory).map["GamePlay"];
+		
+		Key* key = nullptr;
+		
+		std::vector<Object*>& list = cleaner::getInstance().clean_list_delete;
+		auto ptr = list.begin();
+		for (;;)
+		  {
+		    if (**ptr >= PROTOTYPE(Key))
+		      if (static_cast<Key*>(*ptr)->id == 0)
+			{
+			  delete (key = static_cast<Key*>(*ptr));
+			  list.erase(ptr);
+			}
+		    ptr++;
+		  }
+		
+		if ((key))
+		  for (GameCharacter* player : *(game->players))
+		    player->character->record.inventory.dissolve(key);
+		
 		break;
 	      }
       }

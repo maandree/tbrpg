@@ -44,7 +44,7 @@ namespace tbrpg
    */
   class cleaner
   {
-  private:
+  public:
     /**
      * Objects to `free()`
      */

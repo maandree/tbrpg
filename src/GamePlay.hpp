@@ -55,7 +55,7 @@ namespace tbrpg
    */
   class GamePlay
   {
-  protected:
+  public:
     /**
      * The game senario
      */

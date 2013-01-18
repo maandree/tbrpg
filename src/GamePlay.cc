@@ -511,6 +511,7 @@ namespace tbrpg
 	
 	bool hit = roll + rollmod >= thac0 - ac;
 	int multiplier = (roll >= this->game->rules->critical_hit) ? 2 : 1; /* XXX make customisable */
+	/* XXX critical hit protection */
 	if (multiplier == 2)
 	  {
 	    std::cout << "Critical hit" << std::endl;
@@ -549,7 +550,7 @@ namespace tbrpg
     if (attackable[target]->hit_points <= -(this->game->rules->critical_death))
       {
 	dynamic_cast<Character*>(attackable[target])->alive = -1;
-	if (attackable[target].resurrect == false)
+	if (attackable[target]->resurrect == false)
 	  {
 	    size_t index = 0;
 	    for (Creature* creature : player->area->creatures)

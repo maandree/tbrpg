@@ -40,6 +40,8 @@
 #include "Key.hpp"
 #include "EnvironmentContainer.hpp"
 #include "SharedMemory.hpp"
+#include "GameCharacter.hpp"
+#include "GamePlay.hpp"
 
 
 /**

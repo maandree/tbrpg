@@ -41,6 +41,7 @@
 #include "Boots.hpp"
 #include "Cloak.hpp"
 #include "Item.hpp"
+#include "Container.hpp"
 #include "cleaner.hpp"
 
 
@@ -209,6 +210,14 @@ namespace tbrpg
      * @return         Whether the instances are not equal
      */
     virtual bool operator !=(const Inventory& other) const;
+    
+    
+    /**
+     * Remove an item from the inventory
+     * 
+     * @param  item  The item
+     */
+    virtual void dissolve(const Item* item);
     
     
   protected:
