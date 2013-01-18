@@ -167,6 +167,7 @@ namespace tbrpg
     
     Creature* gibberling = new Creature();
     area_wilds->creatures.push_back(gibberling);
+    gibberling->hit_points = 1;
     gibberling->x = 50;
     gibberling->y = 50;
     gibberling->alive = true;
@@ -363,13 +364,15 @@ namespace tbrpg
 		
 		std::vector<Object*>& list = cleaner::getInstance().clean_list_delete;
 		auto ptr = list.begin();
-		for (;;)
+		for (size_t index = 0;; index++)
 		  {
 		    if (**ptr >= PROTOTYPE(Key))
 		      if (static_cast<Key*>(*ptr)->id == 0)
 			{
-			  delete (key = static_cast<Key*>(*ptr));
-			  list.erase(ptr);
+			  key = static_cast<Key*>(*ptr);
+			  list.erase(list.begin() + index);
+			  delete key;
+			  break;
 			}
 		    ptr++;
 		  }

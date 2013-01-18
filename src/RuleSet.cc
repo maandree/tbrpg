@@ -56,7 +56,7 @@ namespace tbrpg
     this->racial_enemies = {};
     this->party_size = 1;
     this->party_start_size = 6;
-    this->critical_death = 10;
+    this->critical_death = 1; // XXX temporarly modifiered from 10
     
     ABJURATION.opposite = {ALTERATION};
     ALTERATION.opposite = {ABJURATION, NECROMANCY};

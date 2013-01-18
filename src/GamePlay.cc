@@ -545,6 +545,8 @@ namespace tbrpg
 	attacks -= 2;
       }
     
+    long eraseindex = -1;
+    
     std::cout << "Total damage: " << totaldamage << std::endl;
     attackable[target]->hit_points -= totaldamage;
     if (attackable[target]->hit_points <= -(this->game->rules->critical_death))
@@ -556,8 +558,8 @@ namespace tbrpg
 	    for (Creature* creature : player->area->creatures)
 	      if (creature == attackable[target])
 		{
-		  player->area->creatures.erase(player->area->creatures.begin() + index);
-		  delete creature;
+		  eraseindex = (long)index;
+		  break;
 		}
 	      else
 		index++;
@@ -601,6 +603,12 @@ namespace tbrpg
     #undef __drops
     
     /* TODO gain experience add new levels */
+    
+    if (eraseindex >= 0)
+      {
+	delete player->area->creatures[eraseindex];
+	player->area->creatures.erase(player->area->creatures.begin() + eraseindex);
+      }
     
     return 1;
   }
