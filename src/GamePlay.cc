@@ -534,7 +534,7 @@ namespace tbrpg
 		int dmg = damage * multiplier;
 		if (attacks == 1)
 		  {
-		    dmg /= 2; /* XXX how was it rounded? */
+		    dmg /= 2; /* XXX how shout it be rounded? */
 		    std::cout << "Half attack" << std::endl;
 		  }
 		totaldamage += dmg;
@@ -546,9 +546,21 @@ namespace tbrpg
     
     std::cout << "Total damage: " << totaldamage << std::endl;
     attackable[target]->hit_points -= totaldamage;
-    if (attackable[target]->hit_points <= -(this->game->rules->critical_death)) /* TODO delete newly and not resurrectable */
+    if (attackable[target]->hit_points <= -(this->game->rules->critical_death))
       {
 	dynamic_cast<Character*>(attackable[target])->alive = -1;
+	if (attackable[target].resurrect == false)
+	  {
+	    size_t index = 0;
+	    for (Creature* creature : player->area->creatures)
+	      if (creature == attackable[target])
+		{
+		  player->area->creatures.erase(player->area->creatures.begin() + index);
+		  delete creature;
+		}
+	      else
+		index++;
+	  }
 	std::cout << "Critical death inflicated on target." << std::endl;
       }
     else if (attackable[target]->hit_points <= 0)
