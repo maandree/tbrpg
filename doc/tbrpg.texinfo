@@ -55,31 +55,31 @@ Texts. A copy of the license is included in the section entitled
 
 
 @menu
-* Character attibutes::               Character attibutes.
-* Magic and specialist mages::        Magic and specialist mages.
-* Ability score effects::             Effects by ability scores.
-* Miscellaneous attibutes::           Miscellaneous character attibutes.
-* Special abilities::                 Special character abilities.
-* Character actions::                 Character actions.
-* Armour::                            Something about armour.
-* Weapons::                           About weapons.
-* Elements::                          Elemental attacks and defences.
-* Experience charts::                 Experience charts.
-* Spell progression::                 Spell progression charts.
-* New spell charts::                  Charts with new spell learned at level up.
-* Miscellaneous charts::              Miscellaneous charts.
-* Combat rules::                      Combat rules.
-* Time rules::                        Time rules.
-* Inventory and equipment::           The inventory and equipment.
-* Map and environment::               The map and environments.
-* Dice and modifiers::                Dice and modifiers.
-* Miscellaneous rules::               Miscellaneous rules.
-* Menus and line input::              Menus and line input
-* License of tbrpg::                  tbrpg's License.
-* GNU General Public License::        GNU General Public License
-* GNU Free Documentation License::    GNU Free Documentation License
-* Concept and program index::         Concept and program index
-* Variable and option index::         Variable and option index
+* Character attibutes::                Character attibutes.
+* Magic and specialist mages::         Magic and specialist mages.
+* Ability score effects::              Effects by ability scores.
+* Miscellaneous attibutes::            Miscellaneous character attibutes.
+* Special abilities::                  Special character abilities.
+* Character actions::                  Character actions.
+* Armour::                             Something about armour.
+* Weapons::                            About weapons.
+* Elements::                           Elemental attacks and defences.
+* Experience charts::                  Experience charts.
+* Spell progression::                  Spell progression charts.
+* New spell charts::                   Charts with new spell learned at level up.
+* Miscellaneous charts::               Miscellaneous charts.
+* Combat rules::                       Combat rules.
+* Time rules::                         Time rules.
+* Inventory and equipment::            The inventory and equipment.
+* Map and environment::                The map and environments.
+* Dice and modifiers::                 Dice and modifiers.
+* Miscellaneous rules::                Miscellaneous rules.
+* Menus and line input::               Menus and line input
+* License of tbrpg::                   tbrpg's License.
+* GNU Affero General Public License::  GNU Affero General Public License
+* GNU Free Documentation License::     GNU Free Documentation License
+* Concept and program index::          Concept and program index
+* Variable and option index::          Variable and option index
 @end menu
 
 
