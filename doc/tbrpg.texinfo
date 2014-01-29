@@ -47,7 +47,7 @@ Texts. A copy of the license is included in the section entitled
 @insertcopying
 @page
 @*@*
-@center{`This is going to be so @emph{awesome!}'}
+@center `This is going to be so @emph{awesome!}'
 @end titlepage
 
 @contents
@@ -143,33 +143,33 @@ rewarded +1 in morale.
 There are seven available character races, from which you
 must choose yout character's race.
 
-@table @bullet
-@item  Human
+@table @asis
+@item  @bullet{} Human
 There really is nothing special about humans.
-@item  Half-Orc
+@item  @bullet{} Half-Orc
 Half-Orcs receive a bonus point to their strength and
 constitution, but a penality point to intelligence and
 charisma.
-@item  Half-Elf
+@item  @bullet{} Half-Elf
 Half-elves have infravisiton and limited (50 %) resistance
 to charm and sleep spells.
-@item  Elf
+@item  @bullet{} Elf
 Elves have infravistion and full resistance to charm and
-sleep spells. They have a  −2 bonus point THAC0 when using
+sleep spells. They have a −2 bonus point THAC0 when using
 bows and long swords. Finally, they have a receive a bonus
 point to their dexterity, but a penalty point to their
 constitution.
-@item  Dwarf
+@item  @bullet{} Dwarf
 Dwarves have infravision and full resistance to magic and
 poison. They have a receive a bonus point to their
 constituion, but a penalty point to their charisma and
 dexterity.
-@item  Halfling
+@item  @bullet{} Halfling
 Halflings have high (75 %) resistance to poison and magic,
 and have −4 bonus point THAC0 when using slings. They have a
 receive a bonus point to their dexterity, but a penalty
 point to their strength.
-@item  Gnome
+@item  @bullet{} Gnome
 Gnomes have infravision and full resistance to magic, both
 protective and distructive magic, but only wizard spells.
 They receive a bonus point to their intelligence, but a
@@ -198,39 +198,39 @@ higher is required.
 
 There are nine available classes.
 
-@table @bullet
-@item  Fighter (F)
+@table @asis
+@item  @bullet{} Fighter (F)
 Can wield any weapon and any armour except robes.
 Can have advanced weapon speciailisation.
 Can receive multiple hit bonus.
-@item  Ranger (R)
+@item  @bullet{} Ranger (R)
 Can wield any weapon and any armour except robes.
 Special abilities: Charm person/mammal, Stealth.
 Must be of good alignment.
-@item  Paladin (P)
+@item  @bullet{} Paladin (P)
 Can wield any weapon and any armour except robes.
 Special abilities: Lay on Hands, Turn Undead,
 Protection from Evil, detect Evil.
 Receive +2 bonus to all Saving throws,
 Must maintain lawful good alignment.
-@item  Thief (T)
+@item  @bullet{} Thief (T)
 Cannot be of lawful good alignment.
 Very restricted with what armour they can wear and
 with weapones they can wield.
-@item  Bard (B)
+@item  @bullet{} Bard (B)
 Special abilties: Pick Pockets, Bard Songs, Spell Casting.
 Have very high lore. Must be have partially neutral
 alignment, that is not lawful/chaotic good/evil.
-@item  Cleric (C)
+@item  @bullet{} Cleric (C)
 Special abilties: Turn Undead.
-@item  Druid (D)
+@item  @bullet{} Druid (D)
 Special abilties: Shape Change.
-@item  Mage (M)
+@item  @bullet{} Mage (M)
 Can learn and memorise wizard spells.
 Very restricted with what armour they can wear and with
 weapones they can wield, however alone with sorcerers to
 be able to wear robes.
-@item  Sorcerer (S)
+@item  @bullet{} Sorcerer (S)
 Cannot learn spells from scrolls, but learns new wizard
 spells at level up, and do not need to memorise spells, but
 have a limited amouts of spells that can be used per
@@ -258,18 +258,18 @@ general mages, but only illusionists (I).
 
 The following multiclasses can be used.
 
-@table @bullet
-@item  Half-Orc
+@table @asis
+@item  @bullet{} Half-Orc
 F/C
-@item  Half-Elf
+@item  @bullet{} Half-Elf
 F/T, F/C, F/D, F/M, T/M, C/M, F/M/T, F/M/C
-@item  Elf
+@item  @bullet{} Elf
 F/T, F/M, T/M, F/M/T
-@item  Dwarf
+@item  @bullet{} Dwarf
 F/T, F/C
-@item  Halfling
+@item  @bullet{} Halfling
 F/T
-@item  Gnome
+@item  @bullet{} Gnome
 F/T, F/C, F/I, T/I, C/I, F/D, C/R, F/I/T, F/I/C
 @end table
 
